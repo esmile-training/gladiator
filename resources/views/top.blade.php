@@ -10,8 +10,7 @@
     </head>
     <body>
 		<div>
-			おめでとう！！<br>
-			GladiatorのTOP画面だよ
+			top
 		</div>
     </body>
 </html>

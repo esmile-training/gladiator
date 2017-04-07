@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-class frontendController extends Controller
+class mypageController extends Controller
 {
 	public function index()
 	{
-		return view('index');
+		return view('mypage');
 	}
 }

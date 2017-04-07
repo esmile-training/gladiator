@@ -11,4 +11,6 @@
 |
 */
 
-Route::get('/', 'frontendController@index');
+Route::get('/', 'topController@index');
+Route::get('top', 'topController@index');
+Route::get('mypage', 'mypageController@index');
