@@ -5,10 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Mini Quests</title>
+        <title>Gladiator</title>
 
     </head>
     <body>
-		<div>Mini Quests</div>
+		<div>
+			おめでとう！！<br>
+			GladiatorのTOP画面だよ
+		</div>
     </body>
 </html>
