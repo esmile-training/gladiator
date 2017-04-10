@@ -1,16 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<div>
+    おめでとう！！<br>
+    top画面が表示されたよ♪
+    <?php var_dump( $viewData ); ?>
+</div>
 
-        <title>Gladiator</title>
+<?php //popup  ?>
+<div>
+</div>
 
-    </head>
-    <body>
-		<div>
-			top
-		</div>
-    </body>
-</html>
+<?php //ハイパーリンク  ?>
+<div>
+</div>
+
+<?php //画像  ?>
+<div>
+</div>
+
+<?php //foreach  ?>
+<div>
+</div>
+
+ <?php //CSS ?>
+
+ <?php //viewParts  ?>

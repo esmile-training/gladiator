@@ -8,13 +8,23 @@ use App\Http\Controllers\Controller;
 class topController extends Controller
 {
     /**
-     * 指定ユーザーのプロフィール表示
+     * 謖�螳壹Θ繝ｼ繧ｶ繝ｼ縺ｮ繝励Ο繝輔ぅ繝ｼ繝ｫ陦ｨ遉ｺ
      *
-     * @param  int  $id
+     * @param  int  $id3
      * @return Response
      */
     public function index()
     {
-        return view('top');
+        //DB縺九ｉ縺ｨ縺｣縺ｦ縺上ｋ
+
+        //config縺九ｉ縺ｨ縺｣縺ｦ縺上ｋ
+         $this->viewData['appAliassConf']           =   \Config::get('app.aliases');
+         $this->viewData['dbRedisDefaultConfig']    = \Config::get('database.redis.default');
+        
+         //foreach
+
+         //Libraly
+
+        return viewWrap('top', $this->viewData);
     }
 }
