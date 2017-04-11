@@ -52,4 +52,7 @@ $app->singleton(
 |
 */
 
+define("APP_URL", "http://www.gladiator.vagrant.com/");
+define("IMG_URL", "http://esmile-sys.sakura.ne.jp/gladiator/img/");
+
 return $app;

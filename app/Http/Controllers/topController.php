@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Libs\DevelopMemberLib;
 use App\Http\Controllers\Controller;
 
 class topController extends Controller
@@ -18,12 +18,22 @@ class topController extends Controller
         //DBからとってくる
 
         //configからとってくる
-         $this->viewData['appAliassConf']           =   \Config::get('app.aliases');
-         $this->viewData['dbRedisDefaultConfig']    = \Config::get('database.redis.default');
-        
-         //foreach
+        $membersConf          =   \Config::get('members.profile');
 
-         //Libraly
+        //Libraly
+        $this->viewData['memberList'] = DevelopMemberLib::sortMemberConf( $membersConf );
+
+        return viewWrap('top', $this->viewData);
+    }
+    public function test()
+    {
+        //DBからとってくる
+
+        //configからとってくる
+        $membersConf          =   \Config::get('members');
+
+        //Libraly
+        $this->viewData['memberList'] = DevelopMemberLib::sortMemberConf( $membersConf );
 
         return viewWrap('top', $this->viewData);
     }
