@@ -1,37 +1,19 @@
- <?php //css  ?>
-<link href="css/top.css" rel="stylesheet" type="text/css">
+{{-- css  --}}
+<link href="{{APP_URL}}css/top.css?var={{time()}}" rel="stylesheet" type="text/css">
 
+{{-- 画像 --}}
 <div>
-    おめでとう！！<br>
-    top画面が表示されたよ♪
+    <img class="title" src="{{IMG_URL}}title.png">
 </div>
 
-<?php //画像  ?>
+{{-- ハイパーリンク --}}
 <div>
-    <img class="topTitles" src="<?= IMG_URL ?>title.png">
-</div>
-
-<?php //foreachでメンバーリスト表示する  ?>
-<div>
-    <?php foreach( $viewData['memberList'] as $type => $memberList ): ?>
-        <div>
-            【<?= $type ?>】
-        </div>
-        <?php foreach( $memberList as $name ): ?>
-            <div>
-                <?= $name ?>
-            </div>
-        <?php endforeach; ?>
-    <?php endforeach; ?>
-</div>
-
-<?php //ハイパーリンク  ?>
-<div>
-    <a href="<?= APP_URL ?>mypage">
-            MYPAGEへ
+    <a href="{{APP_URL}}top/login?uid=123456">
+	MYPAGE
     </a>
 </div>
 
- <?php //viewParts  ?>
+{{-- viewParts  --}}
+@include('element/memberList')
 
-<?php //popup  ?>
+{{-- popup --}}

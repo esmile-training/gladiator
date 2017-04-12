@@ -8,7 +8,7 @@ class DevelopMemberLib
 	*/
     public static function sortMemberConf( $membersConf )
     {
-		$result = array();		//初期化
+		$result = [];  //初期化
 		foreach($membersConf as $member){
 			$result[$member['type']][] = $member['name'];
 		}

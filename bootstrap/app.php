@@ -54,5 +54,5 @@ $app->singleton(
 
 define("APP_URL", "http://www.gladiator.vagrant.com/");
 define("IMG_URL", "http://esmile-sys.sakura.ne.jp/gladiator/img/");
-
+define("DB_API_URL", "http://esmile-sys.sakura.ne.jp/gladiator/dbapi.php");
 return $app;

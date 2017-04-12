@@ -1,3 +1,3 @@
 <div>
-        mypage
+    <?php var_dump($viewData); ?>
 </div>
