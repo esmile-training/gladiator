@@ -20,3 +20,7 @@ Route::get(
 	( isset( $_SERVER['REDIRECT_URL'] ) )? $_SERVER['REDIRECT_URL'] : '/',
 	ucfirst($controllerName).'Controller@'.$actionName
 );
+
+//デフォルト以外のルーティングは以下に記述
+//Route::get('top', 'mypageController@index');
+

@@ -1,14 +1,39 @@
 <?php
 namespace App\Model;
 
-class UserModel extends BaseModel
+class UserModel extends BaseGameModel
 {
     /*
-    *	ユーザ全件取得
+    *	ユーザ1件取得
     */
-    public static function getAll()
+    public static function getById( $uid  )
     {
-	$sql = "SELECT * FROM user;";
-	return parent::dbapi($sql);
+$sql =  <<< EOD
+	SELECT *
+	FROM user
+	WHERE id = {$uid}
+EOD;
+	return parent::select($sql, 'first');
     }
+
+    /*
+    *	ユーザ作成
+    */
+    public static function createUser()
+    {
+	$time = date('Y-m-d H:i:s', time());
+$sql =  <<< EOD
+    INSERT INTO  user 
+    VALUES (
+	NULL ,
+	 'テストユーザー',
+	 NULL ,
+	 '{$time  }',
+	 '{$time}'
+    );
+EOD;
+	parent::dbapi($sql, 'first');
+    }
+    
+    
 }

@@ -1,19 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
+//Model
+use App\Model\UserModel;
+//Lib
 
 class BaseGameController extends Controller
 {
     public function __construct()
     {
-	$this->nowTime =  time();
-	$this->viewData = [];
+	//ユーザーの情報をセット
+	$userId = 26; //TODO: cookie取ってくる
+	$this->viewData['userDb'] = $this->userDb = UserModel::getById( $userId );
 
-	$this->userInfo = [
-	    'id'	=> "123456",
-	    'nowTime'	=> date('Y-m-d H:i:s', time()),
-	];
-	$this->viewData['userInfo'] = $this->userInfo;
+	//DBに情報がなければユーザ作成
+	if( !$this->userDb ) $this->redirect('login', 'createUser');
+
+	//現在時刻をセット
+	$this->viewData['nowTime'] =$this->nowTime = ( is_null($this->userDb['debugDate']) )?date('Y-m-d H:i:s', time()) : $this->userDb['debugDate'];
     }
  
     /**

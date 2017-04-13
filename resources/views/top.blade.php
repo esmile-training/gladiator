@@ -1,5 +1,5 @@
 {{-- css  --}}
-<link href="{{APP_URL}}css/top.css?var={{time()}}" rel="stylesheet" type="text/css">
+@include('common/css', ['file' => 'top'])
 
 {{-- 画像 --}}
 <div>

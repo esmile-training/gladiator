@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+//Model
 //Lib
 use App\Libs\DevelopMemberLib;
 
@@ -30,13 +31,11 @@ class TopController extends BaseGameController
      */
     public function login()
     {
-    	$param = [
-	    'uid' => \Request::input('uid'),
-	    'loginCheck' => true,
-	 ];
-	//exit;
+	//DB更新
+	
+
 
 	//リダイレクト
-	return $this->redirect('mypage', 'index', $param);
+	return $this->redirect('mypage', 'index');
     }
 }
