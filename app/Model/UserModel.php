@@ -6,12 +6,12 @@ class UserModel extends BaseGameModel
     /*
     *	ユーザ1件取得
     */
-    public static function getById( $uid  )
+    public static function getById( $userId  )
     {
 $sql =  <<< EOD
 	SELECT *
 	FROM user
-	WHERE id = {$uid}
+	WHERE id = {$userId}
 EOD;
 	return parent::select($sql, 'first');
     }
@@ -32,8 +32,33 @@ $sql =  <<< EOD
 	 '{$time}'
     );
 EOD;
-	parent::insert($sql, 'first');
+	parent::insert($sql);
     }
-    
-    
+
+    /*
+    *	ユーザ作成
+    */
+    public static function deleteUser( $userId )
+    {
+	$time = date('Y-m-d H:i:s', time());
+$sql =  <<< EOD
+    DELETE FROM user 
+    WHERE id = {$userId};
+EOD;
+	parent::delete($sql);
+    }
+
+    /*
+    *	ユーザ名変更
+    */
+    public static function setUserName( $userId, $newName )
+    {
+	$time = date('Y-m-d H:i:s', time());
+$sql =  <<< EOD
+    UPDATE  user
+    SET	    name = "{$newName}"
+    WHERE   id = {$userId};
+EOD;
+	parent::update($sql);
+    }
 }

@@ -14,7 +14,6 @@ class TopController extends BaseGameController
      */
     public function index()
     {
-
         //configからとってくる
         $membersConf          =   \Config::get('members.profile');
 
@@ -34,7 +33,25 @@ class TopController extends BaseGameController
     {
 	//DB更新
 	UserModel::createUser();
+
 	//リダイレクト
 	return $this->redirect('mypage', 'index');
     }
+    /*
+     * ユーザ削除
+     */
+    public function deleteUser()
+    {
+	//ユーザ存在確認
+	$userId = \Request::input('userId');
+	$user = UserModel::getById( $userId );
+	
+	if( $user ){
+	    UserModel::deleteUser( $userId );
+	}
+
+	//リダイレクト
+	return $this->redirect('top');
+    }
+
 }

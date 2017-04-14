@@ -13,6 +13,13 @@
     </a>
 </div>
 
+{{-- ユーザ削除 --}}
+<form action="{{APP_URL}}top/deleteUser" method="get">
+    <input type="text" name="userId">
+    <input type="submit" value="削除">
+</form>
+
+
 {{-- viewParts  --}}
 @include('element/memberList')
 
