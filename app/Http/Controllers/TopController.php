@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 //Model
+use App\Model\UserModel;
 //Lib
 use App\Libs\DevelopMemberLib;
 
@@ -32,9 +33,7 @@ class TopController extends BaseGameController
     public function login()
     {
 	//DB更新
-	
-
-
+	UserModel::createUser();
 	//リダイレクト
 	return $this->redirect('mypage', 'index');
     }

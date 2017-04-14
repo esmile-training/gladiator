@@ -25,14 +25,14 @@ EOD;
 $sql =  <<< EOD
     INSERT INTO  user 
     VALUES (
-	NULL ,
-	 'テストユーザー',
-	 NULL ,
-	 '{$time  }',
+	NULL,
+	'テストユーザー',
+	 NULL,
+	 '{$time}',
 	 '{$time}'
     );
 EOD;
-	parent::dbapi($sql, 'first');
+	parent::insert($sql, 'first');
     }
     
     

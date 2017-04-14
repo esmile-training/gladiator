@@ -9,7 +9,7 @@
 {{-- ハイパーリンク --}}
 <div>
     <a href="{{APP_URL}}top/login?uid=123456">
-	MYPAGE
+	ログイン
     </a>
 </div>
 

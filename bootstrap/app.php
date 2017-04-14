@@ -52,7 +52,32 @@ $app->singleton(
 |
 */
 
-define("APP_URL", "http://www.gladiator.vagrant.com/");
-define("IMG_URL", "http://esmile-sys.sakura.ne.jp/gladiator/img/");
-define("DB_API_URL", "http://esmile-sys.sakura.ne.jp/gladiator/dbapi.php");
+//環境判定
+if( strpos($_SERVER['SERVER_NAME'],'vagrant') ){
+    define("IS_LOCAL", true);
+}else{
+    define("IS_LOCAL", false);
+}
+
+//ドメイン
+if( IS_LOCAL ){
+    define("APP_URL", "http://www.gladiator.vagrant.com/");
+} else {
+    define("APP_URL", "http://esmile-sys.sakura.ne.jp/gladiator/");
+}
+
+//サーバURL
+define("SERVER_URL", "http://esmile-sys.sakura.ne.jp/gladiator/");
+//画像サーバ
+define("IMG_URL", SERVER_URL."img/");
+//DBサーバ
+define("DB_API_URL", SERVER_URL."dbapi/");
+
+//URL解釈
+$redirectUrl	= ( isset( $_SERVER['REDIRECT_URL'] ) )? explode('/', $_SERVER['REDIRECT_URL']) : array();
+$controllerName = ( isset($redirectUrl[1]) )? $redirectUrl[1] : 'top';
+$actionName	= ( isset($redirectUrl[2]) )? $redirectUrl[2] : 'index' ;
+define("CONTROLLER_NAME", $controllerName);
+define("ACTION_NAME", $actionName);
+
 return $app;

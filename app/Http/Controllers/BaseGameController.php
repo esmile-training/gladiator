@@ -9,15 +9,26 @@ class BaseGameController extends Controller
 {
     public function __construct()
     {
+	//TOPコントローラはユーザ認証しない。
+	if( CONTROLLER_NAME == 'top' ){
+	    return;
+	}
+
 	//ユーザーの情報をセット
-	$userId = 26; //TODO: cookie取ってくる
-	$this->viewData['userDb'] = $this->userDb = UserModel::getById( $userId );
+	$userId = 34; //TODO: cookie取ってくる
+	$commonData['user'] = UserModel::getById( $userId );
 
 	//DBに情報がなければユーザ作成
-	if( !$this->userDb ) $this->redirect('login', 'createUser');
+	if( !$commonData['user'] ) $this->redirect('top', 'login');
 
 	//現在時刻をセット
-	$this->viewData['nowTime'] =$this->nowTime = ( is_null($this->userDb['debugDate']) )?date('Y-m-d H:i:s', time()) : $this->userDb['debugDate'];
+	$commonData['nowTime'] = ( is_null($commonData['user']['debugDate']) )?date('Y-m-d H:i:s', time()) : $commonData['user']['debugDate'];
+
+	//汎用変数をセット
+	foreach( $commonData as $key => $val ){
+	    $this->viewData[$key] = $this->$key = $val;	    
+	}
+
     }
  
     /**
