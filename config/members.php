@@ -51,7 +51,7 @@ return [
 	'type'	=> 'des'
 	],
 	[
-	'name' => 'JUNNOSUKE KOBAYASHI',
+	'name' => 'Junnosuke Kobayashi',
 	'type'	=> 'pla'
 	]
     ],
