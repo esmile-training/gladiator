@@ -5,7 +5,7 @@
 </div>
 
 <div>
-    <a href="{{APP_URL}}admin">
+    <a href="{{APP_URL}}mypage">
 	管理画面
     </a>
 </div>

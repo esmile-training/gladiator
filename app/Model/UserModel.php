@@ -15,6 +15,32 @@ $sql =  <<< EOD
 EOD;
 	return parent::select($sql, 'first');
     }
+    
+    
+    /*
+    *	chardata取得
+    */
+    public static function getByChar( $userId  )
+    {
+$sql =  <<< EOD
+	SELECT *
+	FROM uChar
+	WHERE uid = {$userId}
+EOD;
+	return parent::select($sql, 'first');
+    }
+    
+    /*
+    *	chardata取得
+    */
+    public static function getByrank()
+    {
+$sql =  <<< EOD
+	SELECT *
+	FROM uranking;
+EOD;
+	return parent::select($sql, 'all');
+    }
 
     /*
     *	ユーザ作成
