@@ -3,56 +3,62 @@
 return [
     'profile' => [
 	[
-	'name' => '内海',
+	'name' => 'SYOYA UTSUMI',
 	'type'	=> 'pro'
 	],
 	[
-	'name' => '栗野',
+	'name' => 'RYOMA KURINO',
 	'type'	=> 'pro'
 	],
 	[
-	'name' => '池冨',
+	'name' => 'KOKI IKETOMI',
 	'type'	=> 'web'
 	],
 	[
-	'name' => '五條',
+	'name' => 'TOSHIYA GOJO',
 	'type'	=> 'pro'
 	],
 	[
-	'name' => '松井',
+	'name' => 'YUKI MATSUI',
 	'type'	=> 'pro'
 	],
 	[
-	'name' => '吉田',
+	'name' => 'NAOTO YOSHIDA',
 	'type'	=> 'pro'
 	],
 	[
-	'name' => '水頭',
+	'name' => 'MASAYA MIZUGASHIRA',
 	'type'	=> 'pro'
 	],
 	[
-	'name' => '平井',
+	'name' => 'MIZUKI HIRAI',
 	'type'	=> 'des'
 	],
 	[
-	'name' => '左',
+	'name' => 'KAKO HIDARI',
 	'type'	=> 'web'
 	],
 	[
-	'name' => '笹川',
+	'name' => 'HARUKA SASAGAWA',
 	'type'	=> 'des'
 	],
 	[
-	'name' => '皆川',
+	'name' => 'KAZUYA MINAGAWA',
 	'type'	=> 'des'
 	],
 	[
-	'name' => '土井',
+	'name' => 'AKARI DOI',
 	'type'	=> 'des'
 	],
 	[
-	'name' => '小林',
+	'name' => 'JUNNOSUKE KOBAYASHI',
 	'type'	=> 'pla'
 	]
+    ],
+    'typeStr' => [
+	'pro'	=> 'BACK-END PROGRAM',
+	'web'	=> 'FRONT-END PROGRAM',
+	'des'	=> 'DESIGN',
+	'pla'	=> 'PLANNING & DIRECTION',
     ],
 ];

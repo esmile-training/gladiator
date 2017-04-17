@@ -37,21 +37,4 @@ class TopController extends BaseGameController
 	//リダイレクト
 	return $this->redirect('mypage', 'index');
     }
-    /*
-     * ユーザ削除
-     */
-    public function deleteUser()
-    {
-	//ユーザ存在確認
-	$userId = \Request::input('userId');
-	$user = UserModel::getById( $userId );
-	
-	if( $user ){
-	    UserModel::deleteUser( $userId );
-	}
-
-	//リダイレクト
-	return $this->redirect('top');
-    }
-
 }

@@ -1,13 +1,16 @@
 {{-- //foreachでメンバーリスト表示する --}}
-<div>
+<div style='text-align:center; '>
+    <h3>STAFF</h3>
     @foreach( $viewData['memberList'] as $type => $memberInfo )
-	<div>
-	    【{{$type}}】
+    <div style="margin:10px;">
+	<div style="valign:top;">
+	    <span style="font-weight: bold;">＜{{$type}}＞</span>
 	</div>
-	@foreach( $memberInfo as $name )
-	    <div>
-		{{$name}}
-	    </div>
-	@endforeach
+	<div>
+	    @foreach( $memberInfo as $name )
+		{{$name}}<br />
+	    @endforeach
+	</div>
+    </div>
     @endforeach
 </div>

@@ -9,8 +9,12 @@ class BaseGameController extends Controller
 {
     public function __construct()
     {
-	//TOPコントローラはユーザ認証しない。
-	if( CONTROLLER_NAME == 'top' ){
+	//必ず読むCONFIGファイルを設定
+	$commonData['commonConf']	=   \Config::get('common');
+
+	//ユーザ認証しないコントローラ
+	if( in_array(CONTROLLER_NAME, $commonData['commonConf']['ignoreAuthController']) ){
+	    $this->viewData = $commonData;
 	    return;
 	}
 
