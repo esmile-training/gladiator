@@ -36,7 +36,7 @@ EOD;
     }
 
     /*
-    *	ユーザ作成
+    *	ユーザ削除
     */
     public static function deleteUser( $userId )
     {
