@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class sampleController extends BaseGameController
+class sampleController extends Controller
 {
      public static function index()
     {  
@@ -13,13 +13,6 @@ class sampleController extends BaseGameController
 	if(!isset($_COOKIE['username']) || $_COOKIE['username'] != $name)
 	{
 	    //DB検索して存在するユーザーか調べる
-	    $sql =  <<< EOD
-	SELECT *
-	FROM user
-	WHERE id = {$name}
-EOD;
-	    //$kekka = \App\Model\BaseGameModel::dbapi($sql, 'update');
-	    //echo ($kekka);
 	    setcookie('username', $name , 0);
 	}
 	
@@ -31,12 +24,6 @@ EOD;
 	    $_SESSION['username'] = $name;
 	}
 	
-	//DB更新
-	$this->Model->exec('User', 'createUser');
-
-	//リダイレクト
-	return $this->Lib->redirect('omikuji', 'index');
-		
-	//return view('omikuji');
+	return view('omikuji');
     }
 }

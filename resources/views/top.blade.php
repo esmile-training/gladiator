@@ -1,4 +1,4 @@
-<?php setcookie('username',"aaa"); ?>
+<?php //setcookie('username',"aaa"); ?>
 
 <div>
      <a href="{{APP_URL}}top/login?uid=123456">

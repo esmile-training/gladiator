@@ -12,8 +12,14 @@
 	echo $player['name']."<br>";
 	echo $player["age"]."<br>";
 	echo $player["seibetsu"]."<br>";
-	var_dump(App\Http\Controllers\sampleController::$kekka);
 	?>
-
+	<!--
+	<form action="sample" method="get">
+	    <input type="text" name="username" value="">
+	    <br>
+	    <input type="submit" value="ログイン">
+	</form>
+	<input type="button" onclick="location.href='makeuser'" value="新規登録">
+	-->
     </body>
 </html>
