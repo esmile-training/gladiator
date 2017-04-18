@@ -1,10 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-//Model
-use App\Model\UserModel;
-//Lib
-use App\Libs\DevelopMemberLib;
 
 class TopController extends BaseGameController
 {
@@ -14,12 +9,6 @@ class TopController extends BaseGameController
      */
     public function index()
     {
-        //configからとってくる
-        $membersConf          =   \Config::get('members.profile');
-
-        //Libraly
-        $this->viewData['memberList'] = DevelopMemberLib::sortMemberConf( $membersConf );
-
         return viewWrap('top', $this->viewData);
     }
 
@@ -32,9 +21,9 @@ class TopController extends BaseGameController
     public function login()
     {
 	//DB更新
-	UserModel::createUser();
+	$this->Model->exec('User', 'createUser');
 
 	//リダイレクト
-	return $this->redirect('mypage', 'index');
+	return $this->Lib->redirect('mypage', 'index');
     }
 }

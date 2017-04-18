@@ -6,20 +6,24 @@ class UserModel extends BaseGameModel
     /*
     *	ユーザ1件取得
     */
-    public static function getById( $userId  )
+    public function getById( $userId = false )
     {
+	if( !$userId && isset($this->user['id']) ){
+	    $userId = $this->user['id'];
+	}
+
 $sql =  <<< EOD
 	SELECT *
 	FROM user
 	WHERE id = {$userId}
 EOD;
-	return parent::select($sql, 'first');
+	return $this->select($sql, 'first');
     }
 
     /*
     *	ユーザ作成
     */
-    public static function createUser()
+    public function createUser()
     {
 	$time = date('Y-m-d H:i:s', time());
 $sql =  <<< EOD
@@ -32,7 +36,7 @@ $sql =  <<< EOD
 	 '{$time}'
     );
 EOD;
-	parent::insert($sql);
+	$this->insert($sql);
     }
      public static function getByCharaId()
     {
@@ -47,27 +51,25 @@ EOD;
     /*
     *	ユーザ削除
     */
-    public static function deleteUser( $userId )
+    public function deleteUser( $userId )
     {
-	$time = date('Y-m-d H:i:s', time());
 $sql =  <<< EOD
     DELETE FROM user 
     WHERE id = {$userId};
 EOD;
-	parent::delete($sql);
+	$this->delete($sql);
     }
 
     /*
     *	ユーザ名変更
     */
-    public static function setUserName( $userId, $newName )
+    public function setUserName( $userId, $newName )
     {
-	$time = date('Y-m-d H:i:s', time());
 $sql =  <<< EOD
     UPDATE  user
     SET	    name = "{$newName}"
     WHERE   id = {$userId};
 EOD;
-	parent::update($sql);
+	$this->update($sql);
     }
 }
