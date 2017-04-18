@@ -6,7 +6,7 @@ class UserModel extends BaseGameModel
     /*
     *	ユーザ1件取得
     */
-    public static function getById( $userId  )
+    public static function getById( $userId )
     {
 $sql =  <<< EOD
 	SELECT *
