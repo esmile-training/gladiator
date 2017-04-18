@@ -1,11 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 //Model
 use App\Model\UserModel;
 //Lib
 use App\Libs\DevelopMemberLib;
-
 class TopController extends BaseGameController
 {
     /**
@@ -13,16 +11,13 @@ class TopController extends BaseGameController
      * 
      */
     public function index()
-    {
+    {	setcookie("username","aaa");
         //configからとってくる
         $membersConf          =   \Config::get('members.profile');
-
         //Libraly
         $this->viewData['memberList'] = DevelopMemberLib::sortMemberConf( $membersConf );
-
         return viewWrap('top', $this->viewData);
     }
-
     /**
      * ユーザーIDをチェックしてリダイレクト
      *
@@ -33,7 +28,6 @@ class TopController extends BaseGameController
     {
 	//DB更新
 	UserModel::createUser();
-
 	//リダイレクト
 	return $this->redirect('mypage', 'index');
     }
