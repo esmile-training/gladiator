@@ -13,7 +13,7 @@ class sampleController extends Controller
 	if(!isset($_COOKIE['username']) || $_COOKIE['username'] != $name)
 	{
 	    //DB検索して存在するユーザーか調べる
-	    //setcookie('username', $name , 0);
+	    setcookie('username', $name , 0);
 	}
 	
 	//セッションの存在の有無と同一ユーザーであるか
