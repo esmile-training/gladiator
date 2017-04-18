@@ -73,6 +73,8 @@ define("IMG_URL", SERVER_URL."img/");
 //DBサーバ
 define("DB_API_URL", SERVER_URL."dbapi/");
 
+define("IMGTEST_URL", SERVER_URL."img/test/");
+
 //URL解釈
 $redirectUrl	= ( isset( $_SERVER['REDIRECT_URL'] ) )? explode('/', $_SERVER['REDIRECT_URL']) : array();
 $controllerName = ( isset($redirectUrl[1]) )? $redirectUrl[1] : 'top';
