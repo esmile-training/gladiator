@@ -29,7 +29,7 @@ class BaseGameLib
 	    $userLib = new UserLib();
 	    $libClass->user = $userLib->getUser( $userId );
 	    //現在時刻をセット
-	    $libClass->nowTime = ( is_null($modelClass->user['debugDate']) )? date('Y-m-d H:i:s', time()) :$modelClass->user['debugDate'];
+	    $libClass->nowTime = ( is_null($libClass->user['debugDate']) )? date('Y-m-d H:i:s', time()) :$libClass->user['debugDate'];
 	}else{
 	    $libClass->user = null;
 	    $libClass->nowTime = date( 'Y-m-d H:i:s', time() );
