@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 
 class MypageController extends BaseGameController
 {
-<<<<<<< HEAD
 	public function index()
 	{
 	    setcookie('id', '1');
@@ -15,16 +14,10 @@ class MypageController extends BaseGameController
 	    isset($cookie) ? true : exit();
 	    
 	    // DB接続
-	    $get['getuser'] = UserModel::getByChar($cookie);
+	    $get['getuser'] = $this->Model->exec('User', 'getByChar', $cookie);
+	    
 	    
 	    return view('mypage', $get);
 	}
 }
-=======
-    public function index()
-    {
-		return viewWrap('mypage', $this->viewData);
-    }
 
-}
->>>>>>> remotes/origin/kobayashi_baseInstance

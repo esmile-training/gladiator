@@ -24,7 +24,7 @@ EOD;
     /*
     *	chardata取得
     */
-    public static function getByChar( $userId  )
+    public function getByChar( $userId  )
     {
 $sql =  <<< EOD
 	SELECT *
@@ -37,17 +37,17 @@ EOD;
     /*
     *	chardata取得
     */
-    public static function getByrank( $pushbtn )
+    public function getByrank( $pushbtn )
     {
-	if($pushbtn == ''){
-	    
+	var_dump($pushbtn);
 $sql =  <<< EOD
-	SELECT *
-	FROM uranking;
+	SELECT user.id as userId,
+	       upoint,
+	       user.name as username
+	FROM uranking 
+	JOIN user ON user.id = uranking.uid 
+	ORDER BY upoint DESC LIMIT 10 OFFSET $pushbtn[0];
 EOD;
-	} else {
-	    $sql = "SELECT * FROM uranking LIMIT $pushbtn";
-	}
 	return parent::select($sql, 'all');
     }
 
