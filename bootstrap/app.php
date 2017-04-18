@@ -70,6 +70,8 @@ if( IS_LOCAL ){
 define("SERVER_URL", "http://esmile-sys.sakura.ne.jp/gladiator/");
 //画像サーバ
 define("IMG_URL", SERVER_URL."img/");
+define("IMG_URL_TEST", SERVER_URL."img/test/");
+define("CHAR_IMG_URL", SERVER_URL."img/test/char");
 //DBサーバ
 define("DB_API_URL", SERVER_URL."dbapi/");
 

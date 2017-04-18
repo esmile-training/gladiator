@@ -34,6 +34,15 @@ $sql =  <<< EOD
 EOD;
 	parent::insert($sql);
     }
+     public static function getByCharaId()
+    {
+$sql = <<< EOD
+    
+            SELECT *
+            FROM mChar;
+EOD;
+            return parent::select($sql,'all');
+    }
 
     /*
     *	ユーザ削除
