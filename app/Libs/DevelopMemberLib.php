@@ -1,12 +1,12 @@
 <?php
 namespace App\Libs;
 
-class DevelopMemberLib
+class DevelopMemberLib extends BaseGameLib
 {
 	/*
 	*	メンバーコンフィグを職業別に配列しなおす
 	*/
-    public static function sortMemberConf()
+    public static function getMemberConf()
     {
 	//configからとってくる
 	$membersConf          =   \Config::get('members.profile');

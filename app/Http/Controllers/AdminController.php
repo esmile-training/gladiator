@@ -1,10 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-//Model
-use App\Model\UserModel;
-//Lib
-use App\Libs\DevelopMemberLib;
 
 class AdminController extends BaseGameController
 {
@@ -15,33 +10,32 @@ class AdminController extends BaseGameController
     public function index()
     {
         //Libraly
-        $this->viewData['memberList'] = DevelopMemberLib::sortMemberConf();
-
+        $this->viewData['memberList'] = $this->Lib->exec('DevelopMember', 'getMemberConf');
         return viewWrap('admin', $this->viewData);
     }
     /*
      * ユーザ編集
      */
     public function editUser()
-    {exit;
+    {
 	//ユーザ存在確認
 	$userId = \Request::input('userId');
-	$user = UserModel::getById( $userId );
-	if( !$user ) return $this->redirect('admin');
+	$user = $this->Model->exec('User', 'getById', $userId );
+	if( !$user ) return $this->Lib->redirect('admin');
 	
 	//名前変更の場合
 	if( \Request::input('rename') ){
 	    $newName = \Request::input('newName');
-	    if( !$newName ) return $this->redirect('admin');
-	     UserModel::setUserName( $userId, $newName );
+	    if( !$newName ) return $this->Lib->redirect('admin');
+	    $this->Model->exec('User', 'setUserName', array($userId, $newName) );
 	}
 	
 	//ユーザ削除の場合
 	if( \Request::input('delete') ){
-	    UserModel::deleteUser( $userId );
+	    $this->Model->exec('User', 'deleteUser', $userId );
 	}
 
 	//リダイレクト
-	return $this->redirect('admin');
+	return $this->Lib->redirect('admin');
     }
 }
