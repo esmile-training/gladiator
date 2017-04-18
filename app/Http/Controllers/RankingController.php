@@ -17,8 +17,13 @@ class RankingController extends BaseGameController
 	    // cookieの確認
 	    isset($cookie) ? true : exit();
 	    
+	    // ページ更新ボタン
+	    // $pushbtn = filter_input(INPUT_GET, 'next');
+	    $pushbtn = 10;
+	    
+	    
 	    // DB接続
-	    $getrank = UserModel::getByrank();
+	    $getrank = UserModel::getByrank($pushbtn);
 	    $sortrank = [];
 	    $ranknum = 0;
 	    

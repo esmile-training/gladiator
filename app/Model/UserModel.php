@@ -33,12 +33,17 @@ EOD;
     /*
     *	chardata取得
     */
-    public static function getByrank()
+    public static function getByrank( $pushbtn )
     {
+	if($pushbtn == ''){
+	    
 $sql =  <<< EOD
 	SELECT *
 	FROM uranking;
 EOD;
+	} else {
+	    $sql = "SELECT * FROM uranking LIMIT $pushbtn";
+	}
 	return parent::select($sql, 'all');
     }
 
