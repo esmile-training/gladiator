@@ -1,25 +1,24 @@
 <?php
-
 namespace App\Http\Controllers;
-//Model
-use App\Model\UserModel;
-//Lib
 
 class BaseGameController extends Controller
 {
+    public $viewData;
+
     public function __construct()
     {
-	//TOPコントローラはユーザ認証しない。
-	if( CONTROLLER_NAME == 'top' ){
+	//BaseGameLibをセット
+	$this->Lib = new \App\Libs\BaseGameLib();
+	//BaseGameModelをセット
+	$this->Model = new \App\Model\BaseGameModel();
+
+	//ユーザ認証しないコントローラ
+	if( in_array(CONTROLLER_NAME, \Config::get('common.ignoreAuthController')) ){
 	    return;
 	}
-
-	//ユーザーの情報をセット
-	$userId = 34; //TODO: cookie取ってくる
-	$commonData['user'] = UserModel::getById( $userId );
-
-	//DBに情報がなければユーザ作成
-	if( !$commonData['user'] ) $this->redirect('top', 'login');
+	//ユーザー認証
+	$userId = 218; //cookieから取ってくる
+	$commonData['user'] =  $this->Lib->exec('User', 'userAuth', false, $userId); 
 
 	//現在時刻をセット
 	$commonData['nowTime'] = ( is_null($commonData['user']['debugDate']) )?date('Y-m-d H:i:s', time()) : $commonData['user']['debugDate'];
@@ -29,21 +28,6 @@ class BaseGameController extends Controller
 	    $this->viewData[$key] = $this->$key = $val;	    
 	}
 
-    }
- 
-    /**
-     * GETリダイレクトさせる
-     * header関数に懸念事項があるため、jsに処理以降した方が良いかも？
-     */
-    public function redirect($controller, $action = 'index', $param = [])
-    {
-	$getStr = [];
-	foreach( $param as $key => $val){
-	   $getStr[] = $key.'='.$val;
-	}
-	header( "Location: ".APP_URL.$controller.'/'.$action.'?'.implode('&', $getStr) );
-	
-	exit();
     }
 
 }
