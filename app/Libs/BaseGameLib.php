@@ -5,6 +5,7 @@ class BaseGameLib
 {
     
     public $user;
+    public $nowTime;
 
     public function __construct()
     {
@@ -27,8 +28,11 @@ class BaseGameLib
 	if( $userId ){
 	    $userLib = new UserLib();
 	    $libClass->user = $userLib->getUser( $userId );
+	    //現在時刻をセット
+	    $libClass->nowTime = ( is_null($modelClass->user['debugDate']) )? date('Y-m-d H:i:s', time()) :$modelClass->user['debugDate'];
 	}else{
 	    $libClass->user = null;
+	    $libClass->nowTime = date( 'Y-m-d H:i:s', time() );
 	}
 
 	//引数の数によって出しわけ
