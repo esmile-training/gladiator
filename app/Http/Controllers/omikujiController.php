@@ -6,6 +6,7 @@ class omikujiController extends Controller
 {
 	public function index()
 	{
-		return view('omikuji');
+		return viewWrap('omikuji', $this->viewData);
+		//return view('omikuji');
 	}
 }
