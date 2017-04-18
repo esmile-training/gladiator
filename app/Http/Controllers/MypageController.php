@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-//Model
-use App\Model\UserModel;
-//Lib
 
 class MypageController extends BaseGameController
 {
+<<<<<<< HEAD
 	public function index()
 	{
 	    setcookie('id', '1');
@@ -23,3 +20,11 @@ class MypageController extends BaseGameController
 	    return view('mypage', $get);
 	}
 }
+=======
+    public function index()
+    {
+		return viewWrap('mypage', $this->viewData);
+    }
+
+}
+>>>>>>> remotes/origin/kobayashi_baseInstance
