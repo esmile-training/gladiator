@@ -38,7 +38,7 @@ $sql =  <<< EOD
 EOD;
 	$this->insert($sql);
     }
-     public static function getByCharaId()
+     public function getByCharaId()
     {
 $sql = <<< EOD
     
