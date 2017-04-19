@@ -6,7 +6,7 @@ class BaseGameModel
     /*
      * Model呼び出し
      */
-    public function exec( $className, $method, $arg = false, $userId = null )
+    public function exec( $className, $method, $arg = false, $userId = null)
     {
 	//インスタンス化する
 	$className = '\\App\\Model\\'.$className.'Model';
@@ -102,7 +102,4 @@ class BaseGameModel
 	return $response;
 
     }
-    
-    
-
 }

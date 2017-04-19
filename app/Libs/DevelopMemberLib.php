@@ -13,8 +13,8 @@ class DevelopMemberLib extends BaseGameLib
 	$typeStr         =   \Config::get('members.typeStr');
 
 	$result = [];  //初期化
-	foreach($membersConf as $member){
-		
+	foreach($membersConf as $member)
+	{	
 		$result[$typeStr[$member['type']]][] = $member['name'];
 	}
 
