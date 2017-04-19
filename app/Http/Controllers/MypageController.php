@@ -14,7 +14,7 @@ class MypageController extends BaseGameController
 	    isset($cookie) ? true : exit();
 	    
 	    // DB接続
-	    $get['getuser'] = $this->Model->exec('User', 'getByChar', $cookie);
+	    $get['getuser'] = $this->Model->exec('CharData', 'getByChar', [$cookie]);
 	    
 	    
 	    return view('mypage', $get);

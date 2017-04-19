@@ -20,36 +20,6 @@ EOD;
 	return $this->select($sql, 'first');
     }
     
-    
-    /*
-    *	chardata取得
-    */
-    public function getByChar( $userId  )
-    {
-$sql =  <<< EOD
-	SELECT *
-	FROM uChar
-	WHERE uid = {$userId}
-EOD;
-	return parent::select($sql, 'first');
-    }
-    
-    /*
-    *	chardata取得
-    */
-    public function getByrank( $pushbtn )
-    {
-	var_dump($pushbtn);
-$sql =  <<< EOD
-	SELECT user.id as userId,
-	       upoint,
-	       user.name as username
-	FROM uranking 
-	JOIN user ON user.id = uranking.uid 
-	ORDER BY upoint DESC LIMIT 10 OFFSET $pushbtn[0];
-EOD;
-	return parent::select($sql, 'all');
-    }
 
     /*
     *	ユーザ作成
