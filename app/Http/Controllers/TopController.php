@@ -5,7 +5,7 @@ class TopController extends BaseGameController
 {
     /**
      * TOP画面表示
-     * 
+     *
      */
     public function index()
     {

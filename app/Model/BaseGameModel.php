@@ -3,8 +3,6 @@ namespace App\Model;
 
 class BaseGameModel
 {
-    public $nowTime;
-    public $user;
     /*
      * Model呼び出し
      */
@@ -18,11 +16,8 @@ class BaseGameModel
 	if( $userId ){
 	    $userModel = new UserModel();
 	    $modelClass->user = $userModel->getById( $userId );
-	    //現在時刻をセット
-	    $modelClass->nowTime = ( is_null($modelClass->user['debugDate']) )? date('Y-m-d H:i:s', time()) :$modelClass->user['debugDate'];
 	}else{
 	    $modelClass->user = null;
-	    $modelClass->nowTime = date( 'Y-m-d H:i:s', time() );
 	}
 
 	//引数の数によって出しわけ
