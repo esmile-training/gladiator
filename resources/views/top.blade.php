@@ -9,3 +9,9 @@
 	管理画面
     </a>
 </div>
+
+<div>
+    <a href="{{APP_URL}}test01">
+	test01
+    </a>
+</div>
