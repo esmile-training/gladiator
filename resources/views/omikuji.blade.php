@@ -57,7 +57,7 @@ switch($num){
 ?>
 <p>ようこそ、<?php echo $_COOKIE['username'] ?>さん</p>
 <p>ようこそ、<?php echo $_SESSION['username']?>さん</p>
-<p>あなたは <?php echo $c; ?> 人目のお客様です。</p>
+<!-- <p>あなたは <?php //echo $c; ?> 人目のお客様です。</p> -->
 <?php //ハイパーリンク  ?>
 <div>
     <a href="<?= APP_URL ?>top">

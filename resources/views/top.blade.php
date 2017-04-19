@@ -1,14 +1,9 @@
-<?php //setcookie('username',"aaa"); ?>
+<?php setcookie('userId',"12"); ?>
 
 <div>
      <a href="{{APP_URL}}top/login?uid=123456">
 	ログイン
     </a>
-    <form action="sample" method="get">
-	<input type="text" name="username" value="">
-	<br>
-	<input type="submit" value="ログイン">
-    </form>
 </div>
 
 <div>

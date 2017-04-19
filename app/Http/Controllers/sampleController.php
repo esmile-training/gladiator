@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 class sampleController extends Controller
 {
-     public static function index()
+     public function index()
     {  
 
 	$name = htmlspecialchars($_GET["username"]);
