@@ -6,6 +6,7 @@ class RankingController extends BaseGameController
 {
 	public function index()
 	{
+	    
 	    // ページ読み込み時に実行
 	    $this->Lib->exec('FirstLoading', 'index');
 	    

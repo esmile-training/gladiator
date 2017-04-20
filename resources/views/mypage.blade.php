@@ -3,8 +3,8 @@
 @include('common/js', ['file' => 'admin'])
 
 <div>
-    <img class="admin_title" src="{{IMG_URL}}test/char{{$getuser['uid']}}.png" style="width: 300px;">
-    <?php var_dump($getuser); ?>
+    <img class="admin_title" src="{{IMG_URL}}test/char{{$viewData['getuser']['uid']}}.png" style="width: 300px;">
+    <?php var_dump($viewData['getuser']); ?>
 </div>
 
 

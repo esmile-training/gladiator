@@ -25,7 +25,7 @@ class BaseGameController extends Controller
 	
 	//汎用変数をセット
 	foreach( $commonData as $key => $val ){
-	    $this->viewData[$key] = $this->$key = $val;	    
+	    $this->viewData[$key] = $this->$key = $val;
 	}
 
     }
