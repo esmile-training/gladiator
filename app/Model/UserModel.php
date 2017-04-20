@@ -47,6 +47,19 @@ $sql = <<< EOD
 EOD;
             return parent::select($sql,'all');
     }
+    public function getByCharaNameId($nameId)
+    {
+  
+    $sql = <<< EOD
+    
+            SELECT *
+            FROM mCharaName
+            WHERE id = {$nameId}
+            
+EOD;
+            return parent::select($sql,'first');   
+        
+    }
 
     /*
     *	ユーザ削除
