@@ -18,7 +18,7 @@ class BaseGameController extends Controller
 	}
 	//ユーザー認証
 	$userId = 218; //cookieから取ってくる
-	$commonData['user'] =  $this->Lib->exec('User', 'userAuth', false, $userId); 
+	$commonData['user'] =  $this->Lib->exec('User', 'userAuth', false, $userId);
 
 	//現在時刻をセット
 	$commonData['nowTime'] = ( is_null($commonData['user']['debugDate']) )?date('Y-m-d H:i:s', time()) : $commonData['user']['debugDate'];
