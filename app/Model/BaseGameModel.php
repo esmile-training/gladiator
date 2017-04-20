@@ -81,7 +81,7 @@ class BaseGameModel
      */
     public function insert( $sql )
     {
-	$result = $this->dbapi($sql, 'insert');
+	$result = null;//$this->dbapi($sql, 'insert');
 	return intval($result);
     }
 
