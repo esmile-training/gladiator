@@ -1,7 +1,7 @@
 {{-- css  --}}
 @include('common/css', ['file' => 'admin'])
 @include('common/js', ['file' => 'admin'])
-
+<?php var_dump($rank)?>
 <div>
     <form action="{{APP_URL}}ranking" method="get">
 	<?php foreach ($rank as $key => $value) : ?>

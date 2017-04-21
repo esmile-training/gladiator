@@ -11,6 +11,7 @@ class RankingModel extends BaseGameModel
     */
     public function getByrank( $pushbtn )
     {
+	
 $sql =  <<< EOD
 	SELECT user.id as userId,
 	       totalPoint,
@@ -19,6 +20,32 @@ $sql =  <<< EOD
 	JOIN user ON user.id = uRanking.userId 
 	ORDER BY totalPoint DESC LIMIT 10 OFFSET $pushbtn[0];
 EOD;
+ 
+	
+	/*
+$sql = <<< EOD
+	SELECT * FROM
+        (
+        SELECT * From uRanking 
+	WHERE totalPoint BETWEEN 
+        (SELECT totalPoint FROM uRanking WHERE userId = 13) AND 
+        (SELECT MAX(totalPoint) FROM uRanking)
+        ORDER BY totalPoint DESC LIMIT 5
+        )rank
+
+UNION ALL
+
+        (
+        SELECT * From uRanking 
+	WHERE totalPoint BETWEEN 
+        (SELECT MIN(totalPoint) FROM uRanking) AND
+        (SELECT totalPoint FROM uRanking WHERE userId = 13) 
+        
+        ORDER BY totalPoint DESC LIMIT 1,5
+        );
+EOD;
+*/
+
 	return parent::select($sql, 'all');
     }
     

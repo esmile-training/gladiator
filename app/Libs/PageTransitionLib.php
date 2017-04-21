@@ -11,9 +11,9 @@ class PageTransitionLib extends BaseGameLib
 	/*
 	 * 最上位～最下位までのジャンプボタン
 	 */
-	
+
 	// 
-	$fullnextrank = filter_input(INPUT_GET, 'fullnext');
+	$fullnextrank = filter_input(INPUT_COOKIE, 'fullnext');
 	$floorfullnext = floor(($fullnextrank/10))*10;
 	
 	//
