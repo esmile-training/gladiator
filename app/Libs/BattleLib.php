@@ -3,6 +3,29 @@ namespace App\Libs;
 
 class BattleLib extends BaseGameLib
 {
+    // 敵の各属性を出す確率ステータスに基づいた手をランダムに選択する処理
+    public static function setEnmHand( $EnemyData ){
+
+        $result = [];   //初期化
+        // ランダムに1～100の数値を選択
+        $Hand = rand(1, 100);
+        
+//        var_dump($enemiesConf);         // デバッグ データ受け渡し確認
+        // Enm の gu の確率値以下の場合
+        if ( $Hand <= $EnemyData['gooPer']){
+            $result = 'グー';
+        }
+        // Enm の Gu の確率値と Enm の Ch を足した数以下の場合
+        else if($Hand <=  $EnemyData['gooPer'] + $EnemyData['choPer']){
+            $result = 'チョキ';
+        }
+        // Enm の Gu の確率値と Enm の Ch を足した数より大きい場合
+        else {
+            $result = 'パー';
+        }    
+        
+        return $result;
+    }
     
     // バトルの処理を格納する処理
     public static function battleResult( $pcHand , $enmHand ){
@@ -11,7 +34,7 @@ class BattleLib extends BaseGameLib
         // 結果を Result に格納
         switch ( $pcHand ) {
             case 'グー':
-                switch ($enmHand){
+                switch ( $enmHand ){
                     case 'グー':
                         $result = 'あいこ';
                         break;
@@ -68,21 +91,21 @@ class BattleLib extends BaseGameLib
     // ダメージ計算を行う処理
     public static function damagecalc( $winner,$loser){
         
-        switch($winner['Hand']){
+        switch($winner['hand']){
             case 'グー':
-                $loser['Hp'] = $loser['Hp'] - $winner['GooAtk'];
+                $loser['hp'] = $loser['hp'] - $winner['gooAtk'];
                 break;
             case 'チョキ':
-                $loser['Hp'] = $loser['Hp'] - $winner['ChoAtk'];
+                $loser['hp'] = $loser['hp'] - $winner['choAtk'];
                 break;
             case 'パー':
-                $loser['Hp'] = $loser['Hp'] - $winner['PaaAtk'];
+                $loser['hp'] = $loser['hp'] - $winner['paaAtk'];
                 break;
             default;
                 exit;
         }
         
-        return $loser['Hp'];
+        return $loser['hp'];
     }
 
 }

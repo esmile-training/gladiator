@@ -2,12 +2,17 @@
     <img class="janken" src="{{IMGTEST_URL}}janken.jpg">
 </div>
 
-{{--バトルフラグが1だったら--}}
-@if ($viewData['BattleData']['Flag'] == 1)
+{{--バトル終了のフラグが立っていたら--}}
+@if ($viewData['BattleData']['delFlag'] == 1)
+
+    {{--バトルの終了--}}
+    @include('element/battleEnd')
+    
+@else
 
     {{--バトルの結果が入っていたら--}}
-    @if ($viewData['PcData']['Result']!='未設定')
-    
+    @if ($viewData['PcData']['result'] != '未設定')
+
         {{--勝敗の表示--}}
         @include('element/resultLog')
 
@@ -26,10 +31,4 @@
     <input type="image" src="{{IMGTEST_URL}}paa.jpg" value="パー" name="sub1">　
     </form>
 
-{{--バトルフラグが0だったら--}}
-@elseif($viewData['BattleData']['Flag'] == 0)
-    
-    {{--バトルの終了画面表示--}}
-    @include('element/battleEnd')
-    
 @endif

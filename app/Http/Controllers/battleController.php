@@ -2,18 +2,13 @@
 
 namespace App\Http\Controllers;
 
-//Model
-use App\Model\UserBattleModel;
-
 // Lib
-use App\Libs\EnemyLib;
 use App\Libs\BattleLib;
 
 class battleController extends BaseGameController
 {
     public function index()
     {      
-        
 
         // ユーザーIDを持ってくる処理を入れる
 	$userId = 2;        // 仮置き ユーザーID：2
@@ -22,65 +17,68 @@ class battleController extends BaseGameController
         if(isset($userId)){
             
             // ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
-            $BattleData = $this->Model->exec('UserBattle','getByBattleData',$userId); 
+            // $BattleDataにバトルデータを入れる
+            $BattleData = $this->Model->exec('Battle','getBattleData',$userId); 
             
             // バトルデータを元にuBattleChar(DB)からキャラデータを読み込み
-            $uBattleCharData = $this->Model->exec('UserBattle','getByuBattleCharData',$BattleData['uBattleCharId']); 
+            // $ChaaraDataに自キャラデータを入れる            
+            $CharaData = $this->Model->exec('Battle','getBattleCharaData',$BattleData['uBattleCharaId']); 
 
             // バトルデータを元にuBattleChar(DB)から敵データを読み込み
-            $uBattleEnemyData = $this->Model->exec('UserBattle','getByuBattleEnemyData',$BattleData['uBattleEnemyId']); 
+            // $EnemyDataに敵キャラデータを入れる            
+            $EnemyData = $this->Model->exec('Battle','getBattleEnemyData',$BattleData['uBattleEnemyId']); 
             
-        }
+        }      
         
         // ボタンが押されたらバトル処理を行う
         if (isset($_GET["sub1"])) {
             
             // 押されたボタンのデータをplayersConf['Hand']に格納            
-            $uBattleCharData['Hand'] = htmlspecialchars($_GET["sub1"], ENT_QUOTES, "UTF-8");
+            $CharaData['hand'] = htmlspecialchars($_GET["sub1"], ENT_QUOTES, "UTF-8");
             
             // 敵キャラデータを元に、敵の出す手を選択
-            $uBattleEnemyData['Hand']= EnemyLib::setEnmHand( $uBattleEnemyData );
+            $EnemyData['hand']= BattleLib::setEnmHand( $EnemyData );
             
             // 勝敗処理
-            $uBattleCharData['Result'] = BattleLib::battleResult($uBattleCharData['Hand'],$uBattleEnemyData['Hand']);
+            $CharaData['result'] = BattleLib::battleResult($CharaData['hand'],$EnemyData['hand']);
             
             // ダメージ処理
-            switch($uBattleCharData['Result']){
+            switch($CharaData['result']){
+                
                 case '勝ち':
-                    $uBattleEnemyData['Hp'] = BattleLib::damagecalc($uBattleCharData,$uBattleEnemyData);
+                    $EnemyData['hp'] = BattleLib::damagecalc($CharaData,$EnemyData);
                     break;
+                
                 case '負け':
-                    $uBattleCharData['Hp'] = BattleLib::damagecalc($uBattleEnemyData,$uBattleCharData);
+                    $CharaData['hp'] = BattleLib::damagecalc($EnemyData,$CharaData);
                     break;
+                
                 case 'あいこ':
                     break;
+                
                 default;
                     exit;
-            }
+            }            
             
             // どちらかのHPが0以下になったらバトルフラグを0にする
-            if($uBattleEnemyData['Hp'] <= 0 || $uBattleCharData['Hp'] <= 0){
+            if($EnemyData['hp'] <= 0 || $CharaData['hp'] <= 0){
                 
-                $BattleData['Flag']=0;
-                $this->Model->exec('UserBattle','UpdateuBattleFlag',$BattleData['id']); 
+                $BattleData['delFlag'] = 1;
+                $this->Model->exec('Battle','UpdateBattleFlag',$BattleData['id']); 
                 
             }
                 
-                
             // バトルキャラデータの上書き処理
-            $this->Model->exec('UserBattle','UpdateuBattleCharData',array($uBattleCharData['id'],$uBattleCharData['Hp'])); 
-            $this->Model->exec('UserBattle','UpdateuBattleEnemyData',array($uBattleEnemyData['id'],$uBattleEnemyData['Hp']));         
+            $this->Model->exec('Battle','UpdateBattleCharData',array($CharaData['id'],$CharaData['hp'])); 
+            $this->Model->exec('Battle','UpdateBattleEnemyData',array($EnemyData['id'],$EnemyData['hp']));         
             
-        }
+        }         
         
         // Livraly
         $Data->viewData['BattleData']=$BattleData;
-        $Data->viewData['PcData']=$uBattleCharData;
-        $Data->viewData['EnmData']=$uBattleEnemyData;
-        
+        $Data->viewData['PcData']=$CharaData;
+        $Data->viewData['EnmData']=$EnemyData;
        
         return viewWrap('battle', $Data->viewData);        
     }
 }
-
-
