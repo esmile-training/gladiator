@@ -20,7 +20,7 @@
 <form action="{{APP_URL}}selectChara/pickUpChara" method="get">
 		<div>
 				@foreach($viewData['charaList'] as $chara)
-						<input type="radio" name="uCharaID[]" value="{{$chara['id']}}">{{$chara['cname']}}<br>
+						<input type="radio" name="uCharaID[]" value="{{$chara['id']}}">{{$chara['cName']}}<br>
 				@endforeach
 				<input type="submit" value="決定">
 		</div>

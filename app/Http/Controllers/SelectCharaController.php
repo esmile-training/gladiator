@@ -27,7 +27,9 @@ class SelectCharaController extends BaseGameController
 		return viewWrap('selectChara',$this->viewData);
 	}
 
-	// IDからキャラクターを特定する
+	/*
+	 *  IDからキャラクターを特定する
+	 */
 	public function pickUpChara()
 	{
 		// 選択されたIDの取得をする
