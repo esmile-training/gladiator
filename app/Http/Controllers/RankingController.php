@@ -14,7 +14,7 @@ class RankingController extends BaseGameController
 	    $inputrank = $this->Lib->exec('PageTransition', 'pagetransition');
 	    
 	    // 総合成績を降順にソート
-	    $sortrank = $this->Lib->exec('RankSort', 'ranksort', [$inputrank]);
+	    $sortrank = $this->Lib->exec('RankSort', 'ranksort', [$inputrank, $this->user['id']]);
 
 	    // 並べ替えたものを代入
 	    $rank['rank'] = $sortrank;

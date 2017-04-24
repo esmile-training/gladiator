@@ -3,29 +3,23 @@ namespace App\Libs;
 
 class RankSortLib extends BaseGameLib
 {
-    public function ranksort( $inputrank )
+    public function ranksort( $inputrank, $userId )
     {
 	// $rankchange = filter_input(INPUT_COOKIE, 'rankchange');
 
 	// DB接続
-	$getrank = $this->Model->exec('Ranking', 'getByrank', [$inputrank]);
+	$getrank = $this->Model->exec('Ranking', 'getByrank', $userId);
 	$sortrank = [];
+	
+	// 
+	$userrank = array_search($userId, array_column($getrank, 'userId'));
 
-	foreach ($getrank as $value) {
-	    $sortrank[$value['username']] = $value['totalPoint'];
+	// ランキング取得時、中間ではなく、上位十位以内だった場合
+	if($getrank[11]['userId'] != $userId && 10 > $userrank){
+	    echo 'no';
 	}
 
-	arsort($sortrank, SORT_NUMERIC);
-	
-	// $rank['rank'] = $sortrank;
-
-	// $duplicationcheck = 0;
-	//$count = 0;
-	
-	foreach ($sortrank as $key => $value) {
-	    $sortrank[$key] = [$value, ++$inputrank[0]];
-	    //$duplicationcheck[$value[1]];
-	}
+	//arsort($sortrank, SORT_NUMERIC);
 	
 	//var_dump($sortrank);
 	

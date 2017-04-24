@@ -13,38 +13,35 @@ class RankingModel extends BaseGameModel
     {
 	
 $sql =  <<< EOD
-	SELECT user.id as userId,
-	       totalPoint,
-	       user.name as username
-	FROM uRanking 
-	JOIN user ON user.id = uRanking.userId 
-	ORDER BY totalPoint DESC LIMIT 10 OFFSET $pushbtn[0];
-EOD;
- 
-	
-	/*
-$sql = <<< EOD
-	SELECT * FROM
-        (
-        SELECT * From uRanking 
-	WHERE totalPoint BETWEEN 
-        (SELECT totalPoint FROM uRanking WHERE userId = 13) AND 
-        (SELECT MAX(totalPoint) FROM uRanking)
-        ORDER BY totalPoint DESC LIMIT 5
-        )rank
+SELECT rank.userId,rank.totalPoint,user.name, rank FROM 
+    ((
+	SELECT * FROM (SELECT userId ,totalPoint, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.totalPoint > a.totalPoint) AS `rank` FROM `uRanking` a ORDER BY rank) as rank
+	WHERE rank>= (
+
+	SELECT rank
+	FROM (SELECT userId ,totalPoint, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.totalPoint > a.totalPoint) AS `rank` FROM `uRanking` a WHERE userId = $pushbtn) as rank
+	WHERE userId = $pushbtn
+	) ORDER BY totalPoint DESC LIMIT 10
+    )
 
 UNION ALL
 
-        (
-        SELECT * From uRanking 
-	WHERE totalPoint BETWEEN 
-        (SELECT MIN(totalPoint) FROM uRanking) AND
-        (SELECT totalPoint FROM uRanking WHERE userId = 13) 
-        
-        ORDER BY totalPoint DESC LIMIT 1,5
-        );
+    (
+	SELECT * FROM (SELECT userId ,totalPoint, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.totalPoint > a.totalPoint) AS `rank` FROM `uRanking` a ORDER BY rank) as rank
+	WHERE rank< (
+
+	SELECT rank
+	FROM (SELECT userId ,totalPoint, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.totalPoint > a.totalPoint) AS `rank` FROM `uRanking` a WHERE userId = $pushbtn) as rank
+	WHERE userId = $pushbtn
+	) ORDER BY totalPoint ASC LIMIT 10
+
+    ))as rank
+	
+    left outer join user
+    on rank.userId = user.id
+    order by rank
+;
 EOD;
-*/
 
 	return parent::select($sql, 'all');
     }
