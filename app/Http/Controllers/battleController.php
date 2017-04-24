@@ -26,11 +26,11 @@ class battleController extends BaseGameController
             // ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
             // BattleData にバトルデータを格納
             $BattleData = $this->Model->exec( 'Battle', 'getBattleData', $userId );
-            
+ 
             // バトルデータを元にuBattleChar(DB)からキャラデータを読み込み
             // ChaaraData に自キャラデータを格納      
             $CharaData = $this->Model->exec( 'Battle', 'getBattleCharaData', $BattleData['uBattleCharaId'] ); 
-	    
+
             // バトルデータを元にuBattleChar(DB)から敵データを読み込み
             // EnemyData に敵キャラデータを格納        
             $EnemyData = $this->Model->exec( 'Battle', 'getBattleEnemyData', $BattleData['uBattleEnemyId'] ); 
@@ -76,9 +76,16 @@ class battleController extends BaseGameController
 	// どちらかのHPが0以下になったらバトルフラグを0にする
 	if( $EnemyData['hp'] <= 0 || $CharaData['hp'] <= 0 )
 	{
+	    // BattleData の 'delFlag' を立てる (viewでリザルト画面への遷移判別に使用)
 	    $BattleData['delFlag'] = 1;
-	    // uBattleInfo の 'delFlag' を更新する処理
-	    $this->Model->exec( 'Battle', 'UpdateBattleFlag', array( $BattleData ) ); 
+	    
+	    // uBattleInfo の 'delFlag' を立てる処理
+	    $this->Model->exec( 'Battle', 'UpdateInfoFlag', array( $BattleData ) ); 
+	    // uBattleChara の 'delFlag' を立てる処理
+	    $this->Model->exec( 'Battle', 'UpdateCharaFlag', $BattleData['uBattleCharaId'] );
+	    // uBattleEnemy の 'delFlag' を立てる処理
+	    $this->Model->exec( 'Battle', 'UpdateEnemyFlag', $BattleData['uBattleEnemyId'] ); 
+	    
 	}
 
 	// バトルキャラデータの更新処理
@@ -94,6 +101,6 @@ class battleController extends BaseGameController
         $this->viewData['Type']		= $TypeData;
         $this->viewData['Result']	= $ResultData;
 
-        return viewWrap( 'battle', $this->viewData );        
+        return viewWrap( 'battle', $this->viewData );
     }
 }

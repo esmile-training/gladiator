@@ -32,3 +32,7 @@
     </form>
 
 @endif
+
+<div>
+    <img class="charaimg" src="{{CHAR_IMG_URL}}{{$viewData['PcData']['mId']}}.png" height=10% width=10%>
+</div>

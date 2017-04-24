@@ -28,6 +28,8 @@ $sql =  <<< EOD
 	INNER JOIN uBattleChara
         ON uBattleChara.uCharaId = uChara.id
         WHERE uBattleChara.id = {$battleCharaId}
+        AND uBattleChara.delFlag = 0	
+
 EOD;
         return $this->select( $sql, 'first' );
 
@@ -41,6 +43,8 @@ $sql =  <<< EOD
 	SELECT *
 	FROM uBattleEnemy
         WHERE id = {$battleEnemyId}
+        AND uBattleEnemy.delFlag = 0	
+
 EOD;
         return $this->select( $sql, 'first' );
 
@@ -68,8 +72,8 @@ EOD;
 	$this->update( $sql );
     }
     
-    // uBattleInfo の 'delFlag' を更新する処理処理
-    public function UpdateBattleFlag( $battleData )
+    // uBattleInfo の 'delFlag' を立てる処理
+    public function UpdateInfoFlag( $battleData )
     {
 $sql =  <<< EOD
     UPDATE  uBattleInfo
@@ -77,6 +81,28 @@ $sql =  <<< EOD
     WHERE   id = {$battleData['id']};
 EOD;
 	$this->update( $sql );
+    } 
+    
+    // uBattleInfo の 'delFlag' を立てる処理
+    public function UpdateCharaFlag( $battleCharaId = false )
+    {
+$sql =  <<< EOD
+    UPDATE  uBattleChara
+    SET	    delFlag = 1
+    WHERE   id = {$battleCharaId};
+EOD;
+	$this->update( $sql );
     }     
+
+    // uBattleInfo の 'delFlag' を立てる処理
+    public function UpdateEnemyFlag( $battleEnemyId = false )
+    {
+$sql =  <<< EOD
+    UPDATE  uBattleEnemy
+    SET	    delFlag = 1
+    WHERE   id = {$battleEnemyId};
+EOD;
+	$this->update( $sql );
+    }
 
 }
