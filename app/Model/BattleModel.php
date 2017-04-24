@@ -21,12 +21,15 @@ EOD;
     // バトル用自キャラデータ取得
     public function getBattleCharaData( $battleCharaId = false )
     {
-        
+	
 $sql =  <<< EOD
 	SELECT *
 	FROM uBattleChara
-        WHERE id = {$battleCharaId}
+	INNER JOIN uChara
+        ON uBattleChara.uCharaId = uChara.id
+        WHERE uBattleChara.id = {$battleCharaId}
 EOD;
+	
         return $this->select($sql, 'first');
 
     }
@@ -45,7 +48,7 @@ EOD;
     }
     
     // バトル用自キャラデータ更新
-    public function UpdateBattleCharData( $battleCharaId,$battleCharaHp )
+    public function UpdateBattleCharaData( $battleCharaId,$battleCharaHp )
     {
 $sql =  <<< EOD
     UPDATE  uBattleChara

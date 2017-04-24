@@ -4,83 +4,118 @@ namespace App\Libs;
 class BattleLib extends BaseGameLib
 {
     // 敵の各属性を出す確率ステータスに基づいた手をランダムに選択する処理
-    public static function setEnmHand( $EnemyData ){
-
-        $result = [];   //初期化
-        // ランダムに1～100の数値を選択
+    public static function setEnmHand( $EnemyData, $typeData)
+    {
+        $result = [];   //データ返却用変数の初期化
+	
+        // ランダムに1～100の数値を選択し格納
         $Hand = rand(1, 100);
         
-//        var_dump($enemiesConf);         // デバッグ データ受け渡し確認
-        // Enm の gu の確率値以下の場合
-        if ( $Hand <= $EnemyData['gooPer']){
-            $result = 'グー';
+        // Hand の数値が EnemyData の 'goo' の確率値 'gooPer' 以下の場合
+        if ( $Hand <= $EnemyData['gooPer'])
+	{
+            $result = $typeData['goo'];
         }
-        // Enm の Gu の確率値と Enm の Ch を足した数以下の場合
-        else if($Hand <=  $EnemyData['gooPer'] + $EnemyData['choPer']){
-            $result = 'チョキ';
+        // Hand の数値が EnemyData の 'goo' の確率値 'gooPer' と 'cho' の確率値 'choPer' を足した数以下の場合
+        else if($Hand <=  $EnemyData['gooPer'] + $EnemyData['choPer'])
+	{
+            $result = $typeData['cho'];
         }
-        // Enm の Gu の確率値と Enm の Ch を足した数より大きい場合
-        else {
-            $result = 'パー';
+	// Hand の数値が EnemyData の 'goo' の確率値 'gooPer' と 'cho' の確率値 'choPer' を足した数より大きいの場合
+        else
+	{
+            $result = $typeData['paa'];
         }    
         
         return $result;
     }
     
     // バトルの処理を格納する処理
-    public static function battleResult( $pcHand , $enmHand ){
+    public static function battleResult( $pcHand, $enmHand, $typeData, $resultData )
+    {
+        $result = [];   // データ返却用変数の初期化
         
-        $result = [];   // 初期化
-        // 結果を Result に格納
-        switch ( $pcHand ) {
-            case 'グー':
-                switch ( $enmHand ){
-                    case 'グー':
-                        $result = 'あいこ';
+	// Chara の 'hand' によって処理を行う
+        switch ( $pcHand )
+	{    
+	    // 'goo' の場合
+            case $typeData['goo']:
+		// Enemy の 'hand' によって処理を行う
+                switch ( $enmHand )
+		{
+		    // 'goo' の場合
+                    case $typeData['goo']:
+                        $result = $resultData['draw'];
                         break;
-                    case 'チョキ':
-                        $result = '勝ち';
+		    
+		    // 'cho' の場合		    
+                    case $typeData['cho']:
+                        $result = $resultData['win'];
                         break;
-                    case 'パー':
-                        $result = '負け';
+		    
+		    // 'paa' の場合		    
+                    case $typeData['paa']:
+                        $result = $resultData['lose'];
                         break;
-                    default:
-                        echo 'エラー';
-                        exit;
-                }
-                break;      
-            case 'チョキ':
-                switch ($enmHand){
-                    case 'グー':
-                        $result = '負け';
-                        break;
-                    case 'チョキ':
-                        $result = 'あいこ';
-                        break;
-                    case 'パー':
-                        $result = '勝ち';
-                        break;
+
                     default:
                         echo 'エラー';
                         exit;
                 }
                 break;
-            case 'パー':
-                switch ($enmHand){
-                    case 'グー':
-                        $result = '勝ち';
+	    
+	    // 'cho' の場合	    
+            case  $typeData['cho']:
+		// Enemy の 'hand' によって処理を行う
+                switch ( $enmHand )
+		{
+		    // 'goo' の場合
+                    case $typeData['goo']:
+                        $result = $resultData['lose'];
                         break;
-                    case 'チョキ':
-                        $result = '負け';
+		    
+		    // 'cho' の場合		    
+		    case $typeData['cho']:
+                        $result = $resultData['draw'];
                         break;
-                    case 'パー':
-                        $result = 'あいこ';
+		    
+		    // 'paa' の場合		    
+                    case $typeData['paa']:
+                        $result = $resultData['win'];
                         break;
+		      
                     default:
                         echo 'エラー';
                         exit;
                 }
                 break;
+	    
+	    // 'paa' の場合
+            case $typeData['paa']:
+		// Enemy の 'hand' によって処理を行う		
+                switch ( $enmHand )
+		{
+		    // 'goo' の場合		
+                    case $typeData['goo']:
+                        $result = $resultData['win'];
+                        break;
+		    
+		    // 'cho' の場合		    
+                    case  $typeData['cho']:
+                        $result = $resultData['lose'];
+                        break;
+		    
+		    // 'paa' の場合		    
+                    case $typeData['paa']:
+                        $result = $resultData['draw'];
+                        break;
+		    
+                    default:
+                        echo 'エラー';
+                        exit;
+                }
+                break;
+	    
             default:
                 echo 'エラー';
                 exit;
@@ -89,18 +124,26 @@ class BattleLib extends BaseGameLib
     }
     
     // ダメージ計算を行う処理
-    public static function damagecalc( $winner,$loser){
-        
-        switch($winner['hand']){
-            case 'グー':
+    public static function damageCalc( $winner, $loser, $typeData )
+    {
+	// 勝った方の 'hand' によって処理を行う
+        switch( $winner['hand'] )
+	{
+	    // 'goo' の場合
+            case $typeData['goo']:
                 $loser['hp'] = $loser['hp'] - $winner['gooAtk'];
                 break;
-            case 'チョキ':
+	    
+	    // 'cho' の場合	    
+            case $typeData['cho']:
                 $loser['hp'] = $loser['hp'] - $winner['choAtk'];
                 break;
-            case 'パー':
+	    
+	    // 'paa' の場合	    
+            case $typeData['paa']:
                 $loser['hp'] = $loser['hp'] - $winner['paaAtk'];
                 break;
+	    
             default;
                 exit;
         }

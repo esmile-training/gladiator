@@ -1,21 +1,21 @@
 <div>
 
-    @if ($viewData['PcData']['result']=='勝ち')
-        @if ($viewData['PcData']['hand']=='グー')
+    @if ( $viewData['PcData']['result'] == $viewData['Result']['win'] )
+        @if ( $viewData['PcData']['hand'] == $viewData['Type']['goo'] )
             <div>
                 {{$viewData['EnmData']['name']}}
                 に
                 {{$viewData['PcData']['gooAtk']}}
                 のダメージ <br />
             </div>
-        @elseif ($viewData['PcData']['hand']=='チョキ')
+        @elseif ( $viewData['PcData']['hand'] == $viewData['Type']['cho'] )
             <div>
                 {{ $viewData['EnmData']['name'] }}
                 に
                 {{ $viewData['PcData']['choAtk'] }}
                 のダメージ <br />
             </div>
-        @elseif ($viewData['PcData']['hand']=='パー')
+        @elseif ( $viewData['PcData']['hand'] == $viewData['Type']['paa'] )
             <div>
                 {{ $viewData['EnmData']['name'] }}
                 に
@@ -23,30 +23,30 @@
                 のダメージ <br />
             </div>
         @endif
-    @elseif ($viewData['PcData']['result']=='負け')
-        @if ($viewData['EnmData']['hand']=='グー')
+    @elseif ( $viewData['PcData']['result'] == $viewData['Result']['lose'] )
+        @if ( $viewData['EnmData']['hand'] == $viewData['Type']['goo'] )
             <div>
-                {{$viewData['PcData']['name']}}
+                {{$viewData['PcData']['cName']}}
                 に
                 {{$viewData['EnmData']['gooAtk']}}
                 のダメージ <br />
             </div>
-        @elseif ($viewData['EnmData']['hand']=='チョキ')
+        @elseif ( $viewData['EnmData']['hand'] == $viewData['Type']['cho'] )
             <div>
-                {{ $viewData['PcData']['name'] }}
+                {{ $viewData['PcData']['cName'] }}
                 に
                 {{ $viewData['EnmData']['choAtk'] }}
                 のダメージ <br />
             </div>
-        @elseif ($viewData['EnmData']['hand']=='パー')
+        @elseif ( $viewData['EnmData']['hand'] == $viewData['Type']['paa'] )
             <div>
-                {{ $viewData['PcData']['name'] }}
+                {{ $viewData['PcData']['cName'] }}
                 に
                 {{ $viewData['EnmData']['paaAtk'] }}
                 のダメージ <br />
             </div>
         @endif
-    @elseif ($viewData['PcData']['result']=='あいこ')
+    @elseif ( $viewData['PcData']['result'] == $viewData['Result']['draw'] )
         <div>
             お互いにダメージなし<br />
         </div>
