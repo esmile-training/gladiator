@@ -26,9 +26,9 @@
 
     {{--それぞれのボタン表示--}}
     <form method="get" action="/battle" onsubmit="doSomething();return false;">
-    <input type="image" src="{{IMGTEST_URL}}goo.jpg" value="グー" name="sub1">　
-    <input type="image" src="{{IMGTEST_URL}}choki.png" value="チョキ" name="sub1">　
-    <input type="image" src="{{IMGTEST_URL}}paa.jpg" value="パー" name="sub1">　
+    <input type="image" src="{{IMGTEST_URL}}goo.jpg" value="{{$viewData['Type']['goo']}}" name="sub1">　
+    <input type="image" src="{{IMGTEST_URL}}choki.png" value="{{$viewData['Type']['cho']}}" name="sub1">　
+    <input type="image" src="{{IMGTEST_URL}}paa.jpg" value="{{$viewData['Type']['paa']}}" name="sub1">　
     </form>
 
 @endif

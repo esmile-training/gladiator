@@ -24,15 +24,15 @@ class battleController extends BaseGameController
         if(isset($userId))
 	{            
             // ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
-            // BattleData にバトルデータを入れる
+            // BattleData にバトルデータを格納
             $BattleData = $this->Model->exec( 'Battle', 'getBattleData', $userId );
             
             // バトルデータを元にuBattleChar(DB)からキャラデータを読み込み
-            // ChaaraData に自キャラデータを入れる            
+            // ChaaraData に自キャラデータを格納      
             $CharaData = $this->Model->exec( 'Battle', 'getBattleCharaData', $BattleData['uBattleCharaId'] ); 
 	    
             // バトルデータを元にuBattleChar(DB)から敵データを読み込み
-            // EnemyData に敵キャラデータを入れる            
+            // EnemyData に敵キャラデータを格納        
             $EnemyData = $this->Model->exec( 'Battle', 'getBattleEnemyData', $BattleData['uBattleEnemyId'] ); 
         }      
         
@@ -43,9 +43,11 @@ class battleController extends BaseGameController
             $CharaData['hand'] = htmlspecialchars( $_GET["sub1"], ENT_QUOTES, "UTF-8" );
             
             // 敵キャラデータを元に、Enemy の 'hand' を選択
+	    // 'goo' / 'cho' 
             $EnemyData['hand']= BattleLib::setEnmHand( $EnemyData, $TypeData );
             
             // 勝敗処理
+	    // 'win' / 'lose' / 'draw' のどれかが入る
             $CharaData['result'] = BattleLib::battleResult( $CharaData['hand'], $EnemyData['hand'], $TypeData, $ResultData );
             
             // ダメージ処理
@@ -75,20 +77,23 @@ class battleController extends BaseGameController
 	if( $EnemyData['hp'] <= 0 || $CharaData['hp'] <= 0 )
 	{
 	    $BattleData['delFlag'] = 1;
-	    $this->Model->exec( 'Battle', 'UpdateBattleFlag', $BattleData['id'] ); 
+	    // uBattleInfo の 'delFlag' を更新する処理
+	    $this->Model->exec( 'Battle', 'UpdateBattleFlag', array( $BattleData ) ); 
 	}
 
 	// バトルキャラデータの更新処理
+	// 自キャラデータの更新処理
 	$this->Model->exec( 'Battle', 'UpdateBattleCharaData', array( $CharaData ) );
+	// 敵キャラデータの更新処理
 	$this->Model->exec( 'Battle', 'UpdateBattleEnemyData', array( $EnemyData ) );
 	
         // 全てのデータを viewData に渡す
-        $Data->viewData['BattleData']	= $BattleData;
-        $Data->viewData['PcData']	= $CharaData;
-        $Data->viewData['EnmData']	= $EnemyData;
-        $Data->viewData['Type']		= $TypeData;
-        $Data->viewData['Result']	= $ResultData;
+        $this->viewData['BattleData']	= $BattleData;
+        $this->viewData['PcData']	= $CharaData;
+        $this->viewData['EnmData']	= $EnemyData;
+        $this->viewData['Type']		= $TypeData;
+        $this->viewData['Result']	= $ResultData;
 
-        return viewWrap( 'battle', $Data->viewData );        
+        return viewWrap( 'battle', $this->viewData );        
     }
 }

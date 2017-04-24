@@ -4,7 +4,7 @@ namespace App\Model;
 class BattleModel extends BaseGameModel
 {
     
-    // バトルデータ取得
+    // uBattleInfo DBからバトルデータ取得
     public function getBattleData( $userId = false )
     {
         
@@ -18,7 +18,7 @@ EOD;
         
     }
 
-    // バトル用自キャラデータ取得
+    // uBattleChara DBからバトル用自キャラデータ取得
     public function getBattleCharaData( $battleCharaId = false )
     {
 	
@@ -33,7 +33,7 @@ EOD;
 
     }
     
-    // バトル用敵キャラデータ取得
+    // uBattleEnemy DBからバトル用敵キャラデータ取得
     public function getBattleEnemyData( $battleEnemyId = false )
     {
 	
@@ -46,7 +46,7 @@ EOD;
 
     }
     
-    // バトル用自キャラデータ更新    
+    // uBattleChara DBの更新処理    
     public function UpdateBattleCharaData( $battleChara )
     {
 $sql =  <<< EOD
@@ -57,7 +57,7 @@ EOD;
 	$this->update( $sql );
     }
 
-    // バトル用敵キャラデータ更新    
+    // uBattleEnemy DBの更新処理    
     public function UpdateBattleEnemyData( $battleEnemy )
     {
 $sql =  <<< EOD
@@ -68,13 +68,13 @@ EOD;
 	$this->update( $sql );
     }
     
-    // バトルフラグの更新 
-    public function UpdateBattleFlag( $BattleId )
+    // uBattleInfo の 'delFlag' を更新する処理処理
+    public function UpdateBattleFlag( $battleData )
     {
 $sql =  <<< EOD
     UPDATE  uBattleInfo
     SET	    delFlag = 1
-    WHERE   id = {$BattleId};
+    WHERE   id = {$battleData['id']};
 EOD;
 	$this->update( $sql );
     }     

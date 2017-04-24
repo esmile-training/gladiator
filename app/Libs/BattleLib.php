@@ -14,16 +14,19 @@ class BattleLib extends BaseGameLib
         // Hand の数値が EnemyData の 'goo' の確率値 'gooPer' 以下の場合
         if ( $Hand <= $EnemyData['gooPer'])
 	{
+	    // result に 'goo' を格納
             $result = $typeData['goo'];
         }
         // Hand の数値が EnemyData の 'goo' の確率値 'gooPer' と 'cho' の確率値 'choPer' を足した数以下の場合
         else if($Hand <=  $EnemyData['gooPer'] + $EnemyData['choPer'])
 	{
+	    // result に 'cho' を格納
             $result = $typeData['cho'];
         }
 	// Hand の数値が EnemyData の 'goo' の確率値 'gooPer' と 'cho' の確率値 'choPer' を足した数より大きいの場合
         else
 	{
+	    // result に 'paa' を格納
             $result = $typeData['paa'];
         }    
         
@@ -45,16 +48,19 @@ class BattleLib extends BaseGameLib
 		{
 		    // 'goo' の場合
                     case $typeData['goo']:
+			// result に 'draw' を格納
                         $result = $resultData['draw'];
                         break;
 		    
 		    // 'cho' の場合		    
                     case $typeData['cho']:
+			// result に 'win' を格納
                         $result = $resultData['win'];
                         break;
 		    
 		    // 'paa' の場合		    
                     case $typeData['paa']:
+			// result に 'lose' を格納
                         $result = $resultData['lose'];
                         break;
 
@@ -71,16 +77,19 @@ class BattleLib extends BaseGameLib
 		{
 		    // 'goo' の場合
                     case $typeData['goo']:
+			// result に 'lose' を格納
                         $result = $resultData['lose'];
                         break;
 		    
 		    // 'cho' の場合		    
 		    case $typeData['cho']:
+			// result に 'draw' を格納
                         $result = $resultData['draw'];
                         break;
 		    
 		    // 'paa' の場合		    
                     case $typeData['paa']:
+			// result に 'win' を格納
                         $result = $resultData['win'];
                         break;
 		      
@@ -97,16 +106,19 @@ class BattleLib extends BaseGameLib
 		{
 		    // 'goo' の場合		
                     case $typeData['goo']:
+			// result に 'win' を格納
                         $result = $resultData['win'];
                         break;
 		    
 		    // 'cho' の場合		    
                     case  $typeData['cho']:
+			// result に 'lose' を格納
                         $result = $resultData['lose'];
                         break;
 		    
 		    // 'paa' の場合		    
                     case $typeData['paa']:
+			// result に 'draw' を格納
                         $result = $resultData['draw'];
                         break;
 		    
@@ -139,7 +151,7 @@ class BattleLib extends BaseGameLib
                 $loser['hp'] = $loser['hp'] - $winner['choAtk'];
                 break;
 	    
-	    // 'paa' の場合	    
+	    // 'paa' の場合    
             case $typeData['paa']:
                 $loser['hp'] = $loser['hp'] - $winner['paaAtk'];
                 break;
