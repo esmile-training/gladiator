@@ -3,7 +3,7 @@
 </div>
 
 <div>
-    <form action="sample2" method="get">
+    <form action="addUser" method="get">
 	<p>チーム名を入力してください<br>
 	<input type="text" name="teamName" value=""></p>
 	<input type="submit" value="登録">

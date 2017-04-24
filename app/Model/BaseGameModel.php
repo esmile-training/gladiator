@@ -31,7 +31,7 @@ class BaseGameModel
 	}elseif( $arg ){
 	    return call_user_func_array( array($modelClass , $method), array($arg) );
 	}else{
-	    return $modelClass->$method( );
+	    return $modelClass->$method($userId);
 	}
     }
 
@@ -81,7 +81,7 @@ class BaseGameModel
      */
     public function insert( $sql )
     {
-	$result = null;//$this->dbapi($sql, 'insert');
+	$result = $this->dbapi($sql, 'insert');
 	return intval($result);
     }
 
@@ -91,7 +91,7 @@ class BaseGameModel
     public function dbapi( $sql, $type = 'dbapi' )
     {
 	$params = ['sql' => $sql];
-	
+
 	//開始
 	$curl = curl_init(DB_API_URL.$type.'.php');
 	//オプションセット

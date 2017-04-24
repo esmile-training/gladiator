@@ -20,10 +20,20 @@ class TopController extends BaseGameController
      */
     public function login()
     {
-	//DB更新
-	$this->Model->exec('User', 'createUser');
+	//cookieの有無を確認
+	if(isset($_COOKIE['userId']))
+	{
+	    //DB更新
+	    //$this->Model->exec('User', 'createUser');
+	    $this->Model->exec('User' , 'getById' , "" , $_COOKIE['userId']);
 
-	//リダイレクト
-	return $this->Lib->redirect('mypage', 'index');
+	    //リダイレクト
+	    return $this->Lib->redirect('mypage', 'index');
+	} 
+	else 
+	{
+	    //無ければエディット画面に遷移する。
+	    return view('Edit');
+	}
     }
 }

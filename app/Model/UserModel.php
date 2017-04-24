@@ -19,22 +19,29 @@ $sql =  <<< EOD
 EOD;
 	return $this->select($sql, 'first');
     }
+    
+    public function getByName( $userName = false )
+    {
+	if( !$userName && isset($this->user['name']) ){
+	    $userName = $this->user['name'];
+	}
+
+$sql =  <<< EOD
+	SELECT *
+	FROM user
+	WHERE name = {$userName}
+EOD;
+	return $this->select($sql, 'first');
+    }
 
     /*
     *	ユーザ作成
     */
-    public function createUser()
+    public function createUser($userName = null)
     {
-	$time = date('Y-m-d H:i:s', time());
 $sql =  <<< EOD
-    INSERT INTO  user 
-    VALUES (
-	NULL,
-	'テストユーザー',
-	 NULL,
-	 '{$time}',
-	 '{$time}'
-    );
+INSERT INTO user ( `name`, `createDate` )
+VALUES("{$userName}", NOW());
 EOD;
 	$this->insert($sql);
     }

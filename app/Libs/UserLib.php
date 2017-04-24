@@ -11,7 +11,9 @@ class UserLib extends BaseGameLib
 	$userData = $this->getUser( $this->user['id'] );
 
 	//DBに情報がなければユーザ作成
-	if( !$userData ) $this->redirect('top', 'login');
+	//if( !$userData ) $this->redirect('top', 'login');
+	//DBに情報がなければエディット画面に移動
+	if( !$userData ) $this->redirect('edit');
 	return $userData;
     }
 
