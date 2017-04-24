@@ -25,12 +25,12 @@ class battleController extends BaseGameController
 	{            
             // ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
             // BattleData にバトルデータを入れる
-            $BattleData = $this->Model->exec( 'Battle', 'getBattleData', $userId ); 
+            $BattleData = $this->Model->exec( 'Battle', 'getBattleData', $userId );
             
             // バトルデータを元にuBattleChar(DB)からキャラデータを読み込み
             // ChaaraData に自キャラデータを入れる            
             $CharaData = $this->Model->exec( 'Battle', 'getBattleCharaData', $BattleData['uBattleCharaId'] ); 
-
+	    
             // バトルデータを元にuBattleChar(DB)から敵データを読み込み
             // EnemyData に敵キャラデータを入れる            
             $EnemyData = $this->Model->exec( 'Battle', 'getBattleEnemyData', $BattleData['uBattleEnemyId'] ); 
@@ -72,16 +72,16 @@ class battleController extends BaseGameController
         }
 	
 	// どちらかのHPが0以下になったらバトルフラグを0にする
-	if($EnemyData['hp'] <= 0 || $CharaData['hp'] <= 0)
+	if( $EnemyData['hp'] <= 0 || $CharaData['hp'] <= 0 )
 	{
 	    $BattleData['delFlag'] = 1;
-	    $this->Model->exec('Battle','UpdateBattleFlag',$BattleData['id']); 
+	    $this->Model->exec( 'Battle', 'UpdateBattleFlag', $BattleData['id'] ); 
 	}
 
 	// バトルキャラデータの更新処理
-	$this->Model->exec( 'Battle', 'UpdateBattleCharaData', array( $CharaData['id'],$CharaData['hp'] ) ); 
-	$this->Model->exec( 'Battle', 'UpdateBattleEnemyData', array( $EnemyData['id'],$EnemyData['hp'] ) );         
-
+	$this->Model->exec( 'Battle', 'UpdateBattleCharaData', array( $CharaData ) );
+	$this->Model->exec( 'Battle', 'UpdateBattleEnemyData', array( $EnemyData ) );
+	
         // 全てのデータを viewData に渡す
         $Data->viewData['BattleData']	= $BattleData;
         $Data->viewData['PcData']	= $CharaData;

@@ -36,7 +36,7 @@ class BaseGameModel
     public function select( $sql, $range = 'all' )
     {
 	$response = $this->dbapi($sql, 'select');
-
+	
 	//jsonから配列に変換
 	$result = json_decode($response, true);
 	if($result){
@@ -86,7 +86,7 @@ class BaseGameModel
     public function dbapi( $sql, $type = 'dbapi' )
     {
 	$params = ['sql' => $sql];
-	
+
 	//開始
 	$curl = curl_init(DB_API_URL.$type.'.php');
 	//オプションセット

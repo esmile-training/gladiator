@@ -14,7 +14,7 @@ $sql =  <<< EOD
         WHERE uId = {$userId}
         AND delFlag = 0
 EOD;
-        return $this->select($sql, 'first');
+        return $this->select( $sql, 'first' );
         
     }
 
@@ -24,13 +24,12 @@ EOD;
 	
 $sql =  <<< EOD
 	SELECT *
-	FROM uBattleChara
-	INNER JOIN uChara
+	FROM uChara
+	INNER JOIN uBattleChara
         ON uBattleChara.uCharaId = uChara.id
         WHERE uBattleChara.id = {$battleCharaId}
 EOD;
-	
-        return $this->select($sql, 'first');
+        return $this->select( $sql, 'first' );
 
     }
     
@@ -43,30 +42,30 @@ $sql =  <<< EOD
 	FROM uBattleEnemy
         WHERE id = {$battleEnemyId}
 EOD;
-        return $this->select($sql, 'first');
+        return $this->select( $sql, 'first' );
 
     }
     
-    // バトル用自キャラデータ更新
-    public function UpdateBattleCharaData( $battleCharaId,$battleCharaHp )
+    // バトル用自キャラデータ更新    
+    public function UpdateBattleCharaData( $battleChara )
     {
 $sql =  <<< EOD
     UPDATE  uBattleChara
-    SET	    hp = {$battleCharaHp}
-    WHERE   id = {$battleCharaId};
+    SET	    hp = {$battleChara['hp']}
+    WHERE   id = {$battleChara['id']};
 EOD;
-	$this->update($sql);
+	$this->update( $sql );
     }
 
     // バトル用敵キャラデータ更新    
-    public function UpdateBattleEnemyData( $battleEnemyId,$battleEnemyHp )
+    public function UpdateBattleEnemyData( $battleEnemy )
     {
 $sql =  <<< EOD
     UPDATE  uBattleEnemy
-    SET	    hp = {$battleEnemyHp}
-    WHERE   id = {$battleEnemyId};
+    SET	    hp = {$battleEnemy['hp']}
+    WHERE   id = {$battleEnemy['id']};
 EOD;
-	$this->update($sql);
+	$this->update( $sql );
     }
     
     // バトルフラグの更新 
@@ -77,7 +76,7 @@ $sql =  <<< EOD
     SET	    delFlag = 1
     WHERE   id = {$BattleId};
 EOD;
-	$this->update($sql);
+	$this->update( $sql );
     }     
 
 }
