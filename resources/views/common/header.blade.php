@@ -7,7 +7,7 @@
 <title>Gladiator</title>
 <link href="{{APP_URL}}css/reset.css?var={{time()}}" rel="stylesheet" type="text/css">
 <link href="{{APP_URL}}css/style.css?var={{time()}}" rel="stylesheet" type="text/css">
-<link href="{{APP_URL}}css/modal.css?var={{time()}}" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div id="wrapper">
+            

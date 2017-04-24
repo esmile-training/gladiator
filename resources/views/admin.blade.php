@@ -41,3 +41,12 @@
 @include('element/memberList')
 
 {{-- popup --}}
+@include('common/css', ['file' => 'modal'])
+<div class="modal_container">
+    <span class="md_btn my">Show modal</span>
+</div>
+<div class="modal my">
+    <div class="close"><span>close</span></div>
+</div>
+@include('common/js', ['file' => 'jquery-3.2.1.min'])
+@include('common/js', ['file' => 'modal'])
