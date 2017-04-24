@@ -1,5 +1,6 @@
-{{-- css  --}}
+{{-- css --}}
 @include('common/css', ['file' => 'admin'])
+{{-- js --}}
 @include('common/js', ['file' => 'admin'])
 
 {{-- 画像 --}}
@@ -8,13 +9,13 @@
 </div>
 
 {{-- ユーザエディット  --}}
-<div class="userEdit">
+<div class="admin_userEdit">
     <form action="{{APP_URL}}admin/editUser" method="get">
 	{{-- ユーザID入力 --}}
 	<div>
 	    ユーザID：<input type="text" name="userId">
 	</div>
-	
+
 	{{-- 名前変更 --}}
 	<div>
 	    <input type="text" name="newName">
@@ -29,7 +30,7 @@
 </div>
 
 {{-- 戻る  --}}
-<div class="returnLink">
+<div class="admin_returnLink">
     <a href="{{APP_URL}}top">
 	⇒TOPに戻る
     </a>
