@@ -132,14 +132,18 @@ class BattleLib extends BaseGameLib
                 echo 'エラー';
                 exit;
         }
+	
         return $result;
     }
     
     // ダメージ量の計算処理
     public static function damageCalc( $winner, $typeData )
     {
-	// ダメージ割合用変数
-	$damagePer = mt_rand( 80, 120 ) * 0.01;
+	// config にあるダメージ変化量の最小値と最大値を格納
+	$randData = \Config::get( 'battle.damagePer' );
+	
+	// ダメージ割合を格納
+	$damagePer = mt_rand( $randData['min'], $randData['max'] ) * 0.01;
 	
 	// 勝った方の 'hand' によって処理を行う
         switch( $winner['hand'] )
