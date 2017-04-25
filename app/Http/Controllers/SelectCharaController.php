@@ -48,7 +48,7 @@ class SelectCharaController extends BaseGameController
 		$paaAtk = $selectedChara['cPaaAtk'];
 
 		// データをDBへインサートする
-		$this->Model->exec('User','insertChara',array($uCharaId,$hp,$gooAtk,$choAtk,$paaAtk));
+		$this->Model->exec('UChara','insertChara',array($uCharaId,$hp,$gooAtk,$choAtk,$paaAtk));
 
 		// ステージ選択(エネミー選択)へリダイレクトする
 		
