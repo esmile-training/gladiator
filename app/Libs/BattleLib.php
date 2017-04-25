@@ -8,8 +8,8 @@ class BattleLib extends BaseGameLib
     {
         $result = [];   //データ返却用変数の初期化
 	
-        // ランダムに1～100の数値を選択し格納
-        $Hand = rand(1, 100);
+        // ランダムに1～99の数値を選択し格納
+        $Hand = rand(1, 99);
         
         // Hand の数値が EnemyData の 'goo' の確率値 'gooPer' 以下の場合
         if ( $Hand <= $EnemyData['gooPer'])
@@ -135,24 +135,62 @@ class BattleLib extends BaseGameLib
         return $result;
     }
     
-    // ダメージ計算を行う処理
-    public static function damageCalc( $winner, $loser, $typeData )
+    // ダメージ量の計算処理
+    public static function damageCalc( $winner, $typeData )
     {
+	// ダメージ割合用変数
+	$damagePer = mt_rand( 80, 120 ) * 0.01;
+	
 	// 勝った方の 'hand' によって処理を行う
         switch( $winner['hand'] )
 	{
 	    // 'goo' の場合
             case $typeData['goo']:
+		// 'gooAtk' に 元データ 'cGooAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
+                $winner['gooAtk'] = (int)($winner['cGooAtk'] * $damagePer);
+                break;
+	    
+	    // 'cho' の場合	    
+            case $typeData['cho']:
+		// 'choAtk' に 元データ 'cChoAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
+                 $winner['choAtk'] = (int)($winner['cChoAtk'] * $damagePer);
+                break;
+	    
+	    // 'paa' の場合    
+            case $typeData['paa']:
+		// 'paaAtk' に 元データ 'cPaaAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
+                 $winner['paaAtk'] = (int)($winner['cPaaAtk'] * $damagePer);
+                break;
+	    
+            default;
+                exit;
+        }
+	
+        return $winner;	
+    }
+    
+    // ダメージ計算を行う処理
+    public static function hpCalc( $winner, $loser, $typeData )
+    {
+	
+	// 勝った方の 'hand' によって処理を行う
+        switch( $winner['hand'] )
+	{
+	    // 'goo' の場合
+            case $typeData['goo']:
+		// 負けた方の 'hp' を勝った方の 'gooAtk' 分減らす
                 $loser['hp'] = $loser['hp'] - $winner['gooAtk'];
                 break;
 	    
 	    // 'cho' の場合	    
             case $typeData['cho']:
+		// 負けた方の 'hp' を勝った方の 'choAtk' 分減らす		
                 $loser['hp'] = $loser['hp'] - $winner['choAtk'];
                 break;
 	    
 	    // 'paa' の場合    
             case $typeData['paa']:
+		// 負けた方の 'hp' を勝った方の 'paaAtk' 分減らす		
                 $loser['hp'] = $loser['hp'] - $winner['paaAtk'];
                 break;
 	    

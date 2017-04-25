@@ -39,11 +39,12 @@ class battleController extends BaseGameController
         // ボタンが押されたらバトル処理を行う
         if ( isset( $_GET["sub1"] ) )
 	{
-            // 押されたボタンのデータを Chara の 'hand' に格納            
+            // 押されたボタンのデータを Chara の 'hand' に格納  
+	    // 'goo' / 'cho' / 'paa' のどれかが入る
             $CharaData['hand'] = htmlspecialchars( $_GET["sub1"], ENT_QUOTES, "UTF-8" );
             
-            // 敵キャラデータを元に、Enemy の 'hand' を選択
-	    // 'goo' / 'cho' 
+            // 敵キャラデータを元に、Enemy の 'hand' を格納
+	    // 'goo' / 'cho' / 'paa' のどれかが入る
             $EnemyData['hand']= BattleLib::setEnmHand( $EnemyData, $TypeData );
             
             // 勝敗処理
@@ -56,12 +57,18 @@ class battleController extends BaseGameController
 	    {
 		// 'win' の場合
                 case $ResultData['win']:
-                    $EnemyData['hp'] = BattleLib::damageCalc( $CharaData, $EnemyData, $TypeData );
+		    // 自キャラデータを元にダメージ量を計算		    
+		    $CharaData = BattleLib::damageCalc( $CharaData, $TypeData );
+		    // 変動したダメージ量を元にダメージ処理後の敵キャラHPを計算		    
+                    $EnemyData['hp'] = BattleLib::hpCalc( $CharaData, $EnemyData, $TypeData );
                     break;
 		
  		// 'lose' の場合               
                 case $ResultData['lose']:
-                    $CharaData['hp'] = BattleLib::damageCalc( $EnemyData, $CharaData, $TypeData );
+		    // 敵キャラデータを元にダメージ量を計算
+		    $EnemyData = BattleLib::damageCalc( $EnemyData, $TypeData );
+		    // 変動したダメージ量を元にダメージ処理後の自キャラHPを計算
+                    $CharaData['hp'] = BattleLib::hpCalc( $EnemyData, $CharaData, $TypeData );
                     break;
 		
                 // 'draw' の場合
