@@ -5,8 +5,7 @@ class AdminController extends BaseGameController
 {
     /**
      * TOP画面表示
-     * 
-     */
+     **/
     public function index()
     {
         //Libraly
@@ -22,7 +21,7 @@ class AdminController extends BaseGameController
 	$userId = \Request::input('userId');
 	$user = $this->Model->exec('User', 'getById', $userId );
 	if( !$user ) return $this->Lib->redirect('admin');
-	
+
 	//名前変更の場合
 	if( \Request::input('rename') ){
 	    $newName = \Request::input('newName');

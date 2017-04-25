@@ -17,7 +17,7 @@ class BaseGameController extends Controller
 	    return;
 	}
 	//ユーザー認証
-	$userId = 2; //cookieから取ってくる
+	$userId = 1; //cookieから取ってくる
 	$commonData['user'] =  $this->Lib->exec('User', 'userAuth', false, $userId); 
 
 	//現在時刻をセット

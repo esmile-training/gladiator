@@ -1,8 +1,8 @@
 <?php
-/* 
+/*
  * uChara用モデル
  * 作成者：松井 勇樹
- * 最終更新日：2017/04/21
+ * 最終更新日：2017/04/25
  */
 
 // 名前空間
@@ -18,9 +18,9 @@ class UCharaModel extends \App\Model\BaseGameModel
 	{
 		// SQLに接続する
 		$sql = <<< EOD
-						SELECT *
-						FROM uChara
-						WHERE uId = {$userId}
+			SELECT *
+			FROM uChara
+			WHERE uId = {$userId}
 EOD;
 		return $this->select($sql);
 	}
@@ -30,11 +30,11 @@ EOD;
 	 */
 	public function getById($uCharaId)
 	{
-			// SQLに接続する
+		// SQLに接続する
 		$sql = <<< EOD
-						SELECT *
-						FROM uChara
-						WHERE id = {$uCharaId}
+			SELECT *
+			FROM uChara
+			WHERE id = {$uCharaId}
 EOD;
 		// 最初に一致したものを返す
 		return $this->select($sql,'first');

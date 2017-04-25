@@ -2,7 +2,7 @@
 /*
  * キャラ選択コントローラー
  * 製作者：松井 勇樹
- * 最終更新日:2017/04/21
+ * 最終更新日:2017/04/25
  */
 
 // 名前空間の使用宣言
@@ -39,9 +39,19 @@ class SelectCharaController extends BaseGameController
 		$selectedChara = $this->Model->exec('UChara','getById',$charaId);
 
 		var_dump($selectedChara);
+
+		// 要素ごとに切り分ける。
+		$uCharaId = $selectedChara['id'];
+		$hp = $selectedChara['cHp'];
+		$gooAtk = $selectedChara['cGooAtk'];
+		$choAtk = $selectedChara['cChoAtk'];
+		$paaAtk = $selectedChara['cPaaAtk'];
+
+		// データをDBへインサートする
+		$this->Model->exec('User','insertChara',array($uCharaId,$hp,$gooAtk,$choAtk,$paaAtk));
+
+		// ステージ選択(エネミー選択)へリダイレクトする
 		
-		// きちんとデータを受け取れていたら、要素に切り分けてインサートする。
-		// DBに該当データが無い時の処理を作る。
 	}
 }
 
