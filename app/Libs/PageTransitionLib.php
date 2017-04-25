@@ -3,8 +3,9 @@ namespace App\Libs;
 
 class PageTransitionLib extends BaseGameLib
 {
-    public function  pagetransition()
+    public function  pageTransition()
     {
+	
 	//　next, back, fullnext, fullbackボタンが押された時の代入変数
 	$inputrank = 0;
 	
@@ -72,6 +73,7 @@ class PageTransitionLib extends BaseGameLib
 	    // 初期値には０を代入
 	    $inputrank = [0];
 	}
+	
 
 	return $inputrank;
     }

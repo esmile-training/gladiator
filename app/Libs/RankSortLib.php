@@ -3,7 +3,7 @@ namespace App\Libs;
 
 class RankSortLib extends BaseGameLib
 {
-    public function ranksort( $inputrank, $userId )
+    public function rankSort( $inputrank, $userId )
     {
 	// $rankchange = filter_input(INPUT_COOKIE, 'rankchange');
 	var_dump($inputrank);

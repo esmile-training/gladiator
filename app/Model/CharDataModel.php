@@ -10,7 +10,7 @@ class CharDataModel extends BaseGameModel
     {
 $sql =  <<< EOD
 	SELECT *
-	FROM uChar
+	FROM uChara
 	WHERE uid = {$userId}
 EOD;
 	return parent::select($sql, 'first');

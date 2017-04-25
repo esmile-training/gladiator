@@ -8,16 +8,17 @@ class RankingController extends BaseGameController
 	{
 	    
 	    // ページ読み込み時に実行
-	    $this->Lib->exec('FirstLoading', 'index');
+	    $rankingData = $this->Lib->exec('FirstLoading', 'index');
 	    
 	    // 順位ページの切り替え
-	    $inputrank = $this->Lib->exec('PageTransition', 'pagetransition');
+	    $inputRank = $this->Lib->exec('PageTransition', 'pageTransition');
 	    
 	    // 総合成績を降順にソート
-	    $sortrank = $this->Lib->exec('RankSort', 'ranksort', [$inputrank, $this->user['id']]);
+	    $sortRank = $this->Lib->exec('RankSort', 'rankSort', [$inputRank, $this->user['id']]);
 
 	    // 並べ替えたものを代入
-	    $rank['rank'] = $sortrank;
+	    $rank['rank'] = $sortRank;
+	    $rank['rankingData'] = $rankingData;
 	    
 	    // ビューヘ渡す
 	    return view('ranking', $rank);

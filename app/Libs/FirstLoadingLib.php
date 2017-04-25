@@ -22,22 +22,19 @@ class FirstLoadingLib extends BaseGameLib
 	    if (isset($totalRank) && $totalRank == 0) { $rankChange = filter_input(INPUT_GET, 'total'); } 
 	    if (isset($weekRank) && $weekRank == 1) { $rankChange = filter_input(INPUT_GET, 'week'); }
 	    if (!isset($totalRank) && !isset($weekRank)) { $rankChange = 0; } 
-
-	    // クッキーにランクの切り替えをセットする。
-	    setcookie('rankChange', $rankChange);
-
 	    
 	    // 最下位のデータを取得
-	    $bottomRank = $this->Model->exec('Ranking', 'bottomAcquisition');
+	    $bottomData = $this->Model->exec('Ranking', 'bottomAcquisition');
+	    $rankingData['bottomPoint'] = $bottomData[0]['totalPoint'];
 	    
 	    // 登録者数を取得
 	    $userCount = $this->Model->exec('Ranking', 'idRegistrationNumber');
+	    $rankingData['count'] = floor(($userCount[0]['count']/10));
 	    
-	    // 最下位の最新総合獲得ポイントを取得
-	    setcookie('bottom', $bottomRank[0]['totalPoint']);
+	    // 総合と週間の切り替え
+	    $rankingData['rankChange'] = $rankChange;
 	    
-	    // ユーザーのランキング総数を取得
-	    setcookie('count', $userCount[0]['count']);
+	    return $rankingData;
     }
 
 }
