@@ -38,29 +38,6 @@ $sql =  <<< EOD
 EOD;
 	$this->insert($sql);
     }
-     public function getByCharaId()
-    {
-$sql = <<< EOD
-    
-            SELECT *
-            FROM mChar;
-EOD;
-            return parent::select($sql,'all');
-    }
-    public function getByCharaNameId($nameId)
-    {
-  
-    $sql = <<< EOD
-    
-            SELECT *
-            FROM mCharaName
-            WHERE id = {$nameId}
-            
-EOD;
-            return parent::select($sql,'first');   
-        
-    }
-
     /*
     *	ユーザ削除
     */
@@ -85,4 +62,27 @@ $sql =  <<< EOD
 EOD;
 	$this->update($sql);
     }
+     //キャラの作成
+     public function createChara($uCharaId,$uCharaName,$uCharaLastName,$hp,$atk1,$atk2,$atk3)
+     {
+$sql =  <<< EOD
+    INSERT INTO  uChara 
+    VALUES (
+	NULL,
+	'1',
+        '{$uCharaId}',
+        '{$uCharaName}・{$uCharaLastName}',
+	'1',
+        '10',
+        '{$hp}',
+        '{$atk1}',
+        '{$atk2}',
+        '{$atk3}',
+        NULL,
+        NULL
+    );
+EOD;
+        var_dump($sql);
+	$this->insert($sql);   
+     }      
 }
