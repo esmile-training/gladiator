@@ -9,7 +9,7 @@ class RankingModel extends BaseGameModel
     /*
     *	chardata取得
     */
-    public function getByrank( $pushbtn )
+    public function getByrank($pushbtn)
     {
 	
 $sql =  <<< EOD

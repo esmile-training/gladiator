@@ -1,12 +1,12 @@
 <?php
 namespace App\Libs;
 
-class RankSortLib extends BaseGameLib
+class GetPageLib extends BaseGameLib
 {
-    public function rankSort( $inputrank, $userId )
+    public function userRank($page, $userId)
     {
 	// $rankchange = filter_input(INPUT_COOKIE, 'rankchange');
-	var_dump($inputrank);
+	var_dump($page);
 	
 	// DB接続
 	$getrank = $this->Model->exec('Ranking', 'getByrank', $userId);
@@ -15,11 +15,12 @@ class RankSortLib extends BaseGameLib
 	$userrank = array_search($userId, array_column($getrank, 'userId'));
 	
 	// ランキング取得時、中間ではなく、上位十位以内だった場合
-	if($getrank[11]['userId'] != $userId && 10 > $userrank){
-	    
-
-	    foreach ($getrank as $key => $value) {
-		if($key < 10){
+	if($getrank[11]['userId'] != $userId && 10 > $userrank)
+	{
+	    foreach ($getrank as $key => $value)
+	    {
+		if($key < 10)
+		{
 		    $sortrank[$value['name']] = $value;
 		}
     	    }
