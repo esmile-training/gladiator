@@ -23,11 +23,11 @@ class BaseGameController extends Controller
 
 	//現在時刻をセット
 	$commonData['nowTime'] = (is_null($commonData['user']['debugDate']))?date('Y-m-d H:i:s', time()) : $commonData['user']['debugDate'];
-	
+
 	//汎用変数をセット
 	foreach( $commonData as $key => $val )
 	{
-	    $this->viewData[$key] = $this->$key = $val;	    
+	    $this->viewData[$key] = $this->$key = $val;   
 	}
 
     }

@@ -6,12 +6,12 @@ class TrainingModel extends BaseGameModel
      /*
      * データベースからキャラの情報取得
      */
-    public function getUChara()
+    public function getUserChara()
     {
 $sql =  <<< EOD
 	SELECT *
-	FROM uChar
-	WHERE uid = 2
+	FROM uChara
+	WHERE uId = 1
         LIMIT 10
 EOD;
         $result = $this->select($sql, 'all');
@@ -21,12 +21,12 @@ EOD;
     /*
      * データベースからコーチの情報取得
      */
-    public function getUCoach()
+    public function getUserCoach()
     {
          {
 $sql =  <<< EOD
-	SELECT cname,cattr,chp,catk1,catk2,catk3
-	FROM uChar
+	SELECT id,uCoachId,state
+	FROM uCoach
         LIMIT 3
 EOD;
 	return $this->select($sql, 'all');
@@ -37,22 +37,21 @@ EOD;
     /*
      * データベースに訓練の時間と訓練中フラグを挿入
      */
-    public function setTime($userId,$charId)
+    public function setFinishDate($uCharaId,$uCoachId,$trainingStartDate,$trainingFinishDate)
     {
-	$time = date('Y-m-d H:i:s', time());
-	$testTime = $time('Y-m-d H:i+30:s', time());
 	
-	$sql =  <<< EOD
-	INSERT INTO training
+$sql =  <<< EOD
+	INSERT INTO uTraining
 	values(
 	NULL,
-	{$userId},
-	{$charId},
-	'{$time}',
-	'{$testTime}',
+	{$uCharaId},
+	{$uCoachId},
+	'{$trainingStartDate}',
+	'{$trainingFinishDate}',
 	1
 	    );
 EOD;
+	var_dump($sql);
 	$this->insert($sql);
     }
 }
