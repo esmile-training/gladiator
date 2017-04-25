@@ -12,15 +12,12 @@
 		キャラクター一覧
 </div>
 
-<div>
-	{{var_dump($viewData['charaList'])}}
-</div>
-
 {{--所持キャラクターをすべて表示する--}}
-<form action="{{APP_URL}}selectChara/pickUpChara" method="get">
+<form action="{{APP_URL}}selectChara/setChara" method="get">
 		<div>
 				@foreach($viewData['charaList'] as $chara)
-						<input type="radio" name="uCharaID[]" value="{{$chara['id']}}">{{$chara['cName']}}<br>
+						<input type="radio" name="uCharaId" value="{{$chara['id']}}">{{$chara['cName']}}<br>
+						{{var_dump($chara)}}
 				@endforeach
 				<input type="submit" value="決定">
 		</div>

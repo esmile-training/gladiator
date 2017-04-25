@@ -15,11 +15,11 @@ class SelectCharaController extends BaseGameController
 	public function index()
 	{
 		// ユーザーIDを取得する
-		$userID = $this->viewData['user']['id'];
-		var_dump($userID);
+		$userId = $this->viewData['user']['id'];
+		var_dump($userId);
 
 		// DBのキャラクターデータを取得する
-		$alluChara = $this->Model->exec('SelectChara','getUserChara',$userID);
+		$alluChara = $this->Model->exec('UChara','getUserChara',$userId);
 		// viewDataへ取得したキャラクターを送る
 		$this->viewData['charaList'] = $alluChara;
 
@@ -30,11 +30,18 @@ class SelectCharaController extends BaseGameController
 	/*
 	 *  IDからキャラクターを特定する
 	 */
-	public function pickUpChara()
+	public function setChara()
 	{
-		// 選択されたIDの取得をする
-		$charaID = $_GET;
-		var_dump($charaID);
+		// キャラクターIDの取得をする
+		$charaId = $_GET['uCharaId'];
+
+		// IDと一致するキャラクターをDBから取得する
+		$selectedChara = $this->Model->exec('UChara','getById',$charaId);
+
+		var_dump($selectedChara);
+		
+		// きちんとデータを受け取れていたら、要素に切り分けてインサートする。
+		// DBに該当データが無い時の処理を作る。
 	}
 }
 
