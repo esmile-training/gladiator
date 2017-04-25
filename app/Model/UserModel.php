@@ -20,20 +20,6 @@ EOD;
 	return $this->select($sql, 'first');
     }
     
-    public function getByName( $userName = false )
-    {
-	if( !$userName && isset($this->user['name']) ){
-	    $userName = $this->user['name'];
-	}
-
-$sql =  <<< EOD
-	SELECT *
-	FROM user
-	WHERE name = '{$userName}'
-EOD;
-	return $this->select($sql, 'first');
-    }
-
     /*
     *	ユーザ作成
     */
@@ -43,7 +29,8 @@ $sql =  <<< EOD
 INSERT INTO user ( `name`, `createDate` )
 VALUES("{$userName}", NOW());
 EOD;
-	$this->insert($sql);
+	$result = $this->insert($sql);
+	return $result;
     }
 
     /*
