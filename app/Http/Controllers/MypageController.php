@@ -7,5 +7,4 @@ class MypageController extends BaseGameController
     {
 	    return viewWrap('mypage', $this->viewData);
     }
-
 }

@@ -32,8 +32,8 @@ class TopController extends BaseGameController
 	} 
 	else 
 	{
-	    //無ければエディット画面に遷移する。
-	    return view('Edit');
+	    //無ければエディット画面にリダイレクトする。
+	    return $this->Lib->redirect('edit');
 	}
     }
 }

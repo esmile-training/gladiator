@@ -8,7 +8,7 @@ class BaseGameModel
     /*
      * Model呼び出し
      */
-    public function exec( $className, $method, $arg = false, $userId = null )
+    public function exec( $className, $method, $arg = false, $userId = null, $userName = null )
     {
 	//インスタンス化する
 	$className = '\\App\\Model\\'.$className.'Model';
@@ -24,14 +24,15 @@ class BaseGameModel
 	    $modelClass->user = null;
 	    $modelClass->nowTime = date( 'Y-m-d H:i:s', time() );
 	}
-
 	//引数の数によって出しわけ
 	if( is_array($arg) ){
 	    return call_user_func_array( array($modelClass , $method), $arg );
 	}elseif( $arg ){
 	    return call_user_func_array( array($modelClass , $method), array($arg) );
-	}else{
+	}elseif( $userId ){
 	    return $modelClass->$method($userId);
+	}else{
+	    return $modelClass->$method($userName);
 	}
     }
 
@@ -41,7 +42,6 @@ class BaseGameModel
     public function select( $sql, $range = 'all' )
     {
 	$response = $this->dbapi($sql, 'select');
-
 	//jsonから配列に変換
 	$result = json_decode($response, true);
 	if($result){
@@ -55,7 +55,7 @@ class BaseGameModel
 		return $result;
 	    }
 	} else {
-	    print( $response );
+	    print( $response.'<br>' );
 	    \Log::error('Showing user profile for user: '.$response);
 	}
     }

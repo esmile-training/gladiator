@@ -29,7 +29,7 @@ EOD;
 $sql =  <<< EOD
 	SELECT *
 	FROM user
-	WHERE name = {$userName}
+	WHERE name = '{$userName}'
 EOD;
 	return $this->select($sql, 'first');
     }

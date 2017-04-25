@@ -12,10 +12,10 @@ class EditController extends BaseGameController
     public function addUser()
     {
 	$player = $_GET["teamName"];
-	$this->Model->exec('User', 'createUser', false, $player);
-	$userId = $this->Model->exec('User','getByName',"",$player);
-	var_dump($userId);
-//	setcookie('userId',$userId,time() + 60*60*24*365*20, '/');
-//	return $this->Lib->redirect('mypage', 'index');
+	$this->Model->exec('User', 'createUser', false, null, $player);
+	$userId = $this->Model->exec('User','getByName',false, null, $player);
+	setcookie('userId',$userId['id'],time() + 60*60*24*365*20, '/');
+	var_dump($_COOKIE['userId']);
+	return $this->Lib->redirect('mypage', 'index');
     }
 }

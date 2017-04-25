@@ -55,8 +55,8 @@ switch($num){
   //fputs($f, $c);
   //fclose($f);
 ?>
-<p>ようこそ、<?php echo $_COOKIE['username'] ?>さん</p>
-<p>ようこそ、<?php echo $_SESSION['username']?>さん</p>
+<p>ようこそ、<?php echo $_COOKIE['userId'] ?>さん</p>
+<!-- <p>ようこそ、<?php //echo $_SESSION['username']?>さん</p> -->
 <!-- <p>あなたは <?php //echo $c; ?> 人目のお客様です。</p> -->
 <?php //ハイパーリンク  ?>
 <div>
