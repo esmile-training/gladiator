@@ -24,12 +24,18 @@ class TopController extends BaseGameController
 	if(isset($_COOKIE['userId']))
 	{
 	    //DB更新
-	    //$this->Model->exec('User', 'createUser');
 	    $this->Model->exec('User' , 'getById' , "" , $_COOKIE['userId']);
-
-	    //リダイレクト
-	    return $this->Lib->redirect('mypage', 'index');
-	} 
+	    
+	    $battleFlag = $this->Model->exec('User' , 'getByIdfromuBattleInfo' , "" , $_COOKIE['userId']);
+	    if($battleFlag['delFlag'] === "0"){
+		//試合中
+		//ユーザーに処理を聞く//ポップアップ
+		return viewWrap('Error');
+	    } else {
+		//リダイレクト
+		return $this->Lib->redirect('mypage', 'index');
+	    } 
+	}
 	else 
 	{
 	    //無ければエディット画面にリダイレクトする。

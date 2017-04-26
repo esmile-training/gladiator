@@ -20,14 +20,28 @@ EOD;
 	return $this->select($sql, 'first');
     }
     
+    public function getByIdfromuBattleInfo($userId = false)
+    {
+	if( !$userId && isset($this->user['id']) ){
+	    $userId = $this->user['id'];
+	}
+
+$sql =  <<< EOD
+	SELECT *
+	FROM uBattleInfo
+	WHERE userId = {$userId}
+EOD;
+	return $this->select($sql, 'first');
+    }
+    
     /*
     *	ユーザ作成
     */
     public function createUser($userName = null)
     {
 $sql =  <<< EOD
-INSERT INTO user ( `name`, `createDate` )
-VALUES("{$userName}", NOW());
+	INSERT INTO user ( `name`, `createDate` )
+	VALUES("{$userName}", NOW());
 EOD;
 	$result = $this->insert($sql);
 	return $result;

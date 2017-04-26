@@ -1,8 +1,6 @@
-<!-- 永続的Cookeiの仮置き -->
-<?php //setcookie('userId',"",time() + 60*60*24*365*20, '/'); ?>
 
 <div>
-     <a href="{{APP_URL}}top/login?uid=123456">
+     <a href="{{APP_URL}}top/login">
 	ログイン
     </a>
 </div>

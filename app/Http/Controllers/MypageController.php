@@ -5,6 +5,6 @@ class MypageController extends BaseGameController
 {
     public function index()
     {
-	    return viewWrap('mypage', $this->viewData);
+	return viewWrap('mypage', $this->viewData);
     }
 }
