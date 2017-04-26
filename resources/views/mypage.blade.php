@@ -1,5 +1,5 @@
 <div>
-    <a href="{{APP_URL}}gacha">
+    <a href="{{APP_URL}}gachaselect">
 	ガチャ
     </a>
 </div>
