@@ -16,7 +16,7 @@
 <form action="{{APP_URL}}selectChara/setChara" method="get">
 	<div>
 		@foreach($viewData['charaList'] as $chara)
-			<input type="radio" name="uCharaId" value="{{$chara['id']}}">{{$chara['cName']}}<br>
+			<input type="radio" name="uCharaId" value="{{$chara['id']}}">{{$chara['name']}}<br>
 			{{var_dump($chara)}}
 		@endforeach
 		<input type="submit" value="決定">

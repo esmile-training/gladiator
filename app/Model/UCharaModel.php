@@ -20,7 +20,7 @@ class UCharaModel extends \App\Model\BaseGameModel
 		$sql = <<< EOD
 			SELECT *
 			FROM uChara
-			WHERE uId = {$userId}
+			WHERE userID = {$userId}
 EOD;
 		return $this->select($sql);
 	}

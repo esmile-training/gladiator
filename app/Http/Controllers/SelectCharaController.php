@@ -15,16 +15,24 @@ class SelectCharaController extends BaseGameController
 	public function index()
 	{
 		// ユーザーIDを取得する
-		$userId = $this->viewData['user']['id'];
+		$userId = $this->user['id'];
 		var_dump($userId);
-
 		// DBのキャラクターデータを取得する
 		$alluChara = $this->Model->exec('UChara','getUserChara',$userId);
-		// viewDataへ取得したキャラクターを送る
-		$this->viewData['charaList'] = $alluChara;
 
-		// ビューへデータを渡す
-		return viewWrap('selectChara',$this->viewData);
+		// DBからキャラクターを取得できたかを確認する
+		if(isset($alluChara))
+		{
+			// viewDataへ取得したキャラクターを送る
+			$this->viewData['charaList'] = $alluChara;
+			// ビューへデータを渡す
+			return viewWrap('selectChara',$this->viewData);
+		}
+		else
+		{
+			// キャラクターのデータが無ければ、マイページへリダイレクトする
+			$this->Lib->redirect('mypage','index');
+		}
 	}
 
 	/*
@@ -34,24 +42,22 @@ class SelectCharaController extends BaseGameController
 	{
 		// キャラクターIDの取得をする
 		$charaId = $_GET['uCharaId'];
-
 		// IDと一致するキャラクターをDBから取得する
 		$selectedChara = $this->Model->exec('UChara','getById',$charaId);
-
 		var_dump($selectedChara);
 
 		// 要素ごとに切り分ける。
 		$uCharaId = $selectedChara['id'];
-		$hp = $selectedChara['cHp'];
-		$gooAtk = $selectedChara['cGooAtk'];
-		$choAtk = $selectedChara['cChoAtk'];
-		$paaAtk = $selectedChara['cPaaAtk'];
+		$hp = $selectedChara['hp'];
+		$gooAtk = $selectedChara['gooAtk'];
+		$choAtk = $selectedChara['choAtk'];
+		$paaAtk = $selectedChara['paaAtk'];
 
 		// データをDBへインサートする
 		$this->Model->exec('UChara','insertChara',array($uCharaId,$hp,$gooAtk,$choAtk,$paaAtk));
 
 		// ステージ選択(エネミー選択)へリダイレクトする
-		
+
 	}
 }
 
