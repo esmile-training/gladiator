@@ -9,7 +9,7 @@ class TopController extends BaseGameController
      */
     public function index()
     {
-        return viewWrap('top', $this->viewData);
+	return viewWrap('top', $this->viewData);
     }
 
     /**
@@ -26,7 +26,7 @@ class TopController extends BaseGameController
 	    //DB更新
 	    $this->Model->exec('User' , 'getById' , "" , $_COOKIE['userId']);
 	    
-	    $battleFlag = $this->Model->exec('User' , 'getByIdfromuBattleInfo' , "" , $_COOKIE['userId']);
+	    $battleFlag = $this->Model->exec('User' , 'getBattleFlug' , "" , $_COOKIE['userId']);
 	    if($battleFlag['delFlag'] === "0"){
 		//試合中
 		//ユーザーに処理を聞く//ポップアップ

@@ -20,7 +20,7 @@ EOD;
 	return $this->select($sql, 'first');
     }
     
-    public function getByIdfromuBattleInfo($userId = false)
+    public function getBattleFlag($userId = false)
     {
 	if( !$userId && isset($this->user['id']) ){
 	    $userId = $this->user['id'];
