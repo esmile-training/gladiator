@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 class RankingController extends BaseGameController
 {
     public $rankingData;
+    public $execRank = [];
     
     public function __construct()
     {
@@ -47,6 +48,7 @@ class RankingController extends BaseGameController
 
     public function index()
     {
+	
 	// ページャーの取得
 	$nextPage = filter_input(INPUT_GET, 'next');
 	$backPage = filter_input(INPUT_GET, 'back');
@@ -54,19 +56,67 @@ class RankingController extends BaseGameController
 	$firstPage = filter_input(INPUT_GET, 'first');
 	
 	// 配列化
-	$getPage = [$nextPage, $backPage, $lastPage, $firstPage];
+	$pushPage = [$nextPage, $backPage, $lastPage, $firstPage];
 	
 	// ページの切り替え
-	$inputRank = $this->Lib->exec('Pager', 'valueConf', $getPage);
-	var_dump($inputRank);
-	// ページの取得
-	$sortRank = $this->Lib->exec('GetPage', 'userRank', [$inputRank, $this->user['id']]);
+	if(!isset($nextPage) && !isset($backPage) && !isset($lastPage) && !isset($firstPage))
+	{
+	    $userRank = $this->Model->exec('Ranking', 'userRank', $this->user['id']);
+	    $page = RankingController::userRanking($userRank);
+	}else{
+	    $moldValue = $this->Lib->exec('Pager', 'valueConf', $pushPage);
+	    $page = $this->Model->exec('Ranking', 'nextPage', $moldValue);
+	}
 
 	// 並べ替えたものを代入
-	$this->viewData['ranking'] = $sortRank;
+	$this->viewData['ranking'] = $page;
 	$this->viewData['rankingData'] = $this->rankingData;
 
 	// ビューヘ渡す
 	return viewWrap('ranking', $this->viewData);
+    }
+    
+    
+    
+    
+    public function userRanking($inputRank)
+    {
+	$userrank = array_search($this->user['id'], array_column($inputRank, 'userId'));
+
+	// ランキング取得時、中間ではなく、上位十位以内だった場合
+	if($inputRank[9]['userId'] != $this->user['id'] && 10 > $userrank)
+	{
+	    foreach ($inputRank as $key => $value)
+	    {
+		if($key < 10)
+		{
+		    $execRank[$value['name']] = $value;
+		    var_dump($inputRank[$key]);
+		}
+    	    }
+	}elseif($inputRank[9]['userId'] == $this->user['id'] && count($inputRank) != 20){
+	// ランキング取得時中間にいて尚且つ、取得合計数が20と異なるとき
+	    foreach ($inputRank as $key => $value)
+	    {
+		if(count($inputRank) - 11 < $key)
+		{
+		    $execRank[$value['name']] = $value;
+		    var_dump($inputRank[$key]);
+		}
+	    }
+	}elseif($inputRank[9]['userId'] == $this->user['id']){
+	// ランキング取得時中間にだけいるとき
+	    foreach ($inputRank as $key => $value)
+	    {
+		if(4 < $key && $key < 15)
+		{
+		    $execRank[$value['name']] = $value;
+		    $data = $inputRank[$key]['rank'];   
+		}
+	    }
+	}
+	$this->rankingData['pager'] = floor(($data / 10)) * 10;
+	
+	return $execRank;
     }
 }

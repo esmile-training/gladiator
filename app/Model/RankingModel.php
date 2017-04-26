@@ -16,7 +16,7 @@ $sql =  <<< EOD
 SELECT rank.userId,rank.totalPoint,user.name, rank FROM 
     ((
 	SELECT * FROM (SELECT userId ,totalPoint, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.totalPoint > a.totalPoint) AS `rank` FROM `uRanking` a ORDER BY rank) as rank
-	WHERE rank>= (
+	WHERE rank> (
 
 	SELECT rank
 	FROM (SELECT userId ,totalPoint, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.totalPoint > a.totalPoint) AS `rank` FROM `uRanking` a WHERE userId = $pushbtn) as rank
@@ -28,7 +28,7 @@ UNION ALL
 
     (
 	SELECT * FROM (SELECT userId ,totalPoint, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.totalPoint > a.totalPoint) AS `rank` FROM `uRanking` a ORDER BY rank) as rank
-	WHERE rank< (
+	WHERE rank<= (
 
 	SELECT rank
 	FROM (SELECT userId ,totalPoint, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.totalPoint > a.totalPoint) AS `rank` FROM `uRanking` a WHERE userId = $pushbtn) as rank
@@ -46,7 +46,21 @@ EOD;
 	return parent::select($sql, 'all');
     }
     
+    public function nextPage($page)
+    {
+	
+$sql = <<< EOD
+	SELECT userId ,totalPoint, user.name,
+	(SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.totalPoint > a.totalPoint) 
+	AS `rank` FROM `uRanking` a 
+	left outer join user
+	on userId = user.id
+	ORDER BY totalPoint DESC LIMIT 10 OFFSET $page;
+EOD;
+return parent::select($sql);
+    }
     
+
     /*
      * rankの最下位のポイントを取得
      */
