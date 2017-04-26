@@ -1,7 +1,7 @@
 <div>
-    {{ $viewData['PcData']['cName'] }} のHP {{ $viewData['PcData']['hp'] }}
+	{{ $viewData['PcData']['name'] }} のHP {{ $viewData['PcData']['bHp'] }}
 </div>
 
 <div>
-    {{ $viewData['EnmData']['name'] }} のHP {{ $viewData['EnmData']['hp'] }}    
+	{{ $viewData['EnmData']['name'] }} のHP {{ $viewData['EnmData']['bHp'] }}    
 </div>

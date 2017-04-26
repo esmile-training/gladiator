@@ -3,13 +3,13 @@
 </div>
 
 @if ($viewData['EnmData']['hp']<=0)
-    <div>勝利！</div>
+<div>勝利！</div>
 @else
-    <div>敗北...</div>
+<div>敗北...</div>
 @endif
-    
+
 <div>
     <a href="{{APP_URL}}battleStanby">
-	バトルスタンバイ画面
+		バトルスタンバイ画面
     </a>
 </div>

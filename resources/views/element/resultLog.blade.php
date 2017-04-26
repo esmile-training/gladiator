@@ -1,5 +1,5 @@
 <div>
-    {{ $viewData['PcData']['cName'] }}
+    {{ $viewData['PcData']['name'] }}
     は    
     {{ $viewData['PcData']['hand'] }}
     を出した！<br />
