@@ -1,5 +1,6 @@
 <div>
-    <?php var_dump($viewData); ?>
+    <a href="{{APP_URL}}gachaselect">
+	ガチャ
+    </a>
 </div>
-
 

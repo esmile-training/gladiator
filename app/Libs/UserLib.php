@@ -1,26 +1,27 @@
 <?php
+
 namespace App\Libs;
 
-class UserLib extends BaseGameLib
-{
-    /*
-     * ユーザ認証
-     */
-    public function userAuth()
-    {
-	$userData = $this->getUser( $this->user['id'] );
+class UserLib extends BaseGameLib {
+	/*
+	 * ユーザ認証
+	 */
 
-	//DBに情報がなければユーザ作成
-	if( !$userData ) $this->redirect('top', 'login');
-	return $userData;
-    }
+	public function userAuth() {
+		$userData = $this->getUser($this->user['id']);
 
-    /*
-     * ユーザ認証
-     */
-    public function getUser( $userId )
-    {
-	$userData = $this->Model->exec('User', 'getById', false, $userId);
-	return $userData;
-    }
+		//DBに情報がなければユーザ作成
+		if (!$userData)
+			$this->redirect('top', 'login');
+		return $userData;
+	}
+
+	/*
+	 * ユーザ認証
+	 */
+
+	public function getUser($userId) {
+		$userData = $this->Model->exec('User', 'getById', false, $userId);
+		return $userData;
+	}
 }
