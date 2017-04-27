@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
 class TrainingController extends BaseGameController
-{   
+{
 
     public function index()
     {
@@ -16,11 +15,11 @@ class TrainingController extends BaseGameController
     
     public function coachSelect()
     {
-	 //uCharaIdをGETしviewDataに保持
+	//uCharaIdをGETしviewDataに保持
 	$uCharaId = (int)filter_input(INPUT_GET,"uCharaId");
 	$this->viewData['uCharaId'] = $uCharaId;
 	
-	 //所持しているコーチのデータを持ってくる
+	//所持しているコーチのデータを持ってくる
 	$this->viewData['coachList'] = $this->Model->exec('Training', 'getUserCoach', false, $this->user['id']);
 	
 	return viewWrap('coachSelect',$this->viewData);
@@ -28,21 +27,21 @@ class TrainingController extends BaseGameController
     
     public function setTrainingFinishDate()
     {
-	 //viewに渡したuCharaIdと選択されたuCoachIdをGET
+	//訓練時刻をGETする
+	$trainingTime = (int)filter_input(INPUT_GET,"trainingTime");
+	
+	//viewに渡したuCharaIdと選択されたuCoachIdをGET
 	$uCoachId = (int)filter_input(INPUT_GET,"uCoachId");
 	$uCharaId = (int)filter_input(INPUT_GET,"uCharaId");
 	
-	$trainingTime = (int)filter_input(INPUT_GET,"trainingTime");
-	
-	var_dump($uCharaId);
-	var_dump($uCoachId);
-	var_dump($trainingTime);exit;
-	
-	//訓練開始時刻と終了時刻を入れる
+	//訓練開始時刻を入れる
 	$trainingStartDate = $this->viewData['nowTime'];
-	$trainingFinishDate = $this->viewData['nowTime'];
-
-	//uCharaIdとuCoachIdとtrainingFinishDateをModelに渡す。
+	//訓練開始時刻をタイムスタンプに直し時間を加算
+	$trainingFinishTs = strtotime("$trainingStartDate +$trainingTime hours");
+	//タイムスタンプにした時間を元に戻す
+	$trainingFinishDate = date('Y-m-d H:i:s',$trainingFinishTs);
+	
+	//uCharaIdとuCoachIdとtrainingFinishDateをModelに渡す
 	$this->Model->exec('Training','setFinishDate',array($uCharaId,$uCoachId,$trainingStartDate,$trainingFinishDate));
 	
 	//リダイレクト

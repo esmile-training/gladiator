@@ -11,7 +11,8 @@ class TrainingModel extends BaseGameModel
 $sql =  <<< EOD
 	SELECT *
 	FROM uChara
-	WHERE uId = 1
+	WHERE userId = 1
+	AND trainingState = 0
         LIMIT 10
 EOD;
         $result = $this->select($sql, 'all');
@@ -23,23 +24,32 @@ EOD;
      */
     public function getUserCoach()
     {
-         {
 $sql =  <<< EOD
 	SELECT id,uCoachId,state
 	FROM uCoach
         LIMIT 3
 EOD;
 	return $this->select($sql, 'all');
-        }
     }
     
+    /*
+     * トレーニングの終了時刻を取得
+     */
+    public function getTrainingDate()
+    {
+$sql =  <<< EOD
+	SELECT uCharaId, finishDate
+	FROM uTraining
+EOD;
+	return $this->select($sql, 'all');
+    }
     
     /*
      * データベースに訓練の時間と訓練中フラグを挿入
      */
     public function setFinishDate($uCharaId,$uCoachId,$trainingStartDate,$trainingFinishDate)
     {
-	
+	$trainingState = 1;
 $sql =  <<< EOD
 	INSERT INTO uTraining
 	values(
@@ -48,10 +58,24 @@ $sql =  <<< EOD
 	{$uCoachId},
 	'{$trainingStartDate}',
 	'{$trainingFinishDate}',
-	1
+	{$trainingState}
 	    );
 EOD;
-	var_dump($sql);
 	$this->insert($sql);
+	$this->uCharaStateChange($uCharaId,$trainingState);
     }
+    
+    /*
+     * キャラクターが訓練しているかどうかのフラグを変更する
+     */
+    public function uCharaStateChange($uCharaId)
+    {
+$sql =  <<< EOD
+	UPDATE uChara
+	SET    trainingState = 0
+	WHERE  id = {$uCharaId}
+EOD;
+	$this->update($sql);
+    }
+    
 }

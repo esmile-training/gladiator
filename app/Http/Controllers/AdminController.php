@@ -5,7 +5,6 @@ class AdminController extends BaseGameController
 {
     /**
      * TOP画面表示
-     * 
      */
     public function index()
     {
@@ -13,6 +12,7 @@ class AdminController extends BaseGameController
         $this->viewData['memberList'] = $this->Lib->exec('DevelopMember', 'getMemberConf');
         return viewWrap('admin', $this->viewData);
     }
+    
     /*
      * ユーザ編集
      */
@@ -28,7 +28,7 @@ class AdminController extends BaseGameController
 	{
 	    $newName = \Request::input('newName');
 	    if( !$newName ) return $this->Lib->redirect('admin');
-	    $this->Model->exec('User', 'setUserName', array($userId, $newName) );
+	    $this->Model->exec('User', 'setUserName', array($userId, $newName));
 	}
 	
 	//ユーザ削除の場合
