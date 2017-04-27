@@ -27,3 +27,9 @@
 	test01
     </a>
 </div>
+
+<div>
+    <a href="{{APP_URL}}mypage">
+	test01
+    </a>
+</div>
