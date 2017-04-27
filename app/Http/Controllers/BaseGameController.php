@@ -3,10 +3,10 @@ namespace App\Http\Controllers;
 
 class BaseGameController extends Controller
 {
-    public $viewData;
+		public $viewData;
 
-    public function __construct()
-    {
+		public function __construct()
+		{
 		//BaseGameLibをセット
 		$this->Lib = new \App\Libs\BaseGameLib();
 		//BaseGameModelをセット

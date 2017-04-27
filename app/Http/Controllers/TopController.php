@@ -18,28 +18,23 @@ class TopController extends BaseGameController
      * @param uid
      * @return Redirect
      */
-    public function login()
-    {
-	//cookieの有無を確認
-	if(isset($_COOKIE['userId']))
+	public function login()
 	{
-	    //DB更新
-	    $this->Model->exec('User' , 'getById' , "" , $_COOKIE['userId']);
-	    
-	    $battleFlag = null;	//$this->Model->exec('User' , 'getBattleFlag' , "" , $_COOKIE['userId']);
-	    if($battleFlag['delFlag'] === "0"){
-			//試合中
-			//ユーザーに処理を聞く//ポップアップ
-			return viewWrap('Error');
-	    } else {
+	//cookieの有無を確認
+		if(!isset($_COOKIE['userId']))
+		{
+			//無ければエディット画面にリダイレクトする。
+			return $this->Lib->redirect('edit');
+		} else {
+			$battleFlag = $this->Model->exec('User' , 'getBattleFlag' , "" , $_COOKIE['userId']);
+			if($battleFlag['delFlag'] === "0")
+			{
+				//試合中
+				//ユーザーに処理を聞く//ポップアップ
+				return viewWrap('Error');
+			}	
 			//リダイレクト
 			return $this->Lib->redirect('mypage', 'index');
-	    } 
+		}
 	}
-	else 
-	{
-	    //無ければエディット画面にリダイレクトする。
-	    return $this->Lib->redirect('edit');
-	}
-    }
 }
