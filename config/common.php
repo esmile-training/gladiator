@@ -4,6 +4,7 @@ return [
     'ignoreAuthController' => [
 	'top',
 	'admin',
+	'edit',
     ],
 
 ];

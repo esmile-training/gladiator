@@ -19,24 +19,32 @@ $sql =  <<< EOD
 EOD;
 	return $this->select($sql, 'first');
     }
+    
+    public function getBattleFlag($userId = false)
+    {
+	if( !$userId && isset($this->user['id']) ){
+	    $userId = $this->user['id'];
+	}
 
+$sql =  <<< EOD
+	SELECT *
+	FROM uBattleInfo
+	WHERE userId = {$userId}
+EOD;
+	return $this->select($sql, 'first');
+    }
+    
     /*
     *	ユーザ作成
     */
-    public function createUser()
+    public function createUser($userName = null)
     {
-	$time = date('Y-m-d H:i:s', time());
 $sql =  <<< EOD
-    INSERT INTO  user 
-    VALUES (
-	NULL,
-	'テストユーザー',
-	 NULL,
-	 '{$time}',
-	 '{$time}'
-    );
+	INSERT INTO user ( `name`, `createDate` )
+	VALUES("{$userName}", NOW());
 EOD;
-	$this->insert($sql);
+	$result = $this->insert($sql);
+	return $result;
     }
 
     /*
