@@ -1,6 +1,5 @@
 <div>
-    <?php var_dump($viewData); ?>
-</div>
-<div>
-  <p>aaaa</p>
+    <?php
+	print_r(array_column($viewData, "name"));
+    ?>
 </div>
