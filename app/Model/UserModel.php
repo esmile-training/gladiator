@@ -71,4 +71,30 @@ $sql =  <<< EOD
 EOD;
 	$this->update($sql);
     }
+	    //キャラの作成
+    public function createChara($uCharaId, $uCharaName, $uCharaLastName,$ratio, $narrow, $hp, $atk1, $atk2, $atk3) {
+        $sql = <<< EOD
+    INSERT INTO  uChara 
+    VALUES (
+    NULL,
+    '1',
+        '{$uCharaId}',
+        '{$uCharaName}・{$uCharaLastName}',
+    '1',
+        '10',
+    '{$ratio}',
+        '{$narrow}',
+        '{$hp}',
+        '{$atk1}',
+        '{$atk2}',
+        '{$atk3}',
+        '0',
+        NULL,
+        NULL
+    );
+EOD;
+        //var_dump($sql);
+        $this->insert($sql);
+    }
+
 }
