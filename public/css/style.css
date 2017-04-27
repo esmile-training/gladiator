@@ -1,0 +1,203 @@
+@charset "UTF-8";
+/*CSS Document*/
+/*------------------------------
+共通設定
+------------------------------*/
+/* Webフォント */
+@font-face {
+	font-family:"NotoSansCJKjp-Black";
+	src:url("../fonts/NotoSansCJKjp-Black.otp") format("opentype");
+	font-weight:normal;
+	font-style:normal;
+}
+@font-face {
+	font-family:"NotoSansCJKjp-Bold";
+	src:url("../fonts/NotoSansCJKjp-Bold.otp") format("opentype");
+	font-weight:normal;
+	font-style:normal;
+}
+@font-face {
+	font-family:"NotoSansCJKjp-DemiLight";
+	src:url("../fonts/NotoSansCJKjp-DemiLight.otp") format("opentype");
+	font-weight:normal;
+	font-style:normal;
+}
+@font-face {
+	font-family:"NotoSansCJKjp-Light";
+	src:url("../fonts/NotoSansCJKjp-Light.otp") format("opentype");
+	font-weight:normal;
+	font-style:normal;
+}
+@font-face {
+	font-family:"NotoSansCJKjp-Medium";
+	src:url("../fonts/NotoSansCJKjp-Medium.otp") format("opentype");
+	font-weight:normal;
+	font-style:normal;
+}
+@font-face {
+	font-family:"noto_sans_cjk_jpthin";
+	src:url("../fonts/notosanscjkjp-thin.otp") format("opentype");
+	font-weight:normal;
+	font-style:normal;
+}
+@font-face {
+	font-family:"NotoSansCJKjp-Regular";
+	src:url("../fonts/NotoSansCJKjp-Regular.otf") format("opentype");
+	font-weight:normal;
+	font-style:normal;
+}
+@font-face {
+	font-family:"NotoSansCJKjp-Thin";
+	src:url("../fonts/NotoSansCJKjp-Thin.otp") format("opentype");
+	font-weight:normal;
+	font-style:normal;
+}
+@font-face {
+	font-family:"NotoSansMonoCJKjp-Bold";
+	src:url("../fonts/NotoSansMonoCJKjp-Bold.otp") format("opentype");
+	font-weight:normal;
+	font-style:normal;
+}
+@font-face {
+	font-family:"NotoSansMonoCJKjp-Regular";
+	src:url("../fonts/NotoSansMonoCJKjp-Regular.otp") format("opentype");
+	font-weight:normal;
+	font-style:normal;
+}
+/* Webフォント終了 */
+/*clearfix*/
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+*,*:before,*:after {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    box-sizing:border-box;
+}
+/* ボディ */
+body{
+    background-color:#ffffff;
+    color:#000000;
+    font-family:"NotoSansCJKjp-Regular";
+	font-size:100%;
+    height:100%;
+	line-height:1.5;
+	text-align:justify;
+	text-justify:inter-ideograph;
+    width:100%;
+}
+/* リンク  */
+a{
+    color:#000;
+    display:inline-block;
+	text-decoration:none;
+    transition: 0.5s;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-o-transition: 0.5s;
+	-ms-transition: 0.5s;
+    width:100%;
+}
+a:hover{
+    cursor:pointer;
+	text-decoration:underline;
+}
+img{
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+}
+img:hover{
+    opacity:0.7;
+}
+.logo a:hover,.banner a:hover,.image_box a:hover{
+    opacity:0.7;
+}
+#s_nav li:hover,
+#g_nav li:hover {
+	background-color:#eee;
+}
+/* ドラッグ禁止 */
+img{
+    pointer-events:none;
+    user-select: none;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+}
+.image_box{
+	position:relative;
+	text-align:center;
+	z-index:1;
+}
+.image_box img{
+    width:100%;
+}
+/*wrapper*/
+#wrapper {
+    background: #ffffaf;
+    height: 100%;
+    max-height: 854px;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 100%;
+    max-width: 480px;
+}
+
+/*#wrapper {
+    background: #ffffaf;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 100%;
+    max-width: 480px;
+}*/
+
+/*header*/
+.header_button{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    text-align: center;
+    padding: 0px;
+    border-spacing: 2px 0;
+}
+
+.header_button li{
+    height: 44px;
+    display: table-cell;
+    vertical-align: middle;
+    background: #eee;
+}
+
+/*footer*/
+.footer_button{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    text-align: center;
+    list-style: none;
+    padding: 0px;
+    width: 100%;
+    height: 54px;
+    border-collapse: separate;
+    border-spacing: 2px 0;
+    margin: 5px auto 5px auto;
+    text-align: center;
+}
+
+.footer_button li{
+    height: 44px;
+    display: table-cell;
+    vertical-align: middle;
+    background: #eee;
+}
+
+/*---------------------------------
+共通設定終了
+---------------------------------*/

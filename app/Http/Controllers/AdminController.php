@@ -12,6 +12,7 @@ class AdminController extends BaseGameController
         $this->viewData['memberList'] = $this->Lib->exec('DevelopMember', 'getMemberConf');
         return viewWrap('admin', $this->viewData);
     }
+    
     /*
      * ユーザ編集
      */
@@ -23,14 +24,16 @@ class AdminController extends BaseGameController
 	if( !$user ) return $this->Lib->redirect('admin');
 
 	//名前変更の場合
-	if( \Request::input('rename') ){
+	if( \Request::input('rename') )
+	{
 	    $newName = \Request::input('newName');
 	    if( !$newName ) return $this->Lib->redirect('admin');
-	    $this->Model->exec('User', 'setUserName', array($userId, $newName) );
+	    $this->Model->exec('User', 'setUserName', array($userId, $newName));
 	}
 	
 	//ユーザ削除の場合
-	if( \Request::input('delete') ){
+	if( \Request::input('delete'))
+	{
 	    $this->Model->exec('User', 'deleteUser', $userId );
 	}
 

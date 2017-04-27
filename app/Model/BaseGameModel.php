@@ -3,12 +3,10 @@ namespace App\Model;
 
 class BaseGameModel
 {
-    public $nowTime;
-    public $user;
     /*
      * Model呼び出し
      */
-    public function exec( $className, $method, $arg = false, $userId = null )
+    public function exec( $className, $method, $arg = false, $userId = null, $userName = null )
     {
 	//インスタンス化する
 	$className = '\\App\\Model\\'.$className.'Model';
@@ -18,20 +16,18 @@ class BaseGameModel
 	if( $userId ){
 	    $userModel = new UserModel();
 	    $modelClass->user = $userModel->getById( $userId );
-	    //現在時刻をセット
-	    $modelClass->nowTime = ( is_null($modelClass->user['debugDate']) )? date('Y-m-d H:i:s', time()) :$modelClass->user['debugDate'];
 	}else{
 	    $modelClass->user = null;
-	    $modelClass->nowTime = date( 'Y-m-d H:i:s', time() );
 	}
-
 	//引数の数によって出しわけ
 	if( is_array($arg) ){
 	    return call_user_func_array( array($modelClass , $method), $arg );
 	}elseif( $arg ){
 	    return call_user_func_array( array($modelClass , $method), array($arg) );
+	}elseif( $userId ){
+	    return $modelClass->$method($userId);
 	}else{
-	    return $modelClass->$method( );
+	    return $modelClass->$method($userName);
 	}
     }
 
@@ -41,7 +37,6 @@ class BaseGameModel
     public function select( $sql, $range = 'all' )
     {
 	$response = $this->dbapi($sql, 'select');
-
 	//jsonから配列に変換
 	$result = json_decode($response, true);
 	if($result){
@@ -55,7 +50,7 @@ class BaseGameModel
 		return $result;
 	    }
 	} else {
-	    print( $response );
+	    print( $response.'<br>' );
 	    \Log::error('Showing user profile for user: '.$response);
 	}
     }
@@ -91,7 +86,7 @@ class BaseGameModel
     public function dbapi( $sql, $type = 'dbapi' )
     {
 	$params = ['sql' => $sql];
-	
+
 	//開始
 	$curl = curl_init(DB_API_URL.$type.'.php');
 	//オプションセット
@@ -107,7 +102,4 @@ class BaseGameModel
 	return $response;
 
     }
-    
-    
-
 }
