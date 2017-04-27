@@ -1,0 +1,56 @@
+@charset "UTF-8";
+/*CSS Document*/
+
+/*MyPage*/
+
+/*content*/
+
+#mypage_content{
+    width: 100%;
+    max-width: 720px;
+    margin: 80px 0px;
+}
+
+.mypage_character_img{
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    margin: 0px auto;
+    
+}
+
+.mypage_character_img img{
+    width: 100%;
+    max-width: 320px;
+    border-width: 8px;
+    border-color: #a79c5d;
+    border-style: ridge;
+}
+
+.mypage_character_name{
+    border-width: 8px;
+    border-color: #979797;
+    border-style: ridge;
+    width: 100%;
+    max-width: 240px;
+    height: 48px;
+    margin: 24px auto 0px auto;
+    line-height: 2;
+    
+}
+
+.comment{
+    border-width: 8px;
+    border-color: #979797;
+    border-style: ridge;
+    width: 100%;
+    max-width: 400px;
+    height: 80px;
+    margin: 24px auto 0px auto;
+    text-align: left;
+    padding: 8px;
+ }
+
+
+
+
