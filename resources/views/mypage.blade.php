@@ -1,6 +1,5 @@
 <div>
-    <a href="{{APP_URL}}gachaselect">
-	ガチャ
-    </a>
+    <?php
+	print_r(array_column($viewData, "name"));
+    ?>
 </div>
-
