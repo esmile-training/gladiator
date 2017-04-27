@@ -10,12 +10,14 @@ class TrainingLib extends BaseGameLib
     {
 	var_dump($test);
 	$trainingDateCheck = $this->Model->exec('Training', 'getTrainingDate', false, $this->user['id']);
-	
-	foreach( $trainingDateCheck as $key => $val)
+	if(isset($trainingDateCheck))
 	{
-	    if($val['finishDate'] <= $test)
+	    foreach( $trainingDateCheck as $key => $val)
 	    {
-		$this->Model->exec( 'Training', 'uCharaStateChange', array($key), $this->user['id']);
+		if($val['finishDate'] <= $test)
+		{
+		    $this->Model->exec( 'Training', 'uCharaStateChange', array($key), $this->user['id']);
+		}
 	    }
 	}
     }
