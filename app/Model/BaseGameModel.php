@@ -8,7 +8,7 @@ class BaseGameModel
     /*
      * Model呼び出し
      */
-    public function exec( $className, $method, $arg = false, $userId = null, $userName = null )
+    public function exec( $className, $method, $arg = false, $userId = null )
     {
 	//インスタンス化する
 	$className = '\\App\\Model\\'.$className.'Model';
@@ -29,10 +29,8 @@ class BaseGameModel
 	    return call_user_func_array( array($modelClass , $method), $arg );
 	}elseif( $arg ){
 	    return call_user_func_array( array($modelClass , $method), array($arg) );
-	}elseif( $userId ){
-	    return $modelClass->$method($userId);
 	}else{
-	    return $modelClass->$method($userName);
+	    return $modelClass->$method($userId);
 	}
     }
 
