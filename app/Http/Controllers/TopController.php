@@ -1,26 +1,15 @@
 <?php
-
 namespace App\Http\Controllers;
-//Model
-use App\Model\UserModel;
-//Lib
-use App\Libs\DevelopMemberLib;
 
 class TopController extends BaseGameController
 {
     /**
      * TOP画面表示
-     * 
+     *
      */
     public function index()
     {
-        //configからとってくる
-        $membersConf          =   \Config::get('members.profile');
-
-        //Libraly
-        $this->viewData['memberList'] = DevelopMemberLib::sortMemberConf( $membersConf );
-
-        return viewWrap('top', $this->viewData);
+	return viewWrap('top', $this->viewData);
     }
 
     /**
@@ -31,10 +20,26 @@ class TopController extends BaseGameController
      */
     public function login()
     {
-	//DB更新
-	UserModel::createUser();
-
-	//リダイレクト
-	return $this->redirect('mypage', 'index');
+	//cookieの有無を確認
+	if(isset($_COOKIE['userId']))
+	{
+	    //DB更新
+	    $this->Model->exec('User' , 'getById' , "" , $_COOKIE['userId']);
+	    
+	    $battleFlag = null;	//$this->Model->exec('User' , 'getBattleFlag' , "" , $_COOKIE['userId']);
+	    if($battleFlag['delFlag'] === "0"){
+			//試合中
+			//ユーザーに処理を聞く//ポップアップ
+			return viewWrap('Error');
+	    } else {
+			//リダイレクト
+			return $this->Lib->redirect('mypage', 'index');
+	    } 
+	}
+	else 
+	{
+	    //無ければエディット画面にリダイレクトする。
+	    return $this->Lib->redirect('edit');
+	}
     }
 }

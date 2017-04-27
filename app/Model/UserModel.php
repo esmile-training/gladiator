@@ -6,59 +6,95 @@ class UserModel extends BaseGameModel
     /*
     *	ユーザ1件取得
     */
-    public static function getById( $userId  )
+    public function getById( $userId = false )
     {
+	if( !$userId && isset($this->user['id']) ){
+	    $userId = $this->user['id'];
+	}
+
 $sql =  <<< EOD
 	SELECT *
 	FROM user
 	WHERE id = {$userId}
 EOD;
-	return parent::select($sql, 'first');
+	return $this->select($sql, 'first');
     }
+    
+    public function getBattleFlag($userId = false)
+    {
+	if( !$userId && isset($this->user['id']) ){
+	    $userId = $this->user['id'];
+	}
 
+$sql =  <<< EOD
+	SELECT *
+	FROM uBattleInfo
+	WHERE userId = {$userId}
+EOD;
+	return $this->select($sql, 'first');
+    }
+    
     /*
     *	ユーザ作成
     */
-    public static function createUser()
+    public function createUser($teamName = null)
     {
-	$time = date('Y-m-d H:i:s', time());
 $sql =  <<< EOD
-    INSERT INTO  user 
-    VALUES (
-	NULL,
-	'テストユーザー',
-	 NULL,
-	 '{$time}',
-	 '{$time}'
-    );
+	INSERT INTO user ( `name`, `createDate` )
+	VALUES("{$teamName}", NOW());
 EOD;
-	parent::insert($sql);
+	$result = $this->insert($sql);
+	return $result;
     }
 
     /*
     *	ユーザ削除
     */
-    public static function deleteUser( $userId )
+    public function deleteUser( $userId )
     {
-	$time = date('Y-m-d H:i:s', time());
 $sql =  <<< EOD
     DELETE FROM user 
     WHERE id = {$userId};
 EOD;
-	parent::delete($sql);
+	$this->delete($sql);
     }
 
     /*
     *	ユーザ名変更
     */
-    public static function setUserName( $userId, $newName )
+    public function setUserName( $userId, $newName )
     {
-	$time = date('Y-m-d H:i:s', time());
 $sql =  <<< EOD
     UPDATE  user
     SET	    name = "{$newName}"
     WHERE   id = {$userId};
 EOD;
-	parent::update($sql);
+	$this->update($sql);
     }
+	    //キャラの作成
+    public function createChara($uCharaId, $uCharaName, $uCharaLastName,$ratio, $narrow, $hp, $atk1, $atk2, $atk3) {
+        $sql = <<< EOD
+    INSERT INTO  uChara 
+    VALUES (
+    NULL,
+    '1',
+        '{$uCharaId}',
+        '{$uCharaName}・{$uCharaLastName}',
+    '1',
+        '10',
+    '{$ratio}',
+        '{$narrow}',
+        '{$hp}',
+        '{$atk1}',
+        '{$atk2}',
+        '{$atk3}',
+        '0',
+        NULL,
+        NULL
+    );
+EOD;
+        //var_dump($sql);
+        $this->insert($sql);
+    }
+
 }

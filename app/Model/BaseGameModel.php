@@ -4,12 +4,37 @@ namespace App\Model;
 class BaseGameModel
 {
     /*
+     * Model呼び出し
+     */
+    public function exec( $className, $method, $arg = false, $userId = null )
+    {
+	//インスタンス化する
+	$className = '\\App\\Model\\'.$className.'Model';
+	$modelClass = new $className();
+
+	//ユーザ情報がある場合は登録
+	if( $userId ){
+	    $userModel = new UserModel();
+	    $modelClass->user = $userModel->getById( $userId );
+	}else{
+	    $modelClass->user = null;
+	}
+	//引数の数によって出しわけ
+	if( is_array($arg) ){
+	    return call_user_func_array( array($modelClass , $method), $arg );
+	}elseif( $arg ){
+	    return call_user_func_array( array($modelClass , $method), array($arg) );
+	}else{
+	    return $modelClass->$method($userId);
+	}
+    }
+
+    /*
      * SELECT
      */
-    public static function select( $sql, $range = 'all' )
+    public function select( $sql, $range = 'all' )
     {
-	$response = self::dbapi($sql, 'select');
-
+	$response = $this->dbapi($sql, 'select');
 	//jsonから配列に変換
 	$result = json_decode($response, true);
 	if($result){
@@ -23,7 +48,7 @@ class BaseGameModel
 		return $result;
 	    }
 	} else {
-	    print( $response );
+	    print( $response.'<br>' );
 	    \Log::error('Showing user profile for user: '.$response);
 	}
     }
@@ -31,35 +56,35 @@ class BaseGameModel
     /*
      * UPDATE
      */
-    public static function update( $sql )
+    public function update( $sql )
     {
-	return self::dbapi($sql, 'update');
+	return $this->dbapi($sql, 'update');
     }
    
     /*
      * DELETER
      */
-    public static function delete( $sql )
+    public function delete( $sql )
     {
-	return self::dbapi($sql, 'delete');
+	return $this->dbapi($sql, 'delete');
     }
 
     /*intval($str)
      * INSERT
      */
-    public static function insert( $sql )
+    public function insert( $sql )
     {
-	$result = self::dbapi($sql, 'insert');
+	$result = $this->dbapi($sql, 'insert');
 	return intval($result);
     }
 
     /*
      * API実行
      */
-    public static function dbapi( $sql, $type = 'dbapi' )
+    public function dbapi( $sql, $type = 'dbapi' )
     {
 	$params = ['sql' => $sql];
-	
+
 	//開始
 	$curl = curl_init(DB_API_URL.$type.'.php');
 	//オプションセット
@@ -75,7 +100,4 @@ class BaseGameModel
 	return $response;
 
     }
-    
-    
-
 }

@@ -1,0 +1,26 @@
+@charset "UTF-8";
+/*CSS Document*/
+/*training*/
+
+#training-header{
+    width: 100%;
+    max-width: 640px;
+    height: 160px;
+    margin: 8px auto 0px auto;
+    background-color: aliceblue;
+}
+
+#trainig_content{
+    width: 100%;
+    max-width: 640px;
+    height: 400px;
+    margin: 16px auto 0 auto;
+    background-color: aliceblue;
+}
+
+#trainig_content p{
+    display: inline;
+    width: 100%;
+    max-width: 640px;
+    vertical-align: middle;
+}
