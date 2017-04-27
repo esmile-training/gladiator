@@ -27,3 +27,15 @@
 	test01
     </a>
 </div>
+
+<div>
+    <a href="{{APP_URL}}test02">
+	test02
+    </a>
+</div>
+
+<div>
+    <a href="{{APP_URL}}test03">
+	test03
+    </a>
+</div>

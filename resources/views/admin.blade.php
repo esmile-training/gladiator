@@ -1,6 +1,8 @@
-{{-- css  --}}
+{{-- css --}}
 @include('common/css', ['file' => 'admin'])
+{{-- js --}}
 @include('common/js', ['file' => 'admin'])
+
 
 {{-- 画像 --}}
 <div>
@@ -8,13 +10,13 @@
 </div>
 
 {{-- ユーザエディット  --}}
-<div class="userEdit">
+<div class="admin_userEdit">
     <form action="{{APP_URL}}admin/editUser" method="get">
 	{{-- ユーザID入力 --}}
 	<div>
 	    ユーザID：<input type="text" name="userId">
 	</div>
-	
+
 	{{-- 名前変更 --}}
 	<div>
 	    <input type="text" name="newName">
@@ -29,7 +31,7 @@
 </div>
 
 {{-- 戻る  --}}
-<div class="returnLink">
+<div class="admin_returnLink">
     <a href="{{APP_URL}}top">
 	⇒TOPに戻る
     </a>
@@ -39,4 +41,18 @@
 {{-- viewParts  --}}
 @include('element/memberList')
 
-{{-- popup --}}
+
+
+
+{{-- popupボタン --}}
+<div class="modal_container">
+    <span class="md_btn my">Show modal</span>
+</div>
+
+{{-- popupウインドウ --}}
+@include('popup/wrap', ['template' => 'my'])
+
+
+
+{{-- 前のページ --}}
+<a href="javascript:history.back();">前のページに戻る</a>
