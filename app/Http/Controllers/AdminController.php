@@ -30,7 +30,7 @@ class AdminController extends BaseGameController
 	    if( !$newName ) return $this->Lib->redirect('admin');
 	    $this->Model->exec('User', 'setUserName', array($userId, $newName));
 	}
-	
+
 	//ユーザ削除の場合
 	if( \Request::input('delete'))
 	{
