@@ -10,7 +10,22 @@ class battleController extends BaseGameController {
 	// データを表示する関数
 	public function index(){
 		
+		// setData関数を呼び出し、データをセット		
 		$this->setData();
+		
+		// どちらかのHPが0以下になったらバトル終了フラグを立てる
+		if ( $this->EnemyData['bHp'] <= 0 || $this->CharaData['bHp'] <= 0 )
+		{
+			// BattleData の 'delFlag' を立てる (viewでリザルト画面への遷移判別に使用)
+			$this->BattleData['delFlag'] = 1;
+
+			// uBattleInfo の 'delFlag' を立てる処理
+			$this->Model->exec('Battle', 'UpdateInfoFlag', array($this->BattleData));
+			// uBattleChara の 'delFlag' を立てる処理
+			$this->Model->exec('Battle', 'UpdateCharaFlag', $this->BattleData['charaId']);
+			// uBattleEnemy の 'delFlag' を立てる処理
+			$this->Model->exec('Battle', 'UpdateEnemyFlag', $this->BattleData['enemyId']);
+		}
 		
 		// 全てのデータを viewData に渡す
 		$this->viewData['BattleData']	= $this->BattleData;
@@ -38,7 +53,8 @@ class battleController extends BaseGameController {
 		$this->ResultData = \Config::get('battle.resultStr');
 
 		// バトルに必要なデータをDBから読み込む処理
-		if (isset($this->userId)) {
+		if (isset($this->userId))
+		{
 			// ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
 			// BattleData にバトルデータを格納
 			$this->BattleData = $this->Model->exec('Battle', 'getBattleData', $this->userId);			
@@ -58,9 +74,11 @@ class battleController extends BaseGameController {
 	// データを更新する関数
 	public function updateData() {
 
+		// setData関数を呼び出し、データをセット
 		$this->setData();
 
-		if(isset($_GET["sub1"])){
+		if(isset($_GET["sub1"]))
+		{
 			// 押されたボタンのデータを Chara の 'hand' に格納
 			// 'goo' / 'cho' / 'paa' のどれかが入る
 			$this->CharaData['hand'] = htmlspecialchars($_GET["sub1"], ENT_QUOTES, "UTF-8");
@@ -75,7 +93,8 @@ class battleController extends BaseGameController {
 
 			// ダメージ処理
 			// CharaData の 'result' によって処理を行う
-			switch ($this->CharaData['result']) {
+			switch ($this->CharaData['result'])
+			{
 				// 'win' の場合
 				case $this->ResultData['win']:
 					// 自キャラデータを元にダメージ量を計算
@@ -99,20 +118,6 @@ class battleController extends BaseGameController {
 				default;
 					exit;
 			}
-		}
-
-		// どちらかのHPが0以下になったらバトル終了フラグを立てる
-		if ( $this->EnemyData['bHp'] <= 0 || $this->CharaData['bHp'] <= 0 )
-		{
-			// BattleData の 'delFlag' を立てる (viewでリザルト画面への遷移判別に使用)
-			$this->BattleData['delFlag'] = 1;
-
-			// uBattleInfo の 'delFlag' を立てる処理
-			$this->Model->exec('Battle', 'UpdateInfoFlag', array($this->BattleData));
-			// uBattleChara の 'delFlag' を立てる処理
-			$this->Model->exec('Battle', 'UpdateCharaFlag', $this->BattleData['charaId']);
-			// uBattleEnemy の 'delFlag' を立てる処理
-			$this->Model->exec('Battle', 'UpdateEnemyFlag', $this->BattleData['enemyId']);
 		}
 
 		// バトルキャラデータの更新処理

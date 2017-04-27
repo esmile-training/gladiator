@@ -6,7 +6,6 @@ class BattleModel extends BaseGameModel {
 
 	// uBattleInfo DBからバトルデータ取得
 	public function getBattleData($userId = false) {
-
 $sql = <<< EOD
 	SELECT *
 	FROM uBattleInfo
@@ -18,7 +17,6 @@ EOD;
 
 	// uBattleChara DBからバトル用自キャラデータ取得
 	public function getBattleCharaData($battleCharaId = false) {
-
 $sql = <<< EOD
 	SELECT *
 	FROM uBattleChara
@@ -33,7 +31,6 @@ EOD;
 
 	// uBattleEnemy DBからバトル用敵キャラデータ取得
 	public function getBattleEnemyData($battleEnemyId = false) {
-
 $sql = <<< EOD
 	SELECT *
 	FROM uBattleEnemy

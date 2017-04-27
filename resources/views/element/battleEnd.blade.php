@@ -2,7 +2,7 @@
     試合結果
 </div>
 
-@if ($viewData['EnmData']['hp']<=0)
+@if ($viewData['EnmData']['bHp'] <= 0)
 <div>勝利！</div>
 @else
 <div>敗北...</div>

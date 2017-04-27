@@ -6,7 +6,9 @@ class BattleLib extends BaseGameLib {
 
 	// 敵の各属性を出す確率ステータスに基づいた手をランダムに選択する処理
 	public static function setEnmHand($EnemyData, $typeData) {
+		
 		$result = [];   //データ返却用変数の初期化
+		
 		// ランダムに1～99の数値を選択し格納
 		$Hand = rand(1, 99);
 
@@ -31,13 +33,17 @@ class BattleLib extends BaseGameLib {
 
 	// バトルの処理を格納する処理
 	public static function battleResult($pcHand, $enmHand, $typeData, $resultData) {
+		
 		$result = [];   // データ返却用変数の初期化
+		
 		// Chara の 'hand' によって処理を行う
-		switch ($pcHand) {
+		switch ($pcHand)
+		{
 			// 'goo' の場合
 			case $typeData['goo']:
 				// Enemy の 'hand' によって処理を行う
-				switch ($enmHand) {
+				switch ($enmHand)
+				{
 					// 'goo' の場合
 					case $typeData['goo']:
 						// result に 'draw' を格納
@@ -65,7 +71,8 @@ class BattleLib extends BaseGameLib {
 			// 'cho' の場合
 			case $typeData['cho']:
 				// Enemy の 'hand' によって処理を行う
-				switch ($enmHand) {
+				switch ($enmHand)
+				{
 					// 'goo' の場合
 					case $typeData['goo']:
 						// result に 'lose' を格納
@@ -93,7 +100,8 @@ class BattleLib extends BaseGameLib {
 			// 'paa' の場合
 			case $typeData['paa']:
 				// Enemy の 'hand' によって処理を行う
-				switch ($enmHand) {
+				switch ($enmHand)
+				{
 					// 'goo' の場合
 					case $typeData['goo']:
 						// result に 'win' を格納
@@ -127,7 +135,8 @@ class BattleLib extends BaseGameLib {
 	}
 
 	// ダメージ量の計算処理
-	public static function damageCalc($winner, $typeData) {
+	public static function damageCalc($winner, $typeData)
+	{
 		// config にあるダメージ変化量の最小値と最大値を格納
 		$randData = \Config::get('battle.damagePer');
 
@@ -135,7 +144,8 @@ class BattleLib extends BaseGameLib {
 		$damagePer = mt_rand($randData['min'], $randData['max']) * 0.01;
 
 		// 勝った方の 'hand' によって処理を行う
-		switch ($winner['hand']) {
+		switch ($winner['hand'])
+		{
 			// 'goo' の場合
 			case $typeData['goo']:
 				// 'gooAtk' に 元データ 'cGooAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
@@ -162,10 +172,11 @@ class BattleLib extends BaseGameLib {
 	}
 
 	// ダメージ計算を行う処理
-	public static function hpCalc($winner, $loser, $typeData) {
-
+	public static function hpCalc($winner, $loser, $typeData)
+	{
 		// 勝った方の 'hand' によって処理を行う
-		switch ($winner['hand']) {
+		switch ($winner['hand'])
+		{
 			// 'goo' の場合
 			case $typeData['goo']:
 				// 負けた方の 'hp' を勝った方の 'gooAtk' 分減らす
@@ -187,6 +198,8 @@ class BattleLib extends BaseGameLib {
 			default;
 				exit;
 		}
+		
+		// HPが0より下回った場合、HPを0に戻す処理
 		if( $loser['bHp'] < 0 )
 		{
 			$loser['bHp'] = 0;
