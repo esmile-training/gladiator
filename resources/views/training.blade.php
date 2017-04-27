@@ -1,3 +1,5 @@
+{{--element/characterListから呼び出し--}}
+@include('element/characterList')
 @include('common/css', ['file' => 'training'])
 
 

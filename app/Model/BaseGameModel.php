@@ -102,7 +102,4 @@ class BaseGameModel
 	return $response;
 
     }
-    
-    
-
 }

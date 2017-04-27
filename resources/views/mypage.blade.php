@@ -1,5 +1,6 @@
 <div>
-    <?php
-	print_r(array_column($viewData, "name"));
-    ?>
+    <a href="{{APP_URL}}training">
+	訓練所へ
+    </a>
 </div>
+

@@ -5,7 +5,7 @@ class BaseGameLib
 {
     
     public $user;
-
+    
     public function __construct()
     {
 	//BaseGameLibをセット
@@ -39,8 +39,6 @@ class BaseGameLib
 	}else{
 	    $result = $libClass->$method( );
 	}
-
-	
 	return $result;
     }
     /**

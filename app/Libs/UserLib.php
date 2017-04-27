@@ -8,7 +8,7 @@ class UserLib extends BaseGameLib
      */
     public function userAuth()
     {
-	$userData = $this->getUser( $this->user['id'] );
+	$userData = $this->getUser($this->user['id'] );
 
 	//DBに情報がなければユーザ作成
 	//if( !$userData ) $this->redirect('top', 'login');

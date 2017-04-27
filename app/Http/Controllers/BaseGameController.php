@@ -13,7 +13,8 @@ class BaseGameController extends Controller
 	$this->Model = new \App\Model\BaseGameModel();
 
 	//ユーザ認証しないコントローラ
-	if( in_array(CONTROLLER_NAME, \Config::get('common.ignoreAuthController')) ){
+	if( in_array(CONTROLLER_NAME, \Config::get('common.ignoreAuthController')))
+	{
 	    return;
 	}
 	//ユーザー認証
@@ -22,11 +23,12 @@ class BaseGameController extends Controller
 	$commonData['user'] = $this->Lib->exec('User', 'userAuth', false, $userId); 
 	
 	//現在時刻をセット
-	$commonData['nowTime'] = ( is_null($commonData['user']['debugDate']) )?date('Y-m-d H:i:s', time()) : $commonData['user']['debugDate'];
-	
-	    //汎用変数をセット
-	    foreach( $commonData as $key => $val ){
-	    $this->viewData[$key] = $this->$key = $val;	    
+	$commonData['nowTime'] = (is_null($commonData['user']['debugDate']))?date('Y-m-d H:i:s', time()) : $commonData['user']['debugDate'];
+
+	//汎用変数をセット
+	foreach( $commonData as $key => $val )
+	{
+	    $this->viewData[$key] = $this->$key = $val;   
 	    }
 	}
     }
