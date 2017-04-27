@@ -41,8 +41,9 @@ class battleController extends BaseGameController {
 	// データベースからデータをそれぞれの変数にセットする関数
 	public function setData(){
 
-		// ユーザーIDを持ってくる処理
-		$this->userId = $this->viewData['user']['id']; // 仮置き ユーザーID：5(実際はCocckieから持ってくる)
+//		// ユーザーIDを持ってくる処理
+//		$this->userId = $this->viewData['user']['id']; // 仮置き ユーザーID：5(実際はCocckieから持ってくる)
+		$this->userId = 2;
 
 		// config/battle で指定した三すくみの名前を読み込み
 		// 'goo' 'cho' 'paa' じゃんけんの三すくみで指定中
