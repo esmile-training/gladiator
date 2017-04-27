@@ -37,14 +37,13 @@ EOD;
     /*
     *	ユーザ作成
     */
-    public static function createUser($teamName = null)
+    public function createUser($teamName = null)
     {
 $sql =  <<< EOD
 	INSERT INTO user ( `name`, `createDate` )
 	VALUES("{$teamName}", NOW());
 EOD;
 	$result = $this->insert($sql);
-	var_dump($result);exit;
 	return $result;
     }
 
