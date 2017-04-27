@@ -41,9 +41,6 @@
 {{-- viewParts  --}}
 @include('element/memberList')
 
-
-
-
 {{-- popupボタン --}}
 <div class="modal_container">
     <span class="md_btn my">Show modal</span>
@@ -51,8 +48,6 @@
 
 {{-- popupウインドウ --}}
 @include('popup/wrap', ['template' => 'my'])
-
-
 
 {{-- 前のページ --}}
 <a href="javascript:history.back();">前のページに戻る</a>
