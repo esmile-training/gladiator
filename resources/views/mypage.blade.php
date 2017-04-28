@@ -5,7 +5,7 @@
 </div>
 
 <div>
-		<a href="{{APP_URL}}selectChara/index">
+		<a href="{{APP_URL}}selectChara/selectBattleChara">
 			キャラクター選択
 		</a>
 </div>

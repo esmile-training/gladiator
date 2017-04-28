@@ -13,7 +13,7 @@
 </div>
 
 {{--所持キャラクターをすべて表示する--}}
-<form action="{{APP_URL}}selectChara/identifyChara" method="get">
+<form action="{{APP_URL}}selectChara/selectArena" method="get">
 	<div>
 		@foreach($viewData['charaList'] as $chara)
 			<input type="image" src="{{CHAR_IMG_URL}}{{$chara['imgId']}}.png" alt="キャライメージ"<
