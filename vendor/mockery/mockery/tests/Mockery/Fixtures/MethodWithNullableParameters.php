@@ -27,23 +27,16 @@ class MethodWithNullableParameters
     {
     }
 
-    public function nullablePrimitive(?string $a)
-    {
-    }
+
 
     public function nonNullableSelf(self $a)
     {
     }
 
-    public function nullableSelf(?self $a)
-    {
-    }
+
 
     public function nonNullableClass(MethodWithNullableParameters $a)
     {
     }
 
-    public function nullableClass(?MethodWithNullableParameters $a)
-    {
-    }
 }

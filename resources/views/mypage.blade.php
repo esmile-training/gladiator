@@ -1,16 +1,20 @@
+{{-- css  --}}
+@include('common/css', ['file' => 'admin'])
+@include('common/js', ['file' => 'admin'])
+
 <div>
     <a href="{{APP_URL}}training">
-	è¨“ç·´æ‰€ã¸
+	ŒP—ûŠ‚Ö
     </a>
 </div>
 
 <div>
 		<a href="{{APP_URL}}selectChara/index">
-			ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼é¸æŠž
+			ƒLƒƒƒ‰ƒNƒ^[‘I‘ð
 		</a>
 </div>
 <div>
 	<a href="{{APP_URL}}gachaselect">
-			ã‚¬ãƒãƒ£
+			ƒKƒ`ƒƒ
 		</a>
 </div>
