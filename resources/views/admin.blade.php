@@ -43,11 +43,11 @@
 
 {{-- popupボタン --}}
 <div class="modal_container">
-    <span class="md_btn my">Show modal</span>
+    <span class="modal_btn a">Show modal</span>
 </div>
 
 {{-- popupウインドウ --}}
-@include('popup/wrap', ['template' => 'my'])
+@include('popup/wrap', ['template' => 'a'])
 
 {{-- 前のページ --}}
 <a href="javascript:history.back();">前のページに戻る</a>
