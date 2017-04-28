@@ -1,0 +1,101 @@
+commit 1dfc545a02208d428716fba56bffaeeb9c4086b7
+Author: masaya <mizugasira@example.com>
+Date:   Tue Apr 18 11:43:12 2017 +0900
+
+    mypage-mizugashira-day2
+
+commit 2a0db613f1f363c83272c2a3ef53595cdb82d3c3
+Author: masaya <mizugasira@example.com>
+Date:   Mon Apr 17 19:07:20 2017 +0900
+
+    mypage-ranking_mizugashira
+
+commit 77f873299aca67f1fc4b020bdadf668204ce30f4
+Author: esmile-sys <e.smile.sys.php@gmail.com>
+Date:   Mon Apr 17 15:21:47 2017 +0900
+
+    ユーザ編集
+
+commit 82246b8d01c8d8686974d9ea08bcbceb02a91c1d
+Author: esmile-sys <e.smile.sys.php@gmail.com>
+Date:   Mon Apr 17 14:53:20 2017 +0900
+
+    ユーザ編集の修正
+
+commit e7a68e4c8d5120d754cc2acd1254e9a44e24e231
+Author: esmile-sys <e.smile.sys.php@gmail.com>
+Date:   Mon Apr 17 14:19:24 2017 +0900
+
+    test(kobayashi_admin)
+
+commit 5927f85a72c7e8964e4b8b3260a00f45171bd538
+Author: esmile-sys <e.smile.sys.php@gmail.com>
+Date:   Mon Apr 17 13:37:14 2017 +0900
+
+    管理画面追加
+
+commit 3cbd3f314cc03de28514446d2536e30ee6ba8825
+Author: esmile-sys <e.smile.sys.php@gmail.com>
+Date:   Fri Apr 14 17:37:50 2017 +0900
+
+    仮置ユーザ編集機能
+
+commit 776f51375e6b37dab7349663a2df19bbfa870567
+Author: esmile-sys <e.smile.sys.php@gmail.com>
+Date:   Fri Apr 14 14:22:30 2017 +0900
+
+    DB調整
+
+commit f3292337ee0f06de318219fd4c215e2280053afb
+Author: esmile-sys <e.smile.sys.php@gmail.com>
+Date:   Thu Apr 13 09:37:42 2017 +0900
+
+    DB関連再考しなくては
+
+commit a5f77e86a565d0d855771e764a7dca6292f27c98
+Author: esmile-sys <e.smile.sys.php@gmail.com>
+Date:   Wed Apr 12 11:20:55 2017 +0900
+
+    DBAPIとかの追加_kobayashi
+
+commit cfed2bdd1041dedd1a558c4b0083c0becd19fd9e
+Author: esmile-sys <e.smile.sys.php@gmail.com>
+Date:   Tue Apr 11 11:13:16 2017 +0900
+
+    配列練習用
+
+commit ca3a0cef79fe888eee5859a254ad27aa422dc719
+Author: esmile-sys <e.smile.sys.php@gmail.com>
+Date:   Mon Apr 10 12:52:14 2017 +0900
+
+    comporser追加
+
+commit 4733b8d8bd069ed3faf466fb5cec0486fa8caf20
+Author: esmile-sys <e.smile.sys.php@gmail.com>
+Date:   Mon Apr 10 12:24:49 2017 +0900
+
+    初期設定
+
+commit eb12ac476f4d351bc4861f5aa300ab8f971e03da
+Author: esmile-sys <e.smile.sys.php@gmail.com>
+Date:   Fri Apr 7 11:56:32 2017 +0900
+
+    Top,Mypage追加
+
+commit 9a490678f8cfd7efe4661cc1a96e6da39dfdd2a7
+Author: esmile-sys <e.smile.sys.php@gmail.com>
+Date:   Fri Apr 7 10:21:16 2017 +0900
+
+    初回コミット（２回目）
+
+commit d8d1d0b6f563d9f15a6a3fc804caf36c5aacbb7f
+Author: unknown <玉寄長太>
+Date:   Sat Mar 25 16:28:13 2017 +0900
+
+    トップページ作成
+
+commit 6783112cc21f3f139691a3ece9de5903143d6ce3
+Author: unknown <村越一樹>
+Date:   Sat Dec 17 12:06:08 2016 +0900
+
+    first commit

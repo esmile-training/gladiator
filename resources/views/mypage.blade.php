@@ -1,3 +1,7 @@
+{{-- css  --}}
+@include('common/css', ['file' => 'admin'])
+@include('common/js', ['file' => 'admin'])
+
 <div>
     <a href="{{APP_URL}}training">
 	訓練所へ

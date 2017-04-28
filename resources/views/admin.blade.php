@@ -51,3 +51,12 @@
 
 {{-- 前のページ --}}
 <a href="javascript:history.back();">前のページに戻る</a>
+
+<div>
+	{-- エディット画面 --}}
+	<a href="{{APP_URL}}edit/index?">
+	エディット画面
+	</a>
+	{{-- 現在のユーザーID --}}
+	<?php if(isset($_COOKIE["userId"])) print $_COOKIE['userId']; ?>
+</div>

@@ -19,21 +19,7 @@ $sql =  <<< EOD
 EOD;
 	return $this->select($sql, 'first');
     }
-    
-    public function getBattleFlag($userId = false)
-    {
-	if( !$userId && isset($this->user['id']) ){
-	    $userId = $this->user['id'];
-	}
-
-$sql =  <<< EOD
-	SELECT *
-	FROM uBattleInfo
-	WHERE userId = {$userId}
-EOD;
-	return $this->select($sql, 'first');
-    }
-    
+        
     /*
     *	ユーザ作成
     */

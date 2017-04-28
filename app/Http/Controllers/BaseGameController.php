@@ -3,10 +3,10 @@ namespace App\Http\Controllers;
 
 class BaseGameController extends Controller
 {
-    public $viewData;
+		public $viewData;
 
-    public function __construct()
-    {
+		public function __construct()
+		{
 		//BaseGameLibをセット
 		$this->Lib = new \App\Libs\BaseGameLib();
 		//BaseGameModelをセット
@@ -18,7 +18,7 @@ class BaseGameController extends Controller
 		    return;
 		}
 		//ユーザー認証
-		//$userId = 218; //cookieから取ってくる
+		// $userId = 26; //cookieから取ってくる
 		$userId = $_COOKIE['userId'];
 		$commonData['user'] = $this->Lib->exec('User', 'userAuth', false, $userId); 
 		
