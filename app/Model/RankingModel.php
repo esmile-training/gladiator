@@ -46,7 +46,7 @@ EOD;
 	return parent::select($sql, 'all');
     }
     
-    public function nextPage($page)
+    public function rankingPager($page)
     {
 	
 $sql = <<< EOD
@@ -56,6 +56,23 @@ $sql = <<< EOD
 	left outer join user
 	on userId = user.id
 	ORDER BY totalPoint DESC LIMIT 10 OFFSET $page;
+EOD;
+return parent::select($sql);
+    }
+    
+    /*
+     * キャラランキング
+     */
+    
+    public function rankingChara($page)
+    {
+	$page == null ? $page = 0 : false;
+$sql = <<< EOD
+	SELECT hp, name,
+	(SELECT COUNT(*) + 1 FROM `uChara` b WHERE b.hp> a.hp AND userId = 26) 
+	AS `rank` FROM `uChara` a  
+        WHERE userId = 26
+	ORDER BY hp DESC LIMIT 10 OFFSET $page;
 EOD;
 return parent::select($sql);
     }
@@ -75,6 +92,19 @@ EOD;
     }
     
     /*
+     * charaの最下位を取得
+     */
+    public function bottomStatus() {
+$sql = <<< EOD
+	SELECT hp
+	FROM uChara
+	WHERE userId = 26
+	ORDER BY hp ASC LIMIT 1;
+EOD;
+	return parent::select($sql);
+    }
+    
+    /*
      * idの登録数を取得
      */
     public function idRegistrationNumber()
@@ -82,6 +112,19 @@ EOD;
 $sql = <<< EOD
 	SELECT COUNT(id) as count
 	FROM uRanking;
+EOD;
+	return parent::select($sql);
+    }
+    
+    /*
+     * charaの登録数を取得
+     */
+    public function charaCount($userId)
+    {
+	var_dump($userId);
+$sql = <<< EOD
+	SELECT COUNT(userId) as count
+	FROM uChara WHERE userId = $userId;
 EOD;
 	return parent::select($sql);
     }
