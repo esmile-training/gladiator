@@ -4,17 +4,17 @@
 
 <div>
     <a href="{{APP_URL}}training">
-	ŒP—ûŠ‚Ö
+	è¨“ç·´æ‰€ã¸
     </a>
 </div>
 
 <div>
 		<a href="{{APP_URL}}selectChara/index">
-			ƒLƒƒƒ‰ƒNƒ^[‘I‘ð
+			ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼é¸æŠž
 		</a>
 </div>
 <div>
 	<a href="{{APP_URL}}gachaselect">
-			ƒKƒ`ƒƒ
+			ã‚¬ãƒãƒ£
 		</a>
 </div>
