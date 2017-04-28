@@ -2,7 +2,7 @@
 /*
  * キャラ選択コントローラー
  * 製作者：松井 勇樹
- * 最終更新日:2017/04/26
+ * 最終更新日:2017/04/27
  */
 
 // 名前空間の使用宣言
@@ -15,51 +15,52 @@ class SelectCharaController extends BaseGameController
 	public function index()
 	{
 		// ユーザーIDを取得する
-		$userId = $this->user['id'];
+		$userId = 1;//$this->user['id'];
 		var_dump($userId);
 		// DBのキャラクターデータを取得する
-		$alluChara = $this->Model->exec('UChara','getUserChara',$userId);
-
+		$alluChara = $this->Model->exec('UChara', 'getUserChara', $userId);
 		// DBからキャラクターを取得できたかを確認する
-		if(isset($alluChara))
+		if(!isset($alluChara))
 		{
-			// viewDataへ取得したキャラクターを送る
+			// マイページへリダイレクトする
+			$this->Lib->redirect('mypage', 'index');
+		}
+		// viewDataへ取得したキャラクターを送る
 			$this->viewData['charaList'] = $alluChara;
 			// ビューへデータを渡す
-			return viewWrap('selectChara',$this->viewData);
-		}
-		else
-		{
-			// キャラクターのデータが無ければ、マイページへリダイレクトする
-			$this->Lib->redirect('mypage','index');
-		}
+			return viewWrap('battleCharaSelect', $this->viewData);
 	}
 
 	/*
 	 *  IDからキャラクターを特定する
 	 */
-	public function setChara()
+	public function identifyChara()
 	{
 		// キャラクターIDの取得をする
 		$charaId = $_GET['uCharaId'];
+
+		// データ取得に成功したか確認する
+		if(!isset($charaId))
+		{
+			// マイページへリダイレクトする
+			$this->Lib->redirect('mypage', 'index');
+		}
 		// IDと一致するキャラクターをDBから取得する
-		$selectedChara = $this->Model->exec('UChara','getById',$charaId);
+		$selectedChara = $this->Model->exec('UChara', 'getById', $charaId);
 		var_dump($selectedChara);
 
-		exit();
+		// 闘技場選択にリダイレクトする
+			// マイページへリダイレクトする
+			$this->Lib->redirect('selectChara', 'selectArena');
+	}
 
-		// 要素ごとに切り分ける。
-		$uCharaId = $selectedChara['id'];
-		$hp = $selectedChara['hp'];
-		$gooAtk = $selectedChara['gooAtk'];
-		$choAtk = $selectedChara['choAtk'];
-		$paaAtk = $selectedChara['paaAtk'];
-
-		// データをDBへインサートする
-		$test = $this->Model->exec('UChara','insertChara',array($uCharaId,$hp,$gooAtk,$choAtk,$paaAtk));
-		var_dump($test);
-		// ステージ選択(エネミー選択)へリダイレクトする
-
+	/*
+	 *  闘技場の選択
+	 */
+	public function selectArena()
+	{
+		// ビューへデータを渡す
+			return viewWrap('arenaSelect', $this->viewData);
 	}
 }
 
