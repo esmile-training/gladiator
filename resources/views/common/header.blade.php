@@ -11,5 +11,11 @@
     </head>
     <body>
         <div id="wrapper">
-            <header></header>
+            <header>
+				<ul>
+					<li><a href="{{APP_URL}}top/login">所持金</a></li>
+					<li><a href="{{APP_URL}}top/login">チーム名</a></li>
+					<li><a href="{{APP_URL}}top/login">チケット数</a></li>
+				</ul>
+			</header>
             <div id="main">

@@ -149,6 +149,22 @@ img{
     width: 100%;
     max-width: 450px;
 }
+
+ul{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    text-align: center;
+    padding: 0px;
+    border-spacing: 2px 0; 
+}
+
+li{
+    height: 40px;
+    display: table-cell;
+    vertical-align: middle;
+    background: #eee; 
+}
 /*---------------------------------
 共通設定終了
 ---------------------------------*/
