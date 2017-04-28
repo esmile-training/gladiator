@@ -4,9 +4,14 @@
 
 <div>
     <form action="{{APP_URL}}ranking" method="get">
+	<input type="hidden" name="pageType" value="{{$viewData['rankingData']['rankChenge']}}"
 	<?php foreach ($viewData['ranking'] as $key => $value) : ?>
-	    <p>{{$value['rank']}}位　：　{{$value['name']}}　：　{{$value['totalPoint']}}Pt :　{{$value['userId']}}</p>
-
+	    <?php if(isset($value['totalPoint'])): ?>
+	        <p>{{$value['rank']}}位　：　{{$value['name']}}　：　{{$value['totalPoint']}}Pt :　{{$value['userId']}}</p>
+	    <?php else: ?>
+		<p>{{$value['rank']}}位　：　{{$value['name']}}　：　TOTAL : {{$value['hp']}}</p>
+	    <?php endif; ?>
+		
 	    <!-- rankの1ページ戻りと最後まで戻る -->
 	    <?php if (10 < $viewData['ranking'][$key]['rank'] && $value == end($viewData['ranking'])) : ?>
 		<button type='submit' name='first' value='0'> << </button>
@@ -17,7 +22,7 @@
 	    <!-- rankの範囲検索 -->
 	    <?php if($value == end($viewData['ranking'])) : ?>
 		<?php foreach (range(1, $viewData['rankingData']['count']) as $data) : ?>
-		    <?php if($data < 5):?>
+		    <?php if($data <= 3 && $data != floor($viewData['ranking'][$key]['rank'] / 10)):?>
 			<button type="submit" name="page" value="{{$data * 10}}">{{$data}}</button>
 		    <?php endif; ?>
 		<?php endforeach; ?>
@@ -40,8 +45,8 @@
 
 	<?php endforeach; ?>
 	    <br>
-	    <button type='submit' name='total' value="0">total</button>
-	    <button type='submit' name='week' value="1">week</button>
+	    <button type='submit' name='dataChenge' value="0">total</button>
+	    <button type='submit' name='dataChenge' value="1">week</button>
     </form>
 </div>
 

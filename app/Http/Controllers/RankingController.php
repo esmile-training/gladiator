@@ -6,6 +6,8 @@ class RankingController extends BaseGameController
 {
     public $rankingData;
     public $execRank = [];
+    public $chengeData;
+    public $chenge;
     
     public function __construct()
     {
@@ -14,35 +16,49 @@ class RankingController extends BaseGameController
 	// 総合か習慣の切り替え
 	$rankChange = 0;
 
-	// 総合ランキング
-	$totalRank = filter_input(INPUT_GET, 'total');
-
-	// 週間ランキング
-	$weekRank = filter_input(INPUT_GET, 'week');
-
+	// 表示タブの切り替え
+	$this->chengeData = filter_input(INPUT_GET, 'dataChenge');
+	
+	// 以前の表示タブの状態を取得
+	$this->chenge = filter_input(INPUT_GET, 'pageType');
+	
 	/*
 	 *  総合か週間が選ばれたときに実行される。
 	 * 押されてない場合は初期値に0を代入
 	 */
-
-	if (isset($totalRank) && $totalRank == 0) { 
-	    $rankChange = filter_input(INPUT_GET, 'total'); 
-	} elseif (isset($weekRank) && $weekRank == 1) { 
-	    $rankChange = filter_input(INPUT_GET, 'week'); 
-	}else{ 
+	
+	if (isset($this->chengeData) && $this->chengeData == 0) {
+	    $rankChange = $this->chengeData;
+	} elseif (isset($this->chengeData) && $this->chengeData == 1) {
+	    $rankChange = $this->chengeData;
+	}elseif(isset($this->chenge) && !isset($this->chengeData)){
+	    $rankChange = $this->chenge;
+	}else{
 	    $rankChange = 0; 
-	} 
+	}
 
-	// 最下位のデータを取得
-	$bottomData = $this->Model->exec('Ranking', 'bottomAcquisition');
-	$this->rankingData['bottomPoint'] = $bottomData[0]['totalPoint'];
+	if($this->chengeData == 0){
+	    // 最下位のデータを取得
+	    $bottomData = $this->Model->exec('Ranking', 'bottomAcquisition');
+	    $this->rankingData['bottomPoint'] = $bottomData[0]['totalPoint'];
 
-	// 登録者数を取得
-	$userCount = $this->Model->exec('Ranking', 'idRegistrationNumber');
-	$this->rankingData['count'] = floor(($userCount[0]['count']/10));
+	    // 登録者数を取得
+	    $userCount = $this->Model->exec('Ranking', 'idRegistrationNumber');
+	    $this->rankingData['count'] = floor(($userCount[0]['count']/10));
 
-	// 総合と週間の切り替え
-	$this->rankingData['rankChange'] = $rankChange;
+	    // 総合と週間の切り替え
+	    $this->rankingData['rankChenge'] = $rankChange;
+	}else{
+	    $bottomData = $this->Model->exec('Ranking', 'bottomStatus');
+	    $this->rankingData['bottomPoint'] = $bottomData[0]['hp'];
+	    
+	    // 登録者数を取得
+	    $charaCount = $this->Model->exec('Ranking', 'charaCount', $this->user['id']);
+	    $this->rankingData['count'] = floor(($charaCount[0]['count']/10));
+
+	    // 総合と週間の切り替え
+	    $this->rankingData['rankChenge'] = $rankChange; 
+	}
     }
 
 
@@ -59,26 +75,39 @@ class RankingController extends BaseGameController
 	$pushPage = [$nextPage, $backPage, $lastPage, $firstPage];
 	
 	// ページの切り替え
-	if(!isset($nextPage) && !isset($backPage) && !isset($lastPage) && !isset($firstPage))
+	var_dump($this->chenge);
+	
+	
+	if(!isset($nextPage) && !isset($backPage) && !isset($lastPage) && !isset($firstPage) && $this->chengeData == 0)
 	{
+	    // 初期画面
 	    $userRank = $this->Model->exec('Ranking', 'userRank', $this->user['id']);
 	    $page = RankingController::userRanking($userRank);
 	}else{
-	    $moldValue = $this->Lib->exec('Pager', 'valueConf', $pushPage);
-	    $page = $this->Model->exec('Ranking', 'nextPage', $moldValue);
+	    if ($this->rankingData['rankChenge'] == 0){
+		// ユーザーランキング
+		$moldValue = $this->Lib->exec('Pager', 'valueConf', $pushPage);
+		$page = $this->Model->exec('Ranking', 'rankingPager', $moldValue);
+	    }else{
+		// 所持キャラランキング
+		$moldValue = $this->Lib->exec('Pager', 'valueConf', $pushPage);
+		$page = $this->Model->exec('Ranking', 'rankingChara', $moldValue);
+	    }
 	}
 
 	// 並べ替えたものを代入
 	$this->viewData['ranking'] = $page;
 	$this->viewData['rankingData'] = $this->rankingData;
-
+	var_dump($this->viewData);
 	// ビューヘ渡す
 	return viewWrap('ranking', $this->viewData);
     }
     
     
     
-    
+    /*
+     * 初期画面の表示切替
+     */
     public function userRanking($inputRank)
     {
 	$userrank = array_search($this->user['id'], array_column($inputRank, 'userId'));

@@ -15,6 +15,9 @@ class PagerLib extends BaseGameLib
 	    return [$firstPage];
 	}elseif(isset($lastPage)){
 	    return PagerLib::lastPage($lastPage);
+	}else{
+	    echo 'ok';
+	    return 0;
 	}
 
     }
