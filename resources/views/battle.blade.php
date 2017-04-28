@@ -1,5 +1,5 @@
 <div>
-    <img class="janken" src="{{IMGTEST_URL}}janken.jpg">
+    <img class="janken" src="{{IMG_URL_TEST}}janken.jpg">
 </div>
 
 {{--バトル終了のフラグが立っていたら--}}
@@ -13,6 +13,9 @@
 	
 	{{--HPの表示--}}
 	@include('element/hpLog')
+	
+	{{--賞金額の表示--}}
+	@include('element/prizeLog')
 
 	{{--バトルの終了--}}
 	@include('element/battleEnd')
@@ -35,9 +38,9 @@
 
 	{{--それぞれのボタン表示--}}
 	<form method="get" action="{{APP_URL}}battle/updateData" onsubmit="doSomething();return false;">
-		<input type="image" src="{{IMGTEST_URL}}goo.jpg" value="{{$viewData['Type']['goo']}}" name="sub1">　
-		<input type="image" src="{{IMGTEST_URL}}choki.png" value="{{$viewData['Type']['cho']}}" name="sub1">　
-		<input type="image" src="{{IMGTEST_URL}}paa.jpg" value="{{$viewData['Type']['paa']}}" name="sub1">　
+		<input type="image" src="{{IMG_URL_TEST}}goo.jpg" value="{{$viewData['Type']['goo']}}" name="sub1">　
+		<input type="image" src="{{IMG_URL_TEST}}choki.png" value="{{$viewData['Type']['cho']}}" name="sub1">　
+		<input type="image" src="{{IMG_URL_TEST}}paa.jpg" value="{{$viewData['Type']['paa']}}" name="sub1">　
 	</form>
 
-@endif
+@endif.
