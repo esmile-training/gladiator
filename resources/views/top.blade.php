@@ -1,9 +1,8 @@
-{{--CSS--}}
-@include('common/css', ['file' => 'training'])
-<div>
-     <a href="{{APP_URL}}top/login">
-	ログイン
-    </a>
+@include('common/css', ['file' => 'top'])
+
+
+<div class="top_button">
+    <input type="submit" value="ログイン" class="top_login"><a href="{{APP_URL}}top/login"></a>
 </div>
 
 <div>
