@@ -3,21 +3,21 @@ namespace App\Http\Controllers;
 
 class TopController extends BaseGameController
 {
-    /**
-     * TOP画面表示
-     *
-     */
-    public function index()
-    {
+	/**
+	 * TOP画面表示
+	 *
+	 */
+	public function index()
+	{
 	return viewWrap('top', $this->viewData);
-    }
+	}
 
-    /**
-     * ユーザーIDをチェックしてリダイレクト
-     *
-     * @param uid
-     * @return Redirect
-     */
+	/**
+	 * ユーザーIDをチェックしてリダイレクト
+	 *
+	 * @param uid
+	 * @return Redirect
+	 */
 	public function login()
 	{
 	//cookieの有無を確認
@@ -26,15 +26,12 @@ class TopController extends BaseGameController
 			//無ければエディット画面にリダイレクトする。
 			return $this->Lib->redirect('edit');
 		} else {
-			$battleFlag = $this->Model->exec('User' , 'getBattleFlag' , "" , $_COOKIE['userId']);
-			if($battleFlag['delFlag'] === "0")
-			{
-				//試合中
-				//ユーザーに処理を聞く//ポップアップ
+			if($this->Model->exec('Battle', 'getBattleData', "", $_COOKIE['userId'])){
+				//バトル中データあり
+				//ポップアップ表示予定
 				return viewWrap('Error');
-			}	
-			//リダイレクト
-			return $this->Lib->redirect('mypage', 'index');
+			}
 		}
+		return $this->Lib->redirect('mypage', 'index');
 	}
 }

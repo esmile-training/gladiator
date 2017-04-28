@@ -54,10 +54,9 @@
 
 <div>
 	{-- エディット画面 --}}
-    <a href="{{APP_URL}}edit/index?">
+	<a href="{{APP_URL}}edit/index?">
 	エディット画面
-    </a>
+	</a>
 	{{-- 現在のユーザーID --}}
-    <?php if(isset($_COOKIE["userId"])) print $_COOKIE['userId']; ?>
+	<?php if(isset($_COOKIE["userId"])) print $_COOKIE['userId']; ?>
 </div>
-
