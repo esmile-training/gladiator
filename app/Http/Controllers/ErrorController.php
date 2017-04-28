@@ -6,8 +6,8 @@ namespace App\Http\Controllers;
 
 class ErrorController extends BaseGameController
 {
-    public function index()
-    {
+	public function index()
+	{
 	return viewWrap('Error');
-    }
+	}
 }
