@@ -2,23 +2,26 @@
 
 namespace App\Libs;
 
-class BattleLib extends BaseGameLib {
+class BattleLib extends BaseGameLib
+{
 
 	// 敵の各属性を出す確率ステータスに基づいた手をランダムに選択する処理
-	public static function setEnmHand($EnemyData, $typeData) {
-		
+	public static function setEnmHand($EnemyData, $typeData)
+	{
 		$result = [];   //データ返却用変数の初期化
-		
+
 		// ランダムに1～99の数値を選択し格納
 		$Hand = rand(1, 99);
 
 		// Hand の数値が EnemyData の 'goo' の確率値 'gooPer' 以下の場合
-		if ($Hand <= $EnemyData['gooPer']) {
+		if ($Hand <= $EnemyData['gooPer'])
+		{
 			// result に 'goo' を格納
 			$result = $typeData['goo'];
 		}
 		// Hand の数値が EnemyData の 'goo' の確率値 'gooPer' と 'cho' の確率値 'choPer' を足した数以下の場合
-		else if ($Hand <= $EnemyData['gooPer'] + $EnemyData['choPer']) {
+		else if ($Hand <= $EnemyData['gooPer'] + $EnemyData['choPer'])
+		{
 			// result に 'cho' を格納
 			$result = $typeData['cho'];
 		}
@@ -32,10 +35,11 @@ class BattleLib extends BaseGameLib {
 	}
 
 	// バトルの処理を格納する処理
-	public static function battleResult($pcHand, $enmHand, $typeData, $resultData) {
+	public static function battleResult($pcHand, $enmHand, $typeData, $resultData)
+	{
 		
 		$result = [];   // データ返却用変数の初期化
-		
+
 		// Chara の 'hand' によって処理を行う
 		switch ($pcHand)
 		{
@@ -204,8 +208,7 @@ class BattleLib extends BaseGameLib {
 		{
 			$loser['bHp'] = 0;
 		}
-
+		
 		return $loser['bHp'];
 	}
-
 }

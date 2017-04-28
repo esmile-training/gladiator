@@ -96,5 +96,13 @@ EOD;
         //var_dump($sql);
         $this->insert($sql);
     }
-
+    public function updateMoney($user)
+    {
+$sql = <<< EOD
+	UPDATE  user
+	SET		money = {$user['money']}
+	WHERE   id		= {$user['id']};
+EOD;
+		$this->update($sql);
+    }
 }
