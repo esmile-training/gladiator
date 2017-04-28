@@ -1,4 +1,5 @@
-
+{{--CSS--}}
+@include('common/css', ['file' => 'training'])
 <div>
      <a href="{{APP_URL}}top/login">
 	ログイン
@@ -33,8 +34,3 @@
     </a>
 </div>
 
-<div>
-    <a href="{{APP_URL}}mypage">
-	test01
-    </a>
-</div>
