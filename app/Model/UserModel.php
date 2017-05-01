@@ -63,7 +63,7 @@ EOD;
     INSERT INTO  uChara 
     VALUES (
     NULL,
-    '1',
+    {$_COOKIE['userId']},
         '{$uCharaId}',
         '{$uCharaName}・{$uCharaLastName}',
     '1',
@@ -82,5 +82,38 @@ EOD;
         //var_dump($sql);
         $this->insert($sql);
     }
+	
+	//キャラの削除
+	public function deleteChara( $uCharaId )
+	{
+$sql = <<< EOD
+	DELETE FROM uChara
+	WHERE id = {$uCharaId};
+EOD;
+	$this->delete($sql);
+	}
 
+	//コーチの追加
+	public function insertCoach ( $uCharaId, $uCharaName, $uCharaLastName,$ratio, $narrow, $hp, $atk1, $atk2, $atk3)
+	{
+$sql = <<< EOD
+    INSERT INTO uCoach 
+    VALUES (
+    NULL,
+	'{$_COOKIE['userId']}',
+        '{$uCharaId}',
+        '{$uCharaName}・{$uCharaLastName}',
+    '1',
+        '10',
+    '{$ratio}',
+        '{$narrow}',
+        '{$hp}',
+        '{$atk1}',
+        '{$atk2}',
+        '{$atk3}',
+        '0',
+    );
+EOD;
+	$this->insert($sql);
+	}
 }
