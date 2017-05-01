@@ -15,6 +15,7 @@ class GachaController extends BaseGameController {
 		
 		//ガチャの選択して割合算出
 		$this->viewData['ratio'] = $this->Lib->exec('RandamChara', 'getGachaRatio');
+		var_dump($this->viewData['ratio']);
 		
 		$ratio = $this->viewData['ratio'];
 	

@@ -88,9 +88,21 @@ class SelectCharaController extends BaseGameController
 		// 闘技場の難易度を取得する
 		$arenaDifficulty = $_GET["arenaDifficulty"];
 
-		// データの表示をする
-		var_dump($selectedCharaId);
-		var_dump($arenaDifficulty);
+		// IDと一致するキャラクターをDBから取得する
+		$selectedChara = $this->Model->exec('UChara', 'getById', $selectedCharaId);
+		// 正常に取得したかを確認する
+		if(!isset($selectedChara))
+		{
+			// マイページへリダイレクトする
+			$this->Lib->redirect('mypage', 'index');
+		}
+
+		// エネミー作成のための素材
+		$enemyMaterial = array($selectedChara['hp'],$arenaDifficulty);
+		var_dump($enemyMaterial);
+		// エネミーの能力値を取得する
+		$enemyStatus = $this->Lib->exec('EnemyCreate','createEnemyStatus',$enemyMaterial);
+		var_dump($enemyStatus);
 	}
 }
 

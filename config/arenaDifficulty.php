@@ -7,12 +7,12 @@
 
 return [
 			[
-				'difficulty'	=> 'easy',
+				'difficulty'	=> '下級',
 			],
 			[
-				'difficulty'	=> 'normal',
+				'difficulty'	=> '中級',
 			],
 			[
-				'difficulty'	=> 'hard',
+				'difficulty'	=> '上級',
 			],
 ];
