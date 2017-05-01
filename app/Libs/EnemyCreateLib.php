@@ -20,8 +20,8 @@ class EnemyCreateLib extends BaseGameLib
 		// 取得したデータの中からランダムで一つ選択する
 		$imgId = rand(1, count($charaConf));
 		// 外見のデータを配列に格納する
-		$enemyApp['imgId'] = $imgId;
-		$enemyApp['sex'] = $charaConf[$imgId]['sex'];
+		$enemyApp['imgId'] = (string)$imgId;
+		$enemyApp['sex'] = (string)$charaConf[$imgId]['sex'];
 
 		return $enemyApp;
 	}
@@ -42,7 +42,6 @@ class EnemyCreateLib extends BaseGameLib
 		// 作成した名前を配列に格納する
 		$name['firstname'] = $charaConf['firstname'][$sexData][$FirstNameId];
 		$name['lastname'] = $charaConf['lastname'][$LastNameId];
-
 		return $name;
 	}
 

@@ -2,7 +2,7 @@
 /*
  * キャラ選択コントローラー
  * 製作者：松井 勇樹
- * 最終更新日:2017/04/28
+ * 最終更新日:2017/05/01
  */
 
 // 名前空間の使用宣言
@@ -66,11 +66,9 @@ class SelectCharaController extends BaseGameController
 	public function selectArena()
 	{
 		// ユーザーキャラクターのIDを取得する
-		//$uCharaId = \Request::input('id');
 		$selectedCharaId = $_GET['uCharaId'];
 		// 難易度を取得する
 		$difficulty = \Config::get('arenaDifficulty','arena');
-		//var_dump($difficulty);
 		// 対戦の難易度とキャラIDをビューへ渡す
 		$this->viewData['difficultyList'] = $difficulty;
 		$this->viewData['selectedCharaId'] = $selectedCharaId;
@@ -83,26 +81,60 @@ class SelectCharaController extends BaseGameController
 	 */
 	public function preparationBattle()
 	{
-		// キャラクターIdの取得をする
-		$selectedCharaId = $_GET["selectedCharaId"];
-		// 闘技場の難易度を取得する
-		$arenaDifficulty = $_GET["arenaDifficulty"];
-
+		// 大会の情報を取得する(ユーザーキャラIDと難易度)
+		$arebaData = $_GET;
+		// 大会情報の取得に成功したか確認する
+		if(!isset($arebaData))
+		{
+			// マイページへリダイレクトする
+			$this->Lib->redirect('mypage', 'index');
+		}
 		// IDと一致するキャラクターをDBから取得する
-		$selectedChara = $this->Model->exec('UChara', 'getById', $selectedCharaId);
+		$selectedChara = $this->Model->exec('UChara', 'getById', $arebaData["selectedCharaId"]);
 		// 正常に取得したかを確認する
 		if(!isset($selectedChara))
 		{
 			// マイページへリダイレクトする
 			$this->Lib->redirect('mypage', 'index');
 		}
-
+		// エネミーの外見を取得する
+		$enemyApp = $this->Lib->exec('EnemyCreate','getEnemyAppearance');
+		// エネミーの名前を生成する
+		$enemyName = $this->Lib->exec('EnemyCreate','creatEnemyName',[$enemyApp['sex']]);
 		// エネミー作成のための素材
-		$enemyMaterial = array($selectedChara['hp'],$arenaDifficulty);
-		var_dump($enemyMaterial);
+		$enemyStatusMaterial = array($selectedChara['hp'],$arebaData["arenaDifficulty"]);
 		// エネミーの能力値を取得する
-		$enemyStatus = $this->Lib->exec('EnemyCreate','createEnemyStatus',$enemyMaterial);
-		var_dump($enemyStatus);
+		$enemyStatus = $this->Lib->exec('EnemyCreate','createEnemyStatus',$enemyStatusMaterial);
+		// 対戦データの作成をする
+		$matchData = array();
+		// 大会難易度のを格納する
+		$matchData['difficulty'] = $arebaData["arenaDifficulty"];
+		// ユーザーキャラクターのデータを格納する
+		$matchData['uCharaId']	= $selectedChara['id'];
+		$matchData['uHp']		= $selectedChara['hp'];
+		$matchData['uGooAtk']	= $selectedChara['gooAtk'];
+		$matchData['uChoAtk']	= $selectedChara['choAtk'];
+		$matchData['uPaaAtk']	= $selectedChara['paaAtk'];
+		// エネミーのデータを格納する
+		$matchData['eFirstName']	= $enemyName['firstname']['name'];
+		$matchData['eLastName']		= $enemyName['lastname']['familyname'];
+		$matchData['eHp']			= $enemyStatus['hp'];
+		$matchData['eGooAtk']		= $enemyStatus['gooAtk'];
+		$matchData['eChoAtk']		= $enemyStatus['choAtk'];
+		$matchData['ePaaAtk']		= $enemyStatus['paaAtk'];
+
+		var_dump($matchData);
+
+		// DBへインサートするページへリダイレクトする
+		$this->Lib->redirect('selectChara', 'insertMatchData',$matchData);
+	}
+
+	/*
+	 * 対戦データをDBへ入れる
+	 */
+	public function insertMatchData()
+	{
+		
 	}
 }
 
