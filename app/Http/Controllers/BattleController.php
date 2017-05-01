@@ -13,6 +13,12 @@ class battleController extends BaseGameController
 		// setData関数を呼び出し、データをセット
 		$this->setData();
 		
+		// バトルデータがなかった場合、エラー画面を表示しホームへ戻す 
+		if(is_null($this->BattleData))
+		{
+			return viewWrap('error');
+		}
+		
 		// どちらかのHPが0以下になったらバトル終了フラグを立てる
 		if ($this->EnemyData['bHp'] <= 0 || $this->CharaData['bHp'] <= 0)
 		{
@@ -33,11 +39,8 @@ class battleController extends BaseGameController
 	// データベースからデータをそれぞれの変数にセットするファンクション
 	public function setData()
 	{
-//		// デバッグ用　データ再セット
-//		$this->Model->exec('Battle', 'debugBattleData', $this->user['id']);
-//		$this->BattleData = $this->Model->exec('Battle', 'getBattleData', $this->user['id']);		
-//		$this->Model->exec('Battle', 'debugBattleChara', $this->BattleData['charaId']);
-//		$this->Model->exec('Battle', 'debugBattleEnemy', $this->BattleData['enemyId']);
+		// デバッグ用　データ再セット
+//		$this->debug();
 		
 		// config/battle で指定した三すくみの名前を読み込み
 		// 'goo' 'cho' 'paa' じゃんけんの三すくみで指定中
@@ -53,24 +56,33 @@ class battleController extends BaseGameController
 
 		// config/battle で指定した賞金の割合を読み込み
 		// 初級 中級 上級 で指定、数値(％)で設定中
-		$this->prizeRatio = \Config::get('battle.prizeRatio');
+		$this->PrizeRatio = \Config::get('battle.prizeRatio');
 
 		// ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
 		// BattleData にバトルデータを格納
 		$this->BattleData = $this->Model->exec('Battle', 'getBattleData', $this->user['id']);
-
-		// バトルデータを元にuBattleChar(DB)からキャラデータを読み込み
-		// ChaaraData に自キャラデータを格納
-		$this->CharaData = $this->Model->exec('Battle', 'getBattleCharaData', $this->BattleData['charaId']);
-
-		// バトルデータを元にuBattleChar(DB)から敵データを読み込み
-		// EnemyData に敵キャラデータを格納
-		$this->EnemyData = $this->Model->exec('Battle', 'getBattleEnemyData', $this->BattleData['enemyId']);
 		
+		if(isset($this->BattleData))
+		{
+			// バトルデータを元にuBattleChar(DB)からキャラデータを読み込み
+			// ChaaraData に自キャラデータを格納
+			$this->CharaData = $this->Model->exec('Battle', 'getBattleCharaData', $this->BattleData['charaId']);
+
+			// バトルデータを元にuBattleChar(DB)から敵データを読み込み
+			// EnemyData に敵キャラデータを格納
+			$this->EnemyData = $this->Model->exec('Battle', 'getBattleEnemyData', $this->BattleData['enemyId']);
+		}
+		
+		// ユーザーIDを元に週間のランキングデータを読み込み
+		$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
+		if(is_null($this->RankingData))
+		{
+			// ランキングデータがなければ、新しくランキングデータを作成
+		}
 	}
 
 	// データを更新するファンクション
-	public function updateData()
+	public function updateBattleData()
 	{
 		// setData関数を呼び出し、データをセット
 		$this->setData();
@@ -138,10 +150,12 @@ class battleController extends BaseGameController
 		if( $this->EnemyData['bHp'] <= 0 )
 		{
 			// 賞金額計算
-			$prize =  BattleLib::prizeCalc($this->EnemyData, $this->Commission, $this->prizeRatio);
+			$prize =  BattleLib::prizeCalc($this->EnemyData, $this->Commission, $this->PrizeRatio);
 
 			// ユーザーの所持金 'money' に賞金額を加算しデータベースに格納
 			$this->Lib->exec('Money', 'addition', array($this->user, $prize));
+			// ユーザーのウィークリーポイント 'weeklyAward' に賞金額を加算しデータベースに格納
+			$this->Lib->exec('Ranking', 'weeklyAdd', array($this->RankingData, $prize));
 		}
 
 		// データベースの更新処理
@@ -158,5 +172,19 @@ class battleController extends BaseGameController
 		$this->viewData['EnemyData']	= $this->EnemyData;
 
 		return viewWrap('battleEnd', $this->viewData);
+	}
+	
+
+
+
+	// デバッグ用ファンクション
+	// uBattleInfo uBattleChara uBattleEnemy のデータを書き換える
+	// 各delFlagの消去、変動値のリセット
+	public function debug()
+	{
+		$this->Model->exec('Battle', 'debugBattleData', $this->user['id']);
+		$this->BattleData = $this->Model->exec('Battle', 'getBattleData', $this->user['id']);		
+		$this->Model->exec('Battle', 'debugBattleChara', $this->BattleData['charaId']);
+		$this->Model->exec('Battle', 'debugBattleEnemy', $this->BattleData['enemyId']);
 	}
 }

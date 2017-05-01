@@ -8,7 +8,6 @@ class TrainingLib extends BaseGameLib
      */
     public function finishCheck($test)
     {
-	var_dump($test);
 	$trainingDateCheck = $this->Model->exec('Training', 'getTrainingDate', false, $this->user['id']);
 	if(isset($trainingDateCheck))
 	{

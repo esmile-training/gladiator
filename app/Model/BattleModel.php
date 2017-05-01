@@ -126,7 +126,7 @@ EOD;
 	{
 $sql = <<< EOD
 	UPDATE  uBattleChara
-	SET		bHp		= 100000,
+	SET		bHp		= 10000,
 			delFlag	= 0,
 			hand	= '未設定',
 			result	= '未設定'
@@ -138,7 +138,7 @@ EOD;
 	{
 $sql = <<< EOD
 	UPDATE  uBattleEnemy
-	SET		bHp		= 10,
+	SET		bHp		= 300,
 			delFlag	= 0,
 			hand	= '未設定'
 	WHERE   id		= {$battleEnemyId};

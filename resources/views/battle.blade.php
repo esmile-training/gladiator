@@ -29,7 +29,7 @@
 @else
 
 	{{--それぞれのボタン表示--}}
-	<form method="get" action="{{APP_URL}}battle/updateData" onsubmit="doSomething();return false;">
+	<form method="get" action="{{APP_URL}}battle/updateBattleData" onsubmit="doSomething();return false;">
 		<input type="image" src="{{IMG_URL_TEST}}goo.jpg" value="{{$viewData['Type']['goo']}}" name="sub1">　
 		<input type="image" src="{{IMG_URL_TEST}}choki.png" value="{{$viewData['Type']['cho']}}" name="sub1">　
 		<input type="image" src="{{IMG_URL_TEST}}paa.jpg" value="{{$viewData['Type']['paa']}}" name="sub1">　
