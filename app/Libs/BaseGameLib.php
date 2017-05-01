@@ -49,7 +49,7 @@ class BaseGameLib {
 	public function redirect($controller, $action = 'index', $param = []) {
 		$getStr = [];
 		foreach ($param as $key => $val) {
-			$getStr[] = $key . '=' . $val;
+			$getStr[] = $key . '=' . $val;	
 		}
 		header("Location: " . APP_URL . $controller . '/' . $action . '?' . implode('&', $getStr));
 
