@@ -93,8 +93,20 @@ EOD;
 	$this->delete($sql);
 	}
 
+	//コーチの人数検索(将来移動の可能性あり)
+	public function countCoach ()
+	{
+$sql = <<< EOD
+	SELECT COUNT( * ) 
+	FROM  `uCoach` 
+	WHERE userId =  {$_COOKIE['userId']};
+EOD;
+	$result = $this->select($sql);
+	return $result;
+	}
+	
 	//コーチの追加
-	public function insertCoach ( $uCharaId, $uCharaName, $uCharaLastName,$ratio, $narrow, $hp, $atk1, $atk2, $atk3)
+	public function insertCoach ( $uCharaId, $uCharaName,$ratio, $hp, $atk1, $atk2, $atk3)
 	{
 $sql = <<< EOD
     INSERT INTO uCoach 
@@ -102,11 +114,9 @@ $sql = <<< EOD
     NULL,
 	'{$_COOKIE['userId']}',
         '{$uCharaId}',
-        '{$uCharaName}・{$uCharaLastName}',
-    '1',
-        '10',
+        '{$uCharaName}',
     '{$ratio}',
-        '{$narrow}',
+        '10',
         '{$hp}',
         '{$atk1}',
         '{$atk2}',
@@ -115,5 +125,15 @@ $sql = <<< EOD
     );
 EOD;
 	$this->insert($sql);
+	}
+	
+	//コーチの削除
+	public function deleteCoarch($uCoachId){
+$sql = <<< EOD
+	DELETE FROM uCoach
+	VALUES (
+	WHERE id = {$uCoachId};
+EOD;
+	$this->delete($sql);
 	}
 }

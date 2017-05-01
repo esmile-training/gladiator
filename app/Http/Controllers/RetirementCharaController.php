@@ -2,8 +2,34 @@
 
 namespace App\Http\Controllers;
 
-class RetirementCharaController {
-	public function index(){
+class RetirementCharaController extends BaseGameController
+{	
+	public function searchCoach(){
+		//コーチの人数を調べる
+		if(3 <= $this->Model->exec('user', 'countCoach', "", $_COOKIE['userId']))
+		{
+			//コーチが３人いたら
+			//ポップアップ処理に変わる可能性あり
+			return $this->selectDeleteCoarch();
+		} else {
+			//コーチが二人以下だったらそのままコーチに追加処理
+			return $this->insertCoach();
+		}
+	}
+	
+	public function insertCoach(){
+		//キャラの削除処理
+		//$this->Model->exec('User','deleteChara',"",$_GET['id']);
+		//コーチの追加処理
+		//$this->Model->exec('User','insertCoach',[$_GET['imgId'], $_GET['name'], $_GET['rare'], $_GET['attribute'], $_GET['hp'], $_GET['gooAtk'], $_GET['choAtk'], $_GET['paaAtk']]);
 		return viewWrap('retirementChara');
+	}
+	
+	public function selectDeleteCoarch(){
+		$alluCoach = $this->Model->exec('Training','getUserCoach',$_COOKIE['userId']);
+		// viewDataへ取得したキャラクターを送る
+		$this->viewData['coachList'] = $alluCoach;;
+		// ビューへデータを渡す
+		return viewWrap('error');
 	}
 }

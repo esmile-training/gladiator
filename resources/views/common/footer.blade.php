@@ -1,10 +1,10 @@
             </div>
             <footer>
 				<ul>
-					<li><a href="{{APP_URL}}top/login">マイページ</a></li>
-					<li><a href="{{APP_URL}}top/login">試合</a></li>
-					<li><a href="{{APP_URL}}top/login">訓練所</a></li>
-					<li><a href="{{APP_URL}}top/login">ガチャ</a></li>
+					<li><a href="{{APP_URL}}mypage/index">マイページ</a></li>
+					<li><a href="{{APP_URL}}battle/index">試合</a></li>
+					<li><a href="{{APP_URL}}training/index">訓練所</a></li>
+					<li><a href="{{APP_URL}}gachaselect/index">ガチャ</a></li>
 				</ul>
 			</footer>
         </div>
