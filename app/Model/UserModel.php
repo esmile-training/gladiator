@@ -82,5 +82,14 @@ EOD;
         //var_dump($sql);
         $this->insert($sql);
     }
+    
+    /*
+    public function charaStatus()
+    {
+$sql = <<< EOD
+	UPDATE 
+EOD;
+    }
+     */
 
 }
