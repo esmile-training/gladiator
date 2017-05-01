@@ -20,18 +20,19 @@ class TopController extends BaseGameController
 	 */
 	public function login()
 	{
-	//cookieの有無を確認
+		//cookieの有無を確認
 		if(!isset($_COOKIE['userId']))
 		{
 			//無ければエディット画面にリダイレクトする。
 			return $this->Lib->redirect('edit');
 		} else {
-			if($this->Model->exec('Battle', 'getBattleData', "", $_COOKIE['userId'])){
-				//バトル中データあり
-				//ポップアップ表示予定
-				return viewWrap('Error');
+			//バトル中か確認
+			if($this->Model->exec('Battle', 'getBattleData', "", $_COOKIE['userId']))
+			{
+				//return viewWrap('Error');	//ポップアップ表示予定
 			}
 		}
+		//何もなければマイページヘリダイレクトする
 		return $this->Lib->redirect('mypage', 'index');
 	}
 }

@@ -44,8 +44,9 @@ class SelectCharaController extends BaseGameController
 		$charaId = $_GET['uCharaId'];
 		// IDと一致するキャラクターをDBから取得する
 		$selectedChara = $this->Model->exec('UChara','getById',$charaId);
-		var_dump($selectedChara);
-
+		//var_dump($selectedChara);
+		return ($this->Lib->redirect('charastatus',"",$selectedChara));
+		
 		exit();
 
 		// 要素ごとに切り分ける。
