@@ -34,8 +34,8 @@ class BattleLib extends BaseGameLib
 		return $result;
 	}
 
-	// バトルの処理を格納する処理
-	public static function battleResult($pcHand, $enmHand, $typeData, $resultData)
+	// 攻撃の処理を格納する処理
+	public static function AtackResult($pcHand, $enmHand, $typeData, $resultData)
 	{
 		
 		$result = [];   // データ返却用変数の初期化
@@ -211,4 +211,15 @@ class BattleLib extends BaseGameLib
 		
 		return $loser['bHp'];
 	}
+	
+	// 賞金計算
+	public static function prizeCalc($EnemyData, $Commission, $prizeRatio)
+	{
+		// 賞金額計算
+		$result = ($EnemyData['hp'] * $Commission['Commission']) * ( $prizeRatio[$EnemyData['level']] * 0.01);
+		
+		return $result;
+
+	}
+
 }

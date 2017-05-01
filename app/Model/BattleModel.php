@@ -76,12 +76,12 @@ EOD;
 	}
 
 	// uBattleInfo の 'delFlag' を立てる処理
-	public function UpdateInfoFlag($battleData)
+	public function UpdateInfoFlag($battleDataId = false)
 	{
 $sql = <<< EOD
 	UPDATE  uBattleInfo
 	SET		delFlag = 1
-	WHERE   id		= {$battleData['id']};
+	WHERE   id		= {$battleDataId};
 EOD;
 		$this->update($sql);
 	}
@@ -107,4 +107,42 @@ $sql = <<< EOD
 EOD;
 		$this->update($sql);
 	}
+	
+	
+	
+	
+	
+	
+	public function debugBattleData($battleDataId = false)
+	{
+$sql = <<< EOD
+	UPDATE  uBattleInfo
+	SET		delFlag = 0
+	WHERE   id		= {$battleDataId};
+EOD;
+		$this->update($sql);
+	}
+	public function debugBattleChara($battleCharaId = false)
+	{
+$sql = <<< EOD
+	UPDATE  uBattleChara
+	SET		bHp		= 100000,
+			delFlag	= 0,
+			hand	= '未設定',
+			result	= '未設定'
+	WHERE   id		= {$battleCharaId};
+EOD;
+		$this->update($sql);
+	}
+	public function debugBattleEnemy($battleEnemyId = false)
+	{
+$sql = <<< EOD
+	UPDATE  uBattleEnemy
+	SET		bHp		= 10,
+			delFlag	= 0,
+			hand	= '未設定'
+	WHERE   id		= {$battleEnemyId};
+EOD;
+		$this->update($sql);
+	}	
 }
