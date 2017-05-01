@@ -2320,8 +2320,8 @@ return  [
 			],
 			2 => [
 				'sumValueMax' => 100, //基準値
-				'valueMax' => 150, //最大割合
-				'valueMin' => 50, //最小割合
+				'valueMax' => 110, //最大割合
+				'valueMin' => 90, //最小割合
 			],
 			3 => [
 				'sumValueMax' => 200, //基準値
