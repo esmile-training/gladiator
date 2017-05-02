@@ -58,7 +58,7 @@ EOD;
 	$this->update($sql);
     }
 	    //キャラの作成
-    public function createChara($userId,$uCharaId,$uCharaFirstName,$uCharaLastName,$ratio,$narrow,$hp,$atk1,$atk2,$atk3)
+    public function createChara($userId,$uCharaId,$uCharaFirstName,$uCharaLastName,$ratio,$narrow,$hp,$gu,$choki,$paa)
 	{
         $sql = <<< EOD
     INSERT INTO  uChara 
@@ -70,9 +70,9 @@ EOD;
 		'{$ratio}',
         '{$narrow}',
         '{$hp}',
-        '{$atk1}',
-        '{$atk2}',
-        '{$atk3}',
+        '{$gu}',
+        '{$choki}',
+        '{$paa}',
 		 '0',
 		 '0',  
 		 '0',
@@ -83,67 +83,31 @@ EOD;
 EOD;
     return $this->insert($sql);
     }
-    
-
-    public function charaStatus()
+	
+	// 所持金の更新
+    public function updateMoney($user)
     {
 $sql = <<< EOD
-	UPDATE 
+	UPDATE  user
+	SET		money = {$user['money']}
+	WHERE   id		= {$user['id']};
 EOD;
+		$this->update($sql);
     }
+    
+    /*
+     * キャラステータスの更新
+     */
+    public function charaStatus( $userId )
+    {
+$sql = <<< EOD
+	UPDATE user set
+	totalCharaStatus = 
+	(SELECT SUM(hp) AS Status FROM uChara WHERE userId = $userId)
+	where id = $userId;
+EOD;
+    return $this->update($sql);
+    }
+    
 
-	
-	//キャラの削除
-	public function deleteChara( $uCharaId )
-	{
-$sql = <<< EOD
-	DELETE FROM uChara
-	WHERE id = {$uCharaId};
-EOD;
-	$this->delete($sql);
-	}
-
-	//コーチの人数検索(将来移動の可能性あり)
-	public function countCoach ()
-	{
-$sql = <<< EOD
-	SELECT COUNT( * ) 
-	FROM  `uCoach` 
-	WHERE userId =  {$_COOKIE['userId']};
-EOD;
-	$result = $this->select($sql);
-	return $result;
-	}
-	
-	//コーチの追加
-	public function insertCoach ( $uCharaId, $uCharaName,$ratio, $hp, $atk1, $atk2, $atk3)
-	{
-$sql = <<< EOD
-    INSERT INTO uCoach 
-    VALUES (
-    NULL,
-	'{$_COOKIE['userId']}',
-        '{$uCharaId}',
-        '{$uCharaName}',
-    '{$ratio}',
-        '10',
-        '{$hp}',
-        '{$atk1}',
-        '{$atk2}',
-        '{$atk3}',
-        '0'
-    );
-EOD;
-	$this->insert($sql);
-	}
-	
-	//コーチの削除
-	public function deleteCoarch($uCoachId){
-$sql = <<< EOD
-	DELETE FROM uCoach
-	VALUES (
-	WHERE id = {$uCoachId};
-EOD;
-	$this->delete($sql);
-	}
 }

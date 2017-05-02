@@ -9,12 +9,21 @@
 </div>
 
 <div>
-	<a href="{{APP_URL}}selectChara/selectBattleChara">
-		キャラクター選択
-	</a>
+
+    <a href="{{APP_URL}}selectChara/selectBattleChara">
+	    キャラクター選択
+    </a>
+</div>
+<div>
+    <a href="{{APP_URL}}battle">
+	バトルスタンバイ画面
+    </a>
 </div>
 
 <div>
+    <a href="{{APP_URL}}ranking">
+	ranking
+    </a>
 	<a href="{{APP_URL}}gacha/select">
 		ガチャ
 	</a>

@@ -54,15 +54,15 @@ class GachaController extends BaseGameController
 		$uCharaId = $this->viewData['chara']['charaId'];
 		$uCharaFirstName = $this->viewData['name']['firstname']['name'];
 		$uCharaLastName = $this->viewData['name']['lastname']['familyname'];
-		$atk1 = $this->viewData['valueList']['atk1'];
-		$atk2 = $this->viewData['valueList']['atk2'];
-		$atk3 = $this->viewData['valueList']['atk3'];
+		$gu = $this->viewData['valueList']['gu'];
+		$choki = $this->viewData['valueList']['choki'];
+		$paa = $this->viewData['valueList']['paa'];
 		$hp = $this->viewData['valueList']['hp'];
 		$narrow = $this->viewData['valueList']['narrow'];
 
 		
 		//$param['charaId'] = $this->Model->exec('User', 'createChara', array($userId,$uCharaId,$uCharaFirstName,$uCharaLastName,$ratio,$narrow,$hp,$atk1,$atk2,$atk3));
-		$this->Model->exec('User', 'createChara', array($userId,$uCharaId,$uCharaFirstName,$uCharaLastName,$ratio,$narrow,$hp,$atk1,$atk2,$atk3));
+		$this->Model->exec('User', 'createChara', array($userId,$uCharaId,$uCharaFirstName,$uCharaLastName,$ratio,$narrow,$hp,$gu,$choki,$paa));
 		//return $this->Lib->redirect('gacha','index', $param);
 		// return $this->Lib->redirect('gacha', 'index');
 	}
