@@ -13,7 +13,7 @@
 </div>
 
 {{--大会の一覧を表示する--}}
-<form action="{{APP_URL}}selectChara/preparationBattle" method="get">
+<form action="{{APP_URL}}Battle/preparationBattle" method="get">
 	<div>
 		@foreach($viewData['difficultyList'] as $arena)
 			<input type="radio" name="arenaDifficulty" value="{{$arena['difficulty']}}" >{{$arena['difficulty']}}<br>

@@ -156,13 +156,13 @@ class SelectCharaController extends BaseGameController
 	}
 
 	/*
-		 * 戦闘開始まで待機する
-		 */
-		public function battleStandby()
-		{
-			// 対戦データの取得をする
-		$infoId = \Request::input();
-		var_dump($infoId);
-		}
+	 * 戦闘開始まで待機する
+	 */
+	public function battleStandby()
+	{
+		// 対戦データの取得をする
+	$infoId = \Request::input();
+	var_dump($infoId);
+	}
 }
 

@@ -5,12 +5,137 @@ namespace App\Http\Controllers;
 // Lib
 use App\Libs\BattleLib;
 
+// 名前空間の使用宣言
+namespace App\Http\Controllers;
+
 class battleController extends BaseGameController
 {
-	// バトルスタンバイ画面を表示するファンクション
-	public function index()
+	// 自キャラデータの選択を表示するファンクション
+	public function selectBattleChara()
+	{	
+		// DBのキャラクターデータを取得する
+		$alluChara = $this->Model->exec('UChara', 'getUserChara', $this->user['id']);
+		
+		// DBからキャラクターを取得できたかを確認する
+		if(!isset($alluChara))
+		{
+			// マイページへリダイレクトする
+			$this->Lib->redirect('mypage', 'index');
+		}
+		
+		// viewDataへ取得したキャラクターを送る
+		$this->viewData['charaList'] = $alluChara;
+		
+		// ビューへデータを渡す
+		return viewWrap('battleCharaSelect', $this->viewData);
+	}
+
+	// 闘技場の選択画面を表示するファンクション
+	public function selectArena()
 	{
-		return view('battleStanby');
+		// ユーザーキャラクターのIDを取得する
+		$selectedCharaId = $_GET['uCharaId'];
+		
+		// 難易度を取得する
+		$difficulty = \Config::get('arenaDifficulty','arena');
+		
+		// 対戦の難易度とキャラIDをビューへ渡す
+		$this->viewData['difficultyList'] = $difficulty;
+		$this->viewData['selectedCharaId'] = $selectedCharaId;
+		
+		// ビューへデータを渡す
+		return viewWrap('arenaSelect', $this->viewData);
+	}
+
+	// 戦闘準備(データの取得と構築)を行うファンクション
+	public function preparationBattle()
+	{
+		// 大会の情報を取得する(ユーザーキャラIDと難易度)
+		$arebaData = $_GET;
+		
+		// 大会情報の取得に成功したか確認する
+		if(!isset($arebaData))
+		{
+			// マイページへリダイレクトする
+			$this->Lib->redirect('mypage', 'index');
+		}
+		
+		// IDと一致するキャラクターをDBから取得する
+		$selectedChara = $this->Model->exec('UChara', 'getById', $arebaData["selectedCharaId"]);
+		
+		// 正常に取得したかを確認する
+		if(!isset($selectedChara))
+		{
+			// マイページへリダイレクトする
+			$this->Lib->redirect('mypage', 'index');
+		}
+		
+		// エネミーの外見を取得する
+		$enemyApp				= $this->Lib->exec('EnemyCreate','getEnemyAppearance');
+		// エネミーの名前を生成する
+		$enemyName				= $this->Lib->exec('EnemyCreate','creatEnemyName',[$enemyApp['sex']]);
+		// エネミー作成のための素材
+		$enemyStatusMaterial	= array($selectedChara['hp'],$arebaData["arenaDifficulty"]);
+		// エネミーの能力値を取得する
+		$enemyStatus			= $this->Lib->exec('EnemyCreate','createEnemyStatus',$enemyStatusMaterial);
+
+		// 対戦データの作成をする
+		$matchData					= array();
+		// 大会難易度のを格納する
+		$matchData['difficulty']	= $arebaData["arenaDifficulty"];
+		// ユーザーキャラクターのデータを格納する
+		$matchData['uCharaId']		= $selectedChara['id'];
+		$matchData['uHp']			= $selectedChara['hp'];
+		$matchData['uGooAtk']		= $selectedChara['gooAtk'];
+		$matchData['uChoAtk']		= $selectedChara['choAtk'];
+		$matchData['uPaaAtk']		= $selectedChara['paaAtk'];
+		// エネミーのデータを格納する
+		$matchData['eImgId']		= $enemyApp['imgId'];
+		$matchData['eFirstName']	= $enemyName['firstname']['name'];
+		$matchData['eLastName']		= $enemyName['lastname']['familyname'];
+		$matchData['eHp']			= $enemyStatus['hp'];
+		$matchData['eGooAtk']		= $enemyStatus['gooAtk'];
+		$matchData['eChoAtk']		= $enemyStatus['choAtk'];
+		$matchData['ePaaAtk']		= $enemyStatus['paaAtk'];
+
+		// DBへインサートするページへリダイレクトする
+		$this->Lib->redirect('Battle', 'battleStandby',$matchData);
+	}
+
+	// バトル準備画面
+	public function battleStandby()
+	{
+		return view('battleStandby');
+	}
+	
+	/*
+	 * 対戦データをDBへ入れる
+	 */
+	public function insertMatchData()
+	{
+		// 対戦データの取得をする
+		$matchData = \Request::input();
+		var_dump($matchData);
+		
+		$input = null;
+
+		if(!isset($input))
+		{
+			// プレイヤーキャラのデータをインサートする
+		$uBattleCharaId = $this->Model->exec('UBattleChara','InsertBattleCharaData',array($matchData['uCharaId'],$matchData['uHp']
+				,$matchData['uGooAtk'],$matchData['uChoAtk'],$matchData['uPaaAtk']));
+
+		// エネミーのデータをインサートする
+		$uBattleEnemyId = $this->Model->exec('UBattleEnemy','InsertEnemyData',array($matchData['eImgId'],$matchData['difficulty']
+				,$matchData['eFirstName'],$matchData['eLastName'],$matchData['eHp'],$matchData['eGooAtk'],$matchData['eChoAtk'],$matchData['ePaaAtk']));
+
+		// バトルインフォにデータをインサートする
+		$input = $this->Model->exec('UBattleInfo','InsertBattleData',array($this->user['id'],$uBattleCharaId,$uBattleEnemyId));
+
+		// 戦闘画面へリダイレクトする
+		$this->Lib->redirect('Battle', 'battleLog');
+		}
+	
 	}
 
 	// バトルログを表示するファンクション
