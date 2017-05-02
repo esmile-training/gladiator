@@ -6,7 +6,7 @@ class RetirementCharaController extends BaseGameController
 {	
 	public function searchCoach(){
 		//コーチの人数を調べる
-		if(3 <= $this->Model->exec('user', 'countCoach', "", $_COOKIE['userId']))
+		if($this->Model->exec('user', 'countCoach', "", $_COOKIE['userId']) >= 3)
 		{
 			//コーチが３人いたら
 			//ポップアップ処理に変わる可能性あり
@@ -19,9 +19,9 @@ class RetirementCharaController extends BaseGameController
 	
 	public function insertCoach(){
 		//キャラの削除処理
-		//$this->Model->exec('User','deleteChara',"",$_GET['id']);
+		$this->Model->exec('User','deleteChara',"",$_GET['id']);
 		//コーチの追加処理
-		//$this->Model->exec('User','insertCoach',[$_GET['imgId'], $_GET['name'], $_GET['rare'], $_GET['attribute'], $_GET['hp'], $_GET['gooAtk'], $_GET['choAtk'], $_GET['paaAtk']]);
+		$this->Model->exec('User','insertCoach',[$_GET['imgId'], $_GET['name'], $_GET['rare'], $_GET['attribute'], $_GET['hp'], $_GET['gooAtk'], $_GET['choAtk'], $_GET['paaAtk']]);
 		return viewWrap('retirementChara');
 	}
 	

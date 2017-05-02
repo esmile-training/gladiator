@@ -121,7 +121,7 @@ $sql = <<< EOD
         '{$atk1}',
         '{$atk2}',
         '{$atk3}',
-        '0',
+        '0'
     );
 EOD;
 	$this->insert($sql);
