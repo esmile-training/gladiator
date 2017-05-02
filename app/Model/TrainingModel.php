@@ -25,7 +25,7 @@ EOD;
     public function getUserCoach()
     {
 $sql =  <<< EOD
-	SELECT id,uCoachId,state
+	SELECT id,imgId,name,state
 	FROM uCoach
         LIMIT 3
 EOD;

@@ -10,7 +10,7 @@ class RetirementCharaController extends BaseGameController
 		{
 			//コーチが３人いたら
 			//ポップアップ処理に変わる可能性あり
-			return $this->selectDeleteCoarch();
+			return $this->Lib->redirect('selectCoach');
 		} else {
 			//コーチが二人以下だったらそのままコーチに追加処理
 			return $this->insertCoach();
@@ -23,14 +23,5 @@ class RetirementCharaController extends BaseGameController
 		//コーチの追加処理
 		$this->Model->exec('User','insertCoach',[$_GET['imgId'], $_GET['name'], $_GET['rare'], $_GET['attribute'], $_GET['hp'], $_GET['gooAtk'], $_GET['choAtk'], $_GET['paaAtk']]);
 		return viewWrap('retirementChara');
-	}
-	
-	public function selectDeleteCoarch(){
-//		$alluCoach = $this->Model->exec('Training','getUserCoach',$_COOKIE['userId']);
-//		// viewDataへ取得したキャラクターを送る
-//		$this->viewData['coachList'] = $alluCoach;;
-//		// ビューへデータを渡す
-//		return viewWrap('selectCoach',$this->viewData['coachList']);
-		return viewWrap('selectCoach');
 	}
 }
