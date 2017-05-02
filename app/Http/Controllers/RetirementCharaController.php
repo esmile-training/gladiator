@@ -15,7 +15,7 @@ class RetirementCharaController extends BaseGameController
 			//ポップアップ処理に変わる可能性あり
 			return $this->Lib->redirect('selectCoach',null,$id);
 		} else {
-			//コーチが二人以下だったらそのままコーチに追加処理
+			//コーチが二人以下だったらそのままコーチに追加
 			return $this->insertCoach($uCharaId);
 		}
 	}
