@@ -5,6 +5,14 @@ namespace App\Model;
 class RankingModel extends BaseGameModel
 {
     /*******      書き込み        *******/
+    public function insertRank( $userId )
+    {
+$sql = <<< EOD
+	INSERT INTO uRanking(userId) values($userId);
+EOD;
+    return parent::insert($sql);
+    }
+    
     
     /*
     *	chardata取得
@@ -155,6 +163,32 @@ EOD;
 	return parent::select($sql);
     }
     
+    /*
+     * rangeのアップデート
+     */
+
+    public function rangeUpdate($userId, $monday)
+    {
+$sql = <<< EOD
+	UPDATE uRanking 
+	SET weekRange = '{$monday}'
+	WHERE userId = $userId;
+EOD;
+	return parent::update($sql);
+    }
+    
+    /*
+     * 現在の登録の週を取得
+     */
+    public function getRange($userId)
+    {
+$sql = <<< EOD
+	SELECT weekRange
+	FROM uRanking
+	WHERE userId = $userId;
+EOD;
+	return parent::select($sql);
+    }
     /*******        書き込み終了         *******/
 }
 

@@ -96,10 +96,18 @@ EOD;
     }
     
     /*
-    public function charaStatus()
+     * キャラステータスの更新
+     */
+    public function charaStatus( $userId )
     {
 $sql = <<< EOD
-	UPDATE 
+	UPDATE user set
+	totalCharaStatus = 
+	(SELECT SUM(hp) AS Status FROM uChara WHERE userId = $userId)
+	where id = $userId;
 EOD;
+    return $this->update($sql);
     }
-     */}
+    
+
+}

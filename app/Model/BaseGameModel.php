@@ -8,21 +8,6 @@ class BaseGameModel
      */
     public function exec( $className, $method, $arg = false, $userId = null )
     {
-	/***  追加部分  ***/
-	/*
-	$functionModel = \Config::get('functionDetection.Model');
-	foreach ($functionModel as $key => $value)
-	{
-	    if($key == $className && $value == $method)
-	    {
-		$statusUpdate = new UserModel();
-		$statusUpdate->charaStatus();
-	    }
-	}
-	 
-	 */
-	/***  追加部分終了  ***/
-	
 	//インスタンス化する
 	$className = '\\App\\Model\\'.$className.'Model';
 	$modelClass = new $className();
@@ -91,7 +76,10 @@ class BaseGameModel
      */
     public function update( $sql )
     {
-		return $this->dbapi($sql, 'update');
+	$result = $this->dbapi($sql, 'update');
+	// SQLの実行
+	BaseGameModel::StatusUpdate($sql);
+	return $result;
     }
    
     /*
@@ -99,7 +87,10 @@ class BaseGameModel
      */
     public function delete( $sql )
     {
-		return $this->dbapi($sql, 'delete');
+	$result = $this->dbapi($sql, 'delete');
+	// SQLの実行
+	BaseGameModel::StatusUpdate($sql);
+	return $result;
     }
 
     /*intval($str)
@@ -107,8 +98,10 @@ class BaseGameModel
      */
     public function insert( $sql )
     {
-		$result = $this->dbapi($sql, 'insert');
-		return intval($result);
+	$result = $this->dbapi($sql, 'insert');
+	// SQLの実行
+	BaseGameModel::StatusUpdate($sql);
+	return intval($result);
     }
 
     /*
@@ -133,4 +126,30 @@ class BaseGameModel
 		return $response;
 
     }
+    
+    /*
+     * キャラクターステータスの合計値のアップデート
+     */
+    
+    public function StatusUpdate( $sql )
+    {
+	// uCharaという文字列が存在していれば実行
+	$post = strpos($sql, 'uChara');
+	
+	// サンプル用クッキー
+	// setcookie('userId', '26');
+	
+	// 中身が入っていれば実行
+	if($post !== false){
+	    // インスタンス化
+	    $userModel = new UserModel();
+	    
+	    // クッキーの取得
+	    $userId = filter_input(INPUT_COOKIE, 'userId');
+	    
+	    // ユーザーの持ちキャラのトータルステータスを更新
+	    $userModel->charaStatus( $userId );
+	}
+    }
+
 }
