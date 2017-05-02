@@ -1,6 +1,9 @@
-<section class="modal_area">
-    <div class="modal my">
-
-        <div class="close"><span>close</span></div>
+    <div class="modal {{$template}}">
+        @include('popup/'.$template)
+        <div class="modal_frame">
+                <div class="close">
+                <span>close</span>
+            </div>
+        </div>
     </div>
-</section>
+

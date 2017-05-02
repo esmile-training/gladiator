@@ -7,7 +7,9 @@ class RandamCharaLib extends BaseGameLib {
 	public static function getGachaRatio() {
 		
 		//ガチャの選択
+		
 		$gachavalue = (int)filter_input(INPUT_GET,"gachavalue");
+
 		//ガチャのレア度ごとの割合
 		$gachaConf = \Config::get('gacha.eRate');
 		
@@ -31,66 +33,88 @@ class RandamCharaLib extends BaseGameLib {
 			if($hitrand < $per){break;}
 
 		}
-		return $hit;
-
+		$ratio['hit'] = $hit;
+		$ratio['gachavalue'] = $gachavalue;
+		
+		return $ratio;
 	}		
-	public static function getCharaImgId() {
-	
-		//configからデータ取ってくる
-		$charaConf = \Config::get('chara.imgId');
-		//ランダム処理
-		$charaId = rand(1, count($charaConf));
-		//ランダムできまった数値を配列に入れる
-		$charaConf['charaId'] = $charaId;
-		//ランダムで決まったキャラの性別も配列に入れる
-		$charaConf['sex'] = $charaConf[$charaId]['sex'];
-		return $charaConf;
+	public function getCharaImgId($sex = false) {
+		
+		if($sex == 1 ){
+			
+			return $this->womanCharaSort();
+		
+		} else {
+			
+			//configからデータ取ってくる
+			$charaConf = \Config::get('chara.imgId');
+			//ランダム処理
+			$charaId = rand(1, count($charaConf));
+			//ランダムできまった数値を配列に入れる
+			$charaConf['charaId'] = $charaId;
+			//ランダムで決まったキャラの性別も配列に入れる
+			$charaConf['sex'] = $charaConf[$charaId]['sex'];
+			return $charaConf;
+		}
 	}
 
 	public static function getValueConf($ratio) {
 		
-		
+		$gachaV = (int)filter_input(INPUT_GET,"gachavalue");
 		//configからデータ取ってくる
-		$valueListConf = \Config::get('chara.Status');
-
-		//一つ目の攻撃力の処理
-		$ratio1 = mt_rand($valueListConf[$ratio]['valueMin'], $valueListConf[$ratio]['valueMax']) * 0.01;
-		$atk1 = $valueListConf[$ratio]['sumValueMax'] * $ratio1;
-
-		//二つ目の攻撃力の処理
-		if ($ratio1 * 100 < 100) {
-			$valueListConf[$ratio]['valueMin'] += abs($ratio1 * 100 - 100);
-		} else if ($ratio1 * 100 > 100) {
-			$valueListConf[$ratio]['valueMax'] -= abs($ratio1 * 100 - 100);
-		}
-		$ratio2 = mt_rand($valueListConf[$ratio]['valueMin'], $valueListConf[$ratio]['valueMax']) * 0.01;
-		$atk2 = $valueListConf[$ratio]['sumValueMax'] * $ratio2;
-
-		//三つ目の攻撃力の処理
-		$atk3 = $valueListConf[$ratio]['sumValueMax'] * 3 - ($atk1 + $atk2);
-
-		//型キャスト
-		$valueListConf['atk1'] = (int) $atk1;
-		$valueListConf['atk2'] = (int) $atk2;
-		$valueListConf['atk3'] = (int) $atk3;
-		$valueListConf['hp'] = $valueListConf['atk1'] + $valueListConf['atk2'] + $valueListConf['atk3'];
-		if ($valueListConf['hp'] <= $valueListConf[$ratio]['sumValueMax'] * 3 - 1) {
-
-			$valueListConf['hp'] += 1;
-		}
-
-		//var_dump($valueListConf['hp']);exit;
-		$narrow = 0;
-		//特化型
-		if ($atk1 > $atk2 && $atk1 > $atk3) {
-			$narrow = 1;
-		} else if ($atk2 > $atk1 && $atk2 > $atk3) {
-			$narrow = 2;
+		$gachaConf = \Config::get('gacha.eRate');
+		if(!$gachaConf[$gachaV]['Status'] == null){
+			
+			$valueListConf = $gachaConf[$gachaV]['Status'];
+		
 		} else {
-			$narrow = 3;
+		
+			//configからデータ取ってくる
+			$valueListConf = \Config::get('chara.Status');
+		
 		}
-		$valueListConf['narrow'] = $narrow;
-	
+		
+		
+		foreach($valueListConf as $value){
+			//一つ目の攻撃力の処理
+			$ratio1 = mt_rand($valueListConf[$ratio]['valueMin'], $valueListConf[$ratio]['valueMax']) * 0.01;
+			$atk1 = $valueListConf[$ratio]['sumValueMax'] * $ratio1;
+			//二つ目の攻撃力の処理
+			if ($ratio1 * 100 < 100) {
+				$valueListConf[$ratio]['valueMin'] += abs($ratio1 * 100 - 100);
+			} else if ($ratio1 * 100 > 100) {
+				$valueListConf[$ratio]['valueMax'] -= abs($ratio1 * 100 - 100);
+			}
+			$ratio2 = mt_rand($valueListConf[$ratio]['valueMin'], $valueListConf[$ratio]['valueMax']) * 0.01;
+			$atk2 = $valueListConf[$ratio]['sumValueMax'] * $ratio2;
+
+			//三つ目の攻撃力の処理
+			$atk3 = $valueListConf[$ratio]['sumValueMax'] * 3 - ($atk1 + $atk2);
+
+			//型キャスト
+			$valueListConf['atk1'] = (int) $atk1;
+			$valueListConf['atk2'] = (int) $atk2;
+			$valueListConf['atk3'] = (int) $atk3;
+			$valueListConf['hp'] = $valueListConf['atk1'] + $valueListConf['atk2'] + $valueListConf['atk3'];
+			if ($valueListConf['hp'] <= $valueListConf[$ratio]['sumValueMax'] * 3 - 1) {
+
+				$valueListConf['hp'] += 1;
+			}
+
+			$narrow = 0;
+			//特化型
+			if ($atk1 > $atk2 && $atk1 > $atk3) {
+				$narrow = 1;
+			} else if ($atk2 > $atk1 && $atk2 > $atk3) {
+				$narrow = 2;
+			} else {
+				$narrow = 3;
+			}
+			$valueListConf['narrow'] = $narrow;
+			
+			if($gachaV == 6 && $narrow == 1){break;}
+		}
+		
 		return $valueListConf;
 	}
 
@@ -108,8 +132,26 @@ class RandamCharaLib extends BaseGameLib {
 		return $charanameConf;
 		
 	}
-	public static function womanCharaSort() {
+	public function womanCharaSort() 
+	{		
+		//configからデータ取ってくる
+		$characonf = \Config::get('chara.imgId');
+	
+		$charawoman = [];
+		foreach ($characonf as $key => $value) {
+			if($value['sex'] == 1){
+				$charawoman[] = $key;//配列に直す方法模索
+			}
+		}
+		$womanCharaId = array_flip($charawoman);//キーと入れ替え
+		//ランダム処理
+		$charaId = array_rand($womanCharaId);
+		//ランダムできまった数値を配列に入れる
+		$characonf['charaId'] = $charaId;
+		//ランダムで決まったキャラの性別も配列に入れる
+		$characonf['sex'] = 1;
 		
+		return $characonf;
 	}
 	
 }

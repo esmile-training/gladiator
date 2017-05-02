@@ -18,6 +18,7 @@ class BaseGameController extends Controller
 		    return;
 		}
 		//ユーザー認証
+
 		$userId = 2; //cookieから取ってくる
 //		$userId = $_COOKIE['userId'];
 		$commonData['user'] = $this->Lib->exec('User', 'userAuth', false, $userId); 

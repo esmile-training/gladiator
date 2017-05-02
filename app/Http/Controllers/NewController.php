@@ -14,27 +14,6 @@ class NewController extends BaseGameController
      */
     public function index()
     {
-        //configからとってくる
-        $membersConf          =   \Config::get('members.profile');
-
-        //Libraly
-        $this->viewData['memberList'] = DevelopMemberLib::sortMemberConf( $membersConf );
-
-        return viewWrap('new', $this->viewData);
-    }
-
-    /**
-     * ユーザーIDをチェックしてリダイレクト
-     *
-     * @param uid
-     * @return Redirect
-     */
-    public function login()
-    {
-	//DB更新
-	UserModel::createUser();
-
-	//リダイレクト
-	return $this->redirect('mypage', 'index');
+		return viewWrap('new', $this->viewData);
     }
 }

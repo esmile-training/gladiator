@@ -3,18 +3,22 @@ namespace App\Libs;
 
 class PagerLib extends BaseGameLib
 {
-    public function valueConf ($nextPage = null, $backPage = null, $lastPage = null, $firstPage = null)	// 値の確認
+    public function valueConf ($nextPage = null, $backPage = null, $lastPage = null, $firstPage = null, $rangePage = null)	// 値の確認
     {
 	// どれか一つの値が入ってるか確認
 	if (isset($nextPage)) 
 	{
-	    return [$nextPage];
+	    return $nextPage;
 	}elseif(isset($backPage)){
 	    return PagerLib::backPage($backPage);
 	}elseif(isset($firstPage)){
-	    return [$firstPage];
+	    return $firstPage;
 	}elseif(isset($lastPage)){
 	    return PagerLib::lastPage($lastPage);
+	}elseif(isset($rangePage)){
+	    return $rangePage;
+	}else{
+	    return 0;
 	}
 
     }
@@ -26,7 +30,7 @@ class PagerLib extends BaseGameLib
 	{
 	    
 	    // offsetのなかから、現在のページから-20させることで1ページ前に戻れる。
-	    $currentPage = [$currentPage - 20];
+	    $currentPage = $currentPage - 20;
 	}
 	
 	return $currentPage;
@@ -35,7 +39,6 @@ class PagerLib extends BaseGameLib
 
     public function lastPage($lastPage)	// 最後のページを表示
     {
-	echo 'ok';
 	// 1の位の数を切り捨て
 	$floor = floor(($lastPage/10))*10;
 
