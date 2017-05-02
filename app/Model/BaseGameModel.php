@@ -8,8 +8,8 @@ class BaseGameModel
      */
     public function exec( $className, $method, $arg = false, $userId = null )
     {
-	$modelClass = new $className();
-
+	/***  追加部分  ***/
+	/*
 	$functionModel = \Config::get('functionDetection.Model');
 	foreach ($functionModel as $key => $value)
 	{
@@ -20,29 +20,27 @@ class BaseGameModel
 	    }
 	}
 	 
+	 */
+	/***  追加部分終了  ***/
 	
 	//インスタンス化する
 	$className = '\\App\\Model\\'.$className.'Model';
 	$modelClass = new $className();
-		//インスタンス化する
-		$className = '\\App\\Model\\'.$className.'Model';
-		$modelClass = new $className();
-
-		//ユーザ情報がある場合は登録
-		if( $userId ){
-			$userModel = new UserModel();
-			$modelClass->user = $userModel->getById( $userId );
-		}else{
-			$modelClass->user = null;
-		}
-		//引数の数によって出しわけ
-		if( is_array($arg) ){
-			return call_user_func_array( array($modelClass , $method), $arg );
-		}elseif( $arg ){
-			return call_user_func_array( array($modelClass , $method), array($arg) );
-		}else{
-			return $modelClass->$method($userId);
-		}
+	//ユーザ情報がある場合は登録
+	if( $userId ){
+	    $userModel = new UserModel();
+	    $modelClass->user = $userModel->getById( $userId );
+	}else{
+	    $modelClass->user = null;
+	}
+	//引数の数によって出しわけ
+	if( is_array($arg) ){
+	    return call_user_func_array( array($modelClass , $method), $arg );
+	}elseif( $arg ){
+	    return call_user_func_array( array($modelClass , $method), array($arg) );
+	}else{
+	    return $modelClass->$method($userId);
+	}
     }
 
     /*
