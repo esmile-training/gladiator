@@ -11,13 +11,25 @@ class TrainingModel extends BaseGameModel
 $sql =  <<< EOD
 	SELECT *
 	FROM uChara
-	WHERE userId = 1
+	WHERE userId = '{$_COOKIE['userId']}'
 	AND trainingState = 0
         LIMIT 10
 EOD;
         $result = $this->select($sql, 'all');
 	return $result;
     }
+	
+	public function getById($uCoachId)
+	{
+		// SQLに接続する
+		$sql = <<< EOD
+			SELECT *
+			FROM uCoach
+			WHERE id = {$uCoachId}
+EOD;
+		// 最初に一致したものを返す
+		return $this->select($sql,'first');
+	}
     
     /*
      * データベースからコーチの情報取得
@@ -25,7 +37,7 @@ EOD;
     public function getUserCoach()
     {
 $sql =  <<< EOD
-	SELECT id,uCoachId,state
+	SELECT id,imgId,name,state
 	FROM uCoach
         LIMIT 3
 EOD;
