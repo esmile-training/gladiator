@@ -22,6 +22,11 @@
 	</a>
 
 </div>
+<div>
+    <a href="{{APP_URL}}battle">
+	バトルスタンバイ画面
+    </a>
+</div>
 
 <div>
 <<<<<<< HEAD

@@ -34,8 +34,8 @@ class BattleLib extends BaseGameLib
 		return $result;
 	}
 
-	// バトルの処理を格納する処理
-	public static function battleResult($pcHand, $enmHand, $typeData, $resultData)
+	// 攻撃の処理を格納する処理
+	public static function AtackResult($pcHand, $enmHand, $typeData, $resultData)
 	{
 		
 		$result = [];   // データ返却用変数の初期化
@@ -141,30 +141,32 @@ class BattleLib extends BaseGameLib
 	// ダメージ量の計算処理
 	public static function damageCalc($winner, $typeData)
 	{
-		// config にあるダメージ変化量の最小値と最大値を格納
+		// config にあるダメージ割合の変化量の最小値と最大値を格納
 		$randData = \Config::get('battle.damagePer');
 
 		// ダメージ割合を格納
 		$damagePer = mt_rand($randData['min'], $randData['max']) * 0.01;
 
 		// 勝った方の 'hand' によって処理を行う
+		// ダメージ量計算式
+		// ダメージ量 = 勝った方の攻撃力 * ダメージ割合
 		switch ($winner['hand'])
 		{
 			// 'goo' の場合
 			case $typeData['goo']:
-				// 'gooAtk' に 元データ 'cGooAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
+				// 'bGooAtk' に 元データ 'cGooAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
 				$winner['bGooAtk'] = (int) ($winner['gooAtk'] * $damagePer);
 				break;
 
 			// 'cho' の場合
 			case $typeData['cho']:
-				// 'choAtk' に 元データ 'cChoAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
+				// 'bChoAtk' に 元データ 'cChoAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
 				$winner['bChoAtk'] = (int) ($winner['choAtk'] * $damagePer);
 				break;
 
 			// 'paa' の場合
 			case $typeData['paa']:
-				// 'paaAtk' に 元データ 'cPaaAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
+				// 'bPaaAtk' に 元データ 'cPaaAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
 				$winner['bPaaAtk'] = (int) ($winner['paaAtk'] * $damagePer);
 				break;
 
@@ -211,4 +213,15 @@ class BattleLib extends BaseGameLib
 		
 		return $loser['bHp'];
 	}
+	
+	// 賞金計算
+	public static function prizeCalc($EnemyData, $Commission, $prizeRatio)
+	{
+		// 賞金額計算
+		$result = ($EnemyData['hp'] * $Commission['Commission']) * ( $prizeRatio[$EnemyData['level']] * 0.01);
+		
+		return $result;
+
+	}
+
 }
