@@ -26,10 +26,11 @@ class RetirementCharaController extends BaseGameController
 	}
 	
 	public function selectDeleteCoarch(){
-		$alluCoach = $this->Model->exec('Training','getUserCoach',$_COOKIE['userId']);
-		// viewDataへ取得したキャラクターを送る
-		$this->viewData['coachList'] = $alluCoach;;
-		// ビューへデータを渡す
-		return viewWrap('error');
+//		$alluCoach = $this->Model->exec('Training','getUserCoach',$_COOKIE['userId']);
+//		// viewDataへ取得したキャラクターを送る
+//		$this->viewData['coachList'] = $alluCoach;;
+//		// ビューへデータを渡す
+//		return viewWrap('selectCoach',$this->viewData['coachList']);
+		return viewWrap('selectCoach');
 	}
 }
