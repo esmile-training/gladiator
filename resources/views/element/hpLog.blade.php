@@ -1,7 +1,7 @@
 <div>
-	{{ $viewData['PcData']['name'] }} のHP {{ $viewData['PcData']['bHp'] }} / {{ $viewData['PcData']['hp'] }}
+	{{ $viewData['CharaData']['name'] }} のHP {{ $viewData['CharaData']['bHp'] }} / {{ $viewData['CharaData']['hp'] }}
 </div>
 
 <div>
-	{{ $viewData['EnmData']['name'] }} のHP {{ $viewData['EnmData']['bHp'] }} / {{ $viewData['EnmData']['hp'] }}    
+	{{ $viewData['EnemyData']['name'] }} のHP {{ $viewData['EnemyData']['bHp'] }} / {{ $viewData['EnemyData']['hp'] }}    
 </div>

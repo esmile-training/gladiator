@@ -83,6 +83,17 @@ EOD;
 EOD;
     return $this->insert($sql);
     }
+	
+	// 所持金の更新
+    public function updateMoney($user)
+    {
+$sql = <<< EOD
+	UPDATE  user
+	SET		money = {$user['money']}
+	WHERE   id		= {$user['id']};
+EOD;
+		$this->update($sql);
+    }
     
     /*
     public function charaStatus()
@@ -91,6 +102,4 @@ $sql = <<< EOD
 	UPDATE 
 EOD;
     }
-     */
-
-}
+     */}
