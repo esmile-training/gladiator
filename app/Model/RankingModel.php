@@ -132,6 +132,11 @@ EOD;
 	return parent::select($sql);
     }
     
+    /*
+     * rangeのアップデート
+     */
+
+    
     /*******        書き込み終了         *******/
 }
 
