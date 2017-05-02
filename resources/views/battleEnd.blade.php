@@ -2,12 +2,15 @@
     バトルリザルト
 </div>
 
-@if ($viewData['EnemyData']['bHp'] <= 0)
+@if ($viewData['Prize'] > 0)
 <div>
 	勝利！
 </div>
 <div>
 	{{$viewData['Prize']}} の賞金を獲得！
+</div>
+<div>
+	現在のウィークリーポイント　{{$viewData['RankingData']['weeklyAward']}}
 </div>
 @else
 <div>
@@ -16,7 +19,7 @@
 @endif
 
 <div>
-    <a href="{{APP_URL}}battleStanby">
+    <a href="{{APP_URL}}battle/index">
 		バトルスタンバイ画面へ戻る
     </a>
 </div>

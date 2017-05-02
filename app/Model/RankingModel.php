@@ -98,7 +98,7 @@ EOD;
 		return $this->select($sql, 'first');
 	}
 	
-	// ユーザーIDを元にウィークリーランキングの情報を更新
+	// ランキングデータのIDを元にウィークリーランキングのポイントを更新
 	public function updateWeeklyPoint($rankingData)
     {
 $sql = <<< EOD

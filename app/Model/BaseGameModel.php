@@ -13,18 +13,26 @@ class BaseGameModel
 		$modelClass = new $className();
 
 		//ユーザ情報がある場合は登録
-		if( $userId ){
+		if( $userId )
+		{
 			$userModel = new UserModel();
 			$modelClass->user = $userModel->getById( $userId );
-		}else{
+		}
+		else
+		{
 			$modelClass->user = null;
 		}
 		//引数の数によって出しわけ
-		if( is_array($arg) ){
+		if( is_array($arg) )
+		{
 			return call_user_func_array( array($modelClass , $method), $arg );
-		}elseif( $arg ){
+		}
+		elseif( $arg )
+		{
 			return call_user_func_array( array($modelClass , $method), array($arg) );
-		}else{
+		}
+		else
+		{
 			return $modelClass->$method($userId);
 		}
     }

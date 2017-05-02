@@ -7,16 +7,22 @@ use App\Libs\BattleLib;
 
 class battleController extends BaseGameController
 {
-	// データを表示するファンクション
+	// バトルスタンバイ画面を表示するファンクション
 	public function index()
 	{
+		return view('battleStanby');
+	}
+
+	// バトルログを表示するファンクション
+	public function battleLog()
+	{
 		// setData関数を呼び出し、データをセット
-		$this->setData();
+		$this->getBattleData();
 		
 		// バトルデータがなかった場合、エラー画面を表示しホームへ戻す 
 		if(is_null($this->BattleData))
 		{
-			return viewWrap('error');
+			return view('error');
 		}
 		
 		// どちらかのHPが0以下になったらバトル終了フラグを立てる
@@ -24,6 +30,7 @@ class battleController extends BaseGameController
 		{
 			// BattleData の 'delFlag' を立てる
 			$this->BattleData['delFlag'] = 1;
+
 		}
 
 		// 全てのデータを viewData に渡す
@@ -35,9 +42,28 @@ class battleController extends BaseGameController
 
 		return viewWrap('battle', $this->viewData);
 	}
+	
+	// リザルト画面を表示するファンクション
+	public function battleResult()
+	{
+		// リダイレクト元から賞金データを取得
+		$prize = filter_input(INPUT_GET,"money");
+		
+		// getRankingData ファンクションを呼び出し、ランキングデータをセット
+		$this->getRankingData();
 
-	// データベースからデータをそれぞれの変数にセットするファンクション
-	public function setData()
+		// リザルト画面に必要なデータを viewData に渡す
+		$this->viewData['Prize']		= $prize;
+		$this->viewData['RankingData']	= $this->RankingData;
+		
+		// 全てのデータにdelFlagを立てる処理
+		$this->updateDelFlag();
+
+		return viewWrap('battleEnd', $this->viewData);
+	}
+
+	// データベースからデータをそれぞれの変数に格納するファンクション
+	public function getBattleData()
 	{
 		// デバッグ用　データ再セット
 //		$this->debug();
@@ -72,20 +98,24 @@ class battleController extends BaseGameController
 			// EnemyData に敵キャラデータを格納
 			$this->EnemyData = $this->Model->exec('Battle', 'getBattleEnemyData', $this->BattleData['enemyId']);
 		}
-		
+	}
+	
+	// データベースからランキングデータを RankingData に格納するファンクション
+	public function getRankingData()
+	{
 		// ユーザーIDを元に週間のランキングデータを読み込み
 		$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
 		if(is_null($this->RankingData))
 		{
 			// ランキングデータがなければ、新しくランキングデータを作成
-		}
+		}	
 	}
 
-	// データを更新するファンクション
+	// バトルデータを更新するファンクション
 	public function updateBattleData()
 	{
 		// setData関数を呼び出し、データをセット
-		$this->setData();
+		$this->getBattleData();
 
 		// 押されたボタンのデータを Chara の 'hand' に格納
 		// 'goo' / 'cho' / 'paa' のどれかが入る
@@ -134,30 +164,48 @@ class battleController extends BaseGameController
 		// 敵キャラデータの更新処理
 		$this->Model->exec('Battle', 'UpdateBattleEnemyData', array($this->EnemyData));
 
-		return $this->Lib->redirect('Battle', 'index');
+		return $this->Lib->redirect('Battle', 'battleLog');
 	}
 	
-	// バトルを終了するファンクション
-	public function battleEnd()
+	// リザルト画面に必要なデータの作成と更新をするファンクション
+	public function makeResultData()
 	{
-		// setData関数を呼び出し、データをセット
-		$this->setData();
+		// getData ファンクションを呼び出し、バトルデータをセット
+		$this->getBattleData();
+		
+		// getRankingData ファンクションを呼び出し、ランキングデータをセット
+		$this->getRankingData();
 
+		// バトルデータがなかった場合、エラー画面を表示しホームへ戻す
+		// リザルト画面から戻るボタンで戻り、再度ページをリザルト画面を開かれたときの対策
+		if(is_null($this->BattleData))
+		{
+			return view('error');
+		}
+		
 		// 賞金額用変数の初期化
-		$prize = 0;
+		$prize['money'] = 0;
 
 		// 敵のHPが0以下の場合(試合全体としてプレイヤーが勝った場合)
-		if( $this->EnemyData['bHp'] <= 0 )
+		if($this->EnemyData['bHp'] <= 0)
 		{
 			// 賞金額計算
-			$prize =  BattleLib::prizeCalc($this->EnemyData, $this->Commission, $this->PrizeRatio);
+			$prize['money'] =  BattleLib::prizeCalc($this->EnemyData, $this->Commission, $this->PrizeRatio);
 
 			// ユーザーの所持金 'money' に賞金額を加算しデータベースに格納
-			$this->Lib->exec('Money', 'addition', array($this->user, $prize));
+			$this->Lib->exec('Money', 'addition', array($this->user, $prize['money']));
 			// ユーザーのウィークリーポイント 'weeklyAward' に賞金額を加算しデータベースに格納
-			$this->Lib->exec('Ranking', 'weeklyAdd', array($this->RankingData, $prize));
+			$this->Lib->exec('Ranking', 'weeklyAdd', array($this->RankingData, $prize['money']));
 		}
-
+		
+		return $this->Lib->redirect('Battle', 'battleResult',$prize);
+	}
+	
+	// 各データに 'delFlag' を立てるファンクション
+	public function updateDelFlag()
+	{
+		$this->getBattleData();
+		
 		// データベースの更新処理
 		// uBattleInfo の 'delFlag' を立てる処理
 		$this->Model->exec('Battle', 'UpdateInfoFlag', $this->BattleData['id']);
@@ -165,16 +213,31 @@ class battleController extends BaseGameController
 		$this->Model->exec('Battle', 'UpdateCharaFlag', $this->BattleData['id']);
 		// uBattleEnemy の 'delFlag' を立てる処理
 		$this->Model->exec('Battle', 'UpdateEnemyFlag', $this->BattleData['id']);
-
-
-		// リザルト画面に必要なデータを viewData に渡す
-		$this->viewData['Prize']		= $prize;
-		$this->viewData['EnemyData']	= $this->EnemyData;
-
-		return viewWrap('battleEnd', $this->viewData);
 	}
 	
+	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 	// デバッグ用ファンクション

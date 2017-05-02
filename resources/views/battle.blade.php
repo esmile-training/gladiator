@@ -20,7 +20,7 @@
 @if ($viewData['BattleData']['delFlag'] == 1)
 		
 	<div>
-		<a href="{{APP_URL}}battle/battleEnd">
+		<a href="{{APP_URL}}battle/makeResultData">
 			バトルリザルト画面へ
 		</a>
 	</div>
