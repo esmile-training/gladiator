@@ -9,7 +9,7 @@ class TopController extends BaseGameController
      */
     public function index()
     {
-	return viewWrap('top', $this->viewData);
+		return viewWrap('top', $this->viewData);
     }
 
     /**
@@ -20,8 +20,8 @@ class TopController extends BaseGameController
      */
     public function login()
     {
-	//cookieの有無を確認
-	if(isset($_COOKIE['userId']))
+		//cookieの有無を確認
+		if(isset($_COOKIE['userId']))
 	{
 	    //DB更新
 	    $this->Model->exec('User' , 'getById' , "" , $_COOKIE['userId']);
@@ -37,9 +37,9 @@ class TopController extends BaseGameController
 	    } 
 	}
 	else 
-	{
-	    //無ければエディット画面にリダイレクトする。
-	    return $this->Lib->redirect('edit');
-	}
+		{
+			//無ければエディット画面にリダイレクトする。
+			return $this->Lib->redirect('edit');
+		}
     }
 }

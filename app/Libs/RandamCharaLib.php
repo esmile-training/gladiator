@@ -24,7 +24,7 @@ class RandamCharaLib extends BaseGameLib {
 		
 		$per = 0;
 		//合計値を低いパーセントから比較していく
-		for($i = 1;$i < 5; $i++){
+		for($i = 1;$i <= 5; $i++){
 
 			$per += $gachaConf[$gachavalue]['persent'][$i];
 			$hit = $i;

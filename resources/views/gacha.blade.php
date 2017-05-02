@@ -7,6 +7,9 @@
     {{--画像--}}
      <img class="char" src="{{CHAR_IMG_URL}}{{$viewData['chara']['charaId']}}.png"width= 35% height= 55%>
 	<div>
+		<?php echo $viewData['name']['firstname']['name'],'・',$viewData['name']['lastname']['familyname']?>
+	</div>
+	<div>
 		<?php echo 'hp			',$viewData['valueList']['hp']?>
 	</div>
 	<div>
