@@ -16,3 +16,8 @@
 		@endforeach
 	</div>
 </form>
+<form action ="selectCoach/deleteChara" method="get">
+	<input type="hidden" name="id" value="{{$_GET['id']}}">
+	<button type="submit" >コーチにしない</button>
+</form>
+<button type="button" onclick="location.href='{{APP_URL}}selectChara'">戻る</button>
