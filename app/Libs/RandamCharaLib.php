@@ -7,7 +7,6 @@ class RandamCharaLib extends BaseGameLib {
 	public static function getGachaRatio() {
 		
 		//ガチャの選択
-		
 		$gachavalue = (int)filter_input(INPUT_GET,"gachavalue");
 
 		//ガチャのレア度ごとの割合
@@ -17,34 +16,31 @@ class RandamCharaLib extends BaseGameLib {
 		$sumper=0;
 		
 		//パーセントの合計値
-		for($i=1;$i	<= count($gachaConf[$gachavalue]['persent']);$i++){
-
+		for($i=1;$i	<= count($gachaConf[$gachavalue]['persent']);$i++)
+		{
 			$sumper += $gachaConf[$gachavalue]['persent'][$i];	
-
 		}
 		//０からパーセント合計値のランダム
 		$hitrand = rand(0,$sumper);
 		
 		$per = 0;
 		//合計値を低いパーセントから比較していく
-		for($i = 1;$i <= 5; $i++){
-
+		for($i = 1;$i <= 5; $i++)
+		{
 			$per += $gachaConf[$gachavalue]['persent'][$i];
 			$hit = $i;
 			if($hitrand < $per){break;}
-
 		}
 		$ratio['hit'] = $hit;
 		$ratio['gachavalue'] = $gachavalue;
 		
 		return $ratio;
 	}		
-	public function getCharaImgId($sex = false) {
-		
-		if($sex == 1 ){
-			
+	public function getCharaImgId($sex = false) 
+	{
+		if($sex == 1 )
+		{	
 			return $this->womanCharaSort();
-		
 		} else {
 			
 			//configからデータ取ってくる
@@ -61,14 +57,16 @@ class RandamCharaLib extends BaseGameLib {
 
 	public function getValueConf($ratio) 
 	{
-		
+		//ガチャの種類取得
 		$gachaV = (int)filter_input(INPUT_GET,"gachavalue");
 		//configからデータ取ってくる
 		$gachaConf = \Config::get('gacha.eRate');
+		//ガチャのコンフィグの中のステータスがヌルじゃないとき
 		if(!$gachaConf[$gachaV]['Status'] == null)
 		{
 			$valueListConf = $gachaConf[$gachaV]['Status'];		
 		}else{
+			//ガチャのコンフィグの中のステータスがヌルのとき
 			//configからデータ取ってくる
 			$valueListConf = \Config::get('chara.Status');
 		}
@@ -98,10 +96,13 @@ class RandamCharaLib extends BaseGameLib {
 			{
 					$valueListConf['hp'] += 1;
 			}
+			//降順
 			arsort($atk);
-			
+			//一番の大きい値を入れる
 			$attack['1'] = current($atk);
+			//二番の大きい値を入れる
 			$attack['2'] = current(array_slice($atk,1));
+			//三番の大きい値を入れる
 			$attack['3'] = current(array_slice($atk,2));
 
 			
@@ -110,6 +111,8 @@ class RandamCharaLib extends BaseGameLib {
 				$rand = 1;
 			}else if($gachaV == 8){
 				$rand = 2;
+			}else if($gachaV == 10){
+				$rand = 3;
 			}
 				
 			if($rand == 1){

@@ -13,7 +13,7 @@
 	<input type="image" src="{{IMG_URL_TEST}}gachabutton5.png" name = 'gachavalue' value = "6"width= 100% height= 100%>
 </div>
 <div>
-	<input type="image" src="{{IMG_URL_TEST}}gachabutton3.png"  name = 'gachavalue' value = "8"width= 100% height= 100%>
+	<input type="image" src="{{IMG_URL_TEST}}gachabutton6.png"  name = 'gachavalue' value = "8"width= 100% height= 100%>
 </div>
 </form>
 
