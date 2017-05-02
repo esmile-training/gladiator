@@ -15,14 +15,12 @@
     </a>
 </div>
 <div>
-    <a href="{{APP_URL}}gachaselect">
-	ガチャ
-    </a>
+
 =======
 	<a href="{{APP_URL}}selectChara/index">
 		キャラクター選択
 	</a>
->>>>>>> utsumi_gacha
+
 </div>
 
 <div>
@@ -34,6 +32,6 @@
 	<a href="{{APP_URL}}gacha/select">
 		ガチャ
 	</a>
->>>>>>> utsumi_gacha
+
 </div>
 
