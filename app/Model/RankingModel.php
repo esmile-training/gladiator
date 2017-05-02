@@ -119,6 +119,29 @@ $sql = <<< EOD
 EOD;
 	return parent::select($sql);
     }
+	
+	
+	// ユーザーIDを元にウィークリーランキングの情報を取得
+	public function getRankingData($userId = false)
+	{
+$sql = <<< EOD
+	SELECT *
+	FROM uRanking
+	WHERE userId	= {$userId}
+EOD;
+		return $this->select($sql, 'first');
+	}
+	
+	// ランキングデータのIDを元にウィークリーランキングのポイントを更新
+	public function updateWeeklyPoint($rankingData)
+    {
+$sql = <<< EOD
+	UPDATE  uRanking
+	SET		weeklyAward = {$rankingData['weeklyAward']}
+	WHERE  id		= {$rankingData['id']};
+EOD;
+		$this->update($sql);
+    }
     
     /*
      * charaの登録数を取得

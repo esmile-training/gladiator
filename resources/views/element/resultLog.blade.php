@@ -1,12 +1,12 @@
 <div>
-    {{ $viewData['PcData']['name'] }}
+    {{ $viewData['CharaData']['name'] }}
     は    
-    {{ $viewData['PcData']['hand'] }}
+    {{ $viewData['CharaData']['hand'] }}
     を出した！<br />
-    {{ $viewData['EnmData']['name'] }}
+    {{ $viewData['EnemyData']['name'] }}
     は    
-    {{ $viewData['EnmData']['hand'] }}
+    {{ $viewData['EnemyData']['hand'] }}
     を出した！<br />
     
-    結果は{{ $viewData['PcData']['result'] }}！<br />
+    結果は{{ $viewData['CharaData']['result'] }}！<br />
 </div>
