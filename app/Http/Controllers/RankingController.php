@@ -13,8 +13,6 @@ class RankingController extends BaseGameController
     {
 	// 親のコンストラクタをオーバーライド
 	parent::__construct();
-	// 総合か習慣の切り替え
-	$rankChange = 0;
 
 	// 表示タブの切り替え
 	$this->chengeData = filter_input(INPUT_GET, 'dataChenge');
@@ -28,86 +26,93 @@ class RankingController extends BaseGameController
 	 */
 	
 	if (isset($this->chengeData) && $this->chengeData == 0) {
-	    $rankChange = $this->chengeData;
+	    $chengeRanking = 0;
 	} elseif (isset($this->chengeData) && $this->chengeData == 1) {
-	    $rankChange = $this->chengeData;
+	    $chengeRanking = 1;
 	}elseif(isset($this->chenge) && !isset($this->chengeData)){
-	    $rankChange = $this->chenge;
+	    $chengeRanking = $this->chenge;
 	}else{
-	    $rankChange = 0; 
+	    $chengeRanking = 0; 
 	}
 
-	if($this->chengeData == 0){
+	// 週間か総合値順位のボタンの状態判定
+	if($chengeRanking == 0){
 	    // 最下位のデータを取得
 	    $bottomData = $this->Model->exec('Ranking', 'bottomAcquisition');
-	    $this->rankingData['bottomPoint'] = $bottomData[0]['totalPoint'];
+	    $this->rankingData['bottomPoint'] = $bottomData[0]['weeklyAward'];
 
 	    // 登録者数を取得
 	    $userCount = $this->Model->exec('Ranking', 'idRegistrationNumber');
 	    $this->rankingData['count'] = floor(($userCount[0]['count']/10));
 
-	    // 総合と週間の切り替え
-	    $this->rankingData['rankChenge'] = $rankChange;
+	    // 週間とステータスの切り替え
+	    $this->rankingData['rankChenge'] = $chengeRanking;
 	}else{
-	    $bottomData = $this->Model->exec('Ranking', 'bottomStatus');
-	    $this->rankingData['bottomPoint'] = $bottomData[0]['hp'];
+	    // ステータスの最下位のデータを取得
+	    $bottomData = $this->Model->exec('Ranking', 'bottomStatus', $this->user['id']);
+	    $this->rankingData['bottomStatus'] = $bottomData[0]['hp'];
 	    
-	    // 登録者数を取得
+	    // 登録キャラ数を取得
 	    $charaCount = $this->Model->exec('Ranking', 'charaCount', $this->user['id']);
 	    $this->rankingData['count'] = floor(($charaCount[0]['count']/10));
 
-	    // 総合と週間の切り替え
-	    $this->rankingData['rankChenge'] = $rankChange; 
+	    // 週間とステータスの切り替え
+	    $this->rankingData['rankChenge'] = $chengeRanking; 
 	}
     }
 
 
     public function index()
     {
-	
 	// ページャーの取得
 	$nextPage = filter_input(INPUT_GET, 'next');
 	$backPage = filter_input(INPUT_GET, 'back');
 	$lastPage = filter_input(INPUT_GET, 'last');
 	$firstPage = filter_input(INPUT_GET, 'first');
+	$rangePage = filter_input(INPUT_GET, 'page');
 	
 	// 配列化
-	$pushPage = [$nextPage, $backPage, $lastPage, $firstPage];
-	
-	// ページの切り替え
-	var_dump($this->chenge);
-	
-	
-	if(!isset($nextPage) && !isset($backPage) && !isset($lastPage) && !isset($firstPage) && $this->chengeData == 0)
+	$pushPage = [$nextPage, $backPage, $lastPage, $firstPage, $rangePage];
+
+	// 初期画面を出力
+	if(!isset($nextPage) && !isset($backPage) && !isset($lastPage) && !isset($firstPage) && !isset($rangePage) && $this->chengeData == 0)
 	{
-	    // 初期画面
 	    $userRank = $this->Model->exec('Ranking', 'userRank', $this->user['id']);
 	    $page = RankingController::userRanking($userRank);
 	}else{
+	    // 週間かステータスで取得データを切替
 	    if ($this->rankingData['rankChenge'] == 0){
 		// ユーザーランキング
 		$moldValue = $this->Lib->exec('Pager', 'valueConf', $pushPage);
-		$page = $this->Model->exec('Ranking', 'rankingPager', $moldValue);
+		$page = $this->Model->exec('Ranking', 'rankingPager', [$moldValue]);
 	    }else{
 		// 所持キャラランキング
 		$moldValue = $this->Lib->exec('Pager', 'valueConf', $pushPage);
-		$page = $this->Model->exec('Ranking', 'rankingChara', $moldValue);
+		$this->rankingData['nowpage'] = $moldValue;
+		$page = $this->Model->exec('Ranking', 'rankingChara', [$moldValue, $this->user['id']]);
 	    }
 	}
 
 	// 並べ替えたものを代入
 	$this->viewData['ranking'] = $page;
 	$this->viewData['rankingData'] = $this->rankingData;
-	var_dump($this->viewData);
+
 	// ビューヘ渡す
-	return viewWrap('ranking', $this->viewData);
+	if ($this->rankingData['rankChenge'] == 0) {
+	    return viewWrap('userRanking', $this->viewData);
+	}else{
+	    return viewWrap('charaRanking', $this->viewData);
+	}
     }
     
     
     
     /*
+     * 
      * 初期画面の表示切替
+     * 
      */
+    
     public function userRanking($inputRank)
     {
 	$userrank = array_search($this->user['id'], array_column($inputRank, 'userId'));

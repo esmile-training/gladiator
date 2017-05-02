@@ -8,6 +8,22 @@ class BaseGameModel
      */
     public function exec( $className, $method, $arg = false, $userId = null )
     {
+	$modelClass = new $className();
+
+	$functionModel = \Config::get('functionDetection.Model');
+	foreach ($functionModel as $key => $value)
+	{
+	    if($key == $className && $value == $method)
+	    {
+		$statusUpdate = new UserModel();
+		$statusUpdate->charaStatus();
+	    }
+	}
+	 
+	
+	//インスタンス化する
+	$className = '\\App\\Model\\'.$className.'Model';
+	$modelClass = new $className();
 		//インスタンス化する
 		$className = '\\App\\Model\\'.$className.'Model';
 		$modelClass = new $className();
