@@ -55,7 +55,7 @@ EOD;
 $sql = <<< EOD
 	UPDATE  uBattleInfo
 	SET		delFlag = 1
-	WHERE   id = {$battleData['id']};
+	WHERE   id = {$battleData};
 EOD;
 		$this->update($sql);
 	}

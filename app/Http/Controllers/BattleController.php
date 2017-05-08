@@ -22,6 +22,14 @@ class battleController extends BaseGameController
 	{
 		// ユーザーIDを取得する
 		$userId = $this->user['id'];
+
+		// 継続中の戦闘があったらbattleLogへリダイレクトする
+		$battleInfo = $this->Model->exec('UBattleInfo', 'getBattleData', $userId);
+		if(isset($battleInfo))
+		{
+			$this->Lib->redirect('battle', 'battleLog');
+		}
+
 		var_dump($userId);
 		// DBのキャラクターデータを取得する
 		$alluChara = $this->Model->exec('UChara', 'getUserChara', $userId);
@@ -33,6 +41,7 @@ class battleController extends BaseGameController
 		}
 		// viewDataへ取得したキャラクターを送る
 			$this->viewData['charaList'] = $alluChara;
+
 			// ビューへデータを渡す
 			return viewWrap('battleCharaSelect', $this->viewData);
 	}
@@ -49,6 +58,7 @@ class battleController extends BaseGameController
 		// 対戦の難易度とキャラIDをビューへ渡す
 		$this->viewData['difficultyList'] = $difficulty;
 		$this->viewData['selectedCharaId'] = $selectedCharaId;
+
 		// ビューへデータを渡す
 		return viewWrap('arenaSelect', $this->viewData);
 	}
