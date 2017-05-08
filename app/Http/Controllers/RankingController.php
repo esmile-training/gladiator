@@ -43,17 +43,18 @@ class RankingController extends BaseGameController
 
 	    // 登録者数を取得
 	    $userCount = $this->Model->exec('Ranking', 'idRegistrationNumber');
-	    $this->rankingData['count'] = floor(($userCount[0]['count']/10));
+	    $this->rankingData['count'] = ceil(($userCount[0]['count']/10));
 
 	    // 週間とステータスの切り替え
 	    $this->rankingData['rankChenge'] = $chengeRanking;
 	}else{
 	    // ステータスの最下位のデータを取得
 	    $bottomData = $this->Model->exec('Ranking', 'bottomStatus', $this->user['id']);
-	    $this->rankingData['bottomStatus'] = $bottomData[0]['hp'];
+	    $bottomData[0]['totalCharaStatus'] == null ? $bottomData = 0 : false;
+	    $this->rankingData['bottomStatus'] = $bottomData;
 	    
-	    // 登録キャラ数を取得
-	    $charaCount = $this->Model->exec('Ranking', 'charaCount', $this->user['id']);
+	    // 登録者数を取得
+	    $charaCount = $this->Model->exec('Ranking', 'userCount');
 	    $this->rankingData['count'] = floor(($charaCount[0]['count']/10));
 
 	    // 週間とステータスの切り替え
@@ -77,19 +78,21 @@ class RankingController extends BaseGameController
 	// 初期画面を出力
 	if(!isset($nextPage) && !isset($backPage) && !isset($lastPage) && !isset($firstPage) && !isset($rangePage) && $this->chengeData == 0)
 	{
-	    $userRank = $this->Model->exec('Ranking', 'userRank', $this->user['id']);
+	    $range = $this->Lib->exec('weekRange', 'rangeState', $this->user['id']);
+	    $userRank = $this->Model->exec('Ranking', 'userRank', [$this->user['id'], $range]);
+	    var_dump($userRank);
 	    $page = RankingController::userRanking($userRank);
 	}else{
+	    $moldValue = $this->Lib->exec('Pager', 'valueConf', $pushPage);
+	    $this->rankingData['nowpage'] = $moldValue;
+	    
 	    // 週間かステータスで取得データを切替
 	    if ($this->rankingData['rankChenge'] == 0){
 		// ユーザーランキング
-		$moldValue = $this->Lib->exec('Pager', 'valueConf', $pushPage);
 		$page = $this->Model->exec('Ranking', 'rankingPager', [$moldValue]);
 	    }else{
 		// 所持キャラランキング
-		$moldValue = $this->Lib->exec('Pager', 'valueConf', $pushPage);
-		$this->rankingData['nowpage'] = $moldValue;
-		$page = $this->Model->exec('Ranking', 'rankingChara', [$moldValue, $this->user['id']]);
+		$page = $this->Model->exec('Ranking', 'rankingStatus', $moldValue);
 	    }
 	}
 
@@ -115,8 +118,10 @@ class RankingController extends BaseGameController
     
     public function userRanking($inputRank)
     {
+	var_dump($inputRank);
 	$userrank = array_search($this->user['id'], array_column($inputRank, 'userId'));
 	$data = 0;
+	
 	// ランキング取得時、中間ではなく、上位十位以内だった場合
 	if($inputRank[9]['userId'] != $this->user['id'] && 10 > $userrank)
 	{
