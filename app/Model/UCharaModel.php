@@ -40,31 +40,4 @@ EOD;
 		return $this->select($sql,'first');
 	}
 
-	/*
-	 * キャラクターをバトル用DBへインサートする
-	 */
-	public function insertChara($uCharaId,$hp,$gooAtk,$choAtk,$paaAtk)
-	{
-		$time = date('Y-m-d H:i:s', time());
-$sql = <<< EOD
-		INSERT INTO uBattleChara
-		VALUES (
-			NULL,
-			DEFAULT,
-			'{$uCharaId}',
-			'{$hp}',
-			'{$gooAtk}',
-			'{$choAtk}',
-			'{$paaAtk}',
-			'未設定',
-			'未設定',
-			'{$time}',
-			'{$time}'
-		);
-EOD;
-		// インサートしたレコードのidを取得する
-		$id = $this->insert($sql);
-		// インサートしたレコードのIDを返す
-		return $id;
-	}
 }

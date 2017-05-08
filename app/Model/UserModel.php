@@ -58,29 +58,57 @@ EOD;
 	$this->update($sql);
     }
 	    //キャラの作成
-    public function createChara($uCharaId, $uCharaName, $uCharaLastName,$ratio, $narrow, $hp, $atk1, $atk2, $atk3) {
+    public function createChara($userId,$uCharaId,$uCharaFirstName,$uCharaLastName,$ratio,$narrow,$hp,$gu,$choki,$paa)
+	{
         $sql = <<< EOD
     INSERT INTO  uChara 
     VALUES (
     NULL,
-    {$_COOKIE['userId']},
+		'{$userId}',
         '{$uCharaId}',
-        '{$uCharaName}・{$uCharaLastName}',
-    '1',
-        '10',
-    '{$ratio}',
+        '{$uCharaFirstName}・{$uCharaLastName}',
+		'{$ratio}',
         '{$narrow}',
         '{$hp}',
-        '{$atk1}',
-        '{$atk2}',
-        '{$atk3}',
-        '0',
+        '{$gu}',
+        '{$choki}',
+        '{$paa}',
+		 '0',
+		 '0',  
+		 '0',
+		'0',
         NULL,
         NULL
     );
 EOD;
-        $this->insert($sql);
+    return $this->insert($sql);
     }
+	
+	// 所持金の更新
+    public function updateMoney($user)
+    {
+$sql = <<< EOD
+	UPDATE  user
+	SET		money = {$user['money']}
+	WHERE   id		= {$user['id']};
+EOD;
+		$this->update($sql);
+    }
+    
+    /*
+     * キャラステータスの更新
+     */
+    public function charaStatus( $userId )
+    {
+$sql = <<< EOD
+	UPDATE user set
+	totalCharaStatus = 
+	(SELECT SUM(hp) AS Status FROM uChara WHERE userId = $userId)
+	where id = $userId;
+EOD;
+    return $this->update($sql);
+    }
+    
 	
 	//キャラの削除
 	public function deleteChara( $uCharaId )

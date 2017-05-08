@@ -5,35 +5,43 @@ namespace App\Model;
 class RankingModel extends BaseGameModel
 {
     /*******      書き込み        *******/
+    public function insertRank( $userId )
+    {
+$sql = <<< EOD
+	INSERT INTO uRanking(userId) values($userId);
+EOD;
+    return parent::insert($sql);
+    }
+    
     
     /*
     *	chardata取得
     */
-    public function userRank($pushbtn)
+    public function userRank($userId)
     {
 	
 $sql =  <<< EOD
-SELECT rank.userId,rank.totalPoint,user.name, rank FROM 
+SELECT rank.userId,rank.weeklyAward,user.name, rank FROM 
     ((
-	SELECT * FROM (SELECT userId ,totalPoint, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.totalPoint > a.totalPoint) AS `rank` FROM `uRanking` a ORDER BY rank) as rank
+	SELECT * FROM (SELECT userId ,weeklyAward, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.weeklyAward > a.weeklyAward) AS `rank` FROM `uRanking` a ORDER BY rank) as rank
 	WHERE rank> (
 
 	SELECT rank
-	FROM (SELECT userId ,totalPoint, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.totalPoint > a.totalPoint) AS `rank` FROM `uRanking` a WHERE userId = $pushbtn) as rank
-	WHERE userId = $pushbtn
-	) ORDER BY totalPoint DESC LIMIT 10
+	FROM (SELECT userId ,weeklyAward, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.weeklyAward > a.weeklyAward) AS `rank` FROM `uRanking` a WHERE userId = $userId) as rank
+	WHERE userId = $userId
+	) ORDER BY weeklyAward DESC LIMIT 10
     )
 
 UNION ALL
 
     (
-	SELECT * FROM (SELECT userId ,totalPoint, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.totalPoint > a.totalPoint) AS `rank` FROM `uRanking` a ORDER BY rank) as rank
+	SELECT * FROM (SELECT userId ,weeklyAward, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.weeklyAward > a.weeklyAward) AS `rank` FROM `uRanking` a ORDER BY rank) as rank
 	WHERE rank<= (
 
 	SELECT rank
-	FROM (SELECT userId ,totalPoint, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.totalPoint > a.totalPoint) AS `rank` FROM `uRanking` a WHERE userId = $pushbtn) as rank
-	WHERE userId = $pushbtn
-	) ORDER BY totalPoint ASC LIMIT 10
+	FROM (SELECT userId ,weeklyAward, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.weeklyAward > a.weeklyAward) AS `rank` FROM `uRanking` a WHERE userId = $userId) as rank
+	WHERE userId = $userId
+	) ORDER BY weeklyAward ASC LIMIT 10
 
     ))as rank
 	
@@ -46,16 +54,20 @@ EOD;
 	return parent::select($sql, 'all');
     }
     
+    /*
+     * ランキングのページャー
+     */
+    
     public function rankingPager($page)
     {
 	
 $sql = <<< EOD
-	SELECT userId ,totalPoint, user.name,
-	(SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.totalPoint > a.totalPoint) 
+	SELECT userId ,weeklyAward, user.name,
+	(SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.weeklyAward > a.weeklyAward) 
 	AS `rank` FROM `uRanking` a 
 	left outer join user
 	on userId = user.id
-	ORDER BY totalPoint DESC LIMIT 10 OFFSET $page;
+	ORDER BY weeklyAward DESC LIMIT 10 OFFSET $page;
 EOD;
 return parent::select($sql);
     }
@@ -64,14 +76,14 @@ return parent::select($sql);
      * キャラランキング
      */
     
-    public function rankingChara($page)
+    public function rankingChara($page, $userId)
     {
 	$page == null ? $page = 0 : false;
 $sql = <<< EOD
 	SELECT hp, name,
-	(SELECT COUNT(*) + 1 FROM `uChara` b WHERE b.hp> a.hp AND userId = 26) 
+	(SELECT COUNT(*) + 1 FROM `uChara` b WHERE b.hp> a.hp AND userId = $userId) 
 	AS `rank` FROM `uChara` a  
-        WHERE userId = 26
+        WHERE userId = $userId
 	ORDER BY hp DESC LIMIT 10 OFFSET $page;
 EOD;
 return parent::select($sql);
@@ -83,10 +95,10 @@ return parent::select($sql);
      */
     public function bottomAcquisition() {
 $sql = <<< EOD
-	SELECT totalPoint
+	SELECT weeklyAward
 	FROM uRanking
 	JOIN user ON user.id = uRanking.userId
-	ORDER BY totalPoint ASC LIMIT 1;
+	ORDER BY weeklyAward ASC LIMIT 1;
 EOD;
 	return parent::select($sql);
     }
@@ -94,11 +106,11 @@ EOD;
     /*
      * charaの最下位を取得
      */
-    public function bottomStatus() {
+    public function bottomStatus($userId) {
 $sql = <<< EOD
 	SELECT hp
 	FROM uChara
-	WHERE userId = 26
+	WHERE userId = $userId
 	ORDER BY hp ASC LIMIT 1;
 EOD;
 	return parent::select($sql);
@@ -115,13 +127,35 @@ $sql = <<< EOD
 EOD;
 	return parent::select($sql);
     }
+	
+	
+	// ユーザーIDを元にウィークリーランキングの情報を取得
+	public function getRankingData($userId = false)
+	{
+$sql = <<< EOD
+	SELECT *
+	FROM uRanking
+	WHERE userId	= {$userId}
+EOD;
+		return $this->select($sql, 'first');
+	}
+	
+	// ランキングデータのIDを元にウィークリーランキングのポイントを更新
+	public function updateWeeklyPoint($rankingData)
+    {
+$sql = <<< EOD
+	UPDATE  uRanking
+	SET		weeklyAward = {$rankingData['weeklyAward']}
+	WHERE  id		= {$rankingData['id']};
+EOD;
+		$this->update($sql);
+    }
     
     /*
      * charaの登録数を取得
      */
     public function charaCount($userId)
     {
-	var_dump($userId);
 $sql = <<< EOD
 	SELECT COUNT(userId) as count
 	FROM uChara WHERE userId = $userId;
@@ -129,6 +163,32 @@ EOD;
 	return parent::select($sql);
     }
     
+    /*
+     * rangeのアップデート
+     */
+
+    public function rangeUpdate($userId, $monday)
+    {
+$sql = <<< EOD
+	UPDATE uRanking 
+	SET weekRange = '{$monday}'
+	WHERE userId = $userId;
+EOD;
+	return parent::update($sql);
+    }
+    
+    /*
+     * 現在の登録の週を取得
+     */
+    public function getRange($userId)
+    {
+$sql = <<< EOD
+	SELECT weekRange
+	FROM uRanking
+	WHERE userId = $userId;
+EOD;
+	return parent::select($sql);
+    }
     /*******        書き込み終了         *******/
 }
 

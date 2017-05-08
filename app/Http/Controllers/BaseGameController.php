@@ -3,10 +3,10 @@ namespace App\Http\Controllers;
 
 class BaseGameController extends Controller
 {
-		public $viewData;
+	public $viewData;
 
-		public function __construct()
-		{
+	public function __construct()
+	{
 		//BaseGameLibをセット
 		$this->Lib = new \App\Libs\BaseGameLib();
 		//BaseGameModelをセット
@@ -15,20 +15,20 @@ class BaseGameController extends Controller
 		//ユーザ認証しないコントローラ
 		if( in_array(CONTROLLER_NAME, \Config::get('common.ignoreAuthController')))
 		{
-		    return;
+			return;
 		}
 		//ユーザー認証
-		 //$userId = 26; //cookieから取ってくる
+
 		$userId = $_COOKIE['userId'];
 		$commonData['user'] = $this->Lib->exec('User', 'userAuth', false, $userId); 
-		
+
 		//現在時刻をセット
 		$commonData['nowTime'] = (is_null($commonData['user']['debugDate']))?date('Y-m-d H:i:s', time()) : $commonData['user']['debugDate'];
 
 		//汎用変数をセット
 		foreach( $commonData as $key => $val )
 		{
-		    $this->viewData[$key] = $this->$key = $val;   
+			$this->viewData[$key] = $this->$key = $val;   
 		}
 	}
 }

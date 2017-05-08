@@ -4,7 +4,7 @@
     {{--uCoach(DB)から持ってきたデータの表示--}}
     @foreach( $viewData['coachList'] as $key => $val)
     <form action="{{APP_URL}}training/setTrainingFinishDate" method="get">
-	<input type="submit" name="uCoachId" value="{{$val['uCoachId']}}">
+	<input type="submit" name="uCoachId" value="{{$val['id']}}">
 	<input type ="hidden" name="uCharaId" value="{{$viewData['uCharaId']}}">
     @endforeach
 	<select name="trainingTime">
