@@ -79,7 +79,6 @@ EOD;
         NULL
     );
 EOD;
-        //var_dump($sql);
         $this->insert($sql);
     }
 	

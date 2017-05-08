@@ -26,17 +26,15 @@ class SelectCoachController extends BaseGameController
 	}
 	
 	public function setCoach()
-	{
-		$coachId = $_GET['uCoachId'];
-		$selectedCoach= $this->Model->exec('Training','getById',$coachId);
-		return ($this->Lib->redirect('changeCoach',"", $selectedCoach));
-		exit;
+	{	
+		$para = array('coachId' => $_GET['uCoachId'], 'charaId' => $_GET['charaId']);
+		return ($this->Lib->redirect('changeCoach',"", $para));
 	}
 	
 	public function deleteChara()
 	{
 		//キャラの削除処理
-		//$this->Model->exec('User','deleteChara',"",$_GET['id']);
+		$this->Model->exec('User','deleteChara',"",$_GET['id']);
 		return ($this->Lib->redirect('Error'));
 	}
 }
