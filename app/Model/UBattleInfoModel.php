@@ -26,7 +26,7 @@ EOD;
 	/*
 	 * DBにデータをインサートする
 	 */
-	public function InsertBattleData($userId,$charaId,$enemyId)
+	public function insertBattleData($userId,$charaId,$enemyId)
 	{
 		$time = date('Y-m-d H:i:s', time());
 $sql = <<< EOD

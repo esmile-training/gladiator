@@ -97,9 +97,11 @@ class battleController extends BaseGameController
 		$enemyStatus			= $this->Lib->exec('EnemyCreate','createEnemyStatus',$enemyStatusMaterial);
 		// 対戦データの作成をする
 		$matchData = BattleLib::createMatchData($arenaData,$selectedChara,$enemyApp,$enemyName,$enemyStatus);
+		// データのインサートを行う
+		$this->insertMatchData($matchData);
 
 		// 戦闘処理へリダイレクトする
-		$this->Lib->redirect('battle', 'battleLog',$matchData);
+		$this->Lib->redirect('battle', 'battleLog');
 	}
 
 	/*
@@ -116,16 +118,17 @@ class battleController extends BaseGameController
 		// デリートフラグが立っていない、同じIDのデータが登録されていなければインサートを行う
 		if(!isset($battleInfo))
 		{
+			var_dump($matchData);
 			// プレイヤーキャラのデータをインサートする
-			$uBattleCharaId = $this->Model->exec('UBattleChara','InsertBattleCharaData',array($matchData['uCharaId'],$matchData['uHp']
+			$uBattleCharaId = $this->Model->exec('UBattleChara','insertBattleCharaData',array($matchData['uCharaId'],$matchData['uHp']
 					,$matchData['uGooAtk'],$matchData['uChoAtk'],$matchData['uPaaAtk']));
 
 			// エネミーのデータをインサートする
-			$uBattleEnemyId = $this->Model->exec('UBattleEnemy','InsertEnemyData',array($matchData['eImgId'],$matchData['difficulty']
+			$uBattleEnemyId = $this->Model->exec('UBattleEnemy','insertEnemyData',array($matchData['eImgId'],$matchData['difficulty']
 					,$matchData['eFirstName'],$matchData['eLastName'],$matchData['eHp'],$matchData['eGooAtk'],$matchData['eChoAtk'],$matchData['ePaaAtk']));
 
 			// バトルインフォにデータをインサートする
-			$this->Model->exec('UBattleInfo','InsertBattleData',array($userId,$uBattleCharaId,$uBattleEnemyId));
+			$this->Model->exec('UBattleInfo','insertBattleData',array($userId,$uBattleCharaId,$uBattleEnemyId));
 
 			return true;
 		}
@@ -148,17 +151,17 @@ class battleController extends BaseGameController
 		if(is_null($this->BattleData))
 		{
 			// preparationBattleから$matchDataを受け取る
-			$matchData = \Request::input();
+			//$matchData = \Request::input();
 			// 対戦データが受け取れたか確認する
-			if(is_null($matchData))
-			{
+			//if(is_null($matchData))
+			//{
 				return view('error');
-			}
+			//}
 			// insertMatchData()を呼び出す
-			$this->insertMatchData($matchData);
-			
+			//$this->insertMatchData($matchData);
+
 			// getData関数を呼び出し、データをセット
-			$this->getBattleData();
+			//$this->getBattleData();
 		}
 
 		// どちらかのHPが0以下になったらバトル終了フラグを立てる

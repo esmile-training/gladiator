@@ -46,7 +46,7 @@ EOD;
 	/*
 	 * DBにデータをインサートする
 	 */
-	public function InsertBattleCharaData($uCharaId,$hp,$gooAtk,$choAtk,$paaAtk)
+	public function insertBattleCharaData($uCharaId,$hp,$gooAtk,$choAtk,$paaAtk)
 	{
 		$time = date('Y-m-d H:i:s', time());
 $sql = <<< EOD
