@@ -16,7 +16,7 @@ class battleController extends BaseGameController
 	}
 
 	/*
-	 *  戦うキャラの選択
+	 *  戦うキャラの選択をする
 	 */
 	public function selectBattleChara()
 	{
@@ -47,17 +47,14 @@ class battleController extends BaseGameController
 	}
 
 	/*
-	 *  闘技場の選択
+	 *  闘技場の選択をする
 	 */
 	public function selectArena()
 	{
 		// ユーザーキャラクターのIDを取得する
 		$selectedCharaId = $_GET['uCharaId'];
 		// 難易度を取得する
-		$difficulty = \Config::get('arenaDifficulty','arena');
-		$difficulty2 = \Config::get('battle.difficulty');
-		var_dump($difficulty);
-		var_dump($difficulty2);
+		$difficulty = \Config::get('battle.difficulty');
 		// 対戦の難易度とキャラIDをビューへ渡す
 		$this->viewData['difficultyList'] = $difficulty;
 		$this->viewData['selectedCharaId'] = $selectedCharaId;
@@ -67,7 +64,7 @@ class battleController extends BaseGameController
 	}
 
 	/*
-	 *  戦闘準備(データの取得と構築)
+	 *  戦闘準備(データの取得と構築)をする
 	 */
 	public function preparationBattle()
 	{
@@ -147,21 +144,10 @@ class battleController extends BaseGameController
 		// getData関数を呼び出し、データをセット
 		$this->getBattleData();
 
-		// バトルデータがなかった場合、新しくバトルデータを作成する
+		// バトルデータがなかった場合、処理を抜ける
 		if(is_null($this->BattleData))
 		{
-			// preparationBattleから$matchDataを受け取る
-			//$matchData = \Request::input();
-			// 対戦データが受け取れたか確認する
-			//if(is_null($matchData))
-			//{
-				return view('error');
-			//}
-			// insertMatchData()を呼び出す
-			//$this->insertMatchData($matchData);
-
-			// getData関数を呼び出し、データをセット
-			//$this->getBattleData();
+			return view('error');
 		}
 
 		// どちらかのHPが0以下になったらバトル終了フラグを立てる
@@ -274,7 +260,7 @@ class battleController extends BaseGameController
 		// 勝敗処理
 		// 'win' / 'lose' / 'draw' のどれかが入る
 		$this->CharaData['result'] = BattleLib::AtackResult($this->CharaData['hand'], $this->EnemyData['hand'], $this->TypeData, $this->ResultData);
-		
+
 		// ダメージ処理
 		// CharaData の 'result' によって処理を行う
 		switch ($this->CharaData['result'])

@@ -30,9 +30,9 @@ return [
 	],
 	// 難易度
 	'difficulty' =>[
-		'easy' => '下級',
+		'easy'	=> '下級',
 		'nomal' => '中級',
-		'hard' => '上級',
+		'hard'	=> '上級',
 	],
 	// 敵キャラのレベルによるステータスの補正値
 	'enemyRatio'=>[
