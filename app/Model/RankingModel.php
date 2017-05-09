@@ -19,7 +19,6 @@ EOD;
     */
     public function userRank($userId, $range)
     {
-	var_dump($range);
 $sql =  <<< EOD
 SELECT rank.weekRange, rank.userId,rank.weeklyAward,user.name, rank FROM 
     ((
@@ -57,15 +56,15 @@ EOD;
      * ランキングのページャー
      */
     
-    public function rankingPager($page)
+    public function rankingPager($page, $range)
     {
-	
 $sql = <<< EOD
 	SELECT userId ,weeklyAward, user.name,
-	(SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.weeklyAward > a.weeklyAward) 
+	(SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.weeklyAward > a.weeklyAward AND weekRange = '{$range}') 
 	AS `rank` FROM `uRanking` a 
 	left outer join user
 	on userId = user.id
+	WHERE weekRange = '{$range}'
 	ORDER BY weeklyAward DESC LIMIT 10 OFFSET $page;
 EOD;
 return parent::select($sql);
@@ -90,19 +89,6 @@ EOD;
 return parent::select($sql);
     }
     
-
-    /*
-     * rankの最下位のポイントを取得
-     */
-    public function bottomAcquisition() {
-$sql = <<< EOD
-	SELECT weeklyAward
-	FROM uRanking
-	JOIN user ON user.id = uRanking.userId
-	ORDER BY weeklyAward ASC LIMIT 1;
-EOD;
-	return parent::select($sql);
-    }
     
     /*
      * charaの最下位を取得
@@ -119,11 +105,11 @@ EOD;
     /*
      * idの登録数を取得
      */
-    public function idRegistrationNumber()
+    public function rangeCount()
     {
 $sql = <<< EOD
-	SELECT COUNT(id) as count
-	FROM uRanking;
+	SELECT COUNT(weekRange) as count
+	FROM uRanking where weekRange = '2017-05-08';
 EOD;
 	return parent::select($sql);
     }
@@ -152,8 +138,9 @@ EOD;
     }
     
     /*
-     * charaの登録数を取得
+     * userの登録数を取得
      */
+    
     public function userCount()
     {
 $sql = <<< EOD
@@ -180,6 +167,7 @@ EOD;
     /*
      * 現在の登録の週を取得
      */
+    
     public function getRange($userId)
     {
 $sql = <<< EOD
@@ -189,6 +177,8 @@ $sql = <<< EOD
 EOD;
 	return parent::select($sql);
     }
+    
+    
     /*******        書き込み終了         *******/
 }
 

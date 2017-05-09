@@ -3,7 +3,7 @@
 namespace App\Libs;
 
 
-class weekRangeLib extends BaseGameLib{
+class WeekRangeLib extends BaseGameLib{
     /*
      * 週間の状態を確認
      */

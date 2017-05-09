@@ -109,5 +109,30 @@ EOD;
     return $this->update($sql);
     }
     
-
+    /*
+     * 枚数確認
+     */
+    
+    public function numberConfirmation( $userId )
+    {
+$sql = <<< EOD
+	SELECT battleTicket, ticketLossTime
+	FROM user
+	WHERE id = $userId;
+EOD;
+    return parent::select($sql);
+    }
+    
+    public function ticketRecovery($userId, $ticket, $nextRecoveryTime)
+    {
+	var_dump($nextRecoveryTime);
+$sql = <<< EOD
+	UPDATE  user
+	SET battleTicket = {$ticket},
+	    ticketLossTime = '{$nextRecoveryTime}'
+	WHERE id = {$userId};
+EOD;
+    return parent::update($sql);
+    }
+    
 }
