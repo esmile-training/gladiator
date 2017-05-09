@@ -6,7 +6,7 @@
 	<font color="red">※選択したコーチは引退となります。</font>
 	</center>
 </div>
-
+<<?php var_dump($viewData); ?>>
 <form action="{{APP_URL}}selectCoach/setCoach" method="get">
 	<div>
 		@foreach($viewData['coachList'] as $coach)
