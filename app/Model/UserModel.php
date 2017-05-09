@@ -57,35 +57,7 @@ $sql =  <<< EOD
 EOD;
 	$this->update($sql);
     }
-	    //キャラの作成
-    public function createChara($charaData)
-	{
-        $sql = <<< EOD
-    INSERT INTO  uChara 
-    VALUES (
-    NULL,
-		'{$charaData['userId']}',
-        '{$charaData['uCharaId']}',
-        '{$charaData['uCharaFirstName']}・{$charaData['uCharaLastName']}',
-		'{$charaData['ratio']}',
-        '{$charaData['narrow']}',
-        '{$charaData['hp']}',
-        '{$charaData['gu']}',
-        '{$charaData['choki']}',
-        '{$charaData['paa']}',
-		 '0',
-		 '0',  
-		 '0',
-		'0',
-        NULL,
-        NULL
-    );
-EOD;
-    return $this->insert($sql);
-    }
-	
-	// 所持金の更新
-    public function updateMoney($user)
+	public function updateMoney($user)
     {
 $sql = <<< EOD
 	UPDATE  user
@@ -94,7 +66,6 @@ $sql = <<< EOD
 EOD;
 		$this->update($sql);
     }
-    
     /*
     public function charaStatus()
     {
@@ -102,4 +73,6 @@ $sql = <<< EOD
 	UPDATE 
 EOD;
     }
-     */}
+     */
+	
+}

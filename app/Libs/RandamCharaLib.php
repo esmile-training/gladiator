@@ -41,7 +41,9 @@ class RandamCharaLib extends BaseGameLib {
 		if($sex == 1 )
 		{	
 			return $this->womanCharaSort();
-		} else {
+		}else if($sex == 0){
+			return $this->menCharaSort();
+		}else {
 			
 			//configからデータ取ってくる
 			$charaConf = \Config::get('chara.imgId');
@@ -171,6 +173,27 @@ class RandamCharaLib extends BaseGameLib {
 		$characonf['charaId'] = $charaId;
 		//ランダムで決まったキャラの性別も配列に入れる
 		$characonf['sex'] = 1;
+		
+		return $characonf;
+	}
+	public function menCharaSort() 
+	{		
+		//configからデータ取ってくる
+		$characonf = \Config::get('chara.imgId');
+	
+		$charaman = [];
+		foreach ($characonf as $key => $value) {
+			if($value['sex'] == 0){
+				$charaman[] = $key;//配列に直す方法模索
+			}
+		}
+		$manCharaId = array_flip($charaman);//キーと入れ替え
+		//ランダム処理
+		$charaId = array_rand($manCharaId);
+		//ランダムできまった数値を配列に入れる
+		$characonf['charaId'] = $charaId;
+		//ランダムで決まったキャラの性別も配列に入れる
+		$characonf['sex'] = 0;
 		
 		return $characonf;
 	}

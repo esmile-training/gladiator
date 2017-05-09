@@ -9,10 +9,20 @@ class GachaController extends BaseGameController
 	{
 		return viewWrap('gachaselect', $this->viewData);
 	}
-	
+	public function eventsSelect()
+	{
+		$time = $this->Model->exec('Gacha', 'getTime');
+		$createTime = $time[0]['createTime'];
+		$this->viewData['createTime'] = $createTime;
+		$this->viewData['nowTime'];
+
+		return viewWrap('eventsGachaselect', $this->viewData);
+	}
 	public function index() 
 	{
 	
+		//リダイレクトのゲットしてビューデーターに格納
+		(int)$this->viewData['gachavalue'] = filter_input(INPUT_GET, "gachavalue");
 		$this->viewData['charaId'] = filter_input(INPUT_GET, "charaId");
 		$this->viewData['firstname'] = filter_input(INPUT_GET, "firstname");
 		$this->viewData['lastname'] = filter_input(INPUT_GET, "lastname");
@@ -38,13 +48,16 @@ class GachaController extends BaseGameController
 	
 		$ratio = $this->viewData['ratio']['hit'];
 
+		
 		//キャラの画像ID取得
-		if($gachaVal == 7){
+		if($gachaVal == 8){
 			$sex = 1;
+		}else if($gachaVal == 6){
+			$sex = 0;
 		}else{
 			$sex = false;
 		}
-	
+		
 		$this->viewData['chara'] = $this->Lib->exec('RandamChara', 'getCharaImgId', [$sex]);
 		
 		//キャラのステータス
@@ -68,27 +81,26 @@ class GachaController extends BaseGameController
 		'paa' => $this->viewData['valueList']['paa'],
 		'hp' => $this->viewData['valueList']['hp'],
 		'narrow' => $this->viewData['valueList']['narrow'],
+		'GachaVal' => $gachaVal,
 		];
+		//リダイレクト引数受け渡し
+		$param = [
+			'gachavalue' => $gachaVal,
+			'charaId' => $charaData['uCharaId'],
+			'firstname' => $charaData['uCharaFirstName'],
+			'lastname' => $charaData['uCharaLastName'],
+			'rarity' => $ratio,
+			'gu' => $charaData['gu'],
+			'choki' => $charaData['choki'],
+			'paa' => $charaData['paa'],
+			'hp' => $charaData['hp'],
+		];		
+		$this->Model->exec('Gacha', 'createChara', array($charaData));
 		
-		$param['charaId'] = $charaData['uCharaId'];
-		$param['firstname'] = $charaData['uCharaFirstName'];
-		$param['lastname'] = $charaData['uCharaLastName'];
-		$param['rarity'] = $ratio;
-		$param['gu'] = $charaData['gu'];
-		$param['choki'] = $charaData['choki'];
-		$param['paa'] = $charaData['paa'];
-		$param['hp'] = $charaData['hp'];
-		$this->Model->exec('User', 'createChara', array($charaData));
+		$this->Model->exec('Gacha', 'createLog', array($charaData));
+		
 		return $this->Lib->redirect('gacha','index', $param);
-		// return $this->Lib->redirect('gacha', 'index');
+		
 	}
-
-//	public function gachaResult()
-//	{
-//			// [ user.php ]
-//			$charaId = filter_input(INPUT_GET, "charaId") ;
-//			var_dump($charaId);exit;
-//	}
-	
 }
 
