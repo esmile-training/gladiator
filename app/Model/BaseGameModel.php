@@ -48,7 +48,7 @@ class BaseGameModel
 			return $result;
 			}
 		} else {
-			print( $response.'<br>' );
+			//print( $response.'<br>' );
 			\Log::error('Showing user profile for user: '.$response);
 		}
     }

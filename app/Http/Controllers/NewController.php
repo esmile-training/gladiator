@@ -15,7 +15,7 @@ class NewController extends BaseGameController
     public function index()
     {
         //configからとってくる
-        $membersConf          =   \Config::get('members.profile');
+        $membersConf = \Config::get('members.profile');
 
         //Libraly
         $this->viewData['memberList'] = DevelopMemberLib::sortMemberConf( $membersConf );
@@ -31,10 +31,10 @@ class NewController extends BaseGameController
      */
     public function login()
     {
-	//DB更新
-	UserModel::createUser();
+		//DB更新
+		UserModel::createUser();
 
-	//リダイレクト
-	return $this->redirect('mypage', 'index');
+		//リダイレクト
+		return $this->redirect('mypage', 'index');
     }
 }

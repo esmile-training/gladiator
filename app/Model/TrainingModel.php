@@ -4,124 +4,151 @@ namespace App\Model;
 class TrainingModel extends BaseGameModel
 {
     /*
-     * データベースからキャラの情報取得
-     */
-    public function getUserChara()
-    {
-$sql =  <<< EOD
-	SELECT *
-	FROM uChara
-	WHERE userId = 1
-	AND trainingState = 0
-        LIMIT 10
-EOD;
-        $result = $this->select($sql, 'all');
-	return $result;
-    }
-
-    /*
      * データベースからコーチの情報取得
      */
-    public function getUserCoach()
+    public function getUserCoach($userId)
     {
 $sql =  <<< EOD
-	SELECT *
-	FROM uCoach
-        LIMIT 3
+		SELECT *
+		FROM uCoach
+		WHERE userId = $userId
+		AND trainingState = 0
+		LIMIT 3
 EOD;
-	return $this->select($sql, 'all');
-    }
-
-    /*
-     * トレーニングの終了時刻を取得
-     */
-    public function getTrainingDate()
-    {
-$sql =  <<< EOD
-	SELECT id, uCharaId, finishDate, time
-	FROM uTraining
-EOD;
-	return $this->select($sql, 'all');
+		return $this->select($sql, 'all');
     }
 
     /*
      * データベースに訓練の時間と訓練中フラグを挿入
      */
-    public function setFinishDate($trainingData)
+    public function setEndDate($trainingData)
     {
-	$trainingState = 1;
 $sql =  <<< EOD
-	INSERT INTO uTraining
-	values(
-	NULL,
-	{$trainingData['uCharaId']},
-	{$trainingData['uCoachId']},
-	'{$trainingData['trainingStartDate']}',
-	'{$trainingData['trainingFinishDate']}',
-	{$trainingData['trainingTime']},
-	{$trainingState}
+		INSERT INTO uTraining
+		values(
+		NULL,
+		{$trainingData['uCharaId']},
+		{$trainingData['uCoachId']},
+		'{$trainingData['trainingStartDate']}',
+		'{$trainingData['trainingEndDate']}',
+		{$trainingData['trainingTime']},
+		0
 	    );
 EOD;
-	$this->insert($sql);
-	$this->uCharaStateChange($trainingData['uCharaId'],$trainingState);
-    }
-
-    /*
-     * キャラクターが訓練しているかどうかのフラグを変更する
-     */
-    public function uCharaStateChange($uCharaId,$trainingState)
-    {
-
-$sql =  <<< EOD
-	UPDATE uChara
-	SET    trainingState = {$trainingState}
-	WHERE  id = {$uCharaId};
-EOD;
-	$this->update($sql);
+		$this->insert($sql);
     }
 	
-	public function getTrainingInfo($id)
+	/*
+	 * 訓練するキャラクターとコーチと訓練の時間を取得
+	 */
+	public function getInfo($id)
     {
 $sql =  <<< EOD
-	SELECT uCharaId,uCoachId,time
-	FROM uTraining
-	WHERE id = {$id};
+		SELECT uCharaId,uCoachId,time
+		FROM uTraining
+		WHERE id = {$id}
 EOD;
         $result = $this->select($sql, 'all');
 		return $result;
     }
 	
+	/*
+     * 訓練終了時刻を過ぎている訓練のデータを取得
+     */
+    public function getEndDate($nowTime)
+    {
+$sql =  <<< EOD
+		SELECT id, uCharaId, uCoachId, endDate
+		FROM uTraining
+		WHERE endDate <= '{$nowTime}'
+		AND state != 2
+EOD;
+		return $this->select($sql, 'all');
+    }
+	
+	/*
+	 * キャラクターの攻撃力を取得
+	 */
 	public function getUCharaAtk($uCharaId)
     {
 $sql =  <<< EOD
-	SELECT gooAtk,choAtk,paaAtk,gooUpCnt,choUpCnt,paaUpCnt
-	FROM uChara
-	WHERE id = {$uCharaId};
+		SELECT gooAtk,choAtk,paaAtk,gooUpCnt,choUpCnt,paaUpCnt
+		FROM uChara
+		WHERE id = {$uCharaId};
 EOD;
         $result = $this->select($sql, 'all');
 		return $result;
     }
 	
+	/*
+	 * コーチの攻撃力を取得
+	 */
 	public function getUCoachAtk($uCoachId)
     {
 $sql =  <<< EOD
-	SELECT gooAtk,choAtk,paaAtk
-	FROM uCoach
-	WHERE id = {$uCoachId};
+		SELECT gooAtk,choAtk,paaAtk
+		FROM uCoach
+		WHERE id = {$uCoachId};
 EOD;
         $result = $this->select($sql, 'all');
 		return $result;
     }
 	
-	public function updateAtk($gooAtk,$choAtk,$paaAtk,$uCharaId)
+	/*
+	 * キャラクターの攻撃力を更新する
+	 */
+	public function updateAtk($atkInfo,$uCharaId)
 	{
 $sql =  <<< EOD
 		UPDATE uChara
-		SET    gooAtk = {$gooAtk},
-			   choAtk = {$choAtk},
-			   paaAtk = {$paaAtk}
+		SET    gooAtk	= {$atkInfo['gooAtk']},
+			   choAtk	= {$atkInfo['choAtk']},
+			   paaAtk	= {$atkInfo['paaAtk']},
+			   gooUpCnt = {$atkInfo['gooUpCnt']},
+			   choUpCnt = {$atkInfo['choUpCnt']},
+			   paaUpCnt = {$atkInfo['paaUpCnt']}
 		WHERE  id = {$uCharaId};
 EOD;
 		$this->update($sql);
 	}
+	
+	/*
+	 * キャラクターの訓練状態を変更する
+	 */
+	public function uCharaStateChange($uCharaId,$trainingState)
+	{
+$sql =  <<< EOD
+		UPDATE  uChara
+		SET		trainingState = {$trainingState}
+		WHERE	id = {$uCharaId}
+EOD;
+	$this->update($sql);
+	}
+	
+	/*
+	 * コーチの訓練状態を変更する
+	 */
+	public function uCoachStateChange($uCoachId,$trainingState)
+	{
+$sql =  <<< EOD
+		UPDATE  uCoach
+		SET		trainingState = {$trainingState}
+		WHERE	id = {$uCoachId}
+EOD;
+	$this->update($sql);
+	}
+	
+	 /*
+     * 訓練の状態を変更する
+	 * 0なら訓練中、1なら訓練終了かつ訓練結果未確認、2なら訓練終了かつ結果確認済み
+     */
+    public function stateChange($id,$trainingState)
+    {
+$sql =  <<< EOD
+		UPDATE uTraining
+		SET    state = $trainingState
+		WHERE  id = {$id};
+EOD;
+		$this->update($sql);
+    }
 }

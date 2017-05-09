@@ -21,6 +21,8 @@ class UCharaModel extends \App\Model\BaseGameModel
 			SELECT *
 			FROM uChara
 			WHERE userID = {$userId}
+			AND trainingState = 0
+			LIMIT 10
 EOD;
 		return $this->select($sql);
 	}
