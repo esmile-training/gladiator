@@ -15,9 +15,26 @@ class UBattleCharaModel extends \App\Model\BaseGameModel
 	public function getBattleCharaData($battleCharaId = false)
 	{
 $sql = <<< EOD
-	SELECT *
+	SELECT
+		uBattleChara.id as uBattleCharaId,
+		delFlag,
+		bHp,
+		bGooAtk,
+		bChoAtk,
+		bPaaAtk,
+		hand,
+		result,
+		uChara.id as uCaraId,
+		userId,
+		imgId,
+		name,
+		attribute,
+		hp,
+		gooAtk,
+		choAtk,
+		paaAtk
 	FROM uBattleChara
-	JOIN uChara
+	LEFT JOIN uChara
 	ON uBattleChara.charaId = uChara.id
 	WHERE uBattleChara.id = {$battleCharaId}
 	AND uBattleChara.delFlag = 0
@@ -67,7 +84,7 @@ $sql = <<< EOD
 			bPaaAtk = {$battleChara['bPaaAtk']},
 			hand	= '{$battleChara['hand']}',
 			result	= '{$battleChara['result']}'
-	WHERE   id		= {$battleChara['id']};
+	WHERE   id		= {$battleChara['uBattleCharaId']};
 EOD;
 		$this->update($sql);
 	}
