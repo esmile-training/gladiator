@@ -92,18 +92,6 @@ EOD;
 	$this->delete($sql);
 	}
 
-	//コーチの人数検索(将来移動の可能性あり)
-	public function countCoach ()
-	{
-$sql = <<< EOD
-	SELECT COUNT( * ) 
-	FROM  `uCoach` 
-	WHERE userId =  {$_COOKIE['userId']};
-EOD;
-	$result = $this->select($sql);
-	return $result;
-	}
-	
 	//コーチの追加
 	public function insertCoach ( $uCharaId, $uCharaName,$ratio, $hp, $atk1, $atk2, $atk3)
 	{
