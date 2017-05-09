@@ -7,7 +7,7 @@
 
 namespace App\Model;
 
-class UBattleEnemyModel extends \App\Model\BaseGameModel
+class BattleEnemyModel extends \App\Model\BaseGameModel
 {
 	/*
 	 * DBから敵データを取得する

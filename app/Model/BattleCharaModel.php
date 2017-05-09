@@ -7,7 +7,7 @@
 
 namespace App\Model;
 
-class UBattleCharaModel extends \App\Model\BaseGameModel
+class BattleCharaModel extends \App\Model\BaseGameModel
 {
 	/*
 	 *  DBからバトル用キャラデータを取得する
