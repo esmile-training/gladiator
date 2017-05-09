@@ -26,7 +26,7 @@ EOD;
 	/*
 	 * DBにデータをインサートする
 	 */
-	public function InsertBattleData($userId,$charaId,$enemyId)
+	public function insertBattleData($userId,$charaId,$enemyId)
 	{
 		$time = date('Y-m-d H:i:s', time());
 $sql = <<< EOD
@@ -55,7 +55,7 @@ EOD;
 $sql = <<< EOD
 	UPDATE  uBattleInfo
 	SET		delFlag = 1
-	WHERE   id = {$battleData['id']};
+	WHERE   id = {$battleData};
 EOD;
 		$this->update($sql);
 	}

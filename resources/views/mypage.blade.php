@@ -9,34 +9,20 @@
 </div>
 
 <div>
-<<<<<<< HEAD
-    <a href="{{APP_URL}}selectChara/selectBattleChara">
-	    キャラクター選択
-    </a>
-</div>
-<div>
-
-=======
-	<a href="{{APP_URL}}selectChara/selectBattleChara">
-		キャラクター選択
-	</a>
 
 </div>
 <div>
-    <a href="{{APP_URL}}battle">
-	バトルスタンバイ画面
+    <a href="{{APP_URL}}battle/selectBattleChara">
+	試合
     </a>
 </div>
 
 <div>
-<<<<<<< HEAD
     <a href="{{APP_URL}}ranking">
 	ranking
     </a>
-=======
 	<a href="{{APP_URL}}gacha/select">
 		ガチャ
 	</a>
-
 </div>
 

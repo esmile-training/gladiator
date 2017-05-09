@@ -19,7 +19,7 @@
 @endif
 
 <div>
-    <a href="{{APP_URL}}battle/index">
-		バトルスタンバイ画面へ戻る
+    <a href="{{APP_URL}}mypage">
+		マイページへ戻る
     </a>
 </div>
