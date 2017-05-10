@@ -42,7 +42,7 @@ class TrainingLib extends BaseGameLib
 			$uCoachId	= (int)$key['uCoachId'];
 			$uCharaId	= (int)$key['uCharaId'];
 		}
-
+		
 		//コーチの攻撃力取得
 		$uCoachAtk = $this->Model->exec('Training','getUCoachAtk', $uCoachId);
 		foreach($uCoachAtk as $key)
@@ -51,7 +51,7 @@ class TrainingLib extends BaseGameLib
 			$coachChoAtk = (int)$key['choAtk'];
 			$coachPaaAtk = (int)$key['paaAtk'];
 		}
-
+		
 		//キャラの攻撃力取得
 		$uCharaStatus = $this->Model->exec('Training','getUCharaStatus', $uCharaId);
 		foreach($uCharaStatus as $key)
@@ -64,35 +64,39 @@ class TrainingLib extends BaseGameLib
 			$choUpCnt		= (int)$key['choUpCnt'];
 			$paaUpCnt		= (int)$key['paaUpCnt'];
 		}
-
+		
+		$statusUpCnt = 0;
 		//コーチのグー、チョキ、パーそれぞれの攻撃力とキャラのグー、チョキ、パーそれぞれの攻撃力から上昇率を算出
 		for($i = 0; $i <= $time; $i++)
 		{
 			$gooResult = TrainingLib::atkUpProbability($coachGooAtk,$charaGooAtk,$gooUpCnt);
 			$choResult = TrainingLib::atkUpProbability($coachChoAtk,$charaChoAtk,$choUpCnt);
 			$paaResult = TrainingLib::atkUpProbability($coachPaaAtk,$charaPaaAtk,$paaUpCnt);
-
+			
 			$gooJudgeValue = rand(1, 100);
 			if($gooResult <= $gooJudgeValue)
 			{
 				$charaGooAtk++;
 				$gooUpCnt++;
+				$statusUpCnt++;
 			}
 			$choJudgeValue = rand(1, 100);
 			if($choResult <= $choJudgeValue)
 			{
 				$charaChoAtk++;
 				$choUpCnt++;
+				$statusUpCnt++;
 			}
 			$paaJudgeValue = rand(1, 100);
 			if($paaResult <= $paaJudgeValue)
 			{
 				$charaPaaAtk++;
 				$paaUpCnt++;
+				$statusUpCnt++;
 			}
 		}
 		
-		$charaHp = $charaHp + $gooUpCnt + $choUpCnt + $paaUpCnt;
+		$charaHp = $charaHp + $statusUpCnt;
 		
 		$statusInfo = [
 			'hp'		=> $charaHp,

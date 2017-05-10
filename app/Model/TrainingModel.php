@@ -3,11 +3,11 @@ namespace App\Model;
 
 class TrainingModel extends BaseGameModel
 {
-    /*
-     * データベースからコーチの情報取得
-     */
-    public function getUserCoach($userId)
-    {
+	/*
+	 * データベースからコーチの情報取得
+	 */
+	public function getUserCoach($userId)
+	{
 $sql =  <<< EOD
 		SELECT *
 		FROM uCoach
@@ -16,13 +16,13 @@ $sql =  <<< EOD
 		LIMIT 3
 EOD;
 		return $this->select($sql, 'all');
-    }
+	}
 
-    /*
-     * データベースに訓練の時間と訓練中フラグを挿入
-     */
-    public function setEndDate($trainingData)
-    {
+	/*
+	 * データベースに訓練の時間と訓練中フラグを挿入
+	 */
+	public function setEndDate($trainingData)
+	{
 $sql =  <<< EOD
 		INSERT INTO uTraining
 		values(
@@ -33,30 +33,30 @@ $sql =  <<< EOD
 		'{$trainingData['trainingEndDate']}',
 		{$trainingData['trainingTime']},
 		0
-	    );
+		);
 EOD;
 		$this->insert($sql);
-    }
+	}
 	
 	/*
 	 * 訓練するキャラクターとコーチと訓練の時間を取得
 	 */
 	public function getInfo($id)
-    {
+	{
 $sql =  <<< EOD
 		SELECT uCharaId,uCoachId,time
 		FROM uTraining
 		WHERE id = {$id}
 EOD;
-        $result = $this->select($sql, 'all');
+		$result = $this->select($sql, 'all');
 		return $result;
-    }
+	}
 	
 	/*
-     * 訓練終了時刻を過ぎている訓練のデータを取得
-     */
-    public function getEndDate($nowTime)
-    {
+	 * 訓練終了時刻を過ぎている訓練のデータを取得
+	 */
+	public function getEndDate($nowTime)
+	{
 $sql =  <<< EOD
 		SELECT id, uCharaId, uCoachId, endDate
 		FROM uTraining
@@ -64,35 +64,35 @@ $sql =  <<< EOD
 		AND state != 2
 EOD;
 		return $this->select($sql, 'all');
-    }
+	}
 	
 	/*
 	 * キャラクターの攻撃力を取得
 	 */
 	public function getUCharaStatus($uCharaId)
-    {
+	{
 $sql =  <<< EOD
 		SELECT hp,gooAtk,choAtk,paaAtk,gooUpCnt,choUpCnt,paaUpCnt
 		FROM uChara
 		WHERE id = {$uCharaId};
 EOD;
-        $result = $this->select($sql, 'all');
+		$result = $this->select($sql, 'all');
 		return $result;
-    }
+	}
 	
 	/*
 	 * コーチの攻撃力を取得
 	 */
 	public function getUCoachAtk($uCoachId)
-    {
+	{
 $sql =  <<< EOD
 		SELECT gooAtk,choAtk,paaAtk
 		FROM uCoach
 		WHERE id = {$uCoachId};
 EOD;
-        $result = $this->select($sql, 'all');
+		$result = $this->select($sql, 'all');
 		return $result;
-    }
+	}
 	
 	/*
 	 * キャラクターの攻撃力を更新する
@@ -140,16 +140,16 @@ EOD;
 	}
 	
 	 /*
-     * 訓練の状態を変更する
+	 * 訓練の状態を変更する
 	 * 0なら訓練中、1なら訓練終了かつ訓練結果未確認、2なら訓練終了かつ結果確認済み
-     */
-    public function stateChange($id,$trainingState)
-    {	
+	 */
+	public function stateChange($id,$trainingState)
+	{	
 $sql =  <<< EOD
 		UPDATE uTraining
 		SET    state = {$trainingState}
 		WHERE  id = {$id};
 EOD;
 		$this->update($sql);
-    }
+	}
 }
