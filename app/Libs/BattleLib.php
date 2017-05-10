@@ -218,7 +218,7 @@ class BattleLib extends BaseGameLib
 	public static function prizeCalc($EnemyData, $Commission, $prizeRatio)
 	{
 		// 賞金額計算
-		$result = ($EnemyData['hp'] * $Commission['Commission']) * ( $prizeRatio[$EnemyData['level']] * 0.01);
+		$result = ($EnemyData['hp'] * $Commission['Commission']) * ( $prizeRatio[$EnemyData['difficulty']] * 0.01);
 
 		return $result;
 

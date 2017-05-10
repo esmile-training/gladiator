@@ -15,7 +15,7 @@ $sql =  <<< EOD
 	AND trainingState = 0
         LIMIT 10
 EOD;
-        $result = $this->select($sql, 'all');
+    $result = $this->select($sql, 'all');
 	return $result;
     }
     

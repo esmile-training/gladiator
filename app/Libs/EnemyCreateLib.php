@@ -54,7 +54,7 @@ class EnemyCreateLib extends BaseGameLib
 		// エネミーのステータスを格納する配列
 		$enemyStatus = array();
 		// enemyStatusOffsetを取得する
-		$offsetConf = \Config::get('enemyStatusOffset');
+		$offsetConf = \Config::get('battle.enemyRatio');
 		// offsetConfから難易度に対応した数値を取得する
 		$offset = (float)$offsetConf[$arenaDifficulty];
 		var_dump($offset);

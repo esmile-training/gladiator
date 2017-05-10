@@ -14,6 +14,7 @@ class EditController extends BaseGameController
 		//bladeから入力された値を取得
 		$teamName = $_GET["teamName"];
 
+	
 		//チーム名をバイトと文字数で判定
 		if(strlen($teamName) <= 16 || mb_strlen($teamName) <= 8)
 		{

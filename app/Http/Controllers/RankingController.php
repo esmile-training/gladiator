@@ -115,6 +115,7 @@ class RankingController extends BaseGameController
     
     public function userRanking($inputRank)
     {
+	$data = 0;
 	$userrank = array_search($this->user['id'], array_column($inputRank, 'userId'));
 	$data = 0;
 	// ランキング取得時、中間ではなく、上位十位以内だった場合

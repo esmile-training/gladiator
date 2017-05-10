@@ -64,8 +64,8 @@ class BaseGameLib {
 		{
 			$getStr[] = $key . '=' . $val;	
 			
-		}
-	
+		}	
+		var_dump($getStr);
 		header("Location: " . APP_URL . $controller . '/' . $action . '?' . implode('&', $getStr));
 
 		exit();
