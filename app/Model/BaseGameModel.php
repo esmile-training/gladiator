@@ -3,11 +3,11 @@ namespace App\Model;
 
 class BaseGameModel
 {
-    /*
-     * Model呼び出し
-     */
-    public function exec( $className, $method, $arg = false, $userId = null )
-    {
+	/*
+	 * Model呼び出し
+	 */
+	public function exec( $className, $method, $arg = false, $userId = null )
+	{
 	//インスタンス化する
 	$className = '\\App\\Model\\'.$className.'Model';
 	$modelClass = new $className();
@@ -35,13 +35,13 @@ class BaseGameModel
 		{
 			return $modelClass->$method($userId);
 		}
-    }
+	}
 
-    /*
-     * SELECT
-     */
-    public function select( $sql, $range = 'all' )
-    {
+	/*
+	 * SELECT
+	 */
+	public function select( $sql, $range = 'all' )
+	{
 		$response = $this->dbapi($sql, 'select');
 		//jsonから配列に変換
 		$result = json_decode($response, true);
@@ -69,46 +69,51 @@ class BaseGameModel
 //			print( $response.'<br>' );
 			\Log::error('Showing user profile for user: '.$response);
 		}
+	}
+    
+    public function charaUpdate($sql)
+    {
+	$this->dbapi($sql, 'update');
     }
 
-    /*
-     * UPDATE
-     */
-    public function update( $sql )
-    {
+	/*
+	 * UPDATE
+	 */
+	public function update( $sql )
+	{
 	$result = $this->dbapi($sql, 'update');
 	// SQLの実行
 	BaseGameModel::StatusUpdate($sql);
 	return $result;
-    }
-   
-    /*
-     * DELETER
-     */
-    public function delete( $sql )
-    {
+	}
+
+	/*
+	 * DELETER
+	 */
+	public function delete( $sql )
+	{
 	$result = $this->dbapi($sql, 'delete');
 	// SQLの実行
 	BaseGameModel::StatusUpdate($sql);
 	return $result;
-    }
+	}
 
-    /*intval($str)
-     * INSERT
-     */
-    public function insert( $sql )
-    {
+	/*intval($str)
+	 * INSERT
+	 */
+	public function insert( $sql )
+	{
 	$result = $this->dbapi($sql, 'insert');
 	// SQLの実行
 	BaseGameModel::StatusUpdate($sql);
 	return intval($result);
-    }
-
-    /*
-     * API実行
-     */
-    public function dbapi( $sql, $type = 'dbapi' )
-    {
+	}
+	
+	/*
+	 * API実行
+	 */
+	public function dbapi( $sql, $type = 'dbapi' )
+	{
 		$params = ['sql' => $sql];
 
 		//開始
@@ -125,49 +130,30 @@ class BaseGameModel
 
 		return $response;
 
-    }
-    
-    /*
-     * キャラクターステータスの合計値のアップデート
-     */
-    
-    public function StatusUpdate( $sql )
-    {
+	}
 
-//	// uCharaという文字列が存在していれば実行
-//	$post = strpos($sql, 'uChara');
-//	
-//		// サンプル用クッキー
-//		// setcookie('userId', '26');
-//
-//		// 中身が入っていれば実行
-//		if($post !== false){
-//			// インスタンス化
-//			$userModel = new UserModel();
-//
-//			// クッキーの取得
-//			$userId = filter_input(INPUT_COOKIE, 'userId');
-//
-//			// ユーザーの持ちキャラのトータルステータスを更新
-//			$userModel->charaStatus( $userId );
-//		}
+	/*
+	 * キャラクターステータスの合計値のアップデート
+	*/
+	public function StatusUpdate( $sql )
+	{
+
 	// uCharaという文字列が存在していれば実行
 	$post = strpos($sql, 'uChara');
-
-		// サンプル用クッキー
-		// setcookie('userId', '26');
-
-		// 中身が入っていれば実行
-		if($post !== false){
-			// インスタンス化
-			$userModel = new UserModel();
-
-			// クッキーの取得
-			$userId = filter_input(INPUT_COOKIE, 'userId');
-
-			// ユーザーの持ちキャラのトータルステータスを更新
-			//$userModel->charaStatus( $userId );
+	
+	// サンプル用クッキー
+	setcookie('userId', '26');
+	
+	// 中身が入っていれば実行
+	if($post !== false){
+	    // インスタンス化
+	    $userModel = new UserModel();
+	    
+	    // クッキーの取得
+	    $userId = filter_input(INPUT_COOKIE, 'userId');
+	    
+	    // ユーザーの持ちキャラのトータルステータスを更新
+	    $userModel->charaStatus( $userId );
 		}
-    }
-
+	}
 }

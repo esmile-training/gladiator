@@ -37,7 +37,7 @@ class BattleLib extends BaseGameLib
 	// 攻撃の処理を格納する処理
 	public static function AtackResult($pcHand, $enmHand, $typeData, $resultData)
 	{
-		
+
 		$result = [];   // データ返却用変数の初期化
 
 		// Chara の 'hand' によって処理を行う
@@ -191,37 +191,62 @@ class BattleLib extends BaseGameLib
 
 			// 'cho' の場合
 			case $typeData['cho']:
-				// 負けた方の 'hp' を勝った方の 'choAtk' 分減らす		
+				// 負けた方の 'hp' を勝った方の 'choAtk' 分減らす
 				$loser['bHp'] = $loser['bHp'] - $winner['bChoAtk'];
 				break;
 
 			// 'paa' の場合
 			case $typeData['paa']:
-				// 負けた方の 'hp' を勝った方の 'paaAtk' 分減らす		
+				// 負けた方の 'hp' を勝った方の 'paaAtk' 分減らす
 				$loser['bHp'] = $loser['bHp'] - $winner['bPaaAtk'];
 				break;
 
 			default;
 				exit;
 		}
-		
+
 		// HPが0より下回った場合、HPを0に戻す処理
 		if( $loser['bHp'] < 0 )
 		{
 			$loser['bHp'] = 0;
 		}
-		
+
 		return $loser['bHp'];
 	}
-	
+
 	// 賞金計算
 	public static function prizeCalc($EnemyData, $Commission, $prizeRatio)
 	{
 		// 賞金額計算
-		$result = ($EnemyData['hp'] * $Commission['Commission']) * ( $prizeRatio[$EnemyData['level']] * 0.01);
-		
+		$result = ($EnemyData['hp'] * $Commission['Commission']) * ( $prizeRatio[$EnemyData['difficulty']] * 0.01);
+
 		return $result;
 
 	}
 
+	// 対戦データを生成する
+	public static function createMatchData($arenaData,$uCharaData,$enemyApp,$enemyName,$enemyStatus)
+	{
+		// 対戦データの作成をする
+		$matchData					= array();
+		// 大会難易度のを格納する
+		$matchData['difficulty']	= $arenaData["arenaDifficulty"];
+		// ユーザーキャラクターのデータを格納する
+		$matchData['uCharaId']		= $uCharaData['id'];
+		$matchData['uHp']			= $uCharaData['hp'];
+		$matchData['uGooAtk']		= $uCharaData['gooAtk'];
+		$matchData['uChoAtk']		= $uCharaData['choAtk'];
+		$matchData['uPaaAtk']		= $uCharaData['paaAtk'];
+		// エネミーのデータを格納する
+		$matchData['eImgId']		= $enemyApp['imgId'];
+		$matchData['eFirstName']	= $enemyName['firstname']['name'];
+		$matchData['eLastName']		= $enemyName['lastname']['familyname'];
+		$matchData['eHp']			= $enemyStatus['hp'];
+		$matchData['eGooAtk']		= $enemyStatus['gooAtk'];
+		$matchData['eChoAtk']		= $enemyStatus['choAtk'];
+		$matchData['ePaaAtk']		= $enemyStatus['paaAtk'];
+
+		return $matchData;
+	}
+	
 }

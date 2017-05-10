@@ -7,7 +7,7 @@
 
 namespace App\Model;
 
-class UBattleInfoModel extends \App\Model\BaseGameModel
+class BattleInfoModel extends \App\Model\BaseGameModel
 {
 	/*
 	 * DBからバトルデータを取得する
@@ -26,7 +26,7 @@ EOD;
 	/*
 	 * DBにデータをインサートする
 	 */
-	public function InsertBattleData($userId,$charaId,$enemyId)
+	public function insertBattleData($userId,$uBattleCharaId,$uBattleEnemyId)
 	{
 		$time = date('Y-m-d H:i:s', time());
 $sql = <<< EOD
@@ -35,8 +35,8 @@ $sql = <<< EOD
 			NULL,
 			DEFAULT,
 			'{$userId}',
-			'{$charaId}',
-			'{$enemyId}',
+			'{$uBattleCharaId}',
+			'{$uBattleEnemyId}',
 			'{$time}',
 			'{$time}'
 		);
@@ -50,12 +50,12 @@ EOD;
 	/*
 	 * 'delFlag'を立てる
 	 */
-	public function UpdateInfoFlag($battleData)
+	public function UpdateInfoFlag($battleId)
 	{
 $sql = <<< EOD
 	UPDATE  uBattleInfo
 	SET		delFlag = 1
-	WHERE   id = {$battleData['id']};
+	WHERE   id = {$battleId};
 EOD;
 		$this->update($sql);
 	}

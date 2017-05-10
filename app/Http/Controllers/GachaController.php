@@ -41,6 +41,7 @@ class GachaController extends BaseGameController
 		$gachaConfig = \Config::get('gacha.eRate');
 		
 		$gachaVal = (int)filter_input(INPUT_GET,"gachavalue");
+		
 		$this->Lib->exec('Money', 'Subtraction', array($this->user, $gachaConfig[$gachaVal]['money']));
 		
 		//ガチャの選択して割合算出
@@ -57,9 +58,9 @@ class GachaController extends BaseGameController
 		}else{
 			$sex = false;
 		}
-		
+	
 		$this->viewData['chara'] = $this->Lib->exec('RandamChara', 'getCharaImgId', [$sex]);
-		
+	
 		//キャラのステータス
 		$this->viewData['valueList'] = $this->Lib->exec('RandamChara', 'getValueConf',$ratio);
 
@@ -83,6 +84,7 @@ class GachaController extends BaseGameController
 		'narrow' => $this->viewData['valueList']['narrow'],
 		'GachaVal' => $gachaVal,
 		];
+		
 		//リダイレクト引数受け渡し
 		$param = [
 			'gachavalue' => $gachaVal,
@@ -94,11 +96,12 @@ class GachaController extends BaseGameController
 			'choki' => $charaData['choki'],
 			'paa' => $charaData['paa'],
 			'hp' => $charaData['hp'],
-		];		
+		];	
+
 		$this->Model->exec('Gacha', 'createChara', array($charaData));
 		
 		$this->Model->exec('Gacha', 'createLog', array($charaData));
-		
+	
 		return $this->Lib->redirect('gacha','index', $param);
 		
 	}
