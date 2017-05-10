@@ -6,7 +6,7 @@ class EditController extends BaseGameController
 {
 	public function index()
 	{
-	return viewWrap('edit');
+		return view('edit');
 	}
 
 	public function addUser()
@@ -30,10 +30,8 @@ class EditController extends BaseGameController
 			//マイページヘリダイレクト
 			return $this->Lib->redirect('mypage', 'index');
 		} else {
-			var_dump(strlen($teamName));
-			var_dump(mb_strlen($teamName));
 			//文字数がオーバーした場合の警告表示//ポップアップで表示
-			return viewWrap('error');
+			return $this->Lib->redirect('commonError');
 		}
 	}
 }
