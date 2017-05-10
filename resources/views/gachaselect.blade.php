@@ -7,14 +7,11 @@
 	<a href="{{APP_URL}}gacha/select">	通常　</a>	<a href="{{APP_URL}}gacha/eventsSelect">	イベント　</a>
 </div>
 </form>
-	
+
 {{-- popupボタン --}}
 <div class="modal_container">
     <span class="modal_btn gacha">Show modal</span>
 </div>
-	
-{{-- popupウインドウ --}}
-@include('popup/wrap', ['template' => 'gacha'])
 
 
 

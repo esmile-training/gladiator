@@ -19,5 +19,4 @@
 	<div>
 		<?php echo 'paa		',$viewData['paa']?>
 	</div>
-
 </div>
