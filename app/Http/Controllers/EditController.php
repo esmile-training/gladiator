@@ -6,7 +6,7 @@ class EditController extends BaseGameController
 {
 	public function index()
 	{
-	return viewWrap('edit');
+		return view('edit');
 	}
 
 	public function addUser()
@@ -29,7 +29,7 @@ class EditController extends BaseGameController
 			return $this->Lib->redirect('mypage', 'index');
 		} else {
 			//文字数がオーバーした場合のポップアップで警告表示予定
-			return viewWrap('error');
+			return $this->Lib->redirect('commonError');
 		}
 	}
 }

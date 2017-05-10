@@ -9,7 +9,7 @@ class TopController extends BaseGameController
 	 */
 	public function index()
 	{
-	return viewWrap('top', $this->viewData);
+		return view('top');
 	}
 
 	/**

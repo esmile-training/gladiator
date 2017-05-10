@@ -4,6 +4,6 @@
 
 <div class="returnLink">
 	<a href="{{APP_URL}}top">
-	TOPに戻る
+	タイトルに戻る
 	</a>
 </div>
