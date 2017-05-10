@@ -109,5 +109,30 @@ EOD;
     return $this->update($sql);
     }
     
-
+	/*
+	 * バトルチケットの更新処理
+	 */
+    public function updateTicket($user)
+    {
+$sql = <<< EOD
+	UPDATE  user
+	SET		battleTicket = {$user['battleTicket']}
+	WHERE   id		= {$user['id']};
+EOD;
+		$this->update($sql);
+    }
+	
+	/*
+	 * 最大数から1個目のバトルチケットを消費した時の更新処理
+	 */
+    public function firstLossTicket($user,$time)
+    {
+$sql = <<< EOD
+	UPDATE  user
+	SET		battleTicket = {$user['battleTicket']},
+			ticketLossTime = '{$time}'
+	WHERE   id		= {$user['id']};
+EOD;
+		$this->update($sql);
+    }
 }

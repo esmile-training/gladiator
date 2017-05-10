@@ -24,13 +24,12 @@ class battleController extends BaseGameController
 		$userId = $this->user['id'];
 
 		// 継続中の戦闘があったらbattleLogへリダイレクトする
-		$battleInfo = $this->Model->exec('UBattleInfo', 'getBattleData', $userId);
+		$battleInfo = $this->Model->exec('BattleInfo', 'getBattleData', $userId);
 		if(isset($battleInfo))
 		{
 			$this->Lib->redirect('battle', 'battleLog');
 		}
 
-		var_dump($userId);
 		// DBのキャラクターデータを取得する
 		$alluChara = $this->Model->exec('UChara', 'getUserChara', $userId);
 		// DBからキャラクターを取得できたかを確認する
@@ -96,6 +95,8 @@ class battleController extends BaseGameController
 		$matchData = BattleLib::createMatchData($arenaData,$selectedChara,$enemyApp,$enemyName,$enemyStatus);
 		// データのインサートを行う
 		$this->insertMatchData($matchData);
+		// チケットの消費処理を行う
+		$this->lossTicket();
 
 		// 戦闘処理へリダイレクトする
 		$this->Lib->redirect('battle', 'battleLog');
@@ -109,23 +110,22 @@ class battleController extends BaseGameController
 		// ユーザーIDを取得する
 		$userId = $this->user['id'];
 		// infoデータを取得する
-		$battleInfo = $this->Model->exec('UBattleInfo', 'getBattleData', $userId);
+		$battleInfo = $this->Model->exec('BattleInfo', 'getBattleData', $userId);
 		// 対戦データの取得をする
 		$matchData = $argMatchData;
 		// デリートフラグが立っていない、同じIDのデータが登録されていなければインサートを行う
 		if(!isset($battleInfo))
 		{
-			var_dump($matchData);
 			// プレイヤーキャラのデータをインサートする
-			$uBattleCharaId = $this->Model->exec('UBattleChara','insertBattleCharaData',array($matchData['uCharaId'],$matchData['uHp']
+			$uBattleCharaId = $this->Model->exec('BattleChara','insertBattleCharaData',array($matchData['uCharaId'],$matchData['uHp']
 					,$matchData['uGooAtk'],$matchData['uChoAtk'],$matchData['uPaaAtk']));
 
 			// エネミーのデータをインサートする
-			$uBattleEnemyId = $this->Model->exec('UBattleEnemy','insertEnemyData',array($matchData['eImgId'],$matchData['difficulty']
+			$uBattleEnemyId = $this->Model->exec('BattleEnemy','insertEnemyData',array($matchData['eImgId'],$matchData['difficulty']
 					,$matchData['eFirstName'],$matchData['eLastName'],$matchData['eHp'],$matchData['eGooAtk'],$matchData['eChoAtk'],$matchData['ePaaAtk']));
 
 			// バトルインフォにデータをインサートする
-			$this->Model->exec('UBattleInfo','insertBattleData',array($userId,$uBattleCharaId,$uBattleEnemyId));
+			$this->Model->exec('BattleInfo','insertBattleData',array($userId,$uBattleCharaId,$uBattleEnemyId));
 
 			return true;
 		}
@@ -134,6 +134,14 @@ class battleController extends BaseGameController
 			// データが入っていたらfalseを返す
 			return false;
 		}
+	}
+	
+	/*
+	 * チケットを消費させるファンクション
+	 */
+	public function lossTicket()
+	{
+		$this->Lib->exec('Ticket','lossTicket',array($this->user,$this->nowTime));
 	}
 
 	/*
@@ -177,13 +185,14 @@ class battleController extends BaseGameController
 
 		// getRankingData ファンクションを呼び出し、ランキングデータをセット
 		$this->getRankingData();
+		$this->getBattleData();
 
 		// リザルト画面に必要なデータを viewData に渡す
 		$this->viewData['Prize']		= $prize;
 		$this->viewData['RankingData']	= $this->RankingData;
 
-		// 全てのデータにdelFlagを立てる処理
-		$this->updateDelFlag();
+		// delFlagを立てる処理
+		$this->Model->exec('BattleInfo', 'UpdateInfoFlag', $this->BattleData['id']);
 
 		return viewWrap('battleEnd', $this->viewData);
 	}
@@ -214,17 +223,17 @@ class battleController extends BaseGameController
 
 		// ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
 		// BattleData にバトルデータを格納
-		$this->BattleData = $this->Model->exec('UBattleInfo', 'getBattleData', $this->user['id']);
+		$this->BattleData = $this->Model->exec('BattleInfo', 'getBattleData', $this->user['id']);
 
 		if(isset($this->BattleData))
 		{
 			// バトルデータを元にuBattleChar(DB)からキャラデータを読み込み
 			// ChaaraData に自キャラデータを格納
-			$this->CharaData = $this->Model->exec('UBattleChara', 'getBattleCharaData', $this->BattleData['charaId']);
+			$this->CharaData = $this->Model->exec('BattleChara', 'getBattleCharaData', $this->BattleData['uBattleCharaId']);
 
 			// バトルデータを元にuBattleEnemy(DB)から敵データを読み込み
 			// EnemyData に敵キャラデータを格納
-			$this->EnemyData = $this->Model->exec('UBattleEnemy', 'getBattleEnemyData', $this->BattleData['enemyId']);
+			$this->EnemyData = $this->Model->exec('BattleEnemy', 'getBattleEnemyData', $this->BattleData['uBattleEnemyId']);
 		}
 	}
 
@@ -290,9 +299,9 @@ class battleController extends BaseGameController
 
 		// バトルキャラデータの更新処理
 		// 自キャラデータの更新処理
-		$this->Model->exec('UBattleChara', 'UpdateBattleCharaData', array($this->CharaData));
+		$this->Model->exec('BattleChara', 'UpdateBattleCharaData', array($this->CharaData));
 		// 敵キャラデータの更新処理
-		$this->Model->exec('UBattleEnemy', 'UpdateBattleEnemyData', array($this->EnemyData));
+		$this->Model->exec('BattleEnemy', 'UpdateBattleEnemyData', array($this->EnemyData));
 
 
 		return $this->Lib->redirect('Battle', 'battleLog');
@@ -332,20 +341,5 @@ class battleController extends BaseGameController
 		}
 
 		return $this->Lib->redirect('Battle', 'battleResult',$prize);
-	}
-
-	/*
-	 * 各データに 'delFlag' を立てるファンクション
-	 */
-	public function updateDelFlag()
-	{
-		$this->getBattleData();
-		// データベースの更新処理
-		// uBattleInfo の 'delFlag' を立てる処理
-		$this->Model->exec('UBattleInfo', 'UpdateInfoFlag', $this->BattleData['id']);
-		// uBattleChara の 'delFlag' を立てる処理
-		$this->Model->exec('UBattleChara', 'UpdateCharaFlag', $this->BattleData['charaId']);
-		// uBattleEnemy の 'delFlag' を立てる処理
-		$this->Model->exec('UBattleEnemy', 'UpdateEnemyFlag', $this->BattleData['enemyId']);
 	}
 }

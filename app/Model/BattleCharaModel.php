@@ -7,7 +7,7 @@
 
 namespace App\Model;
 
-class UBattleCharaModel extends \App\Model\BaseGameModel
+class BattleCharaModel extends \App\Model\BaseGameModel
 {
 	/*
 	 *  DBからバトル用キャラデータを取得する
@@ -17,7 +17,6 @@ class UBattleCharaModel extends \App\Model\BaseGameModel
 $sql = <<< EOD
 	SELECT
 		uBattleChara.id as uBattleCharaId,
-		delFlag,
 		bHp,
 		bGooAtk,
 		bChoAtk,
@@ -35,9 +34,8 @@ $sql = <<< EOD
 		paaAtk
 	FROM uBattleChara
 	LEFT JOIN uChara
-	ON uBattleChara.charaId = uChara.id
+	ON uBattleChara.uCharaId = uChara.id
 	WHERE uBattleChara.id = {$battleCharaId}
-	AND uBattleChara.delFlag = 0
 EOD;
 
 		return $this->select($sql, 'first');
@@ -53,7 +51,6 @@ $sql = <<< EOD
 		INSERT INTO uBattleChara
 		VALUES (
 			NULL,
-			DEFAULT,
 			'{$uCharaId}',
 			'{$hp}',
 			'{$gooAtk}',
@@ -88,18 +85,4 @@ $sql = <<< EOD
 EOD;
 		$this->update($sql);
 	}
-
-	/*
-	 *  'delFlag'を立てる処理
-	 */
-	public function UpdateCharaFlag($battleCharaId = false)
-	{
-$sql = <<< EOD
-	UPDATE  uBattleChara
-	SET		delFlag = 1
-	WHERE   id = {$battleCharaId};
-EOD;
-		$this->update($sql);
-	}
-
 }
