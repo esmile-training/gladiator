@@ -10,7 +10,8 @@ class TrainingController extends BaseGameController
 		$this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'],true));
 		//所持しているキャラのデータを持ってくる
 		$uCharaData = $this->Model->exec('UChara', 'getUserChara', false, $this->user['id']);
-		
+
+		//
 		if(!isset($uCharaData))
 		{
 			echo '訓練可能な剣闘士が一人もいません';
@@ -18,16 +19,16 @@ class TrainingController extends BaseGameController
 		}else{
 			$this->viewData['charaList'] = $uCharaData;
 		}
-		
 		return viewWrap('training',$this->viewData);
 	}
-	
+
 	public function coachSelect()
 	{
 		//uCharaIdをGETしviewDataに保持
-		$uCharaId = (int)filter_input(INPUT_GET,"uCharaId");
+		$uCharaId = filter_input(INPUT_GET,"uCharaId");
 		$this->viewData['uCharaId'] = $uCharaId;
-
+		//今回強化するキャラクターの攻撃力、強化回数の取得
+		$uCharaAtkInfo = $this->Model->exec('Training','getUCharaAtk', $uCharaId);
 		//所持しているコーチのデータを持ってくる
 		$uCoachData = $this->Model->exec('Training', 'getUserCoach', false, $this->user['id']);
 		
@@ -35,18 +36,36 @@ class TrainingController extends BaseGameController
 		{
 			echo '訓練可能なコーチが一人もいません';
 			return viewWrap('Error',$this->viewData);
-		}else{
-			$this->viewData['coachList'] = $uCoachData;
 		}
 		
+		//コーチごとに各攻撃力の成長確率を算出し格納する
+		$coachCnt = 0;
+		foreach($uCoachData as $key)
+		{
+			foreach($uCharaAtkInfo as $val)
+			{
+				$key['gooUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
+															array($key['gooAtk'],$val['gooAtk'],$val['gooUpCnt']));
+				$key['choUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
+															array($key['choAtk'],$val['choAtk'],$val['choUpCnt']));
+				$key['paaUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
+															array($key['paaAtk'],$val['paaAtk'],$val['paaUpCnt']));
+			}
+			$uCoachData[$coachCnt]['gooUpProbability'] = $key['gooUpProbability'];
+			$uCoachData[$coachCnt]['choUpProbability'] = $key['choUpProbability'];
+			$uCoachData[$coachCnt]['paaUpProbability'] = $key['paaUpProbability'];
+			$coachCnt++;
+		}
+		
+		$this->viewData['coachList'] = $uCoachData;
 		return viewWrap('coachSelect',$this->viewData);
 	}
-	
-	public function setInfo()
+
+	public function infoSet()
 	{
 		//訓練時刻をGETする
 		$trainingTime	= (int)filter_input(INPUT_GET,"trainingTime");
-		
+
 		//viewに渡したuCharaIdと選択されたuCoachIdをGET
 		$uCoachId		= (int)filter_input(INPUT_GET,"uCoachId");
 		$uCharaId		= (int)filter_input(INPUT_GET,"uCharaId");
@@ -80,6 +99,5 @@ class TrainingController extends BaseGameController
 
 		//リダイレクト
 		return $this->Lib->redirect('training', 'index');
-	
 	}
 }

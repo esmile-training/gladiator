@@ -69,10 +69,10 @@ EOD;
 	/*
 	 * キャラクターの攻撃力を取得
 	 */
-	public function getUCharaAtk($uCharaId)
+	public function getUCharaStatus($uCharaId)
     {
 $sql =  <<< EOD
-		SELECT gooAtk,choAtk,paaAtk,gooUpCnt,choUpCnt,paaUpCnt
+		SELECT hp,gooAtk,choAtk,paaAtk,gooUpCnt,choUpCnt,paaUpCnt
 		FROM uChara
 		WHERE id = {$uCharaId};
 EOD;
@@ -97,17 +97,18 @@ EOD;
 	/*
 	 * キャラクターの攻撃力を更新する
 	 */
-	public function updateAtk($atkInfo,$uCharaId)
+	public function updateStatus($statusInfo,$uCharaId)
 	{
 $sql =  <<< EOD
 		UPDATE uChara
-		SET    gooAtk	= {$atkInfo['gooAtk']},
-			   choAtk	= {$atkInfo['choAtk']},
-			   paaAtk	= {$atkInfo['paaAtk']},
-			   gooUpCnt = {$atkInfo['gooUpCnt']},
-			   choUpCnt = {$atkInfo['choUpCnt']},
-			   paaUpCnt = {$atkInfo['paaUpCnt']}
-		WHERE  id = {$uCharaId};
+		SET		hp		 = {$statusInfo['hp']},
+				gooAtk	 = {$statusInfo['gooAtk']},
+				choAtk	 = {$statusInfo['choAtk']},
+				paaAtk	 = {$statusInfo['paaAtk']},
+				gooUpCnt = {$statusInfo['gooUpCnt']},
+				choUpCnt = {$statusInfo['choUpCnt']},
+				paaUpCnt = {$statusInfo['paaUpCnt']}
+		WHERE	id = {$uCharaId};
 EOD;
 		$this->update($sql);
 	}
@@ -143,10 +144,10 @@ EOD;
 	 * 0なら訓練中、1なら訓練終了かつ訓練結果未確認、2なら訓練終了かつ結果確認済み
      */
     public function stateChange($id,$trainingState)
-    {
+    {	
 $sql =  <<< EOD
 		UPDATE uTraining
-		SET    state = $trainingState
+		SET    state = {$trainingState}
 		WHERE  id = {$id};
 EOD;
 		$this->update($sql);

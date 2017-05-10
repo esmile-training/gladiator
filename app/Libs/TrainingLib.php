@@ -10,32 +10,25 @@ class TrainingLib extends BaseGameLib
 	{
 		$endTraining = $this->Model->exec('Training', 'getEndDate', $nowTime);
 		
-		/*
-		 * MypageControllerからこの処理に入った場合はキャラの強化はしない
-		 * TrainingControllerからこの処理に入った場合はキャラの強化もする
-		 */
+		// MypageControllerからこの処理に入った場合はキャラの強化はしない TrainingControllerからこの処理に入った場合はキャラの強化もする
 		if(isset($endTraining) && $isTrainingPage == true)
 		{
-			foreach( $endTraining as $val)
-			{
-				$trainingState = 2;
-				TrainingLib::uCharaAtkUp($val['id']);
-				$this->Model->exec('Training','uCharaStateChange',array($val['uCharaId'],0));
-				$this->Model->exec('Training','uCoachStateChange',array($val['uCoachId'],0));
-				$this->Model->exec('Training','stateChange', array($val['id'],$trainingState), $this->user['id']);
-			}
+			$trainingState = 2;
+			TrainingLib::uCharaAtkUp(array_column($endTraining, 'id'));
+			$this->Model->exec('Training','uCharaStateChange',array((int)array_column($endTraining, 'uCharaId')[0],0));
+			$this->Model->exec('Training','uCoachStateChange',array((int)array_column($endTraining, 'uCoachId')[0],0));
+			$this->Model->exec('Training', 'stateChange', array((int)array_column($endTraining,'id')[0], $trainingState), $this->user['id']);
+			
 		}else if(isset($endTraining) && $isTrainingPage == false){
-			foreach($endTraining as $val)
-			{
-				$trainingState = 1;
-				$this->Model->exec('Training','stateChange', array($val['id'],$trainingState), $this->user['id']);
-				return $endTraining;
-			}
+			$trainingState = 1;
+			$this->Model->exec('Training', 'stateChange', array((int)array_column($endTraining,'id')[0], $trainingState), $this->user['id']);
+			return $endTraining;
 		}
 	}
 
 	/*
-	 * 
+	 * 訓練したキャラクターの攻撃力とコーチの攻撃力から成功確率を算出し
+	 * 成功していた場合は攻撃力を上昇させる
 	 */
 	public function uCharaAtkUp($trainingId)
 	{
@@ -60,9 +53,10 @@ class TrainingLib extends BaseGameLib
 		}
 
 		//キャラの攻撃力取得
-		$uCharaAtk = $this->Model->exec('Training','getUCharaAtk', $uCharaId);
-		foreach($uCharaAtk as $key)
+		$uCharaStatus = $this->Model->exec('Training','getUCharaStatus', $uCharaId);
+		foreach($uCharaStatus as $key)
 		{
+			$charaHp		= (int)$key['hp'];
 			$charaGooAtk	= (int)$key['gooAtk'];
 			$charaChoAtk	= (int)$key['choAtk'];
 			$charaPaaAtk	= (int)$key['paaAtk'];
@@ -74,9 +68,9 @@ class TrainingLib extends BaseGameLib
 		//コーチのグー、チョキ、パーそれぞれの攻撃力とキャラのグー、チョキ、パーそれぞれの攻撃力から上昇率を算出
 		for($i = 0; $i <= $time; $i++)
 		{
-			$gooResult = $coachGooAtk / $charaGooAtk * 0.5 * (100 - $gooUpCnt);
-			$choResult = $coachChoAtk / $charaChoAtk * 0.5 * (100 - $choUpCnt);
-			$paaResult = $coachPaaAtk / $charaPaaAtk * 0.5 * (100 - $paaUpCnt);
+			$gooResult = TrainingLib::atkUpProbability($coachGooAtk,$charaGooAtk,$gooUpCnt);
+			$choResult = TrainingLib::atkUpProbability($coachChoAtk,$charaChoAtk,$choUpCnt);
+			$paaResult = TrainingLib::atkUpProbability($coachPaaAtk,$charaPaaAtk,$paaUpCnt);
 
 			$gooJudgeValue = rand(1, 100);
 			if($gooResult <= $gooJudgeValue)
@@ -96,9 +90,12 @@ class TrainingLib extends BaseGameLib
 				$charaPaaAtk++;
 				$paaUpCnt++;
 			}
-			
 		}
-		$atkInfo = [
+		
+		$charaHp = $charaHp + $gooUpCnt + $choUpCnt + $paaUpCnt;
+		
+		$statusInfo = [
+			'hp'		=> $charaHp,
 			'gooAtk'	=> $charaGooAtk,
 			'choAtk'	=> $charaChoAtk,
 			'paaAtk'	=> $charaPaaAtk,
@@ -106,7 +103,16 @@ class TrainingLib extends BaseGameLib
 			'choUpCnt'	=> $choUpCnt,
 			'paaUpCnt'	=> $paaUpCnt
 		];
-		$this->Model->exec('Training', 'updateAtk', array($atkInfo,$uCharaId));
+		$this->Model->exec('Training', 'updateStatus', array($statusInfo,$uCharaId));
+	}
+	
+	/*
+	 * 攻撃力の上昇確率の計算処理
+	 */
+	public function atkUpProbability($uCoachAtk,$uCharaAtk,$atkUpCnt)
+	{
+		$result = $uCoachAtk / $uCharaAtk * 0.5 * (100 - $atkUpCnt);
+		return round($result,2);
 	}
 
 }

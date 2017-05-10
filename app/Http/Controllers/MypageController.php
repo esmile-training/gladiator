@@ -11,7 +11,6 @@ class MypageController extends BaseGameController
 		{
 			echo('訓練が完了した剣闘士がいます！');
 		}
-		
 		return viewWrap( 'mypage', $this->viewData);
 	}
 }
