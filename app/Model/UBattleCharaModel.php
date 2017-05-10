@@ -7,7 +7,7 @@
 
 namespace App\Model;
 
-class BattleCharaModel extends \App\Model\BaseGameModel
+class UBattleCharaModel extends \App\Model\BaseGameModel
 {
 	/*
 	 *  DBからバトル用キャラデータを取得する
@@ -15,26 +15,9 @@ class BattleCharaModel extends \App\Model\BaseGameModel
 	public function getBattleCharaData($battleCharaId = false)
 	{
 $sql = <<< EOD
-	SELECT
-		uBattleChara.id as uBattleCharaId,
-		delFlag,
-		bHp,
-		bGooAtk,
-		bChoAtk,
-		bPaaAtk,
-		hand,
-		result,
-		uChara.id as uCaraId,
-		userId,
-		imgId,
-		name,
-		attribute,
-		hp,
-		gooAtk,
-		choAtk,
-		paaAtk
+	SELECT *
 	FROM uBattleChara
-	LEFT JOIN uChara
+	JOIN uChara
 	ON uBattleChara.charaId = uChara.id
 	WHERE uBattleChara.id = {$battleCharaId}
 	AND uBattleChara.delFlag = 0
@@ -46,7 +29,7 @@ EOD;
 	/*
 	 * DBにデータをインサートする
 	 */
-	public function insertBattleCharaData($uCharaId,$hp,$gooAtk,$choAtk,$paaAtk)
+	public function InsertBattleCharaData($uCharaId,$hp,$gooAtk,$choAtk,$paaAtk)
 	{
 		$time = date('Y-m-d H:i:s', time());
 $sql = <<< EOD
@@ -84,7 +67,7 @@ $sql = <<< EOD
 			bPaaAtk = {$battleChara['bPaaAtk']},
 			hand	= '{$battleChara['hand']}',
 			result	= '{$battleChara['result']}'
-	WHERE   id		= {$battleChara['uBattleCharaId']};
+	WHERE   id		= {$battleChara['id']};
 EOD;
 		$this->update($sql);
 	}

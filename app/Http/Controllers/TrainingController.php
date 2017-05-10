@@ -21,7 +21,7 @@ class TrainingController extends BaseGameController
 	
 	//所持しているコーチのデータを持ってくる
 	$this->viewData['coachList'] = $this->Model->exec('Training', 'getUserCoach', false, $this->user['id']);
-
+	
 	return viewWrap('coachSelect',$this->viewData);
     }
     

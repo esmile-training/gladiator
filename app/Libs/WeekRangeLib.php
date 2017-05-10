@@ -3,7 +3,7 @@
 namespace App\Libs;
 
 
-class weekRangeLib extends BaseGameLib{
+class WeekRangeLib extends BaseGameLib{
     /*
      * 週間の状態を確認
      */
@@ -13,13 +13,16 @@ class weekRangeLib extends BaseGameLib{
 	$week = $this->Model->exec('Ranking', 'getRange', $userId);
 	
 	// 今週の最終日を取得
-	$monday = date('Y-m-d', strtotime('last monday'));
-	
+	$monday = (strtotime('monday') == strtotime('today'))? strtotime('monday'):strtotime('last monday');
+	$monday = date('Y-m-d', $monday);
+
 	// 今週の最終日とデータベースの週間を比較
 	if($monday != $week[0]['weekRange']){
-	    echo 'ok';
+	    echo 'oks';
 	    $this->Model->exec('Ranking', 'rangeUpdate', [$userId, $monday]);
 	}
+	
+	return $monday;
     }
 }
 

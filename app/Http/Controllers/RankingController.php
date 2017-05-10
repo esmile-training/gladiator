@@ -15,10 +15,10 @@ class RankingController extends BaseGameController
 	parent::__construct();
 
 	// 表示タブの切り替え
-	$this->chengeData = filter_input(INPUT_GET, 'dataChenge');
+	$this->chengeData   = filter_input(INPUT_GET, 'dataChenge');
 	
 	// 以前の表示タブの状態を取得
-	$this->chenge = filter_input(INPUT_GET, 'pageType');
+	$this->chenge	    = filter_input(INPUT_GET, 'pageType');
 	
 	/*
 	 *  総合か週間が選ばれたときに実行される。
@@ -26,34 +26,28 @@ class RankingController extends BaseGameController
 	 */
 	
 	if (isset($this->chengeData) && $this->chengeData == 0) {
-	    $chengeRanking = 0;
+	    $chengeRanking  = 0;
 	} elseif (isset($this->chengeData) && $this->chengeData == 1) {
-	    $chengeRanking = 1;
+	    $chengeRanking  = 1;
 	}elseif(isset($this->chenge) && !isset($this->chengeData)){
-	    $chengeRanking = $this->chenge;
+	    $chengeRanking  = $this->chenge;
 	}else{
-	    $chengeRanking = 0; 
+	    $chengeRanking  = 0; 
 	}
 
 	// 週間か総合値順位のボタンの状態判定
 	if($chengeRanking == 0){
-	    // 最下位のデータを取得
-	    $bottomData = $this->Model->exec('Ranking', 'bottomAcquisition');
-	    $this->rankingData['bottomPoint'] = $bottomData[0]['weeklyAward'];
-
-	    // 登録者数を取得
-	    $userCount = $this->Model->exec('Ranking', 'idRegistrationNumber');
-	    $this->rankingData['count'] = floor(($userCount[0]['count']/10));
-
 	    // 週間とステータスの切り替え
 	    $this->rankingData['rankChenge'] = $chengeRanking;
 	}else{
 	    // ステータスの最下位のデータを取得
 	    $bottomData = $this->Model->exec('Ranking', 'bottomStatus', $this->user['id']);
-	    $this->rankingData['bottomStatus'] = $bottomData[0]['hp'];
+	    $bottomData[0]['totalCharaStatus'] == null ? $bottomData = 0 : false;
 	    
-	    // 登録キャラ数を取得
-	    $charaCount = $this->Model->exec('Ranking', 'charaCount', $this->user['id']);
+	    $this->rankingData['bottomStatus'] = $bottomData;
+	    
+	    // 登録者数を取得
+	    $charaCount = $this->Model->exec('Ranking', 'userCount');
 	    $this->rankingData['count'] = floor(($charaCount[0]['count']/10));
 
 	    // 週間とステータスの切り替え
@@ -65,37 +59,42 @@ class RankingController extends BaseGameController
     public function index()
     {
 	// ページャーの取得
-	$nextPage = filter_input(INPUT_GET, 'next');
-	$backPage = filter_input(INPUT_GET, 'back');
-	$lastPage = filter_input(INPUT_GET, 'last');
-	$firstPage = filter_input(INPUT_GET, 'first');
-	$rangePage = filter_input(INPUT_GET, 'page');
+	$nextPage   = filter_input(INPUT_GET, 'next');
+	$backPage   = filter_input(INPUT_GET, 'back');
+	$lastPage   = filter_input(INPUT_GET, 'last');
+	$firstPage  = filter_input(INPUT_GET, 'first');
+	$rangePage  = filter_input(INPUT_GET, 'page');
 	
 	// 配列化
-	$pushPage = [$nextPage, $backPage, $lastPage, $firstPage, $rangePage];
+	$pushPage   = [$nextPage, $backPage, $lastPage, $firstPage, $rangePage];
+	$moldValue  = $this->Lib->exec('Pager', 'valueConf', $pushPage);
+	$this->rankingData['nowpage']	= $moldValue;
+ 
+	    
+	// 週間かステータスで取得データを切替
+	if ($this->rankingData['rankChenge'] == 0){
+	    $range  = $this->Lib->exec('weekRange', 'rangeState', $this->user['id']);
 
-	// 初期画面を出力
-	if(!isset($nextPage) && !isset($backPage) && !isset($lastPage) && !isset($firstPage) && !isset($rangePage) && $this->chengeData == 0)
-	{
-	    $userRank = $this->Model->exec('Ranking', 'userRank', $this->user['id']);
-	    $page = RankingController::userRanking($userRank);
-	}else{
-	    // 週間かステータスで取得データを切替
-	    if ($this->rankingData['rankChenge'] == 0){
-		// ユーザーランキング
-		$moldValue = $this->Lib->exec('Pager', 'valueConf', $pushPage);
-		$page = $this->Model->exec('Ranking', 'rankingPager', [$moldValue]);
+	    // 登録者数を取得
+	    $userCount = $this->Model->exec('Ranking', 'rangeCount', $range);
+	    $this->rankingData['count']	= ceil(($userCount[0]['count']/10));
+
+	    if(!isset($nextPage) && !isset($backPage) && !isset($lastPage) && !isset($firstPage) && !isset($rangePage)){
+		$userRank   = $this->Model->exec('Ranking', 'userRank', [$this->user['id'], $range]);
+		$page	    = RankingController::userRanking($userRank);
 	    }else{
-		// 所持キャラランキング
-		$moldValue = $this->Lib->exec('Pager', 'valueConf', $pushPage);
-		$this->rankingData['nowpage'] = $moldValue;
-		$page = $this->Model->exec('Ranking', 'rankingChara', [$moldValue, $this->user['id']]);
+		// ユーザーランキング
+		$page	= $this->Model->exec('Ranking', 'rankingPager', [$moldValue, $range]);
 	    }
+	}else{
+	    // 所持キャラランキング
+	    $page   = $this->Model->exec('Ranking', 'rankingStatus', $moldValue);
 	}
+	
 
 	// 並べ替えたものを代入
-	$this->viewData['ranking'] = $page;
-	$this->viewData['rankingData'] = $this->rankingData;
+	$this->viewData['ranking']	= $page;
+	$this->viewData['rankingData']	= $this->rankingData;
 
 	// ビューヘ渡す
 	if ($this->rankingData['rankChenge'] == 0) {
@@ -115,18 +114,22 @@ class RankingController extends BaseGameController
     
     public function userRanking($inputRank)
     {
-	$data = 0;
 	$userrank = array_search($this->user['id'], array_column($inputRank, 'userId'));
 	$data = 0;
-	// ランキング取得時、中間ではなく、上位十位以内だった場合
-	if($inputRank[9]['userId'] != $this->user['id'] && 10 > $userrank)
+	
+	if(count($inputRank) < 10)
 	{
+	    foreach ($inputRank as $key => $value)
+	    {
+		    $execRank[$value['userId']]	= $value;
+    	    }
+	}elseif($inputRank[9]['userId'] != $this->user['id'] && 10 > $userrank){
+	// ランキング取得時、中間ではなく、上位十位以内だった場合
 	    foreach ($inputRank as $key => $value)
 	    {
 		if($key < 10)
 		{
-		    $execRank[$value['name']] = $value;
-		    var_dump($inputRank[$key]);
+		    $execRank[$value['userId']]	= $value;
 		}
     	    }
 	}elseif($inputRank[9]['userId'] == $this->user['id'] && count($inputRank) != 20){
@@ -135,8 +138,7 @@ class RankingController extends BaseGameController
 	    {
 		if(count($inputRank) - 11 < $key)
 		{
-		    $execRank[$value['name']] = $value;
-		    var_dump($inputRank[$key]);
+		    $execRank[$value['userId']]	= $value;
 		}
 	    }
 	}elseif($inputRank[9]['userId'] == $this->user['id']){
@@ -145,13 +147,12 @@ class RankingController extends BaseGameController
 	    {
 		if(4 < $key && $key < 15)
 		{
-		    $execRank[$value['name']] = $value;
+		    $execRank[$value['userId']]	= $value;
 		    $data = $inputRank[$key]['rank'];   
 		}
 	    }
 	}
 	$this->rankingData['pager'] = floor(($data / 10)) * 10;
-	
 	return $execRank;
     }
 }

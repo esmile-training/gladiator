@@ -26,9 +26,7 @@ class TopController extends BaseGameController
 			//無ければエディット画面にリダイレクトする。
 			return $this->Lib->redirect('edit');
 		} else {
-			//バトル中か確認
-			if($this->Model->exec('BattleInfo', 'getBattleData', "", $_COOKIE['userId']))
-			{
+			if($this->Model->exec('Battle', 'getBattleData', "", $_COOKIE['userId'])){
 				//バトル中データあり
 				//ポップアップ表示予定
 				return viewWrap('Error');

@@ -7,7 +7,7 @@
 
 namespace App\Model;
 
-class BattleEnemyModel extends \App\Model\BaseGameModel
+class UBattleEnemyModel extends \App\Model\BaseGameModel
 {
 	/*
 	 * DBから敵データを取得する
@@ -27,7 +27,7 @@ EOD;
 	/*
 	 * DBにデータをインサートする
 	 */
-	public function insertEnemyData($imgId,$difficulty,$firstName,$lastName,$hp,$gooAtk,$choAtk,$paaAtk)
+	public function InsertEnemyData($imgId,$level,$firstName,$lastName,$hp,$gooAtk,$choAtk,$paaAtk)
 	{
 		$time = date('Y-m-d H:i:s', time());
 $sql = <<< EOD
@@ -36,7 +36,7 @@ $sql = <<< EOD
 			NULL,
 			'{$imgId}',
 			DEFAULT,
-			'{$difficulty}',
+			'{$level}',
 			'{$firstName}・{$lastName}',
 			'{$hp}',
 			'{$gooAtk}',

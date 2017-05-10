@@ -45,17 +45,6 @@ EOD;
 	$this->delete($sql);
     }
 
-	// 所持金の更新
-    public function updateMoney($user)
-    {
-$sql = <<< EOD
-	UPDATE  user
-	SET		money = {$user['money']}
-	WHERE   id		= {$user['id']};
-EOD;
-		$this->update($sql);
-    }
-
     /*
     *	ユーザ名変更
     */
@@ -68,4 +57,78 @@ $sql =  <<< EOD
 EOD;
 	$this->update($sql);
     }
-}
+	    //キャラの作成
+    public function createChara($userId,$uCharaId,$uCharaFirstName,$uCharaLastName,$ratio,$narrow,$hp,$gu,$choki,$paa)
+	{
+        $sql = <<< EOD
+    INSERT INTO  uChara 
+    VALUES (
+    NULL,
+		'{$userId}',
+        '{$uCharaId}',
+        '{$uCharaFirstName}・{$uCharaLastName}',
+		'{$ratio}',
+        '{$narrow}',
+        '{$hp}',
+        '{$gu}',
+        '{$choki}',
+        '{$paa}',
+		 '0',
+		 '0',  
+		 '0',
+		'0',
+        NULL,
+        NULL
+    );
+EOD;
+    return $this->insert($sql);
+    }    
+    /*
+     * キャラステータスの更新
+     */
+    public function charaStatus( $userId )
+    {
+$sql = <<< EOD
+	UPDATE user set
+	totalCharaStatus = 
+	(SELECT SUM(hp) AS Status FROM uChara WHERE userId = $userId)
+	where id = $userId;
+EOD;
+    return $this->update($sql);
+    }
+	public function updateMoney($user)
+    {
+$sql = <<< EOD
+	UPDATE  user
+	SET		money = {$user['money']}
+	WHERE   id		= {$user['id']};
+EOD;
+		$this->update($sql);
+    }
+    
+    /*
+     * 枚数確認
+     */
+    
+    public function numberConfirmation( $userId )
+    {
+$sql = <<< EOD
+	SELECT battleTicket, ticketLossTime
+	FROM user
+	WHERE id = $userId;
+EOD;
+    return parent::select($sql);
+    }
+    
+    public function ticketRecovery($userId, $ticket, $nextRecoveryTime)
+    {
+	var_dump($nextRecoveryTime);
+$sql = <<< EOD
+	UPDATE  user
+	SET battleTicket = {$ticket},
+	    ticketLossTime = '{$nextRecoveryTime}'
+	WHERE id = {$userId};
+EOD;
+    return parent::update($sql);
+    }
+    }
