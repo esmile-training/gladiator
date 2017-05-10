@@ -3,10 +3,6 @@
 @include('common/js', ['file' => 'admin'])
 
 <div>
-    <?php var_dump($viewData)?>
-</div>
-
-<div>
 	<a href="{{APP_URL}}training">
 		訓練所へ
 	</a>
@@ -15,12 +11,7 @@
 <div>
 
     <a href="{{APP_URL}}battle/selectBattleChara">
-	    キャラクター選択
-    </a>
-</div>
-<div>
-    <a href="{{APP_URL}}battle">
-	バトルスタンバイ画面
+	    試合
     </a>
 </div>
 

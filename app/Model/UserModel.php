@@ -108,7 +108,6 @@ EOD;
 	}
     public function ticketRecovery($userId, $ticket, $nextRecoveryTime)
     {
-	var_dump($nextRecoveryTime);
 $sql = <<< EOD
 	UPDATE  user
 	SET battleTicket = {$ticket},

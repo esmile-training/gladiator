@@ -29,8 +29,6 @@ class TicketLib extends BaseGameLib
 	// 回復時間の30分を加算させる。
 	$recoveryTime = date("Y-m-d H:i:s",strtotime("$ticketLossTime +30 minute"));
 	
-	var_dump($maxticket);
-	
 	// チケット枚数が上限より小さい時と、現在の時間が回復時間を上回っているとき実行
 	if($battleTicket < $maxticket['ticketMax'] && $recoveryTime <= $nowTime)
 	{
