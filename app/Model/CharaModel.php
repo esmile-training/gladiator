@@ -9,7 +9,7 @@
 namespace App\Model;
 
 // クラス定義
-class UCharaModel extends \App\Model\BaseGameModel
+class CharaModel extends \App\Model\BaseGameModel
 {
 	/*
 	 * 所持キャラクターを取得する

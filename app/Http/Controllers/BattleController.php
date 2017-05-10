@@ -31,7 +31,7 @@ class battleController extends BaseGameController
 		}
 
 		// DBのキャラクターデータを取得する
-		$alluChara = $this->Model->exec('UChara', 'getUserChara', $userId);
+		$alluChara = $this->Model->exec('Chara', 'getUserChara', $userId);
 		// DBからキャラクターを取得できたかを確認する
 		if(!isset($alluChara))
 		{
@@ -76,7 +76,7 @@ class battleController extends BaseGameController
 			$this->Lib->redirect('mypage', 'index');
 		}
 		// IDと一致するキャラクターをDBから取得する
-		$selectedChara = $this->Model->exec('UChara', 'getById', $arenaData["selectedCharaId"]);
+		$selectedChara = $this->Model->exec('Chara', 'getById', $arenaData["selectedCharaId"]);
 		// 正常に取得したかを確認する
 		if(!isset($selectedChara))
 		{
@@ -345,7 +345,7 @@ class battleController extends BaseGameController
 		// 敵のHPが0以上の場合(試合全体としてプレイヤーが負けた場合)
 		else if($this->CharaData['bHp'] <= 0)
 		{
-			$this->Model->exec('UChara','charaDelFlag',$this->CharaData['uCharaId']);
+			$this->Model->exec('Chara','charaDelFlag',$this->CharaData['uCharaId']);
 		}
 
 		return $this->Lib->redirect('Battle', 'battleResult',$prize);
