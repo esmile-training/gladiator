@@ -78,7 +78,7 @@ class BaseGameModel
 	{
 	$result = $this->dbapi($sql, 'update');
 	// SQLの実行
-//	BaseGameModel::StatusUpdate($sql);
+	BaseGameModel::StatusUpdate($sql);
 	return $result;
 	}
 
