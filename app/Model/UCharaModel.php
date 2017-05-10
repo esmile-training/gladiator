@@ -39,5 +39,19 @@ EOD;
 		// 最初に一致したものを返す
 		return $this->select($sql,'first');
 	}
+	
+	/*
+	 * キャラクターのdelFlagを立てる
+	 */
+	public function charaDelFlag($uCharaId)
+	{
+$sql = <<< EOD
+	UPDATE  uChara
+	SET		delFlag = 1
+	WHERE   id = {$uCharaId};
+EOD;
+		$this->update($sql);
+	}
+
 
 }

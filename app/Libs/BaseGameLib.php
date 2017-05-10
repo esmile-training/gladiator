@@ -63,7 +63,6 @@ class BaseGameLib {
 		foreach ($param as $key => $val)
 		{
 			$getStr[] = $key . '=' . $val;	
-			
 		}
 	
 		header("Location: " . APP_URL . $controller . '/' . $action . '?' . implode('&', $getStr));

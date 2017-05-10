@@ -151,5 +151,4 @@ class BaseGameModel
 			$userModel->charaStatus( $userId );
 		}
     }
-
 }

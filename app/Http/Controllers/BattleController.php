@@ -185,7 +185,10 @@ class battleController extends BaseGameController
 
 		// getRankingData ファンクションを呼び出し、ランキングデータをセット
 		$this->getRankingData();
-		$this->getBattleData();
+		
+		// ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
+		// BattleData にバトルデータを格納
+		$this->BattleData = $this->Model->exec('BattleInfo', 'getBattleData', $this->user['id']);
 
 		// リザルト画面に必要なデータを viewData に渡す
 		$this->viewData['Prize']		= $prize;
@@ -338,8 +341,13 @@ class battleController extends BaseGameController
 			$this->Lib->exec('Money', 'addition', array($this->user, $prize['money']));
 			// ユーザーのウィークリーポイント 'weeklyAward' に賞金額を加算しデータベースに格納
 			$this->Lib->exec('Ranking', 'weeklyAdd', array($this->RankingData, $prize['money']));
+		}		
+		// 敵のHPが0以上の場合(試合全体としてプレイヤーが負けた場合)
+		else if($this->CharaData['bHp'] <= 0)
+		{
+			$this->Model->exec('UChara','charaDelFlag',$this->CharaData['uCharaId']);
 		}
-
+		
 		return $this->Lib->redirect('Battle', 'battleResult',$prize);
 	}
 }

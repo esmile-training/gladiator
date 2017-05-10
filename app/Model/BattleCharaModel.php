@@ -23,7 +23,7 @@ $sql = <<< EOD
 		bPaaAtk,
 		hand,
 		result,
-		uChara.id as uCaraId,
+		uChara.id as uCharaId,
 		userId,
 		imgId,
 		name,
