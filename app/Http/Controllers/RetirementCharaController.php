@@ -9,7 +9,7 @@ class RetirementCharaController extends BaseGameController
 		//引退するキャラクターIDの持ち越し
 		$id = array('id'=>$_GET['id']);
 		//コーチの人数を調べる
-		$alluCoach = $this->Model->exec('Training', 'getUserCoach');
+		$alluCoach = $this->Model->exec('Training', 'getUserCoach',$_COOKIE['userId']);
 		$this->viewData['coachlist'] = $alluCoach;
 		if(count($alluCoach) >= 3)
 		{

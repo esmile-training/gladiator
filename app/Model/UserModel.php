@@ -64,6 +64,7 @@ EOD;
     INSERT INTO  uChara 
     VALUES (
     NULL,
+		'0',
 		'{$userId}',
         '{$uCharaId}',
         '{$uCharaFirstName}・{$uCharaLastName}',
@@ -114,30 +115,33 @@ EOD;
 	public function deleteChara( $uCharaId )
 	{
 $sql = <<< EOD
-	DELETE FROM uChara
+	UPDATE uChara set
+	delFlag = 0
 	WHERE id = {$uCharaId};
 EOD;
-	$this->delete($sql);
+	$result = $this->delete($sql);
 	}
 
 	//コーチの追加
-	public function insertCoach ( $uCharaId, $uCharaName,$ratio, $hp, $atk1, $atk2, $atk3)
+	public function insertCoach ( $uCharaId, $uCharaName, $ratio, $attribute, $hp, $atk1, $atk2, $atk3)
 	{
 $sql = <<< EOD
-    INSERT INTO uCoach 
-    VALUES (
-    NULL,
-	'{$_COOKIE['userId']}',
-        '{$uCharaId}',
-        '{$uCharaName}',
-    '{$ratio}',
-        '10',
-        '{$hp}',
-        '{$atk1}',
-        '{$atk2}',
-        '{$atk3}',
-        '0'
-    );
+	INSERT INTO uCoach 
+	VALUES (
+		NULL,
+		'{$_COOKIE['userId']}',
+		'{$uCharaId}',
+		'{$uCharaName}',
+		'{$ratio}',
+		'{$attribute}',
+		'{$hp}',
+		'{$atk1}',
+		'{$atk2}',
+		'{$atk3}',
+		'0',
+		NULL,
+		NULL
+	);
 EOD;
 	$this->insert($sql);
 	}

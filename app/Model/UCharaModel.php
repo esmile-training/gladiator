@@ -21,6 +21,7 @@ class UCharaModel extends \App\Model\BaseGameModel
 			SELECT *
 			FROM uChara
 			WHERE userID = {$userId}
+			AND delFlag = 0
 EOD;
 		return $this->select($sql);
 	}
