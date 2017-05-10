@@ -57,21 +57,25 @@ $sql =  <<< EOD
 EOD;
 	$this->update($sql);
     }
+    
+    
     /*
      * キャラステータスの更新
      */
     public function charaStatus( $userId )
     {
-	var_dump("ok");
 $sql = <<< EOD
 	UPDATE user set
 	totalCharaStatus = 
 	(SELECT SUM(hp) AS Status FROM uChara WHERE userId = $userId)
 	where id = $userId;
 EOD;
+
     $this->charaUpdate($sql);
     }
-	public function updateMoney($user)
+    
+    
+    public function updateMoney($user)
     {
 $sql = <<< EOD
 	UPDATE  user
@@ -106,4 +110,4 @@ $sql = <<< EOD
 EOD;
     return parent::update($sql);
     }
-    }
+}
