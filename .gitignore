@@ -11,3 +11,4 @@ Homestead.yaml
 /app/Http/Controllers/test01Controller.php
 /public/css/test.css
 /resources/views/test01.blade.php
+public/js/gacha.js
