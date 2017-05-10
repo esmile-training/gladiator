@@ -38,11 +38,14 @@ class RandamCharaLib extends BaseGameLib {
 	}		
 	public function getCharaImgId($sex = false) 
 	{
-		if($sex == 1 )
+		$gachavalue = (int)filter_input(INPUT_GET,"gachavalue");
+		if($sex == 1)
 		{	
 			return $this->womanCharaSort();
-		}else if($sex == 0){
+		}else if($sex == 0 && $gachavalue == 5){
+			
 			return $this->menCharaSort();
+	
 		}else {
 			
 			//configからデータ取ってくる
