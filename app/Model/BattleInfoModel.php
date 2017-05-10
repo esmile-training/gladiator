@@ -50,12 +50,12 @@ EOD;
 	/*
 	 * 'delFlag'を立てる
 	 */
-	public function UpdateInfoFlag($battleData)
+	public function UpdateInfoFlag($battleId)
 	{
 $sql = <<< EOD
 	UPDATE  uBattleInfo
 	SET		delFlag = 1
-	WHERE   id = {$battleData['id']};
+	WHERE   id = {$battleId};
 EOD;
 		$this->update($sql);
 	}

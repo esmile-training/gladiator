@@ -33,7 +33,7 @@ $sql = <<< EOD
 		choAtk,
 		paaAtk
 	FROM uBattleChara
-	JOIN uChara
+	LEFT JOIN uChara
 	ON uBattleChara.uCharaId = uChara.id
 	WHERE uBattleChara.id = {$battleCharaId}
 EOD;
@@ -44,7 +44,7 @@ EOD;
 	/*
 	 * DBにデータをインサートする
 	 */
-	public function InsertBattleCharaData($uCharaId,$hp,$gooAtk,$choAtk,$paaAtk)
+	public function insertBattleCharaData($uCharaId,$hp,$gooAtk,$choAtk,$paaAtk)
 	{
 		$time = date('Y-m-d H:i:s', time());
 $sql = <<< EOD
@@ -81,7 +81,7 @@ $sql = <<< EOD
 			bPaaAtk = {$battleChara['bPaaAtk']},
 			hand	= '{$battleChara['hand']}',
 			result	= '{$battleChara['result']}'
-	WHERE   id		= {$battleChara['id']};
+	WHERE   id		= {$battleChara['uBattleCharaId']};
 EOD;
 		$this->update($sql);
 	}

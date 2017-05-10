@@ -14,7 +14,7 @@
 
 <div>
 
-    <a href="{{APP_URL}}selectChara/selectBattleChara">
+    <a href="{{APP_URL}}battle/selectBattleChara">
 	    キャラクター選択
     </a>
 </div>

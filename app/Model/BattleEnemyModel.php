@@ -26,7 +26,7 @@ EOD;
 	/*
 	 * DBにデータをインサートする
 	 */
-	public function InsertEnemyData($imgId,$level,$firstName,$lastName,$hp,$gooAtk,$choAtk,$paaAtk)
+	public function insertEnemyData($imgId,$difficulty,$firstName,$lastName,$hp,$gooAtk,$choAtk,$paaAtk)
 	{
 		$time = date('Y-m-d H:i:s', time());
 $sql = <<< EOD
@@ -34,7 +34,7 @@ $sql = <<< EOD
 		VALUES (
 			NULL,
 			'{$imgId}',
-			'{$level}',
+			'{$difficulty}',
 			'{$firstName}・{$lastName}',
 			'{$hp}',
 			'{$gooAtk}',
