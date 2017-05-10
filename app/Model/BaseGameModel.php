@@ -148,7 +148,7 @@ class BaseGameModel
 			$userId = filter_input(INPUT_COOKIE, 'userId');
 
 			// ユーザーの持ちキャラのトータルステータスを更新
-			$userModel->charaStatus( $userId );
+			//$userModel->charaStatus( $userId );
 		}
     }
 
