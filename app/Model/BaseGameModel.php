@@ -70,6 +70,11 @@ class BaseGameModel
 			\Log::error('Showing user profile for user: '.$response);
 		}
     }
+    
+    public function charaUpdate($sql)
+    {
+	$this->dbapi($sql, 'update');
+    }
 
     /*
      * UPDATE
