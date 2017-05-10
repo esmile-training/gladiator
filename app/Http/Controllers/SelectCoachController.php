@@ -6,17 +6,16 @@ class SelectCoachController extends BaseGameController
 {
 	public function index()
 	{
-		$userId = $_COOKIE['userId'];
 		// DBのコーチデータを取得する
-		$alluCoach = $this->Model->exec('Training','getUserCoach',$userId);
-
+		$alluCoach = $this->Model->exec('Training','getUserCoach');
 		// DBからコーチを取得できたかを確認する
-		if(isset($alluCoach))
+		//if(isset($alluCoach))
+		if($this->viewData['coachList'])
 		{
 			// viewDataへ取得したコーチを送る
 			$this->viewData['coachList'] = $alluCoach;
 			// ビューへデータを渡す
-			return viewWrap('SelectCoach',$this->viewData);
+			return viewWrap('SelectCoach');
 		}
 		else
 		{
@@ -35,6 +34,7 @@ class SelectCoachController extends BaseGameController
 	{
 		//キャラの削除処理
 		$this->Model->exec('User','deleteChara',"",$_GET['id']);
+		//「引退しました」へ遷移
 		return ($this->Lib->redirect('Error'));
 	}
 }

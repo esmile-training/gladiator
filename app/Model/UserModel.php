@@ -64,6 +64,7 @@ EOD;
     INSERT INTO  uChara 
     VALUES (
     NULL,
+		'0',
 		'{$userId}',
         '{$uCharaId}',
         '{$uCharaFirstName}・{$uCharaLastName}',
@@ -129,6 +130,40 @@ $sql = <<< EOD
 	    ticketLossTime = '{$nextRecoveryTime}'
 	WHERE id = {$userId};
 EOD;
-    return parent::update($sql);
-    }
-    }
+	$result = $this->delete($sql);
+	}
+
+	//コーチの追加
+	public function insertCoach ( $uCharaId, $uCharaName, $ratio, $attribute, $hp, $atk1, $atk2, $atk3)
+	{
+$sql = <<< EOD
+	INSERT INTO uCoach 
+	VALUES (
+		NULL,
+		'{$_COOKIE['userId']}',
+		'{$uCharaId}',
+		'{$uCharaName}',
+		'{$ratio}',
+		'{$attribute}',
+		'{$hp}',
+		'{$atk1}',
+		'{$atk2}',
+		'{$atk3}',
+		'0',
+		NULL,
+		NULL
+	);
+EOD;
+	$this->insert($sql);
+	}
+	
+	//コーチの削除
+	public function deleteCoarch($uCoachId){
+$sql = <<< EOD
+	DELETE FROM uCoach
+	VALUES (
+	WHERE id = {$uCoachId};
+EOD;
+	$this->delete($sql);
+	}
+}

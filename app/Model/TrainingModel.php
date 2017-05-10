@@ -25,8 +25,9 @@ EOD;
     public function getUserCoach()
     {
 $sql =  <<< EOD
-	SELECT id,state
+	SELECT id,imgId,name,trainingState
 	FROM uCoach
+	WHERE userId = '{$_COOKIE['userId']}'
         LIMIT 3
 EOD;
 	return $this->select($sql, 'all');
