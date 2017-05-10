@@ -3,79 +3,153 @@ namespace App\Model;
 
 class TrainingModel extends BaseGameModel
 {
-     /*
-     * データベースからキャラの情報取得
-     */
-    public function getUserChara()
-    {
+	/*
+	 * データベースからコーチの情報取得
+	 */
+	public function getUserCoach($userId)
+	{
 $sql =  <<< EOD
-	SELECT *
-	FROM uChara
-	WHERE userId = 1
-	AND trainingState = 0
-        LIMIT 10
+		SELECT *
+		FROM uCoach
+		WHERE userId = $userId
+		AND trainingState = 0
+		LIMIT 3
 EOD;
-        $result = $this->select($sql, 'all');
-	return $result;
-    }
-    
-    /*
-     * データベースからコーチの情報取得
-     */
-    public function getUserCoach()
-    {
+		return $this->select($sql, 'all');
+	}
+
+	/*
+	 * データベースに訓練の時間と訓練中フラグを挿入
+	 */
+	public function setEndDate($trainingData)
+	{
 $sql =  <<< EOD
-	SELECT id,state
-	FROM uCoach
-        LIMIT 3
+		INSERT INTO uTraining
+		values(
+		NULL,
+		{$trainingData['uCharaId']},
+		{$trainingData['uCoachId']},
+		'{$trainingData['trainingStartDate']}',
+		'{$trainingData['trainingEndDate']}',
+		{$trainingData['trainingTime']},
+		0
+		);
 EOD;
-	return $this->select($sql, 'all');
-    }
-    
-    /*
-     * トレーニングの終了時刻を取得
-     */
-    public function getTrainingDate()
-    {
+		$this->insert($sql);
+	}
+	
+	/*
+	 * 訓練するキャラクターとコーチと訓練の時間を取得
+	 */
+	public function getInfo($id)
+	{
 $sql =  <<< EOD
-	SELECT uCharaId, finishDate
-	FROM uTraining
+		SELECT uCharaId,uCoachId,time
+		FROM uTraining
+		WHERE id = {$id}
 EOD;
-	return $this->select($sql, 'all');
-    }
-    
-    /*
-     * データベースに訓練の時間と訓練中フラグを挿入
-     */
-    public function setFinishDate($uCharaId,$uCoachId,$trainingStartDate,$trainingFinishDate)
-    {
-	$trainingState = 1;
+		$result = $this->select($sql, 'all');
+		return $result;
+	}
+	
+	/*
+	 * 訓練終了時刻を過ぎている訓練のデータを取得
+	 */
+	public function getEndDate($nowTime)
+	{
 $sql =  <<< EOD
-	INSERT INTO uTraining
-	values(
-	NULL,
-	{$uCharaId},
-	{$uCoachId},
-	'{$trainingStartDate}',
-	'{$trainingFinishDate}',
-	{$trainingState}
-	    );
+		SELECT id, uCharaId, uCoachId, endDate
+		FROM uTraining
+		WHERE endDate <= '{$nowTime}'
+		AND state != 2
 EOD;
-	$this->insert($sql);
-	$this->uCharaStateChange($uCharaId,$trainingState);
-    }
-    
-    /*
-     * キャラクターが訓練しているかどうかのフラグを変更する
-     */
-    public function uCharaStateChange($uCharaId)
-    {
+		return $this->select($sql, 'all');
+	}
+	
+	/*
+	 * キャラクターの攻撃力を取得
+	 */
+	public function getUCharaStatus($uCharaId)
+	{
 $sql =  <<< EOD
-	UPDATE uChara
-	SET    trainingState = 0
-	WHERE  id = {$uCharaId}
+		SELECT hp,gooAtk,choAtk,paaAtk,gooUpCnt,choUpCnt,paaUpCnt
+		FROM uChara
+		WHERE id = {$uCharaId};
+EOD;
+		$result = $this->select($sql, 'all');
+		return $result;
+	}
+	
+	/*
+	 * コーチの攻撃力を取得
+	 */
+	public function getUCoachAtk($uCoachId)
+	{
+$sql =  <<< EOD
+		SELECT gooAtk,choAtk,paaAtk
+		FROM uCoach
+		WHERE id = {$uCoachId};
+EOD;
+		$result = $this->select($sql, 'all');
+		return $result;
+	}
+	
+	/*
+	 * キャラクターの攻撃力を更新する
+	 */
+	public function updateStatus($statusInfo,$uCharaId)
+	{
+$sql =  <<< EOD
+		UPDATE uChara
+		SET		hp		 = {$statusInfo['hp']},
+				gooAtk	 = {$statusInfo['gooAtk']},
+				choAtk	 = {$statusInfo['choAtk']},
+				paaAtk	 = {$statusInfo['paaAtk']},
+				gooUpCnt = {$statusInfo['gooUpCnt']},
+				choUpCnt = {$statusInfo['choUpCnt']},
+				paaUpCnt = {$statusInfo['paaUpCnt']}
+		WHERE	id = {$uCharaId};
+EOD;
+		$this->update($sql);
+	}
+	
+	/*
+	 * キャラクターの訓練状態を変更する
+	 */
+	public function uCharaStateChange($uCharaId,$trainingState)
+	{
+$sql =  <<< EOD
+		UPDATE  uChara
+		SET		trainingState = {$trainingState}
+		WHERE	id = {$uCharaId}
 EOD;
 	$this->update($sql);
-    }
-    
+	}
+	
+	/*
+	 * コーチの訓練状態を変更する
+	 */
+	public function uCoachStateChange($uCoachId,$trainingState)
+	{
+$sql =  <<< EOD
+		UPDATE  uCoach
+		SET		trainingState = {$trainingState}
+		WHERE	id = {$uCoachId}
+EOD;
+	$this->update($sql);
+	}
+	
+	 /*
+	 * 訓練の状態を変更する
+	 * 0なら訓練中、1なら訓練終了かつ訓練結果未確認、2なら訓練終了かつ結果確認済み
+	 */
+	public function stateChange($id,$trainingState)
+	{	
+$sql =  <<< EOD
+		UPDATE uTraining
+		SET    state = {$trainingState}
+		WHERE  id = {$id};
+EOD;
+		$this->update($sql);
+	}
 }
