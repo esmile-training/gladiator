@@ -13,7 +13,6 @@
 		@foreach($viewData['charaList'] as $chara)
 			<input type="image" src="{{IMG_URL}}{{$chara['imgId']}}.png" alt="キャライメージ"<
 			name="uCharaId" value="{{$chara['id']}}" width="100" height="100">{{$chara['name']}}<br>
-			{{--var_dump($chara)--}}
 			{{-- popupボタン --}}
 <div class="modal_container">
     <span class="modal_btn charastatus{{ $n }}">Show modal</span>

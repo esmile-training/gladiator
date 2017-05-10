@@ -144,21 +144,6 @@ EOD;
 		$this->update($sql);
 	}
 
-}
-	$result = $this->delete($sql);
-	}
-
-	//キャラの削除
-	public function deleteChara( $uCharaId )
-	{
-$sql = <<< EOD
-	UPDATE uChara set
-	delFlag = 1
-	WHERE id = {$uCharaId};
-EOD;
-	$result = $this->delete($sql);
-	}
-	
 	//コーチの追加
 	public function insertCoach ( $uCharaId, $uCharaName, $ratio, $attribute, $hp, $atk1, $atk2, $atk3)
 	{
@@ -187,9 +172,8 @@ EOD;
 	public function deleteCoach($uCoachId){
 $sql = <<< EOD
 	DELETE FROM uCoach
-	VALUES (
 	WHERE id = {$uCoachId};
 EOD;
-	$this->delete($sql);
+	$result = $this->delete($sql);
 	}
 }

@@ -34,7 +34,7 @@ class SelectCoachController extends BaseGameController
 	public function deleteChara()
 	{
 		//キャラの削除処理
-		$this->Model->exec('User','deleteChara',"",$_GET['id']);
+		$this->Model->exec('Chara','charaDelFlag',"",$_GET['id']);
 		//「引退しました」へ遷移
 		return ($this->Lib->redirect('Error'));
 	}
@@ -42,9 +42,9 @@ class SelectCoachController extends BaseGameController
 	public function insertCoach($uCharaId)
 	{
 		//キャラの削除処理
-		$this->Model->exec('User','deleteChara',"",$_GET['id']);
+		$this->Model->exec('Chara','charaDelFlag',"",$_GET['id']);
 		//コーチの追加処理
 		$this->Model->exec('User','insertCoach',[$_GET['imgId'], $_GET['name'], $_GET['rare'], $_GET['attribute'], $_GET['hp'], $_GET['gooAtk'], $_GET['choAtk'], $_GET['paaAtk']]);
-		return viewWrap('retirementChara');
+		return ($this->Lib->redirect('retirementChara'));
 	}
 }

@@ -12,7 +12,7 @@ class SelectCharaController extends BaseGameController
 		// ユーザーIDを取得する
 		$userId = $this->user['id'];
 		// DBのキャラクターデータを取得する
-		$alluChara = $this->Model->exec('UChara','getUserChara',$userId);
+		$alluChara = $this->Model->exec('Chara','getUserChara',$userId);
 
 		// DBからキャラクターを取得できたかを確認する
 		if(isset($alluChara))
@@ -37,24 +37,8 @@ class SelectCharaController extends BaseGameController
 		// キャラクターIDの取得をする
 		$charaId = $_GET['uCharaId'];
 		// IDと一致するキャラクターをDBから取得する
-		$selectedChara = $this->Model->exec('UChara','getById',$charaId);
-		//var_dump($selectedChara);
+		$selectedChara = $this->Model->exec('Chara','getById',$charaId);
 		return ($this->Lib->redirect('charastatus',"",$selectedChara));
-		
-		exit();
-
-		// 要素ごとに切り分ける。
-		$uCharaId = $selectedChara['id'];
-		$hp = $selectedChara['hp'];
-		$gooAtk = $selectedChara['gooAtk'];
-		$choAtk = $selectedChara['choAtk'];
-		$paaAtk = $selectedChara['paaAtk'];
-
-		// データをDBへインサートする
-		$test = $this->Model->exec('UChara','insertChara',array($uCharaId,$hp,$gooAtk,$choAtk,$paaAtk));
-		var_dump($test);
-		// ステージ選択(エネミー選択)へリダイレクトする
-
 	}
 }
 
