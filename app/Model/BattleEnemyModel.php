@@ -7,7 +7,7 @@
 
 namespace App\Model;
 
-class UBattleEnemyModel extends \App\Model\BaseGameModel
+class BattleEnemyModel extends \App\Model\BaseGameModel
 {
 	/*
 	 * DBから敵データを取得する
@@ -18,7 +18,6 @@ $sql = <<< EOD
 	SELECT *
 	FROM uBattleEnemy
 	WHERE id = {$battleEnemyId}
-	AND uBattleEnemy.delFlag = 0
 EOD;
 
 		return $this->select($sql, 'first');
@@ -35,7 +34,6 @@ $sql = <<< EOD
 		VALUES (
 			NULL,
 			'{$imgId}',
-			DEFAULT,
 			'{$level}',
 			'{$firstName}・{$lastName}',
 			'{$hp}',
@@ -73,19 +71,6 @@ $sql = <<< EOD
 			bPaaAtk = {$battleEnemy['bPaaAtk']},
 			hand	= '{$battleEnemy['hand']}'
 	WHERE   id		= {$battleEnemy['id']};
-EOD;
-		$this->update($sql);
-	}
-
-	/*
-	 *  'delFlag'を立てる処理
-	 */
-	public function UpdateEnemyFlag($battleEnemyId = false)
-	{
-$sql = <<< EOD
-	UPDATE  uBattleEnemy
-	SET		delFlag = 1
-	WHERE   id = {$battleEnemyId};
 EOD;
 		$this->update($sql);
 	}

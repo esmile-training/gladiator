@@ -9,7 +9,7 @@
 namespace App\Model;
 
 // クラス定義
-class UCharaModel extends \App\Model\BaseGameModel
+class CharaModel extends \App\Model\BaseGameModel
 {
 	/*
 	 * 所持キャラクターを取得する
@@ -21,6 +21,7 @@ class UCharaModel extends \App\Model\BaseGameModel
 			SELECT *
 			FROM uChara
 			WHERE userID = {$userId}
+			AND delFlag = 0
 EOD;
 		return $this->select($sql);
 	}
@@ -39,5 +40,19 @@ EOD;
 		// 最初に一致したものを返す
 		return $this->select($sql,'first');
 	}
+	
+	/*
+	 * キャラクターのdelFlagを立てる
+	 */
+	public function charaDelFlag($uCharaId)
+	{
+$sql = <<< EOD
+	UPDATE  uChara
+	SET		delFlag = 1
+	WHERE   id = {$uCharaId};
+EOD;
+		$this->update($sql);
+	}
+
 
 }
