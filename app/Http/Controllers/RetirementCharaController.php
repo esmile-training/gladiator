@@ -19,13 +19,13 @@ class RetirementCharaController extends BaseGameController
 			//return viewWrap('SelectCoach', $alluCoach);
 		} else {
 			//コーチが二人以下だったらそのままコーチに追加
-			return $this->insertCoach($uCharaId);
+			return $this->insertCoach($_GET['id']);
 		}
 	}
 	
 	public function insertCoach($uCharaId){
 		//キャラの削除処理
-		$this->Model->exec('User','deleteChara',"",$_GET['id']);
+		$this->Model->exec('User','deleteChara',"",$uCharaId);
 		//コーチの追加処理
 		$this->Model->exec('User','insertCoach',[$_GET['imgId'], $_GET['name'], $_GET['rare'], $_GET['attribute'], $_GET['hp'], $_GET['gooAtk'], $_GET['choAtk'], $_GET['paaAtk']]);
 		return viewWrap('retirementChara');

@@ -8,7 +8,6 @@ class SelectCoachController extends BaseGameController
 	{
 		// DBのコーチデータを取得する
 		$alluCoach = $this->Model->exec('Training','getUserCoach');
-		var_dump();exit;
 		// DBからコーチを取得できたかを確認する
 		//if(isset($alluCoach))
 		if($this->viewData['coachList'])

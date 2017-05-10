@@ -1,4 +1,4 @@
-<dib>
+<div>
 	<img class="rate" src="{{IMG_URL_TEST}}{{$_GET['rare']}}.png"width= 15% height= 15%><br>
 	<img class="char" src="{{CHAR_IMG_URL}}{{$_GET['imgId']}}.png"width= 15% height= 15%><br>
 	<?PHP			
@@ -23,4 +23,4 @@
 	</form>
 	<?php //ポップアップを閉じるボタンになる予定 ?>
 	<button type="button" onclick="history.back()">閉じる</button>
-</dib>
+</div>

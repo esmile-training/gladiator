@@ -37,7 +37,7 @@ EOD;
     public function getUserCoach()
     {
 $sql =  <<< EOD
-	SELECT id,imgId,name
+	SELECT id,imgId,name,trainingState
 	FROM uCoach
 	WHERE userId = '{$_COOKIE['userId']}'
         LIMIT 3
