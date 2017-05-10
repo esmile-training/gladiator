@@ -133,6 +133,17 @@ EOD;
 	$result = $this->delete($sql);
 	}
 
+	//キャラの削除
+	public function deleteChara( $uCharaId )
+	{
+$sql = <<< EOD
+	UPDATE uChara set
+	delFlag = 1
+	WHERE id = {$uCharaId};
+EOD;
+	$result = $this->delete($sql);
+	}
+	
 	//コーチの追加
 	public function insertCoach ( $uCharaId, $uCharaName, $ratio, $attribute, $hp, $atk1, $atk2, $atk3)
 	{

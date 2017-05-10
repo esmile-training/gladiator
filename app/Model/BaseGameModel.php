@@ -134,25 +134,25 @@ class BaseGameModel
     public function StatusUpdate( $sql )
     {
 
+//	// uCharaという文字列が存在していれば実行
+//	$post = strpos($sql, 'uChara');
+//	
+//		// サンプル用クッキー
+//		// setcookie('userId', '26');
+//
+//		// 中身が入っていれば実行
+//		if($post !== false){
+//			// インスタンス化
+//			$userModel = new UserModel();
+//
+//			// クッキーの取得
+//			$userId = filter_input(INPUT_COOKIE, 'userId');
+//
+//			// ユーザーの持ちキャラのトータルステータスを更新
+//			$userModel->charaStatus( $userId );
+//		}
 	// uCharaという文字列が存在していれば実行
 	$post = strpos($sql, 'uChara');
-	
-	// サンプル用クッキー
-	// setcookie('userId', '26');
-	
-	// 中身が入っていれば実行
-	if($post !== false){
-	    // インスタンス化
-	    $userModel = new UserModel();
-	    
-	    // クッキーの取得
-	    $userId = filter_input(INPUT_COOKIE, 'userId');
-	    
-	    // ユーザーの持ちキャラのトータルステータスを更新
-	    $userModel->charaStatus( $userId );
-	}
-		// uCharaという文字列が存在していれば実行
-		$post = strpos($sql, 'uChara');
 
 		// サンプル用クッキー
 		// setcookie('userId', '26');
