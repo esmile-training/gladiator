@@ -169,7 +169,7 @@ EOD;
 	}
 	
 	//コーチの削除
-	public function deleteCoarch($uCoachId){
+	public function deleteCoach($uCoachId){
 $sql = <<< EOD
 	DELETE FROM uCoach
 	VALUES (

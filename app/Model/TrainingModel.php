@@ -32,6 +32,18 @@ $sql =  <<< EOD
 EOD;
 	return $this->select($sql, 'all');
     }
+	
+		public function getById($uCoachId)
+	{
+		// SQLに接続する
+		$sql = <<< EOD
+			SELECT *
+			FROM uCoach
+			WHERE id = {$uCoachId}
+EOD;
+		// 最初に一致したものを返す
+		return $this->select($sql,'first');
+	}
     
     /*
      * トレーニングの終了時刻を取得

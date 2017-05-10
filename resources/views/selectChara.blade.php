@@ -8,7 +8,7 @@
 
 {{--所持キャラクターをすべて表示する--}}
 <?php $n = 1; ?>
-<form action="{{APP_URL}}retirementChara/searchCoach" method="get">
+<form action="{{APP_URL}}SelectCoach/index" method="get">
 	<div>
 		@foreach($viewData['charaList'] as $chara)
 			<input type="image" src="{{IMG_URL}}{{$chara['imgId']}}.png" alt="キャライメージ"<

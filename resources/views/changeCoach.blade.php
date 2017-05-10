@@ -19,6 +19,7 @@
 		<input type="hidden" name="charaimgId" value="{{$viewData['chara']['imgId']}}">
 		<input type="hidden" name="charaname" value="{{$viewData['chara']['name']}}">
 		<input type="hidden" name="chararare" value="{{$viewData['chara']['rare']}}">
+		<input type="hidden" name="charaattribute" value="{{$viewData['chara']['attribute']}}">
 		<input type="hidden" name="charahp" value="{{$viewData['chara']['hp']}}">
 		<input type="hidden" name="charagooAtk" value="{{$viewData['chara']['gooAtk']}}">
 		<input type="hidden" name="charachoAtk" value="{{$viewData['chara']['choAtk']}}">

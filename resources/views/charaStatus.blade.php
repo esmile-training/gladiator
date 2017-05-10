@@ -9,7 +9,7 @@
 		echo '攻(打)'.$_GET['choAtk'].'<br>';
 		echo '攻(貫)'.$_GET['paaAtk'].'<br>';
 	 ?>
-	<form action="retirementChara/searchCoach" method="get">
+	<form action="SelectCoach/index" method="get">
 		<input type="hidden" name="id" value=<?php echo $_GET['id'] ?>>
 		<input type="hidden" name="rare" value=<?php echo $_GET['rare'] ?>>
 		<input type="hidden" name="imgId" value=<?php echo $_GET['imgId'] ?>>

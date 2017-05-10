@@ -6,7 +6,7 @@
 	<font color="red">※選択したコーチは引退となります。</font>
 	</center>
 </div>
-<form action="{{APP_URL}}selectCoach/setCoach" method="get">
+<form action="{{APP_URL}}SelectCoach/setCoach" method="get">
 	<div>
 		@foreach($viewData['coachList'] as $coach)
 			<input type="image" src="{{IMG_URL}}{{$coach['imgId']}}.png" alt="コーチイメージ"<
