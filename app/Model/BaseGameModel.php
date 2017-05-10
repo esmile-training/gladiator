@@ -105,7 +105,7 @@ class BaseGameModel
     {
 	$result = $this->dbapi($sql, 'insert');
 	// SQLの実行
-	// BaseGameModel::StatusUpdate($sql);
+	BaseGameModel::StatusUpdate($sql);
 	return intval($result);
     }
 
@@ -155,7 +155,7 @@ class BaseGameModel
 	    
 	    // ユーザーの持ちキャラのトータルステータスを更新
 	    $userModel->charaStatus( $userId );
-	}
+		}
     }
 
 }

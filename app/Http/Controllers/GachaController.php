@@ -99,7 +99,7 @@ class GachaController extends BaseGameController
 		];	
 
 		$this->Model->exec('Gacha', 'createChara', array($charaData));
-
+		
 		$this->Model->exec('Gacha', 'createLog', array($charaData));
 	
 		return $this->Lib->redirect('gacha','index', $param);
