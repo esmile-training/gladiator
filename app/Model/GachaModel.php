@@ -19,10 +19,12 @@ EOD;
      */
 	public function createChara($charaData)
 	{
+
 	$sql = <<< EOD
 	INSERT INTO  uChara 
 	VALUES (
 	NULL,
+		'0',
 		'{$charaData['userId']}',
 		'{$charaData['uCharaId']}',
 		'{$charaData['uCharaFirstName']}・{$charaData['uCharaLastName']}',
