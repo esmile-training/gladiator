@@ -62,13 +62,14 @@ EOD;
      */
     public function charaStatus( $userId )
     {
+	var_dump("ok");
 $sql = <<< EOD
 	UPDATE user set
 	totalCharaStatus = 
 	(SELECT SUM(hp) AS Status FROM uChara WHERE userId = $userId)
 	where id = $userId;
 EOD;
-    $this->update($sql);
+    $this->charaUpdate($sql);
     }
 	public function updateMoney($user)
     {
