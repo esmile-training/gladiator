@@ -12,7 +12,7 @@ class UserModel extends BaseGameModel {
 			$userId = $this->user['id'];
 		}
 
-		$sql = <<< EOD
+$sql = <<< EOD
 	SELECT *
 	FROM user
 	WHERE id = {$userId}
@@ -25,7 +25,7 @@ EOD;
 	 */
 
 	public function createUser($teamName = null) {
-		$sql = <<< EOD
+$sql = <<< EOD
 	INSERT INTO user ( `name`, `createDate` )
 	VALUES("{$teamName}", NOW());
 EOD;
@@ -38,7 +38,7 @@ EOD;
 	 */
 
 	public function deleteUser($userId) {
-		$sql = <<< EOD
+$sql = <<< EOD
     DELETE FROM user 
     WHERE id = {$userId};
 EOD;
@@ -50,7 +50,7 @@ EOD;
 	 */
 
 	public function setUserName($userId, $newName) {
-		$sql = <<< EOD
+$sql = <<< EOD
     UPDATE  user
     SET	    name = "{$newName}"
     WHERE   id = {$userId};
@@ -60,7 +60,7 @@ EOD;
 
 	//キャラの作成
 	public function createChara($userId, $uCharaId, $uCharaFirstName, $uCharaLastName, $ratio, $narrow, $hp, $gu, $choki, $paa) {
-		$sql = <<< EOD
+$sql = <<< EOD
 	INSERT INTO  uChara 
 	VALUES (
 	NULL,
@@ -86,7 +86,7 @@ EOD;
 
 	// 所持金の更新
 	public function updateMoney($user) {
-		$sql = <<< EOD
+$sql = <<< EOD
 	UPDATE  user
 	SET		money = {$user['money']}
 	WHERE   id		= {$user['id']};
@@ -99,7 +99,7 @@ EOD;
 	 */
 
 	public function charaStatus($userId) {
-		$sql = <<< EOD
+$sql = <<< EOD
 	SELECT battleTicket, ticketLossTime
 	FROM user
 	WHERE id = $userId;
@@ -121,7 +121,7 @@ EOD;
 	 */
 
 	public function updateTicket($user) {
-		$sql = <<< EOD
+$sql = <<< EOD
 	UPDATE  user
 	SET		battleTicket = {$user['battleTicket']}
 	WHERE   id		= {$user['id']};
@@ -134,7 +134,7 @@ EOD;
 	 */
 
 	public function firstLossTicket($user, $time) {
-		$sql = <<< EOD
+$sql = <<< EOD
 	UPDATE  user
 	SET		battleTicket = {$user['battleTicket']},
 			ticketLossTime = '{$time}'

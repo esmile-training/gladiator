@@ -50,10 +50,10 @@ class battleController extends BaseGameController
 	{
 		// ユーザーキャラクターのIDを取得する
 		$selectedCharaId = $_GET['uCharaId'];
-		
+
 		// 難易度を取得する
 		$difficulty = \Config::get('battle.difficulty');
-		
+
 		// 対戦の難易度とキャラIDをビューへ渡す
 		$this->viewData['difficultyList'] = $difficulty;
 		$this->viewData['selectedCharaId'] = $selectedCharaId;
@@ -69,24 +69,24 @@ class battleController extends BaseGameController
 	{
 		// 大会の情報を取得する(ユーザーキャラIDと難易度)
 		$arenaData = $_GET;
-		
+
 		// 大会情報の取得に成功したか確認する
 		if(!isset($arenaData))
 		{
 			// マイページへリダイレクトする
 			$this->Lib->redirect('mypage', 'index');
 		}
-		
+
 		// IDと一致するキャラクターをDBから取得する
 		$selectedChara = $this->Model->exec('Chara', 'getById', $arenaData["selectedCharaId"]);
-		
+
 		// 正常に取得したかを確認する
 		if(!isset($selectedChara))
 		{
 			// マイページへリダイレクトする
 			$this->Lib->redirect('mypage', 'index');
 		}
-		
+
 		// エネミーの外見を取得する
 		$enemyApp				= $this->Lib->exec('EnemyCreate','getEnemyAppearance');
 		// エネミーの名前を生成する
@@ -95,13 +95,13 @@ class battleController extends BaseGameController
 		$enemyStatusMaterial	= array($selectedChara['hp'],$arenaData["arenaDifficulty"]);
 		// エネミーの能力値を取得する
 		$enemyStatus			= $this->Lib->exec('EnemyCreate','createEnemyStatus',$enemyStatusMaterial);
-		
+
 		// 対戦データの作成をする
 		$matchData = BattleLib::createMatchData($arenaData,$selectedChara,$enemyApp,$enemyName,$enemyStatus);
-		
+
 		// データのインサートを行う
 		$this->insertMatchData($matchData);
-		
+
 		// チケットの消費処理を行う
 		$this->lossTicket();
 
@@ -116,13 +116,13 @@ class battleController extends BaseGameController
 	{
 		// ユーザーIDを取得する
 		$userId = $this->user['id'];
-		
+
 		// infoデータを取得する
 		$battleInfo = $this->Model->exec('BattleInfo', 'getBattleData', $userId);
-		
+
 		// 対戦データの取得をする
 		$matchData = $argMatchData;
-		
+
 		// デリートフラグが立っていない、同じIDのデータが登録されていなければインサートを行う
 		if(!isset($battleInfo))
 		{
@@ -145,7 +145,7 @@ class battleController extends BaseGameController
 			return false;
 		}
 	}
-	
+
 	/*
 	 * チケットを消費させるファンクション
 	 */
@@ -368,8 +368,18 @@ class battleController extends BaseGameController
 		$this->Model->exec('BattleInfo', 'UpdateInfoFlag', $this->BattleData['id']);
 		
 	}
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
 
 	
 	
@@ -377,21 +387,8 @@ class battleController extends BaseGameController
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
 
 
 	// デバッグ用ファンクション
