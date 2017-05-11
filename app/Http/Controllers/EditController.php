@@ -16,11 +16,14 @@ class EditController extends BaseGameController
 
 		//チーム名をバイトと文字数で判定
 		if(strlen($teamName) <= 16 || mb_strlen($teamName) <= 8)
-		{
+		{   
 			//チーム名の確認ポップアップの生成
 
 			//DBにチーム名を追加してidを取得
 			$userId = $this->Model->exec('User', 'createUser', [$teamName]);
+			
+			// rankingにデータを追加
+			$this->Model->exec('Ranking','insertRankingData',$userId);
 			
 			//Cookieの値をuserIDに書き換え
 			setcookie('userId', $userId, time() + 60*60*24*365*20, '/');

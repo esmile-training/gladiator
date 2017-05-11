@@ -251,7 +251,6 @@ class battleController extends BaseGameController
 		// ランキングデータがなければ、新しくランキングデータを作成してから読み込み
 		if(is_null($this->RankingData))
 		{
-			$this->Model->exec('Ranking','insertRankingData',$this->user['id']);
 			$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
 		}
 	}
