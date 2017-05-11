@@ -11,5 +11,4 @@ class RankingLib extends BaseGameLib
 
 		$this->Model->exec('ranking', 'updateWeeklyPoint', array($rankingData));
 	}
-
 }

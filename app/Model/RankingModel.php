@@ -5,7 +5,7 @@ namespace App\Model;
 class RankingModel extends BaseGameModel
 {
     /*******      書き込み        *******/
-    public function insertRank( $userId )
+    public function insertRankingData( $userId )
     {
 $sql = <<< EOD
 	INSERT INTO uRanking(userId) values($userId);
