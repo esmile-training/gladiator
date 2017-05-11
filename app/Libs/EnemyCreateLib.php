@@ -57,7 +57,6 @@ class EnemyCreateLib extends BaseGameLib
 		$offsetConf = \Config::get('battle.enemyRatio');
 		// offsetConfから難易度に対応した数値を取得する
 		$offset = (float)$offsetConf[$arenaDifficulty];
-		var_dump($offset);
 		//uCharaHPを数値に変換する
 		$ConverteduCharaHp = (int)$uCharaHp;
 		// エネミーの基準値を求める
