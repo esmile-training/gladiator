@@ -248,5 +248,4 @@ class BattleLib extends BaseGameLib
 
 		return $matchData;
 	}
-	
 }

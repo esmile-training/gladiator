@@ -74,21 +74,21 @@ class TrainingLib extends BaseGameLib
 			$paaResult = TrainingLib::atkUpProbability($coachPaaAtk,$charaPaaAtk,$paaUpCnt);
 			
 			$gooJudgeValue = rand(1, 100);
-			if($gooResult <= $gooJudgeValue)
+			if($gooResult >= $gooJudgeValue)
 			{
 				$charaGooAtk++;
 				$gooUpCnt++;
 				$statusUpCnt++;
 			}
 			$choJudgeValue = rand(1, 100);
-			if($choResult <= $choJudgeValue)
+			if($choResult >= $choJudgeValue)
 			{
 				$charaChoAtk++;
 				$choUpCnt++;
 				$statusUpCnt++;
 			}
 			$paaJudgeValue = rand(1, 100);
-			if($paaResult <= $paaJudgeValue)
+			if($paaResult >= $paaJudgeValue)
 			{
 				$charaPaaAtk++;
 				$paaUpCnt++;

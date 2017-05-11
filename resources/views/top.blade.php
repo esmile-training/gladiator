@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+@include('common/css', ['file' => 'top'])<!DOCTYPE html>
 <html lang="jp">
 	<head>
 		<meta charset="utf-8">
@@ -17,7 +17,7 @@
 		</div>
 
 		<div>
-			<a href="{{APP_URL}}mypage">
+			<a href="{{APP_URL}}admin">
 			管理画面
 			</a>
 		</div>

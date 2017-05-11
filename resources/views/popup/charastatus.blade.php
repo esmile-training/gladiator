@@ -1,5 +1,5 @@
 <div>
-	<img class="rate" src="{{IMG_URL_TEST}}{{$chara['rare']}}.png"width= 15% height= 15%><br>
+	<img class="rate" src="{{IMG_URL_TEST}}{{$chara['rare']}}.png"width= 5% height= 5%><br>
 	<img class="char" src="{{CHAR_IMG_URL}}{{$chara['imgId']}}.png"width= 15% height= 15%><br>
 	<?PHP			
 		echo $chara['name'].'<br>';

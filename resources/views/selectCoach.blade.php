@@ -10,7 +10,7 @@
 	<div>
 		@foreach($viewData['coachList'] as $coach)
 			<input type="image" src="{{CHAR_IMG_URL}}{{$coach['imgId']}}.png" alt="コーチイメージ"<
-			name="uCoachId" value="{{$coach['id']}}" width="100" height="100">{{$coach['name']}}<br>
+			name="uCoachId" value="{{$coach['id']}}" width="75" height="100">{{$coach['name']}}<br>
 			<input type="hidden" name="charaId" value="{{$_GET['id']}}">
 		@endforeach
 	</div>

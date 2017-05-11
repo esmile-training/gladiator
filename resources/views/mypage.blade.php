@@ -13,7 +13,9 @@
 </div>
 
 <div>
-
+	<a href="{{APP_URL}}selectChara">
+		キャラ
+	</a>
     <a href="{{APP_URL}}battle/selectBattleChara">
 	    試合
     </a>

@@ -141,9 +141,6 @@ class BaseGameModel
 		// uCharaという文字列が存在していれば実行
 		$post = strpos($sql, 'uChara');
 
-		// サンプル用クッキー
-		setcookie('userId', '26');
-
 		// 中身が入っていれば実行
 		if($post !== false){
 			// インスタンス化
