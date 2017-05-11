@@ -35,26 +35,14 @@ $sql =  <<< EOD
 		0
 		);
 EOD;
-	return $this->select($sql, 'all');
+	return $this->insert($sql, 'all');
     }
 	
-		public function getById($uCoachId)
+	/*
+	 * 訓練するキャラクターとコーチと訓練の時間を取得
+	 */
+	public function getInfo($id)
 	{
-		// SQLに接続する
-		$sql = <<< EOD
-			SELECT *
-			FROM uCoach
-			WHERE id = {$uCoachId}
-EOD;
-		// 最初に一致したものを返す
-		return $this->select($sql,'first');
-	}
-    
-    /*
-     * トレーニングの終了時刻を取得
-     */
-    public function getTrainingDate()
-    {
 $sql =  <<< EOD
 		SELECT uCharaId,uCoachId,time
 		FROM uTraining
@@ -63,7 +51,7 @@ EOD;
 		$result = $this->select($sql, 'all');
 		return $result;
 	}
-	
+    
 	/*
 	 * 訓練終了時刻を過ぎている訓練のデータを取得
 	 */
