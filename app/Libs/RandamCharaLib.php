@@ -25,6 +25,7 @@ class RandamCharaLib extends BaseGameLib {
 		
 		$per = 0;
 		//合計値を低いパーセントから比較していく
+
 		for($i = 1;$i <= 5; $i++)
 		{
 			$per += $gachaConf[$gachavalue]['persent'][$i];
@@ -38,10 +39,12 @@ class RandamCharaLib extends BaseGameLib {
 	}		
 	public function getCharaImgId($sex = false) 
 	{
+		$gachavalue = (int)filter_input(INPUT_GET,"gachavalue");
+		
 		if($sex == 1 )
 		{	
 			return $this->womanCharaSort();
-		}else if($sex == 0){
+		}else if($sex == 0 && $gachavalue == 5){
 			return $this->menCharaSort();
 		}else {
 			

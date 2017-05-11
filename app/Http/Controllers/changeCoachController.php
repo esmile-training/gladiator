@@ -19,11 +19,11 @@ class changeCoachController extends BaseGameController
 	public function changeCoach()
 	{
 		//コーチの削除処理
-		$this->Model->exec('User', 'deleteCoach', "", $_GET['coachId']);
+		$this->Model->exec('Coach', 'deleteCoach', "", $_GET['coachId']);
 		//キャラの削除処理
 		$this->Model->exec('Chara', 'charaDelFlag', "", $_GET['charaId']);
 		//コーチの追加処理
-		$this->Model->exec('User', 'insertCoach', [$_GET['charaimgId'], $_GET['charaname'], $_GET['chararare'], $_GET['charaattribute'], $_GET['charahp'], $_GET['charagooAtk'], $_GET['charachoAtk'], $_GET['charapaaAtk']]);
+		$this->Model->exec('Coach', 'insertCoach', [$_GET['charaimgId'], $_GET['charaname'], $_GET['chararare'], $_GET['charaattribute'], $_GET['charahp'], $_GET['charagooAtk'], $_GET['charachoAtk'], $_GET['charapaaAtk']]);
 		//「コーチに配属しました！」に移動
 		return viewWrap('retirementChara');
 	}

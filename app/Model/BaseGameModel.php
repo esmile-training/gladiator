@@ -8,9 +8,9 @@ class BaseGameModel
 	 */
 	public function exec( $className, $method, $arg = false, $userId = null )
 	{
-	//インスタンス化する
-	$className = '\\App\\Model\\'.$className.'Model';
-	$modelClass = new $className();
+		//インスタンス化する
+		$className = '\\App\\Model\\'.$className.'Model';
+		$modelClass = new $className();
 
 		//ユーザ情報がある場合は登録
 		if( $userId )
@@ -73,7 +73,7 @@ class BaseGameModel
     
     public function charaUpdate($sql)
     {
-	$this->dbapi($sql, 'update');
+		$this->dbapi($sql, 'update');
     }
 
 	/*
@@ -81,10 +81,10 @@ class BaseGameModel
 	 */
 	public function update( $sql )
 	{
-	$result = $this->dbapi($sql, 'update');
-	// SQLの実行
-	BaseGameModel::StatusUpdate($sql);
-	return $result;
+		$result = $this->dbapi($sql, 'update');
+		// SQLの実行
+		BaseGameModel::StatusUpdate($sql);
+		return $result;
 	}
 
 	/*
@@ -92,10 +92,10 @@ class BaseGameModel
 	 */
 	public function delete( $sql )
 	{
-	$result = $this->dbapi($sql, 'delete');
-	// SQLの実行
-	BaseGameModel::StatusUpdate($sql);
-	return $result;
+		$result = $this->dbapi($sql, 'delete');
+		// SQLの実行
+		BaseGameModel::StatusUpdate($sql);
+		return $result;
 	}
 
 	/*intval($str)
@@ -103,10 +103,10 @@ class BaseGameModel
 	 */
 	public function insert( $sql )
 	{
-	$result = $this->dbapi($sql, 'insert');
-	// SQLの実行
-	BaseGameModel::StatusUpdate($sql);
-	return intval($result);
+		$result = $this->dbapi($sql, 'insert');
+		// SQLの実行
+		BaseGameModel::StatusUpdate($sql);
+		return intval($result);
 	}
 	
 	/*

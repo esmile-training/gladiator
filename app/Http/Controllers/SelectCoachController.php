@@ -44,7 +44,7 @@ class SelectCoachController extends BaseGameController
 		//キャラの削除処理
 		$this->Model->exec('Chara','charaDelFlag',"",$_GET['id']);
 		//コーチの追加処理
-		$this->Model->exec('User','insertCoach',[$_GET['imgId'], $_GET['name'], $_GET['rare'], $_GET['attribute'], $_GET['hp'], $_GET['gooAtk'], $_GET['choAtk'], $_GET['paaAtk']]);
+		$this->Model->exec('Coach','insertCoach',[$_GET['imgId'], $_GET['name'], $_GET['rare'], $_GET['attribute'], $_GET['hp'], $_GET['gooAtk'], $_GET['choAtk'], $_GET['paaAtk']]);
 		return ($this->Lib->redirect('retirementChara'));
 	}
 }
