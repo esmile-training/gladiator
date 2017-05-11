@@ -2,7 +2,8 @@
 
 namespace App\Model;
 
-class CoachModel {
+class CoachModel extends BaseGameModel
+{
 	
 	//IDを元にコーチを検索する
 	public function getById($uCoachId)
