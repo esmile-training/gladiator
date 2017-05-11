@@ -104,11 +104,11 @@ class RandamCharaLib extends BaseGameLib {
 			//降順
 			arsort($atk);
 			//一番の大きい値を入れる
-			$attack['1'] = current($atk);
+			$attack[1] = current($atk);
 			//二番の大きい値を入れる
-			$attack['2'] = current(array_slice($atk,1));
+			$attack[2] = current(array_slice($atk,1));
 			//三番の大きい値を入れる
-			$attack['3'] = current(array_slice($atk,2));
+			$attack[3] = current(array_slice($atk,2));
 
 			
 			$rand = rand(1,3);
@@ -121,19 +121,19 @@ class RandamCharaLib extends BaseGameLib {
 			}
 				
 			if($rand == 1){
-				$attk['gu'] = $attack['1'];
-				$attk['choki'] = $attack['2'];
-				$attk['paa'] = $attack['3'];
+				$attk['gu'] = $attack[1];
+				$attk['choki'] = $attack[2];
+				$attk['paa'] = $attack[3];
 				$narrow = 'gu';
 			}else if($rand == 2){
-				$attk['gu'] = $attack['2'];
-				$attk['choki'] = $attack['1'];
-				$attk['paa'] = $attack['3'];
+				$attk['gu'] = $attack[2];
+				$attk['choki'] = $attack[1];
+				$attk['paa'] = $attack[3];
 				$narrow = 'choki';
 			}else{
-				$attk['gu'] = $attack['2'];
-				$attk['choki'] = $attack['3'];
-				$attk['paa'] = $attack['1'];
+				$attk['gu'] = $attack[2];
+				$attk['choki'] = $attack[3];
+				$attk['paa'] = $attack[1];
 				$narrow = 'paa';
 			}
 			$valueListConf['gu'] = $attk['gu'];

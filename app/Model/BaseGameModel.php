@@ -143,7 +143,7 @@ class BaseGameModel
 	$post = strpos($sql, 'uChara');
 	
 	// サンプル用クッキー
-	setcookie('userId', '26');
+	//setcookie('userId', '26');
 	
 	// 中身が入っていれば実行
 	if($post !== false){
