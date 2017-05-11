@@ -20,6 +20,11 @@ class battleController extends BaseGameController
 	{
 		// ユーザーIDを取得する
 		$userId = $this->user['id'];
+		
+		if($this->user['battleTicket'] <= 0 )
+		{
+			return view('notBattleTicket');
+		}
 
 		// 継続中の戦闘があったらbattleLogへリダイレクトする
 		$battleInfo = $this->Model->exec('BattleInfo', 'getBattleData', $userId);
@@ -50,10 +55,10 @@ class battleController extends BaseGameController
 	{
 		// ユーザーキャラクターのIDを取得する
 		$selectedCharaId = $_GET['uCharaId'];
-		
+
 		// 難易度を取得する
 		$difficulty = \Config::get('battle.difficulty');
-		
+
 		// 対戦の難易度とキャラIDをビューへ渡す
 		$this->viewData['difficultyList'] = $difficulty;
 		$this->viewData['selectedCharaId'] = $selectedCharaId;
@@ -69,24 +74,24 @@ class battleController extends BaseGameController
 	{
 		// 大会の情報を取得する(ユーザーキャラIDと難易度)
 		$arenaData = $_GET;
-		
+
 		// 大会情報の取得に成功したか確認する
 		if(!isset($arenaData))
 		{
 			// マイページへリダイレクトする
 			$this->Lib->redirect('mypage', 'index');
 		}
-		
+
 		// IDと一致するキャラクターをDBから取得する
 		$selectedChara = $this->Model->exec('Chara', 'getById', $arenaData["selectedCharaId"]);
-		
+
 		// 正常に取得したかを確認する
 		if(!isset($selectedChara))
 		{
 			// マイページへリダイレクトする
 			$this->Lib->redirect('mypage', 'index');
 		}
-		
+
 		// エネミーの外見を取得する
 		$enemyApp				= $this->Lib->exec('EnemyCreate','getEnemyAppearance');
 		// エネミーの名前を生成する
@@ -95,13 +100,13 @@ class battleController extends BaseGameController
 		$enemyStatusMaterial	= array($selectedChara['hp'],$arenaData["arenaDifficulty"]);
 		// エネミーの能力値を取得する
 		$enemyStatus			= $this->Lib->exec('EnemyCreate','createEnemyStatus',$enemyStatusMaterial);
-		
+
 		// 対戦データの作成をする
 		$matchData = BattleLib::createMatchData($arenaData,$selectedChara,$enemyApp,$enemyName,$enemyStatus);
-		
+
 		// データのインサートを行う
 		$this->insertMatchData($matchData);
-		
+
 		// チケットの消費処理を行う
 		$this->lossTicket();
 
@@ -116,13 +121,13 @@ class battleController extends BaseGameController
 	{
 		// ユーザーIDを取得する
 		$userId = $this->user['id'];
-		
+
 		// infoデータを取得する
 		$battleInfo = $this->Model->exec('BattleInfo', 'getBattleData', $userId);
-		
+
 		// 対戦データの取得をする
 		$matchData = $argMatchData;
-		
+
 		// デリートフラグが立っていない、同じIDのデータが登録されていなければインサートを行う
 		if(!isset($battleInfo))
 		{
@@ -145,7 +150,7 @@ class battleController extends BaseGameController
 			return false;
 		}
 	}
-	
+
 	/*
 	 * チケットを消費させるファンクション
 	 */
@@ -165,6 +170,7 @@ class battleController extends BaseGameController
 		// バトルデータがなかった場合、エラー画面を表示しホームへ戻す 
 		if(is_null($this->BattleData))
 		{
+			var_dump($this->BattleData);
 			return view('error');
 		}
 		
@@ -249,10 +255,13 @@ class battleController extends BaseGameController
 	{
 		// ユーザーIDを元に週間のランキングデータを読み込み
 		$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
+
+		// ランキングデータがなければ、新しくランキングデータを作成してから読み込み
 		if(is_null($this->RankingData))
 		{
-			// ランキングデータがなければ、新しくランキングデータを作成
-		}	
+			$this->Model->exec('Ranking','insertRankingData',$this->user['id']);
+			$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
+		}
 	}
 
 	// バトルデータを更新するファンクション
@@ -260,6 +269,11 @@ class battleController extends BaseGameController
 	{
 		// setData関数を呼び出し、データをセット
 		$this->getBattleData();
+		
+		if($this->CharaData['bHp'] <= 0 || $this->EnemyData['bHp'] <= 0)
+		{
+			return $this->Lib->redirect('Battle', 'makeResultData');
+		}
 
 		// 押されたボタンのデータを Chara の 'hand' に格納
 		// 'goo' / 'cho' / 'paa' のどれかが入る
@@ -342,6 +356,7 @@ class battleController extends BaseGameController
 			$this->Lib->exec('Money', 'addition', array($this->user, $prize['money']));
 			// ユーザーのウィークリーポイント 'weeklyAward' に賞金額を加算しデータベースに格納
 			$this->Lib->exec('Ranking', 'weeklyAdd', array($this->RankingData, $prize['money']));
+			
 		}
 		// 敵のHPが0以上の場合(試合全体としてプレイヤーが負けた場合)
 		else if($this->CharaData['bHp'] <= 0)
@@ -368,8 +383,18 @@ class battleController extends BaseGameController
 		$this->Model->exec('BattleInfo', 'UpdateInfoFlag', $this->BattleData['id']);
 		
 	}
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
 
 	
 	
@@ -377,21 +402,8 @@ class battleController extends BaseGameController
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
 
 
 	// デバッグ用ファンクション
