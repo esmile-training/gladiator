@@ -17,7 +17,7 @@
 	    <?php if($value == end($viewData['ranking'])) : ?>
 		<?php if(($viewData['rankingData']['count']) - 2 < $viewData['rankingData']['nowpage'] / 10 + 1 && 2 < $viewData['rankingData']['count']): ?>
 	    
-		    <?php foreach (range(($viewData['rankingData']['count']) - 3, $viewData['rankingData']['count']) as $data) : ?>		   
+		    <?php foreach (range(($viewData['rankingData']['count']) - 2, $viewData['rankingData']['count']) as $data) : ?>		   
 			<button type="submit" name="page" value="{{($data -1) * 10}}">{{$data}}</button>  
 		    <?php endforeach; ?>
 			

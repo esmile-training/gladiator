@@ -84,6 +84,7 @@ class BaseGameModel
 		$result = $this->dbapi($sql, 'update');
 		// SQLの実行
 		BaseGameModel::StatusUpdate($sql);
+		var_dump("update");
 		return $result;
 	}
 
@@ -94,7 +95,7 @@ class BaseGameModel
 	{
 		$result = $this->dbapi($sql, 'delete');
 		// SQLの実行
-		BaseGameModel::StatusUpdate($sql);
+		// BaseGameModel::StatusUpdate($sql);
 		return $result;
 	}
 
