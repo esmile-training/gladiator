@@ -5,9 +5,9 @@
 		echo $chara['name'].'<br>';
 		echo $chara['attribute'].'<br>';
 		echo '体力:'.$chara['hp'].'<br>';
-		echo '攻(斬)'.$chara['gooAtk'].'<br>';
-		echo '攻(打)'.$chara['choAtk'].'<br>';
-		echo '攻(貫)'.$chara['paaAtk'].'<br>';
+		echo 'グー:'.$chara['gooAtk'].'<br>';
+		echo 'チョキ:'.$chara['choAtk'].'<br>';
+		echo 'パー:'.$chara['paaAtk'].'<br>';
 	 ?>
 	<form action="SelectCoach/index" method="get">
 		<input type="hidden" name="id" value=<?php echo $chara['id'] ?>>

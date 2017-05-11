@@ -7,27 +7,27 @@
 </div>
 
 {{--所持キャラクターをすべて表示する--}}
-<?php $n = 1; ?>
+<?php $count = 1; ?>
 	<div>
 		@foreach($viewData['charaList'] as $chara)
-			<input type="image" src="{{CHAR_IMG_URL}}{{$chara['imgId']}}.png" alt="キャライメージ"<
-			name="uCharaId" value="{{$chara['id']}}" width="75" height="100">{{$chara['name']}}<br>
+			<img src="{{CHAR_IMG_URL}}{{$chara['imgId']}}.png" width="75" height="100">{{$chara['name']}}<br>
+			<br>
 			{{-- popupボタン --}}
-<div class="modal_container">
-	<span class="modal_btn charastatus{{ $n }}">Show modal</span>
-</div>
+			<div class="modal_container">
+				<span class="modal_btn charastatus{{ $count }}">Show modal</span>
+			</div>
 
-{{-- popupウインドウ --}}
+			{{-- popupウインドウ --}}
 
-<div class="modal charastatus{{ $n }}">
-	@include('popup/charastatus')
-	<div class="modal_frame">
-			<div class="close">
-			<span>close</span>
-		</div>
-	</div>
-</div>
+			<div class="modal charastatus{{ $count }}">
+				@include('popup/charastatus')
+				<div class="modal_frame">
+						<div class="close">
+						<span>close</span>
+					</div>
+				</div>
+			</div>
 
-<?php $n++; ?>
+			<?php $count++; ?>
 		@endforeach
 	</div>

@@ -7,7 +7,7 @@ class changeCoachController extends BaseGameController
 	public function index()
 	{
 		//コーチのステータス取得(DB接続)
-		$coachStat = $this->Model->exec('training','getById',$_GET['coachId']);
+		$coachStat = $this->Model->exec('Coach','getById',$_GET['coachId']);
 		//キャラのステータス取得(DB接続)
 		$charaStat = $this->Model->exec('Chara','getById',$_GET['charaId']);
 		//配列を結合
@@ -23,7 +23,16 @@ class changeCoachController extends BaseGameController
 		//キャラの削除処理
 		$this->Model->exec('Chara', 'charaDelFlag', "", $_GET['charaId']);
 		//コーチの追加処理
-		$this->Model->exec('Coach', 'insertCoach', [$_GET['charaimgId'], $_GET['charaname'], $_GET['chararare'], $_GET['charaattribute'], $_GET['charahp'], $_GET['charagooAtk'], $_GET['charachoAtk'], $_GET['charapaaAtk']]);
+		$newCoachState = array('imgId' => $_GET['charaimgId'],
+								'name' => $_GET['charaname'],
+								'rare' => $_GET['chararare'],
+								'attribute' => $_GET['charaattribute'],
+								'hp' => $_GET['charahp'],
+								'gooAtk' => $_GET['charagooAtk'],
+								'choAtk' => $_GET['charachoAtk'],
+								'paaAtk' => $_GET['charapaaAtk']
+		);
+		$this->Model->exec('Coach', 'insertCoach', array($newCoachState));
 		//「コーチに配属しました！」に移動
 		return $this->Lib->redirect('retirementChara','addCoachView');
 	}
