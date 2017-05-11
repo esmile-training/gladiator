@@ -20,7 +20,7 @@ class TopController extends BaseGameController
 	 */
 	public function login()
 	{
-	//cookieの有無を確認
+		//cookieの有無を確認
 		if(!isset($_COOKIE['userId']))
 		{
 			//無ければエディット画面にリダイレクトする。
@@ -32,6 +32,7 @@ class TopController extends BaseGameController
 				return $this->Lib->redirect('battle', 'battleLog');
 			}
 		}
+		//何もなければマイページヘリダイレクトする
 		return $this->Lib->redirect('mypage', 'index');
 	}
 }

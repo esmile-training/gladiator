@@ -64,6 +64,7 @@ $sql = <<< EOD
 	INSERT INTO  uChara 
 	VALUES (
 	NULL,
+		'0',
 		'{$userId}',
         '{$uCharaId}',
         '{$uCharaFirstName}・{$uCharaLastName}',
@@ -142,5 +143,4 @@ $sql = <<< EOD
 EOD;
 		$this->update($sql);
 	}
-
 }

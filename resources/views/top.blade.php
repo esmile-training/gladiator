@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+@include('common/css', ['file' => 'top'])<!DOCTYPE html>
 <html lang="jp">
 	<head>
 		<meta charset="utf-8">
