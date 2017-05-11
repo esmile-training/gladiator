@@ -7,12 +7,6 @@ use App\Libs\BattleLib;
 
 class battleController extends BaseGameController
 {
-	// バトルスタンバイ画面を表示するファンクション
-	public function index()
-	{
-		return view('battleStanby');
-	}
-
 	/*
 	 *  戦うキャラの選択をする
 	 */
@@ -211,8 +205,6 @@ class battleController extends BaseGameController
 	// データベースからデータをそれぞれの変数に格納するファンクション
 	public function getBattleData()
 	{
-		// デバッグ用　データ再セット
-//		$this->debug();
 		
 		// config/battle で指定した三すくみの名前を読み込み
 		// 'goo' 'cho' 'paa' じゃんけんの三すくみで指定中
@@ -382,38 +374,5 @@ class battleController extends BaseGameController
 		// uBattleInfo(DB) の delFlag を立てる更新
 		$this->Model->exec('BattleInfo', 'UpdateInfoFlag', $this->BattleData['id']);
 		
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
-	
-	
-	
-
-
-
-
-	// デバッグ用ファンクション
-	// uBattleInfo uBattleChara uBattleEnemy のデータを書き換える
-	// 各delFlagの消去、変動値のリセット
-	public function debug()
-	{
-		$this->Model->exec('Battle', 'debugBattleData', $this->user['id']);
-		$this->BattleData = $this->Model->exec('Battle', 'getBattleData', $this->user['id']);		
-		$this->Model->exec('Battle', 'debugBattleChara', $this->BattleData['charaId']);
-		$this->Model->exec('Battle', 'debugBattleEnemy', $this->BattleData['enemyId']);
 	}
 }

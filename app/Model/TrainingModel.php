@@ -35,12 +35,9 @@ $sql =  <<< EOD
 		0
 		);
 EOD;
-	return $this->insert($sql, 'all');
+	return $this->insert($sql);
     }
 	
-	/*
-	 * 訓練するキャラクターとコーチと訓練の時間を取得
-	 */
 	public function getInfo($id)
 	{
 $sql =  <<< EOD
