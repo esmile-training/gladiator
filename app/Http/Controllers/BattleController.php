@@ -20,6 +20,11 @@ class battleController extends BaseGameController
 	{
 		// ユーザーIDを取得する
 		$userId = $this->user['id'];
+		
+		if($this->user['battleTicket'] <= 0 )
+		{
+			return view('notBattleTicket');
+		}
 
 		// 継続中の戦闘があったらbattleLogへリダイレクトする
 		$battleInfo = $this->Model->exec('BattleInfo', 'getBattleData', $userId);
@@ -249,10 +254,13 @@ class battleController extends BaseGameController
 	{
 		// ユーザーIDを元に週間のランキングデータを読み込み
 		$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
+
+		// ランキングデータがなければ、新しくランキングデータを作成してから読み込み
 		if(is_null($this->RankingData))
 		{
-			// ランキングデータがなければ、新しくランキングデータを作成
-		}	
+			$this->Model->exec('Ranking','insertRankingData',$this->user['id']);
+			$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
+		}
 	}
 
 	// バトルデータを更新するファンクション
@@ -260,6 +268,11 @@ class battleController extends BaseGameController
 	{
 		// setData関数を呼び出し、データをセット
 		$this->getBattleData();
+		
+		if($this->CharaData['bHp'] <= 0 || $this->EnemyData['bHp'] <= 0)
+		{
+			return $this->Lib->redirect('Battle', 'makeResultData');
+		}
 
 		// 押されたボタンのデータを Chara の 'hand' に格納
 		// 'goo' / 'cho' / 'paa' のどれかが入る
@@ -342,6 +355,7 @@ class battleController extends BaseGameController
 			$this->Lib->exec('Money', 'addition', array($this->user, $prize['money']));
 			// ユーザーのウィークリーポイント 'weeklyAward' に賞金額を加算しデータベースに格納
 			$this->Lib->exec('Ranking', 'weeklyAdd', array($this->RankingData, $prize['money']));
+			
 		}
 		// 敵のHPが0以上の場合(試合全体としてプレイヤーが負けた場合)
 		else if($this->CharaData['bHp'] <= 0)
