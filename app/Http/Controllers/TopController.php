@@ -29,7 +29,7 @@ class TopController extends BaseGameController
 			if($this->Model->exec('BattleInfo', 'getBattleData', "", $_COOKIE['userId'])){
 				//バトル中データあり
 				//ポップアップ表示予定
-				return viewWrap('Error');
+				return $this->Lib->redirect('battle', 'battleLog');
 			}
 		}
 		return $this->Lib->redirect('mypage', 'index');

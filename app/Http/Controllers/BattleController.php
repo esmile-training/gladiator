@@ -170,6 +170,7 @@ class battleController extends BaseGameController
 		// バトルデータがなかった場合、エラー画面を表示しホームへ戻す 
 		if(is_null($this->BattleData))
 		{
+			var_dump($this->BattleData);
 			return view('error');
 		}
 		
