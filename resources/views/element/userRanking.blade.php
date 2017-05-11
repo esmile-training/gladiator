@@ -6,14 +6,13 @@
 	        <p>{{$value['rank']}}位　：　{{$value['name']}}　：　{{$value['weeklyAward']}}Pt :　{{$value['userId']}}</p>
 	    <?php endif; ?>
 		
-	    <!-- rankの1ページ戻りと最後まで戻る -->
+	    {{-- rankの1ページ戻りと最後まで戻る  --}}
 	    <?php if (10 < $value['rank'] && $value == end($viewData['ranking'])) : ?>
-		<button type='submit' name='first' value='0'> << </button>
-		<button type='submit' name='back' value='{{$viewData['rankingData']['nowpage'] + 10}}'>back</button>
+			<button type='submit' name='first' value='0'> << </button>
+			<button type='submit' name='back' value='{{$viewData['rankingData']['nowpage'] + 10}}'>back</button>
 	    <?php endif; ?>
-	    <!-- end -->
 	    
-	    <!-- rankの範囲検索 -->
+	    {{--  rankの範囲検索  --}}
 	    <?php if($value == end($viewData['ranking'])) : ?>
 		<?php if(($viewData['rankingData']['count']) - 2 < $viewData['rankingData']['nowpage'] / 10 + 1 && 2 < $viewData['rankingData']['count']): ?> 
 	    
@@ -35,21 +34,18 @@
 			
 		<?php endif; ?>
 	    <?php endif; ?>
-	    <!-- end -->
 	    
-	    <!-- 次のrankを表示 -->
+	    {{-- 次のrankを表示  --}}
 	    <?php if (count($viewData['ranking']) == 10 && $value == end($viewData['ranking'])) : ?>
 		<?php if (($viewData['rankingData']['count']) != ($viewData['rankingData']['nowpage'] + 10) / 10 && ceil(($value['rank']/10))*10 != $viewData['rankingData']['count'] * 10) : ?>    
 		    <button type='submit' name='next' value='{{$viewData['rankingData']['nowpage'] + 10}}'>next</button>
 		<?php endif; ?>
 	    <?php endif;?>
-	    <!-- end -->
 	    
-	    <!-- 最後のrankを表示 -->
+	    {{-- 最後のrankを表示 --}}
 	    <?php if (end($viewData['ranking']) == $value && $viewData['rankingData']['count'] != ($viewData['rankingData']['nowpage'] + 10) / 10 && ceil(($value['rank']/10))*10 != $viewData['rankingData']['count'] * 10) : ?>
 		<button type='submit' name='last' value='{{$viewData['rankingData']['count'] * 10}}'> >> </button>
 	    <?php endif;?>
-	    <!-- end -->
 
 	<?php endforeach; ?>
 	    <br>

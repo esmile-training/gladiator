@@ -2,5 +2,5 @@
 @include('common/css', ['file' => 'admin'])
 @include('common/js', ['file' => 'admin'])
 
-{{--ユーザランキングのページャー--}}
+{{-- ユーザランキングのページャー --}}
 @include('element/userRanking')

@@ -20,32 +20,63 @@ EOD;
     public function userRank($userId, $range)
     {
 $sql =  <<< EOD
-SELECT rank.weekRange, rank.userId,rank.weeklyAward,user.name, rank FROM 
-    ((
-	SELECT * FROM (SELECT userId ,weeklyAward, weekRange, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.weeklyAward > a.weeklyAward and weekRange = '2017-05-08') AS `rank` FROM `uRanking` a ORDER BY rank) as rank
-	WHERE  weekRange = '{$range}' and rank> (
-
-	SELECT rank
-	FROM (SELECT userId ,weeklyAward, weekRange,(SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.weeklyAward > a.weeklyAward and weekRange = '2017-05-08') AS `rank` FROM `uRanking` a WHERE userId = $userId) as rank
-	WHERE userId = $userId
-	) ORDER BY weeklyAward DESC LIMIT 10
-    ) 
-
+SELECT rank.weekRange, rank.userId, rank.weeklyAward, user.name, rank FROM 
+((
+	SELECT * FROM (
+	    SELECT userId ,weeklyAward, weekRange, (
+			SELECT COUNT(*) + 1 FROM 
+			`uRanking` bf
+			WHERE bf.weeklyAward > af.weeklyAward 
+			AND weekRange = '{$range}'
+		) AS `rank` 
+		FROM `uRanking` af 
+		ORDER BY rank
+	) as rank
+WHERE  weekRange = '{$range}' AND rank > (
+	SELECT rank FROM (
+		SELECT userId ,weeklyAward, weekRange, (
+			SELECT COUNT(*) + 1 FROM
+			`uRanking` bf 
+			WHERE bf.weeklyAward > af.weeklyAward 
+			AND weekRange = '{$range}'
+		) AS `rank` 
+		FROM `uRanking` af
+		WHERE userId = $userId
+	) AS rank
+WHERE userId = $userId
+)
+ORDER BY weeklyAward DESC LIMIT 10
+) 
 UNION ALL
+(
+	SELECT * FROM (
+		SELECT userId ,weeklyAward, weekRange, (
+			SELECT COUNT(*) + 1 FROM 
+			`uRanking` bf 
+			WHERE bf.weeklyAward > af.weeklyAward 
+			AND weekRange = '{$range}'
+		) AS `rank` 
+		FROM `uRanking` af
+		ORDER BY rank
+	) AS rank
+	WHERE weekRange = '{$range}' and rank <= (
+		SELECT rank FROM (
+			SELECT userId ,weeklyAward, weekRange, (
+				SELECT COUNT(*) + 1 FROM 
+				`uRanking` bf WHERE bf.weeklyAward > af.weeklyAward 
+				AND weekRange = '{$range}'
+			) AS `rank`
+		FROM `uRanking` af 
+		WHERE userId = $userId
+	) AS rank
+WHERE userId = $userId
+) ORDER BY weeklyAward ASC LIMIT 10
 
-    (
-	SELECT * FROM (SELECT userId ,weeklyAward, weekRange, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.weeklyAward > a.weeklyAward and weekRange = '2017-05-08') AS `rank` FROM `uRanking` a ORDER BY rank) as rank
-	WHERE weekRange = '{$range}' and rank<= (
+))as rank
 
-	SELECT rank
-	FROM (SELECT userId ,weeklyAward, weekRange, (SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.weeklyAward > a.weeklyAward and weekRange = '2017-05-08') AS `rank` FROM `uRanking` a WHERE userId = $userId) as rank
-	WHERE userId = $userId
-	) ORDER BY weeklyAward ASC LIMIT 10
-
-    ))as rank
-    left outer join user
-    on rank.userId = user.id
-    order by rank
+LEFT outer JOIN user
+ON rank.userId = user.id
+ORDER BY rank
 ;
 EOD;
 
@@ -93,7 +124,7 @@ return parent::select($sql);
     /*
      * charaの最下位を取得
      */
-    public function bottomStatus($userId) {
+    public function bottomStatus() {
 $sql = <<< EOD
 	SELECT totalCharaStatus
 	FROM user
@@ -105,11 +136,11 @@ EOD;
     /*
      * idの登録数を取得
      */
-    public function rangeCount()
+    public function countRange($range)
     {
 $sql = <<< EOD
-	SELECT COUNT(weekRange) as count
-	FROM uRanking where weekRange = '2017-05-08';
+	SELECT COUNT(weekRange) AS count
+	FROM uRanking WHERE weekRange = '{$range}';
 EOD;
 	return parent::select($sql);
     }
@@ -141,10 +172,10 @@ EOD;
      * userの登録数を取得
      */
     
-    public function userCount()
+    public function countUser()
     {
 $sql = <<< EOD
-	SELECT COUNT(id) as count
+	SELECT COUNT(id) AS count
 	FROM user;
 EOD;
 	return parent::select($sql);
@@ -154,7 +185,7 @@ EOD;
      * rangeのアップデート
      */
 
-    public function rangeUpdate($userId, $monday)
+    public function updateRange($userId, $monday)
     {
 $sql = <<< EOD
 	UPDATE uRanking 

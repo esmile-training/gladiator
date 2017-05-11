@@ -105,18 +105,20 @@ $sql = <<< EOD
 	FROM user
 	WHERE id = $userId;
 EOD;
-		return $this->update($sql);
+		return $this->charaUpdate($sql);
 	}
-    public function ticketRecovery($userId, $ticket, $nextRecoveryTime)
-    {
-$sql = <<< EOD
-	UPDATE  user
-	SET battleTicket = {$ticket},
-	    ticketLossTime = '{$nextRecoveryTime}'
-	WHERE id = {$userId};
+	
+	public function ticketRecovery($userId, $ticket, $nextRecoveryTime)
+	{
+    $sql = <<< EOD
+	    UPDATE  user
+	    SET battleTicket = {$ticket},
+		ticketLossTime = '{$nextRecoveryTime}'
+	    WHERE id = {$userId};
 EOD;
-    return parent::update($sql);
-    }
+	return parent::update($sql);
+	}
+		    
 	/*
 	 * バトルチケットの更新処理
 	 */
