@@ -2,9 +2,9 @@
             <footer>
 				<ul>
 					<li><a href="{{APP_URL}}mypage/index">マイページ</a></li>
-					<li><a href="{{APP_URL}}battle/index">試合</a></li>
+					<li><a href="{{APP_URL}}battle/selectBattleChara">試合</a></li>
 					<li><a href="{{APP_URL}}training/index">訓練所</a></li>
-					<li><a href="{{APP_URL}}gachaselect/index">ガチャ</a></li>
+					<li><a href="{{APP_URL}}gacha/select">ガチャ</a></li>
 				</ul>
 			</footer>
         </div>
