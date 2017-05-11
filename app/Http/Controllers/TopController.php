@@ -3,15 +3,15 @@ namespace App\Http\Controllers;
 
 class TopController extends BaseGameController
 {
-	/**
-	 * TOP画面表示
-	 *
-	 */
-	public function index()
-	{
-	return viewWrap('top', $this->viewData);
-	}
-
+    /**
+     * TOP画面表示
+     *
+     */
+    public function index()
+    {
+		return viewWrap('top', $this->viewData);
+    }
+	
 	/**
 	 * ユーザーIDをチェックしてリダイレクト
 	 *
