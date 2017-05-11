@@ -6,7 +6,7 @@
 	<font color="red">※選択したコーチは引退となります。</font>
 	</center>
 </div>
-<form action="{{APP_URL}}SelectCoach/setCoach" method="get">
+<form action="setCoach" method="get">
 	<div>
 		@foreach($viewData['coachList'] as $coach)
 			<input type="image" src="{{CHAR_IMG_URL}}{{$coach['imgId']}}.png" alt="コーチイメージ"<
@@ -16,7 +16,7 @@
 	</div>
 </form>
 
-<form action ="selectCoach/deleteChara" method="get">
+<form action ="deleteChara" method="get">
 	<input type="hidden" name="id" value="{{$_GET['id']}}">
 	<button type="submit" >コーチにしない</button>
 </form>

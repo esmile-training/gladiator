@@ -25,6 +25,6 @@ class changeCoachController extends BaseGameController
 		//コーチの追加処理
 		$this->Model->exec('Coach', 'insertCoach', [$_GET['charaimgId'], $_GET['charaname'], $_GET['chararare'], $_GET['charaattribute'], $_GET['charahp'], $_GET['charagooAtk'], $_GET['charachoAtk'], $_GET['charapaaAtk']]);
 		//「コーチに配属しました！」に移動
-		return viewWrap('retirementChara');
+		return $this->Lib->redirect('retirementChara','addCoachView');
 	}
 }

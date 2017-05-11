@@ -36,7 +36,7 @@ class SelectCoachController extends BaseGameController
 		//キャラの削除処理
 		$this->Model->exec('Chara','charaDelFlag',"",$_GET['id']);
 		//「引退しました」へ遷移
-		return ($this->Lib->redirect('Error'));
+		return viewWrap('Error');
 	}
 	
 	public function insertCoach($uCharaId)
