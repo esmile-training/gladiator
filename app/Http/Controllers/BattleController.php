@@ -17,7 +17,7 @@ class battleController extends BaseGameController
 		
 		if($this->user['battleTicket'] <= 0 )
 		{
-			return view('notBattleTicket');
+			return viewWrap('notBattleTicket');
 		}
 
 		// 継続中の戦闘があったらbattleLogへリダイレクトする
@@ -161,8 +161,7 @@ class battleController extends BaseGameController
 	{
 		// setData関数を呼び出し、データをセット
 		$this->getBattleData();
-		
-		var_dump($this->CharaData);
+
 		// バトルデータがなかった場合、エラー画面を表示しホームへ戻す 
 		if(is_null($this->BattleData))
 		{
@@ -183,8 +182,6 @@ class battleController extends BaseGameController
 		$this->viewData['Type']			= $this->TypeData;
 		$this->viewData['Result']		= $this->ResultData;
 		
-		var_dump($this->viewData);
-
 		return viewWrap('battle', $this->viewData);
 	}
 	
@@ -213,7 +210,7 @@ class battleController extends BaseGameController
 		$this->TypeData	= \Config::get('battle.typeStr');
 
 		// config/battle で指定した勝敗結果の名前を読み込み
-		// 'win' 'lose' 'draw' で指定中
+		// 1(勝ち) 2(負け) 3(あいこ) で指定中
 		$this->ResultData = \Config::get('battle.resultStr');
 
 		// config/battle で指定した賞金の歩合を読み込み
@@ -246,12 +243,12 @@ class battleController extends BaseGameController
 		// ユーザーIDを元に週間のランキングデータを読み込み
 		$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
 
-//		// ランキングデータがなければ、新しくランキングデータを作成してから読み込み
-//		if(is_null($this->RankingData))
-//		{
-//			$this->Model->exec('Ranking','insertRankingData',$this->user['id']);
-//			$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
-//		}
+		// ランキングデータがなければ、新しくランキングデータを作成してから読み込み
+		if(is_null($this->RankingData))
+		{
+			$this->Model->exec('Ranking','insertRankingData',$this->user['id']);
+			$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
+		}
 	}
 
 	// バトルデータを更新するファンクション
@@ -268,38 +265,38 @@ class battleController extends BaseGameController
 
 		// 押されたボタンのデータを Chara の 'hand' に格納
 		// 1(グー) / 2(チョキ) / 3(パー) のどれかが入る
-		$this->CharaData['hand'] = htmlspecialchars($_GET["sub1"], ENT_QUOTES, "UTF-8");
+		$this->CharaData['hand'] = $_GET["sub1"];
 
 		// 敵キャラデータを元に、Enemy の 'hand' を格納
 		// 1(グー) / 2(チョキ) / 3(パー) のどれかが入る
-		$this->EnemyData['hand'] = BattleLib::setEnmHand($this->EnemyData, $this->TypeData);
+		$this->EnemyData['hand'] = BattleLib::setEnmHand($this->EnemyData);
 
 		// 勝敗処理
 		// 'win' / 'lose' / 'draw' のどれかが入る
-		$this->CharaData['result'] = BattleLib::AtackResult($this->CharaData['hand'], $this->EnemyData['hand'], $this->TypeData, $this->ResultData);
-
+		$this->CharaData['result'] = BattleLib::AtackResult($this->CharaData['hand'], $this->EnemyData['hand']);
+		
 		// ダメージ処理
 		// CharaData の 'result' によって処理を行う
 		switch ($this->CharaData['result'])
 		{
-			// 'win' の場合
-			case $this->ResultData['win']:
+			// 1(勝ち) の場合
+			case 1:
 				// 自キャラデータを元にダメージ量を計算
-				$this->CharaData = BattleLib::damageCalc($this->CharaData, $this->TypeData);			
+				$this->CharaData = BattleLib::damageCalc($this->CharaData);			
 				// 変動したダメージ量を元にダメージ処理後の敵キャラHPを計算
-				$this->EnemyData['battleHp'] = BattleLib::hpCalc($this->CharaData, $this->EnemyData, $this->TypeData);
+				$this->EnemyData['battleHp'] = BattleLib::hpCalc($this->CharaData, $this->EnemyData);
 				break;
 
-			// 'lose' の場合
-			case $this->ResultData['lose']:
+			// 2(負け) の場合
+			case 2:
 				// 敵キャラデータを元にダメージ量を計算
-				$this->EnemyData = BattleLib::damageCalc($this->EnemyData, $this->TypeData);					
+				$this->EnemyData = BattleLib::damageCalc($this->EnemyData);					
 				// 変動したダメージ量を元にダメージ処理後の自キャラHPを計算
-				$this->CharaData['battleHp'] = BattleLib::hpCalc($this->EnemyData, $this->CharaData, $this->TypeData);
+				$this->CharaData['battleHp'] = BattleLib::hpCalc($this->EnemyData, $this->CharaData);
 				break;
 
-			// 'draw' の場合
-			case $this->ResultData['draw']:
+			// 3(あいこ) の場合
+			case 3:
 				// ダメージ処理を行わず抜ける
 				break;
 			
