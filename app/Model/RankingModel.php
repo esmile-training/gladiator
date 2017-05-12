@@ -4,7 +4,6 @@ namespace App\Model;
 
 class RankingModel extends BaseGameModel
 {
-    /*******      書き込み        *******/
     public function insertRankingData( $userId )
     {
 $sql = <<< EOD
@@ -91,10 +90,10 @@ EOD;
     {
 $sql = <<< EOD
 	SELECT userId ,weeklyAward, user.name,
-	(SELECT COUNT(*) + 1 FROM `uRanking` b WHERE b.weeklyAward > a.weeklyAward AND weekRange = '{$range}') 
-	AS `rank` FROM `uRanking` a 
-	left outer join user
-	on userId = user.id
+	(SELECT COUNT(*) + 1 FROM `uRanking` bf WHERE bf.weeklyAward > af.weeklyAward AND weekRange = '{$range}') 
+	AS `rank` FROM `uRanking` af 
+	LEFT outer JOIN user
+	ON userId = user.id
 	WHERE weekRange = '{$range}'
 	ORDER BY weeklyAward DESC LIMIT 10 OFFSET $page;
 EOD;
@@ -208,8 +207,6 @@ $sql = <<< EOD
 EOD;
 	return parent::select($sql);
     }
-    
-    
-    /*******        書き込み終了         *******/
+
 }
 

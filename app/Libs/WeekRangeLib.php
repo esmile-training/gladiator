@@ -3,10 +3,10 @@
 namespace App\Libs;
 
 class WeekRangeLib extends BaseGameLib {
+	
 	/*
 	 * 週間の状態を確認
 	 */
-
 	public function rangeState($userId) {
 		// ユーザの週間を取得
 		$week = $this->Model->exec('Ranking', 'getRange', $userId);

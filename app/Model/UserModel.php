@@ -101,8 +101,8 @@ EOD;
 
 	public function charaStatus($userId) {
 $sql = <<< EOD
-	SELECT battleTicket, ticketLossTime
-	FROM user
+	UPDATE user
+	SET totalStatus = (SELECT SUM(hp) FROM uChara WHERE userId = $userId))
 	WHERE id = $userId;
 EOD;
 		return $this->charaUpdate($sql);

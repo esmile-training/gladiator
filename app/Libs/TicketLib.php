@@ -32,21 +32,23 @@ class TicketLib extends BaseGameLib
 		// 回復時間の30分を加算させる。
 		$recoveryTime = date("Y-m-d H:i:s",strtotime("$ticketLossTime +30 minute"));
 		
-		// チケット枚数が上限より小さい時と、現在の時間が回復時間を上回っているとき実行
-		if($battleTicket < $maxticket['ticketMax'] && $recoveryTime <= $nowTime)
+		// バトルチケットの枚数分回す
+		foreach (range($battleTicket, (int)$maxticket['ticketMax']) as $data)
 		{
-			TicketLib::ticketRecovery($userId, $battleTicket, $recoveryTime);
+			// 回復時間とチケットが超えていないか確認
+			if($recoveryTime <= $nowTime && $battleTicket < $maxticket['ticketMax'])
+			{
+				// チケットに代入
+				$battleTicket = $data + 1;
+			}
+			
+			// 最大数まで回復していないときさらに30分追加
+			$recoveryTime = date("Y-m-d H:i:s",strtotime("$recoveryTime +30 minute"));
 		}
-    }
-    
-    /*
-     * チケット回復
-     */
-    public function ticketRecovery($userId, $battleTicket, $recovery)
-    {
-		// チケットを1枚回復させる。
-		$ticket = $battleTicket + 1;
-		$updateData = [$userId, $ticket, $recovery];
-		$this->Model->exec('User', 'ticketRecovery', $updateData);
+		
+		if($recoveryTime <= $nowTime){
+			// チケット回復
+			$this->Model->exec('User', 'ticketRecovery', [$userId, $battleTicket, $recoveryTime]);
+		}
     }
 }
