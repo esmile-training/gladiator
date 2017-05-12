@@ -6,8 +6,18 @@ class SelectCoachController extends BaseGameController
 {
 	public function index()
 	{
-		//引退するキャラクターIDの持ち越し
-		$id = array('id'=>$_GET['id']);
+		//引退するキャラクターのステータス持ち越し
+		$selectCharaState = array('id' => $_GET['id'],
+								'imgId' => $_GET['imgId'],
+								'name' => $_GET['name'],
+								'rare' => $_GET['rare'],
+								'attribute' => $_GET['attribute'],
+								'hp' => $_GET['hp'],
+								'gooAtk' => $_GET['gooAtk'],
+								'choAtk' => $_GET['choAtk'],
+								'paaAtk' => $_GET['paaAtk']
+		);
+		$this->viewData['selectCharaState'] = $selectCharaState;
 		//コーチの人数を調べる
 		$alluCoach = $this->Model->exec('Training', 'getUserCoach',$_COOKIE['userId']);
 		if(count($alluCoach) >= 3)

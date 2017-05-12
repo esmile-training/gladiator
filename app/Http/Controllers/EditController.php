@@ -27,7 +27,37 @@ class EditController extends BaseGameController
 			
 			//Cookieの値をuserIDに書き換え
 			setcookie('userId', $userId, time() + 60*60*24*365*20, '/');
-
+			
+			//初期コーチの作成//修正予定
+			$newCoachState = array('imgId' => 1,
+									'name' => 'テストコーチ・グー',
+									'rare' => 1,
+									'attribute' => 'gu',
+									'hp' => 300,
+									'gooAtk' => '200',
+									'choAtk' => '50',
+									'paaAtk' => '50');
+			$this->Model->exec('Coach','insertCoach',array($newCoachState));
+			
+			$newCoachState = array('imgId' => 1,
+									'name' => 'テストコーチ・チョキ',
+									'rare' => 1,
+									'attribute' => 'choki',
+									'hp' => 300,
+									'gooAtk' => '50',
+									'choAtk' => '200',
+									'paaAtk' => '50');
+			$this->Model->exec('Coach','insertCoach',array($newCoachState));
+			
+			$newCoachState = array('imgId' => 1,
+									'name' => 'テストコーチ・パー',
+									'rare' => 1,
+									'attribute' => 'paa',
+									'hp' => 300,
+									'gooAtk' => '50',
+									'choAtk' => '50',
+									'paaAtk' => '200');
+			$this->Model->exec('Coach','insertCoach',array($newCoachState));
 			//マイページヘリダイレクト
 			return $this->Lib->redirect('mypage', 'index');
 		} else {

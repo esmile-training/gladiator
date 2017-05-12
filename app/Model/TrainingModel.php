@@ -12,7 +12,7 @@ $sql =  <<< EOD
 		SELECT *
 		FROM uCoach
 		WHERE userId = $userId
-		AND trainingState = 0
+		AND State = 0
 		LIMIT 3
 EOD;
 		return $this->select($sql, 'all');
