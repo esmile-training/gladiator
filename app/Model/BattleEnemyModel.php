@@ -65,10 +65,10 @@ EOD;
 	{
 $sql = <<< EOD
 	UPDATE  uBattleEnemy
-	SET		bHp		= {$battleEnemy['bHp']},
-			bGooAtk = {$battleEnemy['bGooAtk']},
-			bChoAtk = {$battleEnemy['bChoAtk']},
-			bPaaAtk = {$battleEnemy['bPaaAtk']},
+	SET		battleHp		= {$battleEnemy['battleHp']},
+			battleGooAtk = {$battleEnemy['battleGooAtk']},
+			battleChoAtk = {$battleEnemy['battleChoAtk']},
+			battlePaaAtk = {$battleEnemy['battlePaaAtk']},
 			hand	= '{$battleEnemy['hand']}'
 	WHERE   id		= {$battleEnemy['id']};
 EOD;
