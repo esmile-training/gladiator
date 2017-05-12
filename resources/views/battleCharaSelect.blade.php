@@ -16,8 +16,8 @@
 <form action="{{APP_URL}}battle/selectArena" method="get">
 	<div>
 		@foreach($viewData['charaList'] as $chara)
-			<input type="image" src="{{CHAR_IMG_URL}}{{$chara['imgId']}}.png" alt="キャライメージ"<
-			name="uCharaId" value="{{$chara['id']}}" width="75" height="100">{{$chara['name']}}<br>
+			<input type="image" src="{{CHAR_IMG_URL}}{{$chara['imgId']}}.png" alt="キャライメージ"
+				   name="uCharaId" value="{{$chara['id']}}" width="75" height="100">{{$chara['name']}}<br>
 		@endforeach
 	</div>
 </form>
