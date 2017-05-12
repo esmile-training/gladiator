@@ -107,6 +107,7 @@ $sql = <<< EOD
 EOD;
 		return $this->update($sql);
 	}
+	
     public function ticketRecovery($userId, $ticket, $nextRecoveryTime)
     {
 $sql = <<< EOD
@@ -133,7 +134,6 @@ EOD;
 	/*
 	 * 最大数から1個目のバトルチケットを消費した時の更新処理
 	 */
-
 	public function firstLossTicket($user, $time) {
 $sql = <<< EOD
 	UPDATE  user

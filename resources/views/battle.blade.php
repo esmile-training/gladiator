@@ -1,3 +1,6 @@
+{{-- サイズ等指定 --}}
+@include('common/battle')
+
 <div>
     <img class="janken" src="{{IMG_URL_TEST}}janken.jpg">
 </div>

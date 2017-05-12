@@ -182,7 +182,7 @@ class battleController extends BaseGameController
 		$this->viewData['Type']			= $this->TypeData;
 		$this->viewData['Result']		= $this->ResultData;
 		
-		return viewWrap('battle', $this->viewData);
+		return view('battle', ['viewData' => $this->viewData]);
 	}
 	
 	// リザルト画面を表示するファンクション
