@@ -15,7 +15,7 @@ class battleController extends BaseGameController
 		// ユーザーIDを取得する
 		$userId = $this->user['id'];
 		
-		if($this->user['battleTicket'] <= 0 )
+		if($this->user['battleTicket'] <= 0)
 		{
 			return viewWrap('notBattleTicket');
 		}
@@ -243,12 +243,12 @@ class battleController extends BaseGameController
 		// ユーザーIDを元に週間のランキングデータを読み込み
 		$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
 
-		// ランキングデータがなければ、新しくランキングデータを作成してから読み込み
-		if(is_null($this->RankingData))
-		{
-			$this->Model->exec('Ranking','insertRankingData',$this->user['id']);
-			$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
-		}
+//		// ランキングデータがなければ、新しくランキングデータを作成してから読み込み
+//		if(is_null($this->RankingData))
+//		{
+//			$this->Model->exec('Ranking','insertRankingData',$this->user['id']);
+//			$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
+//		}
 	}
 
 	// バトルデータを更新するファンクション
