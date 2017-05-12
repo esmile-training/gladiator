@@ -141,7 +141,7 @@ class BaseGameModel
 	*/
 	public function StatusUpdate( $sql )
 	{
-
+			
 		// uCharaという文字列が存在していれば実行
 		$post = strpos($sql, 'uChara');
 

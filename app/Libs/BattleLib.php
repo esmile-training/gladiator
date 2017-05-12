@@ -6,140 +6,75 @@ class BattleLib extends BaseGameLib
 {
 
 	// 敵の各属性を出す確率ステータスに基づいた手をランダムに選択する処理
-	public static function setEnmHand($EnemyData, $typeData)
+	public static function setEnmHand($EnemyData)
 	{
 		$result = [];   //データ返却用変数の初期化
 
 		// ランダムに1～99の数値を選択し格納
 		$Hand = rand(1, 99);
 
-		// Hand の数値が EnemyData の 'goo' の確率値 'gooPer' 以下の場合
+		// Hand の数値が EnemyData の 1(グー) の確率値 'gooPer' 以下の場合
 		if ($Hand <= $EnemyData['gooPer'])
 		{
-			// result に 'goo' を格納
-			$result = $typeData['goo'];
+			// result に 1(グー) を格納
+			$result = 1;
 		}
-		// Hand の数値が EnemyData の 'goo' の確率値 'gooPer' と 'cho' の確率値 'choPer' を足した数以下の場合
+		// Hand の数値が EnemyData の 1(グー) の確率値 'gooPer' と 2(チョキ) の確率値 'choPer' を足した数以下の場合
 		else if ($Hand <= $EnemyData['gooPer'] + $EnemyData['choPer'])
 		{
-			// result に 'cho' を格納
-			$result = $typeData['cho'];
+			// result に 2(チョキ) を格納
+			$result = 2;
 		}
-		// Hand の数値が EnemyData の 'goo' の確率値 'gooPer' と 'cho' の確率値 'choPer' を足した数より大きいの場合
+		// Hand の数値が EnemyData の 1(グー) の確率値 'gooPer' と 2(チョキ) の確率値 'choPer' を足した数より大きいの場合
 		else {
-			// result に 'paa' を格納
-			$result = $typeData['paa'];
+			// result に 3(パー) を格納
+			$result = 3;
 		}
 
 		return $result;
 	}
 
 	// 攻撃の処理を格納する処理
-	public static function AtackResult($pcHand, $enmHand, $typeData, $resultData)
+	public static function AtackResult($pcHand, $enmHand)
 	{
 
 		$result = [];   // データ返却用変数の初期化
-
-		// Chara の 'hand' によって処理を行う
-		switch ($pcHand)
+		
+		// 勝ち条件の場合
+		if(	($pcHand == 1 && $enmHand == 2) ||
+			($pcHand == 2 && $enmHand == 3) ||
+			($pcHand == 3 && $enmHand == 1))
 		{
-			// 'goo' の場合
-			case $typeData['goo']:
-				// Enemy の 'hand' によって処理を行う
-				switch ($enmHand)
-				{
-					// 'goo' の場合
-					case $typeData['goo']:
-						// result に 'draw' を格納
-						$result = $resultData['draw'];
-						break;
-
-					// 'cho' の場合
-					case $typeData['cho']:
-						// result に 'win' を格納
-						$result = $resultData['win'];
-						break;
-
-					// 'paa' の場合
-					case $typeData['paa']:
-						// result に 'lose' を格納
-						$result = $resultData['lose'];
-						break;
-
-					default:
-						echo 'エラー';
-						exit;
-				}
-				break;
-
-			// 'cho' の場合
-			case $typeData['cho']:
-				// Enemy の 'hand' によって処理を行う
-				switch ($enmHand)
-				{
-					// 'goo' の場合
-					case $typeData['goo']:
-						// result に 'lose' を格納
-						$result = $resultData['lose'];
-						break;
-
-					// 'cho' の場合
-					case $typeData['cho']:
-						// result に 'draw' を格納
-						$result = $resultData['draw'];
-						break;
-
-					// 'paa' の場合
-					case $typeData['paa']:
-						// result に 'win' を格納
-						$result = $resultData['win'];
-						break;
-
-					default:
-						echo 'エラー';
-						exit;
-				}
-				break;
-
-			// 'paa' の場合
-			case $typeData['paa']:
-				// Enemy の 'hand' によって処理を行う
-				switch ($enmHand)
-				{
-					// 'goo' の場合
-					case $typeData['goo']:
-						// result に 'win' を格納
-						$result = $resultData['win'];
-						break;
-
-					// 'cho' の場合
-					case $typeData['cho']:
-						// result に 'lose' を格納
-						$result = $resultData['lose'];
-						break;
-
-					// 'paa' の場合
-					case $typeData['paa']:
-						// result に 'draw' を格納
-						$result = $resultData['draw'];
-						break;
-
-					default:
-						echo 'エラー';
-						exit;
-				}
-				break;
-
-			default:
-				echo 'エラー';
-				exit;
+			// result に 1(勝ち) を格納
+			$result = 1;
+		}
+		// 負け条件の場合
+		else if(($pcHand == 1 && $enmHand == 3) ||
+				($pcHand == 2 && $enmHand == 1) ||
+				($pcHand == 3 && $enmHand == 2))
+		{
+			// result に 2(負け) を格納
+			$result = 2;
+		}
+		// あいこ条件の場合
+		else if(($pcHand == 1 && $enmHand == 1) ||
+				($pcHand == 2 && $enmHand == 2) ||
+				($pcHand == 3 && $enmHand == 3))
+		{
+			// result に 3(あいこ) を格納
+			$result = 3;
+		}
+		else
+		{	
+			echo 'エラー';
+			exit;
 		}
 
 		return $result;
 	}
 
 	// ダメージ量の計算処理
-	public static function damageCalc($winner, $typeData)
+	public static function damageCalc($winner)
 	{
 		// config にあるダメージ割合の変化量の最小値と最大値を格納
 		$randData = \Config::get('battle.damagePer');
@@ -152,25 +87,26 @@ class BattleLib extends BaseGameLib
 		// ダメージ量 = 勝った方の攻撃力 * ダメージ割合
 		switch ($winner['hand'])
 		{
-			// 'goo' の場合
-			case $typeData['goo']:
-				// 'bGooAtk' に 元データ 'cGooAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
-				$winner['bGooAtk'] = (int) ($winner['gooAtk'] * $damagePer);
+			// 1(グー) の場合
+			case 1:
+				// 'battleGooAtk' に 元データ 'cGooAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
+				$winner['battleGooAtk'] = (int) ($winner['gooAtk'] * $damagePer);
 				break;
 
-			// 'cho' の場合
-			case $typeData['cho']:
-				// 'bChoAtk' に 元データ 'cChoAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
-				$winner['bChoAtk'] = (int) ($winner['choAtk'] * $damagePer);
+			// 2(チョキ) の場合
+			case 2:
+				// 'battleChoAtk' に 元データ 'cChoAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
+				$winner['battleChoAtk'] = (int) ($winner['choAtk'] * $damagePer);
 				break;
 
-			// 'paa' の場合
-			case $typeData['paa']:
-				// 'bPaaAtk' に 元データ 'cPaaAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
-				$winner['bPaaAtk'] = (int) ($winner['paaAtk'] * $damagePer);
+			// 3(パー) の場合
+			case 3:
+				// 'battlePaaAtk' に 元データ 'cPaaAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
+				$winner['battlePaaAtk'] = (int) ($winner['paaAtk'] * $damagePer);
 				break;
 
 			default;
+				echo 'エラー';
 				exit;
 		}
 
@@ -178,47 +114,48 @@ class BattleLib extends BaseGameLib
 	}
 
 	// ダメージ計算を行う処理
-	public static function hpCalc($winner, $loser, $typeData)
+	public static function hpCalc($winner, $loser)
 	{
 		// 勝った方の 'hand' によって処理を行う
 		switch ($winner['hand'])
 		{
-			// 'goo' の場合
-			case $typeData['goo']:
+			// 1(グー) の場合
+			case 1:
 				// 負けた方の 'hp' を勝った方の 'gooAtk' 分減らす
-				$loser['bHp'] = $loser['bHp'] - $winner['bGooAtk'];
+				$loser['battleHp'] = $loser['battleHp'] - $winner['battleGooAtk'];
 				break;
 
-			// 'cho' の場合
-			case $typeData['cho']:
+			// 2(チョキ) の場合
+			case 2:
 				// 負けた方の 'hp' を勝った方の 'choAtk' 分減らす
-				$loser['bHp'] = $loser['bHp'] - $winner['bChoAtk'];
+				$loser['battleHp'] = $loser['battleHp'] - $winner['battleChoAtk'];
 				break;
 
-			// 'paa' の場合
-			case $typeData['paa']:
+			// 3(パー) の場合
+			case 3:
 				// 負けた方の 'hp' を勝った方の 'paaAtk' 分減らす
-				$loser['bHp'] = $loser['bHp'] - $winner['bPaaAtk'];
+				$loser['battleHp'] = $loser['battleHp'] - $winner['battlePaaAtk'];
 				break;
 
 			default;
+				echo 'エラー';
 				exit;
 		}
 
 		// HPが0より下回った場合、HPを0に戻す処理
-		if( $loser['bHp'] < 0 )
+		if( $loser['battleHp'] < 0 )
 		{
-			$loser['bHp'] = 0;
+			$loser['battleHp'] = 0;
 		}
 
-		return $loser['bHp'];
+		return $loser['battleHp'];
 	}
 
 	// 賞金計算
-	public static function prizeCalc($EnemyData, $Commission, $prizeRatio)
+	public static function prizeCalc($EnemyData, $Commission, $DifficulutyData)
 	{
 		// 賞金額計算
-		$result = ($EnemyData['hp'] * $Commission['Commission']) * ( $prizeRatio[$EnemyData['difficulty']] * 0.01);
+		$result = ($EnemyData['hp'] * $Commission['Commission']) * ( $DifficulutyData[$EnemyData['difficulty']]['prizeRatio'] * 0.01);
 
 		return $result;
 
