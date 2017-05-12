@@ -10,8 +10,8 @@
 	<?php $count = 0; ?>
 	<div>
 		@foreach($viewData['coachList'] as $coach)
-			<input type="image" src="{{CHAR_IMG_URL}}{{$coach['imgId']}}.png" alt="コーチイメージ"<
-			name="uCoachId" value="{{$coach['id']}}" width="75" height="100">{{$coach['name']}}<br>
+			<img src="{{CHAR_IMG_URL}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}<br>
+			<br>
 			{{-- popupボタン --}}
 			<div class="modal_container">
 				<span class="modal_btn confirmChangeCoach{{ $count }}">Show modal</span>

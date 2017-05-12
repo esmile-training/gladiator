@@ -29,13 +29,13 @@ class SelectCoachController extends BaseGameController
 			return viewWrap('SelectCoach',$this->viewData);
 		} else {
 			//コーチが二人以下だったらそのままコーチに追加
-			$this->insertCoach($_GET['id']);
+			$this->insertCoach();
 		}
 	}
 	
 	public function setCoach()
 	{	
-		//引退ボンタンが押されたキャラと選択されたコーチの情報を配列に格納
+		//引退ボタンが押されたキャラと選択されたコーチの情報を配列に格納
 		$para = array('coachId' => $_GET['uCoachId'], 'charaId' => $_GET['charaId']);
 		//確認画面へリダイレクト
 		return ($this->Lib->redirect('changeCoach',"", $para));
@@ -49,11 +49,19 @@ class SelectCoachController extends BaseGameController
 		return $this->Lib->redirect('retirementChara','retireCharaView');
 	}
 	
-	public function insertCoach($uCharaId)
+	public function changeCoach()
+	{
+		//コーチの削除処理
+		$this->Model->exec('Coach', 'deleteCoach', "", $_GET['coachId']);
+		//キャラの削除とコーチの追加処理
+		$this->insertCoach();
+	}
+	
+	public function insertCoach()
 	{
 		//キャラの削除処理
-		$this->Model->exec('Chara','charaDelFlag',"",$_GET['id']);
-				//コーチの追加処理
+		$this->Model->exec('Chara','charaDelFlag',"",$_GET[id]);
+		//コーチの追加処理
 		$newCoachState = array('imgId' => $_GET['imgId'],
 								'name' => $_GET['name'],
 								'rare' => $_GET['rare'],

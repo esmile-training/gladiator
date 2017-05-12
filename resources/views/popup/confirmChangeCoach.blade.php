@@ -13,18 +13,17 @@
 		<image src="{{CHAR_IMG_URL}}{{$viewData['selectCharaState']['imgId']}}.png" alt="キャライメージ"<
 			name="imgId" value="{{$viewData['selectCharaState']['id']}}" width="75" height="100">{{$viewData['selectCharaState']['name']}}<br>
 	</div>
-	<form action="changeCoach/changeCoach" method="get">
+	<form action="changeCoach" method="get">
 		<input type="hidden" name="coachId" value="{{$coach['id']}}">
-		<input type="hidden" name="charaId" value="{{$viewData['selectCharaState']['id']}}">
-		<input type="hidden" name="charaimgId" value="{{$viewData['selectCharaState']['imgId']}}">
-		<input type="hidden" name="charaname" value="{{$viewData['selectCharaState']['name']}}">
-		<input type="hidden" name="chararare" value="{{$viewData['selectCharaState']['rare']}}">
-		<input type="hidden" name="charaattribute" value="{{$viewData['selectCharaState']['attribute']}}">
-		<input type="hidden" name="charahp" value="{{$viewData['selectCharaState']['hp']}}">
-		<input type="hidden" name="charagooAtk" value="{{$viewData['selectCharaState']['gooAtk']}}">
-		<input type="hidden" name="charachoAtk" value="{{$viewData['selectCharaState']['choAtk']}}">
-		<input type="hidden" name="charapaaAtk" value="{{$viewData['selectCharaState']['paaAtk']}}">
+		<input type="hidden" name="id" value="{{$viewData['selectCharaState']['id']}}">
+		<input type="hidden" name="imgId" value="{{$viewData['selectCharaState']['imgId']}}">
+		<input type="hidden" name="name" value="{{$viewData['selectCharaState']['name']}}">
+		<input type="hidden" name="rare" value="{{$viewData['selectCharaState']['rare']}}">
+		<input type="hidden" name="attribute" value="{{$viewData['selectCharaState']['attribute']}}">
+		<input type="hidden" name="hp" value="{{$viewData['selectCharaState']['hp']}}">
+		<input type="hidden" name="gooAtk" value="{{$viewData['selectCharaState']['gooAtk']}}">
+		<input type="hidden" name="choAtk" value="{{$viewData['selectCharaState']['choAtk']}}">
+		<input type="hidden" name="paaAtk" value="{{$viewData['selectCharaState']['paaAtk']}}">
 		<button type="submit">する</button>
 	</form>
-	<button type="button" onclick="location.href='{{APP_URL}}selectChara'" >しない</button>
 </div>
