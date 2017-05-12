@@ -45,10 +45,10 @@ EOD;
 	//コーチの削除
 	public function deleteCoach($uCoachId){
 $sql = <<< EOD
-	DELETE FROM uCoach
+	UPDATE uCoach
+	SET state = 2
 	WHERE id = {$uCoachId};
 EOD;
-var_dump($sql);
-	$result = $this->delete($sql);
+	$result = $this->update($sql);
 	}
 }

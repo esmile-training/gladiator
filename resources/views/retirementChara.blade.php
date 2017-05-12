@@ -1,4 +1,3 @@
-<?php var_dump($this->viewData);exit;print_r($this->viewData[text]); ?>
+<?php print_r($viewData['comment']); ?>
 <br>
-<?php //ポップアップを閉じるボタンになる予定 ?>
-<a href="{{APP_URL}}selectChara">閉じる</a>
+<a href="{{APP_URL}}selectChara">キャラ</a>

@@ -36,15 +36,25 @@ class SelectCoachController extends BaseGameController
 		//キャラの削除処理
 		$this->Model->exec('Chara','charaDelFlag',"",$_GET['id']);
 		//「引退しました」へ遷移
-		return viewWrap('Error');
+		return $this->Lib->redirect('retirementChara','retireCharaView');
 	}
 	
 	public function insertCoach($uCharaId)
 	{
 		//キャラの削除処理
 		$this->Model->exec('Chara','charaDelFlag',"",$_GET['id']);
-		//コーチの追加処理
-		$this->Model->exec('Coach','insertCoach',[$_GET['imgId'], $_GET['name'], $_GET['rare'], $_GET['attribute'], $_GET['hp'], $_GET['gooAtk'], $_GET['choAtk'], $_GET['paaAtk']]);
-		return ($this->Lib->redirect('retirementChara'));
+				//コーチの追加処理
+		$newCoachState = array('imgId' => $_GET['imgId'],
+								'name' => $_GET['name'],
+								'rare' => $_GET['rare'],
+								'attribute' => $_GET['attribute'],
+								'hp' => $_GET['hp'],
+								'gooAtk' => $_GET['gooAtk'],
+								'choAtk' => $_GET['choAtk'],
+								'paaAtk' => $_GET['paaAtk']
+		);
+		$this->Model->exec('Coach', 'insertCoach', array($newCoachState));
+		//「コーチに配属しました！」に移動
+		return $this->Lib->redirect('retirementChara','addCoachView');
 	}
 }

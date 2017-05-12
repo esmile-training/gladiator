@@ -6,13 +6,13 @@ class RetirementCharaController extends BaseGameController
 {	
 	public function addCoachView()
 	{
-		$text = array('text' => 'aaa');
-		return viewWrap("retirementChara", $text);
+		$this->viewData['comment'] = 'コーチに配属しました！';
+		return viewWrap('retirementChara',$this->viewData);
 	}
 	
 	public function retireCharaView()
 	{
-		$text = array('text' => 'bbb');
-		return viewWrap('retirementChara', $text);
+		$this->viewData['comment'] = '引退しました';
+		return viewWrap('retirementChara',$this->viewData);
 	}
 }
