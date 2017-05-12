@@ -12,10 +12,15 @@
 	<body>
 	<div id="wrapper">
 		<header>
-			<ul>
+			<div class="headPosition">
+				<img class="headerImg" src="{{MYPAGE_IMG_URL}}headerImg2.png" />
+				<img class="topButton" src="{{MYPAGE_IMG_URL}}topButton.png" />
+				<img class="menuButton" src="{{MYPAGE_IMG_URL}}menuButton.png" />
+			</div>
+<!--			<ul>
 				<li><a href="{{APP_URL}}top/login">所持金</a></li>
 				<li><a href="{{APP_URL}}top/login">チーム名</a></li>
 				<li><a href="{{APP_URL}}top/login">チケット数</a></li>
-			</ul>
+			</ul>-->
 		</header>
 		<div id="main">

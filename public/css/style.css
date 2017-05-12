@@ -163,10 +163,42 @@ li{
     vertical-align: middle;
     background: #eee; 
 }
-header {
-	background: #222;
-	height:	40px;
+
+/*
+ * header
+ */
+
+img{
+    display: block;
+    margin: 0 auto;
+    padding: 0;
 }
+
+.headPosition{
+    position: relative;
+    width: 100%;
+}
+
+.headerImg{
+    max-width: 100%;
+    height: auto;
+}
+
+.topButton{
+    position: absolute;
+    max-width: 20%;
+    height: auto;
+    left: 0px;
+    top: 0px;
+}
+
+.menuButton{
+    position: absolute;
+    right: 1vw;
+    top: 0.7vh;
+    width: 20%;
+}
+
 footer {
 	background: #bbb;
 	height: 54px;

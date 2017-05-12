@@ -77,6 +77,8 @@ define("IMG_URL_TEST", SERVER_URL."img/test/");
 
 define("CHAR_IMG_URL", SERVER_URL."img/test/chara");
 
+define("MYPAGE_IMG_URL", SERVER_URL."img/mypage/");
+
 //URL解釈
 $redirectUrl	= ( isset( $_SERVER['REDIRECT_URL'] ) )? explode('/', $_SERVER['REDIRECT_URL']) : array();
 $controllerName = ( isset($redirectUrl[1]) )? $redirectUrl[1] : 'top';

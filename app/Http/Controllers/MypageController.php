@@ -9,7 +9,7 @@ class MypageController extends BaseGameController
 		$trainingInfo = $this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime']));
 		if(isset($trainingInfo))
 		{
-			echo('訓練が完了した剣闘士がいます！');
+			//echo('訓練が完了した剣闘士がいます！');
 		}
 		
 		// ユーザーデータの取得
