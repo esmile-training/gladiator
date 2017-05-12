@@ -30,9 +30,9 @@
 
 	{{--それぞれのボタン表示--}}
 	<form method="get" action="{{APP_URL}}battle/updateBattleData" onsubmit="doSomething();return false;">
-		<input type="image" src="{{IMG_URL_TEST}}goo.jpg" value="{{$viewData['Type']['goo']}}" name="sub1">　
-		<input type="image" src="{{IMG_URL_TEST}}choki.png" value="{{$viewData['Type']['cho']}}" name="sub1">　
-		<input type="image" src="{{IMG_URL_TEST}}paa.jpg" value="{{$viewData['Type']['paa']}}" name="sub1">　
+		<input type="image" src="{{IMG_URL_TEST}}goo.jpg" value= 1" name="sub1">　
+		<input type="image" src="{{IMG_URL_TEST}}choki.png" value= 2" name="sub1">　
+		<input type="image" src="{{IMG_URL_TEST}}paa.jpg" value= 3" name="sub1">　
 	</form>
 
 @endif
