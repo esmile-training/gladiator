@@ -60,7 +60,7 @@ class SelectCoachController extends BaseGameController
 	public function insertCoach()
 	{
 		//キャラの削除処理
-		$this->Model->exec('Chara','charaDelFlag',"",$_GET[id]);
+		$this->Model->exec('Chara','charaDelFlag',"",$_GET['id']);
 		//コーチの追加処理
 		$newCoachState = array('imgId' => $_GET['imgId'],
 								'name' => $_GET['name'],
