@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 class RankingController extends BaseGameController
 {
-    public $rankingData;
-    public $execRank = [];
-    public $chengeData;
-    public $chenge;
+    private $rankingData;
+    private $chengeData;
+    private $chenge;
     
     public function __construct()
     {
@@ -25,13 +24,20 @@ class RankingController extends BaseGameController
 	 * 押されてない場合は初期値に0を代入
 	 */
 	
-	if (isset($this->chengeData) && $this->chengeData == 0) {
+	if (isset($this->chengeData) && $this->chengeData == 0)
+	{
 	    $chengeRanking  = 0;
-	} elseif (isset($this->chengeData) && $this->chengeData == 1) {
+	}
+	elseif(isset($this->chengeData) && $this->chengeData == 1)
+	{
 	    $chengeRanking  = 1;
-	}elseif(isset($this->chenge) && !isset($this->chengeData)){
+	}
+	elseif(isset($this->chenge) && !isset($this->chengeData))
+	{
 	    $chengeRanking  = $this->chenge;
-	}else{
+	}
+	else
+	{
 	    $chengeRanking  = 0; 
 	}
 
@@ -39,7 +45,9 @@ class RankingController extends BaseGameController
 	if($chengeRanking == 0){
 	    // 週間とステータスの切り替え
 	    $this->rankingData['rankChenge'] = $chengeRanking;
-	}else{
+	}
+	else
+	{
 	    // ステータスの最下位のデータを取得
 	    $bottomData = $this->Model->exec('Ranking', 'bottomStatus', $this->user['id']);
 	    $bottomData[0]['totalCharaStatus'] == null ? $bottomData = 0 : false;
@@ -72,21 +80,27 @@ class RankingController extends BaseGameController
  
 	    
 	// 週間かステータスで取得データを切替
-	if ($this->rankingData['rankChenge'] == 0){
+	if ($this->rankingData['rankChenge'] == 0)
+	{
 	    $range  = $this->Lib->exec('weekRange', 'rangeState', $this->user['id']);
 
 	    // 登録者数を取得
 	    $userCount = $this->Model->exec('Ranking', 'rangeCount', $range);
 	    $this->rankingData['count']	= ceil(($userCount[0]['count']/10));
 
-	    if(!isset($nextPage) && !isset($backPage) && !isset($lastPage) && !isset($firstPage) && !isset($rangePage)){
+	    if(!isset($nextPage) && !isset($backPage) && !isset($lastPage) && !isset($firstPage) && !isset($rangePage))
+	    {
 		$userRank   = $this->Model->exec('Ranking', 'userRank', [$this->user['id'], $range]);
 		$page	    = RankingController::userRanking($userRank);
-	    }else{
+	    }
+	    else
+	    {
 		// ユーザーランキング
 		$page	= $this->Model->exec('Ranking', 'rankingPager', [$moldValue, $range]);
 	    }
-	}else{
+	}
+	else
+	{
 	    // 所持キャラランキング
 	    $page   = $this->Model->exec('Ranking', 'rankingStatus', $moldValue);
 	}
@@ -99,7 +113,9 @@ class RankingController extends BaseGameController
 	// ビューヘ渡す
 	if ($this->rankingData['rankChenge'] == 0) {
 	    return viewWrap('userRanking', $this->viewData);
-	}else{
+	}
+	else
+	{
 	    return viewWrap('charaRanking', $this->viewData);
 	}
     }
@@ -115,44 +131,35 @@ class RankingController extends BaseGameController
     public function userRanking($inputRank)
     {
 	$userrank = array_search($this->user['id'], array_column($inputRank, 'userId'));
-	$data = 0;
 	
-	if(count($inputRank) < 10)
+	// 
+	$pager = 0;
+	
+	foreach ($inputRank as $key => $value)
 	{
-	    foreach ($inputRank as $key => $value)
+	    // ランキングの総数が10人未満だった場合
+	    if(count($inputRank) < 10)
 	    {
-		    $execRank[$value['userId']]	= $value;
-    	    }
-	}elseif($inputRank[9]['userId'] != $this->user['id'] && 10 > $userrank){
-	// ランキング取得時、中間ではなく、上位十位以内だった場合
-	    foreach ($inputRank as $key => $value)
-	    {
-		if($key < 10)
-		{
-		    $execRank[$value['userId']]	= $value;
-		}
-    	    }
-	}elseif($inputRank[9]['userId'] == $this->user['id'] && count($inputRank) != 20){
-	// ランキング取得時中間にいて尚且つ、取得合計数が20と異なるとき
-	    foreach ($inputRank as $key => $value)
-	    {
-		if(count($inputRank) - 11 < $key)
-		{
-		    $execRank[$value['userId']]	= $value;
-		}
+		$execRank[$value['userId']]	= $value;
 	    }
-	}elseif($inputRank[9]['userId'] == $this->user['id']){
-	// ランキング取得時中間にだけいるとき
-	    foreach ($inputRank as $key => $value)
+	    // ランキング取得時、中間ではなく、上位十位以内だった場合
+	    elseif($inputRank[9]['userId'] != $this->user['id'] && 10 > $userrank && $key < 10)
 	    {
-		if(4 < $key && $key < 15)
-		{
-		    $execRank[$value['userId']]	= $value;
-		    $data = $inputRank[$key]['rank'];   
-		}
+		$execRank[$value['userId']]	= $value;
+	    }
+	    // ランキング取得時中間にいて尚且つ、取得合計数が20と異なるとき
+	    elseif($inputRank[9]['userId'] == $this->user['id'] && count($inputRank) != 20)
+	    {
+		$execRank[$value['userId']]	= $value;
+	    }
+	    // ランキング取得時中間にだけいるとき
+	    elseif($inputRank[9]['userId'] == $this->user['id'] && 4 < $key && $key < 15)
+	    {
+		$execRank[$value['userId']]	= $value;
+		$pager = $inputRank[$key]['rank'];
 	    }
 	}
-	$this->rankingData['pager'] = floor(($data / 10)) * 10;
+	$this->rankingData['pager'] = floor(($pager / 10)) * 10;
 	return $execRank;
     }
 }

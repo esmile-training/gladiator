@@ -1,9 +1,12 @@
+{{-- サイズ等指定 --}}
+@include('common/battle')
+
 <div>
     <img class="janken" src="{{IMG_URL_TEST}}janken.jpg">
 </div>
 
 {{--攻撃の結果が入っていたら--}}
-@if ($viewData['CharaData']['result'] != '未設定')
+@if ($viewData['CharaData']['result'] != 0)
 
 	{{--勝敗の表示--}}
 	@include('element/resultLog')
@@ -30,9 +33,9 @@
 
 	{{--それぞれのボタン表示--}}
 	<form method="get" action="{{APP_URL}}battle/updateBattleData" onsubmit="doSomething();return false;">
-		<input type="image" src="{{IMG_URL_TEST}}goo.jpg" value="{{$viewData['Type']['goo']}}" name="sub1">　
-		<input type="image" src="{{IMG_URL_TEST}}choki.png" value="{{$viewData['Type']['cho']}}" name="sub1">　
-		<input type="image" src="{{IMG_URL_TEST}}paa.jpg" value="{{$viewData['Type']['paa']}}" name="sub1">　
+		<input type="image" src="{{IMG_URL_TEST}}goo.jpg" value="1" name="sub1">　
+		<input type="image" src="{{IMG_URL_TEST}}choki.png" value= "2" name="sub1">　
+		<input type="image" src="{{IMG_URL_TEST}}paa.jpg" value= "3" name="sub1">　
 	</form>
 
 @endif

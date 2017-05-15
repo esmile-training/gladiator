@@ -17,10 +17,10 @@ class BattleCharaModel extends \App\Model\BaseGameModel
 $sql = <<< EOD
 	SELECT
 		uBattleChara.id as uBattleCharaId,
-		bHp,
-		bGooAtk,
-		bChoAtk,
-		bPaaAtk,
+		battleHp,
+		battleGooAtk,
+		battleChoAtk,
+		battlePaaAtk,
 		hand,
 		result,
 		uChara.id as uCharaId,
@@ -56,8 +56,8 @@ $sql = <<< EOD
 			'{$gooAtk}',
 			'{$choAtk}',
 			'{$paaAtk}',
-			'未設定',
-			'未設定',
+			0,
+			0,
 			'{$time}',
 			'{$time}'
 		);
@@ -75,10 +75,10 @@ EOD;
 	{
 $sql = <<< EOD
 	UPDATE  uBattleChara
-	SET		bHp		= {$battleChara['bHp']},
-			bGooAtk = {$battleChara['bGooAtk']},
-			bChoAtk = {$battleChara['bChoAtk']},
-			bPaaAtk = {$battleChara['bPaaAtk']},
+	SET		battleHp		= {$battleChara['battleHp']},
+			battleGooAtk = {$battleChara['battleGooAtk']},
+			battleChoAtk = {$battleChara['battleChoAtk']},
+			battlePaaAtk = {$battleChara['battlePaaAtk']},
 			hand	= '{$battleChara['hand']}',
 			result	= '{$battleChara['result']}'
 	WHERE   id		= {$battleChara['uBattleCharaId']};

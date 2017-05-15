@@ -16,7 +16,7 @@
 <form action="{{APP_URL}}battle/preparationBattle" method="get">
 	<div>
 		@foreach($viewData['difficultyList'] as $arena)
-			<input type="radio" name="arenaDifficulty" value="{{$arena}}" >{{$arena}}<br>
+			<input type="radio" name="arenaDifficulty" value="{{$arena['id']}}" >{{$arena['name']}}<br>
 		@endforeach
 		<input type="hidden" name="selectedCharaId" value="{{$viewData['selectedCharaId']}}">
 		<input type="submit" value="決定">
