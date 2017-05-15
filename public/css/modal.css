@@ -4,15 +4,15 @@
 .modal_container {
   color: #ccc;
   text-align: center;
-  padding-bottom:50px;
+  padding-bottom:0px;
 }
 .modal_btn {
-  /*border: 1px solid #7a7a7a;*/
-  /*padding: 10px;*/
-  /*margin: 10px;*/
- /* border-radius: 20px*;*/
+  /*border: 1px solid #7a7a7a;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
   cursor: pointer;
-  /*background-color: #666;*/
+  background-color: #666;*/
 }
 .md-btn:hover {
   background-color: #6e6e6e;

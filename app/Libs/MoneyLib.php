@@ -11,10 +11,14 @@ class MoneyLib extends BaseGameLib
 
 		$this->Model->exec('user', 'updateMoney', array($user));
 	}
+	
 
 	// 減算処理
 	public function Subtraction($user, $sub)
 	{
+		$user['money'] = $user['money'] - $sub;
+
+		$this->Model->exec('user', 'updateMoney', array($user));		
 		$user['money'] = $user['money'] - $sub;
 
 		// お金が0より少なくなってしまった場合
@@ -24,6 +28,7 @@ class MoneyLib extends BaseGameLib
 		}
 		$this->Model->exec('user', 'updateMoney', array($user));
 	}
+	
 
 	// 乗算処理
 	public function Multiplication($user, $mul)
@@ -32,6 +37,7 @@ class MoneyLib extends BaseGameLib
 
 		$this->Model->exec('user', 'updateMoney', array($user));		
 	}
+	
 
 	// 除算処理
 	public function division($user, $div)
@@ -41,4 +47,5 @@ class MoneyLib extends BaseGameLib
 		$this->Model->exec('user', 'updateMoney', array($user));
 	}
 
+}
 }
