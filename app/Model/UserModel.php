@@ -101,12 +101,15 @@ EOD;
 
 	public function charaStatus($userId) {
 $sql = <<< EOD
+
 	UPDATE user
 	SET totalStatus = (SELECT SUM(hp) FROM uChara WHERE userId = $userId))
 	WHERE id = $userId;
 EOD;
+
 		return $this->charaUpdate($sql);
 	}
+
 	
 	public function ticketRecovery($userId, $ticket, $nextRecoveryTime)
 	{
@@ -116,7 +119,7 @@ EOD;
 		ticketLossTime = '{$nextRecoveryTime}'
 	    WHERE id = {$userId};
 EOD;
-	return parent::update($sql);
+		$this->update($sql);
 	}
 		    
 	/*
@@ -135,7 +138,6 @@ EOD;
 	/*
 	 * 最大数から1個目のバトルチケットを消費した時の更新処理
 	 */
-
 	public function firstLossTicket($user, $time) {
 $sql = <<< EOD
 	UPDATE  user
