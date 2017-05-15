@@ -83,29 +83,20 @@ body{
     background-color:#ffffff;
     color:#000000;
     font-family:"NotoSansCJKjp-Regular";
-	font-size:100%;
+    font-size:100%;
     height:auto;
-	line-height:1.5;
-	text-align:justify;
-	text-justify:inter-ideograph;
+    line-height:1.5;
+    text-align:justify;
+    text-justify:inter-ideograph;
     width:100%;
 }
 /* リンク  */
 a{
-    color:#000;
-    display:inline-block;
     text-decoration:none;
-    transition: 0.5s;
-	-webkit-transition: 0.5s;
-	-moz-transition: 0.5s;
-	-o-transition: 0.5s;
-	-ms-transition: 0.5s;
-    width:100%;
+    margin: 0;
+    padding: 0;
 }
-a:hover{
-    cursor:pointer;
-	text-decoration:underline;
-}
+
 img{
     transition: 0.5s;
     -webkit-transition: 0.5s;
@@ -141,11 +132,10 @@ img{
 }
 /*wrapper*/
 #wrapper {
-	background: #ffffaf;
     height: auto;
     margin: 0 auto;
     overflow: hidden;
-    max-width: 450px;
+    max-width: 100%;
 }
 
 ul{
@@ -169,7 +159,7 @@ li{
  */
 
 img{
-    display: block;
+    display: inline-block;
     margin: 0 auto;
     padding: 0;
 }
@@ -180,24 +170,46 @@ img{
 }
 
 .headerImg{
-    max-width: 100%;
+    width: 100%;
     height: auto;
+}
+
+.headButtonImg{
+    width: 20%;
+}
+
+.topButtonArrange{
+    position: absolute;
+    width: 100%;
 }
 
 .topButton{
-    position: absolute;
-    max-width: 20%;
-    height: auto;
-    left: 0px;
-    top: 0px;
+    left: 1%;
+    top: 8%;
 }
 
 .menuButton{
-    position: absolute;
-    right: 1vw;
-    top: 0.7vh;
-    width: 20%;
+    right: -79%;
+    top: 6%;
 }
+
+.moneyGauge{
+    position: absolute;
+    width: 20%;
+    top: 45%;
+    left: 20%;
+}
+
+.battleTicketGauge{
+    position: absolute;
+    width: 20%;
+    top: 54%;
+    right: 22%;
+}
+
+/*
+ * footer
+ */
 
 footer {
 	background: #bbb;

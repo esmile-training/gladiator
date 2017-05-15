@@ -13,9 +13,19 @@
 	<div id="wrapper">
 		<header>
 			<div class="headPosition">
-				<img class="headerImg" src="{{MYPAGE_IMG_URL}}headerImg2.png" />
-				<img class="topButton" src="{{MYPAGE_IMG_URL}}topButton.png" />
-				<img class="menuButton" src="{{MYPAGE_IMG_URL}}menuButton.png" />
+				<img class="headerImg" src="{{MYPAGE_IMG_URL}}headerImg.png" />
+				<div class="topButtonArrange topButton">
+					<a href="{{APP_URL}}mypage/index"><img class="headButtonImg" src="{{MYPAGE_IMG_URL}}topButton.png" /></a>
+				</div>
+				<div class="topButtonArrange menuButton">
+					<img class="headButtonImg" src="{{MYPAGE_IMG_URL}}menuButton.png" />
+				</div>
+				<div class="moneyList">
+					<img class="moneyGauge" src="{{MYPAGE_IMG_URL}}moneyGauge.png" />
+				</div>
+				<div class="battleList">
+					<img class="battleTicketGauge" src="{{MYPAGE_IMG_URL}}battleTicketGauge.png" />
+				</div>
 			</div>
 <!--			<ul>
 				<li><a href="{{APP_URL}}top/login">所持金</a></li>
