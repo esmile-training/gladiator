@@ -48,4 +48,3 @@ class MoneyLib extends BaseGameLib
 	}
 
 }
-}
