@@ -17,7 +17,7 @@ class MoneyLib extends BaseGameLib
 	{
 		
 		if($user['money'] <= $sub){
-			exit;
+	
 		}
 		else{
 			$user['money'] = $user['money'] - $sub;

@@ -1,23 +1,24 @@
-@include('common/css', ['file' => 'char'])
+@include('common/css', ['file' => 'gacha'])
 
+<img class="rate" src="{{IMG_URL_TEST}}{{$viewData['rarity']}}.png">
+
+{{--画像--}}
+<div style="text-align:center;">
+	<img class="char" src="{{CHAR_IMG_URL}}{{$viewData['charaId']}}.png">	 
+</div>
+
+
+<img class="waku" src="{{IMG_URL_TEST}}statuswaku.jpg">
 <div>
-	<img class="rate" src="{{IMG_URL_TEST}}{{$viewData['rarity']}}.png"width= 15% height= 15%>
-
-    {{--画像--}}
-     <img class="char" src="{{CHAR_IMG_URL}}{{$viewData['charaId']}}.png"width= 35% height= 55%>	 
-	<div>
+	<div class="name">
 		<?php echo $viewData['firstname'],'・',$viewData['lastname']?>
 	</div>
-	<div>
-		<?php echo 'hp			',$viewData['hp']?>
+	<div class="hp">
+		<?php echo 'HP:			',$viewData['hp']?>
 	</div>
-	<div>
-		<?php echo 'gu		',$viewData['gu']?>
-	</div>
-	<div>
-		<?php echo 'choki		',$viewData['choki']?>
-	</div>
-	<div>
-		<?php echo 'paa		',$viewData['paa']?>
+	<div class="font">
+		<?php echo 'グー:		',$viewData['gu']?>
+		<?php echo 'チョキ:		',$viewData['choki']?>
+		<?php echo 'パー:		',$viewData['paa']?>
 	</div>
 </div>

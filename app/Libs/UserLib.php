@@ -25,4 +25,5 @@ class UserLib extends BaseGameLib
 	$userData = $this->Model->exec('User', 'getById', false, $userId);
 	return $userData;
     }
+	
 }

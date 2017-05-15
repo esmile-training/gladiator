@@ -26,7 +26,8 @@ class EditController extends BaseGameController
 			$userId = $this->Model->exec('User', 'createUser', [$teamName]);
 			//Cookieの値をuserIDに書き換え
 			setcookie('userId', $userId, time() + 60*60*24*365*20, '/');
-
+			
+			
 			//マイページヘリダイレクト
 			return $this->Lib->redirect('mypage', 'index');
 		} else {
