@@ -41,4 +41,3 @@ class SelectCharaController extends BaseGameController
 		return ($this->Lib->redirect('charastatus',"",$selectedChara));
 	}
 }
-

@@ -46,13 +46,13 @@ class EditController extends BaseGameController
 		$atkArray = array('50', '50', '50');
 		$atkArray[$Atk] = 200;
 		$newCoachState = array('imgId' => 1,
-									'name' => 'テストコーチ・'.$name,
-									'rare' => 1,
-									'attribute' => $att,
-									'hp' => 300,
-									'gooAtk' => $atkArray[0],
-									'choAtk' => $atkArray[1],
-									'paaAtk' => $atkArray[2]);
+								'name' => 'テストコーチ・'.$name,
+								'rare' => 1,
+								'attribute' => $att,
+								'hp' => 300,
+								'gooAtk' => $atkArray[0],
+								'choAtk' => $atkArray[1],
+								'paaAtk' => $atkArray[2]);
 		$this->Model->exec('Coach','insertCoach',array($newCoachState));
 	}
 }
