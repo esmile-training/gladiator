@@ -11,7 +11,7 @@ class GachaController extends BaseGameController
 	}
 	public function eventsSelect()
 	{
-		$time = $this->Model->exec('Gacha', 'getTime');
+		$time = $this->Model->exec('Gacha', 'getTime',$this->user['id']);
 		$createTime = $time[0]['createTime'];
 		$this->viewData['createTime'] = $createTime;
 		$this->viewData['nowTime'];
