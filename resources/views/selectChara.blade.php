@@ -15,13 +15,14 @@
 		@foreach($viewData['charaList'] as $chara)		
 			{{-- popupボタン --}}
 			<div class="modal_container">
+				<br><?php if($chara['trainingState'] == 1) echo	 '訓練中'; ?>
 				<input type='image' class="modal_btn charastatus{{ $count }}" src="{{CHAR_IMG_URL}}{{$chara['imgId']}}.png" width="75" height="100">{{$chara['name']}}
 			</div>
 			{{-- popupウインドウ --}}
 			<div class="modal charastatus{{ $count }}">
 				@include('popup/charastatus')
 				<div class="modal_frame">
-						<div class="close">
+					<div class="close">
 						<span>close</span>
 					</div>
 				</div>

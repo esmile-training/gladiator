@@ -9,6 +9,12 @@
 	<?php $count = 0; ?>
 	<div>
 		@foreach($viewData['coachList'] as $coach)
+		<?php if($coach['state'] == 1) { ?>
+		<div>
+			訓練中
+			<image src="{{CHAR_IMG_URL}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}
+		</div>
+		<?php } else { ?>
 			{{-- popupボタン --}}
 			<div class="modal_container">
 				<input type='image' class="modal_btn confirmChangeCoach{{ $count }}" src="{{CHAR_IMG_URL}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}
@@ -24,6 +30,7 @@
 			</div>				
 			<input type="hidden" name="charaId" value="{{$_GET['id']}}">
 			<?php $count++; ?>
+		<?php } ?>
 		@endforeach
 	</div>
 

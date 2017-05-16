@@ -8,7 +8,7 @@
 		echo 'グー:'.$chara['gooAtk'].'<br>';
 		echo 'チョキ:'.$chara['choAtk'].'<br>';
 		echo 'パー:'.$chara['paaAtk'].'<br>';
-	 ?>
+	 if($chara['trainingState'] == 0) {?>
 	<form action="SelectCoach/index" method="get">
 		<input type="hidden" name="id" value=<?php echo $chara['id'] ?>>
 		<input type="hidden" name="rare" value=<?php echo $chara['rare'] ?>>
@@ -21,4 +21,5 @@
 		<input type="hidden" name="paaAtk" value=<?php echo $chara['paaAtk'] ?>>
 		<input type="submit" value="引退" >
 	</form>
+	 <?php } else { echo '<br>'.'訓練中です'; }?>
 </div>

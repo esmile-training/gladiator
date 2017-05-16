@@ -12,7 +12,7 @@ class SelectCharaController extends BaseGameController
 		// ユーザーIDを取得する
 		$userId = $this->user['id'];
 		// DBのキャラクターデータを取得する
-		$alluChara = $this->Model->exec('Chara','getUserChara',$userId);
+		$alluChara = $this->Model->exec('Chara','getAllUserChara',$userId);
 
 		// DBからキャラクターを取得できたかを確認する
 		if(isset($alluChara))
