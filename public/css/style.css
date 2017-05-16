@@ -90,11 +90,18 @@ body{
     text-justify:inter-ideograph;
     width:100%;
 }
-/* リンク  */
+/*
+ * 各タグの初期設定
+ */
 a{
     text-decoration:none;
+    display: inline-block;
     margin: 0;
     padding: 0;
+}
+
+input[type="image"]:focus {
+  outline: 0;
 }
 
 img{
@@ -114,6 +121,7 @@ img:hover{
 #g_nav li:hover {
 	background-color:#eee;
 }
+
 /* ドラッグ禁止 */
 img{
     pointer-events:none;
@@ -164,8 +172,8 @@ img{
     padding: 0;
 }
 
-.headPosition{
-    position: relative;
+.headerPosition{
+    position: fixed;
     width: 100%;
 }
 
@@ -175,12 +183,12 @@ img{
 }
 
 .headButtonImg{
-    width: 20%;
+    width: 100%;
 }
 
-.topButtonArrange{
+.headerButtonArrange{
     position: absolute;
-    width: 100%;
+    width: 20%;
 }
 
 .topButton{
@@ -189,20 +197,16 @@ img{
 }
 
 .menuButton{
-    right: -79%;
-    top: 6%;
+    right: 1%;
+    top: 5%;
 }
 
 .moneyGauge{
-    position: absolute;
-    width: 20%;
     top: 45%;
     left: 20%;
 }
 
 .battleTicketGauge{
-    position: absolute;
-    width: 20%;
     top: 54%;
     right: 22%;
 }
@@ -211,9 +215,14 @@ img{
  * footer
  */
 
-footer {
-	background: #bbb;
-	height: 54px;
+.footerPosition{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.footerImg{
+    width: 100%;
 }
 /*---------------------------------
 共通設定終了

@@ -188,7 +188,8 @@ EOD;
     {
 $sql = <<< EOD
 	UPDATE uRanking 
-	SET weekRange = '{$monday}'
+	SET weekRange	= '{$monday}',
+		weeklyAward = 0
 	WHERE userId = $userId;
 EOD;
 	return parent::update($sql);

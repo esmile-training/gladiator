@@ -12,19 +12,19 @@
 	<body>
 	<div id="wrapper">
 		<header>
-			<div class="headPosition">
-				<img class="headerImg" src="{{MYPAGE_IMG_URL}}headerImg.png" />
-				<div class="topButtonArrange topButton">
-					<a href="{{APP_URL}}mypage/index"><img class="headButtonImg" src="{{MYPAGE_IMG_URL}}topButton.png" /></a>
+			<div class="headerPosition">
+				<img class="headerImg" src="{{HEADER_IMG_URL}}header.png" />
+				<div class="headerButtonArrange topButton">
+					<a href="{{APP_URL}}mypage/index"><img class="headButtonImg" src="{{HEADER_IMG_URL}}topNomal.png" /></a>
 				</div>
-				<div class="topButtonArrange menuButton">
-					<img class="headButtonImg" src="{{MYPAGE_IMG_URL}}menuButton.png" />
+				<div class="headerButtonArrange menuButton">
+					<input type="image" class="headButtonImg" src="{{HEADER_IMG_URL}}menuNomal.png" />
 				</div>
 				<div class="moneyList">
-					<img class="moneyGauge" src="{{MYPAGE_IMG_URL}}moneyGauge.png" />
+					<img class="headerButtonArrange moneyGauge" src="{{HEADER_IMG_URL}}money.png" />
 				</div>
 				<div class="battleList">
-					<img class="battleTicketGauge" src="{{MYPAGE_IMG_URL}}battleTicketGauge.png" />
+					<img class="headerButtonArrange battleTicketGauge" src="{{HEADER_IMG_URL}}battleTicket.png" />
 				</div>
 			</div>
 <!--			<ul>
