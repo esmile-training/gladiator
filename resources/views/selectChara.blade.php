@@ -7,7 +7,10 @@
 </div>
 
 {{--所持キャラクターをすべて表示する--}}
-<?php $count = 1; ?>
+<?php if(is_null($viewData['charaList'])){ 
+	 echo '<div>'.'キャラクターがいません。','<div>';
+	} else {
+	$count = 1; ?>
 	<div>
 		@foreach($viewData['charaList'] as $chara)
 			<img src="{{CHAR_IMG_URL}}{{$chara['imgId']}}.png" width="75" height="100">{{$chara['name']}}<br>
@@ -30,4 +33,5 @@
 
 			<?php $count++; ?>
 		@endforeach
+<?php } ?>	
 	</div>

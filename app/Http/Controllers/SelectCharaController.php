@@ -24,8 +24,10 @@ class SelectCharaController extends BaseGameController
 		}
 		else
 		{
+			$this->viewData['charaList'] = null;
 			// キャラクターのデータが無ければ、マイページへリダイレクトする
-			$this->Lib->redirect('mypage','index');
+			return viewWrap('selectChara',$this->viewData);
+			//$this->Lib->redirect('mypage','index');
 		}
 	}
 
