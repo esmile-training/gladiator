@@ -6,7 +6,7 @@
 
 {{-- 画像 --}}
 <div>
-    <img class="admin_title" src="{{IMG_URL}}title.png">
+    <img class="admin_title" src="{{IMG_URL}}admin/titleLogo.png">
 </div>
 
 {{-- ユーザエディット  --}}
