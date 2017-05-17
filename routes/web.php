@@ -14,13 +14,13 @@
 
 //urlからcontrollerを解釈
 Route::get(
-	( isset( $_SERVER['REDIRECT_URL'] ) )? $_SERVER['REDIRECT_URL'] : '/',
+	( REDIRECT_URL )? REDIRECT_URL : '/',
 	ucfirst(CONTROLLER_NAME).'Controller@'.ACTION_NAME
 );
 
 //post用の処理(内容は上と同一)
 Route::post(
-	( isset( $_SERVER['REDIRECT_URL'] ) )? $_SERVER['REDIRECT_URL'] : '/',
+	( REDIRECT_URL )? REDIRECT_URL : '/',
 	ucfirst(CONTROLLER_NAME).'Controller@'.ACTION_NAME
 );
 
