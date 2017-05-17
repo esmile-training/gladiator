@@ -1,3 +1,5 @@
+{{-- js --}}
+@include('common/js', ['file' => 'training'])
 <form action="{{APP_URL}}training/infoSet" method="get" >
 	<select name="trainingTime">
 			<option>1</option>
@@ -12,7 +14,7 @@
 			<option>10</option>
 	</select>
 
-	<input type ="submit" name="uCoachId" value="{{$val['id']}}">
+	<input type ="submit" name="uCoachId" value="{{$uCharaId}}">
 	<input type ="hidden" name="uCharaId" value="{{$viewData['uCharaId']}}">
 	<input type ="hidden" name="uCoachHp" value="{{$val['hp']}}">
 </form>
