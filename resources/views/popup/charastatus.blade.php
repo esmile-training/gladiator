@@ -1,7 +1,7 @@
 <div>
 	<img class="rate" src="{{IMG_URL_GACHA}}{{$chara['rare']}}.png"width= 5% height= 5%><br>
 	<img class="char" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png"width= 15% height= 15%><br>
-	<?PHP			
+	<?PHP
 		echo $chara['name'].'<br>';
 		echo $chara['attribute'].'<br>';
 		echo '体力:'.$chara['hp'].'<br>';
