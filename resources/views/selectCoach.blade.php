@@ -6,17 +6,19 @@
 	<font color="red">※選択したコーチは引退となります。</font>
 	</center>
 </div>
-<form action="setCoach" method="get">
 	<?php $count = 0; ?>
 	<div>
 		@foreach($viewData['coachList'] as $coach)
-			<img src="{{CHAR_IMG_URL}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}<br>
-			<br>
+		<?php if($coach['state'] == 1) { ?>
+		<div>
+			訓練中
+			<image src="{{CHAR_IMG_URL}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}
+		</div>
+		<?php } else { ?>
 			{{-- popupボタン --}}
 			<div class="modal_container">
-				<span class="modal_btn confirmChangeCoach{{ $count }}">Show modal</span>
-			</div>
-			
+				<input type='image' class="modal_btn confirmChangeCoach{{ $count }}" src="{{CHAR_IMG_URL}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}
+			</div>			
 			{{-- popupウインドウ --}}
 			<div class="modal confirmChangeCoach{{ $count }}">
 			@include('popup/confirmChangeCoach')
@@ -25,12 +27,12 @@
 						<span>close</span>
 					</div>
 				</div>
-			</div>
-				
+			</div>				
 			<input type="hidden" name="charaId" value="{{$_GET['id']}}">
+			<?php $count++; ?>
+		<?php } ?>
 		@endforeach
 	</div>
-</form>
 
 <form action ="deleteChara" method="get">
 	<input type="hidden" name="id" value="{{$_GET['id']}}">

@@ -25,7 +25,7 @@ $sql = <<< EOD
 	INSERT INTO uCoach 
 	VALUES (
 		NULL,
-		'{$_COOKIE['userId']}',
+		'{$newCoachState['userId']}',
 		'{$newCoachState['imgId']}',
 		'{$newCoachState['name']}',
 		'{$newCoachState['rare']}',

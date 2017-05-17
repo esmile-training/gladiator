@@ -12,7 +12,7 @@ class SelectCharaController extends BaseGameController
 		// ユーザーIDを取得する
 		$userId = $this->user['id'];
 		// DBのキャラクターデータを取得する
-		$alluChara = $this->Model->exec('Chara','getUserChara',$userId);
+		$alluChara = $this->Model->exec('Chara','getAllUserChara',$userId);
 
 		// DBからキャラクターを取得できたかを確認する
 		if(isset($alluChara))
@@ -24,8 +24,10 @@ class SelectCharaController extends BaseGameController
 		}
 		else
 		{
+			$this->viewData['charaList'] = null;
 			// キャラクターのデータが無ければ、マイページへリダイレクトする
-			$this->Lib->redirect('mypage','index');
+			return viewWrap('selectChara',$this->viewData);
+			//$this->Lib->redirect('mypage','index');
 		}
 	}
 

@@ -29,9 +29,9 @@ class EditController extends BaseGameController
 			setcookie('userId', $userId, time() + 60*60*24*365*20, '/');
 			
 			//初期コーチの作成
-			$this->addCoach('グー', 'goo', 0);
-			$this->addCoach('チョキ', 'choki', 1);
-			$this->addCoach('パー', 'paa', 2);
+			$this->addCoach($userId,'グー', 'goo', 0);
+			$this->addCoach($userId,'チョキ', 'choki', 1);
+			$this->addCoach($userId,'パー', 'paa', 2);
 			
 			//マイページヘリダイレクト
 			return $this->Lib->redirect('mypage', 'index');
@@ -41,11 +41,12 @@ class EditController extends BaseGameController
 		}
 	}
 	
-	public function  addCoach($name, $att, $Atk)
+	public function  addCoach($userId,$name, $att, $Atk)
 	{
 		$atkArray = array('50', '50', '50');
 		$atkArray[$Atk] = 200;
-		$newCoachState = array('imgId' => 1,
+		$newCoachState = array( 'userId' => $userId,
+								'imgId' => 1,
 								'name' => 'テストコーチ・'.$name,
 								'rare' => 1,
 								'attribute' => $att,
