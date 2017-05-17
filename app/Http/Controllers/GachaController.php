@@ -46,9 +46,8 @@ class GachaController extends BaseGameController
 		
 		//ガチャの選択して割合算出
 		$this->viewData['ratio'] = $this->Lib->exec('RandamChara', 'getGachaRatio');
-	
-		$ratio = $this->viewData['ratio']['hit'];
 
+		$ratio = $this->viewData['ratio']['hit'];
 		
 		//キャラの画像ID取得
 		if($gachaVal == 8){

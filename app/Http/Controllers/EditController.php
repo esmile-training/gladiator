@@ -29,13 +29,20 @@ class EditController extends BaseGameController
 			setcookie('userId', $userId, time() + 60*60*24*365*20, '/');
 
 			$gachaValueList = [0=>12,12,13];
+			
 			foreach($gachaValueList as $value)
 			{
+				//ガチャの選択して割合算出
+				$this->viewData['ratio'] = $this->Lib->exec('RandamChara', 'getGachaRatio',$value);
+
+				$ratio = $this->viewData['ratio']['hit'];
+			
 			
 				$sex = false;
 				
 				$this->viewData['chara'] = $this->Lib->exec('RandamChara', 'getCharaImgId', [$sex],$value);
-
+				
+				
 				//キャラのステータス
 				$this->viewData['valueList'] = $this->Lib->exec('RandamChara', 'getValueConf',$ratio,$value);
 				
