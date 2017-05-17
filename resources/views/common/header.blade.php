@@ -14,17 +14,10 @@
 		<header>
 			<div class="headerPosition">
 				<img class="headerImg" src="{{HEADER_IMG_URL}}header.png" />
-				<div class="headerButtonArrange topButton">
-					<a href="{{APP_URL}}mypage/index"><img class="headButtonImg" src="{{HEADER_IMG_URL}}topNomal.png" /></a>
-				</div>
-				<div class="headerButtonArrange menuButton">
-					<input type="image" class="headButtonImg" src="{{HEADER_IMG_URL}}menuNomal.png" />
-				</div>
-				<div class="moneyList">
-					<img class="headerButtonArrange moneyGauge" src="{{HEADER_IMG_URL}}money.png" />
-				</div>
-				<div class="battleList">
-					<img class="headerButtonArrange battleTicketGauge" src="{{HEADER_IMG_URL}}battleTicket.png" />
+				<div class="fadeButton">
+					<a href="{{APP_URL}}top/login">
+						<img class="topButton" src="{{HEADER_IMG_URL}}topNomal.png"/>
+					</a>
 				</div>
 			</div>
 <!--			<ul>
