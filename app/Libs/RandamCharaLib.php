@@ -4,11 +4,12 @@ namespace App\Libs;
 
 class RandamCharaLib extends BaseGameLib {
 	
-	public static function getGachaRatio() {
+	public static function getGachaRatio($gachavalue = null) {
 		
-		//ガチャの選択
-		$gachavalue = (int)filter_input(INPUT_GET,"gachavalue");
-
+		if(is_null($gachavalue)){
+			//ガチャの選択
+			$gachavalue = (int)filter_input(INPUT_GET,"gachavalue");
+		}
 		//ガチャのレア度ごとの割合
 		$gachaConf = \Config::get('gacha.eRate');
 		
@@ -37,9 +38,11 @@ class RandamCharaLib extends BaseGameLib {
 		
 		return $ratio;
 	}		
-	public function getCharaImgId($sex = false) 
+	public function getCharaImgId($sex = false, $gachavalue = null) 
 	{
-		$gachavalue = (int)filter_input(INPUT_GET,"gachavalue");
+		if( is_null($gachavalue) ){
+			$gachavalue = (int)filter_input(INPUT_GET,"gachavalue");
+		}
 		
 		if($sex == 1 )
 		{	
@@ -60,10 +63,12 @@ class RandamCharaLib extends BaseGameLib {
 		}
 	}
 
-	public function getValueConf($ratio) 
+	public function getValueConf($ratio, $gachavalue = null) 
 	{
-		//ガチャの種類取得
-		$gachaV = (int)filter_input(INPUT_GET,"gachavalue");
+		if(is_null($gachavalue)){
+			//ガチャの種類取得
+			$gachaV = (int)filter_input(INPUT_GET,"gachavalue");
+		}
 		//configからデータ取ってくる
 		$gachaConf = \Config::get('gacha.eRate');
 		//ガチャのコンフィグの中のステータスがヌルじゃないとき
