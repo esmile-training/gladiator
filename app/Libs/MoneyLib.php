@@ -18,9 +18,6 @@ class MoneyLib extends BaseGameLib
 	{
 		$user['money'] = $user['money'] - $sub;
 
-		$this->Model->exec('user', 'updateMoney', array($user));		
-		$user['money'] = $user['money'] - $sub;
-
 		// お金が0より少なくなってしまった場合
 		if($user['money'] < 0)
 		{

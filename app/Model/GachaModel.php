@@ -20,7 +20,7 @@ EOD;
      */
 	public function createChara($charaData)
 	{
-
+	
 	$sql = <<< EOD
 	INSERT INTO  uChara 
 	VALUES (

@@ -27,11 +27,45 @@ class EditController extends BaseGameController
 			
 			//Cookieの値をuserIDに書き換え
 			setcookie('userId', $userId, time() + 60*60*24*365*20, '/');
+
+			$gachaValueList = [0=>12,12,13];
 			
-			//初期コーチの作成
-			$this->addCoach($userId,'グー', 'goo', 0);
-			$this->addCoach($userId,'チョキ', 'choki', 1);
-			$this->addCoach($userId,'パー', 'paa', 2);
+			
+				$sex = false;
+				
+				$this->viewData['chara'] = $this->Lib->exec('RandamChara', 'getCharaImgId', [$sex],$value);
+
+				//キャラのステータス
+				$this->viewData['valueList'] = $this->Lib->exec('RandamChara', 'getValueConf',$ratio,$value);
+				
+				//性別データの格納
+				$sexData = $this->viewData['chara']['sex'];
+
+				//キャラネーム 
+				$this->viewData['name'] = $this->Lib->exec('RandamChara', 'randamCharaName', [$sexData]);
+				
+				//DBへの受け渡し
+				$charaData = [
+				'userId' => $userId,
+				'uCharaId' => $this->viewData['chara']['charaId'],
+				'uCharaFirstName' => $this->viewData['name']['firstname']['name'],
+				'uCharaLastName' => $this->viewData['name']['lastname']['familyname'],
+				'ratio' => $ratio,
+				'gu' => $this->viewData['valueList']['gu'],
+				'choki' => $this->viewData['valueList']['choki'],
+				'paa' => $this->viewData['valueList']['paa'],
+				'hp' => $this->viewData['valueList']['hp'],
+				'narrow' => $this->viewData['valueList']['narrow'],
+				];
+				$this->Model->exec('Gacha', 'createChara', array($charaData));
+				
+			}
+			$this->Lib->exec('WeekRange','rangeState',$userId);
+
+//			//初期コーチの作成
+//			$this->addCoach('グー', 'goo', 0);
+//			$this->addCoach('チョキ', 'choki', 1);
+//			$this->addCoach('パー', 'paa', 2);
 			
 			//マイページヘリダイレクト
 			return $this->Lib->redirect('mypage', 'index');

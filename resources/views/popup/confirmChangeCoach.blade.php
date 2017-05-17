@@ -3,14 +3,14 @@
 </div>
 <div>
 	<div>
-		<image src="{{CHAR_IMG_URL}}{{$coach['imgId']}}.png" alt="コーチイメージ"<
+		<image src="{{IMG_URL_CHARA}}{{$coach['imgId']}}.png" alt="コーチイメージ"<
 			name="imgId" value="{{$coach['id']}}" width="75" height="100">{{$coach['name']}}<br>
 	</div>
 	<div>
 	↓
 	</div>
 	<div>
-		<image src="{{CHAR_IMG_URL}}{{$viewData['selectCharaState']['imgId']}}.png" alt="キャライメージ"<
+		<image src="{{IMG_URL_CHARA}}{{$viewData['selectCharaState']['imgId']}}.png" alt="キャライメージ"<
 			name="imgId" value="{{$viewData['selectCharaState']['id']}}" width="75" height="100">{{$viewData['selectCharaState']['name']}}<br>
 	</div>
 	<form action="changeCoach" method="get">

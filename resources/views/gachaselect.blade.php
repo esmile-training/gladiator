@@ -1,14 +1,30 @@
 @include('common/css', ['file' => 'gachaselect'])
-<div>
-<img class="kanban" src="{{IMG_URL_TEST}}kanban.png">
+<div class = "all">
+	<div>
+		<img class="kanban" src="{{IMG_URL_GACHA}}kanban.png">
+	</div>
+	
+	<div class = "junban0">
+		<img class="waku" src="{{IMG_URL_GACHA}}wakunormal.png">
+	</div>
+	{{-- popupボタン --}}
+	<div class = "junban1">
+		<div class="modal_container">
+			<div class = "button1">
+				<input type="image" class="modal_btn gacha1" src="{{IMG_URL_GACHA}}gachabutton1.png" name = 'gachavalue' value = "1" width= 100% height= 100%>
+			</div>
+			<div class = "button2">
+				<input type="image" class="modal_btn gacha2" src="{{IMG_URL_GACHA}}gachabutton2.png" name = 'gachavalue' value = "2"width= 100% height= 100%>
+			</div>
+			<div class = "button3">
+				<input type="image" class="modal_btn gacha3" src="{{IMG_URL_GACHA}}gachabutton3.png" name = 'gachavalue' value = "3"width= 100% height= 100%>
+			</div>
+		</div>
+	</div>
 </div>
-{{-- popupボタン --}}
-<div class="modal_container">
-	<input type="image" class="modal_btn gacha1" src="{{IMG_URL_TEST}}gachabutton1.png" name = 'gachavalue' value = "1" width= 100% height= 100%>
-	<input type="image" class="modal_btn gacha2" src="{{IMG_URL_TEST}}gachabutton2.png" name = 'gachavalue' value = "2"width= 100% height= 100%>
-	<input type="image" class="modal_btn gacha3" src="{{IMG_URL_TEST}}gachabutton3.png" name = 'gachavalue' value = "3"width= 100% height= 100%>
-</div>
-<a href="{{APP_URL}}gacha/eventsSelect"><img src="{{IMG_URL_TEST}}gachawaku.png"width = 50%><p class="text">イベント</p></a>
+<a href="{{APP_URL}}gacha/eventsSelect">
+	<input type="submit" class = "eventebutton">
+</a>
 {{-- popupウインドウ --}}
 <div class="modal gacha1">
 	@include('popup/'.'gacha', ['gachaId' => 1])
