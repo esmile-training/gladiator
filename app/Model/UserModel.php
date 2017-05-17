@@ -98,7 +98,6 @@ EOD;
 	/*
 	 * キャラステータスの更新
 	 */
-
 	public function charaStatus($userId) {
 $sql = <<< EOD
 	SELECT battleTicket, ticketLossTime

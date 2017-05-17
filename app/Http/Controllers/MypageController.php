@@ -6,7 +6,7 @@ class MypageController extends BaseGameController
     public function index()
     {
 		//訓練が終了しているキャラがいるか確認し、いたらフラグを戻す
-		$trainingInfo = $this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime']));
+		$trainingInfo = $this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'], $this->user['id']));
 		if(isset($trainingInfo))
 		{
 			echo('訓練が完了した剣闘士がいます！');

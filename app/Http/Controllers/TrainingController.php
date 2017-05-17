@@ -7,13 +7,12 @@ class TrainingController extends BaseGameController
 	public function index()
 	{
 		//訓練が終了しているキャラがいるか確認し、いたらフラグを戻す
-		$this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'],true));
+		$this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'], $this->user['id'], true));
 		//所持しているキャラのデータを持ってくる
 		$uCharaData = $this->Model->exec('Chara', 'getUserChara', false, $this->user['id']);
 		
 		if(!isset($uCharaData))
 		{
-			echo '訓練可能な剣闘士が一人もいません';
 			return viewWrap('Error',$this->viewData);
 		}else{
 			$this->viewData['charaList'] = $uCharaData;
@@ -26,6 +25,7 @@ class TrainingController extends BaseGameController
 		//uCharaIdをGETしviewDataに保持
 		$uCharaId = filter_input(INPUT_GET,"uCharaId");
 		$this->viewData['uCharaId'] = $uCharaId;
+		
 		//今回強化するキャラクターの攻撃力、強化回数の取得
 		$uCharaAtkInfo = $this->Model->exec('Training','getUCharaStatus', $uCharaId);
 		//所持しているコーチのデータを持ってくる
@@ -33,26 +33,24 @@ class TrainingController extends BaseGameController
 		
 		if(!isset($uCoachData))
 		{
-			echo '訓練可能なコーチが一人もいません';
 			return viewWrap('Error',$this->viewData);
 		}
 		
 		//コーチごとに各攻撃力の成長確率を算出し格納する
 		$coachCnt = 0;
-		foreach($uCoachData as $key)
+		foreach($uCoachData as $coachInfo)
 		{
-			foreach($uCharaAtkInfo as $val)
-			{
-				$key['gooUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
-															array($key['gooAtk'],$val['gooAtk'],$val['gooUpCnt']));
-				$key['choUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
-															array($key['choAtk'],$val['choAtk'],$val['choUpCnt']));
-				$key['paaUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
-															array($key['paaAtk'],$val['paaAtk'],$val['paaUpCnt']));
-			}
-			$uCoachData[$coachCnt]['gooUpProbability'] = $key['gooUpProbability'];
-			$uCoachData[$coachCnt]['choUpProbability'] = $key['choUpProbability'];
-			$uCoachData[$coachCnt]['paaUpProbability'] = $key['paaUpProbability'];
+			
+			$coachInfo['gooUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
+														array($coachInfo['gooAtk'],$uCharaAtkInfo['gooAtk'],$uCharaAtkInfo['gooUpCnt']));
+			$coachInfo['choUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
+														array($coachInfo['choAtk'],$uCharaAtkInfo['choAtk'],$uCharaAtkInfo['choUpCnt']));
+			$coachInfo['paaUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
+														array($coachInfo['paaAtk'],$uCharaAtkInfo['paaAtk'],$uCharaAtkInfo['paaUpCnt']));
+			
+			$uCoachData[$coachCnt]['gooUpProbability'] = $coachInfo['gooUpProbability'];
+			$uCoachData[$coachCnt]['choUpProbability'] = $coachInfo['choUpProbability'];
+			$uCoachData[$coachCnt]['paaUpProbability'] = $coachInfo['paaUpProbability'];
 			$coachCnt++;
 		}
 		
@@ -89,15 +87,17 @@ class TrainingController extends BaseGameController
 		];
 		
 		//TrainingModelのsetEndDateに訓練情報を渡す
-		$this->Model->exec('Training','setEndDate',array($trainingData));
+		$this->Model->exec('Training','setEndDate',array($trainingData,$this->user['id']));
 		//キャラクターとコーチの訓練状態を変更
 		$this->Model->exec('Training','uCharaStateChange',array($uCharaId,1));
 		$this->Model->exec('Training','uCoachStateChange',array($uCoachId,1));
 		
 		//訓練料金を割り出すためにコーチのHPをGET
-		//$uCoachHp		= (int)filter_input(INPUT_GET,"uCoachHp");
+		$uCoachHp	 = (int)filter_input(INPUT_GET,"uCoachHp");
+		
 		//マージしたらuMoneyと合わせて使う、訓練の金額を算出して格納
-		//$trainingFee = $uCoachHp * 10 * $trainingTime * (100 - ($trainingTime - 1) * 3) / 100;
+		$trainingFee = $uCoachHp * 10 * $trainingTime * (100 - ($trainingTime - 1) * 3) / 100;
+		$this->Lib->exec('money','Subtraction',array($this->user,$trainingFee));
 		
 		//リダイレクト
 		return $this->Lib->redirect('training', 'index');

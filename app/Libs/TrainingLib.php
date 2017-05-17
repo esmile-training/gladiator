@@ -6,22 +6,27 @@ class TrainingLib extends BaseGameLib
 	/*
 	 * 訓練が終了しているか確認する
 	 */
-	public function endCheck($nowTime, $isTrainingPage = false)
+	public function endCheck($nowTime, $userId ,$isTrainingPage = false)
 	{
-		$endTraining = $this->Model->exec('Training', 'getEndDate', $nowTime);
-		
-		// MypageControllerからこの処理に入った場合はキャラの強化はしない TrainingControllerからこの処理に入った場合はキャラの強化もする
+		//訓練終了時刻を過ぎているデータを取得
+		$endTraining = $this->Model->exec('Training', 'getEndDate', array($nowTime, $userId));
+		//訓練終了時刻を過ぎているものがあり、かつ訓練所ページから参照された場合は強化結果を反映する
 		if(isset($endTraining) && $isTrainingPage == true)
 		{
-			$trainingState = 2;
-			TrainingLib::uCharaAtkUp(array_column($endTraining, 'id'));
-			$this->Model->exec('Training','uCharaStateChange',array((int)array_column($endTraining, 'uCharaId')[0],0));
-			$this->Model->exec('Training','uCoachStateChange',array((int)array_column($endTraining, 'uCoachId')[0],0));
-			$this->Model->exec('Training', 'stateChange', array((int)array_column($endTraining,'id')[0], $trainingState), $this->user['id']);
-			
+			foreach($endTraining as $val)
+			{
+				$trainingState = 2;
+				TrainingLib::uCharaAtkUp($val['id']);
+				$this->Model->exec('Training', 'uCharaStateChange', array($val['uCharaId'],0));
+				$this->Model->exec('Training', 'uCoachStateChange', array($val['uCoachId'],0));
+				$this->Model->exec('Training', 'stateChange', array($val['id'], $trainingState), $this->user['id']);
+			}
 		}else if(isset($endTraining) && $isTrainingPage == false){
-			$trainingState = 1;
-			$this->Model->exec('Training', 'stateChange', array((int)array_column($endTraining,'id')[0], $trainingState), $this->user['id']);
+			foreach($endTraining as $val)
+			{
+				$trainingState = 1;
+				$this->Model->exec('Training', 'stateChange', array($val['id'], $trainingState), $this->user['id']);
+			}
 			return $endTraining;
 		}
 	}
@@ -34,80 +39,69 @@ class TrainingLib extends BaseGameLib
 	{
 		//uTrainingテーブルの情報取得
 		$trainingInfo = $this->Model->exec('Training','getInfo',$trainingId);
-		
-		foreach($trainingInfo as $key)
-		{
-			//訓練時間取得
-			$time		= (int)$key['time'];
-			$uCoachId	= (int)$key['uCoachId'];
-			$uCharaId	= (int)$key['uCharaId'];
-		}
-		
 		//コーチの攻撃力取得
-		$uCoachAtk = $this->Model->exec('Training','getUCoachAtk', $uCoachId);
-		foreach($uCoachAtk as $key)
-		{
-			$coachGooAtk = (int)$key['gooAtk'];
-			$coachChoAtk = (int)$key['choAtk'];
-			$coachPaaAtk = (int)$key['paaAtk'];
-		}
-		
+		$uCoachAtk = $this->Model->exec('Training','getUCoachAtk', $trainingInfo['uCoachId']);
 		//キャラの攻撃力取得
-		$uCharaStatus = $this->Model->exec('Training','getUCharaStatus', $uCharaId);
-		foreach($uCharaStatus as $key)
-		{
-			$charaHp		= (int)$key['hp'];
-			$charaGooAtk	= (int)$key['gooAtk'];
-			$charaChoAtk	= (int)$key['choAtk'];
-			$charaPaaAtk	= (int)$key['paaAtk'];
-			$gooUpCnt		= (int)$key['gooUpCnt'];
-			$choUpCnt		= (int)$key['choUpCnt'];
-			$paaUpCnt		= (int)$key['paaUpCnt'];
-		}
+		$uCharaStatus = $this->Model->exec('Training','getUCharaStatus', $trainingInfo['uCharaId']);
 		
-		$statusUpCnt = 0;
+		$gooResult = TrainingLib::atkUpProbability($uCoachAtk['gooAtk'],$uCharaStatus['gooAtk'],$uCharaStatus['gooUpCnt']);
+		$choResult = TrainingLib::atkUpProbability($uCoachAtk['choAtk'],$uCharaStatus['choAtk'],$uCharaStatus['choUpCnt']);
+		$paaResult = TrainingLib::atkUpProbability($uCoachAtk['paaAtk'],$uCharaStatus['paaAtk'],$uCharaStatus['paaUpCnt']);
+		
 		//コーチのグー、チョキ、パーそれぞれの攻撃力とキャラのグー、チョキ、パーそれぞれの攻撃力から上昇率を算出
-		for($i = 0; $i <= $time; $i++)
+		for($i = 0; $i <= $trainingInfo['time']; $i++)
 		{
-			$gooResult = TrainingLib::atkUpProbability($coachGooAtk,$charaGooAtk,$gooUpCnt);
-			$choResult = TrainingLib::atkUpProbability($coachChoAtk,$charaChoAtk,$choUpCnt);
-			$paaResult = TrainingLib::atkUpProbability($coachPaaAtk,$charaPaaAtk,$paaUpCnt);
-			
-			$gooJudgeValue = rand(1, 100);
-			if($gooResult >= $gooJudgeValue)
-			{
-				$charaGooAtk++;
-				$gooUpCnt++;
-				$statusUpCnt++;
-			}
-			$choJudgeValue = rand(1, 100);
-			if($choResult >= $choJudgeValue)
-			{
-				$charaChoAtk++;
-				$choUpCnt++;
-				$statusUpCnt++;
-			}
-			$paaJudgeValue = rand(1, 100);
-			if($paaResult >= $paaJudgeValue)
-			{
-				$charaPaaAtk++;
-				$paaUpCnt++;
-				$statusUpCnt++;
-			}
+			TrainingLib::atkUpJudge($gooResult,$choResult,$paaResult);
+		}
+		$this->Model->exec('Training', 'updateStatus', array($trainingInfo));
+	}
+	
+	public function  atkUpJudge($gooResult,$choResult,$paaResult)
+	{
+		//ステータスの強化される値
+		$charaGooAtk = 0;
+		$charaChoAtk = 0;
+		$charaPaaAtk = 0;
+		
+		//ステータスの上昇回数を格納する変数
+		$gooUpCnt	 = 0;
+		$choUpCnt	 = 0;
+		$paaUpCnt	 = 0;
+		$statusUpCnt = 0;
+
+		$gooJudgeValue = rand(1, 100);
+		if($gooResult >= $gooJudgeValue)
+		{
+			$charaGooAtk++;
+			$gooUpCnt++;
+			$statusUpCnt++;
+		}
+		$choJudgeValue = rand(1, 100);
+		if($choResult >= $choJudgeValue)
+		{
+			$charaChoAtk++;
+			$choUpCnt++;
+			$statusUpCnt++;
+		}
+		$paaJudgeValue = rand(1, 100);
+		if($paaResult >= $paaJudgeValue)
+		{
+			$charaPaaAtk++;
+			$paaUpCnt++;
+			$statusUpCnt++;
 		}
 		
-		$charaHp = $charaHp + $statusUpCnt;
-		
-		$statusInfo = [
-			'hp'		=> $charaHp,
-			'gooAtk'	=> $charaGooAtk,
-			'choAtk'	=> $charaChoAtk,
-			'paaAtk'	=> $charaPaaAtk,
-			'gooUpCnt'	=> $gooUpCnt,
-			'choUpCnt'	=> $choUpCnt,
-			'paaUpCnt'	=> $paaUpCnt
+		$result = [
+			'gooAtk'		=> $charaGooAtk,
+			'choAtk'		=> $charaChoAtk,
+			'paaAtk'		=> $charaPaaAtk,
+			'gooUpAtk'		=> $gooUpCnt,
+			'choUpAtk'		=> $choUpCnt,
+			'paaUpAtk'		=> $paaUpCnt,
+			'statusUpCnt'	=> $statusUpCnt
 		];
-		$this->Model->exec('Training', 'updateStatus', array($statusInfo,$uCharaId));
+		
+		return $result;
 	}
 	
 	/*
@@ -115,8 +109,14 @@ class TrainingLib extends BaseGameLib
 	 */
 	public function atkUpProbability($uCoachAtk,$uCharaAtk,$atkUpCnt)
 	{
-		$result = $uCoachAtk / $uCharaAtk * 0.5 * (100 - $atkUpCnt);
+		$probability = \Config::get('training.probability');
+		$result = $uCoachAtk / $uCharaAtk * $probability * (100 - $atkUpCnt);
+		
+		//$result(確率の計算結果)が101(％)以上だったら$resultに100を入れる
+		if($result >= 101)
+		{
+			$result = 100;
+		}
 		return round($result,2);
 	}
-
 }
