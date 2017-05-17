@@ -182,30 +182,33 @@ img{
     height: auto;
 }
 
-.fadeButton {
-    background: url(http://esmile-sys.sakura.ne.jp/gladiator/img/header/topDown.png) no-repeat;
-    position: absolute;
-    top: 5%;
-    left: 1%;
-    width: 21%;
-    background-size: contain;
-}
-
-.fadeButton a {
-    display: inline-block;
-}
-
-.fadeButton a img{
+.headButtonImg{
     width: 100%;
 }
 
-.fadeButton a:active {
-    background-color: transparent; /* IE6対応 */
+.headerButtonArrange{
+    position: absolute;
+    width: 20%;
 }
 
-.fadeButton a:hover img {
-    visibility: hidden;
-    width: 99%;
+.topButton{
+    left: 1%;
+    top: 8%;
+}
+
+.menuButton{
+    right: 1%;
+    top: 5%;
+}
+
+.moneyGauge{
+    top: 45%;
+    left: 20%;
+}
+
+.battleTicketGauge{
+    top: 54%;
+    right: 22%;
 }
 
 /*

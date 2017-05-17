@@ -4,11 +4,12 @@ namespace App\Libs;
 
 class RandamCharaLib extends BaseGameLib {
 	
-	public static function getGachaRatio() {
+	public static function getGachaRatio($gachavalue = null) {
 		
-		//ガチャの選択
-		$gachavalue = (int)filter_input(INPUT_GET,"gachavalue");
-
+		if(is_null($gachavalue)){
+			//ガチャの選択
+			$gachavalue = (int)filter_input(INPUT_GET,"gachavalue");
+		}
 		//ガチャのレア度ごとの割合
 		$gachaConf = \Config::get('gacha.eRate');
 		
@@ -37,9 +38,11 @@ class RandamCharaLib extends BaseGameLib {
 		
 		return $ratio;
 	}		
-	public function getCharaImgId($sex = false) 
+	public function getCharaImgId($sex = false, $gachavalue = null) 
 	{
-		$gachavalue = (int)filter_input(INPUT_GET,"gachavalue");
+		if( is_null($gachavalue) ){
+			$gachavalue = (int)filter_input(INPUT_GET,"gachavalue");
+		}
 		
 		if($sex == 1 )
 		{	
@@ -60,10 +63,12 @@ class RandamCharaLib extends BaseGameLib {
 		}
 	}
 
-	public function getValueConf($ratio) 
+	public function getValueConf($ratio, $gachavalue = null) 
 	{
-		//ガチャの種類取得
-		$gachaV = (int)filter_input(INPUT_GET,"gachavalue");
+		if(is_null($gachavalue)){
+			//ガチャの種類取得
+			$gachaV = (int)filter_input(INPUT_GET,"gachavalue");
+		}
 		//configからデータ取ってくる
 		$gachaConf = \Config::get('gacha.eRate');
 		//ガチャのコンフィグの中のステータスがヌルじゃないとき
@@ -104,11 +109,11 @@ class RandamCharaLib extends BaseGameLib {
 			//降順
 			arsort($atk);
 			//一番の大きい値を入れる
-			$attack['1'] = current($atk);
+			$attack[1] = current($atk);
 			//二番の大きい値を入れる
-			$attack['2'] = current(array_slice($atk,1));
+			$attack[2] = current(array_slice($atk,1));
 			//三番の大きい値を入れる
-			$attack['3'] = current(array_slice($atk,2));
+			$attack[3] = current(array_slice($atk,2));
 
 			
 			$rand = rand(1,3);
@@ -121,19 +126,19 @@ class RandamCharaLib extends BaseGameLib {
 			}
 				
 			if($rand == 1){
-				$attk['gu'] = $attack['1'];
-				$attk['choki'] = $attack['2'];
-				$attk['paa'] = $attack['3'];
+				$attk['gu'] = $attack[1];
+				$attk['choki'] = $attack[2];
+				$attk['paa'] = $attack[3];
 				$narrow = 'gu';
 			}else if($rand == 2){
-				$attk['gu'] = $attack['2'];
-				$attk['choki'] = $attack['1'];
-				$attk['paa'] = $attack['3'];
+				$attk['gu'] = $attack[2];
+				$attk['choki'] = $attack[1];
+				$attk['paa'] = $attack[3];
 				$narrow = 'choki';
 			}else{
-				$attk['gu'] = $attack['2'];
-				$attk['choki'] = $attack['3'];
-				$attk['paa'] = $attack['1'];
+				$attk['gu'] = $attack[2];
+				$attk['choki'] = $attack[3];
+				$attk['paa'] = $attack[1];
 				$narrow = 'paa';
 			}
 			$valueListConf['gu'] = $attk['gu'];

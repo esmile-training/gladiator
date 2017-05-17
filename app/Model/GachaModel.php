@@ -3,12 +3,13 @@ namespace App\Model;
 
 class GachaModel extends BaseGameModel
 {
-	public function getTime()
+	public function getTime($userId)
 	{
 $sql =  <<< EOD
 	SELECT *
 	FROM uGachaLog
 	WHERE gachaId = '4'
+	AND userId = {$userId}
 	ORDER BY createTime DESC LIMIT 1;
 EOD;
 	$resultTime = $this->select($sql,'all');
@@ -19,11 +20,11 @@ EOD;
      */
 	public function createChara($charaData)
 	{
-
+	
 	$sql = <<< EOD
 	INSERT INTO  uChara 
 	VALUES (
-	NULL,
+		NULL,
 		'0',
 		'{$charaData['userId']}',
 		'{$charaData['uCharaId']}',
@@ -34,9 +35,9 @@ EOD;
 		'{$charaData['gu']}',
 		'{$charaData['choki']}',
 		'{$charaData['paa']}',
-		 '0',
-		 '0',  
-		 '0',
+		'0',
+		'0',  
+		'0',
 		'0',
 		NULL,
 		NULL
@@ -57,7 +58,7 @@ $sql = <<< EOD
 	VALUES (
 		'{$charaData['GachaVal']}',
 		'{$charaData['userId']}',
-		'{$result[0]['id']}',
+		'{$result['id']}',
 		'{$time}',
 		'{$time}'
     );
@@ -74,7 +75,7 @@ $sql =  <<< EOD
 	FROM uChara
 	ORDER BY id desc LIMIT 1;
 EOD;
-	$result = $this->select($sql,'all');
+	$result = $this->select($sql,'first');
  	return $result;
 	}
 }

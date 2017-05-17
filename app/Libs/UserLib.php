@@ -16,7 +16,6 @@ class UserLib extends BaseGameLib
 	if( !$userData ) $this->redirect('edit');
 	return $userData;
     }
-
     /*
      * ユーザ認証
      */
@@ -25,4 +24,5 @@ class UserLib extends BaseGameLib
 	$userData = $this->Model->exec('User', 'getById', false, $userId);
 	return $userData;
     }
+	
 }

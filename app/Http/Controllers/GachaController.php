@@ -11,7 +11,7 @@ class GachaController extends BaseGameController
 	}
 	public function eventsSelect()
 	{
-		$time = $this->Model->exec('Gacha', 'getTime');
+		$time = $this->Model->exec('Gacha', 'getTime',$this->user['id']);
 		$createTime = $time[0]['createTime'];
 		$this->viewData['createTime'] = $createTime;
 		$this->viewData['nowTime'];
@@ -46,9 +46,8 @@ class GachaController extends BaseGameController
 		
 		//ガチャの選択して割合算出
 		$this->viewData['ratio'] = $this->Lib->exec('RandamChara', 'getGachaRatio');
-	
-		$ratio = $this->viewData['ratio']['hit'];
 
+		$ratio = $this->viewData['ratio']['hit'];
 		
 		//キャラの画像ID取得
 		if($gachaVal == 8){

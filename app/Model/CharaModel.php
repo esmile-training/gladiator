@@ -56,5 +56,19 @@ EOD;
 		$this->update($sql);
 	}
 
-
+	/*
+	 * 所持キャラクター一覧表示用sql(追加者:吉田)
+	 */
+	public function getAllUserChara($userId)
+		{
+			// SQLに接続する
+$sql = <<< EOD
+				SELECT *
+				FROM uChara
+				WHERE userID = {$userId}
+				AND delFlag = 0
+				LIMIT 10
+EOD;
+			return $this->select($sql);
+		}
 }

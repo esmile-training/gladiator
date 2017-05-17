@@ -1,0 +1,90 @@
+body {
+    background-image:
+		url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/gachabackground.png);
+	/* 画像を常に天地左右の中央に配置 */
+	background-position: center center;
+   
+	/* 画像をタイル状に繰り返し表示しない */
+	background-repeat: no-repeat;
+   
+	/* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+	background-attachment: fixed;
+   
+	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+	background-size: cover;
+}
+.char{
+	width:90%;
+	text-align: center;
+}
+.rate{ 
+	width:20%; 
+	text-align: center;
+	position:relative;
+	bottom:22px; 
+	left:0px;
+	z-index:2;
+}
+.waku{
+	width:80%;
+	position: absolute;
+    margin: auto;
+	position: relative;
+	bottom: 35px;
+}
+.waku1{
+	width:100%;
+	vertical-align: bottom; 
+}
+.waku2{
+	width:100%;
+	vertical-align: bottom; 
+}
+.waku3{
+	width:100%;
+	vertical-align: bottom; 
+}
+.name{
+	color: #FFFFFF;
+
+}
+.hp{
+	color: #FFFFFF;
+}
+.font{
+	float: left;
+	color: #FFFFFF;
+}
+.hoge{
+	font-size: 4vw;
+	position: absolute;
+	bottom: 60px;
+	left: 20%;
+}
+.relative{
+	position: relative;
+	bottom: 0;
+}
+.flash{
+	text-align:center;
+	width:93%;
+	position:relative;
+	top:45px;
+}
+.charabox{
+	text-align:center;
+	position: relative;
+	z-index: 0;
+}
+.test{
+	position: absolute;
+	top: 35px;
+}
+.logo{
+	text-align:center;
+	width:80%;
+	position:relative;
+	bottom:30px;
+	left:0px;
+	z-index: 3;
+}

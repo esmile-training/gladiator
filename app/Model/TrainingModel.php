@@ -12,7 +12,7 @@ $sql =  <<< EOD
 		SELECT *
 		FROM uCoach
 		WHERE userId = $userId
-		AND trainingState = 0
+		AND State != 2
 		LIMIT 3
 EOD;
 		return $this->select($sql, 'all');
@@ -60,9 +60,9 @@ $sql =  <<< EOD
 		WHERE endDate <= '{$nowTime}'
 		AND state != 2
 EOD;
-		return $this->select($sql, 'all');
+		return $this->select(IMG_URL_CHARA, 'all');
 	}
-	
+
 	/*
 	 * キャラクターの攻撃力を取得
 	 */

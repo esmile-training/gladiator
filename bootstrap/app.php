@@ -63,7 +63,7 @@ if( strpos($_SERVER['SERVER_NAME'],'vagrant') ){
 if( IS_LOCAL ){
     define("APP_URL", "http://www.gladiator.vagrant.com/");
 } else {
-    define("APP_URL", "http://esmile-sys.sakura.ne.jp/gladiator/");
+    define("APP_URL", "http://esmile-sys.sakura.ne.jp/gladiator/public/");
 }
 
 //サーバURL
@@ -77,11 +77,22 @@ define("HEADER_IMG_URL", SERVER_URL."img/header/");
 
 define("FOOTER_IMG_URL", SERVER_URL."img/footer/");
 
+// バトル中画像
+define("IMG_URL_BATTLE", SERVER_URL."img/battle/");
+// ガチャ画像
+define("IMG_URL_GACHA", SERVER_URL."img/gacha/");
+// キャラ画像
+define("IMG_URL_CHARA", SERVER_URL."img/chara/");
+
+
 //URL解釈
-$redirectUrl	= ( isset( $_SERVER['REDIRECT_URL'] ) )? explode('/', $_SERVER['REDIRECT_URL']) : array();
+define("REDIRECT_URL", isset( $_SERVER['REDIRECT_URL'] )? str_replace("/gladiator/public", "", $_SERVER['REDIRECT_URL']) : false);
+
+$redirectUrl	= ( REDIRECT_URL )? explode('/', REDIRECT_URL) : array();
 $controllerName = ( isset($redirectUrl[1]) )? $redirectUrl[1] : 'top';
 $actionName	= ( isset($redirectUrl[2]) )? $redirectUrl[2] : 'index' ;
 define("CONTROLLER_NAME", $controllerName);
 define("ACTION_NAME", $actionName);
+
 
 return $app;

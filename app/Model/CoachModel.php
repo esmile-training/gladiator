@@ -9,7 +9,7 @@ class CoachModel extends BaseGameModel
 	public function getById($uCoachId)
 	{
 		// SQLに接続する
-		$sql = <<< EOD
+$sql = <<< EOD
 			SELECT *
 			FROM uCoach
 			WHERE id = {$uCoachId}
@@ -19,21 +19,21 @@ EOD;
 	}
 	
 		//コーチの追加
-	public function insertCoach ( $uCharaId, $uCharaName, $ratio, $attribute, $hp, $atk1, $atk2, $atk3)
+	public function insertCoach ($newCoachState)
 	{
 $sql = <<< EOD
 	INSERT INTO uCoach 
 	VALUES (
 		NULL,
-		'{$_COOKIE['userId']}',
-		'{$uCharaId}',
-		'{$uCharaName}',
-		'{$ratio}',
-		'{$attribute}',
-		'{$hp}',
-		'{$atk1}',
-		'{$atk2}',
-		'{$atk3}',
+		'{$newCoachState['userId']}',
+		'{$newCoachState['imgId']}',
+		'{$newCoachState['name']}',
+		'{$newCoachState['rare']}',
+		'{$newCoachState['attribute']}',
+		'{$newCoachState['hp']}',
+		'{$newCoachState['gooAtk']}',
+		'{$newCoachState['choAtk']}',
+		'{$newCoachState['paaAtk']}',
 		'0',
 		NULL,
 		NULL
@@ -45,9 +45,10 @@ EOD;
 	//コーチの削除
 	public function deleteCoach($uCoachId){
 $sql = <<< EOD
-	DELETE FROM uCoach
+	UPDATE uCoach
+	SET state = 2
 	WHERE id = {$uCoachId};
 EOD;
-	$result = $this->delete($sql);
+	$result = $this->update($sql);
 	}
 }

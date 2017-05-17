@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 // Lib
@@ -184,27 +183,27 @@ class battleController extends BaseGameController
 		
 		return view('battle', ['viewData' => $this->viewData]);
 	}
-	
+
 	// リザルト画面を表示するファンクション
 	public function battleResult()
 	{
 		// リダイレクト元から賞金データを取得
 		$prize = filter_input(INPUT_GET,"money");
-		
+
 		// getRankingData ファンクションを呼び出し、ランキングデータを取得
 		$this->getRankingData();
 
 		// リザルト画面に必要なデータを viewData に渡す
 		$this->viewData['Prize']		= $prize;
 		$this->viewData['RankingData']	= $this->RankingData;
-		
+
 		return viewWrap('battleEnd', $this->viewData);
 	}
 
 	// データベースからデータをそれぞれの変数に格納するファンクション
 	public function getBattleData()
 	{
-		
+
 		// config/battle で指定した三すくみの名前を読み込み
 		// 1 = 'グー' 2 = 'チョキ' 3 = 'パー' で指定中
 		$this->TypeData	= \Config::get('battle.typeStr');
@@ -236,19 +235,19 @@ class battleController extends BaseGameController
 			$this->EnemyData = $this->Model->exec('BattleEnemy', 'getBattleEnemyData', $this->BattleData['uBattleEnemyId']);
 		}
 	}
-	
+
 	// データベースからランキングデータを RankingData に格納するファンクション
 	public function getRankingData()
 	{
 		// ユーザーIDを元に週間のランキングデータを読み込み
 		$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
 
-//		// ランキングデータがなければ、新しくランキングデータを作成してから読み込み
-//		if(is_null($this->RankingData))
-//		{
-//			$this->Model->exec('Ranking','insertRankingData',$this->user['id']);
-//			$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
-//		}
+		// ランキングデータがなければ、新しくランキングデータを作成してから読み込み
+		if(is_null($this->RankingData))
+		{
+			$this->Model->exec('Ranking','insertRankingData',$this->user['id']);
+			$this->RankingData = $this->Model->exec('Ranking', 'getRankingData', $this->user['id']);
+		}
 	}
 
 	// バトルデータを更新するファンクション
@@ -317,7 +316,7 @@ class battleController extends BaseGameController
 	 * リザルト画面に必要なデータの作成、更新をするファンクション
 	 */
 	public function makeResultData()
-	{
+	{	
 		// getData ファンクションを呼び出し、バトルデータをセット
 		$this->getBattleData();
 		
@@ -344,14 +343,22 @@ class battleController extends BaseGameController
 			$this->Lib->exec('Money', 'addition', array($this->user, $prize['money']));
 			// ユーザーのウィークリーポイント 'weeklyAward' に賞金額を加算しデータベースに格納
 			$this->Lib->exec('Ranking', 'weeklyAdd', array($this->RankingData, $prize['money']));
-			
 		}
 		// 敵のHPが0以上の場合(試合全体としてプレイヤーが負けた場合)
 		else if($this->CharaData['battleHp'] <= 0)
 		{
 			$this->Model->exec('Chara','charaDelFlag',$this->CharaData['uCharaId']);
 		}
-		
+		// どちらのHPも0以上の場合(降参として処理が呼ばれた場合)
+		else
+		{
+			// 降参費用額計算
+			$surrenderCost['money'] =  BattleLib::surrenderCostCalc($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData);
+
+			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
+			$this->Lib->exec('Money', 'Subtraction', array($this->user, $surrenderCost['money']));
+		}
+
 		// delFlagを立てる更新
 		$this->standDelFlag();
 
@@ -359,7 +366,7 @@ class battleController extends BaseGameController
 	}
 	
 	/*
-	 * delFlagを立てる処理
+	 * delFlagを立てるファンクション
 	 */
 	public function standDelFlag()
 	{
@@ -369,6 +376,5 @@ class battleController extends BaseGameController
 
 		// uBattleInfo(DB) の delFlag を立てる更新
 		$this->Model->exec('BattleInfo', 'UpdateInfoFlag', $this->BattleData['id']);
-		
 	}
 }

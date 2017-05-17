@@ -21,6 +21,9 @@ return  [
         ],
         7 => [
             'sex' => 1  
+        ],
+		8 => [
+            'sex' => 0  
         ]
     ],	'allname' => [
 			'firstname' => [
