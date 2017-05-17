@@ -3,7 +3,9 @@
 @include('common/js', ['file' => 'admin'])
 
 <div>
+	<center>
 		キャラクター一覧
+	</center>
 </div>
 
 {{--所持キャラクターをすべて表示する--}}
@@ -12,6 +14,7 @@
 	} else {
 	$count = 1; ?>
 	<div>
+		@foreach($viewData['charaList'] as $chara)
 			{{-- popupボタン --}}
 			<div class="modal_container">
 				<br><?php if($chara['trainingState'] == 1) echo	 '訓練中'; ?>
