@@ -3,7 +3,9 @@
 @include('common/js', ['file' => 'admin'])
 
 <div>
+	<center>
 		キャラクター一覧
+	</center>
 </div>
 
 {{--所持キャラクターをすべて表示する--}}

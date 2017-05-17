@@ -11,8 +11,10 @@
 		@foreach($viewData['coachList'] as $coach)
 		<?php if($coach['state'] == 1) { ?>
 		<div>
-			訓練中
-			<image src="{{CHAR_IMG_URL}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}
+			<center>
+				訓練中
+				<image src="{{CHAR_IMG_URL}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}
+			</center>
 		</div>
 		<?php } else { ?>
 			{{-- popupボタン --}}
