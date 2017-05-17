@@ -31,7 +31,10 @@ $sql = <<< EOD
 		hp,
 		gooAtk,
 		choAtk,
-		paaAtk
+		paaAtk,
+		gooUpCnt,
+		choUpCnt,
+		paaUpCnt
 	FROM uBattleChara
 	LEFT JOIN uChara
 	ON uBattleChara.uCharaId = uChara.id

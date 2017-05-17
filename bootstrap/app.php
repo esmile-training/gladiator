@@ -72,10 +72,12 @@ define("SERVER_URL", "http://esmile-sys.sakura.ne.jp/gladiator/");
 define("IMG_URL", SERVER_URL."img/");
 //DBサーバ
 define("DB_API_URL", SERVER_URL."dbapi/");
-
-define("IMG_URL_TEST", SERVER_URL."img/test/");
-
-define("CHAR_IMG_URL", SERVER_URL."img/test/chara");
+// バトル中画像
+define("IMG_URL_BATTLE", SERVER_URL."img/battle/");
+// ガチャ画像
+define("IMG_URL_GACHA", SERVER_URL."img/gacha/");
+// キャラ画像
+define("IMG_URL_CHARA", SERVER_URL."img/chara/");
 
 //URL解釈
 define("REDIRECT_URL", isset( $_SERVER['REDIRECT_URL'] )? str_replace("/gladiator/public", "", $_SERVER['REDIRECT_URL']) : false);

@@ -160,6 +160,16 @@ class BattleLib extends BaseGameLib
 		return $result;
 
 	}
+	
+	// 降参費用計算
+	public static function surrenderCostCalc($pcData, $Commission, $DifficulutyData, $EnemyData)
+	{
+		// 降参費用額計算
+		$result = ($pcData['hp'] * $Commission['Commission']) * ( $DifficulutyData[$EnemyData['difficulty']]['prizeRatio'] * 0.01);
+
+		return $result;
+
+	}
 
 	// 対戦データを生成する
 	public static function createMatchData($arenaData,$uCharaData,$enemyApp,$enemyName,$enemyStatus)
