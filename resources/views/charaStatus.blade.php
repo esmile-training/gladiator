@@ -1,6 +1,6 @@
 <div>
-	<img class="rate" src="{{IMG_URL_TEST}}{{$_GET['rare']}}.png"width= 15% height= 15%><br>
-	<img class="char" src="{{CHAR_IMG_URL}}{{$_GET['imgId']}}.png"width= 15% height= 15%><br>
+	<img class="rate" src="{{IMG_URL_GACHA}}{{$_GET['rare']}}.png"width= 15% height= 15%><br>
+	<img class="char" src="{{IMG_URL_CHARA}}{{$_GET['imgId']}}.png"width= 15% height= 15%><br>
 	<?PHP			
 		echo urldecode($_GET['name']).'<br>';
 		echo $_GET['attribute'].'<br>';

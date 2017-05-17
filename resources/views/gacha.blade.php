@@ -1,10 +1,10 @@
 @include('common/css', ['file' => 'char'])
 
 <div>
-	<img class="rate" src="{{IMG_URL_TEST}}{{$viewData['rarity']}}.png"width= 15% height= 15%>
+	<img class="rate" src="{{IMG_URL_GACHA}}{{$viewData['rarity']}}.png"width= 15% height= 15%>
 
     {{--画像--}}
-     <img class="char" src="{{CHAR_IMG_URL}}{{$viewData['charaId']}}.png"width= 35% height= 55%>	 
+     <img class="char" src="{{IMG_URL_CHARA}}{{$viewData['charaId']}}.png"width= 35% height= 55%>	 
 	<div>
 		<?php echo $viewData['firstname'],'・',$viewData['lastname']?>
 	</div>
