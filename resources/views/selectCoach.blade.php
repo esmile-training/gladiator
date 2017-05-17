@@ -10,7 +10,7 @@
 	<?php $count = 0; ?>
 	<div>
 		@foreach($viewData['coachList'] as $coach)
-			<img src="{{CHAR_IMG_URL}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}<br>
+			<img src="{{IMG_URL_CHARA}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}<br>
 			<br>
 			{{-- popupボタン --}}
 			<div class="modal_container">

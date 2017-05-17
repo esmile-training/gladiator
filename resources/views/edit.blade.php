@@ -7,5 +7,6 @@
 	<p>チーム名を入力してください<br>
 	<input type="text" name="teamName" value=""></p>
 	<input type="submit" value="登録">
+	<input type="hidden" name="gachavalue" value="12">
 	</form>
 </div>

@@ -73,9 +73,9 @@ define("IMG_URL", SERVER_URL."img/");
 //DBサーバ
 define("DB_API_URL", SERVER_URL."dbapi/");
 
-define("IMG_URL_TEST", SERVER_URL."img/test/");
+define("IMG_URL_GACHA", SERVER_URL."img/gacha/");
 
-define("CHAR_IMG_URL", SERVER_URL."img/test/chara");
+define("IMG_URL_CHARA", SERVER_URL."img/chara/");
 
 //URL解釈
 $redirectUrl	= ( isset( $_SERVER['REDIRECT_URL'] ) )? explode('/', $_SERVER['REDIRECT_URL']) : array();
