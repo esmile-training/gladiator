@@ -13,15 +13,22 @@ body {
 	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
 	background-size: cover;
 }
+.all{
+	width:100%;
+	position:fixed;
+	
+}
 .char{
-	width:90%;
-	text-align: center;
+	width: 80%;
+    text-align: center;
+    position: relative;
+    bottom: 30px;
 }
 .rate{ 
 	width:20%; 
 	text-align: center;
 	position:relative;
-	bottom:22px; 
+	bottom:90px; 
 	left:0px;
 	z-index:2;
 }
@@ -55,36 +62,41 @@ body {
 	float: left;
 	color: #FFFFFF;
 }
-.hoge{
-	font-size: 4vw;
-	position: absolute;
-	bottom: 60px;
-	left: 20%;
+.textbox{
+    font-size: 5vw;
+    position: absolute;
+    bottom: 57px;
+    left: 15%;
 }
-.relative{
-	position: relative;
-	bottom: 0;
+.absolute{
+	position: absolute;
+    top: 110vw;
 }
 .flash{
-	text-align:center;
-	width:93%;
-	position:relative;
-	top:45px;
+    text-align: center;
+    width: 80%;
+    position: relative;
+    top: 55px;
 }
 .charabox{
-	text-align:center;
-	position: relative;
-	z-index: 0;
+	text-align: center;
+    position: fixed;
+    top: 25vw;
+    z-index: 0;
 }
-.test{
+.chara{
 	position: absolute;
-	top: 35px;
+	top: 24px;
 }
 .logo{
 	text-align:center;
 	width:80%;
 	position:relative;
-	bottom:30px;
+	bottom:90px;
 	left:0px;
 	z-index: 3;
+}
+.all{
+	width: 100%;
+    position: fixed;
 }

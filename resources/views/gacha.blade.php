@@ -1,12 +1,12 @@
 @include('common/css', ['file' => 'gacha'])
-<div>
+<div class = "all">
 	<div>
 		{{--画像--}}
 		<div class = "charabox">
 			<div>
 				<img class="flash" src="{{IMG_URL_GACHA}}flash.png">
 			</div>
-			<div class = "test">
+			<div class = "chara">
 				<img class="char" src="{{IMG_URL_CHARA}}{{$viewData['charaId']}}.png">	 
 			</div>
 			{{--レア度--}}
@@ -22,7 +22,7 @@
 		<div class="waku">
 			<img class="waku1"src="{{IMG_URL_GACHA}}wakuUp.png"><img class="waku2"src="{{IMG_URL_GACHA}}wakuNaka.png"><img class="waku3"src="{{IMG_URL_GACHA}}wakuuUnder.png">
 		</div>
-		<div class = "hoge">
+		<div class = "textbox">
 			<div class="name">
 				<?php echo $viewData['firstname'],'・',$viewData['lastname']?>
 			</div>
