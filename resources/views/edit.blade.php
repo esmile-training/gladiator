@@ -13,7 +13,6 @@ function charCheck(){
 				r += 2; 
 			} 
 		}
-		document.form1.count.value=str.length;
 		if(r > 16){
 			if(str.length > 16)
 			{
@@ -62,7 +61,6 @@ function disbtn(b)
 
 	<font color="red">※全角８文字以内</font><br>
 	<form name="form1" action="addUser" method="get">
-		<input type="text" name="count" value=""><br>
 		<input type="text" name="teamName" onkeydown="charCheck()" onkeyup="charCheck()" onchange="wupBtn()"></p>
 		<input type="submit" value="登録" onclick="disbtn(this)" disabled>
 	<input type="hidden" name="gachavalue" value="12">
