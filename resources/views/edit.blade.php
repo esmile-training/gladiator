@@ -20,10 +20,27 @@ function charCheck(){
 	}
 }
 
-function blank_alert() {
-	if(document.form1.teamName.value==""){
-		alert("データを入力してください");
-	}
+function wupBtn(){
+
+  //名前と感想の欄のテキストを変数に代入する
+  var name = document.form1.elements[0].value;
+  
+  //名前若しくは感想欄のどちらかが空かチェック
+  if ( name == "" )
+  {
+    //どちらか空であれば、ボタンを押せなくする
+    document.form1.elements[1].disabled = true;
+  }else{
+    //両方とも書き込まれていたら、ボタンを押せるようにする
+    document.form1.elements[1].disabled = false;
+  } 
+}
+
+function disbtn(b)
+{
+      b.disabled = true;
+      b.value = '登録中';
+      b.form.submit();
 }
 </script>
 
@@ -38,7 +55,8 @@ function blank_alert() {
 
 	<font color="red">※全角８文字以内</font><br>
 	<form name="form1" action="addUser" method="get">
-		<input type="text" name="teamName" onblur="blank_alert()" onkeydown="charCheck()" onkeyup="charCheck()"></p>
-		<input type="submit" value="登録">
+		<input type="text" name="teamName" onkeydown="charCheck()" onkeyup="charCheck()" onchange="wupBtn()"></p>
+		<input type="submit" value="登録" onclick="disbtn(this)" disabled>
 	<input type="hidden" name="gachavalue" value="12">
-	</form></div>
+	</form>
+</div>
