@@ -1,7 +1,7 @@
             </div>
             <footer>
 				<div class="footerPosition">
-					<img class="footerImg" src="{{FOOTER_IMG_URL}}footerImg.png" />
+					<img class="footerImg" src="{{FOOTER_IMG_URL}}footer.png" />
 				</div>
 <!--				
 				<ul>
