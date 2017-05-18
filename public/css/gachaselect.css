@@ -1,5 +1,6 @@
-body {
-    background-image:
+#main{
+	
+	background-image:
 		url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/selectbackground.png);
 	/* 画像を常に天地左右の中央に配置 */
 	background-position: center center;
@@ -12,12 +13,16 @@ body {
    
 	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
 	background-size: cover;
+	
+	width: 100%;
+	height:100vh;
 }
 .kanban{
 	width: 35%;
     position: absolute;
     top: 22vw;
     left: 0px;
+	z-index:2;
 }
 .waku{
 	width:100%;
@@ -45,21 +50,20 @@ body {
 	position: relative;
 	bottom: 0;
 }
-
 .junban0{
-    z-index: 0;
+    z-index:0;
     position: absolute;
     top: 26vw;
     left: 0px;
-	/*padding-bottom: 200px;*/
 }
 .junban1{
 	width: 95%;
     text-align: center;
     position: absolute;
-    top: 41vw;
+    top: 40vw;
 }
 .all{
+	width:100%
 }
 .button1{
 	border-bottom: solid 10px transparent;
