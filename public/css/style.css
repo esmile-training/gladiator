@@ -200,7 +200,7 @@ img{
     width: 100%;
 }
 
-.fadeButton a:active {
+.fadeButton a:hover {
     background-color: transparent; /* IE6対応 */
 }
 

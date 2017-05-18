@@ -75,7 +75,7 @@
 	
 }
 .eventebutton{
-    opacity: 0.0;
+    /*opacity: 0.0;*/
     position: absolute;
     bottom: 23vw;
     right: 0;
@@ -83,7 +83,7 @@
     height: 34px;
 }
 .normalbutton{
-    opacity: 0.0;
+    /*opacity: 0.0;*/
     position: absolute;
     bottom: 25vw;
     width: 49%;
