@@ -77,10 +77,10 @@
 .eventebutton{
     /*opacity: 0.0;*/
     position: absolute;
-    bottom: 23vw;
+    bottom: 13%;
     right: 0;
     width: 48%;
-    height: 34px;
+    height: 5%;
 }
 .normalbutton{
     /*opacity: 0.0;*/
