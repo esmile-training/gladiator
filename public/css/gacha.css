@@ -1,6 +1,7 @@
-body{
-    background-image:
-		url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/gachabackground.png);
+#main{
+	
+	background-image:
+		url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/selectbackground.png);
 	/* 画像を常に天地左右の中央に配置 */
 	background-position: center center;
    
@@ -12,6 +13,9 @@ body{
    
 	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
 	background-size: cover;
+	
+	width: 100%;
+	height:100vh;
 }
 .all{
 	width:100%;
@@ -79,9 +83,9 @@ body{
     top: 55px;
 }
 .charabox{
-	text-align: center;
-    position: fixed;
-    top: 25vw;
+    text-align: center;
+    position: absolute;
+    top: 0;
     z-index: 0;
 }
 .chara{
@@ -98,5 +102,4 @@ body{
 }
 .all{
 	width: 100%;
-    position: fixed;
-}
+ }
