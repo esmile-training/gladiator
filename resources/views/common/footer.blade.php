@@ -1,6 +1,7 @@
             </div>
             <footer>
 				<div class="footerPosition">
+
 					<img class="footerImg" src="{{FOOTER_IMG_URL}}footer.png" />
 					<ul class="iconPosition">
 						<li><a href="{{APP_URL}}mypage/index"><img class="" src="{{FOOTER_IMG_URL}}homeIcon.png" /></a></li>

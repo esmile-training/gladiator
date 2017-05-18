@@ -80,7 +80,7 @@
 }
 /* ボディ */
 body{
-    background-color:#ffffff;
+    background-color:#000000;
     color:#000000;
     font-family:"NotoSansCJKjp-Regular";
     font-size:100%;
@@ -194,7 +194,8 @@ img{
     width: 100%;
 }
 
-.fadetopButton a:active {
+
+.fadeButton a:hover {
     background-color: transparent; /* IE6対応 */
 }
 
