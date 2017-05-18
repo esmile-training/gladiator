@@ -9,7 +9,7 @@
 		echo 'チョキ:'.$chara['choAtk'].'<br>';
 		echo 'パー:'.$chara['paaAtk'].'<br>';
 	 if($chara['trainingState'] == 0) {?>
-	<form action="SelectCoach/index" method="get">
+	<form action="selectCoach/index" method="get">
 		<input type="hidden" name="id" value=<?php echo $chara['id'] ?>>
 		<input type="hidden" name="rare" value=<?php echo $chara['rare'] ?>>
 		<input type="hidden" name="imgId" value=<?php echo $chara['imgId'] ?>>

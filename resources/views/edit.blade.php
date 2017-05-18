@@ -19,6 +19,12 @@ function charCheck(){
 		}
 	}
 }
+
+function blank_alert() {
+	if(document.form1.teamName.value==""){
+		alert("データを入力してください");
+	}
+}
 </script>
 
 <div align="center">
@@ -32,7 +38,7 @@ function charCheck(){
 
 	<font color="red">※全角８文字以内</font><br>
 	<form name="form1" action="addUser" method="get">
-		<input type="text" name="teamName" onkeydown="charCheck()" onkeyup="charCheck()"></p>
+		<input type="text" name="teamName" onblur="blank_alert()" onkeydown="charCheck()" onkeyup="charCheck()"></p>
 		<input type="submit" value="登録">
 	<input type="hidden" name="gachavalue" value="12">
 	</form></div>
