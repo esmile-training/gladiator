@@ -18,7 +18,7 @@
 			</div>
 		</div>
 	</div>
-	<div class = "relative">
+	<div class = "absolute">
 		<div class="waku">
 			<img class="waku1"src="{{IMG_URL_GACHA}}wakuUp.png"><img class="waku2"src="{{IMG_URL_GACHA}}wakuNaka.png"><img class="waku3"src="{{IMG_URL_GACHA}}wakuuUnder.png">
 		</div>
