@@ -3,7 +3,6 @@
 	<div>
 		<img class="kanban" src="{{IMG_URL_GACHA}}kanban.png">
 	</div>
-	
 	<div class = "junban0">
 		<img class="waku" src="{{IMG_URL_GACHA}}wakunormal.png">
 	</div>
