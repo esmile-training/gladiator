@@ -70,7 +70,15 @@ class BaseGameModel
 			\Log::error('Showing user profile for user: '.$response);
 		}
 	}
-
+	
+	/*
+	 * charaUpdate
+	 */
+	public function charaUpdate($sql)
+	{
+		$this->dbapi($sql, 'update');
+	}
+	
 	/*
 	 * UPDATE
 	 */
@@ -79,7 +87,7 @@ class BaseGameModel
 		$result = $this->dbapi($sql, 'update');
 		// SQLの実行
 
-		// BaseGameModel::StatusUpdate($sql);
+		BaseGameModel::StatusUpdate($sql);
 		return $result;
 	}
 

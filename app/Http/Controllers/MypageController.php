@@ -9,12 +9,12 @@ class MypageController extends BaseGameController
 		$trainingInfo = $this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime']));
 		if(isset($trainingInfo))
 		{
-			echo('訓練が完了した剣闘士がいます！');
+			//echo('訓練が完了した剣闘士がいます！');
 		}
 		
 		// ユーザーデータの取得
 		$userData = $this->Model->exec('Mypage', 'getUserData', $this->user['id']);
-		$this->viewData['user'] = $userData[0];
+		$this->viewData['user'] = $userData;
 	
 		// チケット情報を配列化
 		$ticketData = [$this->user['id'],  $this->viewData['nowTime'], $this->user['battleTicket'], $this->user['ticketLossTime']];

@@ -2,10 +2,11 @@
 @include('common/css', ['file' => 'admin'])
 @include('common/js', ['file' => 'admin'])
 
-<div>
-    <?php var_dump($viewData)?>
-</div>
+<?php if($viewData['user'] == null) :?>
+	<div>nanimonasi</div>
+<?php else:?>
 
+{{var_dump($viewData)}}
 <div>
 	<a href="{{APP_URL}}training">
 		訓練所へ
@@ -29,4 +30,4 @@
 		ガチャ
 	</a>
 </div>
-
+<?php endif; ?>

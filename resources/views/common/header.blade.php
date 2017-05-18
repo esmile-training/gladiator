@@ -12,10 +12,18 @@
 	<body>
 	<div id="wrapper">
 		<header>
-			<ul>
+			<div class="headerPosition">
+				<img class="headerImg" src="{{HEADER_IMG_URL}}header.png" />
+				<div class="fadeButton">
+					<a href="{{APP_URL}}top/login">
+						<img class="topButton" src="{{HEADER_IMG_URL}}topNomal.png"/>
+					</a>
+				</div>
+			</div>
+<!--			<ul>
 				<li><a href="{{APP_URL}}top/login">所持金</a></li>
 				<li><a href="{{APP_URL}}top/login">チーム名</a></li>
 				<li><a href="{{APP_URL}}top/login">チケット数</a></li>
-			</ul>
+			</ul>-->
 		</header>
 		<div id="main">

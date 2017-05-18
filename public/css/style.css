@@ -83,28 +83,27 @@ body{
     background-color:#ffffff;
     color:#000000;
     font-family:"NotoSansCJKjp-Regular";
-	font-size:100%;
+    font-size:100%;
     height:auto;
-	line-height:1.5;
-	text-align:justify;
-	text-justify:inter-ideograph;
+    line-height:1.5;
+    text-align:justify;
+    text-justify:inter-ideograph;
     width:100%;
 }
-/* リンク  */
+/*
+ * 各タグの初期設定
+ */
 a{
-  
-	text-decoration:none;
-    transition: 0.5s;
-	-webkit-transition: 0.5s;
-	-moz-transition: 0.5s;
-	-o-transition: 0.5s;
-	-ms-transition: 0.5s;
-    width:100%;
+    text-decoration:none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
 }
-a:hover{
-    cursor:pointer;
-	text-decoration:underline;
+
+input[type="image"]:focus {
+  outline: 0;
 }
+
 img{
     transition: 0.5s;
     -webkit-transition: 0.5s;
@@ -122,6 +121,7 @@ img:hover{
 #g_nav li:hover {
 	background-color:#eee;
 }
+
 /* ドラッグ禁止 */
 img{
     pointer-events:none;
@@ -143,6 +143,7 @@ img{
     height: auto;
     margin: 0 auto;
     overflow: hidden;
+    max-width: 100%;
 }
 
 ul{
@@ -160,14 +161,65 @@ li{
     vertical-align: middle;
     background: #eee; 
 }
-header {
-	background: #222;
-	height:	40px;
+
+/*
+ * header
+ */
+
+img{
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0;
 }
-footer {
-	 height:40px;
-     position:relative;
-     bottom:0;
+
+.headerPosition{
+    position: fixed;
+    width: 100%;
+}
+
+.headerImg{
+    width: 100%;
+    height: auto;
+}
+
+.fadeButton {
+    background: url(http://esmile-sys.sakura.ne.jp/gladiator/img/header/topDown.png) no-repeat;
+    position: absolute;
+    top: 5%;
+    left: 1%;
+    width: 21%;
+    background-size: contain;
+}
+
+.fadeButton a {
+    display: inline-block;
+}
+
+.fadeButton a img{
+    width: 100%;
+}
+
+.fadeButton a:active {
+    background-color: transparent; /* IE6対応 */
+}
+
+.fadeButton a:hover img {
+    visibility: hidden;
+    width: 99%;
+}
+
+/*
+ * footer
+ */
+
+.footerPosition{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.footerImg{
+    width: 100%;
 }
 /*---------------------------------
 共通設定終了
