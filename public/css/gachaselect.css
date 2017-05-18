@@ -14,10 +14,10 @@ body {
 	background-size: cover;
 }
 .kanban{
-	width:32%;
-	position:relative;
-	bottom:0px;
-	left:0px;
+	width: 35%;
+    position: absolute;
+    top: 22vw;
+    left: 0px;
 }
 .waku{
 	width:100%;
@@ -47,20 +47,19 @@ body {
 }
 
 .junban0{
-	z-index:0;
-	position:relative;
-	bottom:37px;
-	left:0px;
+    z-index: 0;
+    position: absolute;
+    top: 26vw;
+    left: 0px;
+	/*padding-bottom: 200px;*/
 }
 .junban1{
-	width:95%;
-	text-align:center;
-	position:relative;
-	bottom: 70vh;	
-	left:9px;
+	width: 95%;
+    text-align: center;
+    position: absolute;
+    top: 41vw;
 }
 .all{
-	height: 89vh;
 }
 .button1{
 	border-bottom: solid 10px transparent;
@@ -72,18 +71,18 @@ body {
 	
 }
 .eventebutton{
-	opacity: 0.0;  
-	position: relative;
-    bottom: 150px;
-    left: 214px;
-    width: 45%;
-    height: 25px;
+    opacity: 0.0;
+    position: absolute;
+    bottom: 23vw;
+    right: 0;
+    width: 48%;
+    height: 34px;
 }
 .normalbutton{
-	opacity: 0.0;  
-    position: relative;
-    bottom: 155px;
-    width: 45%;
+    opacity: 0.0;
+    position: absolute;
+    bottom: 25vw;
+    width: 49%;
     height: 25px;
-    left: 15px;
+    left: 0;
 }
