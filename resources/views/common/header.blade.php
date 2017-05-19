@@ -15,14 +15,12 @@
 			<div class="headerPosition">
 				<img class="headerImg" src="{{HEADER_IMG_URL}}header.png" />
 				<div class="fadetopButton">
-					<a href="{{APP_URL}}top/login">
-						<img class="topButton" src="{{HEADER_IMG_URL}}topNomal.png"/>
+					<a class="location" href="{{APP_URL}}top/login">
+						<img class="image_change" src="{{HEADER_IMG_URL}}top.png"/>
 					</a>
 				</div>
 				<div class="fademenuButton">
-					<a href="{{APP_URL}}top/login">
-						<input type="image" class="menuButton" src="{{HEADER_IMG_URL}}menuNomal.png">
-					</a>
+					<input type="image" class="menuButton image_change" src="{{HEADER_IMG_URL}}menu.png">
 				</div>
 				<img class="headerGaugeIcon money" src="{{HEADER_IMG_URL}}money.png" />
 				<img class="headerGaugeIcon battleTicket" src="{{HEADER_IMG_URL}}battleTicket.png" />
