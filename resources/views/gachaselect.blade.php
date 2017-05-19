@@ -19,9 +19,11 @@
 			</div>
 			<div class = "gacha_button2">
 				<input type="image" class="modal_btn gacha2" src="{{IMG_URL_GACHA}}gachabutton2.png" name = 'gachavalue' value = "2"width= 100% height= 100%>
+				<img class= "gacha_raregachamoney" src="{{IMG_URL_GACHA}}30000.png">
 			</div>
 			<div class = "gacha_button3">
 				<input type="image" class="modal_btn gacha3" src="{{IMG_URL_GACHA}}gachabutton3.png" name = 'gachavalue' value = "3"width= 100% height= 100%>
+				<img class= "gacha_superraregachamoney" src="{{IMG_URL_GACHA}}50000.png">
 			</div>
 		</div>
 	</div>
