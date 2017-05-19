@@ -17,68 +17,44 @@
 	width: 100%;
 	height:100vh;
 }
-.kanban{
-	width: 35%;
+.gacha_all{
+	width:100%
+}
+.gacha_signboard{
+	width: 30%;
     position: absolute;
     top: 22vw;
     left: 0px;
 	z-index:2;
 }
-.waku{
-	width:100%;
-	vertical-align: bottom; 
-}
-.waku1{
-	width:100%;
-	height: 400px;
-	vertical-align: bottom; 
-}
-.waku2{
-	width:100%;
-	vertical-align: bottom; 
-}
-.text{
-	font-size:	150%;
-}
-.text2{
-	font-size:	150%;
-	position:fixed;
-	top:485px;
-	left:63px;
-}
-.relative{
-	position: relative;
-	bottom: 0;
-}
 .junban0{
-    z-index:0;
+	z-index:0;
     position: absolute;
-    top: 26vw;
+	top: 24vw;
     left: 0px;
 }
+.gacha_frame{
+	width:100%;
+	vertical-align: bottom;
+}
 .junban1{
-	width: 95%;
-    text-align: center;
+	width: 93%;
     position: absolute;
-    top: 40vw;
+    top: 38vw;
+	margin: 0px auto;
 }
-
-.all{
-	width:100%
-}
-.button1{
+.gacha_button1{
 	border-bottom: solid 10px transparent;
 }
-.button2{
+.gacha_button2{
 	border-bottom: solid 10px transparent;
 }
-.button3{
-	
+.gacha_button3{
 }
 .eventebutton{
     /*opacity: 0.0;*/
-    position: fixed;
-    top: 82%;
+	position: absolute;
+	top: 82%;
     right: 0;
     width: 48%;
     height: 5%;

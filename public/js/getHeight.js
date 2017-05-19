@@ -11,6 +11,7 @@ $(function(){
     
     var mainHeight = $('.junban0').height();
     console.log(mainHeight);
+
+	mainHeight += (mainHeight/10);
     main.style.height = mainHeight+'px';
-	main.style.height = mainHeight + 'px';
 });
