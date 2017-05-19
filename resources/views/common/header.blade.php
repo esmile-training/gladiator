@@ -20,7 +20,9 @@
 					</a>
 				</div>
 				<div class="fademenuButton">
-					<input type="image" class="menuButton image_change" src="{{HEADER_IMG_URL}}menu.png">
+					<a class="location">
+						<img class="modal_btn menuButton image_change" src="{{HEADER_IMG_URL}}menu.png"/>
+					</a>
 				</div>
 				<img class="headerGaugeIcon money" src="{{HEADER_IMG_URL}}money.png" />
 				<img class="headerGaugeIcon battleTicket" src="{{HEADER_IMG_URL}}battleTicket.png" />
@@ -28,3 +30,8 @@
 
 		</header>
 		<div id="main">
+{{-- popupウインドウ --}}
+@include('popup/wrap', [
+	'class'		=> 'menuButton', 
+	'template'	=> 'menu'
+])

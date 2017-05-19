@@ -1,6 +1,5 @@
 {{-- css  --}}
-@include('common/css', ['file' => 'admin'])
-@include('common/js', ['file' => 'admin'])
+@include('common/css', ['file' => 'mypage'])
 
 <?php if($viewData['user'] == null) :?>
 	<div>nanimonasi</div>
