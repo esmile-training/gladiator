@@ -10,7 +10,8 @@
     left: 0;
 }
 .gacha_roadlogo{
-	position: absolute;
-    top: 41%;
-	width: 100%;
+	position: fixed;
+    bottom: 43%;
+	left:0;
+    width: 100%;
 }
