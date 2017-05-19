@@ -83,7 +83,7 @@ class RankingController extends BaseGameController
 		// 週間かステータスで取得データを切替
 		if ($this->rankingData['rankChenge'] == 0)
 		{
-			$range  = $this->Lib->exec('weekRange', 'rangeState', $this->user['id']);
+			$range  = $this->Lib->exec('WeekRange', 'rangeState', $this->user['id']);
 
 			// 登録者数を取得
 			$userCount = $this->Model->exec('Ranking', 'countRange', $range);

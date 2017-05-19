@@ -1,5 +1,6 @@
 @include('common/css', ['file' => 'gachaselect'])
 @include('common/js', ['file' => 'getHeight'])
+
 <div class = "gacha_all">
 	<div>
 		<img class="gacha_signboard" src="{{IMG_URL_GACHA}}kanban.png">
@@ -29,27 +30,10 @@
 	</div>
 </div>
 {{-- popupウインドウ --}}
-<div class="modal gacha1">
-	@include('popup/'.'gacha', ['gachaId' => 1])
-	<div class="modal_frame">
-		<div class="close">
-			<span>close</span>
-		</div>
-	</div>
-</div>
-<div class="modal gacha2">
-	@include('popup/'.'gacha', ['gachaId' => 2])
-	<div class="modal_frame">
-		<div class="close">
-			<span>close</span>
-		</div>
-	</div>
-</div>
-<div class="modal gacha3">
-	@include('popup/'.'gacha', ['gachaId' => 3])
-	<div class="modal_frame">
-		<div class="close">
-			<span>close</span>
-		</div>
-	</div>
-</div>
+@include('popup/wrap', [
+	'class'		=> 'gacha1', 
+	'template'	=> 'gacha',
+	'data' => ['gachaId' => 1]
+])
+@include('popup/wrap', ['class' => 'gacha2', 'template' => 'gacha', 'data' => ['gachaId' => 2]])
+@include('popup/wrap', ['class' => 'gacha3', 'template' => 'gacha', 'data' => ['gachaId' => 3]])
