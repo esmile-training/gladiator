@@ -1,4 +1,5 @@
 @include('common/css', ['file' => 'gachaselect'])
+@include('common/js', ['file' => 'getHeight'])
 <div class = "gacha_all">
 	<div>
 		<img class="gacha_signboard" src="{{IMG_URL_GACHA}}kanban.png">
@@ -14,6 +15,7 @@
 		<div class="modal_container">
 			<div class = "gacha_button1">
 				<input type="image" class="modal_btn gacha1" src="{{IMG_URL_GACHA}}gachabutton1.png" name = 'gachavalue' value = "1" width= 100% height= 100%>
+				<img class= "gacha_normalgachamoney" src="{{IMG_URL_GACHA}}10000.png">
 			</div>
 			<div class = "gacha_button2">
 				<input type="image" class="modal_btn gacha2" src="{{IMG_URL_GACHA}}gachabutton2.png" name = 'gachavalue' value = "2"width= 100% height= 100%>

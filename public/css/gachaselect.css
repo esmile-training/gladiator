@@ -41,10 +41,15 @@
 	width: 93%;
     position: absolute;
     top: 38vw;
-	margin: 0px auto;
 }
 .gacha_button1{
 	border-bottom: solid 10px transparent;
+}
+.gacha_normalgachamoney{
+    width: 20%;
+    position: absolute;
+    top: 25%;
+    left: 6%;
 }
 .gacha_button2{
 	border-bottom: solid 10px transparent;
