@@ -25,7 +25,6 @@
 	 echo '<div>'.'キャラクターがいません。','<div>';
 	} else {
 	$count = 1; ?>
-	<div>
 		@foreach($viewData['charaList'] as $chara)
 			{{-- popupボタン --}}
 			<div class="modal_container">
@@ -44,4 +43,3 @@
 			<?php $count++; ?>
 		@endforeach
 <?php } ?>	
-	</div>

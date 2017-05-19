@@ -1,10 +1,10 @@
 {{-- CSS --}}
-@include('common/chara')
+@include('common/css', ['file' => 'chara'])
 
-<div >
+<div  Align="leftt">
 	<img class="rare" src="{{IMG_URL_GACHA}}{{$chara['rare']}}.png">
 </div>
-<div >
+<div>
 	<img class="character" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png">
 </div>
 	<?PHP
@@ -28,4 +28,3 @@
 		<input type="submit" value="引退" >
 	</form>
 	 <?php } else { echo '<br>'.'訓練中です'; }?>
-</div>
