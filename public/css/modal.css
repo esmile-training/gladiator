@@ -29,28 +29,28 @@
   height: 94%;
   padding: 60px 5% 5%;
   border-radius: 30px;
-  background-color: #aaa;
+  /*background-color: #aaa;*/
   color: #fff;
   text-align: center;
   font-size: 20px;
-    z-index: 10000;
+  z-index: 10000;
 }
 /* Close button design */
 .modal .close {
-  position: absolute;
-  border-radius: 20px;
-  top: -15px;
-  right: -15px;
-  width: 40px;
-  height: 40px;
-  background-color: #555;
-  cursor:pointer;
+	position: absolute;
+	border-radius: 20px;
+	top: 47px;
+	right: 6px;
+	width: 40px;
+    height: 50px;
+	/* background-color: #555; */
+	cursor: pointer;
 }
 .modal .close:before,
 .modal .close:after{
   position:absolute;
   top:4px;
-  border:1px solid #fff;
+  /*border:1px solid #fff;*/
   height:30px;
   content:"";
 }
@@ -69,3 +69,29 @@
 .modal .close span {
   display:none;
 }
+.modal .modal_frametop{
+	width:100%;
+	vertical-align: bottom; 
+}
+.modal .modal_framemiddle{
+	width:100%;
+	vertical-align: bottom; 
+    height: 56vw;
+}
+.modal .modal_framebottom{
+	width:100%;
+	vertical-align:bottom; 
+}
+.modal .modal_window{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 15%;
+}
+.modal .modal_closebutton{
+	width: 100%;
+	position: relative;
+    top: 20%;
+    right: 20%;
+}
+

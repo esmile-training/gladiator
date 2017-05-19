@@ -20,7 +20,9 @@
 	</div>
 	<div>
 		<div class="gacha_charaframe">
-			<img class="gacha_charatopframe"src="{{IMG_URL_GACHA}}wakuUp.png"><img class="gacha_characenterframe"src="{{IMG_URL_GACHA}}wakuNaka.png"><img class="gacha_charabottomframe"src="{{IMG_URL_GACHA}}wakuuUnder.png">
+			<img class="gacha_charatopframe"src="{{IMG_URL_GACHA}}wakuUp.png">
+			<img class="gacha_characenterframe"src="{{IMG_URL_GACHA}}wakuNaka.png">
+			<img class="gacha_charabottomframe"src="{{IMG_URL_GACHA}}wakuuUnder.png">
 		</div>
 		<div class = "gacha_charatextbox">
 			<div class="gacha_charaname">
