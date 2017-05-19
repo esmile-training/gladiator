@@ -77,7 +77,7 @@
 }
 .eventebutton{
     /*opacity: 0.0;*/
-    position: absolute;
+    position: fixed;
     top: 82%;
     right: 0;
     width: 48%;
