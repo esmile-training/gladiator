@@ -52,7 +52,7 @@
 .gacha_button3{
 }
 .eventebutton{
-    /*opacity: 0.0;*/
+    opacity: 0.0;
     position: absolute;
     top: 89%;
     right: 0;
@@ -60,10 +60,10 @@
     height: 5%;
 }
 .normalbutton{
-    /*opacity: 0.0;*/
+    opacity: 0.0;
     position: absolute;
-    bottom: 25vw;
-    width: 49%;
-    height: 25px;
+    top: 89%;
+    width: 48%;
+    height: 5%;
     left: 0;
 }
