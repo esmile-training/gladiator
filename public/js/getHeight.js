@@ -6,12 +6,11 @@ $(function(){
     var main = document.getElementById( "main" );
 	headerHeight = headerHeight-(headerHeight/8);
 	 
-    main.style.marginTop = (headerHeight)+'px';
-    main.style.marginBottom = (footerHeight) + 'px';
-    
-    var mainHeight = $('.junban0').height();
-    console.log(mainHeight);
 
-	mainHeight += (mainHeight/10);
-    main.style.height = mainHeight+'px';
+    
+	var body =  $('body').height();
+	body = body - (headerHeight + footerHeight);
+	main.style.height = body+'px';
+	
+
 });
