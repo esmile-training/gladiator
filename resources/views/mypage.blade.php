@@ -14,7 +14,7 @@
 </div>
 
 <div>
-	<a href="{{APP_URL}}selectChara">
+	<a href="{{APP_URL}}selectChara/listSort?type=id&order=4">
 		キャラ
 	</a>
     <a href="{{APP_URL}}battle/selectBattleChara">
