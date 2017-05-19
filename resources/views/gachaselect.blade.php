@@ -5,6 +5,9 @@
 	</div>
 	<div class = "junban0">
 		<img class="gacha_frame" src="{{IMG_URL_GACHA}}wakunormal.png">
+		<a href="{{APP_URL}}gacha/eventsSelect">
+			<input type="submit" class = "eventebutton">
+		</a>
 	</div>
 	{{-- popupボタン --}}
 	<div class = "junban1">
@@ -21,9 +24,6 @@
 		</div>
 	</div>
 </div>
-<a href="{{APP_URL}}gacha/eventsSelect">
-	<input type="submit" class = "eventebutton">
-</a>
 {{-- popupウインドウ --}}
 <div class="modal gacha1">
 	@include('popup/'.'gacha', ['gachaId' => 1])
