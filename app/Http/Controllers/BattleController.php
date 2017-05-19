@@ -264,7 +264,7 @@ class battleController extends BaseGameController
 
 		// 押されたボタンのデータを Chara の 'hand' に格納
 		// 1(グー) / 2(チョキ) / 3(パー) のどれかが入る
-		$this->CharaData['hand'] = $_GET["sub1"];
+		$this->CharaData['hand'] = $_GET["hand"];
 
 		// 敵キャラデータを元に、Enemy の 'hand' を格納
 		// 1(グー) / 2(チョキ) / 3(パー) のどれかが入る
