@@ -14,16 +14,19 @@
 		<header>
 			<div class="headerPosition">
 				<img class="headerImg" src="{{HEADER_IMG_URL}}header.png" />
-				<div class="fadeButton">
+				<div class="fadetopButton">
 					<a href="{{APP_URL}}top/login">
 						<img class="topButton" src="{{HEADER_IMG_URL}}topNomal.png"/>
 					</a>
 				</div>
+				<div class="fademenuButton">
+					<a href="{{APP_URL}}top/login">
+						<input type="image" class="menuButton" src="{{HEADER_IMG_URL}}menuNomal.png">
+					</a>
+				</div>
+				<img class="headerGaugeIcon money" src="{{HEADER_IMG_URL}}money.png" />
+				<img class="headerGaugeIcon battleTicket" src="{{HEADER_IMG_URL}}battleTicket.png" />
 			</div>
-<!--			<ul>
-				<li><a href="{{APP_URL}}top/login">所持金</a></li>
-				<li><a href="{{APP_URL}}top/login">チーム名</a></li>
-				<li><a href="{{APP_URL}}top/login">チケット数</a></li>
-			</ul>-->
+
 		</header>
 		<div id="main">

@@ -17,90 +17,80 @@
 	width: 100%;
 	height:100vh;
 }
-.all{
+.gacha_all{
 	width:100%;
     position: absolute;
 	
 }
-.char{
-	width: 80%;
+.gacha_charabox{
     text-align: center;
-    position: relative;
-    bottom: 30px;
-}
-.rate{ 
-	width:20%; 
-	text-align: center;
-	position:relative;
-	bottom:90px; 
-	left:0px;
-	z-index:2;
-}
-.waku{
-	width:80%;
-	position: absolute;
-    margin: auto;
-	position: relative;
-	bottom: 35px;
-}
-.waku1{
-	width:100%;
-	vertical-align: bottom; 
-}
-.waku2{
-	width:100%;
-	vertical-align: bottom; 
-}
-.waku3{
-	width:100%;
-	vertical-align: bottom; 
-}
-.name{
-	color: #FFFFFF;
-
-}
-.hp{
-	color: #FFFFFF;
-}
-.font{
-	float: left;
-	color: #FFFFFF;
-}
-.textbox{
-    font-size: 5vw;
     position: absolute;
-    bottom: 57px;
-    left: 15%;
+    top: 0;
+    z-index: 0;
 }
-.absolute{
-	position: absolute;
-    top: 110vw;
-}
-.flash{
+.gacha_charaflash{
     text-align: center;
     width: 80%;
     position: relative;
     top: 55px;
 }
-.charabox{
-	text-align: center;
-    position: fixed;
-    top: 25vw;
-    z-index: 0;
-}
-.chara{
+.gacha_charapos{
 	position: absolute;
 	top: 24px;
 }
-.logo{
-	text-align:center;
-	width:80%;
-	position:relative;
-	bottom:90px;
-	left:0px;
-	z-index: 3;
+.gacha_chara{
+	width: 80%;
+    text-align: center;
 }
-.all{
-	width: 100%;
-    position: fixed;
+.gacha_chararate{ 
+	width: 20%;
+    position: absolute;
+    bottom: 3%;
+    left: 36%;
+    z-index: 2;
+}
+.gacha_charalogo{
+    text-align: center;
+    width: 80%;
+    position: absolute;
+    top: 96%;
+    left: 8%;
+    z-index: 3;
+}
+.gacha_charaframe{
+	width: 80%;
+    position: absolute;
+    margin: auto;
+    position: absolute;
+    top: 100vw;
+    left: 8%;
+}
+.gacha_charatopframe{
+	width:100%;
+	vertical-align: bottom; 
+}
+.gacha_characenterframe{
+	width:100%;
+	vertical-align: bottom; 
+}
+.gacha_charabottomframe{
+	width:100%;
+	vertical-align: bottom; 
+}
+.gacha_charatextbox{
+    font-size: 5vw;
+    position: absolute;
+    top: 104vw;
+    left: 13%;
+}
+.gacha_charaname{
+	color: #FFFFFF;
+
+}
+.gacha_charahp{
+	color: #FFFFFF;
+}
+.gacha_charastatus{
+	float: left;
+	color: #FFFFFF;
 }

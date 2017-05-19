@@ -104,13 +104,6 @@ input[type="image"]:focus {
   outline: 0;
 }
 
-img{
-    transition: 0.5s;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -o-transition: 0.5s;
-    -ms-transition: 0.5s;
-}
 img:hover{
     opacity:0.7;
 }
@@ -156,26 +149,27 @@ ul{
 }
 
 li{
-    height: 40px;
     display: table-cell;
     vertical-align: middle;
-    background: #eee; 
 }
+
+img{
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
 
 /*
  * header
  */
 
-img{
-    display: inline-block;
-    margin: 0 auto;
-    padding: 0;
-}
 
 .headerPosition{
     position: fixed;
     width: 100%;
-	z-index:9999;
+    z-index: 9999;
 }
 
 .headerImg{
@@ -183,7 +177,7 @@ img{
     height: auto;
 }
 
-.fadeButton {
+.fadetopButton {
     background: url(http://esmile-sys.sakura.ne.jp/gladiator/img/header/topDown.png) no-repeat;
     position: absolute;
     top: 5%;
@@ -192,23 +186,64 @@ img{
     background-size: contain;
 }
 
-.fadeButton a {
+.fadetopButton a {
     display: inline-block;
 }
 
-.fadeButton a img{
+.fadetopButton a img{
     width: 100%;
 }
 
-.fadeButton a:active {
+
+.fadeButton a:hover {
     background-color: transparent; /* IE6対応 */
 }
 
-.fadeButton a:hover img {
+.fadetopButton a:hover img {
     visibility: hidden;
     width: 99%;
 }
 
+.fademenuButton {
+    background: url(http://esmile-sys.sakura.ne.jp/gladiator/img/header/menuDown.png) no-repeat;
+    position: absolute;
+    top: 4%;
+    right: 1%;
+    width: 21%;
+    background-size: contain;
+}
+
+.fademenuButton a {
+    display: inline-block;
+}
+
+.fademenuButton a input{
+    width: 100%;
+}
+
+.fademenuButton a:active {
+    background-color: transparent; /* IE6対応 */
+}
+
+.fademenuButton a:hover input {
+    visibility: hidden;
+    width: 99%;
+}
+
+.headerGaugeIcon{
+    width: 25%;
+    position: absolute;
+}
+
+.money{
+    top: 43%;
+    left: 22%;
+}
+
+.battleTicket{ 
+    top: 50%;
+    right: 23%;
+}
 /*
  * footer
  */
@@ -221,6 +256,42 @@ img{
 
 .footerImg{
     width: 100%;
+}
+
+.fadefooterButton {
+    background: url(http://esmile-sys.sakura.ne.jp/gladiator/img/footer/battleIconDown.png) no-repeat;
+    position: absolute;
+    top: 4%;
+    left: 1%;
+    width: 21%;
+    background-size: contain;
+}
+
+.fadefooterButton a {
+    display: inline-block;
+}
+
+.fadefooterButton a img{
+    width: 100%;
+}
+
+.fadefooterButton a:active {
+    background-color: transparent; /* IE6対応 */
+}
+
+.fadefooterButton a:hover img {
+    visibility: hidden;
+    width: 99%;
+}
+
+.iconPosition{
+    position: absolute;
+    bottom: 0;
+}
+
+.iconPosition ul li img{
+    display: inline-block;
+  vertical-align: bottom;
 }
 /*---------------------------------
 共通設定終了
