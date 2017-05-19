@@ -100,13 +100,11 @@ a{
     padding: 0;
 }
 
+
 input[type="image"]:focus {
   outline: 0;
 }
 
-img:hover{
-    opacity:0.7;
-}
 .logo a:hover,.banner a:hover,.image_box a:hover{
     opacity:0.7;
 }
@@ -117,7 +115,6 @@ img:hover{
 
 /* ドラッグ禁止 */
 img{
-    pointer-events:none;
     user-select: none;
     -moz-user-select:none;
     -webkit-user-select:none;
@@ -165,6 +162,9 @@ img{
  * header
  */
 
+.menuButton{
+    width: 100%;
+}
 
 .headerPosition{
     position: fixed;
@@ -178,7 +178,6 @@ img{
 }
 
 .fadetopButton {
-    background: url(http://esmile-sys.sakura.ne.jp/gladiator/img/header/topDown.png) no-repeat;
     position: absolute;
     top: 5%;
     left: 1%;
@@ -186,48 +185,12 @@ img{
     background-size: contain;
 }
 
-.fadetopButton a {
-    display: inline-block;
-}
-
-.fadetopButton a img{
-    width: 100%;
-}
-
-
-.fadeButton a:hover {
-    background-color: transparent; /* IE6対応 */
-}
-
-.fadetopButton a:hover img {
-    visibility: hidden;
-    width: 99%;
-}
-
 .fademenuButton {
-    background: url(http://esmile-sys.sakura.ne.jp/gladiator/img/header/menuDown.png) no-repeat;
     position: absolute;
     top: 4%;
     right: 1%;
     width: 21%;
     background-size: contain;
-}
-
-.fademenuButton a {
-    display: inline-block;
-}
-
-.fademenuButton a input{
-    width: 100%;
-}
-
-.fademenuButton a:active {
-    background-color: transparent; /* IE6対応 */
-}
-
-.fademenuButton a:hover input {
-    visibility: hidden;
-    width: 99%;
 }
 
 .headerGaugeIcon{
