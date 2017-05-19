@@ -1,6 +1,4 @@
 {{-- css  --}}
-@include('common/css', ['file' => 'admin'])
-@include('common/js', ['file' => 'admin'])
 <div Align="center">
 	キャラクター一覧
 </div>

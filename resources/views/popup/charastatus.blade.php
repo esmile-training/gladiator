@@ -1,6 +1,12 @@
-<div>
-	<img class="rate" src="{{IMG_URL_GACHA}}{{$chara['rare']}}.png"width= 1% height= 1%><br>
-	<img class="char" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png"width= 5% height= 5%><br>
+{{-- CSS --}}
+@include('common/chara')
+
+<div >
+	<img class="rare" src="{{IMG_URL_GACHA}}{{$chara['rare']}}.png">
+</div>
+<div >
+	<img class="character" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png">
+</div>
 	<?PHP
 		echo $chara['name'].'<br>';
 		echo $chara['attribute'].'<br>';

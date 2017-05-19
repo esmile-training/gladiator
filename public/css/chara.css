@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/*CSS Document*/
+body{}
+
+/* レア度画像のサイズ指定 */
+.rare{
+	width: 50%;
+	height: 50%;
+}
+
+/* キャラクター画像のサイズ指定 */
+.character{
+	width: 75%;
+	height: 75%;
+}

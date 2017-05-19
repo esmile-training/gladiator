@@ -44,14 +44,17 @@ function wupBtn(){
 
 function disbtn(b)
 {
-      b.disabled = true;
-      b.value = '登録中';
-      b.form.submit();
+	if(document.form1.teamName.value.length > 8)
+	{
+		alert(全角８文字以内にしてください)
+	}
+     b.disabled = true;
+     b.value = '登録中';
+     b.form.submit();
 }
 </script>
 
 <div align="center">
-
 	<br>エディット画面
 </div>
 
