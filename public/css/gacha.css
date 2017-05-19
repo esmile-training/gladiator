@@ -15,7 +15,7 @@
 	background-size: cover;
 	
 	width: 100%;
-	height:100vh;
+	height:78vh;
 }
 .gacha_all{
 	width:100%;
@@ -36,7 +36,7 @@
 }
 .gacha_charapos{
 	position: absolute;
-	top: 24px;
+    top: 0px;
 }
 .gacha_chara{
 	width: 80%;
@@ -45,25 +45,23 @@
 .gacha_chararate{ 
 	width: 20%;
     position: absolute;
-    bottom: 3%;
-    left: 36%;
+    bottom: 15%;
+    left: 42%;
     z-index: 2;
 }
 .gacha_charalogo{
     text-align: center;
     width: 80%;
     position: absolute;
-    top: 96%;
-    left: 8%;
+	top: 86%;
+    left: 11%;
     z-index: 3;
 }
 .gacha_charaframe{
-	width: 80%;
+	width: 85%;
     position: absolute;
-    margin: auto;
-    position: absolute;
-    top: 100vw;
-    left: 8%;
+    top: 90vw;
+    left: 7%;
 }
 .gacha_charatopframe{
 	width:100%;
@@ -78,9 +76,9 @@
 	vertical-align: bottom; 
 }
 .gacha_charatextbox{
-    font-size: 5vw;
+	font-size: 5vw;
     position: absolute;
-    top: 104vw;
+    top: 95vw;
     left: 13%;
 }
 .gacha_charaname{

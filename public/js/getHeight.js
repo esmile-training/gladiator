@@ -1,25 +1,19 @@
 $(function(){
-    // ãƒ˜ãƒƒãƒ€ãƒ¼ã¨ãƒ•ãƒƒã‚¿ãƒ¼ã®é«˜ã•ã®å¹…ã‚’å–å¾—
+    // ƒwƒbƒ_[‚Æƒtƒbƒ^[‚Ì‚‚³‚Ì•‚ğæ“¾
     var headerHeight = $('.headerPosition > img').height();
     var footerHeight = $('.footerPosition > img').height();
     
     var main = document.getElementById( "main" );
     
-    // ãƒ˜ãƒƒãƒ€ãƒ¼ã®ç”»åƒã®å½±ã®éƒ¨åˆ†ã‚’è©°ã‚ã‚‹
+    // ƒwƒbƒ_[‚Ì‰æ‘œ‚Ì‰e‚Ì•”•ª‚ğ‹l‚ß‚é
     headerHeight = headerHeight-(headerHeight/8);
     
-    // mainã®ä¸Šä¸‹ã®å¹…ã‚’ç©ºã‘ã‚‹
-    main.style.marginTop = (headerHeight)+'px';
-    main.style.marginBottom = (footerHeight) + 'px';
+    // main‚Ìã‰º‚Ì•‚ğ‹ó‚¯‚é
+	main.style.marginBottom = footerHeight+'px';
     
-    // bodyã‹ã‚‰header/footeråˆ†ã®é«˜ã•ã‚’å¼•ã„ã¦mainã®é«˜ã•ã‚’èª¿æ•´
-    var bodyHeight = $('body').height();
-    bodyHeight = bodyHeight - (headerHeight + footerHeight);
-    main.style.height = bodyHeight + 'px';
-    
-    // ã‚¬ãƒãƒ£é™å®š
-    var mainHeight = $('.junban0').height();
-    
-    mainHeight += (mainHeight/10);
-    main.style.height = mainHeight+'px';
+	var body =  $('body').height();
+	body = body - (headerHeight + footerHeight);
+	main.style.height = body+'px';
+	
+
 });

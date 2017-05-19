@@ -38,11 +38,11 @@
 /* Close button design */
 .modal .close {
 	position: absolute;
-	border-radius: 20px;
-	top: 47px;
-	right: 6px;
-	width: 40px;
-    height: 50px;
+    border-radius: 20px;
+    top: 8%;
+    right: 1%;
+    width: 13%;
+    height: 6%;
 	/* background-color: #555; */
 	cursor: pointer;
 }
@@ -76,7 +76,6 @@
 .modal .modal_framemiddle{
 	width:100%;
 	vertical-align: bottom; 
-    height: 56vw;
 }
 .modal .modal_framebottom{
 	width:100%;
