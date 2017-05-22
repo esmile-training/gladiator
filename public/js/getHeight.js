@@ -7,15 +7,18 @@ $(function(){
     var bodyHeight =  $('body').height();
     var mainHeight =  $('#main').height();
     
-    bodyHeight = bodyHeight - (headerHeight + footerHeight);
-    headerHeight = headerHeight-(headerHeight/7);
+    headerHeight = headerHeight-(headerHeight/4);
     
     if(bodyHeight <= mainHeight){
 	main.style.marginTop = headerHeight+'px';
-	main.style.height = mainHeight+'px';
+	main.style.marginBottom = footerHeight+'px';
+	
+	console.log('main');
     }else{
 	main.style.marginTop = headerHeight+'px';
-	main.style.height = (bodyHeight + headerHeight)+'px';
+	main.style.height = (bodyHeight-(headerHeight+footerHeight))+'px';
+	
+	console.log('body');
     }
 
 });
