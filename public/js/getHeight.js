@@ -12,7 +12,7 @@ $(function(){
     
     if(bodyHeight <= mainHeight){
 	main.style.marginTop = headerHeight+'px';
-	main.style.height = bodyHeight+'px';
+	main.style.height = mainHeight+'px';
 	main.style.marginBottom = footerHeight+'px';
     }else{
 	main.style.marginTop = headerHeight+'px';
