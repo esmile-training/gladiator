@@ -33,6 +33,12 @@ body{}
 .battle_enemy_status_bar {
     width: 100%;
 }
+.battle_enemy_status_icon {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 20%;
+}
 
 /* 敵キャラの手 */
 .battle_enemy_hand {
@@ -54,12 +60,20 @@ body{}
 /*ダメージログ */
 .damage_log {
     position: absolute;
-    top: 35%;
+    top: 40%;
     left: 5%;
     width: 90%;
 }
 .damage_log_Bg {
     width: 100%;
+}
+.damage_log_message{
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 90%;
+    color: #ffffff;
+    font-size: 13px;
 }
 
 /* 全体画面に対する、ボタン領域(全体) */
