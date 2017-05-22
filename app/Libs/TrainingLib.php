@@ -49,59 +49,19 @@ class TrainingLib extends BaseGameLib
 		$paaResult = TrainingLib::atkUpProbability($uCoachAtk['paaAtk'],$uCharaStatus['paaAtk'],$uCharaStatus['paaUpCnt']);
 		
 		//コーチのグー、チョキ、パーそれぞれの攻撃力とキャラのグー、チョキ、パーそれぞれの攻撃力から上昇率を算出
-		for($i = 0; $i <= $trainingInfo['time']; $i++)
-		{
-			TrainingLib::atkUpJudge($gooResult,$choResult,$paaResult);
-		}
-		$this->Model->exec('Training', 'updateStatus', array($trainingInfo));
-	}
-	
-	public function  atkUpJudge($gooResult,$choResult,$paaResult)
-	{
-		//ステータスの強化される値
-		$charaGooAtk = 0;
-		$charaChoAtk = 0;
-		$charaPaaAtk = 0;
+		$statusResult = TrainingLib::atkUpJudge($gooResult,$choResult,$paaResult,$trainingInfo['time']);
 		
-		//ステータスの上昇回数を格納する変数
-		$gooUpCnt	 = 0;
-		$choUpCnt	 = 0;
-		$paaUpCnt	 = 0;
-		$statusUpCnt = 0;
-
-		$gooJudgeValue = rand(1, 100);
-		if($gooResult >= $gooJudgeValue)
-		{
-			$charaGooAtk++;
-			$gooUpCnt++;
-			$statusUpCnt++;
-		}
-		$choJudgeValue = rand(1, 100);
-		if($choResult >= $choJudgeValue)
-		{
-			$charaChoAtk++;
-			$choUpCnt++;
-			$statusUpCnt++;
-		}
-		$paaJudgeValue = rand(1, 100);
-		if($paaResult >= $paaJudgeValue)
-		{
-			$charaPaaAtk++;
-			$paaUpCnt++;
-			$statusUpCnt++;
-		}
-		
-		$result = [
-			'gooAtk'		=> $charaGooAtk,
-			'choAtk'		=> $charaChoAtk,
-			'paaAtk'		=> $charaPaaAtk,
-			'gooUpAtk'		=> $gooUpCnt,
-			'choUpAtk'		=> $choUpCnt,
-			'paaUpAtk'		=> $paaUpCnt,
-			'statusUpCnt'	=> $statusUpCnt
+		$upDateStatus = [
+			'hp'		 => $uCharaStatus['hp']			 + $statusResult['statusUpCnt'],
+			'gooAtk'	 => $uCharaStatus['gooAtk']		 + $statusResult['gooAtk'],
+			'choAtk'	 => $uCharaStatus['choAtk']		 + $statusResult['choAtk'],
+			'paaAtk'	 => $uCharaStatus['paaAtk']		 + $statusResult['paaAtk'],
+			'gooUpCnt'	 => $uCharaStatus['gooUpCnt']	 + $statusResult['gooUpCnt'],
+			'choUpCnt'	 => $uCharaStatus['choUpCnt']	 + $statusResult['choUpCnt'],
+			'paaUpCnt'	 => $uCharaStatus['paaUpCnt']	 + $statusResult['paaUpCnt']
 		];
 		
-		return $result;
+		$this->Model->exec('Training', 'updateStatus', array($upDateStatus, $trainingInfo['uCharaId']));
 	}
 	
 	/*
@@ -109,8 +69,9 @@ class TrainingLib extends BaseGameLib
 	 */
 	public function atkUpProbability($uCoachAtk,$uCharaAtk,$atkUpCnt)
 	{
-		$probability = \Config::get('training.probability');
-		$result = $uCoachAtk / $uCharaAtk * $probability * (100 - $atkUpCnt);
+		//基本確率をconfigから取得
+		$baseProbability = \Config::get('training.baseProbability');
+		$result = $uCoachAtk / $uCharaAtk * $baseProbability * (100 - $atkUpCnt);
 		
 		//$result(確率の計算結果)が101(％)以上だったら$resultに100を入れる
 		if($result >= 101)
@@ -118,5 +79,59 @@ class TrainingLib extends BaseGameLib
 			$result = 100;
 		}
 		return round($result,2);
+	}
+	
+	/*
+	 * 攻撃力が上昇するか判定する
+	 */
+	public function  atkUpJudge($gooResult,$choResult,$paaResult,$time = 1)
+	{
+		for($i = 0; $i <= $time; $i++)
+		{
+			//ステータスの強化値
+			$charaGooAtk = 0;
+			$charaChoAtk = 0;
+			$charaPaaAtk = 0;
+
+			//ステータスの上昇回数を格納する変数
+			$gooUpCnt	 = 0;
+			$choUpCnt	 = 0;
+			$paaUpCnt	 = 0;
+			$statusUpCnt = 0;
+
+			$gooJudgeValue = rand(1, 100);
+			if($gooResult >= $gooJudgeValue)
+			{
+				$charaGooAtk++;
+				$gooUpCnt++;
+				$statusUpCnt++;
+			}
+			$choJudgeValue = rand(1, 100);
+			if($choResult >= $choJudgeValue)
+			{
+				$charaChoAtk++;
+				$choUpCnt++;
+				$statusUpCnt++;
+			}
+			$paaJudgeValue = rand(1, 100);
+			if($paaResult >= $paaJudgeValue)
+			{
+				$charaPaaAtk++;
+				$paaUpCnt++;
+				$statusUpCnt++;
+			}
+
+		}
+		
+		$result = [
+			'gooAtk'		=> $charaGooAtk,
+			'choAtk'		=> $charaChoAtk,
+			'paaAtk'		=> $charaPaaAtk,
+			'gooUpCnt'		=> $gooUpCnt,
+			'choUpCnt'		=> $choUpCnt,
+			'paaUpCnt'		=> $paaUpCnt,
+			'statusUpCnt'	=> $statusUpCnt
+		];
+		return $result;
 	}
 }

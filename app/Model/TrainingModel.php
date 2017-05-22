@@ -46,7 +46,7 @@ $sql =  <<< EOD
 		FROM	uTraining
 		WHERE	id = {$id}
 EOD;
-		$result = $this->select($sql, 'all');
+		$result = $this->select($sql, 'first');
 		return $result;
 	}
     
@@ -87,7 +87,7 @@ EOD;
 $sql =  <<< EOD
 		SELECT	gooAtk,choAtk,paaAtk
 		FROM	uCoach
-		WHERE	id = {$uCoachId};
+		WHERE	id = {$uCoachId}
 EOD;
 		$result = $this->select($sql, 'first');
 		return $result;
