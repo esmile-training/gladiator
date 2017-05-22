@@ -1,5 +1,5 @@
 @include('common/css', ['file' => 'gachaselect'])
-@include('common/js', ['file' => 'getHeight'])
+
 
 <div class = "gacha_all">
 	<div>
