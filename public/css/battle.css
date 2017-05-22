@@ -24,86 +24,48 @@ body{}
     width: 100%;
 }
 
- 敵キャラステータス 
+/*敵キャラステータス*/
 .battle_enemy_status {
     position: absolute;
-    top: 20%;
-    left: 5%;
-    width: 90%;
+    top: 5%;
+    width: 100%;
 }
-.battle_enemy_status_flame{
+.battle_enemy_status_bar {
     width: 100%;
 }
 
-/*自キャラステータス*/
-.player_Status {
+/* 敵キャラの手 */
+.battle_enemy_hand {
     position: absolute;
-    bottom: 10%;
-    left: 10%;
-    color: #fff;
-    background: rgba(0,0,0,.6);
-    height: 10%;
-    width: 80%;
-    padding: 1em 0;
+    left: 35%;
+    top: 17%;
+    width: 30%;
 }
-.player_Status p{
-    margin: 0;
-    padding: 0 0.8em;
-    font-size: 150%;
-    text-align: center;
+.battle_enemy_hand_bg {
+    width: 100%;
+}
+.battle_enemy_hand_icon{
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    width: 80%; 
 }
 
 /*ダメージログ */
 .damage_log {
     position: absolute;
-    top: 50%;
-    left: 5%;
-    color: #fff;
-    background: rgba(0,0,0,.6);
-    height: 20%;
-    width: 90%;
-    padding: 1em 0;
-}
-.damage_log p{
-    margin: 0;
-    padding: 0 0.8em;
-    font-size: 150%;
-    text-align: center;
-}
-
-.player_Bar {
-    position: absolute;
-    bottom: 1%;
-    width: 50%;
-}
-
-/* 全体画面に対する、キャラのステータス領域 */
-.battle_playerstatus{
-    position: absolute;
-    bottom: 10%;
+    top: 35%;
     left: 5%;
     width: 90%;
-    color: #fff;
-    background: rgba(0,0,0,.6);
-    padding: 1em 0;
 }
-.battle_playerstatus p{
-    margin: 0;
-    padding: 0 0.8em;
-    font-size: 150%;
-    text-align: center;
-}
-.player_Bar {
-    position: absolute;
-    left: 0%;
-    bottom: 0%;
+.damage_log_Bg {
     width: 100%;
 }
 
 /* 全体画面に対する、ボタン領域(全体) */
 .battle_playerhand_button{
     position: absolute;
-    bottom: 20%;
+    bottom: 12%;
     left: 10%;
     width: 80%;
 }
@@ -134,5 +96,15 @@ body{}
 }
 /* 各ボタン領域に対する、ボタンアイコン*/
 .battle_playerhand_button_icon{
+    width: 100%;
+}
+
+/*自キャラステータス*/
+.battle_player_status {
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+}
+.battle_player_status_bar {
     width: 100%;
 }
