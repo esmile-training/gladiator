@@ -25,7 +25,11 @@
 	</table>
 
 	<div class="battle_enemy_status">
-		<img src="{{IMG_URL}}battle/enemyBar.png" class="battle_enemy_status_flame" >
+		<img src="{{IMG_URL}}battle/enemyBar.png" class="battle_enemy_status_bar" >
+	</div>
+	
+	<div class="battle_enemy_hand">
+		<img src="{{IMG_URL}}battle/enemyHandBg.png" class="battle_enemy_hand_bg" >
 	</div>
 
 	{{-- 攻撃の結果が入っていたら --}}
@@ -93,11 +97,11 @@
 		</div>
 	@endif
 	{{-- 自キャラステータスの表示 --}}
-	<div class="battle_playerstatus">
-		{{ $viewData['CharaData']['name'] }} のHP {{ $viewData['CharaData']['battleHp'] }} / {{ $viewData['CharaData']['hp'] }} <br />
+	<div class="battle_player_status">
+<!--		{{ $viewData['CharaData']['name'] }} のHP {{ $viewData['CharaData']['battleHp'] }} / {{ $viewData['CharaData']['hp'] }} <br />
 		{{ $viewData['Type'][1] }} : {{ $viewData['CharaData']['gooAtk']}}
 		{{ $viewData['Type'][2] }} : {{ $viewData['CharaData']['choAtk']}}
-		{{ $viewData['Type'][3] }} : {{ $viewData['CharaData']['paaAtk']}}
-		<img src="{{IMG_URL}}battle/charaBar.png" class="player_Bar">
+		{{ $viewData['Type'][3] }} : {{ $viewData['CharaData']['paaAtk']}}-->
+		<img src="{{IMG_URL}}battle/playerBar.png" class="battle_player_status_bar">
 	</div>
 </body>
