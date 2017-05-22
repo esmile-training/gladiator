@@ -46,9 +46,12 @@ function disbtn(b)
 	//８文字以上入力された場合のポップアップ表示
 	if(document.form1.teamName.value.length > 8)
 	{
-		alert(全角８文字以内にしてください)
+		alert("こんにちは");
+		//alert(document.write('全角８文字以内にしてください'));
+	} else {	
+		//alert(document.write('でよろしいですか'));
+		 b.disabled = true;
+		 b.value = '登録中';
+		 b.form.submit();
 	}
-     b.disabled = true;
-     b.value = '登録中';
-     b.form.submit();
 }
