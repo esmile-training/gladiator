@@ -28,6 +28,16 @@
 	</div>
 </div>
 {{-- popupウインドウ --}}
+@include('popup/wrap', [
+	'class'		=> 'gacha1', 
+	'template'	=> 'gacha',
+	'data'		=> ['gachaId' => 4]
+])
+@include('popup/wrap', [
+	'class'		=> 'gacha1', 
+	'template'	=> 'gacha',
+	'data'		=> ['gachaId' => $w]
+])
 <div class="modal gacha4">
 	@include('popup/'.'gacha', ['gachaId' => 4])
 	<div class="modal_frame">

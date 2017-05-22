@@ -1,30 +1,40 @@
 {{-- サイズ等指定 --}}
 @include('common/battle')
 
-<div class="battle_background{{$viewData['EnemyData']['difficulty']}}">
+	<img src="{{IMG_URL}}battle/battle_Bg{{$viewData['EnemyData']['difficulty']}}.png" class="battle_background">
 	
-	<div class="hedder">
-		<img src="{{IMG_URL_BATTLE}}difficulty{{$viewData['EnemyData']['difficulty']}}.png" class="difficulty_Name">
+	<table border="0" class="battle_hedder">
+		<tr>
+			<td width="20%">
+				<img src="{{IMG_URL}}battle/difficulty{{$viewData['EnemyData']['difficulty']}}.png" >
+			</td>
+			<td width="20%"></td>
+			<td width="20%"></td>
+			{{-- 押されたらポップアップを表示する --}}
+			<td width="20%">
+				<a href="{{APP_URL}}battle/makeResultData" >
+					<img src="{{IMG_URL}}battle/surrender.png" >
+				</a>
+			</td>
+			<td width="20%">
+				<a>
+					<img src="{{IMG_URL}}battle/help.png" >
+				</a>
+			</td>
+		</tr>
+	</table>
 
-		{{--バトル終了のフラグが立っていなければ--}}
-		@if ($viewData['BattleData']['delFlag'] != 1)
-			<form method="get" action="{{APP_URL}}battle/makeResultData" onsubmit="doSomething();return false;">
-				<input type="image" src="{{IMG_URL_BATTLE}}surrender.png" value="1" name="sub2" class="surrender_Button">
-			</form>
-			<img src="{{IMG_URL_BATTLE}}help.png"  class="help_Button">
-			{{-- ヘルプのポップアップを表示するボタンにする --}}
-	<!--		<form method="get" action="{{APP_URL}}battle/makeResultData" onsubmit="doSomething();return false;">
-				<input type="image" src="{{IMG_URL_BATTLE}}help.png" value="1" name="sub2">
-			</form>-->
-		@endif
+	<div class="battle_enemy_status">
+		<img src="{{IMG_URL}}battle/enemyBar.png" class="battle_enemy_status_bar" >
 	</div>
-
-	{{-- 敵HPの表示 --}}
-	<div class="enemy_Status">
-		{{ $viewData['EnemyData']['name'] }} のHP {{ $viewData['EnemyData']['battleHp'] }} / {{ $viewData['EnemyData']['hp'] }} <br />
-		{{ $viewData['Type'][1] }} : {{ $viewData['EnemyData']['gooAtk']}}
-		{{ $viewData['Type'][2] }} : {{ $viewData['EnemyData']['choAtk']}}
-		{{ $viewData['Type'][3] }} : {{ $viewData['EnemyData']['paaAtk']}}
+	
+	<div class="battle_enemy_hand">
+		<img src="{{IMG_URL}}battle/enemyHandBg.png" class="battle_enemy_hand_bg" >
+		<img src={{IMG_URL}}battle/goo.png class="battle_enemy_hand_icon" >
+	</div>
+	
+	<div class="damage_log">
+		<img src="{{IMG_URL}}battle/damageLogBg.png" class="damage_log_Bg" >
 	</div>
 
 	{{-- 攻撃の結果が入っていたら --}}
@@ -78,29 +88,25 @@
 	{{-- バトル終了のフラグが立っていなければ次の攻撃の受け付け --}}
 	@if ($viewData['BattleData']['delFlag'] != 1)
 		{{-- それぞれのボタン表示 --}}
-		<div class="button">
-			<img src="{{IMG_URL_BATTLE}}buttonBg.png" class="button_bg" >
-			<a href="{{APP_URL}}battle/updateBattleData?hand=1" class="button_goo_linkregion" >
-				<img src={{IMG_URL_BATTLE}}goo.png class="button_icon" >
+		<div class="battle_playerhand_button">
+			<img src="{{IMG_URL}}battle/buttonBg.png" class="battle_playerhand_button_bg" >
+			<a href="{{APP_URL}}battle/updateBattleData?hand=1" class="battle_playerhand_button_goo_linkregion" >
+				<img src={{IMG_URL}}battle/goo.png class="battle_playerhand_button_icon" >
 			</a>
-			<a href="{{APP_URL}}battle/updateBattleData?hand=2" class="button_cho_linkregion" >
-				<img src={{IMG_URL_BATTLE}}cho.png class="button_icon" >
+			<a href="{{APP_URL}}battle/updateBattleData?hand=2" class="battle_playerhand_button_cho_linkregion" >
+				<img src={{IMG_URL}}battle/cho.png class="battle_playerhand_button_icon" >
 			</a>
-			<a href="{{APP_URL}}battle/updateBattleData?hand=3" class="button_paa_linkregion" >
-				<img src={{IMG_URL_BATTLE}}paa.png class="button_icon" >
+			<a href="{{APP_URL}}battle/updateBattleData?hand=3" class="battle_playerhand_button_paa_linkregion" >
+				<img src={{IMG_URL}}battle/paa.png class="battle_playerhand_button_icon" >
 			</a>
 		</div>
 	@endif
 	{{-- 自キャラステータスの表示 --}}
-	<div class="player_Status">
-		{{ $viewData['CharaData']['name'] }} のHP {{ $viewData['CharaData']['battleHp'] }} / {{ $viewData['CharaData']['hp'] }} <br />
+	<div class="battle_player_status">
+<!--		{{ $viewData['CharaData']['name'] }} のHP {{ $viewData['CharaData']['battleHp'] }} / {{ $viewData['CharaData']['hp'] }} <br />
 		{{ $viewData['Type'][1] }} : {{ $viewData['CharaData']['gooAtk']}}
 		{{ $viewData['Type'][2] }} : {{ $viewData['CharaData']['choAtk']}}
-		{{ $viewData['Type'][3] }} : {{ $viewData['CharaData']['paaAtk']}}
+		{{ $viewData['Type'][3] }} : {{ $viewData['CharaData']['paaAtk']}}-->
+		<img src="{{IMG_URL}}battle/playerBar.png" class="battle_player_status_bar">
 	</div>
-	
-	<div class="player_Bar"> 
-		<img src="{{IMG_URL_BATTLE}}charaBar.png">
-	</div>
-</div>
 </body>

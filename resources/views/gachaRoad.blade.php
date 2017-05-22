@@ -5,8 +5,11 @@
 	}
 	$dataStr = implode('&', $dataList);
 ?>
+
 <div style = "position:absolute">
-	<img class = "gacha_roadlogo"src="{{IMG_URL_GACHA}}gacharoadlogo.png">
+	<div>
+		<img class = "anim" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/anim1.png">
+	</div>
 	<a href="{{APP_URL}}gacha/index?<?php echo $dataStr;?>">
 		<input type="submit" class = "gacha_roadbutton">
 	</a>
