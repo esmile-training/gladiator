@@ -72,10 +72,12 @@ define("SERVER_URL", "http://esmile-sys.sakura.ne.jp/gladiator/");
 define("IMG_URL", SERVER_URL."img/");
 //DBサーバ
 define("DB_API_URL", SERVER_URL."dbapi/");
-
+//header
 define("HEADER_IMG_URL", SERVER_URL."img/header/");
-
+//footer
 define("FOOTER_IMG_URL", SERVER_URL."img/footer/");
+//footer
+define("MYPAGE_IMG_URL", SERVER_URL."img/mypage/");
 
 // バトル中画像
 define("IMG_URL_BATTLE", SERVER_URL."img/battle/");

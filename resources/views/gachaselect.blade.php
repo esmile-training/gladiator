@@ -1,5 +1,5 @@
 @include('common/css', ['file' => 'gachaselect'])
-@include('common/js', ['file' => 'getHeight'])
+
 
 <div class = "gacha_all">
 	<div>
@@ -33,7 +33,7 @@
 @include('popup/wrap', [
 	'class'		=> 'gacha1', 
 	'template'	=> 'gacha',
-	'data' => ['gachaId' => 1]
+	'data'		=> ['gachaId' => 1]
 ])
 @include('popup/wrap', ['class' => 'gacha2', 'template' => 'gacha', 'data' => ['gachaId' => 2]])
 @include('popup/wrap', ['class' => 'gacha3', 'template' => 'gacha', 'data' => ['gachaId' => 3]])
