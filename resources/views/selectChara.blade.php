@@ -1,6 +1,6 @@
 {{-- css  --}}
 <div Align="center">
-	キャラクター一覧
+	<font color="silver">キャラクター一覧</font>
 </div>
 <div Align="right">
 <form  action="listSort" method="get">
@@ -15,8 +15,8 @@
 	  <option value="choAtk">チョキ順</option>
 	  <option value="paaAtk">パー順</option>
    </select>
-	<input type="radio" name="order" value="3" checked="checked">降順
-	<input type="radio" name="order" value="4">昇順
+	<input type="radio" name="order" value="3" checked="checked"><font color='silver'>降順<font>
+	<input type="radio" name="order" value="4"><font color='silver'>昇順<font>
 	<input type="submit" value="決定">
 </form>
 </div>

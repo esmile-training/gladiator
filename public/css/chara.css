@@ -11,3 +11,8 @@ body{}
 .character{
 	width: 50%;
 }
+
+/* コーチ画像のサイズ指定 */
+.coach{
+	width: 18%
+}

@@ -2,7 +2,7 @@
 
     <div class="new_content">
 	<div class="new_content_wrrap">
-	    <form action="adduser" method="get">
+	    <form action="{{APP_URL}}adduser" method="get">
 			<p>チーム名を入力してください</p>
 			<input type="text" name="teamname" size="32">
 	    </form><?php//ユーザー名入力欄 ?>

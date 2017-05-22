@@ -15,7 +15,7 @@
 		echo 'チョキ:'.$chara['choAtk'].'<br>';
 		echo 'パー:'.$chara['paaAtk'].'<br>';
 	 if($chara['trainingState'] == 0) {?>
-	<form action="selectCoach" method="get">
+	<form action="{{APP_URL}}selectCoach" method="get">
 		<input type="hidden" name="id" value=<?php echo $chara['id'] ?>>
 		<input type="hidden" name="rare" value=<?php echo $chara['rare'] ?>>
 		<input type="hidden" name="imgId" value=<?php echo $chara['imgId'] ?>>

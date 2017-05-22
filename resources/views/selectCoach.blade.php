@@ -1,3 +1,4 @@
+@include('common/css', ['file' => 'chara'])
 <div>
 	<center>
 	コーチ枠がいっぱいです<br>
@@ -10,17 +11,15 @@
 	<div>
 		@foreach($viewData['coachList'] as $coach)
 		<?php if($coach['state'] == 1) { ?>
-		<div>
-			<center>
-				訓練中
-				<image src="{{IMG_URL_CHARA}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}
-			</center>
+		<div align="center">
+			<font color="silver">訓練中<font>
+			<image class='coach' src="{{IMG_URL_CHARA}}{{$coach['imgId']}}.png">{{$coach['name']}}
 		</div>
 		<?php } else { ?>
 			{{-- popupボタン --}}
 			<div class="modal_container">
 				<input type='image' class="modal_btn confirmChangeCoach{{ $count }}" src="{{IMG_URL_CHARA}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}
-			</div>			
+			</div>
 			{{-- popupウインドウ --}}
 			<div class="modal confirmChangeCoach{{ $count }}">
 			@include('popup/confirmChangeCoach')

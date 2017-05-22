@@ -3,17 +3,20 @@
 </div>
 <div>
 	<div>
-		<image src="{{IMG_URL_CHARA}}{{$coach['imgId']}}.png" alt="コーチイメージ"<
+		<image class="coach" src="{{IMG_URL_CHARA}}{{$coach['imgId']}}.png" alt="コーチイメージ"<
 			name="imgId" value="{{$coach['id']}}" width="75" height="100">{{$coach['name']}}<br>
 	</div>
 	<div>
 	↓
 	</div>
 	<div>
-		<image src="{{IMG_URL_CHARA}}{{$viewData['selectCharaState']['imgId']}}.png" alt="キャライメージ"<
-			name="imgId" value="{{$viewData['selectCharaState']['id']}}" width="75" height="100">{{$viewData['selectCharaState']['name']}}<br>
+		<image class="coach" src="{{IMG_URL_CHARA}}{{$viewData['selectCharaState']['imgId']}}.png" alt="キャライメージ"<
+			name="imgId" value="{{$viewData['selectCharaState']['id']}}" width="75" height="100">
 	</div>
-	<form action="changeCoach" method="get">
+	<div>
+			{{$viewData['selectCharaState']['name']}}<br>
+	</div>
+	<form action="{{APP_URL}}changeCoach" method="get">
 		<input type="hidden" name="coachId" value="{{$coach['id']}}">
 		<input type="hidden" name="id" value="{{$viewData['selectCharaState']['id']}}">
 		<input type="hidden" name="imgId" value="{{$viewData['selectCharaState']['imgId']}}">

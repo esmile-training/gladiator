@@ -70,16 +70,16 @@ class EditController extends BaseGameController
 			}
 			$this->Lib->exec('WeekRange','rangeState',$userId);
 
-//			//初期コーチの作成
-//			$this->addCoach('グー', 'goo', 0);
-//			$this->addCoach('チョキ', 'choki', 1);
-//			$this->addCoach('パー', 'paa', 2);
+			//初期コーチの作成
+			$this->addCoach($userId, 'グー', 'goo', 0);
+			$this->addCoach($userId, 'チョキ', 'choki', 1);
+			$this->addCoach($userId, 'パー', 'paa', 2);
 			
 			//マイページヘリダイレクト
 			return $this->Lib->redirect('mypage', 'index');
 		} else {
 			//文字数がオーバーした場合のポップアップで警告表示予定
-			return $this->Lib->redirect('commonError');
+			return $this->Lib->redirect(APP_URL.'commonError');
 		}
 	}
 	
