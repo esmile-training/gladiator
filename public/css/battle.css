@@ -17,39 +17,61 @@ body{}
     width: 100%;
 }
 
-/* ヘッダー部分 */
+/* ヘッダーの領域 */
 .battle_hedder {
     position: absolute;
     top: 0%;
     width: 100%;
 }
 
-/*敵キャラステータス*/
+/* 全体画面に対する、敵キャラステータスの領域 */
 .battle_enemy_status {
     position: absolute;
-    top: 5%;
+    top: 7%;
     width: 100%;
 }
+/* 敵キャラステータスの背景(バー) */
 .battle_enemy_status_bar {
     width: 100%;
 }
+/* 敵キャラのアイコン領域 */
 .battle_enemy_status_icon {
     position: absolute;
-    top: 10%;
-    left: 5%;
+    top: -20%;
+    left: 1%;
     width: 20%;
 }
+/* 敵キャラのHP */
+.battle_enemy_status_hp{
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    width: 80%;
+    color: #ffffff;
+    font-size: 15px;
+}
+/* 敵キャラの攻撃力 */
+.battle_enemy_status_atk{
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    width: 80%;
+    color: #ffffff;
+    font-size: 15px;
+}
 
-/* 敵キャラの手 */
+/* 全体画面に対する、敵キャラの手部分の領域 */
 .battle_enemy_hand {
     position: absolute;
     left: 35%;
     top: 17%;
     width: 30%;
 }
+/* 敵キャラの手部分の背景 */
 .battle_enemy_hand_bg {
     width: 100%;
 }
+/* 敵キャラの手のアイコン */
 .battle_enemy_hand_icon{
     position: absolute;
     left: 10%;
@@ -57,16 +79,18 @@ body{}
     width: 80%; 
 }
 
-/*ダメージログ */
+/* 全体画面に対する、ダメージログの領域 */
 .damage_log {
     position: absolute;
-    top: 40%;
+    top: 35%;
     left: 5%;
     width: 90%;
 }
+/* ダメージログの背景(枠) */
 .damage_log_Bg {
     width: 100%;
 }
+/* ダメージログのログ部分(文字) */
 .damage_log_message{
     position: absolute;
     top: 10%;
@@ -79,7 +103,7 @@ body{}
 /* 全体画面に対する、ボタン領域(全体) */
 .battle_playerhand_button{
     position: absolute;
-    bottom: 12%;
+    bottom: 20%;
     left: 10%;
     width: 80%;
 }
@@ -116,9 +140,33 @@ body{}
 /*自キャラステータス*/
 .battle_player_status {
     position: absolute;
-    bottom: 0%;
+    bottom: 5%;
     width: 100%;
 }
 .battle_player_status_bar {
     width: 100%;
+}
+.battle_player_status_icon {
+    position: absolute;
+    top: -18%;
+    right: 2%;
+    width: 20%;
+}
+/* 自キャラのHP */
+.battle_player_status_hp{
+    position: absolute;
+    bottom: 50%;
+    right: 5%;
+    width: 80%;
+    color: #ffffff;
+    font-size: 15px;
+}
+/* 自キャラの攻撃力 */
+.battle_player_status_atk{
+    position: absolute;
+    bottom: 30%;
+    right: 5%;
+    width: 80%;
+    color: #ffffff;
+    font-size: 15px;
 }

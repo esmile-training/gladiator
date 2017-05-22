@@ -26,7 +26,15 @@
 
 	<div class="battle_enemy_status">
 		<img src="{{IMG_URL}}battle/enemyBar.png" class="battle_enemy_status_bar" >	
-		<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['EnemyData']['imgId']}}.png" class="battle_enemy_status_icon" >			
+		<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['EnemyData']['imgId']}}.png" class="battle_enemy_status_icon" >
+		<div class="battle_enemy_status_hp">
+			{{ $viewData['EnemyData']['name'] }} のHP {{ $viewData['EnemyData']['battleHp'] }} / {{ $viewData['EnemyData']['hp'] }}
+		</div>
+		<div class="battle_enemy_status_atk">
+			{{ $viewData['Type'][1] }} : {{ $viewData['EnemyData']['gooAtk']}}
+			{{ $viewData['Type'][2] }} : {{ $viewData['EnemyData']['choAtk']}}
+			{{ $viewData['Type'][3] }} : {{ $viewData['EnemyData']['paaAtk']}}			
+		</div>
 	</div>
 
 	{{-- 攻撃の結果が入っていたら --}}
@@ -112,10 +120,15 @@
 	@endif
 	{{-- 自キャラステータスの表示 --}}
 	<div class="battle_player_status">
-<!--		{{ $viewData['CharaData']['name'] }} のHP {{ $viewData['CharaData']['battleHp'] }} / {{ $viewData['CharaData']['hp'] }} <br />
-		{{ $viewData['Type'][1] }} : {{ $viewData['CharaData']['gooAtk']}}
-		{{ $viewData['Type'][2] }} : {{ $viewData['CharaData']['choAtk']}}
-		{{ $viewData['Type'][3] }} : {{ $viewData['CharaData']['paaAtk']}}-->
+		<div class="battle_player_status_hp">
+			{{ $viewData['CharaData']['name'] }} のHP {{ $viewData['CharaData']['battleHp'] }} / {{ $viewData['CharaData']['hp'] }}
+		</div>
+		<div class="battle_player_status_atk">
+			{{ $viewData['Type'][1] }} : {{ $viewData['CharaData']['gooAtk']}}
+			{{ $viewData['Type'][2] }} : {{ $viewData['CharaData']['choAtk']}}
+			{{ $viewData['Type'][3] }} : {{ $viewData['CharaData']['paaAtk']}}			
+		</div>
 		<img src="{{IMG_URL}}battle/playerBar.png" class="battle_player_status_bar">
+		<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['CharaData']['imgId']}}.png" class="battle_player_status_icon" >
 	</div>
 </body>
