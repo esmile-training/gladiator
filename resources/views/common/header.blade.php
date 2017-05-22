@@ -15,7 +15,7 @@
 			<div class="headerPosition">
 				<img class="headerImg" src="{{HEADER_IMG_URL}}header.png" />
 				<div class="fadetopButton">
-					<a class="location" href="{{APP_URL}}top/login">
+					<a class="location" href="{{APP_URL}}">
 						<img class="image_change" src="{{HEADER_IMG_URL}}top.png"/>
 					</a>
 				</div>
