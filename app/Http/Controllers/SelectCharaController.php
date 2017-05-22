@@ -7,8 +7,10 @@ namespace App\Http\Controllers;
 class SelectCharaController extends BaseGameController
 {
 
-	public function index()
+	public function listSort()
 	{
+		$type = $_GET['type'];
+		$order = $_GET['order'];
 		// ユーザーIDを取得する
 		$userId = $this->user['id'];
 		// DBのキャラクターデータを取得する
@@ -16,7 +18,19 @@ class SelectCharaController extends BaseGameController
 
 		// DBからキャラクターを取得できたかを確認する
 		if(isset($alluChara))
-		{
+		{	
+			$order = (int)$order;
+			array_multisort(array_column($alluChara, $type), $order, $alluChara);
+//			//並べ替え処理
+//			$tmpArray = array();
+//			foreach ((array)$alluChara as $key => $row ) {
+//				$tmpArray[$key] = $row[$type];
+//			}
+//			array_multisort( $tmpArray, $order, $alluChara );
+//			//var_dump($tmpArray);exit;
+//			unset( $tmpArray );
+			
+			
 			// viewDataへ取得したキャラクターを送る
 			$this->viewData['charaList'] = $alluChara;
 			// ビューへデータを渡す
@@ -24,22 +38,9 @@ class SelectCharaController extends BaseGameController
 		}
 		else
 		{
+			//キャラクターがいない場合リストを空にして渡す
 			$this->viewData['charaList'] = null;
-			// キャラクターのデータが無ければ、マイページへリダイレクトする
 			return viewWrap('selectChara',$this->viewData);
-			//$this->Lib->redirect('mypage','index');
 		}
-	}
-
-	/*
-	 *  IDからキャラクターを特定する
-	 */
-	public function setChara()
-	{
-		// キャラクターIDの取得をする
-		$charaId = $_GET['uCharaId'];
-		// IDと一致するキャラクターをDBから取得する
-		$selectedChara = $this->Model->exec('Chara','getById',$charaId);
-		return ($this->Lib->redirect('charastatus',"",$selectedChara));
 	}
 }

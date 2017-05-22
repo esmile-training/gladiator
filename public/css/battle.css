@@ -1,14 +1,10 @@
 @charset "UTF-8";
 /*CSS Document*/
 /*training*/
+body{}
 
 /* 各級の背景画像 */
-.battle_background1 {
-    background-image: url("http://esmile-sys.sakura.ne.jp/gladiator/img/battle/battleBg1.png");
-    
-    /* 画像を常に天地左右の中央に配置 */
-	background-position: center center;
-   
+.battle_background {
 	/* 画像をタイル状に繰り返し表示しない */
 	background-repeat: no-repeat;
    
@@ -17,104 +13,112 @@
    
 	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
 	background-size: cover;
-
-    width: 100%;
-}
-.battle_background2 {
-    background-image: url("http://esmile-sys.sakura.ne.jp/gladiator/img/battle/battleBg2.png");
-    background-size: cover;
-    width: 100%;
-}
-.battle_background3 {
-    background-image: url("http://esmile-sys.sakura.ne.jp/gladiator/img/battle/battleBg3.png");
-    background-size: cover;
+    
     width: 100%;
 }
 
-/* ダメージログ */
-.damage_Log {
+/* ヘッダー部分 */
+.battle_hedder {
     position: absolute;
-    bottom: 50%;
-    left: 10%;
-    color: #fff;
-    background: rgba(0,0,0,.6);
-    width: 80%;
-    padding: 1em 0;
-}
-.damage_Log p{
-    margin: 0;
-    padding: 0 0.8em;
-    font-size: 150%;
-    text-align: center;
+    top: 0%;
+    width: 100%;
 }
 
-/* 敵キャラステータス */
-.enemy_Status {
+/*敵キャラステータス*/
+.battle_enemy_status {
+    position: absolute;
+    top: 5%;
+    width: 100%;
+}
+.battle_enemy_status_bar {
+    width: 100%;
+}
+.battle_enemy_status_icon {
     position: absolute;
     top: 10%;
-    left: 10%;
-    color: #fff;
-    background: rgba(0,0,0,.6);
-    width: 80%;
-    padding: 1em 0;
-}
-.enemy_Status p{
-    margin: 0;
-    padding: 0 0.8em;
-    font-size: 150%;
-    text-align: center;
+    left: 5%;
+    width: 20%;
 }
 
-/* 自キャラステータス */
-.player_Status {
+/* 敵キャラの手 */
+.battle_enemy_hand {
     position: absolute;
-    bottom: 10%;
-    left: 10%;
-    color: #fff;
-    background: rgba(0,0,0,.6);
-    width: 80%;
-    padding: 1em 0;
+    left: 35%;
+    top: 17%;
+    width: 30%;
 }
-.player_Status p{
-    margin: 0;
-    padding: 0 0.8em;
-    font-size: 150%;
-    text-align: center;
-}
-
-.difficulty{
-    position: absolute;
-    top: 1%;
-    left: 1%;
-}
-
-.help{
-    position: absolute;
-    top: 1%;
-    right: 1%;
-}
-
-.surrender{
-    position: absolute;
-    top: 1%;
-    right: 20%;
-}
-
-.player_Bar {
-    height: 1%;
-}
-
-#trainig_content{
+.battle_enemy_hand_bg {
     width: 100%;
-    max-width: 640px;
-    height: 400px;
-    margin: 16px auto 0 auto;
-    background-color: aliceblue;
+}
+.battle_enemy_hand_icon{
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    width: 80%; 
 }
 
-#trainig_content p{
-    display: inline;
+/*ダメージログ */
+.damage_log {
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    width: 90%;
+}
+.damage_log_Bg {
     width: 100%;
-    max-width: 640px;
-    vertical-align: middle;
+}
+.damage_log_message{
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 90%;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+/* 全体画面に対する、ボタン領域(全体) */
+.battle_playerhand_button{
+    position: absolute;
+    bottom: 12%;
+    left: 10%;
+    width: 80%;
+}
+/* ボタン領域に対する、ボタン背景(枠) */
+.battle_playerhand_button_bg{
+    width: 100%;
+}
+/*  ボタン領域に対する、グーボタンの領域 */
+.battle_playerhand_button_goo_linkregion{
+    position: absolute;
+    left: 38.5%;
+    bottom: 34%;
+    width: 23%;
+}
+/* ボタン領域に対する、チョキボタンの領域 */
+.battle_playerhand_button_cho_linkregion{
+    position: absolute;
+    right: 4%;
+    bottom: 9%;
+    width: 23%;
+}
+/* ボタン領域に対する、パーボタンの領域 */
+.battle_playerhand_button_paa_linkregion{
+    position: absolute;
+    left: 4%;
+    bottom: 9%;
+    width: 23%;
+}
+/* 各ボタン領域に対する、ボタンアイコン*/
+.battle_playerhand_button_icon{
+    width: 100%;
+}
+
+/*自キャラステータス*/
+.battle_player_status {
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+}
+.battle_player_status_bar {
+    width: 100%;
 }

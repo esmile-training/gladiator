@@ -13,13 +13,13 @@
 		<div>
 			<center>
 				訓練中
-				<image src="{{CHAR_IMG_URL}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}
+				<image src="{{IMG_URL_CHARA}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}
 			</center>
 		</div>
 		<?php } else { ?>
 			{{-- popupボタン --}}
 			<div class="modal_container">
-				<input type='image' class="modal_btn confirmChangeCoach{{ $count }}" src="{{CHAR_IMG_URL}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}
+				<input type='image' class="modal_btn confirmChangeCoach{{ $count }}" src="{{IMG_URL_CHARA}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}
 			</div>			
 			{{-- popupウインドウ --}}
 			<div class="modal confirmChangeCoach{{ $count }}">

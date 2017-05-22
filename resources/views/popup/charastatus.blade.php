@@ -1,6 +1,6 @@
 <div>
-	<img class="rate" src="{{IMG_URL_GACHA}}{{$chara['rare']}}.png"width= 5% height= 5%><br>
-	<img class="char" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png"width= 15% height= 15%><br>
+	<img class="rate" src="{{IMG_URL_GACHA}}{{$chara['rare']}}.png"width= 1% height= 1%><br>
+	<img class="char" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png"width= 5% height= 5%><br>
 	<?PHP
 		echo $chara['name'].'<br>';
 		echo $chara['attribute'].'<br>';
@@ -9,7 +9,7 @@
 		echo 'チョキ:'.$chara['choAtk'].'<br>';
 		echo 'パー:'.$chara['paaAtk'].'<br>';
 	 if($chara['trainingState'] == 0) {?>
-	<form action="SelectCoach/index" method="get">
+	<form action="selectCoach" method="get">
 		<input type="hidden" name="id" value=<?php echo $chara['id'] ?>>
 		<input type="hidden" name="rare" value=<?php echo $chara['rare'] ?>>
 		<input type="hidden" name="imgId" value=<?php echo $chara['imgId'] ?>>

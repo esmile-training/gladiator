@@ -1,0 +1,38 @@
+#main{
+	background-image:
+		url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/gacharoadbackground.png);
+	/* 画像を常に天地左右の中央に配置 */
+	background-position: center center;
+   
+	/* 画像をタイル状に繰り返し表示しない */
+	background-repeat: no-repeat;
+   
+	/* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+	background-attachment: fixed;
+   
+	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+	background-size: cover;
+	
+	width: 100%;
+	height: 84vh;
+}
+.gacha_roadbutton{
+	opacity: 0.0;
+    position: absolute;
+    top: 0;
+    width: 55vh;
+    height: 132vw;
+    left: 0;
+}
+.anim{
+    width: 100%;
+}
+.anim.two{
+	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/anim2.png);
+}
+#img.three{
+	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/anim3.png);
+}
+#img.four{
+	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/anim4.png);
+}

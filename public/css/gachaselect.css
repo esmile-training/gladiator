@@ -1,5 +1,6 @@
-body {
-    background-image:
+#main{
+	
+	background-image:
 		url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/selectbackground.png);
 	/* 画像を常に天地左右の中央に配置 */
 	background-position: center center;
@@ -12,78 +13,79 @@ body {
    
 	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
 	background-size: cover;
+	
+	width: 100%;
+	height:100vh;
 }
-.kanban{
-	width:32%;
-	position:relative;
-	bottom:0px;
-	left:0px;
+.gacha_all{
+	width:100%
 }
-.waku{
-	width:100%;
-	vertical-align: bottom; 
+.gacha_signboard{
+	width: 30%;
+    position: absolute;
+    top: 22vw;
+    left: 0px;
+	z-index:2;
 }
-.waku1{
-	width:100%;
-	height: 400px;
-	vertical-align: bottom; 
-}
-.waku2{
-	width:100%;
-	vertical-align: bottom; 
-}
-.text{
-	font-size:	150%;
-}
-.text2{
-	font-size:	150%;
-	position:fixed;
-	top:485px;
-	left:63px;
-}
-.relative{
-	position: relative;
-	bottom: 0;
-}
-
 .junban0{
 	z-index:0;
-	position:relative;
-	bottom:37px;
-	left:0px;
+	text-align: center; 
+    position: absolute;
+	top: 24vw;
+    left: 0px;
+}
+.gacha_frame{
+	width:100%;
+	vertical-align: bottom;
 }
 .junban1{
-	width:95%;
-	text-align:center;
-	position:relative;
-	bottom: 70vh;	
-	left:9px;
+    width: 94%;
+	text-align: center; 
+    position: absolute;
+    top: 38vw;
+	left: 1.5vh;
 }
-.all{
-	height: 89vh;
-}
-.button1{
+.gacha_button1{
 	border-bottom: solid 10px transparent;
 }
-.button2{
+.gacha_normalgachamoney{
+    width: 20%;
+    position: absolute;
+    top: 25%;
+    left: 6%;
+}
+.gacha_button2{
 	border-bottom: solid 10px transparent;
 }
-.button3{
+.gacha_raregachamoney{
+	width: 20%;
+    position: absolute;
+    top: 58%;
+    left: 6%;
+}
+.gacha_button3{
+}
+.gacha_superraregachamoney{
+	
+	width: 20%;
+    position: absolute;
+    top: 93%;
+    left: 6%;
 	
 }
 .eventebutton{
-	opacity: 0.0;  
-	position: relative;
-    bottom: 150px;
-    left: 214px;
-    width: 45%;
-    height: 25px;
+    opacity: 0.0;
+    position: absolute;
+    top: 89%;
+    right: 0;
+    width: 48%;
+    height: 5%;
 }
 .normalbutton{
-	opacity: 0.0;  
-    position: relative;
-    bottom: 155px;
-    width: 45%;
-    height: 25px;
-    left: 15px;
+    opacity: 0.0;
+    position: absolute;
+    top: 89%;
+    width: 48%;
+    height: 5%;
+    left: 0;
 }
