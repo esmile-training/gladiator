@@ -10,9 +10,9 @@ class TrainingModel extends BaseGameModel
 	{
 $sql =  <<< EOD
 		SELECT *
-		FROM uCoach
-		WHERE userId = $userId
-		AND State != 2
+		FROM	uCoach
+		WHERE	userId = $userId
+		AND		state != 2
 		LIMIT 3
 EOD;
 		return $this->select($sql, 'all');
@@ -21,18 +21,19 @@ EOD;
 	/*
 	 * データベースに訓練の時間と訓練中フラグを挿入
 	 */
-	public function setEndDate($trainingData)
+	public function setEndDate($trainingData,$userId)
 	{
 $sql =  <<< EOD
 		INSERT INTO uTraining
 		values(
-		NULL,
-		{$trainingData['uCharaId']},
-		{$trainingData['uCoachId']},
-		'{$trainingData['trainingStartDate']}',
-		'{$trainingData['trainingEndDate']}',
-		{$trainingData['trainingTime']},
-		0
+			NULL,
+			{$userId},
+			{$trainingData['uCharaId']},
+			{$trainingData['uCoachId']},
+			'{$trainingData['trainingStartDate']}',
+			'{$trainingData['trainingEndDate']}',
+			{$trainingData['trainingTime']},
+			0
 		);
 EOD;
 	return $this->insert($sql);
@@ -41,26 +42,27 @@ EOD;
 	public function getInfo($id)
 	{
 $sql =  <<< EOD
-		SELECT uCharaId,uCoachId,time
-		FROM uTraining
-		WHERE id = {$id}
+		SELECT	uCharaId,uCoachId,time
+		FROM	uTraining
+		WHERE	id = {$id}
 EOD;
-		$result = $this->select($sql, 'all');
+		$result = $this->select($sql, 'first');
 		return $result;
 	}
     
 	/*
 	 * 訓練終了時刻を過ぎている訓練のデータを取得
 	 */
-	public function getEndDate($nowTime)
+	public function getEndDate($nowTime,$userId)
 	{
 $sql =  <<< EOD
-		SELECT id, uCharaId, uCoachId, endDate
-		FROM uTraining
-		WHERE endDate <= '{$nowTime}'
-		AND state != 2
+		SELECT	id, uCharaId, uCoachId, endDate
+		FROM	uTraining
+		WHERE	userId		 = {$userId} 
+		AND		endDate		<= '{$nowTime}'
+		AND		state		!= 2;
 EOD;
-		return $this->select(IMG_URL_CHARA, 'all');
+		return $this->select($sql, 'all');
 	}
 
 	/*
@@ -73,7 +75,7 @@ $sql =  <<< EOD
 		FROM uChara
 		WHERE id = {$uCharaId};
 EOD;
-		$result = $this->select($sql, 'all');
+		$result = $this->select($sql, 'first');
 		return $result;
 	}
 	
@@ -83,11 +85,11 @@ EOD;
 	public function getUCoachAtk($uCoachId)
 	{
 $sql =  <<< EOD
-		SELECT gooAtk,choAtk,paaAtk
-		FROM uCoach
-		WHERE id = {$uCoachId};
+		SELECT	gooAtk,choAtk,paaAtk
+		FROM	uCoach
+		WHERE	id = {$uCoachId}
 EOD;
-		$result = $this->select($sql, 'all');
+		$result = $this->select($sql, 'first');
 		return $result;
 	}
 	
@@ -130,7 +132,7 @@ EOD;
 	{
 $sql =  <<< EOD
 		UPDATE  uCoach
-		SET		trainingState = {$trainingState}
+		SET		state = {$trainingState}
 		WHERE	id = {$uCoachId}
 EOD;
 	$this->update($sql);
