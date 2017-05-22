@@ -16,7 +16,7 @@
     max-width: 320px;
     height: auto;
     margin: 0px auto;
-    
+
 }
 
 .mypage_character_img img{
@@ -36,7 +36,7 @@
     height: 48px;
     margin: 24px auto 0px auto;
     line-height: 2;
-    
+
 }
 
 .comment{
@@ -49,6 +49,21 @@
     margin: 24px auto 0px auto;
     text-align: left;
     padding: 8px;
+ }
+ 
+ html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+}
+
+
+ #main{
+     background: url(http://esmile-sys.sakura.ne.jp/gladiator/img/mypage/homeImage.jpg) no-repeat center center;
+     background-size: 100% auto;
  }
 
 
