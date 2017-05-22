@@ -30,6 +30,11 @@
 	
 	<div class="battle_enemy_hand">
 		<img src="{{IMG_URL}}battle/enemyHandBg.png" class="battle_enemy_hand_bg" >
+		<img src={{IMG_URL}}battle/goo.png class="battle_enemy_hand_icon" >
+	</div>
+	
+	<div class="damage_log">
+		<img src="{{IMG_URL}}battle/damageLogBg.png" class="damage_log_Bg" >
 	</div>
 
 	{{-- 攻撃の結果が入っていたら --}}
