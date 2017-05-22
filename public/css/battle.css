@@ -33,6 +33,12 @@ body{}
 .battle_enemy_status_bar {
     width: 100%;
 }
+.battle_enemy_status_icon {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 20%;
+}
 
 /* 敵キャラの手 */
 .battle_enemy_hand {

@@ -25,62 +25,72 @@
 	</table>
 
 	<div class="battle_enemy_status">
-		<img src="{{IMG_URL}}battle/enemyBar.png" class="battle_enemy_status_bar" >
-	</div>
-	
-	<div class="battle_enemy_hand">
-		<img src="{{IMG_URL}}battle/enemyHandBg.png" class="battle_enemy_hand_bg" >
-		<img src={{IMG_URL}}battle/hand{{$viewData['EnemyData']['hand']}}.png class="battle_enemy_hand_icon" >
+		<img src="{{IMG_URL}}battle/enemyBar.png" class="battle_enemy_status_bar" >	
+		<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['EnemyData']['imgId']}}.png" class="battle_enemy_status_icon" >			
 	</div>
 
 	{{-- 攻撃の結果が入っていたら --}}
 	@if ($viewData['CharaData']['result'] != 0)
-
-		{{-- 勝敗の表示 --}}
-	<div class="damage_log">
-		<img src="{{IMG_URL}}battle/damageLogBg.png" class="damage_log_Bg" >
-		<div class="damage_log_message">
-			{{ $viewData['CharaData']['name'] }}
-			は    
-			{{ $viewData['Type'][$viewData['CharaData']['hand']] }}
-			を出した！<br />
-			{{ $viewData['EnemyData']['name'] }}
-			は    
-			{{ $viewData['Type'][$viewData['EnemyData']['hand']] }}
-			を出した！<br />
-
-			結果は{{ $viewData['Result'][$viewData['CharaData']['result']] }}！<br />
-
-			{{-- ダメージログの表示 --}}
-			@if ( $viewData['CharaData']['result'] == 1)
-					{{$viewData['EnemyData']['name']}} に
-				@if ( $viewData['CharaData']['hand'] == 1)
-					{{$viewData['CharaData']['battleGooAtk']}} のダメージ <br />
-				@elseif ( $viewData['CharaData']['hand'] == 2)
-					{{ $viewData['CharaData']['battleChoAtk'] }} のダメージ <br />
-				@elseif ( $viewData['CharaData']['hand'] == 3)
-					{{ $viewData['CharaData']['battlePaaAtk'] }} のダメージ <br />
-				@endif
-			@elseif ($viewData['CharaData']['result'] == 2)
-					{{$viewData['CharaData']['name']}} に
-				@if ($viewData['EnemyData']['hand'] == 1)
-					{{$viewData['EnemyData']['battleGooAtk']}} のダメージ <br />
-				@elseif ($viewData['EnemyData']['hand'] == 2)
-					{{ $viewData['EnemyData']['battleChoAtk'] }} のダメージ <br />
-				@elseif ($viewData['EnemyData']['hand'] == 3)
-					{{ $viewData['EnemyData']['battlePaaAtk'] }} のダメージ <br />
-				@endif
-			@elseif ($viewData['CharaData']['result'] == 3)
-				お互いにダメージなし<br />
-			@endif
-				{{-- バトル終了のフラグが立っていたら --}}
-			@if ($viewData['BattleData']['delFlag'] == 1)
-					<a href="{{APP_URL}}battle/makeResultData">
-						バトルリザルト画面へ
-					</a>
-			@endif
+		<div class="battle_enemy_hand">
+			<img src="{{IMG_URL}}battle/enemyHandBg.png" class="battle_enemy_hand_bg" >
+			<img src={{IMG_URL}}battle/hand{{$viewData['EnemyData']['hand']}}.png class="battle_enemy_hand_icon" >
 		</div>
-	</div>
+
+			{{-- 勝敗の表示 --}}
+		<div class="damage_log">
+			<img src="{{IMG_URL}}battle/damageLogBg.png" class="damage_log_Bg" >
+			<div class="damage_log_message">
+				{{ $viewData['CharaData']['name'] }}
+				は    
+				{{ $viewData['Type'][$viewData['CharaData']['hand']] }}
+				を出した！<br />
+				{{ $viewData['EnemyData']['name'] }}
+				は    
+				{{ $viewData['Type'][$viewData['EnemyData']['hand']] }}
+				を出した！<br />
+
+				結果は{{ $viewData['Result'][$viewData['CharaData']['result']] }}！<br />
+
+				{{-- ダメージログの表示 --}}
+				@if ( $viewData['CharaData']['result'] == 1)
+						{{$viewData['EnemyData']['name']}} に
+					@if ( $viewData['CharaData']['hand'] == 1)
+						{{$viewData['CharaData']['battleGooAtk']}} のダメージ <br />
+					@elseif ( $viewData['CharaData']['hand'] == 2)
+						{{ $viewData['CharaData']['battleChoAtk'] }} のダメージ <br />
+					@elseif ( $viewData['CharaData']['hand'] == 3)
+						{{ $viewData['CharaData']['battlePaaAtk'] }} のダメージ <br />
+					@endif
+				@elseif ($viewData['CharaData']['result'] == 2)
+						{{$viewData['CharaData']['name']}} に
+					@if ($viewData['EnemyData']['hand'] == 1)
+						{{$viewData['EnemyData']['battleGooAtk']}} のダメージ <br />
+					@elseif ($viewData['EnemyData']['hand'] == 2)
+						{{ $viewData['EnemyData']['battleChoAtk'] }} のダメージ <br />
+					@elseif ($viewData['EnemyData']['hand'] == 3)
+						{{ $viewData['EnemyData']['battlePaaAtk'] }} のダメージ <br />
+					@endif
+				@elseif ($viewData['CharaData']['result'] == 3)
+					お互いにダメージなし<br />
+				@endif
+					{{-- バトル終了のフラグが立っていたら --}}
+				@if ($viewData['BattleData']['delFlag'] == 1)
+						<a href="{{APP_URL}}battle/makeResultData">
+							バトルリザルト画面へ
+						</a>
+				@endif
+			</div>
+		</div>
+	@else
+		{{-- 何も出してない敵の手の枠 --}}
+		<div class="battle_enemy_hand">
+			<img src="{{IMG_URL}}battle/enemyHandBg.png" class="battle_enemy_hand_bg" >
+		</div>
+		{{-- メッセージログの枠 --}}
+		<div class="damage_log">
+			<img src="{{IMG_URL}}battle/damageLogBg.png" class="damage_log_Bg" >
+		</div>
+	
 
 	@endif
 
