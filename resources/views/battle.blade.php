@@ -30,57 +30,56 @@
 	
 	<div class="battle_enemy_hand">
 		<img src="{{IMG_URL}}battle/enemyHandBg.png" class="battle_enemy_hand_bg" >
-		<img src={{IMG_URL}}battle/goo.png class="battle_enemy_hand_icon" >
-	</div>
-	
-	<div class="damage_log">
-		<img src="{{IMG_URL}}battle/damageLogBg.png" class="damage_log_Bg" >
+		<img src={{IMG_URL}}battle/hand{{$viewData['EnemyData']['hand']}}.png class="battle_enemy_hand_icon" >
 	</div>
 
 	{{-- 攻撃の結果が入っていたら --}}
 	@if ($viewData['CharaData']['result'] != 0)
 
 		{{-- 勝敗の表示 --}}
-	<div class="damage_Log">
-		{{ $viewData['CharaData']['name'] }}
-		は    
-		{{ $viewData['Type'][$viewData['CharaData']['hand']] }}
-		を出した！<br />
-		{{ $viewData['EnemyData']['name'] }}
-		は    
-		{{ $viewData['Type'][$viewData['EnemyData']['hand']] }}
-		を出した！<br />
+	<div class="damage_log">
+		<img src="{{IMG_URL}}battle/damageLogBg.png" class="damage_log_Bg" >
+		<div class="damage_log_message">
+			{{ $viewData['CharaData']['name'] }}
+			は    
+			{{ $viewData['Type'][$viewData['CharaData']['hand']] }}
+			を出した！<br />
+			{{ $viewData['EnemyData']['name'] }}
+			は    
+			{{ $viewData['Type'][$viewData['EnemyData']['hand']] }}
+			を出した！<br />
 
-		結果は{{ $viewData['Result'][$viewData['CharaData']['result']] }}！<br />
+			結果は{{ $viewData['Result'][$viewData['CharaData']['result']] }}！<br />
 
-		{{-- ダメージログの表示 --}}
-		@if ( $viewData['CharaData']['result'] == 1)
-				{{$viewData['EnemyData']['name']}} に
-			@if ( $viewData['CharaData']['hand'] == 1)
-				{{$viewData['CharaData']['battleGooAtk']}} のダメージ <br />
-			@elseif ( $viewData['CharaData']['hand'] == 2)
-				{{ $viewData['CharaData']['battleChoAtk'] }} のダメージ <br />
-			@elseif ( $viewData['CharaData']['hand'] == 3)
-				{{ $viewData['CharaData']['battlePaaAtk'] }} のダメージ <br />
+			{{-- ダメージログの表示 --}}
+			@if ( $viewData['CharaData']['result'] == 1)
+					{{$viewData['EnemyData']['name']}} に
+				@if ( $viewData['CharaData']['hand'] == 1)
+					{{$viewData['CharaData']['battleGooAtk']}} のダメージ <br />
+				@elseif ( $viewData['CharaData']['hand'] == 2)
+					{{ $viewData['CharaData']['battleChoAtk'] }} のダメージ <br />
+				@elseif ( $viewData['CharaData']['hand'] == 3)
+					{{ $viewData['CharaData']['battlePaaAtk'] }} のダメージ <br />
+				@endif
+			@elseif ($viewData['CharaData']['result'] == 2)
+					{{$viewData['CharaData']['name']}} に
+				@if ($viewData['EnemyData']['hand'] == 1)
+					{{$viewData['EnemyData']['battleGooAtk']}} のダメージ <br />
+				@elseif ($viewData['EnemyData']['hand'] == 2)
+					{{ $viewData['EnemyData']['battleChoAtk'] }} のダメージ <br />
+				@elseif ($viewData['EnemyData']['hand'] == 3)
+					{{ $viewData['EnemyData']['battlePaaAtk'] }} のダメージ <br />
+				@endif
+			@elseif ($viewData['CharaData']['result'] == 3)
+				お互いにダメージなし<br />
 			@endif
-		@elseif ($viewData['CharaData']['result'] == 2)
-				{{$viewData['CharaData']['name']}} に
-			@if ($viewData['EnemyData']['hand'] == 1)
-				{{$viewData['EnemyData']['battleGooAtk']}} のダメージ <br />
-			@elseif ($viewData['EnemyData']['hand'] == 2)
-				{{ $viewData['EnemyData']['battleChoAtk'] }} のダメージ <br />
-			@elseif ($viewData['EnemyData']['hand'] == 3)
-				{{ $viewData['EnemyData']['battlePaaAtk'] }} のダメージ <br />
+				{{-- バトル終了のフラグが立っていたら --}}
+			@if ($viewData['BattleData']['delFlag'] == 1)
+					<a href="{{APP_URL}}battle/makeResultData">
+						バトルリザルト画面へ
+					</a>
 			@endif
-		@elseif ($viewData['CharaData']['result'] == 3)
-			お互いにダメージなし<br />
-		@endif
-			{{-- バトル終了のフラグが立っていたら --}}
-		@if ($viewData['BattleData']['delFlag'] == 1)
-				<a href="{{APP_URL}}battle/makeResultData">
-					バトルリザルト画面へ
-				</a>
-		@endif
+		</div>
 	</div>
 
 	@endif
@@ -91,13 +90,13 @@
 		<div class="battle_playerhand_button">
 			<img src="{{IMG_URL}}battle/buttonBg.png" class="battle_playerhand_button_bg" >
 			<a href="{{APP_URL}}battle/updateBattleData?hand=1" class="battle_playerhand_button_goo_linkregion" >
-				<img src={{IMG_URL}}battle/goo.png class="battle_playerhand_button_icon" >
+				<img src={{IMG_URL}}battle/hand1.png class="battle_playerhand_button_icon" >
 			</a>
 			<a href="{{APP_URL}}battle/updateBattleData?hand=2" class="battle_playerhand_button_cho_linkregion" >
-				<img src={{IMG_URL}}battle/cho.png class="battle_playerhand_button_icon" >
+				<img src={{IMG_URL}}battle/hand2.png class="battle_playerhand_button_icon" >
 			</a>
 			<a href="{{APP_URL}}battle/updateBattleData?hand=3" class="battle_playerhand_button_paa_linkregion" >
-				<img src={{IMG_URL}}battle/paa.png class="battle_playerhand_button_icon" >
+				<img src={{IMG_URL}}battle/hand3.png class="battle_playerhand_button_icon" >
 			</a>
 		</div>
 	@endif
