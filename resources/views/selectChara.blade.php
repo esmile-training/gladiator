@@ -22,24 +22,35 @@
 </div>
 {{--所持キャラクターをすべて表示する--}}
 <?php if(is_null($viewData['charaList'])){ 
-	 echo '<div>'.'キャラクターがいません。','<div>';
+	echo '<div>'.'キャラクターがいません。','<div>';
 	} else {
 	$count = 1; ?>
-		@foreach($viewData['charaList'] as $chara)
-			{{-- popupボタン --}}
-			<div class="modal_container">
-				<br><?php if($chara['trainingState'] == 1) echo	 '訓練中'; ?>
-				<input type='image' class="modal_btn charastatus{{ $count }}" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png" width="75" height="100">{{$chara['name']}}
-			</div>
-			{{-- popupウインドウ --}}
-			<div class="modal charastatus{{ $count }}">
+	@foreach($viewData['charaList'] as $chara)
+	{{-- popupボタン --}}
+	<div class="modal_container">
+		<br><?php if($chara['trainingState'] == 1) echo	 '訓練中'; ?>
+		<input type='image' class="modal_btn charastatus{{ $count }}" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png" width="75" height="100">{{$chara['name']}}
+	</div>
+	{{-- popupウインドウ --}}
+	<div class="modal charastatus{{ $count }}">
+		<!--@include('popup/charastatus')-->
+        <div class="modal_top">
+			<img class="modal_frametop"src="{{SERVER_URL}}img/popup/popuptop.png">
+			<div class="close">
+				<img class="modal_closebutton"src="{{IMG_URL_GACHA}}closebutton.png">
+                <span>close</span>
+            </div>
+        </div>
+		<div class="modal_middle">
+			<img class="modal_framemiddle"src="{{SERVER_URL}}img/popup/popupmiddle.png">
+			<div class='modal_window'>
 				@include('popup/charastatus')
-				<div class="modal_frame">
-					<div class="close">
-						<span>close</span>
-					</div>
-				</div>
 			</div>
-			<?php $count++; ?>
-		@endforeach
+		</div>
+		<div class="modal_bottom">
+			<img class="modal_framebottom"src="{{SERVER_URL}}img/popup/popupbottom.png">
+		</div>
+	</div>
+<?php $count++; ?>
+	@endforeach
 <?php } ?>	
