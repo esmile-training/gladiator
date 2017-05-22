@@ -20,28 +20,27 @@
 	    
 	    <!-- rankの範囲検索 -->
 	    <?php if($value == end($viewData['ranking'])) : ?>
-		<!-- ページ総数がページャーの2ページ目以降あるなら -->
-		<?php if(($viewData['rankingData']['count']) - 2 < $viewData['rankingData']['nowpage'] / 10 + 1): ?>
-	    
-		    <?php foreach (range(($viewData['rankingData']['count']) - 4, $viewData['rankingData']['count']) as $data) : ?>		   
-			<button type="submit" name="page" value="{{($data -1) * 10}}">{{$data}}</button>  
-		    <?php endforeach; ?>
-		
-		<!-- 現在のページが3ページ以降でページ総数が6ページ以上あるなら -->
-		<?php elseif(3 <= $viewData['rankingData']['nowpage'] / 10 && 6 <= $viewData['rankingData']['count']): ?>
-		
-		    <?php foreach (range($viewData['rankingData']['nowpage']  / 10 - 1, ($viewData['rankingData']['nowpage'] / 10 + 3)) as $data) : ?>		   
-			<button type="submit" name="page" value="{{($data - 1) * 10}}">{{$data}}</button>  
-		    <?php endforeach; ?>
-		
-		<!-- 最初の2ページのみ実行される。 -->
-		<?php else: ?>
+			<!-- ページ総数がページャーの2ページ目以降あるなら -->
+			<?php if(($viewData['rankingData']['count']) - 1 < $viewData['rankingData']['nowpage'] / 10 + 1): ?>
+
+				<?php foreach (range(($viewData['rankingData']['count']) - 1, $viewData['rankingData']['count']) as $data) : ?>		   
+				<button type="submit" name="page" value="{{($data -1) * 10}}">{{$data}}</button>  
+				<?php endforeach; ?>
+
+			<!-- 現在のページが3ページ以降でページ総数が6ページ以上あるなら -->
+			<?php elseif(3 <= $viewData['rankingData']['nowpage'] / 10 && 6 <= $viewData['rankingData']['count']): ?>
 			
-		    <?php foreach (range(1, 5) as $data) : ?>		   
-			<button type="submit" name="page" value="{{($data -1) * 10}}">{{$data}}</button>  
-		    <?php endforeach; ?>
-			
-		<?php endif; ?>
+				<?php foreach (range($viewData['rankingData']['nowpage']  / 10 - 1, ($viewData['rankingData']['nowpage'] / 10 + 3)) as $data) : ?>		   
+					<button type="submit" name="page" value="{{($data - 1) * 10}}">{{$data}}</button>  
+				<?php endforeach; ?>
+		
+			<!-- 最初の2ページのみ実行される。 -->
+			<?php else: ?>
+				<?php foreach (range(1, $viewData['rankingData']['count']) as $data) : ?>		   
+				<button type="submit" name="page" value="{{($data -1) * 10}}">{{$data}}</button>  
+				<?php endforeach; ?>
+
+			<?php endif; ?>
 	    <?php endif; ?>
 	    <!-- end -->
 	    

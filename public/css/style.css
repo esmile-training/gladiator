@@ -166,6 +166,11 @@ img{
     width: 100%;
 }
 
+.menu_icon{
+    padding: 35%;
+    margin: -38%;
+}
+
 .headerPosition{
     position: fixed;
     width: 100%;
