@@ -2,7 +2,7 @@
 
     "use strict";
     
-    var img = doc.getElementById("img"),
+    var img = doc.getElementById("anim"),
         classList = [
             "",
             "two"

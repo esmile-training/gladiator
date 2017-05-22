@@ -6,7 +6,7 @@
 	$dataStr = implode('&', $dataList);
 ?>
 
-<div style = "position:absolute">]
+<div style = "position:absolute">
 	<div>
 		<img class = "anim" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/anim1.png">
 	</div>
