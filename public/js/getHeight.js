@@ -7,7 +7,7 @@ $(function(){
 	headerHeight = headerHeight-(headerHeight/8);
 	 
 
-    
+
 	var body =  $('body').height();
 	body = body - (headerHeight + footerHeight);
 	main.style.height = body+'px';
