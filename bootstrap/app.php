@@ -79,8 +79,6 @@ define("FOOTER_IMG_URL", SERVER_URL."img/footer/");
 //footer
 define("MYPAGE_IMG_URL", SERVER_URL."img/mypage/");
 
-// バトル中画像
-define("IMG_URL_BATTLE", SERVER_URL."img/battle/");
 // ガチャ画像
 define("IMG_URL_GACHA", SERVER_URL."img/gacha/");
 // キャラ画像
