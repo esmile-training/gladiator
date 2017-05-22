@@ -33,6 +33,12 @@ body{}
 .battle_enemy_status_bar {
     width: 100%;
 }
+.battle_enemy_status_icon {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 20%;
+}
 
 /* 敵キャラの手 */
 .battle_enemy_hand {
@@ -46,7 +52,7 @@ body{}
 }
 .battle_enemy_hand_icon{
     position: absolute;
-    left: 30%;
+    left: 10%;
     top: 10%;
     width: 80%; 
 }
@@ -54,19 +60,20 @@ body{}
 /*ダメージログ */
 .damage_log {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 5%;
-    color: #fff;
-    background: rgba(0,0,0,.6);
-    height: 20%;
     width: 90%;
-    padding: 1em 0;
 }
-.damage_log p{
-    margin: 0;
-    padding: 0 0.8em;
-    font-size: 150%;
-    text-align: center;
+.damage_log_Bg {
+    width: 100%;
+}
+.damage_log_message{
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 90%;
+    color: #ffffff;
+    font-size: 13px;
 }
 
 /* 全体画面に対する、ボタン領域(全体) */

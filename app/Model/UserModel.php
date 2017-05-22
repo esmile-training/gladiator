@@ -70,7 +70,6 @@ EOD;
 	/*
 	 * キャラステータスの更新
 	 */
-
 	public function charaStatus($userId) {
 $sql = <<< EOD
 

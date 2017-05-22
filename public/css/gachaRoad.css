@@ -24,9 +24,15 @@
     height: 132vw;
     left: 0;
 }
-.gacha_roadlogo{
-	position: fixed;
-    bottom: 43%;
-	left:0;
+.anim{
     width: 100%;
+}
+.anim.two{
+	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/anim2.png);
+}
+#img.three{
+	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/anim3.png);
+}
+#img.four{
+	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/anim4.png);
 }
