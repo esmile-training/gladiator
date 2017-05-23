@@ -1,0 +1,80 @@
+.menuButton{
+    width: 100%;
+}
+
+.menu_icon{
+    padding: 35%;
+    margin: -38%;
+}
+
+.headerPosition{
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+}
+
+.headerImg{
+    width: 100%;
+    height: auto;
+}
+
+.user_name{
+    position: absolute;
+    color: white;
+    top: 0%;
+    left: 35%;
+    font-size: 9vw;
+    z-index: 2;
+}
+
+.fadetopButton {
+    position: absolute;
+    top: 5%;
+    left: 1%;
+    width: 21%;
+    background-size: contain;
+}
+
+.fademenuButton {
+    position: absolute;
+    top: 4%;
+    right: 1%;
+    width: 21%;
+    background-size: contain;
+}
+
+.headerGaugeIcon{
+    width: 25%;
+    position: absolute;
+}
+
+.money{
+    top: 43%;
+    left: 22%;
+}
+
+.battleTicket{ 
+    top: 50%;
+    right: 23%;
+}
+
+.possession_ornament{
+    text-shadow: 1.5vw 0.5vw 1vw black, 0.5vw 1vw 0.5vw rgba(0,0,0,0.8);
+    font-family: 'Century';
+}
+
+.possession_money{
+    position: absolute;
+    color: white;
+    font-size: 4.5vw;
+    top: 45%;
+    left: 30%;
+}
+
+.possession_battleTicket{
+    position: absolute;
+    color: white;
+    font-size: 4.5vw;
+    top: 45%;
+    right: 22%;
+}
