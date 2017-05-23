@@ -2,7 +2,7 @@
 		@include('common/battle')
 		@include('common/css', ['file' => 'battle'])
 
-		<img src="{{IMG_URL}}battle/battle_Bg{{$viewData['EnemyData']['difficulty']}}.png" class="battle_background">
+		<img src="{{IMG_URL}}battle/battle_Bg{{$viewData['EnemyData']['difficulty']}}.png" class="battle_bg">
 
 		<table border="0" class="battle_hedder">
 			<tr>
