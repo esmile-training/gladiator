@@ -4,7 +4,7 @@
 body{}
 
 /* 各級の背景画像 */
-.battle_background {
+.battle_bg {
 	/* 画像をタイル状に繰り返し表示しない */
 	background-repeat: no-repeat;
    
@@ -38,7 +38,7 @@ body{}
 .battle_enemy_status_icon {
     position: absolute;
     top: -20%;
-    left: 1%;
+    left: 0.5%;
     width: 20%;
 }
 /* 敵キャラのHP */
@@ -74,7 +74,7 @@ body{}
 /* 敵キャラの手のアイコン */
 .battle_enemy_hand_icon{
     position: absolute;
-    left: 10%;
+    left: 9%;
     top: 10%;
     width: 80%; 
 }
@@ -149,7 +149,7 @@ body{}
 .battle_player_status_icon {
     position: absolute;
     top: -18%;
-    right: 2%;
+    right: 2.5%;
     width: 20%;
 }
 /* 自キャラのHP */
