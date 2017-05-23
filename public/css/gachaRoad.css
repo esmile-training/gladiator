@@ -24,15 +24,44 @@
     height: 132vw;
     left: 0;
 }
-.anim{
-    width: 100%;
+.album{
+	margin: auto;
+	position: relative;
 }
-.anim.two{
-	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/anim2.png);
+.album img{
+	animation: album 5s infinite;
+    -webkit-animation: album 5s infinite;
+	width: 100%;
+	opacity: 0;
 }
-#img.three{
-	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/anim3.png);
+@keyframes album {
+    0% {opacity:1}
+    10% {opacity:1}
+    20% {opacity:1}
+    30% {opacity:0}
+ }
+.album .img1{
+	animation-delay: 1s;
+    -webkit-animation-delay: 1s;
 }
-#img.four{
-	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/anim4.png);
+.album .img2{
+	animation-delay:2s;
+	-webkit-animation-delay: 2s;
+	position: absolute;
+	top: 0;
+	left: 0%;
+}
+.album .img3{
+	animation-delay:4s;
+	-webkit-animation-delay: 3s;
+	position: absolute;
+	top: 0;
+	left: 0%;
+}
+.album .img4{
+	animation-delay:6s;
+	-webkit-animation-delay: 4s;
+	position: absolute;
+	top: 0;
+	left: 0%;
 }

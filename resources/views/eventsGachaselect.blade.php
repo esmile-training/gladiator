@@ -38,19 +38,3 @@
 	'template'	=> 'gacha',
 	'data'		=> ['gachaId' => $w]
 ])
-<div class="modal gacha4">
-	@include('popup/'.'gacha', ['gachaId' => 4])
-	<div class="modal_frame">
-		<div class="close">
-			<span>close</span>
-		</div>
-	</div>
-</div>
-<div class="modal gacha{{$w}}">
-	@include('popup/'.'gacha', ['gachaId' => $w])
-	<div class="modal_frame">
-		<div class="close">
-			<span>close</span>
-		</div>
-	</div>
-</div>
