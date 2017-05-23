@@ -27,7 +27,7 @@ function charCheck(){
 
 function wupBtn(){
 	//空白の登録禁止処理
-	 //名前と感想の欄のテキストを変数に代入する
+	//名前と感想の欄のテキストを変数に代入する
 	var name = document.form1.elements[0].value;
   
 	//名前若しくは感想欄のどちらかが空かチェック
