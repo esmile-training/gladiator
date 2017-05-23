@@ -2,8 +2,11 @@
 		@include('common/header')
 		@include('common/css', ['file' => 'battleResult'])
 		
+		<div class="battleresult_log">
+			<img src="{{IMG_URL}}battle/battleResultlog_Bg.png" class="battleresult_log_bg">				
+		</div>
 		@if ($viewData['Prize'] > 0)
-			<img src="{{IMG_URL}}battle/battleResult_Bg_Win.png" class="battleResult_background">
+			<img src="{{IMG_URL}}battle/battleResult_Bg_Win.png" class="battleresult_bg">
 			<div>
 				勝利！
 			</div>
@@ -14,14 +17,14 @@
 				現在のウィークリーポイント　{{$viewData['RankingData']['weeklyAward']}}
 			</div>
 		@else
-			<img src="{{IMG_URL}}battle/battleResult_Bg_Lose.png" class="battleResult_background">
+			<img src="{{IMG_URL}}battle/battleResult_Bg_Lose.png" class="battleresult_bg">
 			<div>
 				敗北...
 			</div>
 		@endif
 
-		<div>
-			<a href="{{APP_URL}}mypage" >
+		<div class="battleresult_backhome_linkregion">
+			<a href="{{APP_URL}}mypage" class="battleresult_backhome_icon">
 				<img src={{IMG_URL}}battle/backHome.png >
 			</a>
 		</div>

@@ -4,7 +4,7 @@
 body{}
 
 /* 背景画像 */
-.battleResult_background {
+.battleresult_bg {
 	/* 画像をタイル状に繰り返し表示しない */
 	background-repeat: no-repeat;
    
@@ -14,5 +14,28 @@ body{}
 	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
 	background-size: cover;
     
+    width: 100%;
+}
+
+/* バトルリザルトのログ部分 */
+.battleresult_log {
+    position: absolute;
+    top: 35%;
+    left: 5%;
+    width: 90%;
+}
+/* 背景画像 */
+.battleresult_log_bg {
+    width: 100%;
+}
+
+/* 全体に対する、バックホームボタンの領域 */
+.battleresult_backhome_linkregion{
+    position: absolute;
+    left: 35%;
+    bottom: 10%;
+    width: 30%;
+}
+.battleresult_backhome_icon{
     width: 100%;
 }
