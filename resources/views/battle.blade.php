@@ -25,7 +25,7 @@
 	</table>
 
 	<div class="battle_enemy_status">
-		<img src="{{IMG_URL}}battle/enemyBar.png" class="battle_enemy_status_bar" >	
+		<img src="{{IMG_URL}}battle/enemy_Bar.png" class="battle_enemy_status_bar" >	
 		<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['EnemyData']['imgId']}}.png" class="battle_enemy_status_icon" >
 		<div class="battle_enemy_status_hp">
 			{{ $viewData['EnemyData']['name'] }} のHP {{ $viewData['EnemyData']['battleHp'] }} / {{ $viewData['EnemyData']['hp'] }}
@@ -40,13 +40,13 @@
 	{{-- 攻撃の結果が入っていたら --}}
 	@if ($viewData['CharaData']['result'] != 0)
 		<div class="battle_enemy_hand">
-			<img src="{{IMG_URL}}battle/enemyHandBg.png" class="battle_enemy_hand_bg" >
+			<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
 			<img src={{IMG_URL}}battle/hand{{$viewData['EnemyData']['hand']}}.png class="battle_enemy_hand_icon" >
 		</div>
 
 			{{-- 勝敗の表示 --}}
 		<div class="damage_log">
-			<img src="{{IMG_URL}}battle/damageLogBg.png" class="damage_log_Bg" >
+			<img src="{{IMG_URL}}battle/damagelog_Bg.png" class="damage_log_Bg" >
 			<div class="damage_log_message">
 				{{ $viewData['CharaData']['name'] }}
 				は    
@@ -92,11 +92,11 @@
 	@else
 		{{-- 何も出してない敵の手の枠 --}}
 		<div class="battle_enemy_hand">
-			<img src="{{IMG_URL}}battle/enemyHandBg.png" class="battle_enemy_hand_bg" >
+			<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
 		</div>
 		{{-- メッセージログの枠 --}}
 		<div class="damage_log">
-			<img src="{{IMG_URL}}battle/damageLogBg.png" class="damage_log_Bg" >
+			<img src="{{IMG_URL}}battle/damagelog_Bg.png" class="damage_log_Bg" >
 		</div>
 	
 
@@ -106,7 +106,7 @@
 	@if ($viewData['BattleData']['delFlag'] != 1)
 		{{-- それぞれのボタン表示 --}}
 		<div class="battle_playerhand_button">
-			<img src="{{IMG_URL}}battle/buttonBg.png" class="battle_playerhand_button_bg" >
+			<img src="{{IMG_URL}}battle/button_Bg.png" class="battle_playerhand_button_bg" >
 			<a href="{{APP_URL}}battle/updateBattleData?hand=1" class="battle_playerhand_button_goo_linkregion" >
 				<img src={{IMG_URL}}battle/hand1.png class="battle_playerhand_button_icon" >
 			</a>
@@ -128,7 +128,7 @@
 			{{ $viewData['Type'][2] }} : {{ $viewData['CharaData']['choAtk']}}
 			{{ $viewData['Type'][3] }} : {{ $viewData['CharaData']['paaAtk']}}			
 		</div>
-		<img src="{{IMG_URL}}battle/playerBar.png" class="battle_player_status_bar">
+		<img src="{{IMG_URL}}battle/player_Bar.png" class="battle_player_status_bar">
 		<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['CharaData']['imgId']}}.png" class="battle_player_status_icon" >
 	</div>
 </body>
