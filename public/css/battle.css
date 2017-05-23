@@ -156,7 +156,7 @@ body{}
 .battle_player_status_hp{
     position: absolute;
     bottom: 50%;
-    right: 5%;
+    left: 5%;
     width: 80%;
     color: #ffffff;
     font-size: 15px;
@@ -165,7 +165,7 @@ body{}
 .battle_player_status_atk{
     position: absolute;
     bottom: 30%;
-    right: 5%;
+    left: 5%;
     width: 80%;
     color: #ffffff;
     font-size: 15px;
