@@ -4,12 +4,15 @@ body{}
 
 /* レア度画像のサイズ指定 */
 .rare{
-	width: 20%;
+
 }
 
 /* キャラクター画像のサイズ指定 */
 .character{
-	width: 50%;
+	width: 70%;
+	position: absolute;
+	top: 18px;
+	left: 30px;
 }
 
 /* コーチ画像のサイズ指定 */
@@ -18,17 +21,24 @@ body{}
 }
 
 .rareImg{
-	
+	width: 10%;
+	position: absolute;
+	left: 60px;
 }
 
 .name{
-	
+	position: absolute;
+	left: 140px;
 }
 
 .status{
-	
+	position: absolute;
+	top: 130px;
+	right: 60px;
 }
 
 .retire{
-	
+	position: absolute;
+	top: 380px;
+	left: 180px;
 }

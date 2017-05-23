@@ -5,12 +5,12 @@
 	<img class="rare" src="{{IMG_URL_GACHA}}{{$chara['rare']}}.png">
 </div>
 
-<div class="character">
-	<img class="character" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png">
-</div>
-
 <div class="name">
 	{{ $chara['name'] }}
+</div>
+
+<div class="character">
+	<img class="character" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png">
 </div>
 
 <div class="status">

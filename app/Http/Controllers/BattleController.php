@@ -197,7 +197,7 @@ class battleController extends BaseGameController
 		$this->viewData['Prize']		= $prize;
 		$this->viewData['RankingData']	= $this->RankingData;
 
-		return viewWrap('battleEnd', $this->viewData);
+		return view('battleResult', ['viewData' => $this->viewData]);
 	}
 
 	// データベースからデータをそれぞれの変数に格納するファンクション
