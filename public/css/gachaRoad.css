@@ -25,42 +25,40 @@
     left: 0;
 }
 .album{
-	margin: auto;
-	position: relative;
+	margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: 25vw;
+    width: 75%;
 }
 .album img{
-	animation: album 5s infinite;
-    -webkit-animation: album 5s infinite;
+	animation: album 4s infinite;
 	width: 100%;
 	opacity: 0;
 }
 @keyframes album {
-    0% {opacity:1}
     10% {opacity:1}
     20% {opacity:1}
-    30% {opacity:0}
- }
+	30% {opacity:1}
+	40% {opacity:0}
+}
 .album .img1{
 	animation-delay: 1s;
-    -webkit-animation-delay: 1s;
 }
 .album .img2{
 	animation-delay:2s;
-	-webkit-animation-delay: 2s;
 	position: absolute;
 	top: 0;
 	left: 0%;
 }
 .album .img3{
-	animation-delay:4s;
-	-webkit-animation-delay: 3s;
+	animation-delay:3s;
 	position: absolute;
 	top: 0;
 	left: 0%;
 }
 .album .img4{
-	animation-delay:6s;
-	-webkit-animation-delay: 4s;
+	animation-delay:4s;
 	position: absolute;
 	top: 0;
 	left: 0%;
