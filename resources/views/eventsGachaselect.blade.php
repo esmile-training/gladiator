@@ -18,7 +18,7 @@
 				<input type="image" class="modal_btn gacha4" src="{{IMG_URL_GACHA}}gachabutton4.png" name = 'gachavalue' value = "4" width= 100% height= 100%>
 			</div>
 			@else
-			<input type="image" class = "gacha_button1" src="{{IMG_URL_GACHA}}gachabutton4.png" width= 100% height= 100%>
+			<input type="image" class = "gacha_button1" src="{{IMG_URL_GACHA}}gachabutton13.png" width= 100% height= 100%>
 			@endif
 			<div class = "gacha_button2">
 				<input type="image" class="modal_btn gacha{{$w}}" src="{{IMG_URL_GACHA}}gachabutton{{$w}}.png" name = 'gachavalue' value = "{{$w}}"width= 100% height= 100%>
