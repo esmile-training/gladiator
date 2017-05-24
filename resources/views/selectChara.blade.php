@@ -1,9 +1,11 @@
 {{-- css  --}}
+@include('common/css', ['file' => 'admin'])
+
 <div Align="center">
 	<font color="silver">キャラクター一覧</font>
 </div>
 <div Align="right">
-<form  action="listSort" method="get">
+<form  action="{{APP_URL}}selectChara/index" method="get">
    <select name="type">
       <option value="id">ソート順を選択
 	  </option>
@@ -15,42 +17,31 @@
 	  <option value="choAtk">チョキ順</option>
 	  <option value="paaAtk">パー順</option>
    </select>
-	<input type="radio" name="order" value="3" checked="checked"><font color='silver'>降順<font>
-	<input type="radio" name="order" value="4"><font color='silver'>昇順<font>
+	<input type="radio" name="order" value="DESC" checked="checked"><font color='silver'>降順<font>
+	<input type="radio" name="order" value="ASC"><font color='silver'>昇順<font>
 	<input type="submit" value="決定">
 </form>
+	
 </div>
 {{--所持キャラクターをすべて表示する--}}
-<?php if(is_null($viewData['charaList'])){ 
-	echo '<div>'.'キャラクターがいません。','<div>';
-	} else {
-	$count = 1; ?>
+@if(is_null($viewData['charaList']))
+	<div>キャラクターがいません。<div>
+@else
+	<?php $count = 1 ?>
 	@foreach($viewData['charaList'] as $chara)
-	{{-- popupボタン --}}
-	<div class="modal_container">
-		<br><?php if($chara['trainingState'] == 1) echo	 '訓練中'; ?>
+		{{-- popupボタン --}}
+		<div class="modal_container">
+		<br>
+		@if($chara['trainingState'] == 1)
+			訓練中
+		@endif
 		<input type='image' class="modal_btn charastatus{{ $count }}" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png" width="75" height="100">{{$chara['name']}}
-	</div>
-	{{-- popupウインドウ --}}
-	<div class="modal charastatus{{ $count }}">
-		<!--@include('popup/charastatus')-->
-        <div class="modal_top">
-			<img class="modal_frametop"src="{{SERVER_URL}}img/popup/popuptop.png">
-			<div class="close">
-				<img class="modal_closebutton"src="{{SERVER_URL}}img/popup/closebutton.png">
-                <span>close</span>
-            </div>
-        </div>
-		<div class="modal_middle">
-			<img class="modal_framemiddle"src="{{SERVER_URL}}img/popup/popupmiddle.png">
-			<div class='modal_window'>
-				@include('popup/charastatus')
-			</div>
 		</div>
-		<div class="modal_bottom">
-			<img class="modal_framebottom"src="{{SERVER_URL}}img/popup/popupbottom.png">
-		</div>
-	</div>
-<?php $count++; ?>
+		{{-- popupウインドウ --}}
+		@include('popup/wrap', [
+		'class'	=> "charastatus{$count}",
+		'template' => 'charastatus'
+		])
+	<?php $count++ ?>
 	@endforeach
-<?php } ?>	
+@endif
