@@ -23,7 +23,12 @@
 
 <div class="retire">
 	@if($chara['trainingState'] == 0)
-		<a href="{{APP_URL}}selectCoach?id={{$chara['id']}}&rare={{$chara['rare']}}&imgId={{$chara['imgId']}}&name={{$chara['name']}}&attribute={{$chara['attribute']}}&hp={{$chara['hp']}}&gooAtk={{$chara['gooAtk']}}&choAtk={{$chara['choAtk']}}&paaAtk={{$chara['paaAtk']}}">引退</a>	
+	<div class="button">
+		<a href="{{APP_URL}}selectCoach/index?id={{$chara['id']}}&rare={{$chara['rare']}}&imgId={{$chara['imgId']}}&name={{$chara['name']}}&attribute={{$chara['attribute']}}&hp={{$chara['hp']}}&gooAtk={{$chara['gooAtk']}}&choAtk={{$chara['choAtk']}}&paaAtk={{$chara['paaAtk']}}">
+			<img src="{{SERVER_URL}}img/popup/popupbutton.png" />
+			<p class="text">引退</p>
+		</a>
+	</div>
 	@else
 		<p>訓練中です</p>
 	@endif

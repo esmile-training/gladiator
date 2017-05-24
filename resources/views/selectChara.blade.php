@@ -35,7 +35,7 @@
 		@if($chara['trainingState'] == 1)
 			訓練中
 		@endif
-		<input type='image' class="modal_btn charastatus{{ $count }}" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png" width="75" height="100">{{$chara['name']}}
+		<input type='image' class="modal_btn charastatus{{ $count }}" src="{{IMG_URL_CHARA}}/icon/icon_{{$chara['imgId']}}.png" width="100">{{$chara['name']}}
 		</div>
 		{{-- popupウインドウ --}}
 		@include('popup/wrap', [

@@ -39,7 +39,20 @@ body{}
 
 .retire{
 	position: absolute;
-	top: 325px;
-	left: 45%;
-	text-align: center;
+	width: 100%;
+	top: 340px;
+}
+
+.button{
+	position: absolute;
+	left: 35%;
+	width: 30%;
+	height: auto;
+}
+
+.text{
+	position: fixed;
+	top: 518px;
+	width: 30%;
+	font-family: 'Century';
 }

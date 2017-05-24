@@ -13,12 +13,12 @@
 	@if($coach['state'] == 1)
 		<div align="center">
 			<font color="silver">訓練中<font>
-			<image class='coach' src="{{IMG_URL_CHARA}}{{$coach['imgId']}}.png">{{$coach['name']}}
+			<image class='coach' src="{{IMG_URL_CHARA}}icon/icon_{{$coach['imgId']}}.png">{{$coach['name']}}
 		</div>
 	@else
 		{{-- popupボタン --}}
 		<div class="modal_container">
-			<input type='image' class="modal_btn confirmChangeCoach{{ $count }}" src="{{IMG_URL_CHARA}}{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}
+			<input type='image' class="modal_btn confirmChangeCoach{{ $count }}" src="{{IMG_URL_CHARA}}icon/icon_{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}
 		</div>
 		{{-- popupウインドウ --}}
 		<div class="modal confirmChangeCoach{{ $count }}">
