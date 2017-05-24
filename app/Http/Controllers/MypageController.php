@@ -16,12 +16,6 @@ class MypageController extends BaseGameController
 		$userData = $this->Model->exec('Mypage', 'getUserData', $this->user['id']);
 		$this->viewData['user'] = $userData;
 	
-		// チケット情報を配列化
-		$ticketData = [$this->user['id'],  $this->viewData['nowTime'], $this->user['battleTicket'], $this->user['ticketLossTime']];
-	
-		// チケットの回復処理
-		$this->Lib->exec('Ticket', 'confirmation', $ticketData);
-	
 		$this->Lib->exec('WeekRange', 'rangeState', $this->user['id']);
 		return viewWrap('mypage', $this->viewData);
 	}

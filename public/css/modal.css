@@ -37,14 +37,15 @@
 }
 /* Close button design */
 .modal .close {
-	position: absolute;
+    position: absolute;
     border-radius: 20px;
     top: 9%;
     right: 1%;
     width: 13%;
     height: 6%;
 	/* background-color: #555; */
-	cursor: pointer;
+    cursor: pointer;
+    z-index: 100000;
 	z-index: 10000;
 }
 .modal .close:before,
