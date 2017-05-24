@@ -344,7 +344,7 @@ class battleController extends BaseGameController
 			// ユーザーのウィークリーポイント 'weeklyAward' に賞金額を加算しデータベースに格納
 			$this->Lib->exec('Ranking', 'weeklyAdd', array($this->RankingData, $prize['money']));
 		}
-		// 敵のHPが0以上の場合(試合全体としてプレイヤーが負けた場合)
+		// 敵のHPが0以上の場合(降参せずにプレイヤーが負けた場合)
 		else if($this->CharaData['battleHp'] <= 0)
 		{
 			$this->Model->exec('Chara','charaDelFlag',$this->CharaData['uCharaId']);
@@ -353,10 +353,12 @@ class battleController extends BaseGameController
 		else
 		{
 			// 降参費用額計算
-			$surrenderCost['money'] =  BattleLib::surrenderCostCalc($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData);
+			$prize['money'] =  BattleLib::surrenderCostCalc($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData);
 
 			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
-			$this->Lib->exec('Money', 'Subtraction', array($this->user, $surrenderCost['money']));
+			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$prize['money']));
+						
+			$prize['money'] *= -1;
 		}
 
 		// delFlagを立てる更新
