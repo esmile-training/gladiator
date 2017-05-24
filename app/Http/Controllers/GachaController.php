@@ -20,22 +20,22 @@ class GachaController extends BaseGameController
 	}
 	public function roadScreen()
 	{
+		$this->viewData = array();
 		//リダイレクトのゲットしてビューデーターに格納
-		(int)$data['gachavalue'] = filter_input(INPUT_GET, "gachavalue");
-		$data['charaId'] = filter_input(INPUT_GET, "charaId");
-		$data['firstname'] = filter_input(INPUT_GET, "firstname");
-		$data['lastname'] = filter_input(INPUT_GET, "lastname");
-		$data['rarity'] = filter_input(INPUT_GET, "rarity");
-		$data['gu'] = filter_input(INPUT_GET, "gu");
-		$data['choki'] = filter_input(INPUT_GET, "choki");
-		$data['paa'] = filter_input(INPUT_GET, "paa");
-		$data['hp'] = filter_input(INPUT_GET, "hp");
-
-		return viewWrap('gachaRoad', $data);
+		(int)$this->viewData['gachavalue'] = filter_input(INPUT_GET, "gachavalue");
+		$this->viewData['charaId'] = filter_input(INPUT_GET, "charaId");
+		$this->viewData['firstname'] = filter_input(INPUT_GET, "firstname");
+		$this->viewData['lastname'] = filter_input(INPUT_GET, "lastname");
+		$this->viewData['rarity'] = filter_input(INPUT_GET, "rarity");
+		$this->viewData['gu'] = filter_input(INPUT_GET, "gu");
+		$this->viewData['choki'] = filter_input(INPUT_GET, "choki");
+		$this->viewData['paa'] = filter_input(INPUT_GET, "paa");
+		$this->viewData['hp'] = filter_input(INPUT_GET, "hp");
+		return viewWrap('gachaRoad', $this->viewData);
 	}
 	public function index() 
 	{
-				//リダイレクトのゲットしてビューデーターに格納
+		//リダイレクトのゲットしてビューデーターに格納
 		(int)$this->viewData['gachavalue'] = filter_input(INPUT_GET, "gachavalue");
 		$this->viewData['charaId'] = filter_input(INPUT_GET, "charaId");
 		$this->viewData['firstname'] = filter_input(INPUT_GET, "firstname");
