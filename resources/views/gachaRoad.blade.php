@@ -1,6 +1,6 @@
 @include('common/css', ['file' => 'gachaRoad'])
 <?php
-	foreach($viewData as $key => $value){
+	foreach($viewData['gacha'] as $key => $value){
 		$dataList[] = $key.'='.$value;
 	}
 	$dataStr = implode('&', $dataList);
