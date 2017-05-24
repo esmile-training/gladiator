@@ -20,7 +20,7 @@ body{}
 /* バトルリザルトのログ部分 */
 .battleresult_log {
     position: absolute;
-    top: 35%;
+    top: 40%;
     left: 5%;
     width: 90%;
 }
@@ -28,14 +28,24 @@ body{}
 .battleresult_log_bg {
     width: 100%;
 }
+/* 敵キャラのHP */
+.battleresult_log_message{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 80%;
+    color: #ffffff;
+    font-size: 15px;
+}
 
 /* 全体に対する、バックホームボタンの領域 */
 .battleresult_backhome_linkregion{
     position: absolute;
     left: 35%;
-    bottom: 10%;
+    bottom: 2%;
     width: 30%;
 }
+/* バックホームボタン領域に対する、画像 */
 .battleresult_backhome_icon{
     width: 100%;
 }
