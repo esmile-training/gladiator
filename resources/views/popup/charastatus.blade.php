@@ -14,17 +14,17 @@
 </div>
 
 <div class="status">
-	<?PHP
-		echo $chara['attribute'].'<br>';
-		echo '体力:'.$chara['hp'].'<br>';
-		echo 'グー:'.$chara['gooAtk'].'<br>';
-		echo 'チョキ:'.$chara['choAtk'].'<br>';
-		echo 'パー:'.$chara['paaAtk'].'<br>'; 
-	?>
+		{{$chara['attribute']}}<br>
+		体力:{{$chara['hp']}}<br>
+		グー:{{$chara['gooAtk']}}<br>
+		チョキ:{{$chara['choAtk']}}<br>
+		パー:{{$chara['paaAtk']}}<br>
 </div>
 
 <div class="retire">
-	<?php if($chara['trainingState'] == 0) {?>
+	@if($chara['trainingState'] == 0)
 		<a href="{{APP_URL}}selectCoach?id={{$chara['id']}}&rare={{$chara['rare']}}&imgId={{$chara['imgId']}}&name={{$chara['name']}}&attribute={{$chara['attribute']}}&hp={{$chara['hp']}}&gooAtk={{$chara['gooAtk']}}&choAtk={{$chara['choAtk']}}&paaAtk={{$chara['paaAtk']}}">引退</a>	
-	<?php } else { echo '<br>'.'訓練中です'; }?>
+	@else
+		<p>訓練中です</p>
+	@endif
 </div>

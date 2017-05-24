@@ -5,7 +5,7 @@
 	<font color="silver">キャラクター一覧</font>
 </div>
 <div Align="right">
-<form  action="index" method="get">
+<form  action="{{APP_URL}}selectChara/index" method="get">
    <select name="type">
       <option value="id">ソート順を選択
 	  </option>
@@ -24,23 +24,24 @@
 	
 </div>
 {{--所持キャラクターをすべて表示する--}}
-<?php if(is_null($viewData['charaList'])){ 
-	echo '<div>'.'キャラクターがいません。','<div>';
-	} else {
-	$count = 1; ?>
+@if(is_null($viewData['charaList']))
+	<div>キャラクターがいません。<div>
+@else
+	<?php $count = 1 ?>
 	@foreach($viewData['charaList'] as $chara)
-	{{-- popupボタン --}}
-	<div class="modal_container">
-		<br><?php if($chara['trainingState'] == 1) echo	 '訓練中'; ?>
+		{{-- popupボタン --}}
+		<div class="modal_container">
+		<br>
+		@if($chara['trainingState'] == 1)
+			訓練中
+		@endif
 		<input type='image' class="modal_btn charastatus{{ $count }}" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png" width="75" height="100">{{$chara['name']}}
-	</div>
-	{{-- popupウインドウ --}}
-	@include('popup/wrap', [
+		</div>
+		{{-- popupウインドウ --}}
+		@include('popup/wrap', [
 		'class'	=> "charastatus{$count}",
 		'template' => 'charastatus'
-	])
-<?php $count++; ?>
-		
+		])
+	<?php $count++ ?>
 	@endforeach
-
-<?php } ?>	
+@endif

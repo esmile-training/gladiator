@@ -9,10 +9,10 @@ body{}
 
 /* キャラクター画像のサイズ指定 */
 .character{
-	width: 70%;
+	width: 60%;
 	position: absolute;
-	top: 18px;
-	left: 30px;
+	top: 30px;
+	left: 12%;
 }
 
 /* コーチ画像のサイズ指定 */
@@ -23,22 +23,23 @@ body{}
 .rareImg{
 	width: 10%;
 	position: absolute;
-	left: 60px;
+	left: 20%;
 }
 
 .name{
 	position: absolute;
-	left: 140px;
+	left: 35%;
 }
 
 .status{
 	position: absolute;
-	top: 130px;
-	right: 60px;
+	top: 100px;
+	right: 15%;
 }
 
 .retire{
 	position: absolute;
-	top: 380px;
-	left: 180px;
+	top: 325px;
+	left: 45%;
+	text-align: center;
 }
