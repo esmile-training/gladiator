@@ -1,0 +1,10 @@
+body{
+    background-color: white;
+}
+
+#main{
+    background: url(http://esmile-sys.sakura.ne.jp/gladiator/img/mypage/homeImage.jpg) no-repeat center center;
+    background-size: 100% auto;
+/*    position: fixed;*/
+}
+

@@ -110,7 +110,7 @@ class RankingController extends BaseGameController
 		// 並べ替えたものを代入
 		$this->viewData['ranking']	= $page;
 		$this->viewData['rankingData']	= $this->rankingData;
-
+		var_dump($this->viewData);
 		// ビューヘ渡す
 		if ($this->rankingData['rankChenge'] == 0)
 		{

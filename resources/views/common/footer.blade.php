@@ -16,5 +16,6 @@
         <script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>
 		<script type="text/javascript" src="{{APP_URL}}js/getHeight.js"></script>
 		<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>
+		<script type="text/javascript" src="{{APP_URL}}js/resizefont.js"></script>
     </body>
 </html>
