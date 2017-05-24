@@ -64,7 +64,8 @@ class GachaController extends BaseGameController
 		$ratio = $this->viewData['ratio']['hit'];
 		
 		//キャラの画像ID取得
-		if($gachaVal == 8){
+		if($gachaVal == 8)
+		{
 			$sex = 1;
 		}else if($gachaVal == 6){
 			$sex = 0;
@@ -85,17 +86,17 @@ class GachaController extends BaseGameController
 		
 		//DBへの受け渡し
 		$charaData = [
-		'userId' => $this->viewData['user']['id'],
-		'uCharaId' => $this->viewData['chara']['charaId'],
-		'uCharaFirstName' => $this->viewData['name']['firstname']['name'],
-		'uCharaLastName' => $this->viewData['name']['lastname']['familyname'],
-		'ratio' => $ratio,
-		'gu' => $this->viewData['valueList']['gu'],
-		'choki' => $this->viewData['valueList']['choki'],
-		'paa' => $this->viewData['valueList']['paa'],
-		'hp' => $this->viewData['valueList']['hp'],
-		'narrow' => $this->viewData['valueList']['narrow'],
-		'GachaVal' => $gachaVal,
+			'userId' => $this->viewData['user']['id'],
+			'uCharaId' => $this->viewData['chara']['charaId'],
+			'uCharaFirstName' => $this->viewData['name']['firstname']['name'],
+			'uCharaLastName' => $this->viewData['name']['lastname']['familyname'],
+			'ratio' => $ratio,
+			'gu' => $this->viewData['valueList']['gu'],
+			'choki' => $this->viewData['valueList']['choki'],
+			'paa' => $this->viewData['valueList']['paa'],
+			'hp' => $this->viewData['valueList']['hp'],
+			'narrow' => $this->viewData['valueList']['narrow'],
+			'GachaVal' => $gachaVal,
 		];
 		
 		//リダイレクト引数受け渡し
