@@ -36,10 +36,10 @@ class battleController extends BaseGameController
 			$this->Lib->redirect('mypage', 'index');
 		}
 		// viewDataへ取得したキャラクターを送る
-			$this->viewData['charaList'] = $alluChara;
+		$this->viewData['charaList'] = $alluChara;
 
-			// ビューへデータを渡す
-			return viewWrap('battleCharaSelect', $this->viewData);
+		// ビューへデータを渡す
+		return viewWrap('battleCharaSelect', $this->viewData);
 	}
 
 	/*
@@ -187,8 +187,24 @@ class battleController extends BaseGameController
 	// リザルト画面を表示するファンクション
 	public function battleResult()
 	{
-		// リダイレクト元から賞金データを取得
-		$prize = filter_input(INPUT_GET,"money");
+
+		//リダイレクト元からデータをゲットする
+		$prize = filter_input(INPUT_GET, "prize");
+		
+		if($prize > 0)
+		{
+			$charaData['hp']			= filter_input(INPUT_GET, "deaultHp");
+			$charaData['gooAtk']		= filter_input(INPUT_GET, "deaultGooAtk");
+			$charaData['choAtk']		= filter_input(INPUT_GET, "deaultChoAtk");
+			$charaData['paaAtk']		= filter_input(INPUT_GET, "deaultPaaAtk");
+			$charaUpData['statusUpCnt']	= filter_input(INPUT_GET, "statusUpCnt");
+			$charaUpData['gooUpCnt']	= filter_input(INPUT_GET, "gooAtkUpCnt");
+			$charaUpData['choUpCnt']	= filter_input(INPUT_GET, "choAtkUpCnt");
+			$charaUpData['paaUpCnt']	= filter_input(INPUT_GET, "paaAtkUpCnt");			
+	
+			$this->viewData['CharaDefaultData']	= $charaData;
+			$this->viewData['CharaUpData']	= $charaUpData;
+		}
 
 		// getRankingData ファンクションを呼び出し、ランキングデータを取得
 		$this->getRankingData();
@@ -329,42 +345,79 @@ class battleController extends BaseGameController
 		{
 			return view('error');
 		}
-		
-		// 賞金額用変数の初期化
-		$prize['money'] = 0;
 
 		// 敵のHPが0以下の場合(試合全体としてプレイヤーが勝った場合)
 		if($this->EnemyData['battleHp'] <= 0)
 		{
 			// 賞金額計算
-			$prize['money'] =  BattleLib::prizeCalc($this->EnemyData, $this->Commission, $this->DifficultyData);
+			$prize =  BattleLib::prizeCalc($this->EnemyData, $this->Commission, $this->DifficultyData);
 
 			// ユーザーの所持金 'money' に賞金額を加算しデータベースに格納
-			$this->Lib->exec('Money', 'addition', array($this->user, $prize['money']));
+			$this->Lib->exec('Money', 'addition', array($this->user, $prize));
 			// ユーザーのウィークリーポイント 'weeklyAward' に賞金額を加算しデータベースに格納
-			$this->Lib->exec('Ranking', 'weeklyAdd', array($this->RankingData, $prize['money']));
+			$this->Lib->exec('Ranking', 'weeklyAdd', array($this->RankingData, $prize));
+			
+			/* 自キャラ、敵キャラのステータスを元にステータスの強化処理(訓練と同じシステムを使用) */
+			$gooResult = $this->Lib->exec('Training', 'atkUpProbability', array($this->EnemyData['gooAtk'],$this->CharaData['gooAtk'],$this->CharaData['gooUpCnt']));
+			$choResult = $this->Lib->exec('Training', 'atkUpProbability', array($this->EnemyData['choAtk'],$this->CharaData['choAtk'],$this->CharaData['choUpCnt']));
+			$paaResult = $this->Lib->exec('Training','atkUpProbability', array($this->EnemyData['paaAtk'],$this->CharaData['paaAtk'],$this->CharaData['paaUpCnt']));
+			$time=1;
+			$charaUpData = $this->Lib->exec('Training','atkUpJudge',array($gooResult,$choResult,$paaResult,$time));
+
+			/* キャラの強化後の値をデータベースに格納 */
+			$upDateStatus = [
+				'hp'		 => $this->CharaData['hp']			 + $charaUpData['statusUpCnt'],
+				'gooAtk'	 => $this->CharaData['gooAtk']		 + $charaUpData['gooAtk'],
+				'choAtk'	 => $this->CharaData['choAtk']		 + $charaUpData['choAtk'],
+				'paaAtk'	 => $this->CharaData['paaAtk']		 + $charaUpData['paaAtk'],
+				'gooUpCnt'	 => $this->CharaData['gooUpCnt']	 + $charaUpData['gooUpCnt'],
+				'choUpCnt'	 => $this->CharaData['choUpCnt']	 + $charaUpData['choUpCnt'],
+				'paaUpCnt'	 => $this->CharaData['paaUpCnt']	 + $charaUpData['paaUpCnt']
+			];
+			$this->Model->exec('Training', 'updateStatus', array($upDateStatus, $this->CharaData['uCharaId']));
+			
+			//リダイレクト引数受け渡し
+			$param = [
+				'prize'			=> $prize,
+				'deaultHp'		=> $this->CharaData['hp'],
+				'deaultGooAtk'	=> $this->CharaData['gooAtk'],
+				'deaultChoAtk'	=> $this->CharaData['choAtk'],
+				'deaultPaaAtk'	=> $this->CharaData['paaAtk'],
+				'statusUpCnt'	=> $charaUpData['statusUpCnt'],
+				'gooAtkUpCnt'	=> $charaUpData['gooUpCnt'],
+				'choAtkUpCnt'	=> $charaUpData['choUpCnt'],
+				'paaAtkUpCnt'	=> $charaUpData['paaUpCnt'],
+			];
 		}
-		// 敵のHPが0以上の場合(降参せずにプレイヤーが負けた場合)
+		// 自キャラのHPが0以下の場合(降参せずにプレイヤーが負けた場合)
 		else if($this->CharaData['battleHp'] <= 0)
 		{
-			$this->Model->exec('Chara','charaDelFlag',$this->CharaData['uCharaId']);
+			$param = [
+				'prize' => 0,
+			];
+
+			$this->Model->exec('Chara', 'charaDelFlag', $this->CharaData['uCharaId']);
 		}
 		// どちらのHPも0以上の場合(降参として処理が呼ばれた場合)
 		else
 		{
 			// 降参費用額計算
-			$prize['money'] =  BattleLib::surrenderCostCalc($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData);
+			$prize =  BattleLib::surrenderCostCalc($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData);
 
 			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
-			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$prize['money']));
+			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$prize));
 						
-			$prize['money'] *= -1;
+			$prize *= -1;
+			
+			$param = [
+				'prize' => $prize,
+			];
 		}
-
+		
 		// delFlagを立てる更新
 		$this->standDelFlag();
-
-		return $this->Lib->redirect('Battle', 'battleResult',$prize);
+		
+		return $this->Lib->redirect('Battle','battleResult', $param);
 	}
 	
 	/*

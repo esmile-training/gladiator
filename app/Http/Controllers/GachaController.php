@@ -108,7 +108,7 @@ class GachaController extends BaseGameController
 			'choki' => $charaData['choki'],
 			'paa' => $charaData['paa'],
 			'hp' => $charaData['hp'],
-		];	
+		];
 
 		$this->Model->exec('Gacha', 'createChara', array($charaData));
 		

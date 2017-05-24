@@ -42,7 +42,7 @@
 		@if ($viewData['CharaData']['result'] != 0)
 			<div class="battle_enemy_hand">
 				<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
-				<img src={{IMG_URL}}battle/hand{{$viewData['EnemyData']['hand']}}.png class="battle_enemy_hand_icon" >
+				<img src="{{IMG_URL}}battle/hand{{$viewData['EnemyData']['hand']}}.png" class="battle_enemy_hand_icon" >
 			</div>
 
 				{{-- 勝敗の表示 --}}
