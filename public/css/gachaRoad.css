@@ -32,7 +32,7 @@
     width: 75%;
 }
 .album img{
-	animation: album 3.8s infinite;
+	animation: album 4s infinite;
 	/*animation-iteration-count:3;*/
 	width: 100%;
 	opacity: 0;
