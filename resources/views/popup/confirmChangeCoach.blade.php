@@ -19,18 +19,7 @@
 	<div>
 			{{$viewData['selectCharaState']['name']}}<br>
 	</div>
-	<br>
-	<form action="{{APP_URL}}changeCoach" method="get">
-		<input type="hidden" name="coachId" value="{{$coach['id']}}">
-		<input type="hidden" name="id" value="{{$viewData['selectCharaState']['id']}}">
-		<input type="hidden" name="imgId" value="{{$viewData['selectCharaState']['imgId']}}">
-		<input type="hidden" name="name" value="{{$viewData['selectCharaState']['name']}}">
-		<input type="hidden" name="rare" value="{{$viewData['selectCharaState']['rare']}}">
-		<input type="hidden" name="attribute" value="{{$viewData['selectCharaState']['attribute']}}">
-		<input type="hidden" name="hp" value="{{$viewData['selectCharaState']['hp']}}">
-		<input type="hidden" name="gooAtk" value="{{$viewData['selectCharaState']['gooAtk']}}">
-		<input type="hidden" name="choAtk" value="{{$viewData['selectCharaState']['choAtk']}}">
-		<input type="hidden" name="paaAtk" value="{{$viewData['selectCharaState']['paaAtk']}}">
-		<button type="submit">する</button>
-	</form>
+	<div>
+	<a href="{{APP_URL}}SelectCoach/changeCoach?coachId={{$coach['id']}}&id={{$viewData['selectCharaState']['id']}}&imgId={{$viewData['selectCharaState']['imgId']}}&name={{$viewData['selectCharaState']['name']}}&rare={{$viewData['selectCharaState']['rare']}}&attribute={{$viewData['selectCharaState']['attribute']}}&hp={{$viewData['selectCharaState']['hp']}}&gooAtk={{$viewData['selectCharaState']['gooAtk']}}&choAtk={{$viewData['selectCharaState']['choAtk']}}&paaAtk={{$viewData['selectCharaState']['paaAtk']}}">する</a>
+	</div>
 </div>
