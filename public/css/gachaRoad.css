@@ -33,14 +33,15 @@
 }
 .album img{
 	animation: album 4s infinite;
+	/*animation-iteration-count:3;*/
 	width: 100%;
 	opacity: 0;
 }
 @keyframes album {
-    0% {opacity:1}
+    10% {opacity:0}
     20% {opacity:1}
-	30% {opacity:1}
-	40% {opacity:0}
+	40% {opacity:1}
+	50% {opacity:0}
 }
 .album .img1{
 	animation-delay: 1s;
