@@ -38,10 +38,10 @@
 	opacity: 0;
 }
 @keyframes album {
-    10% {opacity:0}
-    20% {opacity:1}
-	40% {opacity:1}
-	50% {opacity:0}
+    10% {opacity:1}
+    25% {opacity:1}
+	60% {opacity:0}
+	70% {opacity:0}
 }
 .album .img1{
 	animation-delay: 1s;
