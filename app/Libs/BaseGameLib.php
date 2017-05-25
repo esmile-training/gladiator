@@ -58,7 +58,6 @@ class BaseGameLib {
 	 */
 	public function redirect($controller, $action = 'index', $param = [])
 	{
-		
 		$getStr = [];
 		
 		foreach ($param as $key => $val)
