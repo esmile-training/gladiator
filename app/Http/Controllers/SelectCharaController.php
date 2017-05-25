@@ -24,9 +24,9 @@ class SelectCharaController extends BaseGameController
 		if(isset($alluChara))
 		{	
 			//ソート関数の代に引数への変換
-			$order = ($order == 'ASC')? 4 : 3;
+			$order = ($order == 'ASC')? false : true;
 			//並べ替え処理
-			array_multisort(array_column($alluChara, $type), $order , $alluChara);
+			$alluChara = $this->Lib->exec('Sort','sortArray',[$alluChara, $type, $order]);
 			// viewDataへ取得したキャラクターを送る
 			$this->viewData['charaList'] = $alluChara;
 			// ビューへデータを渡す
