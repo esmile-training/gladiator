@@ -1,6 +1,4 @@
 @include('common/css', ['file' => 'gachaselect'])
-
-
 <div class = "gacha_all">
 	<div>
 		<img class="gacha_signboard" src="{{IMG_URL}}gacha/kanban.png">
