@@ -20,13 +20,7 @@
 .user_name{
     position: absolute;
     color: white;
-    font-size: 9vw;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(50%);
-    position: absolute;
-    top: 0%;
-    transform: translateX(100%);
+    top: 15%;
 }
 
 .fadetopButton {
