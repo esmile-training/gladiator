@@ -13,14 +13,10 @@
 				<td width="20%"></td>
 				{{-- 押されたらポップアップを表示する --}}
 				<td width="20%">
-					<a href="{{APP_URL}}battle/makeResultData" >
-						<img src="{{IMG_URL}}battle/surrender.png" >
-					</a>
+					<img class="modal_btn surrender" src="{{IMG_URL}}battle/surrender.png">
 				</td>
 				<td width="20%">
-					<a>
-						<img src="{{IMG_URL}}battle/help.png" >
-					</a>
+					<img class="modal_btn help" src="{{IMG_URL}}battle/help.png">
 				</td>
 			</tr>
 		</table>
@@ -132,5 +128,14 @@
 			<img src="{{IMG_URL}}battle/player_Bar.png" class="battle_player_status_bar">
 			<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['CharaData']['imgId']}}.png" class="battle_player_status_icon" >
 		</div>
+	{{-- popupウインドウ --}}
+	@include('popup/wrap', [
+		'class'		=> 'surrender',
+		'template'	=> 'surrender',
+	])
+	@include('popup/wrap', [
+		'class'		=> 'help',
+		'template'	=> 'help',
+	])
 	</div>
 </body>

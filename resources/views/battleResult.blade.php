@@ -41,4 +41,5 @@
 			</a>
 		</div>
 	</div>
+	<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>
 </body>
