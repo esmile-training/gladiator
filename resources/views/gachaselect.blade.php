@@ -15,15 +15,15 @@
 	<div class = "junban1">
 		<div class="modal_container">
 			<div class = "gacha_button1">
-				<input type="image" class="modal_btn gacha1" src="{{IMG_URL}}gacha/gachabutton1.png" name = 'gachavalue' value = "1" width= 100% height= 100%>
+				<input type="image" class="modal_btn gacha1" src="{{IMG_URL}}gacha/banner1.png" name = 'gachavalue' value = "1" width= 100% height= 100%>
 				<img class= "gacha_normalgachamoney" src="{{IMG_URL}}gacha/10000.png">
 			</div>
 			<div class = "gacha_button2">
-				<input type="image" class="modal_btn gacha2" src="{{IMG_URL}}gacha/gachabutton2.png" name = 'gachavalue' value = "2"width= 100% height= 100%>
+				<input type="image" class="modal_btn gacha2" src="{{IMG_URL}}gacha/banner2.png" name = 'gachavalue' value = "2"width= 100% height= 100%>
 				<img class= "gacha_raregachamoney" src="{{IMG_URL}}gacha/30000.png">
 			</div>
 			<div class = "gacha_button3">
-				<input type="image" class="modal_btn gacha3" src="{{IMG_URL}}gacha/gachabutton3.png" name = 'gachavalue' value = "3"width= 100% height= 100%>
+				<input type="image" class="modal_btn gacha3" src="{{IMG_URL}}gacha/banner3.png" name = 'gachavalue' value = "3"width= 100% height= 100%>
 				<img class= "gacha_superraregachamoney" src="{{IMG_URL}}gacha/50000.png">
 			</div>
 		</div>
