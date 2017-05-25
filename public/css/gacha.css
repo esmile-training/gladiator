@@ -14,6 +14,10 @@
 	width: 100%;
 	height:78vh;
 }
+.gacha_charalogo{
+	width: 100%;
+	
+}
 .gacha_all{
 	width:100%;
     position: absolute;
@@ -38,6 +42,8 @@
 .gacha_chara{
 	width: 80%;
     text-align: center;
+	position: relative;
+    top: 6vw;
 }
 .gacha_chararate{ 
 	width: 20%;
@@ -46,7 +52,7 @@
     left: 3%;
     z-index: 2;
 }
-.gacha_charalogo{
+.gacha_charalogoflash{
     width: 50%;
     position: absolute;
     top: -13%;
@@ -56,7 +62,7 @@
 .gacha_charaframe{
 	width: 85%;
     position: absolute;
-    top: 90vw;
+    top: 97vw;
     left: 7%;
 }
 .gacha_charatopframe{
@@ -73,9 +79,9 @@
 }
 .gacha_charatextbox{
 	text-align: center;
-	font-size: 120%;
+	font-size: 140%;
     position: absolute;
-    top: 93vw;
+	top: 100vw;
  }
 .gacha_charaname{
 	color: #FFFFFF;
@@ -87,15 +93,25 @@
 .gacha_charastatus{
 	float: left;
 	color: #FFFFFF;
-	position: absolute;
-	bottom:10%
 }
 .gacha_guicon{
 	width: 10%;
 }
+.gacha_fontgoo{
+	position: relative;
+    bottom: 3vw;
+}
 .gacha_chokiicon{
 	width: 10%;
 }
+.gacha_fontchoki{
+	position: relative;
+    bottom: 3vw;
+}
 .gacha_paaicon{
 	width: 10%;
+}
+.gacha_fontpaa{
+	position: relative;
+    bottom: 3vw;
 }
