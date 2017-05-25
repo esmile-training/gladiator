@@ -28,7 +28,8 @@
 				<?php echo $viewData['firstname'],'・',$viewData['lastname']?>
 			</div>
 			<div class="gacha_charahp">
-				<?php echo 'HP:			',$viewData['hp']?>
+				<img class = "gacha_hpicon" src = "{{IMG_URL}}gacha/hp.png">
+				<span class = "gacha_fontgoo">{{$viewData['hp']}}</span>
 			</div>
 			<div class="gacha_charastatus">
 				<img class = "gacha_guicon" src = "{{IMG_URL}}battle/hand1.png">
