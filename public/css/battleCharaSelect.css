@@ -1,0 +1,50 @@
+@charset "UTF-8";
+/*
+ * 戦闘のキャラ選択ビュー
+ * 製作者：松井 勇樹
+ * 最終更新日:2017/05/25
+ */
+ /*背景の設定をする*/
+ body{
+	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/battle/chara_select_bg.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	width: 100%;
+}
+/*キャラボタンの設定*/
+.chara_button{
+	position:relative;
+	width: 100%;
+	height: auto;
+	border-top: solid 5px transparent;
+	border-bottom: solid 5px transparent;
+}
+/*キャラボタンの枠を設定する*/
+.chara_frame{
+	position:relative;
+	width: 100%;
+	height: auto;
+	top: 10%;
+	left: 1%;
+}
+/*キャラボタンの枠のイメージのサイズを設定する*/
+.chara_frame_img{
+	width: 100%;
+	height: 12vh;
+}
+/*キャラのアイコンを設定する*/
+.chara_icon{
+	position: absolute;
+	top: -21%;
+	left: 5%;
+	width: 20%;
+	height: auto;
+}
+/*キャラ名の設定をする*/
+.chara_name{
+	position:absolute;
+	top: 30%;
+	left: 28%;
+}
