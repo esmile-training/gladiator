@@ -1,0 +1,12 @@
+.buttonImg{
+	width: 30%;
+	position: absolute;
+	left: 35%;
+	top: 104%
+}
+
+.text{
+	position: absolute;
+	top: 18%;
+	color: silver;
+}

@@ -51,8 +51,8 @@ body{}
 }
 
 .text{
-	position: fixed;
-	top: 518px;
-	width: 30%;
-	font-family: 'Century';
+	position: absolute;
+	top: 22%;
+	width: 100%;
+	color: silver;
 }

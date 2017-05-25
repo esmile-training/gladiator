@@ -1,3 +1,6 @@
+{{-- CSS --}}
+@include('common/css', ['file' => 'confirmChangeCoach'])
+
 <div>
 	<center>コーチに配属しますか？</center>
 </div>
@@ -19,10 +22,10 @@
 	<div>
 			{{$viewData['selectCharaState']['name']}}<br>
 	</div>
-	<div>
-	<a href="{{APP_URL}}SelectCoach/changeCoach?coachId={{$coach['id']}}&id={{$viewData['selectCharaState']['id']}}&imgId={{$viewData['selectCharaState']['imgId']}}&name={{$viewData['selectCharaState']['name']}}&rare={{$viewData['selectCharaState']['rare']}}&attribute={{$viewData['selectCharaState']['attribute']}}&hp={{$viewData['selectCharaState']['hp']}}&gooAtk={{$viewData['selectCharaState']['gooAtk']}}&choAtk={{$viewData['selectCharaState']['choAtk']}}&paaAtk={{$viewData['selectCharaState']['paaAtk']}}">
-		<img src="{{SERVER_URL}}img/popup/popupbutton.png">
-		<p>する</p>
-	</a>
+	<div class="buttonImg">
+		<a href="{{APP_URL}}SelectCoach/changeCoach?coachId={{$coach['id']}}&id={{$viewData['selectCharaState']['id']}}&imgId={{$viewData['selectCharaState']['imgId']}}&name={{$viewData['selectCharaState']['name']}}&rare={{$viewData['selectCharaState']['rare']}}&attribute={{$viewData['selectCharaState']['attribute']}}&hp={{$viewData['selectCharaState']['hp']}}&gooAtk={{$viewData['selectCharaState']['gooAtk']}}&choAtk={{$viewData['selectCharaState']['choAtk']}}&paaAtk={{$viewData['selectCharaState']['paaAtk']}}">
+			<img src="{{SERVER_URL}}img/popup/popupbutton.png" />
+			<p class="text">する</p>
+		</a>
 	</div>
 </div>
