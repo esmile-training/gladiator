@@ -63,6 +63,8 @@
     position: absolute;
     color: white;
     font-size: 4.5vw;
+    width: 15%;
+    text-align: right;
     top: 45%;
     left: 30%;
 }
