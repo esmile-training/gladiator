@@ -81,11 +81,14 @@
 	text-align: center;
 	font-size: 140%;
     position: absolute;
-	top: 100vw;
+	top: 98vw;
  }
 .gacha_charaname{
+	font-size: 101%;
 	color: #FFFFFF;
-
+}
+.gacha_hpicon{
+	width: 10%;
 }
 .gacha_charahp{
 	color: #FFFFFF;
