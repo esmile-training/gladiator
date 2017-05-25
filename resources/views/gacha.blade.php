@@ -14,7 +14,7 @@
 				<img class="gacha_chararate" src="{{IMG_URL}}gacha/{{$viewData['rarity']}}.png">
 			</div>
 			<div>
-				<img class="gacha_charalogo"src="{{IMG_URL}}gacha/logoflash.png">
+				<img class="gacha_charalogoflash"src="{{IMG_URL}}gacha/logoflash.png">
 			</div>
 		</div>
 	</div>
@@ -32,11 +32,11 @@
 			</div>
 			<div class="gacha_charastatus">
 				<img class = "gacha_guicon" src = "{{IMG_URL}}battle/hand1.png">
-				{{$viewData['gu']}}
+				<span class = "gacha_fontgoo">{{$viewData['gu']}}</span>
 				<img class = "gacha_guicon" src = "{{IMG_URL}}battle/hand2.png">
-				{{$viewData['choki']}}
+				<span class = "gacha_fontchoki">{{$viewData['choki']}}</span>
 				<img class = "gacha_guicon" src = "{{IMG_URL}}battle/hand3.png">
-				{{$viewData['paa']}}
+				<span class = "gacha_fontpaa">{{$viewData['paa']}}</span>
 			</div>
 		</div>
 	</div>
