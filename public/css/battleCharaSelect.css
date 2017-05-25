@@ -13,6 +13,23 @@
 	background-size: cover;
 	width: 100%;
 }
+/*リンクの文字色の設定をする*/
+a:link{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a:visited{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a:hover{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a:active{
+	color: #FFFFFF;
+	text-decoration: none;
+}
 /*キャラボタンの設定*/
 .chara_button{
 	position:relative;
@@ -44,7 +61,7 @@
 }
 /*キャラ名の設定をする*/
 .chara_name{
-	position:absolute;
+	position: absolute;
 	top: 30%;
 	left: 28%;
 }
