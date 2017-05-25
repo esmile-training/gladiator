@@ -22,7 +22,7 @@
  * *************** */
 .modal {
     display: none;
-    position: absolute;
+    position: fixed;
 	bottom: -7%;;
     left: 0;
     width: 100%;
@@ -90,9 +90,9 @@
     top: 22%;
 }
 .modal .modal_closebutton{
-	width: 100%;
-	position: absolute;
-    top: 80%;
-    right: 16%;
+    width: 12%;
+    position: fixed;
+    top: 14%;
+    right: 4%;
 }
 
