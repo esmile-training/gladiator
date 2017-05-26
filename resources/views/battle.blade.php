@@ -1,9 +1,22 @@
 		{{-- サイズ等指定 --}}
 		@include('common/battle')
 		@include('common/css', ['file' => 'battle'])
+		
+		{{-- ポップアップ --}}
+		@include('popup/wrap', [
+			'class'		=> 'surrenderButton',
+			'template'	=> 'surrender',
+			'data'		=> ['cost' => $viewData['SurrenderCost']],
+		])
+		@include('popup/wrap', [
+			'class'		=> 'helpButton',
+			'template'	=> 'help',
+		])
 
 		<img src="{{IMG_URL}}battle/battle_Bg{{$viewData['EnemyData']['difficulty']}}.png" class="battle_bg">
 
+		{{-- バトル終了フラグが立っていなければヘッダー部分表示 --}}
+		@if ($viewData['BattleData']['delFlag'] != 1)
 		<table border="0" class="battle_hedder">
 			<tr>
 				<td width="20%">
@@ -24,6 +37,7 @@
 				</td>
 			</tr>
 		</table>
+		@endif
 
 		<div class="battle_enemy_status">
 			<img src="{{IMG_URL}}battle/enemy_Bar.png" class="battle_enemy_status_bar" >	
@@ -45,7 +59,7 @@
 				<img src="{{IMG_URL}}battle/hand{{$viewData['EnemyData']['hand']}}.png" class="battle_enemy_hand_icon" >
 			</div>
 
-				{{-- 勝敗の表示 --}}
+			{{-- 勝敗の表示 --}}
 			<div class="damage_log">
 				<img src="{{IMG_URL}}battle/damagelog_Bg.png" class="damage_log_Bg" >
 				<div class="damage_log_message">
@@ -82,11 +96,12 @@
 					@elseif ($viewData['CharaData']['result'] == 3)
 						お互いにダメージなし<br />
 					@endif
-						{{-- バトル終了のフラグが立っていたら --}}
+					
+					{{-- バトル終了のフラグが立っていたら --}}
 					@if ($viewData['BattleData']['delFlag'] == 1)
-							<a href="{{APP_URL}}battle/makeResultData">
-								バトルリザルト画面へ
-							</a>
+						<a href="{{APP_URL}}battle/makeResultData">
+							バトルリザルト画面へ
+						</a>
 					@endif
 				</div>
 			</div>
@@ -95,12 +110,11 @@
 			<div class="battle_enemy_hand">
 				<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
 			</div>
+			
 			{{-- メッセージログの枠 --}}
 			<div class="damage_log">
 				<img src="{{IMG_URL}}battle/damagelog_Bg.png" class="damage_log_Bg" >
 			</div>
-
-
 		@endif
 
 		{{-- バトル終了のフラグが立っていなければ次の攻撃の受け付け --}}
@@ -119,6 +133,7 @@
 				</a>
 			</div>
 		@endif
+		
 		{{-- 自キャラステータスの表示 --}}
 		<div class="battle_player_status">
 			<div class="battle_player_status_hp">
@@ -132,16 +147,9 @@
 			<img src="{{IMG_URL}}battle/player_Bar.png" class="battle_player_status_bar">
 			<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['CharaData']['imgId']}}.png" class="battle_player_status_icon" >
 		</div>
-	{{-- popupウインドウ --}}
-	@include('popup/wrap', [
-		'class'		=> 'surrenderButton',
-		'template'	=> 'surrender',
-	])
-	@include('popup/wrap', [
-		'class'		=> 'helpButton',
-		'template'	=> 'help',
-	])
+		
 	</div>
+
 	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>

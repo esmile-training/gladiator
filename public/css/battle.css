@@ -13,7 +13,7 @@ body{}
    
 	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
 	background-size: cover;
-    
+
     width: 100%;
 }
 
@@ -38,7 +38,7 @@ body{}
 .battle_enemy_status_icon {
     position: absolute;
     top: -20%;
-    left: 0.5%;
+    left: 1%;
     width: 20%;
 }
 /* 敵キャラのHP */
@@ -114,8 +114,8 @@ body{}
 /*  ボタン領域に対する、グーボタンの領域 */
 .battle_playerhand_button_goo_linkregion{
     position: absolute;
-    left: 38.5%;
-    bottom: 34%;
+    left: 39%;
+    bottom: 33%;
     width: 23%;
 }
 /* ボタン領域に対する、チョキボタンの領域 */
@@ -149,7 +149,7 @@ body{}
 .battle_player_status_icon {
     position: absolute;
     top: -18%;
-    right: 2.5%;
+    right: 2%;
     width: 20%;
 }
 /* 自キャラのHP */
