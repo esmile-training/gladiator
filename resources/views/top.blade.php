@@ -14,10 +14,10 @@
 			<img src="{{IMG_URL}}title/background.png" class="top_back">
 		</div>
 		@include('common/css', ['file' => 'top'])
-		<div>
-			<img class = "title_logo"src="{{IMG_URL}}title/titlelogo.png">
+		<div class = "center">
+			<img src="{{IMG_URL}}title/titlelogo.png">
 		</div>
-		<div>
+		<div class = "top_imgloginbutton">
 			<a  href="{{APP_URL}}top/login"><img class = "top_button top_login"src="{{IMG_URL}}title/loginbutton.png"></a>
 		</div>
 	</body>
