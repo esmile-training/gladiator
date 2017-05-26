@@ -25,10 +25,11 @@
 	</div>
 </div>
 {{-- popupウインドウ --}}
+<?php $count = [0=>1,2,3]; ?>
+@foreach($count as $val)
 @include('popup/wrap', [
-	'class'		=> 'gacha1', 
+	'class'		=> "gacha{$val}", 
 	'template'	=> 'gacha',
-	'data'		=> ['gachaId' => 1]
-])
-@include('popup/wrap', ['class' => 'gacha2', 'template' => 'gacha', 'data' => ['gachaId' => 2]])
-@include('popup/wrap', ['class' => 'gacha3', 'template' => 'gacha', 'data' => ['gachaId' => 3]])
+	'data'		=> ['gachaId' => $val]
+	])
+@endforeach

@@ -1,5 +1,5 @@
 @include('common/css', ['file' => 'gacha'])
-<div class = "gacha_all">
+
 	<input type="checkbox" id="check1" style = "opacity: 0;"><label for="check1">
 	<div>
 		{{--画像--}}
@@ -43,4 +43,3 @@
 			</div>
 		</div>
 	</div>
-</div>

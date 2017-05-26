@@ -1,10 +1,9 @@
 @include('common/css', ['file' => 'gachaRoad'])
-<?php
-	foreach($viewData['gacha'] as $key => $value){
-		$dataList[] = $key.'='.$value;
-	}
-	$dataStr = implode('&', $dataList);
-?>
+@foreach($viewData['gacha'] as $key => $value)
+	<?php $dataList[] = $key.'='.$value; ?>
+@endforeach
+<?php $dataStr = implode('&', $dataList);?>
+
 <div style = "position:absolute">
 	
 	<div class = "album">
