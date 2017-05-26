@@ -1,7 +1,7 @@
 		{{-- サイズ等指定 --}}
 		@include('common/battle')
 		@include('common/css', ['file' => 'battle'])
-		
+
 		{{-- ポップアップ --}}
 		@include('popup/wrap', [
 			'class'		=> 'surrenderButton',
@@ -11,6 +11,7 @@
 		@include('popup/wrap', [
 			'class'		=> 'helpButton',
 			'template'	=> 'help',
+			'data'		=> ['log' => $viewData['EnemyData']['difficulty']]
 		])
 
 		<img src="{{IMG_URL}}battle/battle_Bg{{$viewData['EnemyData']['difficulty']}}.png" class="battle_bg">
@@ -40,6 +41,9 @@
 		@endif
 
 		<div class="battle_enemy_status">
+			<div class="battle_enemy_status_hp_bar_ragion">
+				<img class="battle_enemy_status_hp_bar" src="{{IMG_URL}}battle/enemy_Hp_Bar.png">
+			</div>
 			<img src="{{IMG_URL}}battle/enemy_Bar.png" class="battle_enemy_status_bar" >	
 			<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['EnemyData']['imgId']}}.png" class="battle_enemy_status_icon" >
 			<div class="battle_enemy_status_hp">
@@ -64,11 +68,11 @@
 				<img src="{{IMG_URL}}battle/damagelog_Bg.png" class="damage_log_Bg" >
 				<div class="damage_log_message">
 					{{ $viewData['CharaData']['name'] }}
-					は    
+					は	
 					{{ $viewData['Type'][$viewData['CharaData']['hand']] }}
 					を出した！<br />
 					{{ $viewData['EnemyData']['name'] }}
-					は    
+					は	
 					{{ $viewData['Type'][$viewData['EnemyData']['hand']] }}
 					を出した！<br />
 
@@ -96,7 +100,7 @@
 					@elseif ($viewData['CharaData']['result'] == 3)
 						お互いにダメージなし<br />
 					@endif
-					
+
 					{{-- バトル終了のフラグが立っていたら --}}
 					@if ($viewData['BattleData']['delFlag'] == 1)
 						<a href="{{APP_URL}}battle/makeResultData">
@@ -110,7 +114,7 @@
 			<div class="battle_enemy_hand">
 				<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
 			</div>
-			
+
 			{{-- メッセージログの枠 --}}
 			<div class="damage_log">
 				<img src="{{IMG_URL}}battle/damagelog_Bg.png" class="damage_log_Bg" >
@@ -133,7 +137,7 @@
 				</a>
 			</div>
 		@endif
-		
+
 		{{-- 自キャラステータスの表示 --}}
 		<div class="battle_player_status">
 			<div class="battle_player_status_hp">
@@ -147,9 +151,10 @@
 			<img src="{{IMG_URL}}battle/player_Bar.png" class="battle_player_status_bar">
 			<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['CharaData']['imgId']}}.png" class="battle_player_status_icon" >
 		</div>
-		
+
 	</div>
 
+	{{-- jsの宣言 --}}
 	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>

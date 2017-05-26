@@ -37,9 +37,11 @@
 
 		<div class="battleresult_backhome_linkregion">
 			<a href="{{APP_URL}}mypage" class="battleresult_backhome_icon">
-				<img src={{IMG_URL}}battle/backHome.png >
+				<img class="image_change" src={{IMG_URL}}battle/backHome.png >
 			</a>
 		</div>
 	</div>
+	
+	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>
 </body>
