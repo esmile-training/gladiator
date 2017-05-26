@@ -92,12 +92,14 @@
 }
 .gacha_charahp{
 	position: relative;
-    left: -20%;
+    left: -21%;
 	color: #FFFFFF;
 }
 .gacha_charastatus{
 	float: left;
 	color: #FFFFFF;
+	position: relative;
+    top: -2vw;
 }
 .gacha_guicon{
 	width: 10%;
@@ -119,4 +121,10 @@
 .gacha_fontpaa{
 	position: relative;
     bottom: 3vw;
+}
+#entryBtn{
+	opacity: 0;
+}
+#check1:checked ~ #entryBtn{
+	opacity: 1;
 }

@@ -12,7 +12,6 @@
     position: absolute;
     top: 20%;
     left: 8%;
-    text-align: center;
 }
 .top_button{
     width: 100%;
@@ -22,13 +21,18 @@
 }
 /*top-login-button*/
 .top_login{
-    width: 27%;
-    max-width: 239px;
-    position: absolute;
-    line-height: 52px;
-    -webkit-transition: none;
-    top: 70%;
-    left: 38%;
+    width: 50%;
+    position: relative;
+    top: 87vw;
+}
+.center{
+	width: 84%;
+    height: auto;
+	margin: 0 auto;
+    text-align: center;
+	z-index:100;
+    position: relative;
+	top: 27vw;
 }
 .top_back{
 	/* 画像をタイル状に繰り返し表示しない */
@@ -44,6 +48,6 @@
 	position: fixed;
 }
 .top_imgloginbutton{
-	
+	margin: 0 auto;
+    text-align: center;
 }
-
