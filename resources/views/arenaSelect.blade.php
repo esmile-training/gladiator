@@ -13,15 +13,12 @@
 </div>
 
 {{--大会の一覧を表示する--}}
-<form action="{{APP_URL}}battle/preparationBattle" method="get">
-	<div>
-		@foreach($viewData['difficultyList'] as $arena)
-			<a href="{{APP_URL}}battle/preparationBattle?arenaDifficulty={{$arena['id']}}
+
+<div>
+	@foreach($viewData['difficultyList'] as $arena)
+		<a href="{{APP_URL}}battle/preparationBattle?arenaDifficulty={{$arena['id']}}
 			&selectedCharaId={{$viewData['selectedCharaId']}}">
-
 			{{$arena['name']}}<br>
-
-			</a>
-		@endforeach
-	</div>
-</form
+		</a>
+	@endforeach
+</div>

@@ -20,8 +20,14 @@
 					<img src="{{IMG_URL}}chara/icon/icon_{{$chara['imgId']}}.png"
 					alt="キャラアイコン">
 				</div>
+				{{--最も強い手--}}
+				<div class="strongest_hand">
+					<img src="{{IMG_URL}}battle/hand{{$chara['strongestHand']}}.png"
+					alt="手アイコン">
+				</div>
 				{{--キャラ名--}}
 				<font class="chara_name">{{$chara['name']}}</font>
+
 			</div>
 		</a>
 	</div>

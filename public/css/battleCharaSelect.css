@@ -41,14 +41,13 @@ a:active{
 /*キャラボタンの枠を設定する*/
 .chara_frame{
 	position:relative;
-	width: 100%;
+	width: 97%;
 	height: auto;
 	top: 10%;
-	left: 1%;
 }
 /*キャラボタンの枠のイメージのサイズを設定する*/
 .chara_frame_img{
-	width: 100%;
+	width: 102%;
 	height: 12vh;
 }
 /*キャラのアイコンを設定する*/
@@ -59,9 +58,18 @@ a:active{
 	width: 20%;
 	height: auto;
 }
-/*キャラ名の設定をする*/
+/*キャラ名の表示設定をする*/
 .chara_name{
 	position: absolute;
+	font-size: 2.1vh;
 	top: 30%;
-	left: 28%;
+	left: 24%;
+	font-family: serif;
+}
+/*キャラクターの手のアイコンを設定する*/
+.strongest_hand{
+	position: absolute;
+	width: 15%;
+	top: 11%;
+	left: 67%;
 }
