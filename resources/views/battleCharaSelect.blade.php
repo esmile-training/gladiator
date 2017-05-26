@@ -1,23 +1,34 @@
 {{--/*
  * 戦闘のキャラ選択ビュー
  * 製作者：松井 勇樹
- * 最終更新日:2017/05/08
+ * 最終更新日:2017/05/25
  */--}}
 
 {{-- css  --}}
-@include('common/css', ['file' => 'admin'])
-@include('common/js', ['file' => 'admin'])
-
-<div>
-		キャラクターを選択して下さい
-</div>
+@include('common/css', ['file' => 'battleCharaSelect'])
 
 {{--所持キャラクターをすべて表示する--}}
-<form action="{{APP_URL}}battle/selectArena" method="get">
-	<div>
-		@foreach($viewData['charaList'] as $chara)
-			<input type="image" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png" alt="キャライメージ"
-				   name="uCharaId" value="{{$chara['id']}}" width="75" height="100">{{$chara['name']}}<br>
-		@endforeach
+
+@foreach($viewData['charaList'] as $chara)
+	<div class = "chara_button">
+		<a href="{{APP_URL}}battle/selectArena?uCharaId={{$chara['id']}}">
+			{{--ボタンの枠--}}
+			<div class="chara_frame">
+				<img class="chara_frame_img" src="{{IMG_URL}}battle/chara_button_frame.png" alt="ボタンの枠">
+				{{--キャラアイコン--}}
+				<div class="chara_icon">
+					<img src="{{IMG_URL}}chara/icon/icon_{{$chara['imgId']}}.png"
+					alt="キャラアイコン">
+				</div>
+				{{--最も強い手--}}
+				<div class="strongest_hand">
+					<img src="{{IMG_URL}}battle/hand{{$chara['strongestHand']}}.png"
+					alt="手アイコン">
+				</div>
+				{{--キャラ名--}}
+				<font class="chara_name">{{$chara['name']}}</font>
+
+			</div>
+		</a>
 	</div>
-</form>
+@endforeach
