@@ -30,6 +30,18 @@ body{}
     top: 7%;
     width: 100%;
 }
+/* 敵キャラのHPバー領域 */
+.battle_enemy_status_hp_bar_ragion{
+    position: absolute;
+    top: 10%;
+    left: 18%;
+    width: 80%;
+}
+/* 敵キャラのHPバー画像 */
+.battle_enemy_status_hp_bar{
+    width: 100%;
+}
+
 /* 敵キャラステータスの背景(バー) */
 .battle_enemy_status_bar {
     width: 100%;
