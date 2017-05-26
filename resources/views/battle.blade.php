@@ -13,10 +13,14 @@
 				<td width="20%"></td>
 				{{-- 押されたらポップアップを表示する --}}
 				<td width="20%">
-					<img class="modal_btn surrender" src="{{IMG_URL}}battle/surrender.png">
+					<a>
+						<img class="modal_btn surrenderButton image_change" src="{{IMG_URL}}battle/surrender.png">
+					</a>
 				</td>
 				<td width="20%">
-					<img class="modal_btn help" src="{{IMG_URL}}battle/help.png">
+					<a>
+						<img class="modal_btn helpButton image_change" src="{{IMG_URL}}battle/help.png">
+					</a>
 				</td>
 			</tr>
 		</table>
@@ -130,12 +134,15 @@
 		</div>
 	{{-- popupウインドウ --}}
 	@include('popup/wrap', [
-		'class'		=> 'surrender',
+		'class'		=> 'surrenderButton',
 		'template'	=> 'surrender',
 	])
 	@include('popup/wrap', [
-		'class'		=> 'help',
+		'class'		=> 'helpButton',
 		'template'	=> 'help',
 	])
 	</div>
+	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>
+	<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>
 </body>
