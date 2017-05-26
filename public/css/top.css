@@ -19,11 +19,29 @@
     height: auto;
     text-align: center;
 }
+/* 点滅 */
+.flashing{
+	-webkit-animation:flash 0.7s ease-in-out infinite alternate;
+    -moz-animation:flash 0.7s ease-in-out infinite alternate;
+    animation:flash 0.7s ease-in-out infinite alternate;
+}
+@-webkit-keyframes flash{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-moz-keyframes flash{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes flash{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
 /*top-login-button*/
 .top_login{
     width: 50%;
     position: relative;
-    top: 87vw;
+	top: 135vw;
 }
 .center{
 	width: 84%;
