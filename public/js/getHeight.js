@@ -10,13 +10,15 @@ $(function(){
     
      var bodyHeight = screen.height - (headerHeight + footerHeight);
 
-    if(mainHeight < bodyHeight){
+    if(mainHeight < bodyHeight && screen.height < 1024){
 	mainHeight = bodyHeight+(footerHeight/4);
+	console.log(mainHeight);
+	main.style.marginTop = headerHeight+'px';
+	main.style.height = mainHeight+'px';
+    }else{
+	main.style.marginTop = headerHeight+'px';
+	main.style.height = screen.height+'px';
+	main.style.marginBottom = footerHeight+'px';
     }
-
-    main.style.marginTop = headerHeight+'px';
-    main.style.height = mainHeight+'px';
-    main.style.marginBottom = footerHeight+'px';
-    
 
 });

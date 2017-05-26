@@ -99,7 +99,7 @@ class RankingController extends BaseGameController
 			else
 			{
 				// ユーザーランキング
-				$page	= $this->Model->exec('Ranking', 'rankingPager', [$moldValue, $range]);
+				$page	= $this->Model->exec('Ranking', 'rankingPager', [$range, $moldValue]);
 			}
 		}
 		else

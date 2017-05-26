@@ -1,10 +1,89 @@
-body{
-    background-color: white;
-}
+a:link { color : white; }
+a:visited { color : white; }
 
 #main{
-/*    background: url(http://esmile-sys.sakura.ne.jp/gladiator/img/mypage/homeImage.jpg) no-repeat center center;*/
+    position: relative;
+}
+
+.image_top_position{
+    position: absolute;
+    top: 17%;
+}
+
+.ranking_back_image{
+    background: url(http://esmile-sys.sakura.ne.jp/gladiator/img/ranking/rankingbackimage.png) no-repeat center center;
     background-size: 100% auto;
-/*    position: fixed;*/
+    width: 100%;
+    margin-top: -20%;
+    position: fixed;
+}
+
+.ranking_borad{
+    width: 33%;
+    position: absolute;
+}
+
+.weekly_panel{
+    position: absolute;
+    left: 0;
+    top: 1%;
+}
+
+
+/*
+ *
+ */
+
+.ranking{
+    position: absolute;
+    top: 11%;
+    color: white;
+    width: 100%;
+}
+
+.ranking_table{
+    width: 97%;
+}
+
+.ranking_tr{
+    width: 100%;
+}
+
+.ranking_img_td{
+    width: 15%;
+    text-align: center;
+}
+
+.top_3{
+    width: 50%;
+}
+
+.ranking_td{
+    font-size: 5vw;
+    text-align: center;
+}
+
+.text_height_center{
+    vertical-align: middle;
+    font-size: 5vw;
+}
+
+.point_align{
+    text-align: right;
+}
+
+
+.pager_list{
+    margin: auto;
+    width: 80%;
+    float: left;
+}
+
+.pager_list_size{
+    font-size: 6vw;
+}
+
+.skip_button{
+    width: 15%;
 }
 
