@@ -7,7 +7,7 @@
    
 	/* 画像をタイル状に繰り返し表示しない */
 	background-repeat: no-repeat;
-   
+
 	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
 	background-size: cover;
 	
@@ -20,50 +20,50 @@
 }
 .gacha_all{
 	width:100%;
-    position: absolute;
+	position: absolute;
 	
 }
 .gacha_charabox{
-    text-align: center;
-    position: absolute;
-    top: 0;
-    z-index: 0;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	z-index: 0;
 }
 .gacha_charaflash{
-    text-align: center;
-    width: 80%;
-    position: relative;
-    top: 55px;
+	text-align: center;
+	width: 80%;
+	position: relative;
+	top: 55px;
 }
 .gacha_charapos{
 	position: absolute;
-    top: 0px;
+	top: 0px;
 }
 .gacha_chara{
 	width: 80%;
-    text-align: center;
+	text-align: center;
 	position: relative;
-    top: 6vw;
+	top: 6vw;
 }
 .gacha_chararate{ 
 	width: 20%;
-    position: absolute;
-    top: 6%;
-    left: 3%;
-    z-index: 2;
+	position: absolute;
+	top: 6%;
+	left: 3%;
+	z-index: 2;
 }
 .gacha_charalogoflash{
-    width: 50%;
-    position: absolute;
-    top: -13%;
-    left: -14%;
-    z-index: 1;
+	width: 50%;
+	position: absolute;
+	top: -13%;
+	left: -14%;
+	z-index: 1;
 }
 .gacha_charaframe{
 	width: 85%;
-    position: absolute;
-    top: 97vw;
-    left: 7%;
+	position: absolute;
+	top: 97vw;
+	left: 7%;
 }
 .gacha_charatopframe{
 	width:100%;
@@ -80,7 +80,7 @@
 .gacha_charatextbox{
 	text-align: center;
 	font-size: 140%;
-    position: absolute;
+	position: absolute;
 	top: 98vw;
  }
 .gacha_charaname{
@@ -92,35 +92,35 @@
 }
 .gacha_charahp{
 	position: relative;
-    left: -21%;
+	left: -21%;
 	color: #FFFFFF;
 }
 .gacha_charastatus{
 	float: left;
 	color: #FFFFFF;
 	position: relative;
-    top: -2vw;
+	top: -2vw;
 }
 .gacha_guicon{
 	width: 10%;
 }
 .gacha_fontgoo{
 	position: relative;
-    bottom: 3vw;
+	bottom: 3vw;
 }
 .gacha_chokiicon{
 	width: 10%;
 }
 .gacha_fontchoki{
 	position: relative;
-    bottom: 3vw;
+	bottom: 3vw;
 }
 .gacha_paaicon{
 	width: 10%;
 }
 .gacha_fontpaa{
 	position: relative;
-    bottom: 3vw;
+	bottom: 3vw;
 }
 #entryBtn{
 	opacity: 0;
