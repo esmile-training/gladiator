@@ -173,6 +173,9 @@ class battleController extends BaseGameController
 			// BattleData の 'delFlag' を立てる
 			$this->BattleData['delFlag'] = 1;
 		}
+	
+		// 降参費用額計算
+		$surrenderCost = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));
 
 		// 全てのデータを viewData に渡す
 		$this->viewData['BattleData']	= $this->BattleData;
@@ -180,6 +183,7 @@ class battleController extends BaseGameController
 		$this->viewData['EnemyData']	= $this->EnemyData;
 		$this->viewData['Type']			= $this->TypeData;
 		$this->viewData['Result']		= $this->ResultData;
+		$this->viewData['SurrenderCost']= $surrenderCost;
 		
 		return view('battle', ['viewData' => $this->viewData]);
 	}
@@ -250,6 +254,7 @@ class battleController extends BaseGameController
 			// EnemyData に敵キャラデータを格納
 			$this->EnemyData = $this->Model->exec('BattleEnemy', 'getBattleEnemyData', $this->BattleData['uBattleEnemyId']);
 		}
+		
 	}
 
 	// データベースからランキングデータを RankingData に格納するファンクション
@@ -402,7 +407,7 @@ class battleController extends BaseGameController
 		else
 		{
 			// 降参費用額計算
-			$prize =  BattleLib::surrenderCostCalc($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData);
+			$prize = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));
 
 			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
 			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$prize));
