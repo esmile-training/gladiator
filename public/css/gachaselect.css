@@ -91,9 +91,6 @@
 }
 .gacha_popup{
 	width: 30%;
-}
-.gacha_popupfont{
-	position: absolute;
-	top: 45%;
-	left: 45%;
+	position:relative;
+    top: 2vh;
 }

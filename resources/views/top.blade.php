@@ -10,13 +10,11 @@
 		<link href="{{APP_URL}}css/modal.css?var={{time()}}" rel="stylesheet" type="text/css">
 	</head>
 	<body>
+		<?php var_dump($viewData['bgNumber']); exit;?>
 		<div>
 			<img src="{{IMG_URL}}title/background.png" class="top_back">
 		</div>
 		@include('common/css', ['file' => 'top'])
-		<div class = "center">
-			<img src="{{IMG_URL}}title/titlelogo.png">
-		</div>
 		<div class = "top_imgloginbutton">
 			<a  href="{{APP_URL}}top/login"><img class = "top_button top_login"src="{{IMG_URL}}title/loginbutton.png"></a>
 		</div>
