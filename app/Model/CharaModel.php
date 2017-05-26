@@ -67,7 +67,6 @@ $sql = <<< EOD
 				FROM uChara
 				WHERE userID = {$userId}
 				AND delFlag = 0
-				LIMIT 10
 EOD;
 			return $this->select($sql);
 		}

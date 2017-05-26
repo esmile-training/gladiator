@@ -1,9 +1,11 @@
 @include('common/css', ['file' => 'chara'])
 <div>
+	<font color="silver">
 	<center>
 	コーチ枠がいっぱいです<br>
-	交代するコーチを選んでください<br>
-	<br>
+	交代するコーチを選ぶか、<br>
+	引退させるか選んでください。<br>
+	</font>
 	<font color="red">※選択したコーチは引退となります。</font>
 	</center>
 </div>
@@ -45,11 +47,13 @@
 	@endforeach
 </div>
 <br>
-<div align="center">
+<div>
 <form action ="deleteChara" method="get">
 	<input type="hidden" name="id" value="{{$_GET['id']}}">
 	<button type="submit" >コーチにしない</button>
 </form>
-	<button type="button" onclick="history.back()">戻る</button>
+	<a onclick="history.back()">
+	<img src="{{SERVER_URL}}img/popup/back_Button.png" style="width: 150px">
+	</a>
 </div>
 
