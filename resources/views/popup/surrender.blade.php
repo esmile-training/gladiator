@@ -8,13 +8,13 @@
 		<td width="25%"></td>
 		<td width="20%">
 			<a href="{{APP_URL}}battle/makeResultData">
-				<img class="surrender_button_yes" src="{{IMG_URL}}popup/yes_Button.png">
+				<img class="surrender_button_yes image_change" src="{{IMG_URL}}popup/yes_Button.png">
 			</a>
 		</td>
 		<td width="10%"></td>
 		<td width="20%">
 			<a>
-				<img class="surrender_button_no" src="{{IMG_URL}}popup/no_Button.png">
+				<img class="surrender_button_no image_change" src="{{IMG_URL}}popup/no_Button.png">
 			</a>
 		</td>
 		<td width="25%"></td>

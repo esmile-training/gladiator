@@ -41,10 +41,10 @@
 		@endif
 
 		<div class="battle_enemy_status">
+			<img src="{{IMG_URL}}battle/enemy_Bar.png" class="battle_enemy_status_bar" >
 			<div class="battle_enemy_status_hp_bar_ragion">
-				<img class="battle_enemy_status_hp_bar" src="{{IMG_URL}}battle/enemy_Hp_Bar.png">
+				<img style="left: 0%; width: {{$viewData['EnemyData']['battleHp'] / ( $viewData['EnemyData']['hp'] / 100)}}%; height: 100%;" src="{{IMG_URL}}battle/enemy_Hp_Bar.png">
 			</div>
-			<img src="{{IMG_URL}}battle/enemy_Bar.png" class="battle_enemy_status_bar" >	
 			<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['EnemyData']['imgId']}}.png" class="battle_enemy_status_icon" >
 			<div class="battle_enemy_status_hp">
 				{{ $viewData['EnemyData']['name'] }} のHP {{ $viewData['EnemyData']['battleHp'] }} / {{ $viewData['EnemyData']['hp'] }}
@@ -140,6 +140,11 @@
 
 		{{-- 自キャラステータスの表示 --}}
 		<div class="battle_player_status">
+			<img src="{{IMG_URL}}battle/player_Bar.png" class="battle_player_status_bar">
+			<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['CharaData']['imgId']}}.png" class="battle_player_status_icon" >
+			<div class="battle_player_status_hp_bar_ragion">
+				<img style="right: 0%; width: {{$viewData['CharaData']['battleHp'] / ( $viewData['CharaData']['hp'] / 100)}}%; height: 100%;" src="{{IMG_URL}}battle/player_Hp_Bar.png">
+			</div>
 			<div class="battle_player_status_hp">
 				{{ $viewData['CharaData']['name'] }} のHP {{ $viewData['CharaData']['battleHp'] }} / {{ $viewData['CharaData']['hp'] }}
 			</div>
@@ -148,8 +153,6 @@
 				{{ $viewData['Type'][2] }} : {{ $viewData['CharaData']['choAtk']}}
 				{{ $viewData['Type'][3] }} : {{ $viewData['CharaData']['paaAtk']}}			
 			</div>
-			<img src="{{IMG_URL}}battle/player_Bar.png" class="battle_player_status_bar">
-			<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['CharaData']['imgId']}}.png" class="battle_player_status_icon" >
 		</div>
 
 	</div>
