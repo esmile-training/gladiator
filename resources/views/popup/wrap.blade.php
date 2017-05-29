@@ -2,7 +2,7 @@
 		<div class="modal_top">
 			<img class="modal_frametop"src="{{SERVER_URL}}img/popup/popuptop.png">
 			<div class="close">
-				<img class="modal_closebutton"src="{{SERVER_URL}}img/popup/closebutton.png">
+				<img src="{{SERVER_URL}}img/popup/closebutton.png">
 					<span>close</span>
 			</div>
 		</div>

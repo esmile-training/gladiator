@@ -60,7 +60,7 @@
 .gacha_charaframe{
 	width: 85%;
 	position: absolute;
-	top: 60%;
+	top: 65%;
 	left: 7%;
 }
 .gacha_charatopframe{
@@ -79,10 +79,10 @@
 	text-align: center;
 	font-size: 140%;
 	position: absolute;
-	top: 61%;
+	top: 65%;
  }
 .gacha_charaname{
-	font-size: 101%;
+	font-size: 108%;
 	color: #FFFFFF;
 }
 .gacha_hpicon{

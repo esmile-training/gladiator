@@ -32,15 +32,13 @@
 }
 /* Close button design */
 .modal .close {
-	position: absolute;
-	border-radius: 20px;
-	top: 9%;
-	right: 1%;
-	width: 13%;
-	height: 6%;
-	cursor: pointer;
-	z-index: 100000;
-	z-index: 10000;
+    position: absolute;
+    top: 14%;
+    right: 4%;
+    width: 15%;
+    height:auto;
+    cursor: pointer;
+    z-index: 10000;
 }
 .modal .close:before,
 .modal .close:after{
@@ -84,8 +82,8 @@
 }
 .modal .modal_closebutton{
     width: 12%;
-    position: fixed;
-    top: 16%;
+    position: absolute;
+    top: 14%;
     right: 4%;
 }
 

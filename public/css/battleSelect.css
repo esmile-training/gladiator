@@ -13,7 +13,25 @@
 	width: 100%;
 }
 .battle_select{
-	width: 125%;
+	width: 100%;
+	position: absolute;
+    top: 15%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+}
+.battle_select1{
 	border-bottom: solid 10px transparent;
 }
-
+.battle_select2{
+	border-bottom: solid 10px transparent;
+}
+.battle_select3{
+	border-bottom: solid 10px transparent;
+}
+.battle_selectfont{
+	font-size: 188%;
+	color: #FFFFFF;
+	border-bottom: solid 20px transparent;
+}
