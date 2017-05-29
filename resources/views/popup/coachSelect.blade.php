@@ -1,4 +1,3 @@
-@include('public/js', ['file' => 'training'])
 <div>
 		<h3>訓練時間を選択してください</h3>
 </div>

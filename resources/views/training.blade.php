@@ -1,7 +1,19 @@
 {{--CSS--}}
 @include('common/css', ['file' => 'training'])
 
-@include('common/js', ['file' => 'trainingPopup'])
+<script>
+	 var popup = <?php echo $viewData['trainingResult']['hp']; ?>;
+	 $(function (){
+		 if(popup !== null)
+		 {
+			$('.trainingResult').css('display','block'); 
+		 }
+		 else
+		 {
+			 $('.trainingResult').css('display','none'); 
+		 }
+	 });
+</script>
 
 <div>
 	<h3>訓練するキャラクターを選んでください。</h3>
