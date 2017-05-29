@@ -1,8 +1,8 @@
-		{{-- サイズ等指定 --}}
+		{{-- cssの宣言 --}}
 		@include('common/battle')
 		@include('common/css', ['file' => 'battle'])
 
-		{{-- ポップアップ --}}
+		{{-- ポップアップの宣言--}}
 		@include('popup/wrap', [
 			'class'		=> 'surrenderButton',
 			'template'	=> 'surrender',
