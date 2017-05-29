@@ -4,7 +4,7 @@
 	<center>
 	コーチ枠がいっぱいです<br>
 	交代するコーチを選ぶか、<br>
-	引退させるか選んでください。<br>
+	引退を選んでください。<br>
 	</font>
 	<font color="red">※選択したコーチは引退となります。</font>
 	</center>
@@ -47,13 +47,9 @@
 	@endforeach
 </div>
 <br>
-<div>
-<form action ="deleteChara" method="get">
-	<input type="hidden" name="id" value="{{$_GET['id']}}">
-	<button type="submit" >コーチにしない</button>
-</form>
-	<a onclick="history.back()">
-	<img src="{{SERVER_URL}}img/popup/back_Button.png" style="width: 150px">
-	</a>
-</div>
-
+<a href="{{APP_URL}}selectCoach/deleteChara?id={{$_GET['id']}}" style="width: 46%;">
+	<img src="{{SERVER_URL}}img/popup/retire_Button.png">
+</a>
+<a onclick="history.back()" style="width: 46%;">
+	<img src="{{SERVER_URL}}img/popup/back_Button.png">
+</a>
