@@ -1,23 +1,54 @@
 {{--/*
  * 戦闘のキャラ選択ビュー
  * 製作者：松井 勇樹
- * 最終更新日:2017/05/08
+ * 最終更新日:2017/05/25
  */--}}
 
 {{-- css  --}}
-@include('common/css', ['file' => 'admin'])
-@include('common/js', ['file' => 'admin'])
-
-<div>
-		キャラクターを選択して下さい
-</div>
+@include('common/css', ['file' => 'battleCharaSelect'])
 
 {{--所持キャラクターをすべて表示する--}}
-<form action="{{APP_URL}}battle/selectArena" method="get">
-	<div>
-		@foreach($viewData['charaList'] as $chara)
-			<input type="image" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png" alt="キャライメージ"
-				   name="uCharaId" value="{{$chara['id']}}" width="75" height="100">{{$chara['name']}}<br>
-		@endforeach
+
+@foreach($viewData['charaList'] as $chara)
+	<div class = "chara_button">
+		{{--ボタンの枠--}}
+		<div class="chara_frame">
+			<a href="{{APP_URL}}battle/selectArena?uCharaId={{$chara['id']}}">
+				<img class="chara_frame_img" src="{{IMG_URL}}battle/chara_button_frame.png" alt="ボタンの枠">
+
+				{{--キャラアイコン--}}
+				<div class="chara_icon">
+					<img src="{{IMG_URL}}chara/icon/icon_{{$chara['imgId']}}.png"
+					alt="キャラアイコン">
+				</div>
+
+				{{--グー--}}
+				<div class="goo_icon">
+					<img src="{{IMG_URL}}battle/hand1.png" alt="グーアイコン">
+				</div>
+				<div class="status_value goo_pos">
+					<font>{{$chara['gooAtk']}}</font>
+				</div>
+
+				{{--チョキ--}}
+				<div class="cho_icon">
+					<img src="{{IMG_URL}}battle/hand2.png" alt="チョキアイコン">
+				</div>
+				<div class="status_value cho_pos">
+					<font>{{$chara['choAtk']}}</font>
+				</div>
+
+				{{--パー--}}
+				<div class="paa_icon">
+					<img src="{{IMG_URL}}battle/hand3.png" alt="チョキアイコン">
+				</div>
+				<div class="status_value paa_pos">
+					<font>{{$chara['paaAtk']}}</font>
+				</div>
+
+				{{--キャラ名--}}
+				<font class="chara_name">{{$chara['name']}}</font>
+			</a>
+		</div>
 	</div>
-</form>
+@endforeach

@@ -15,12 +15,14 @@ class TrainingLib extends BaseGameLib
 		{
 			foreach($endTraining as $val)
 			{
-				$trainingState = 2;
-				TrainingLib::uCharaAtkUp($val['id']);
+				$trainingState = 1;
+				$test = TrainingLib::uCharaAtkUp($val['id']);
 				$this->Model->exec('Training', 'uCharaStateChange', array($val['uCharaId'],0));
 				$this->Model->exec('Training', 'uCoachStateChange', array($val['uCoachId'],0));
 				$this->Model->exec('Training', 'stateChange', array($val['id'], $trainingState), $this->user['id']);
 			}
+			return $test;
+			
 		}else if(isset($endTraining) && $isTrainingPage == false){
 			foreach($endTraining as $val)
 			{
@@ -53,15 +55,16 @@ class TrainingLib extends BaseGameLib
 		
 		$upDateStatus = [
 			'hp'		 => $uCharaStatus['hp']			 + $statusResult['statusUpCnt'],
-			'gooAtk'	 => $uCharaStatus['gooAtk']		 + $statusResult['gooAtk'],
-			'choAtk'	 => $uCharaStatus['choAtk']		 + $statusResult['choAtk'],
-			'paaAtk'	 => $uCharaStatus['paaAtk']		 + $statusResult['paaAtk'],
+			'gooAtk'	 => $uCharaStatus['gooAtk']		 + $statusResult['gooUpCnt'],
+			'choAtk'	 => $uCharaStatus['choAtk']		 + $statusResult['choUpCnt'],
+			'paaAtk'	 => $uCharaStatus['paaAtk']		 + $statusResult['paaUpCnt'],
 			'gooUpCnt'	 => $uCharaStatus['gooUpCnt']	 + $statusResult['gooUpCnt'],
 			'choUpCnt'	 => $uCharaStatus['choUpCnt']	 + $statusResult['choUpCnt'],
 			'paaUpCnt'	 => $uCharaStatus['paaUpCnt']	 + $statusResult['paaUpCnt']
 		];
 		
 		$this->Model->exec('Training', 'updateStatus', array($upDateStatus, $trainingInfo['uCharaId']));
+		return $upDateStatus;
 	}
 	
 	/*
@@ -88,45 +91,31 @@ class TrainingLib extends BaseGameLib
 	{
 		for($i = 0; $i <= $time; $i++)
 		{
-			//ステータスの強化値
-			$charaGooAtk = 0;
-			$charaChoAtk = 0;
-			$charaPaaAtk = 0;
-
 			//ステータスの上昇回数を格納する変数
 			$gooUpCnt	 = 0;
 			$choUpCnt	 = 0;
 			$paaUpCnt	 = 0;
-			$statusUpCnt = 0;
 
 			$gooJudgeValue = rand(1, 100);
 			if($gooResult >= $gooJudgeValue)
 			{
-				$charaGooAtk++;
 				$gooUpCnt++;
-				$statusUpCnt++;
 			}
 			$choJudgeValue = rand(1, 100);
 			if($choResult >= $choJudgeValue)
 			{
-				$charaChoAtk++;
 				$choUpCnt++;
-				$statusUpCnt++;
 			}
 			$paaJudgeValue = rand(1, 100);
 			if($paaResult >= $paaJudgeValue)
 			{
-				$charaPaaAtk++;
 				$paaUpCnt++;
-				$statusUpCnt++;
 			}
-
+			
+			$statusUpCnt = $gooUpCnt + $choUpCnt + $paaUpCnt;
 		}
 		
 		$result = [
-			'gooAtk'		=> $charaGooAtk,
-			'choAtk'		=> $charaChoAtk,
-			'paaAtk'		=> $charaPaaAtk,
 			'gooUpCnt'		=> $gooUpCnt,
 			'choUpCnt'		=> $choUpCnt,
 			'paaUpCnt'		=> $paaUpCnt,

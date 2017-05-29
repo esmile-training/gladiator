@@ -39,7 +39,7 @@ class BattleLib extends BaseGameLib
 	{
 
 		$result = [];   // データ返却用変数の初期化
-		
+
 		// 勝ち条件の場合
 		if(	($pcHand == 1 && $enmHand == 2) ||
 			($pcHand == 2 && $enmHand == 3) ||
@@ -65,7 +65,7 @@ class BattleLib extends BaseGameLib
 			$result = 3;
 		}
 		else
-		{	
+		{
 			echo 'エラー';
 			exit;
 		}
@@ -160,7 +160,7 @@ class BattleLib extends BaseGameLib
 		return $result;
 
 	}
-	
+
 	// 降参費用計算
 	public static function surrenderCostCalc($pcData, $Commission, $DifficulutyData, $EnemyData)
 	{
@@ -194,5 +194,26 @@ class BattleLib extends BaseGameLib
 		$matchData['ePaaAtk']		= $enemyStatus['paaAtk'];
 
 		return $matchData;
+	}
+
+	public static function checkUpStrongestHand($argGooAtk,$argChoAtk,$argPaaAtk)
+	{
+		// データを配列に格納する
+		$handList=array(1=>$argGooAtk,2=>$argChoAtk,3=>$argPaaAtk);
+		// 結果を格納する変数(デフォでグーの値が入る)
+		$result = 1;
+		// 比較用の値(こちらもデフォはグーの値)
+		$power = $handList[1];
+		// 値を比較する
+		foreach ($handList as $key => $value)
+		{
+			if($power != $value && $power < $value)
+			{
+				// パワーとリザルトを更新する
+				$power = $value;
+				$result = $key;
+			}
+		}
+		return $result;
 	}
 }

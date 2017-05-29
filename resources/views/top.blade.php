@@ -10,16 +10,12 @@
 		<link href="{{APP_URL}}css/modal.css?var={{time()}}" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		@include('common/css', ['file' => 'top'])
-
-		<div class="top_button top_login">
-			<a  href="{{APP_URL}}top/login">ログイン</a>
-		</div>
-
 		<div>
-			<a href="{{APP_URL}}admin">
-			管理画面
-			</a>
+			<img src="{{IMG_URL}}title/title{{$viewData['bgNumber']}}.png" class="top_back">
+		</div>
+		@include('common/css', ['file' => 'top'])
+		<div class = "top_imgloginbutton">
+			<a  href="{{APP_URL}}top/login"><span class = "flashing"><img class = "top_button top_login"src="{{IMG_URL}}title/loginbutton.png"></span></a>
 		</div>
 	</body>
 </html>

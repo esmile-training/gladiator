@@ -1,6 +1,4 @@
 @include('common/css', ['file' => 'gachaselect'])
-
-
 <div class = "gacha_all">
 	<div>
 		<img class="gacha_signboard" src="{{IMG_URL}}gacha/kanban.png">
@@ -16,24 +14,22 @@
 		<div class="modal_container">
 			<div class = "gacha_button1">
 				<input type="image" class="modal_btn gacha1" src="{{IMG_URL}}gacha/banner1.png" name = 'gachavalue' value = "1" width= 100% height= 100%>
-				<img class= "gacha_normalgachamoney" src="{{IMG_URL}}gacha/10000.png">
 			</div>
 			<div class = "gacha_button2">
 				<input type="image" class="modal_btn gacha2" src="{{IMG_URL}}gacha/banner2.png" name = 'gachavalue' value = "2"width= 100% height= 100%>
-				<img class= "gacha_raregachamoney" src="{{IMG_URL}}gacha/30000.png">
 			</div>
 			<div class = "gacha_button3">
 				<input type="image" class="modal_btn gacha3" src="{{IMG_URL}}gacha/banner3.png" name = 'gachavalue' value = "3"width= 100% height= 100%>
-				<img class= "gacha_superraregachamoney" src="{{IMG_URL}}gacha/50000.png">
 			</div>
 		</div>
 	</div>
 </div>
 {{-- popupウインドウ --}}
+<?php $count = [0=>1,2,3]; ?>
+@foreach($count as $val)
 @include('popup/wrap', [
-	'class'		=> 'gacha1', 
+	'class'		=> "gacha{$val}", 
 	'template'	=> 'gacha',
-	'data'		=> ['gachaId' => 1]
-])
-@include('popup/wrap', ['class' => 'gacha2', 'template' => 'gacha', 'data' => ['gachaId' => 2]])
-@include('popup/wrap', ['class' => 'gacha3', 'template' => 'gacha', 'data' => ['gachaId' => 3]])
+	'data'		=> ['gachaId' => $val]
+	])
+@endforeach

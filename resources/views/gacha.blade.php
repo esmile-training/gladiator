@@ -1,5 +1,6 @@
 @include('common/css', ['file' => 'gacha'])
-<div class = "gacha_all">
+
+	<input type="checkbox" id="check1" style = "opacity: 0;"><label for="check1">
 	<div>
 		{{--画像--}}
 		<div class = "gacha_charabox">
@@ -14,11 +15,12 @@
 				<img class="gacha_chararate" src="{{IMG_URL}}gacha/{{$viewData['rarity']}}.png">
 			</div>
 			<div>
-				<img class="gacha_charalogo"src="{{IMG_URL}}gacha/logoflash.png">
+				<img class="gacha_charalogoflash"src="{{IMG_URL}}gacha/logoflash.png">
 			</div>
 		</div>
 	</div>
-	<div>
+	</label><br>
+	<div id="entryBtn">
 		<div class="gacha_charaframe">
 			<img class="gacha_charatopframe"src="{{IMG_URL}}gacha/wakuUp.png">
 			<img class="gacha_characenterframe"src="{{IMG_URL}}gacha/wakuNaka.png"><img class="gacha_charabottomframe"src="{{IMG_URL}}gacha/wakuuUnder.png">
@@ -28,16 +30,16 @@
 				<?php echo $viewData['firstname'],'・',$viewData['lastname']?>
 			</div>
 			<div class="gacha_charahp">
-				<?php echo 'HP:			',$viewData['hp']?>
+				<img class = "gacha_hpicon" src = "{{IMG_URL}}gacha/hp.png">
+				<span class = "gacha_fontgoo">{{$viewData['hp']}}</span>
 			</div>
 			<div class="gacha_charastatus">
 				<img class = "gacha_guicon" src = "{{IMG_URL}}battle/hand1.png">
-				{{$viewData['gu']}}
+				<span class = "gacha_fontgoo">{{$viewData['gu']}}</span>
 				<img class = "gacha_guicon" src = "{{IMG_URL}}battle/hand2.png">
-				{{$viewData['choki']}}
+				<span class = "gacha_fontchoki">{{$viewData['choki']}}</span>
 				<img class = "gacha_guicon" src = "{{IMG_URL}}battle/hand3.png">
-				{{$viewData['paa']}}
+				<span class = "gacha_fontpaa">{{$viewData['paa']}}</span>
 			</div>
 		</div>
 	</div>
-</div>
