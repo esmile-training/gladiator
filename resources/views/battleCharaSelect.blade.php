@@ -11,24 +11,44 @@
 
 @foreach($viewData['charaList'] as $chara)
 	<div class = "chara_button">
-		<a href="{{APP_URL}}battle/selectArena?uCharaId={{$chara['id']}}">
-			{{--ボタンの枠--}}
-			<div class="chara_frame">
+		{{--ボタンの枠--}}
+		<div class="chara_frame">
+			<a href="{{APP_URL}}battle/selectArena?uCharaId={{$chara['id']}}">
 				<img class="chara_frame_img" src="{{IMG_URL}}battle/chara_button_frame.png" alt="ボタンの枠">
+
 				{{--キャラアイコン--}}
 				<div class="chara_icon">
 					<img src="{{IMG_URL}}chara/icon/icon_{{$chara['imgId']}}.png"
 					alt="キャラアイコン">
 				</div>
-				{{--最も強い手--}}
-				<div class="strongest_hand">
-					<img src="{{IMG_URL}}battle/hand{{$chara['strongestHand']}}.png"
-					alt="手アイコン">
+
+				{{--グー--}}
+				<div class="goo_icon">
+					<img src="{{IMG_URL}}battle/hand1.png" alt="グーアイコン">
 				</div>
+				<div class="status_value goo_pos">
+					<font>{{$chara['gooAtk']}}</font>
+				</div>
+
+				{{--チョキ--}}
+				<div class="cho_icon">
+					<img src="{{IMG_URL}}battle/hand2.png" alt="チョキアイコン">
+				</div>
+				<div class="status_value cho_pos">
+					<font>{{$chara['choAtk']}}</font>
+				</div>
+
+				{{--パー--}}
+				<div class="paa_icon">
+					<img src="{{IMG_URL}}battle/hand3.png" alt="チョキアイコン">
+				</div>
+				<div class="status_value paa_pos">
+					<font>{{$chara['paaAtk']}}</font>
+				</div>
+
 				{{--キャラ名--}}
 				<font class="chara_name">{{$chara['name']}}</font>
-
-			</div>
-		</a>
+			</a>
+		</div>
 	</div>
 @endforeach
