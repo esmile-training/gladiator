@@ -10,6 +10,7 @@
 		<link href="{{APP_URL}}css/header.css?var={{time()}}" rel="stylesheet" type="text/css">
 		<link href="{{APP_URL}}css/footer.css?var={{time()}}" rel="stylesheet" type="text/css">
 		<link href="{{APP_URL}}css/modal.css?var={{time()}}" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	</head>
 	<body>
 	<div id="wrapper">

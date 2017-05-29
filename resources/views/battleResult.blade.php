@@ -1,17 +1,17 @@
 		{{-- cssの宣言 --}}
 		@include('common/header')
 		@include('common/css', ['file' => 'battleResult'])
-		
+
 		{{-- バトルの勝敗によって背景画像変更 --}}
 		@if ($viewData['Prize'] > 0)
 			<img src="{{IMG_URL}}battle/battleResult_Bg_Win.png" class="battleresult_bg">
 		@else
 			<img src="{{IMG_URL}}battle/battleResult_Bg_Lose.png" class="battleresult_bg">
 		@endif
-		
+
 		{{-- リザルトログ表示領域 --}}
 		<div class="battleresult_log">
-			{{-- リザルトログの枠 -}}
+			{{-- リザルトログの枠 --}}
 			<img src="{{IMG_URL}}battle/battleResultlog_Bg.png" class="battleresult_log_bg">
 			{{-- バトルの勝敗によって表示するログの変更 --}}
 			@if ($viewData['Prize'] > 0)
@@ -33,7 +33,7 @@
 				<div class="battleresult_log_message">
 					降参費用として {{$viewData['Prize']}} 失った。<br />
 					現在の所持金 {{$viewData['user']['money']}} <br />
-				</div>	
+				</div>
 			@else
 				{{-- プレイヤー敗北時のリザルトログ --}}
 				<div class="battleresult_log_message">
@@ -50,7 +50,7 @@
 			</a>
 		</div>
 	</div>
-	
+
 	{{-- jsの宣言 --}}
 	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>

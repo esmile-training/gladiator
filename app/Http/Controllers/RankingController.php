@@ -91,13 +91,15 @@ class RankingController extends BaseGameController
 
 			if(!isset($nextPage) && !isset($backPage) && !isset($lastPage) && !isset($firstPage) && !isset($rangePage))
 			{
-				$userRank   = $this->Model->exec('Ranking', 'userRank', [$this->user['id'], $range]);
-				$page	    = RankingController::userRanking($userRank);
+				$pagecount   = $this->Model->exec('Ranking', 'overPoint', [$this->user['id'], $range]);
+				$count	= floor($pagecount['count']) * 10;
+				$this->rankingData['nowpage']	= $count;
+				$page = $this->Model->exec('Ranking', 'rankingPager', [$range, $count]);
 			}
 			else
 			{
 				// ユーザーランキング
-				$page	= $this->Model->exec('Ranking', 'rankingPager', [$moldValue, $range]);
+				$page	= $this->Model->exec('Ranking', 'rankingPager', [$range, $moldValue]);
 			}
 		}
 		else
@@ -110,7 +112,7 @@ class RankingController extends BaseGameController
 		// 並べ替えたものを代入
 		$this->viewData['ranking']	= $page;
 		$this->viewData['rankingData']	= $this->rankingData;
-		var_dump($this->viewData);
+
 		// ビューヘ渡す
 		if ($this->rankingData['rankChenge'] == 0)
 		{
@@ -121,45 +123,4 @@ class RankingController extends BaseGameController
 			return viewWrap('charaRanking', $this->viewData);
 		}
 	}
-    
-    /*
-     * 
-     * 初期画面の表示切替
-     * 
-     */
-    public function userRanking($inputRank)
-    {
-	// ユーザーが添字配列の何番目にいるかを取得
-	$userrank = array_search($this->user['id'], array_column($inputRank, 'userId'));
-	
-	// ページャーの値を初期化
-	$pager = 0;
-	
-	foreach ($inputRank as $key => $value)
-	{
-	    // ランキングの総数が10人未満だった場合
-	    if(count($inputRank) < 10)
-	    {
-		$execRank[$value['userId']]	= $value;
-	    }
-	    // ランキング取得時、中間ではなく、上位十位以内だった場合
-	    elseif($inputRank[9]['userId'] != $this->user['id'] && 10 > $userrank && $key < 10)
-	    {
-		$execRank[$value['userId']]	= $value;
-	    }
-	    // ランキング取得時中間にいて尚且つ、取得合計数が20と異なるとき
-	    elseif($inputRank[9]['userId'] == $this->user['id'] && count($inputRank) != 20)
-	    {
-		$execRank[$value['userId']]	= $value;
-	    }
-	    // ランキング取得時中間にだけいるとき
-	    elseif($inputRank[9]['userId'] == $this->user['id'] && 4 < $key && $key < 15)
-	    {
-		$execRank[$value['userId']]	= $value;
-		$pager = $inputRank[$key]['rank'];
-	    }
-	}
-		$this->rankingData['pager'] = floor(($pager / 10)) * 10;
-		return $execRank;
-    }
 }

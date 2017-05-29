@@ -11,85 +11,28 @@ $sql = <<< EOD
 EOD;
     return parent::insert($sql);
     }
-    
-    
-    /*
-    *	chardata取得
-    */
-    public function userRank($userId, $range)
-    {
+	
+	public function overPoint($userId, $range)
+	{
 $sql =  <<< EOD
-SELECT rank.weekRange, rank.userId, rank.weeklyAward, user.name, rank FROM 
-((
-	SELECT * FROM (
-	    SELECT userId ,weeklyAward, weekRange, (
-			SELECT COUNT(*) + 1 FROM 
-			`uRanking` bf
-			WHERE bf.weeklyAward > af.weeklyAward 
-			AND weekRange = '{$range}'
-		) AS `rank` 
-		FROM `uRanking` af 
-		ORDER BY rank
-	) as rank
-WHERE  weekRange = '{$range}' AND rank > (
-	SELECT rank FROM (
-		SELECT userId ,weeklyAward, weekRange, (
-			SELECT COUNT(*) + 1 FROM
-			`uRanking` bf 
-			WHERE bf.weeklyAward > af.weeklyAward 
-			AND weekRange = '{$range}'
-		) AS `rank` 
-		FROM `uRanking` af
-		WHERE userId = $userId
-	) AS rank
-WHERE userId = $userId
-)
-ORDER BY weeklyAward DESC LIMIT 10
-) 
-UNION ALL
-(
-	SELECT * FROM (
-		SELECT userId ,weeklyAward, weekRange, (
-			SELECT COUNT(*) + 1 FROM 
-			`uRanking` bf 
-			WHERE bf.weeklyAward > af.weeklyAward 
-			AND weekRange = '{$range}'
-		) AS `rank` 
-		FROM `uRanking` af
-		ORDER BY rank
-	) AS rank
-	WHERE weekRange = '{$range}' and rank <= (
-		SELECT rank FROM (
-			SELECT userId ,weeklyAward, weekRange, (
-				SELECT COUNT(*) + 1 FROM 
-				`uRanking` bf WHERE bf.weeklyAward > af.weeklyAward 
-				AND weekRange = '{$range}'
-			) AS `rank`
-		FROM `uRanking` af 
-		WHERE userId = $userId
-	) AS rank
-WHERE userId = $userId
-) ORDER BY weeklyAward ASC LIMIT 10
-
-))as rank
-
-LEFT outer JOIN user
-ON rank.userId = user.id
-ORDER BY rank
-;
+	SELECT COUNT(*) as count
+	FROM uRanking 
+	WHERE weeklyAward >= (SELECT weeklyAward 
+	FROM uRanking 
+	WHERE userId = $userId) AND userId > $userId AND weekRange = '{$range}';
 EOD;
-
-	return parent::select($sql, 'all');
-    }
+	return parent::select($sql, 'first');
+		
+	}
     
     /*
      * ランキングのページャー
      */
     
-    public function rankingPager($page, $range)
+    public function rankingPager($range, $page)
     {
 $sql = <<< EOD
-	SELECT userId ,weeklyAward, user.name,
+SELECT userId ,weeklyAward, user.name,
 	(SELECT COUNT(*) + 1 FROM `uRanking` bf WHERE bf.weeklyAward > af.weeklyAward AND weekRange = '{$range}') 
 	AS `rank` FROM `uRanking` af 
 	LEFT outer JOIN user
@@ -97,7 +40,7 @@ $sql = <<< EOD
 	WHERE weekRange = '{$range}'
 	ORDER BY weeklyAward DESC LIMIT 10 OFFSET $page;
 EOD;
-return parent::select($sql);
+return parent::select($sql, 'all');
     }
     
     /*

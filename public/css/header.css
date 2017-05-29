@@ -63,6 +63,8 @@
     position: absolute;
     color: white;
     font-size: 4.5vw;
+    width: 15%;
+    text-align: right;
     top: 45%;
     left: 30%;
 }
@@ -73,4 +75,9 @@
     font-size: 4.5vw;
     top: 45%;
     right: 22%;
+}
+
+.buttom_size{
+    display: initial;
+    padding-top: 15%;
 }
