@@ -11,7 +11,7 @@
 
 		{{-- リザルトログ表示領域 --}}
 		<div class="battleresult_log">
-			{{-- リザルトログの枠 -}}
+			{{-- リザルトログの枠 --}}
 			<img src="{{IMG_URL}}battle/battleResultlog_Bg.png" class="battleresult_log_bg">
 			{{-- バトルの勝敗によって表示するログの変更 --}}
 			@if ($viewData['Prize'] > 0)
