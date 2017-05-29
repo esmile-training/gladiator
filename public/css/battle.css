@@ -60,7 +60,7 @@ body{}
 .battle_enemy_status_hp_bar{
     position: absolute;
     top: 25%;
-    left: 2.3%;
+    left: 1%;
     width: 97.5%;
     height: 75%;
 }
@@ -190,7 +190,7 @@ body{}
 .battle_player_status_hp_bar{
     position: absolute;
     bottom: 27%;
-    right: 6%;
+    right: 1%;
     width: 97.5%;
     height: 75%;
 }

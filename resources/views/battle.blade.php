@@ -163,7 +163,7 @@
 				{{-- 自キャラのHPバー枠 --}}
 				<img src="{{IMG_URL}}battle/hp_Bar_Flame.png" class="battle_player_status_hp_bar_flame">
 				{{-- 自キャラのHPバー部分の領域 --}}
-				<div style="position: absolute; right: 0%; bottom: 1%; width: {{$viewData['CharaData']['battleHp'] / ( $viewData['EnemyData']['hp'] / 100)}}%; height: 70%;">
+				<div style="position: absolute; right: 0%; bottom: 1%; width: {{$viewData['CharaData']['battleHp'] / ( $viewData['CharaData']['hp'] / 100)}}%; height: 70%;">
 					{{-- 自キャラのHPバー --}}
 					<img src="{{IMG_URL}}battle/player_Hp_Bar.png" class="battle_player_status_hp_bar">
 				</div>
