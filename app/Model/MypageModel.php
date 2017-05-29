@@ -7,7 +7,7 @@ class MypageModel extends BaseGameModel
     public function getUserData( $userId )
     {
 $sql = <<< EOD
-	SELECT userId, user.name, user.money, user.battleTicket, uChara.name, uChara.hp, uChara.imgId
+	SELECT userId, user.name, user.money, user.battleTicket, uChara.hp, uChara.imgId
 	FROM uChara
 	LEFT outer JOIN user
 	ON userId = user.id

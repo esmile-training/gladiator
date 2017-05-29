@@ -2,11 +2,14 @@
 
 namespace App\Libs;
 
-class RandamCharaLib extends BaseGameLib {
+class RandamCharaLib extends BaseGameLib
+{
 	
-	public static function getGachaRatio($gachavalue = null) {
+	public static function getGachaRatio($gachavalue = null)
+	{
 		
-		if(is_null($gachavalue)){
+		if(is_null($gachavalue))
+		{
 			//ガチャの選択
 			$gachavalue = (int)filter_input(INPUT_GET,"gachavalue");
 		}
@@ -40,11 +43,12 @@ class RandamCharaLib extends BaseGameLib {
 	}		
 	public function getCharaImgId($sex = false, $gachavalue = null) 
 	{
-		if( is_null($gachavalue) ){
+		if( is_null($gachavalue) )
+		{
 			$gachavalue = (int)filter_input(INPUT_GET,"gachavalue");
 		}
 		
-		if($sex == 1 )
+		if($sex == 1)
 		{	
 			return $this->womanCharaSort();
 		}else if($sex == 0 && $gachavalue == 5){
@@ -65,7 +69,8 @@ class RandamCharaLib extends BaseGameLib {
 
 	public function getValueConf($ratio, $gachavalue = null) 
 	{
-		if(is_null($gachavalue)){
+		if(is_null($gachavalue))
+		{
 			//ガチャの種類取得
 			$gachaV = (int)filter_input(INPUT_GET,"gachavalue");
 		}
@@ -84,12 +89,12 @@ class RandamCharaLib extends BaseGameLib {
 			$ratio1 = mt_rand($valueListConf[$ratio]['valueMin'], $valueListConf[$ratio]['valueMax']) * 0.01;
 			$atk1 = $valueListConf[$ratio]['sumValueMax'] * $ratio1;
 			//二つ目の攻撃力の処理
-			if ($ratio1 * 100 < 100) {
+			if ($ratio1 * 100 < 100) 
+			{
 				$valueListConf[$ratio]['valueMin'] += abs($ratio1 * 100 - 100);
-			} else if ($ratio1 * 100 >100) 
-				{
-					$valueListConf[$ratio]['valueMax'] -= abs($ratio1 * 100 - 100);
-				}
+			}else if ($ratio1 * 100 >100){
+				$valueListConf[$ratio]['valueMax'] -= abs($ratio1 * 100 - 100);
+			}
 		
 			$ratio2 = mt_rand($valueListConf[$ratio]['valueMin'], $valueListConf[$ratio]['valueMax']) * 0.01;
 			$atk2 = $valueListConf[$ratio]['sumValueMax'] * $ratio2;
@@ -115,9 +120,9 @@ class RandamCharaLib extends BaseGameLib {
 			//三番の大きい値を入れる
 			$attack[3] = current(array_slice($atk,2));
 
-			
 			$rand = rand(1,3);
-			if($gachaV == 6){
+			if($gachaV == 6)
+			{
 				$rand = 1;
 			}else if($gachaV == 8){
 				$rand = 2;
@@ -125,7 +130,8 @@ class RandamCharaLib extends BaseGameLib {
 				$rand = 3;
 			}
 				
-			if($rand == 1){
+			if($rand == 1)
+			{
 				$attk['gu'] = $attack[1];
 				$attk['choki'] = $attack[2];
 				$attk['paa'] = $attack[3];
@@ -149,7 +155,8 @@ class RandamCharaLib extends BaseGameLib {
 		return $valueListConf;
 	}
 
-	public static function randamCharaName($sexData) {
+	public static function randamCharaName($sexData) 
+	{
 
 		//configからデータ取ってくる
 		$charanameConf = \Config::get('chara.allname');
@@ -169,8 +176,10 @@ class RandamCharaLib extends BaseGameLib {
 		$characonf = \Config::get('chara.imgId');
 	
 		$charawoman = [];
-		foreach ($characonf as $key => $value) {
-			if($value['sex'] == 1){
+		foreach ($characonf as $key => $value) 
+		{
+			if($value['sex'] == 1)
+			{
 				$charawoman[] = $key;//配列に直す方法模索
 			}
 		}
@@ -190,8 +199,10 @@ class RandamCharaLib extends BaseGameLib {
 		$characonf = \Config::get('chara.imgId');
 	
 		$charaman = [];
-		foreach ($characonf as $key => $value) {
-			if($value['sex'] == 0){
+		foreach ($characonf as $key => $value) 
+		{
+			if($value['sex'] == 0)
+			{
 				$charaman[] = $key;//配列に直す方法模索
 			}
 		}

@@ -9,9 +9,10 @@ class TopController extends BaseGameController
      */
     public function index()
     {
-		return view('top');
-    }
-	
+		$bgNumber = rand(1, 3);
+		$this->viewData['bgNumber'] = $bgNumber;
+		return view('top',['viewData' => $this->viewData]);
+	}
 	/**
 	 * ユーザーIDをチェックしてリダイレクト
 	 *

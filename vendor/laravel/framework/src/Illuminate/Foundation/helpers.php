@@ -860,9 +860,9 @@ if (! function_exists('view')) {
     
     function viewWrap($view = null, $data = [], $mergeData = [])
     {
-        $viewWrap = view('common/header');
+        $viewWrap = view('common/header',  ['viewData' => $data]);
         $viewWrap .= view($view, ['viewData' => $data], $mergeData);
-        $viewWrap .= view('common/footer');
+        $viewWrap .= view('common/footer', ['viewData' => $data]);
         return $viewWrap;
     }
 }

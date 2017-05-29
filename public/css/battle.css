@@ -4,7 +4,7 @@
 body{}
 
 /* 各級の背景画像 */
-.battle_background {
+.battle_bg {
 	/* 画像をタイル状に繰り返し表示しない */
 	background-repeat: no-repeat;
    
@@ -29,6 +29,14 @@ body{}
     position: absolute;
     top: 7%;
     width: 100%;
+}
+/* 敵キャラのHPバー領域 */
+.battle_enemy_status_hp_bar_ragion{
+    position: absolute;
+    top: 4%;
+    left: 19%;
+    width: 77.5%;
+    height: 10%;
 }
 /* 敵キャラステータスの背景(バー) */
 .battle_enemy_status_bar {
@@ -74,7 +82,7 @@ body{}
 /* 敵キャラの手のアイコン */
 .battle_enemy_hand_icon{
     position: absolute;
-    left: 10%;
+    left: 9%;
     top: 10%;
     width: 80%; 
 }
@@ -114,8 +122,8 @@ body{}
 /*  ボタン領域に対する、グーボタンの領域 */
 .battle_playerhand_button_goo_linkregion{
     position: absolute;
-    left: 38.5%;
-    bottom: 34%;
+    left: 39%;
+    bottom: 33%;
     width: 23%;
 }
 /* ボタン領域に対する、チョキボタンの領域 */
@@ -146,6 +154,14 @@ body{}
 .battle_player_status_bar {
     width: 100%;
 }
+/* 自キャラのHPバー領域 */
+.battle_player_status_hp_bar_ragion{
+    position: absolute;
+    bottom: 30%;
+    right: 20%;
+    width: 77.5%;
+    height: 10%;
+}
 .battle_player_status_icon {
     position: absolute;
     top: -18%;
@@ -156,7 +172,7 @@ body{}
 .battle_player_status_hp{
     position: absolute;
     bottom: 50%;
-    right: 5%;
+    left: 5%;
     width: 80%;
     color: #ffffff;
     font-size: 15px;
@@ -165,7 +181,7 @@ body{}
 .battle_player_status_atk{
     position: absolute;
     bottom: 30%;
-    right: 5%;
+    left: 5%;
     width: 80%;
     color: #ffffff;
     font-size: 15px;

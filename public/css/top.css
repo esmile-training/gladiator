@@ -8,51 +8,59 @@
 }
 
 .title_logo{
-    height: 400px;
-    margin: 0px auto;
-    width: 450px;
+    width: 85%;
+    position: absolute;
+    top: 20%;
+    left: 8%;
 }
-
 .top_button{
     width: 100%;
     max-width: 240px;
     height: auto;
-    margin: 0px auto;
     text-align: center;
 }
-
+/* 点滅 */
+.flashing{
+	-webkit-animation:flash 0.7s ease-in-out infinite alternate;
+    -moz-animation:flash 0.7s ease-in-out infinite alternate;
+    animation:flash 0.7s ease-in-out infinite alternate;
+}
+@-webkit-keyframes flash{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-moz-keyframes flash{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes flash{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
 /*top-login-button*/
 .top_login{
+    width: 36%;
+    position: absolute;
+    top: 47%;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+.top_back{
+	/* 画像をタイル状に繰り返し表示しない */
+	background-repeat: no-repeat;
+   
+	/* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+	background-attachment: fixed;
+   
+	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+	background-size: cover;
+    
     width: 100%;
-    max-width: 240px;
-    height: 56px;
-    position: relative;
-    background-color: #1abc9c;
-    border-radius: 4px;
-    color: #fff;
-    line-height: 52px;
-    -webkit-transition: none;
-    transition: none;
-    box-shadow: 0 3px 0 #0e8c73;
-    margin-top: 80px; 
-    border-radius: 24px;
+	position: fixed;
 }
-
-.top_login a{
-    color: white;
-    text-decoration: none;
+.top_imgloginbutton{
+	margin: 0 auto;
+    text-align: center;
 }
-
-.top_login:hover{
-    background-color: #31c8aa;
-    box-shadow: 0 3px 0 #23a188;
-    text-decoration: none;
-}
-
-.top_login:active{
-    top: 3px;
-    box-shadow: none;
-}
-
-
-

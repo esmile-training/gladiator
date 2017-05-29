@@ -87,7 +87,7 @@ class TrainingLib extends BaseGameLib
 	/*
 	 * 攻撃力が上昇するか判定する
 	 */
-	public function  atkUpJudge($gooResult,$choResult,$paaResult,$time = 1)
+	public function atkUpJudge($gooResult,$choResult,$paaResult,$time = 1)
 	{
 		for($i = 0; $i <= $time; $i++)
 		{
