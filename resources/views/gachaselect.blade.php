@@ -11,7 +11,7 @@
 	</div>
 	{{-- popupボタン --}}
 	<div class = "junban1">
-		<div class="modal_container">
+
 			<div class = "gacha_button1">
 				<input type="image" class="modal_btn gacha1" src="{{IMG_URL}}gacha/banner1.png" name = 'gachavalue' value = "1" width= 100% height= 100%>
 			</div>
