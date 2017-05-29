@@ -1,4 +1,5 @@
 @include('common/css', ['file' => 'chara'])
+@include('common/css', ['file' => 'battleCharaSelect'])
 <div>
 	<font color="silver">
 	<center>
@@ -14,13 +15,47 @@
 	@foreach($viewData['coachList'] as $coach)
 	@if($coach['state'] == 1)
 		<div align="center">
-			<font color="black">訓練中<font>
+			訓練中
 			<img class='coach' src="{{IMG_URL_CHARA}}icon/icon_{{$coach['imgId']}}.png">{{$coach['name']}}
 		</div>
 	@else
 		{{-- popupボタン --}}
-		<div class="modal_container">
-			<input type='image' class="modal_btn confirmChangeCoach{{ $count }}" src="{{IMG_URL_CHARA}}icon/icon_{{$coach['imgId']}}.png" width="75" height="100">{{$coach['name']}}
+{{--ボタンの枠--}}
+		<div class="modal_btn confirmChangeCoach{{ $count }} chara_frame">
+			<input type='image' class="chara_frame_img" src='{{IMG_URL}}battle/chara_button_frame.png'>
+
+				{{--キャラアイコン--}}
+				<div class="chara_icon">
+					<img src="{{IMG_URL}}chara/icon/icon_{{$coach['imgId']}}.png"
+					alt="キャラアイコン">
+				</div>
+
+				{{--グー--}}
+				<div class="goo_icon">
+					<img src="{{IMG_URL}}battle/hand1.png" alt="グーアイコン">
+				</div>
+				<div class="status_value goo_pos">
+					<font>{{$coach['gooAtk']}}</font>
+				</div>
+
+				{{--チョキ--}}
+				<div class="cho_icon">
+					<img src="{{IMG_URL}}battle/hand2.png" alt="チョキアイコン">
+				</div>
+				<div class="status_value cho_pos">
+					<font>{{$coach['choAtk']}}</font>
+				</div>
+
+				{{--パー--}}
+				<div class="paa_icon">
+					<img src="{{IMG_URL}}battle/hand3.png" alt="チョキアイコン">
+				</div>
+				<div class="status_value paa_pos">
+					<font>{{$coach['paaAtk']}}</font>
+				</div>
+
+				{{--キャラ名--}}
+				<font class="chara_name">{{$coach['name']}}</font>
 		</div>
 		{{-- popupウインドウ --}}
 		@include('popup/wrap', [
