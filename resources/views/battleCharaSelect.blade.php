@@ -1,7 +1,7 @@
 {{--/*
  * 戦闘のキャラ選択ビュー
  * 製作者：松井 勇樹
- * 最終更新日:2017/05/25
+ * 最終更新日:2017/05/29
  */--}}
 
 {{-- css  --}}
@@ -10,16 +10,34 @@
 {{--所持キャラクターをすべて表示する--}}
 
 @foreach($viewData['charaList'] as $chara)
-	<div class = "chara_button">
-		{{--ボタンの枠--}}
-		<div class="chara_frame">
-			<a href="{{APP_URL}}battle/selectArena?uCharaId={{$chara['id']}}">
+
+	<a href="{{APP_URL}}battle/selectArena?uCharaId={{$chara['id']}}">
+		<div class = "chara_button">
+			{{--ボタンの枠--}}
+			<div class="chara_frame">
 				<img class="chara_frame_img" src="{{IMG_URL}}battle/chara_button_frame.png" alt="ボタンの枠">
+
+				{{--キャラアイコンのフレーム--}}
+				<div class="icon_frame">
+					<img src="{{IMG_URL}}battle/icon_frame{{$chara['iconFrame']}}.png" alt="キャラアイコンの枠">
+				</div>
 
 				{{--キャラアイコン--}}
 				<div class="chara_icon">
 					<img src="{{IMG_URL}}chara/icon/icon_{{$chara['imgId']}}.png"
 					alt="キャラアイコン">
+				</div>
+
+				{{--レアリティの後ろの光--}}
+				<div class="flash">
+					<img src="{{IMG_URL}}gacha/logoflash.png"
+					alt="レアリティの光">
+				</div>
+
+				{{--レアリティ--}}
+				<div class="rarity">
+					<img src="{{IMG_URL}}gacha/{{$chara['rare']}}.png"
+					alt="レアリティ">
 				</div>
 
 				{{--グー--}}
@@ -46,9 +64,9 @@
 					<font>{{$chara['paaAtk']}}</font>
 				</div>
 
-				{{--キャラ名--}}
+					{{--キャラ名--}}
 				<font class="chara_name">{{$chara['name']}}</font>
-			</a>
+			</div>
 		</div>
-	</div>
+
 @endforeach

@@ -29,10 +29,17 @@ class battleController extends BaseGameController
 		// DBのキャラクターデータを取得する
 		$alluChara = $this->Model->exec('Chara', 'getUserChara', $userId);
 
-		// 一番強い手を調べる
+		// 金枠か銀枠かを判定する
 		foreach ($alluChara as $key => $chara)
 		{
-			$alluChara[$key]['strongestHand'] = BattleLib::checkUpStrongestHand($chara['gooAtk'],$chara['choAtk'],$chara['paaAtk']);
+			if($chara['rare'] >= 4)
+			{
+				$alluChara[$key]['iconFrame'] = 2;
+			}
+			else
+			{
+				$alluChara[$key]['iconFrame'] = 1;
+			}
 		}
 
 		// DBからキャラクターを取得できたかを確認する
@@ -179,7 +186,7 @@ class battleController extends BaseGameController
 			// BattleData の 'delFlag' を立てる
 			$this->BattleData['delFlag'] = 1;
 		}
-	
+
 		// 降参費用額計算
 		$surrenderCost = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));
 
@@ -190,7 +197,7 @@ class battleController extends BaseGameController
 		$this->viewData['Type']			= $this->TypeData;
 		$this->viewData['Result']		= $this->ResultData;
 		$this->viewData['SurrenderCost']= $surrenderCost;
-		
+
 		return view('battle', ['viewData' => $this->viewData]);
 	}
 
@@ -260,7 +267,7 @@ class battleController extends BaseGameController
 			// EnemyData に敵キャラデータを格納
 			$this->EnemyData = $this->Model->exec('BattleEnemy', 'getBattleEnemyData', $this->BattleData['uBattleEnemyId']);
 		}
-		
+
 	}
 
 	// データベースからランキングデータを RankingData に格納するファンクション

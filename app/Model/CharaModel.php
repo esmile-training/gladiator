@@ -42,7 +42,7 @@ EOD;
 		// 最初に一致したものを返す
 		return $this->select($sql,'first');
 	}
-	
+
 	/*
 	 * キャラクターのdelFlagを立てる
 	 */
