@@ -12,15 +12,22 @@
 		闘技場を選択して下さい
 	</div>
 	@foreach($viewData['difficultyList'] as $arena)
-			<a href="{{APP_URL}}battle/preparationBattle?arenaDifficulty={{$arena['id']}}
-			&selectedCharaId={{$viewData['selectedCharaId']}}">
-				<div class = "battle_select{{$arena['id']}}">	
-					<img src="{{IMG_URL}}battle/difficulty{{$arena['id']}}.png">
-				</div>
-			</a>
-		<br>
+			<div class = "battle_select{{$arena['id']}}">	
+				<img class ="modal_btn arena{{$arena['id']}}" src="{{IMG_URL}}battle/difficulty{{$arena['id']}}.png">
+			</div>
+			<?php 
+				$arenaData['selectedCharaId'] = $viewData['selectedCharaId'];
+				$arenaData['id'] = $arena['id'];
+			?>
+			{{-- popupウインドウ --}}
+			@include('popup/wrap', [
+				'class'		=> "arena{$arena['id']}", 
+				'template'	=> 'arenaSelect',
+				'data'	=>	['arenaData' => $arenaData]
+			])
 	@endforeach
 </div>
+
 
 
 
