@@ -1,5 +1,9 @@
 @include('common/css', ['file' => 'training'])
 
+<div class="training_kanban">
+	 <img src="{{IMG_URL}}/training/trainingKanban.png">
+</div>
+
 {{--element/coachListから呼び出し--}}
 <div>
 	<h3>コーチを選んでください。</h3>
@@ -22,6 +26,7 @@
 		<div class="training_paaprobability_text">
 			{{'パー攻撃力'}}
 		</div>
+		
 		<div class="training_coach_icon{{$cnt}}">
 			<img src="{{IMG_URL}}/chara/icon/icon_{{$val['imgId']}}.png">
 			<div class="training_goo_icon">

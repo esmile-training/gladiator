@@ -15,6 +15,14 @@
 	height:78vh;
 }
 
+.training_kanban{
+    width: 35%;
+    position: absolute;
+    top: 12%;
+    left: 0px;
+    z-index: 2;
+}
+
 .training_coach_name{
     position: absolute;
     top	    : 15%;
@@ -54,8 +62,10 @@
 }
 
 .training_coach_window0{
-     position: absolute;
-     top     : 20%;
+    position: absolute;
+    top     : 20%;
+    border-top: solid 5px transparent;
+    border-bottom: solid 5px transparent;
 }
 
 .training_coach_icon1{
