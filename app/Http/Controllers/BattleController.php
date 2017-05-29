@@ -378,9 +378,9 @@ class battleController extends BaseGameController
 			/* キャラの強化後の値をデータベースに格納 */
 			$upDateStatus = [
 				'hp'		 => $this->CharaData['hp']			 + $charaUpData['statusUpCnt'],
-				'gooAtk'	 => $this->CharaData['gooAtk']		 + $charaUpData['gooAtk'],
-				'choAtk'	 => $this->CharaData['choAtk']		 + $charaUpData['choAtk'],
-				'paaAtk'	 => $this->CharaData['paaAtk']		 + $charaUpData['paaAtk'],
+				'gooAtk'	 => $this->CharaData['gooAtk']		 + $charaUpData['gooUpCnt'],
+				'choAtk'	 => $this->CharaData['choAtk']		 + $charaUpData['choUpCnt'],
+				'paaAtk'	 => $this->CharaData['paaAtk']		 + $charaUpData['paaUpCnt'],
 				'gooUpCnt'	 => $this->CharaData['gooUpCnt']	 + $charaUpData['gooUpCnt'],
 				'choUpCnt'	 => $this->CharaData['choUpCnt']	 + $charaUpData['choUpCnt'],
 				'paaUpCnt'	 => $this->CharaData['paaUpCnt']	 + $charaUpData['paaUpCnt']

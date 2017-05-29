@@ -1,8 +1,8 @@
-		{{-- サイズ等指定 --}}
+		{{-- cssの宣言 --}}
 		@include('common/battle')
 		@include('common/css', ['file' => 'battle'])
 
-		{{-- ポップアップ --}}
+		{{-- ポップアップの宣言--}}
 		@include('popup/wrap', [
 			'class'		=> 'surrenderButton',
 			'template'	=> 'surrender',
@@ -21,17 +21,19 @@
 		<table border="0" class="battle_hedder">
 			<tr>
 				<td width="20%">
+					{{-- 難易度 --}}
 					<img src="{{IMG_URL}}battle/difficulty{{$viewData['EnemyData']['difficulty']}}.png" >
 				</td>
 				<td width="20%"></td>
 				<td width="20%"></td>
-				{{-- 押されたらポップアップを表示する --}}
 				<td width="20%">
+					{{-- 降参ボタン --}}
 					<a>
 						<img class="modal_btn surrenderButton image_change" src="{{IMG_URL}}battle/surrender.png">
 					</a>
 				</td>
 				<td width="20%">
+					{{-- 説明ボタン --}}
 					<a>
 						<img class="modal_btn helpButton image_change" src="{{IMG_URL}}battle/help.png">
 					</a>
@@ -40,19 +42,31 @@
 		</table>
 		@endif
 
+		{{-- 敵キャラステータスの表示領域 --}}
 		<div class="battle_enemy_status">
-			<img src="{{IMG_URL}}battle/enemy_Status_Bar.png" class="battle_enemy_status_bar" >
-			<div class="battle_enemy_status_hp_bar_ragion">
-				<img style="left: 0%; width: {{$viewData['EnemyData']['battleHp'] / ( $viewData['EnemyData']['hp'] / 100)}}%; height: 100%;" src="{{IMG_URL}}battle/enemy_Hp_Bar.png">
-			</div>
+			{{-- 敵キャラのステータス枠 --}}
+			<img src="{{IMG_URL}}battle/enemy_Status_Bar.png" class="battle_enemy_status_bar">
+			{{-- 敵キャラのアイコン --}}
 			<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['EnemyData']['imgId']}}.png" class="battle_enemy_status_icon" >
+			{{-- 敵キャラのHP部分の領域 --}}
+			<div class="battle_enemy_status_hp_bar_ragion">
+				{{-- 敵キャラのHPバー枠 --}}
+				<img src="{{IMG_URL}}battle/hp_Bar_Flame.png" class="battle_enemy_status_hp_bar_flame">
+				{{-- 敵キャラのHPバー部分の領域 --}}
+				<div style="position: absolute; left: 0%; top: 1%; width: {{$viewData['EnemyData']['battleHp'] / ( $viewData['EnemyData']['hp'] / 100)}}%; height: 70%;">
+					{{-- 敵キャラのHPバー --}}
+					<img src="{{IMG_URL}}battle/enemy_Hp_Bar.png" class="battle_enemy_status_hp_bar">
+				</div>
+			</div>
+			{{-- 敵キャラのHPログ --}}
 			<div class="battle_enemy_status_hp">
 				{{ $viewData['EnemyData']['name'] }} のHP {{ $viewData['EnemyData']['battleHp'] }} / {{ $viewData['EnemyData']['hp'] }}
 			</div>
+			{{-- 敵キャラの攻撃力ログ --}}
 			<div class="battle_enemy_status_atk">
 				{{ $viewData['Type'][1] }} : {{ $viewData['EnemyData']['gooAtk']}}
 				{{ $viewData['Type'][2] }} : {{ $viewData['EnemyData']['choAtk']}}
-				{{ $viewData['Type'][3] }} : {{ $viewData['EnemyData']['paaAtk']}}			
+				{{ $viewData['Type'][3] }} : {{ $viewData['EnemyData']['paaAtk']}}
 			</div>
 		</div>
 
@@ -138,16 +152,27 @@
 			</div>
 		@endif
 
-		{{-- 自キャラステータスの表示 --}}
+		{{-- 自キャラステータスの表示領域 --}}
 		<div class="battle_player_status">
+			{{-- 自キャラのステータス枠 --}}
 			<img src="{{IMG_URL}}battle/player_Status_Bar.png" class="battle_player_status_bar">
+			{{-- 自キャラのアイコン --}}
 			<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['CharaData']['imgId']}}.png" class="battle_player_status_icon" >
+			{{-- 自キャラのHP部分の領域 --}}
 			<div class="battle_player_status_hp_bar_ragion">
-				<img style="right: 0%; width: {{$viewData['CharaData']['battleHp'] / ( $viewData['CharaData']['hp'] / 100)}}%; height: 100%;" src="{{IMG_URL}}battle/player_Hp_Bar.png">
+				{{-- 自キャラのHPバー枠 --}}
+				<img src="{{IMG_URL}}battle/hp_Bar_Flame.png" class="battle_player_status_hp_bar_flame">
+				{{-- 自キャラのHPバー部分の領域 --}}
+				<div style="position: absolute; right: 0%; bottom: 1%; width: {{$viewData['CharaData']['battleHp'] / ( $viewData['CharaData']['hp'] / 100)}}%; height: 70%;">
+					{{-- 自キャラのHPバー --}}
+					<img src="{{IMG_URL}}battle/player_Hp_Bar.png" class="battle_player_status_hp_bar">
+				</div>
 			</div>
+			{{-- 自キャラのHPログ --}}
 			<div class="battle_player_status_hp">
 				{{ $viewData['CharaData']['name'] }} のHP {{ $viewData['CharaData']['battleHp'] }} / {{ $viewData['CharaData']['hp'] }}
 			</div>
+			{{-- 自キャラの攻撃力ログ --}}
 			<div class="battle_player_status_atk">
 				{{ $viewData['Type'][1] }} : {{ $viewData['CharaData']['gooAtk']}}
 				{{ $viewData['Type'][2] }} : {{ $viewData['CharaData']['choAtk']}}
