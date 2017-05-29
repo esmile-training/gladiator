@@ -5,20 +5,22 @@
  */--}}
 
 {{-- css  --}}
-@include('common/css', ['file' => 'admin'])
-@include('common/js', ['file' => 'admin'])
 @include('common/css', ['file' => 'battleSelect'])
-<div>
-		闘技場を選択して下さい
-</div>
 {{--大会の一覧を表示する--}}
-
-<div>
+<div class="battle_select">
+	<div class = "battle_selectfont">
+		闘技場を選択して下さい
+	</div>
 	@foreach($viewData['difficultyList'] as $arena)
 			<a href="{{APP_URL}}battle/preparationBattle?arenaDifficulty={{$arena['id']}}
 			&selectedCharaId={{$viewData['selectedCharaId']}}">
-			<img class = "battle_select"src="{{IMG_URL}}battle/difficulty{{$arena['id']}}.png">
-			<br>
-		</a>
+				<div class = "battle_select{{$arena['id']}}">	
+					<img src="{{IMG_URL}}battle/difficulty{{$arena['id']}}.png">
+				</div>
+			</a>
+		<br>
 	@endforeach
 </div>
+
+
+

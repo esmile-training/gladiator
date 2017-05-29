@@ -1,3 +1,5 @@
+var flug;
+
 function charCheck(){
 	//８文字以上入力させない処理
 	var charCheckNum = 8;   					//許容全角文字数:16バイト
@@ -16,10 +18,11 @@ function charCheck(){
 			if(str.length > 16)
 			{
 				str = str.substring(0, 16);
-				document.form1.teamName.value = str;	
-			} else if(str.length > charCheckNum){
-				str = str.substring(0, charCheckNum);
 				document.form1.teamName.value = str;
+				flug = true;
+			} else if(str.length > charCheckNum){
+				document.form1.teamName.value = str;
+				flug = false;
 			}
 		}
 	}
@@ -42,12 +45,11 @@ function wupBtn(){
 }
 
 function disbtn(b)
-{
+{	
 	//８文字以上入力された場合のポップアップ表示
-	if(document.form1.teamName.value.length > 8)
+	if(flug == false && document.form1.teamName.value.length > 8)
 	{
-		alert("こんにちは");
-		//alert(document.write('全角８文字以内にしてください'));
+		alert("全角８文字以内にしてください");
 	} else {	
 		//alert(document.write('でよろしいですか'));
 		 b.disabled = true;

@@ -8,18 +8,9 @@ class SelectCharaController extends BaseGameController
 {
 	public function index()
 	{
-		if(!isset($_GET['type'])){
-			$type = 'id';
-		} else {
-			$type = $_GET['type'];
-		}
-		
-		if(!isset($_GET['order'])){
-			$order = 'asc';
-		} else {
-			$order = $_GET['order'];
-		}
-
+		//デフォルト処理
+		$type = (!isset($_GET['type']))? 'id' : $_GET['type'];
+		$order = (!isset($_GET['order']))? 'ASC' : $_GET['order'];
 		return $this->listSort($type, $order);
 	}
 	
@@ -32,8 +23,10 @@ class SelectCharaController extends BaseGameController
 		// DBからキャラクターを取得できたかを確認する
 		if(isset($alluChara))
 		{	
-			$order = (int)$order;
-			array_multisort(array_column($alluChara, $type), $order, $alluChara);			
+			//ソート関数の代に引数への変換
+			$order = ($order == 'ASC')? false : true;
+			//並べ替え処理
+			$alluChara = $this->Lib->exec('Sort','sortArray',[$alluChara, $type, $order]);
 			// viewDataへ取得したキャラクターを送る
 			$this->viewData['charaList'] = $alluChara;
 			// ビューへデータを渡す

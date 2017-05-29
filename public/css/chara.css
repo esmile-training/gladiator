@@ -2,6 +2,15 @@
 /*CSS Document*/
 body{}
 
+#main{
+	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/battle/chara_select_bg.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	width: 100%;
+}
+
 /* レア度画像のサイズ指定 */
 .rare{
 
@@ -29,6 +38,7 @@ body{}
 .name{
 	position: absolute;
 	left: 35%;
+	font-family: serif;
 }
 
 .status{
@@ -37,9 +47,91 @@ body{}
 	right: 15%;
 }
 
+.icon{
+	width: 150%;
+	position: absolute;
+	top: 100%;
+	right: 100%;
+}
+
 .retire{
 	position: absolute;
-	top: 325px;
-	left: 45%;
-	text-align: center;
+	width: 100%;
+	top: 340px;
+}
+
+.button{
+	position: absolute;
+	left: 35%;
+	width: 30%;
+	height: auto;
+}
+
+.text{
+	position: absolute;
+	top: 22%;
+	width: 100%;
+	color: silver;
+}
+
+.test_div{
+	position: absolute;
+	top: 130px;
+	left: 10%;
+	text-align: left;
+	
+}
+
+.test_div .test_img {
+	position: absolute;
+	display: grid;
+	width: 150%;
+	left: 200px;
+}
+.test_div .test_img > img {
+	width: 45px;
+	height: 45px;
+}
+
+.img_1 {
+	top: 0px;
+}
+
+.img_2 {
+
+	top: 50px;
+}
+
+.img_3 {
+
+	top: 100px;
+}
+
+.img_4 {
+
+	top: 150px;
+}
+
+.test_div .test_text {
+	position: absolute;
+	left: 256px;
+	text-shadow: 1.5vw 0.5vw 1vw black, 0.5vw 1vw 0.5vw rgba(0,0,0,0.8);
+    font-family: 'Century';
+	font-style: italic;
+}
+
+.text_1 {
+	top: 10px;
+}
+
+.text_2 {
+	top: 60px;
+}
+
+.text_3 {
+	top: 110px;
+}
+
+.text_4 {
+	top: 160px;
 }
