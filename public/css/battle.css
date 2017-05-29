@@ -72,7 +72,7 @@ body{}
     right: 5%;
     width: 80%;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 12px;
     text-align: right;
 }
 /* 敵キャラの攻撃力 */
@@ -82,7 +82,7 @@ body{}
     right: 5%;
     width: 80%;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 12px;
     text-align: right;
 }
 
@@ -210,7 +210,7 @@ body{}
     left: 5%;
     width: 80%;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 12px;
     text-align: left;
 }
 /* 自キャラの攻撃力 */
@@ -220,6 +220,6 @@ body{}
     left: 5%;
     width: 80%;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 12px;
     text-align: left;
 }
