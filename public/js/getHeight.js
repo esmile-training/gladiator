@@ -12,9 +12,9 @@ $(function(){
 
     if(mainHeight < bodyHeight && screen.height < 1024){
 	mainHeight = bodyHeight+(footerHeight/4);
-	console.log(mainHeight);
 	main.style.marginTop = headerHeight+'px';
 	main.style.height = mainHeight+'px';
+	main.style.marginBottom = footerHeight+'px';
     }else{
 	main.style.marginTop = headerHeight+'px';
 	main.style.height = screen.height+'px';
