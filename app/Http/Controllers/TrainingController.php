@@ -7,10 +7,11 @@ class TrainingController extends BaseGameController
 	public function index()
 	{
 		//訓練が終了しているキャラがいるか確認し、いたらフラグを戻す
-		$this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'], $this->user['id'], true));
+		$trainingResult = $this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'], $this->user['id'], true));
+		$this->viewData['trainingResult'] = $trainingResult;
+		
 		//所持しているキャラのデータを持ってくる
 		$uCharaData = $this->Model->exec('Chara', 'getUserChara', false, $this->user['id']);
-		
 		if(!isset($uCharaData))
 		{
 			return viewWrap('Error',$this->viewData);
