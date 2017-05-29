@@ -30,15 +30,15 @@
 				<?php echo $viewData['firstname'],'・',$viewData['lastname']?>
 			</div>
 			<div class="gacha_charahp">
-				<img class = "gacha_hpicon" src = "{{IMG_URL}}gacha/hp.png">
+				<img class = "gacha_hpicon" src = "{{IMG_URL}}chara/status/hp.png">
 				<span class = "gacha_fontgoo">{{$viewData['hp']}}</span>
 			</div>
 			<div class="gacha_charastatus">
-				<img class = "gacha_guicon" src = "{{IMG_URL}}battle/hand1.png">
+				<img class = "gacha_guicon" src = "{{IMG_URL}}chara/status/hand1.png">
 				<span class = "gacha_fontgoo">{{$viewData['gu']}}</span>
-				<img class = "gacha_guicon" src = "{{IMG_URL}}battle/hand2.png">
+				<img class = "gacha_guicon" src = "{{IMG_URL}}chara/status/hand2.png">
 				<span class = "gacha_fontchoki">{{$viewData['choki']}}</span>
-				<img class = "gacha_guicon" src = "{{IMG_URL}}battle/hand3.png">
+				<img class = "gacha_guicon" src = "{{IMG_URL}}chara/status/hand3.png">
 				<span class = "gacha_fontpaa">{{$viewData['paa']}}</span>
 			</div>
 		</div>
