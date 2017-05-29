@@ -1,8 +1,6 @@
 {{-- css  --}}
-@include('common/css', ['file' => 'admin'])
+@include('common/css', ['file' => 'ranking'])
 @include('common/js', ['file' => 'admin'])
 
-{{--キャラランキングのページャー--}}
+{{-- ユーザランキングのページャー --}}
 @include('element/rankingList')
-
-

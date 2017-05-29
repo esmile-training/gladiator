@@ -4,7 +4,7 @@
 	@if(isset($viewData['ranking'][0]['weeklyAward']))
 		<img class="weekly_panel" src="{{IMG_URL}}ranking/weekrankingwindow.png"/>
 	@else
-	<!--	<img class="ranking_borad" src="{{IMG_URL}}ranking/weekrankingwindow.png"/>-->
+		<img class="weekly_panel" src="{{IMG_URL}}ranking/totalrankingwindow.png"/>
 	@endif
 	
 	<div class="ranking">
@@ -21,13 +21,21 @@
 				<td class="text_height_center point_align">{{$value['weeklyAward']}}Pt</td>
 			</tr>
 			@else
-				<p>{{$value['rank']}}位　：　{{$value['name']}}　：　TOTAL : {{$value['totalCharaStatus']}}</p>
+				<tr class="ranking_tr">
+					@if($value['rank'] <= 3)
+						<td class="ranking_img_td"><img class="top_3" src="{{IMG_URL}}ranking/ranking{{$value['rank']}}.png" /></td>
+					@else
+						<td class="ranking_td">{{$value['rank']}}</td>
+					@endif
+					<td class="text_height_center">{{$value['name']}}</td>
+					<td class="text_height_center point_align">{{$value['totalCharaStatus']}}Pt</td>
+				</tr>
 			@endif
 		@endforeach
 		</table>
 		
-		<div>
-		<ul class="pager_list">
+		<div class="pager_margin">
+		<ul class="back_pager_list">
 		<!-- rankの1ページ戻りと最後まで戻る -->
 		@if (0 < $viewData['rankingData']['nowpage'] && $value == end($viewData['ranking']))
 			<li class="skip_button">
@@ -41,8 +49,10 @@
 				</a>
 			</li>
 		@endif
+		</ul>
 		<!-- end -->
 
+		<ul class="pager_list">
 		<!-- rankの範囲検索 -->
 		@if($value == end($viewData['ranking']))
 			<!-- ページ総数がページャーの2ページ目以降あるなら -->
@@ -86,7 +96,9 @@
 			@endif
 		@endif
 		<!-- end -->
+		</ul>
 
+		<ul class="next_pager_list">
 		<!-- 次のrankを表示 -->
 		@if (count($viewData['ranking']) == 10 && $value == end($viewData['ranking']))
 			@if (($viewData['rankingData']['count']) != ($viewData['rankingData']['nowpage'] + 10) / 10)
@@ -111,6 +123,6 @@
 		<!-- end -->
 
 	<br>
-	<a href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&dataChenge=0">weeklypoint</a>
-	<a href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&dataChenge=1">userstatus</a>
 </div>
+<a class="week_page" href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&dataChenge=0"></a>
+<a class="total_page" href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&dataChenge=1"></a>

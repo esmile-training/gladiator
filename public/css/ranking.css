@@ -39,6 +39,8 @@ a:visited { color : white; }
     top: 11%;
     color: white;
     width: 100%;
+        padding-left: 5%;
+    padding-right: 5%;
 }
 
 .ranking_table{
@@ -61,6 +63,7 @@ a:visited { color : white; }
 .ranking_td{
     font-size: 5vw;
     text-align: center;
+    width: 15%;
 }
 
 .text_height_center{
@@ -73,17 +76,47 @@ a:visited { color : white; }
 }
 
 
-.pager_list{
-    margin: auto;
-    width: 80%;
-    float: left;
+.pager_margin{
+    margin-top: 10%;
 }
 
-.pager_list_size{
-    font-size: 6vw;
+.back_pager_list{
+    width: 25%;
+    float: left;
+    position: absolute;
+    left: 5%;
 }
+
+.pager_list{
+    width: 40%;
+    float: left;
+    position: absolute;
+    left: 30%;
+    font-size: 6vw;
+    margin-top: 1%;
+}
+
+.next_pager_list{
+    width: 25%;
+    position: absolute;
+    right: 5%;
+}
+
 
 .skip_button{
-    width: 15%;
+    width: 55%;
 }
 
+.week_page{
+    padding: 0% 0% 10% 47%;
+    position: absolute;
+    top: 85%;
+    right: 2%;
+}
+
+.total_page{
+    padding: 0% 0% 10% 47%;
+    position: absolute;
+    top: 85%;
+    left: 2%;
+}
