@@ -65,30 +65,32 @@ body{}
     height: 75%;
 }
 
-/* 敵キャラのHP */
+/* 敵キャラのHPログ */
 .battle_enemy_status_hp{
     position: absolute;
     top: 30%;
-    left: 25%;
+    right: 5%;
     width: 80%;
     color: #ffffff;
     font-size: 15px;
+    text-align: right;
 }
 /* 敵キャラの攻撃力 */
 .battle_enemy_status_atk{
     position: absolute;
     top: 50%;
-    left: 25%;
+    right: 5%;
     width: 80%;
     color: #ffffff;
     font-size: 15px;
+    text-align: right;
 }
 
 /* 全体画面に対する、敵キャラの手部分の領域 */
 .battle_enemy_hand {
     position: absolute;
     left: 35%;
-    top: 18%;
+    top: 21%;
     width: 30%;
 }
 /* 敵キャラの手部分の背景 */
@@ -106,7 +108,7 @@ body{}
 /* 全体画面に対する、ダメージログの領域 */
 .damage_log {
     position: absolute;
-    top: 35%;
+    top: 40%;
     left: 5%;
     width: 90%;
 }
@@ -127,7 +129,7 @@ body{}
 /* 全体画面に対する、ボタン領域(全体) */
 .battle_playerhand_button{
     position: absolute;
-    bottom: 20%;
+    bottom: 15%;
     left: 10%;
     width: 80%;
 }
@@ -164,7 +166,7 @@ body{}
 /*自キャラステータス*/
 .battle_player_status {
     position: absolute;
-    bottom: 5%;
+    bottom: 1%;
     width: 100%;
 }
 /* 自キャラステータスの背景(バー) */
@@ -209,6 +211,7 @@ body{}
     width: 80%;
     color: #ffffff;
     font-size: 15px;
+    text-align: left;
 }
 /* 自キャラの攻撃力 */
 .battle_player_status_atk{
@@ -218,4 +221,5 @@ body{}
     width: 80%;
     color: #ffffff;
     font-size: 15px;
+    text-align: left;
 }

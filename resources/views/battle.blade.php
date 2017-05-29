@@ -74,7 +74,7 @@
 		@if ($viewData['CharaData']['result'] != 0)
 			<div class="battle_enemy_hand">
 				<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
-				<img src="{{IMG_URL}}battle/hand{{$viewData['EnemyData']['hand']}}.png" class="battle_enemy_hand_icon" >
+				<img src="{{IMG_URL}}chara/status/hand{{$viewData['EnemyData']['hand']}}.png" class="battle_enemy_hand_icon" >
 			</div>
 
 			{{-- 勝敗の表示 --}}
@@ -141,13 +141,13 @@
 			<div class="battle_playerhand_button">
 				<img src="{{IMG_URL}}battle/button_Bg.png" class="battle_playerhand_button_bg" >
 				<a href="{{APP_URL}}battle/updateBattleData?hand=1" class="battle_playerhand_button_goo_linkregion" >
-					<img src={{IMG_URL}}battle/hand1.png class="battle_playerhand_button_icon" >
+					<img src={{IMG_URL}}chara/status/hand1.png class="battle_playerhand_button_icon" >
 				</a>
 				<a href="{{APP_URL}}battle/updateBattleData?hand=2" class="battle_playerhand_button_cho_linkregion" >
-					<img src={{IMG_URL}}battle/hand2.png class="battle_playerhand_button_icon" >
+					<img src={{IMG_URL}}chara/status/hand2.png class="battle_playerhand_button_icon" >
 				</a>
 				<a href="{{APP_URL}}battle/updateBattleData?hand=3" class="battle_playerhand_button_paa_linkregion" >
-					<img src={{IMG_URL}}battle/hand3.png class="battle_playerhand_button_icon" >
+					<img src={{IMG_URL}}chara/status/hand3.png class="battle_playerhand_button_icon" >
 				</a>
 			</div>
 		@endif
