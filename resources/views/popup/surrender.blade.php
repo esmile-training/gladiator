@@ -13,8 +13,9 @@
 		</td>
 		<td width="10%"></td>
 		<td width="20%">
-			<a>
+			<a class="close">
 				<img class="surrender_button_no image_change" src="{{IMG_URL}}popup/no_Button.png">
+				<span>close</span>
 			</a>
 		</td>
 		<td width="25%"></td>
