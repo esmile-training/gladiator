@@ -22,9 +22,13 @@
 					現在のウィークリーポイント　{{$viewData['RankingData']['weeklyAward']}} <br />
 					@if ($viewData['CharaUpData']['statusUpCnt'] > 0)
 						能力上昇！<br />
+						<img src={{IMG_URL}}chara/status/hp.png >
 						HP		{{$viewData['CharaDefaultData']['hp']}}　⇒　{{$viewData['CharaDefaultData']['hp'] + $viewData['CharaUpData']['statusUpCnt']}}<br />
+						<img src={{IMG_URL}}chara/status/hand1.png >
 						グー		{{$viewData['CharaDefaultData']['gooAtk']}}　⇒　{{$viewData['CharaDefaultData']['gooAtk'] + $viewData['CharaUpData']['gooUpCnt']}}<br />
+						<img src={{IMG_URL}}chara/status/hand2.png >
 						チョキ	{{$viewData['CharaDefaultData']['choAtk']}}　⇒　{{$viewData['CharaDefaultData']['choAtk'] + $viewData['CharaUpData']['choUpCnt']}}<br />
+						<img src={{IMG_URL}}chara/status/hand3.png >
 						パー		{{$viewData['CharaDefaultData']['paaAtk']}}　⇒　{{$viewData['CharaDefaultData']['paaAtk'] + $viewData['CharaUpData']['paaUpCnt']}}<br />
 					@endif
 				</div>
