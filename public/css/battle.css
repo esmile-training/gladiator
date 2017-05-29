@@ -13,7 +13,7 @@ body{}
    
 	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
 	background-size: cover;
-
+    
     width: 100%;
 }
 

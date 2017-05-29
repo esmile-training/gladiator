@@ -36,7 +36,6 @@
 					<p class="possession_ornament possession_battleTicket">{{$viewData['user']['battleTicket']}}/5 {{$viewData['recoveryTime']}}</p>
 				</div>
 			</div>
-
 		</header>
 		<div id="main">
 {{-- popupウインドウ --}}
