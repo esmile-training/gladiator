@@ -4,6 +4,9 @@ namespace App\Model;
 
 class RankingModel extends BaseGameModel
 {
+	/*
+	 * データベースに登録
+	 */
     public function insertRankingData( $userId )
     {
 $sql = <<< EOD
@@ -12,14 +15,22 @@ EOD;
     return parent::insert($sql);
     }
 	
+	/*
+	 * 自分から上位までの順位をカウント
+	 */
 	public function overPoint($userId, $range)
 	{
 $sql =  <<< EOD
-	SELECT COUNT(*) as count
+	SELECT (COUNT(*) - (SELECT COUNT(*)
+		FROM uRanking 
+		WHERE weeklyAward = (SELECT weeklyAward 
+			FROM uRanking 
+			WHERE userId = $userId) 
+		AND userId < 1692 AND weekRange = '2017-05-29')) as count
 	FROM uRanking 
 	WHERE weeklyAward >= (SELECT weeklyAward 
 	FROM uRanking 
-	WHERE userId = $userId) AND userId > $userId AND weekRange = '{$range}';
+	WHERE userId = $userId) AND weekRange = '{$range}';
 EOD;
 	return parent::select($sql, 'first');
 		
