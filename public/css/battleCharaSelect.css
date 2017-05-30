@@ -49,9 +49,9 @@ a:active{
 /*キャラアイコンの枠の設定をする*/
 .icon_frame{
 	position: absolute;
-    width: 18%;
+    width: 10vh;
     height: auto;
-    top: 5%;
+    top: 4%;
     left: 6.5%;
 }
 /*キャラボタンの枠のイメージのサイズを設定する*/
@@ -62,9 +62,9 @@ a:active{
 /*キャラのアイコンを設定する*/
 .chara_icon{
 	position: absolute;
-    top: -3%;
-    left: 7%;
-    width: 16.4%;
+    top: -8%;
+    left: 6.5%;
+    width: 9.4vh;
     height: auto;
 }
 /*レアリティの表示をする*/

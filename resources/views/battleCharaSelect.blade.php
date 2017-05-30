@@ -31,7 +31,7 @@
 				{{--レアリティの後ろの光--}}
 				<div class="flash">
 					<img src="{{IMG_URL}}gacha/logoflash.png"
-					alt="レアリティの光">
+					alt="レアリティの背景">
 				</div>
 
 				{{--レアリティ--}}
@@ -67,7 +67,7 @@
 
 				{{--パー--}}
 				<div class="paa_icon">
-					<img src="{{IMG_URL}}chara/status/hand3.png" alt="チョキアイコン">
+					<img src="{{IMG_URL}}chara/status/hand3.png" alt="パーアイコン">
 				</div>
 				<div class="status_value paa_pos">
 					<font>{{$chara['paaAtk']}}</font>
