@@ -27,7 +27,7 @@
 				{{--キャラ名--}}
 				<font class="chara_name">{{$coach['name']}}</font>
 			</div>
-			@else
+		@else
 			{{-- popupボタン --}}
 			{{--ボタンの枠--}}
 			<div class="modal_btn confirmChangeCoach{{ $count }} chara_frame" style='left: 2%'>
@@ -45,7 +45,7 @@
 				<div class="status_value goo_pos">
 					<font>{{$coach['gooAtk']}}</font>
 				</div>
-				
+
 				{{--チョキ--}}
 				<div class="cho_icon">
 					<img src="{{IMG_URL}}chara/status/hand2.png" alt="チョキアイコン">

@@ -196,6 +196,7 @@ class BattleLib extends BaseGameLib
 		return $matchData;
 	}
 
+	/*キャラの一番強い手を調べる*/
 	public static function checkUpStrongestHand($argGooAtk,$argChoAtk,$argPaaAtk)
 	{
 		// データを配列に格納する
