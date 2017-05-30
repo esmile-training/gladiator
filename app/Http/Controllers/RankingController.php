@@ -87,14 +87,15 @@ class RankingController extends BaseGameController
 
 			// 登録者数を取得
 			$userCount = $this->Model->exec('Ranking', 'countRange', $range);
-			$this->rankingData['count']	= ceil(($userCount[0]['count']/10));
+			$this->rankingData['count']	= floor(($userCount[0]['count']/10));
 
 			if(!isset($nextPage) && !isset($backPage) && !isset($lastPage) && !isset($firstPage) && !isset($rangePage))
 			{
 				$pagecount   = $this->Model->exec('Ranking', 'overPoint', [$this->user['id'], $range]);
-				$count	= floor($pagecount['count']) * 10;
+				$count	= floor($pagecount['count'] / 10) * 10;
 				$this->rankingData['nowpage']	= $count;
 				$page = $this->Model->exec('Ranking', 'rankingPager', [$range, $count]);
+				
 			}
 			else
 			{

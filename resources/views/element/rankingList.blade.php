@@ -1,14 +1,17 @@
 <div><img class="ranking_back_image" src="{{IMG_URL}}ranking/rankingbackimage.png" /></div>
 
 	<img class="ranking_borad" src="{{IMG_URL}}ranking/rankingboard.png" />
+	{{-- 背景切り替え --}}
 	@if(isset($viewData['ranking'][0]['weeklyAward']))
 		<img class="weekly_panel" src="{{IMG_URL}}ranking/weekrankingwindow.png"/>
 	@else
 		<img class="weekly_panel" src="{{IMG_URL}}ranking/totalrankingwindow.png"/>
 	@endif
 	
+	<!-- ランキング表示 -->
 	<div class="ranking">
 		<table class="ranking_table">
+		{{-- ランキングの種類に応じて切り替え --}}
 		@foreach($viewData['ranking'] as $key => $value)
 			@if(isset($value['weeklyAward']))
 			<tr class="ranking_tr">
@@ -44,7 +47,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&back={{$viewData['rankingData']['nowpage'] + 10}}">
+				<a href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&back={{$viewData['rankingData']['nowpage']}}">
 					<img class="" src="{{IMG_URL}}ranking/back.png" />
 				</a>
 			</li>
@@ -58,14 +61,14 @@
 			<!-- ページ総数がページャーの2ページ目以降あるなら -->
 			@if(($viewData['rankingData']['count']) - 2 < $viewData['rankingData']['nowpage'] / 10 + 1 && 5 < $viewData['rankingData']['count'])
 				@foreach (range(($viewData['rankingData']['count']) - 4, $viewData['rankingData']['count']) as $data)
-					<li class="pager_list_size">
+					<li class="pager_list_size" id="pager{{$data}}">
 						<a href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&page={{($data -1) * 10}}">{{$data}}</a>
 					</li>
 				@endforeach
 
 			@elseif($viewData['rankingData']['count'] < 5)
 				@foreach (range($viewData['rankingData']['count'] - ($viewData['rankingData']['count'] - 1), $viewData['rankingData']['count']) as $data)
-					<li class="pager_list_size">
+					<li class="pager_list_size" id="pager{{$data}}">
 						<a href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&page={{($data -1) * 10}}">{{$data}}</a>
 					</li>
 				@endforeach
@@ -73,7 +76,7 @@
 			<!-- 現在のページが3ページ以降でページ総数が6ページ以上あるなら -->
 			@elseif(3 <= $viewData['rankingData']['nowpage'] / 10 && 6 <= $viewData['rankingData']['count'])
 				@foreach (range($viewData['rankingData']['nowpage']  / 10 - 1, ($viewData['rankingData']['nowpage'] / 10 + 3)) as $data)
-					<li class="pager_list_size">
+					<li class="pager_list_size" id="pager{{$data}}">
 						<a href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&page={{($data -1) * 10}}">{{$data}}</a>
 					</li>
 				@endforeach
@@ -82,13 +85,13 @@
 			@else
 				@if($viewData['rankingData']['count'] < 5)
 					@foreach (range(1, $viewData['rankingData']['count']) as $data)
-					<li class="pager_list_size">
+					<li class="pager_list_size" id="pager{{$data}}">
 						<a href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&page={{($data -1) * 10}}">{{$data}}</a>
 					</li>
 					@endforeach
 				@else
 					@foreach (range(1, 5) as $data)
-					<li class="pager_list_size">
+					<li class="pager_list_size" id="pager{{$data}}">
 						<a href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&page={{($data -1) * 10}}">{{$data}}</a>
 					</li>
 					@endforeach
@@ -126,3 +129,15 @@
 </div>
 <a class="week_page" href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&dataChenge=0"></a>
 <a class="total_page" href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&dataChenge=1"></a>
+<script>
+
+	$(function (){
+		var test = <?php echo $viewData['rankingData']['nowpage'] ?>;
+		test = test/ 10 + 1;
+		
+		var getSrc = $('#pager' + test + ' a');
+		
+		getSrc.css('color', 'yellow');
+	});
+	
+</script>

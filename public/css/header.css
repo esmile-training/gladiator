@@ -3,7 +3,7 @@
 }
 
 .menu_icon{
-    width: 30%;
+    width: 50%;
 }
 
 .headerPosition{
@@ -78,6 +78,6 @@
 }
 
 .buttom_size{
-    display: initial;
+    display: inline;
     padding-top: 15%;
 }
