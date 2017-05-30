@@ -114,7 +114,7 @@
 		@endif
 
 		<!-- 最後のrankを表示 -->
-		@if (end($viewData['ranking']) == $value && $viewData['rankingData']['count'] != ($viewData['rankingData']['nowpage']) / 10)
+		@if (end($viewData['ranking']) == $value && $viewData['rankingData']['count'] != ($viewData['rankingData']['nowpage'] + 10) / 10)
 		<li class="skip_button">
 			<a href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&last={{$viewData['rankingData']['count'] * 10}}">
 				<img src="{{IMG_URL}}ranking/skipnext.png" />
@@ -130,14 +130,14 @@
 <a class="week_page" href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&dataChenge=0"></a>
 <a class="total_page" href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&dataChenge=1"></a>
 <script>
-	/*
+
 	$(function (){
-		var test = 
+		var test = <?php echo $viewData['rankingData']['nowpage'] ?>;
 		test = test/ 10 + 1;
 		
 		var getSrc = $('#pager' + test + ' a');
 		
 		getSrc.css('color', 'yellow');
 	});
-	*/
+	
 </script>
