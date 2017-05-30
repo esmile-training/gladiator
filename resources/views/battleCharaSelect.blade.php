@@ -40,9 +40,18 @@
 					alt="レアリティ">
 				</div>
 
+				{{--HP--}}
+				<div class="hp_icon">
+					<img src="{{IMG_URL}}chara/status/hp.png"
+					alt="HPアイコン">
+				</div>
+				<div class="hp_value">
+					<font>{{$chara['hp']}}</font>
+				</div>
+
 				{{--グー--}}
 				<div class="goo_icon">
-					<img src="{{IMG_URL}}battle/hand1.png" alt="グーアイコン">
+					<img src="{{IMG_URL}}chara/status/hand1.png" alt="グーアイコン">
 				</div>
 				<div class="status_value goo_pos">
 					<font>{{$chara['gooAtk']}}</font>
@@ -50,7 +59,7 @@
 
 				{{--チョキ--}}
 				<div class="cho_icon">
-					<img src="{{IMG_URL}}battle/hand2.png" alt="チョキアイコン">
+					<img src="{{IMG_URL}}chara/status/hand2.png" alt="チョキアイコン">
 				</div>
 				<div class="status_value cho_pos">
 					<font>{{$chara['choAtk']}}</font>
@@ -58,7 +67,7 @@
 
 				{{--パー--}}
 				<div class="paa_icon">
-					<img src="{{IMG_URL}}battle/hand3.png" alt="チョキアイコン">
+					<img src="{{IMG_URL}}chara/status/hand3.png" alt="チョキアイコン">
 				</div>
 				<div class="status_value paa_pos">
 					<font>{{$chara['paaAtk']}}</font>
