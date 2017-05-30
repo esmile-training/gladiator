@@ -41,18 +41,18 @@ a:active{
 /*キャラボタンの枠を設定する*/
 .chara_frame{
 	position: relative;
-	    width: 96%;
-	    height: auto;
-	    top: 10%;
-	    left: 2%;
+    width: 96%;
+    height: auto;
+    top: 10%;
+    left: 2%;
 }
 /*キャラアイコンの枠の設定をする*/
 .icon_frame{
 	position: absolute;
-	    width: 18%;
-	    height: auto;
-	    top: 5%;
-	    left: 9.5%;
+    width: 18%;
+    height: auto;
+    top: 5%;
+    left: 6.5%;
 }
 /*キャラボタンの枠のイメージのサイズを設定する*/
 .chara_frame_img{
@@ -63,7 +63,7 @@ a:active{
 .chara_icon{
 	position: absolute;
     top: -3%;
-    left: 10%;
+    left: 7%;
     width: 16.4%;
     height: auto;
 }
@@ -73,7 +73,7 @@ a:active{
     width: 7%;
     height: auto;
     top: 7%;
-    left: 5.2%;
+    left: 2.2%;
 }
 /*レアリティの後ろの光を設定する*/
 .flash{
@@ -81,7 +81,7 @@ a:active{
     width: 16%;
     height: auto;
     top: -12%;
-    left: 0.2%;
+    left: -2.8%;
 }
 /*キャラ名の表示設定をする*/
 .chara_name{
@@ -101,61 +101,61 @@ a:active{
 /*HP表示の設定をする*/
 .hp_icon{
 	position: absolute;
-	    width: 8%;
-	    height: auto;
-	    top: 44%;
-	    left: 29%;
+    width: 8%;
+    height: auto;
+    top: 44%;
+    left: 25%;
 }
 .hp_value{
 	position: absolute;
-	    width: 10%;
-	    height: auto;
-	    top: 43%;
-	    left: 37%;
-	    font-family: Century;
-	    font-size: 3.2vh;
+    width: 10%;
+    height: auto;
+    top: 43%;
+    left: 33%;
+    font-family: Century;
+    font-size: 3.2vh;
 }
 /*グーの攻撃力表示の設定をする*/
 .goo_icon{
 	position: absolute;
-    width: 6%;
-    top: 52%;
-    left: 52%;
+    width: 7%;
+    top: 48%;
+    left: 48%;
 }
 .goo_pos
 {
 	position: absolute;
-	    top: 53%;
-	    left: 58%;
+    top: 49%;
+    left: 55%;
 }
 /*チョキの攻撃力表示の設定をする*/
 .cho_icon{
 	position: absolute;
-    width: 6%;
-    top: 52%;
-    left: 66%;
+    width: 7%;
+    top: 48%;
+    left: 64%;
 }
 .cho_pos
 {
 	position: absolute;
-    top: 53%;
-    left: 72%;
+    top: 49%;
+    left: 71%;
 }
 /*パーの攻撃力表示の設定をする*/
 .paa_icon{
 	position: absolute;
-    width: 6%;
-    top: 52%;
+    width: 7%;
+    top: 48%;
     left: 80%;
 }
 .paa_pos
 {
 	position: absolute;
-    top: 53%;
-    left: 86%;
+    top: 49%;
+    left: 87%;
 }
 /*数値のフォントを設定する*/
 .status_value{
 	font-family: Century;
-    font-size: 2vh;
+    font-size: 2.5vh;
 }
