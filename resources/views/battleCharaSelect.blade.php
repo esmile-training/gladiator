@@ -77,5 +77,5 @@
 				<font class="chara_name">{{$chara['name']}}</font>
 			</div>
 		</div>
-
+	</a>
 @endforeach
