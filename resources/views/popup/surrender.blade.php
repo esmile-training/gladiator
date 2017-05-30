@@ -1,7 +1,11 @@
 @include('common/css', ['file' => 'surrender'])
 
+<div>
 降参しますか？
-降参費用：{{$cost}}
+</div>
+<div>
+降参費用：{{$cost}}<br />
+</div>
 
 <table border="0" class="surrender_button">
 	<tr>
@@ -13,10 +17,10 @@
 		</td>
 		<td width="10%"></td>
 		<td width="20%">
-			<a class="close">
-				<img class="surrender_button_no image_change" src="{{IMG_URL}}popup/no_Button.png">
-				<span>close</span>
-			</a>
+			<div class="no">
+				<img class="image_change" src="{{IMG_URL}}popup/no_Button.png">
+				<span>no</span>
+			</div>
 		</td>
 		<td width="25%"></td>
 	</tr>
