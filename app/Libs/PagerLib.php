@@ -25,14 +25,9 @@ class PagerLib extends BaseGameLib
     
     public function backPage ($currentPage)	// 前のページを最大値を
     {
-	// 変数がセットされているか、ランキングの順位は11位からか
-	if(isset($currentPage) && 10 < $currentPage)
-	{
-	    
-	    // offsetのなかから、現在のページから-20させることで1ページ前に戻れる。
-	    $currentPage = $currentPage - 20;
-	}
-	
+	// offsetのなかから、現在のページから-20させることで1ページ前に戻れる。
+	$currentPage = $currentPage - 10;
+
 	return $currentPage;
     }
 

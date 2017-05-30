@@ -13,6 +13,11 @@
 		<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	</head>
 	<body>
+{{-- popupウインドウ --}}
+@include('popup/wrap', [
+	'class'		=> 'menuButton', 
+	'template'	=> 'menu'
+])
 	<div id="wrapper">
 		<header>
 			<div class="headerPosition">
@@ -39,8 +44,3 @@
 			</div>
 		</header>
 		<div id="main">
-{{-- popupウインドウ --}}
-@include('popup/wrap', [
-	'class'		=> 'menuButton', 
-	'template'	=> 'menu'
-])
