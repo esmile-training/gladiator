@@ -28,15 +28,28 @@ body{}
 .battleresult_log_bg {
     width: 100%;
 }
-/* 敵キャラのHP */
+/* ログ */
 .battleresult_log_message{
     position: absolute;
     top: 5%;
     left: 5%;
-    width: 80%;
+    width: 90%;
     color: #ffffff;
     font-size: 15px;
 }
+.battleresult_log_message_statusup_hp{
+    width: 9%;
+}
+.battleresult_log_message_statusup_goo{
+    width: 9%;
+}
+.battleresult_log_message_statusup_cho{
+    width: 9%;
+}
+.battleresult_log_message_statusup_paa{
+    width: 9%;
+}
+
 
 /* 全体に対する、バックホームボタンの領域 */
 .battleresult_backhome_linkregion{

@@ -1,14 +1,17 @@
 <div><img class="ranking_back_image" src="{{IMG_URL}}ranking/rankingbackimage.png" /></div>
 
 	<img class="ranking_borad" src="{{IMG_URL}}ranking/rankingboard.png" />
+	{{-- 背景切り替え --}}
 	@if(isset($viewData['ranking'][0]['weeklyAward']))
 		<img class="weekly_panel" src="{{IMG_URL}}ranking/weekrankingwindow.png"/>
 	@else
 		<img class="weekly_panel" src="{{IMG_URL}}ranking/totalrankingwindow.png"/>
 	@endif
 	
+	<!-- ランキング表示 -->
 	<div class="ranking">
 		<table class="ranking_table">
+		{{-- ランキングの種類に応じて切り替え --}}
 		@foreach($viewData['ranking'] as $key => $value)
 			@if(isset($value['weeklyAward']))
 			<tr class="ranking_tr">

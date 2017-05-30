@@ -13,12 +13,13 @@
 	width: 100%;
 }
 .battle_select{
-	width: 100%;
+	width: 90%;
 	position: absolute;
     top: 15%;
     left: 0;
     right: 0;
     bottom: 0;
+	margin: 0 auto;
     text-align: center;
 }
 .battle_select1{
@@ -34,4 +35,7 @@
 	font-size: 188%;
 	color: #FFFFFF;
 	border-bottom: solid 20px transparent;
+}
+.battle_popupYesButton{
+	width: 30%;
 }
