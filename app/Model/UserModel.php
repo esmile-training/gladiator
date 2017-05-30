@@ -74,7 +74,7 @@ EOD;
 $sql = <<< EOD
 
 	UPDATE user
-	SET totalStatus = (SELECT SUM(hp) FROM uChara WHERE userId = $userId))
+	SET totalCharaStatus = (SELECT SUM(hp) FROM uChara WHERE userId = $userId)
 	WHERE id = $userId;
 EOD;
 

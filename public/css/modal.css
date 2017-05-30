@@ -86,3 +86,31 @@
     top: 14%;
     right: 4%;
 }
+
+/* Close button design */
+.modal .no {
+    cursor: pointer;
+    z-index: 10000;
+}
+.modal .no:before,
+.modal .no:after{
+	position:absolute;
+	top:4px;
+	height:30px;
+	content:"";
+}
+.modal .no:before {
+  left:19px;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.modal .no:after {
+  right:19px;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.modal .no span {
+  display:none;
+}

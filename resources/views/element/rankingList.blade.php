@@ -7,7 +7,7 @@
 	@else
 		<img class="weekly_panel" src="{{IMG_URL}}ranking/totalrankingwindow.png"/>
 	@endif
-	
+
 	<!-- ランキング表示 -->
 	<div class="ranking">
 		<table class="ranking_table">
@@ -36,7 +36,7 @@
 			@endif
 		@endforeach
 		</table>
-		
+
 		<div class="pager_margin">
 		<ul class="back_pager_list">
 		<!-- rankの1ページ戻りと最後まで戻る -->
@@ -134,10 +134,10 @@
 	$(function (){
 		var test = <?php echo $viewData['rankingData']['nowpage'] ?>;
 		test = test/ 10 + 1;
-		
+
 		var getSrc = $('#pager' + test + ' a');
-		
+
 		getSrc.css('color', 'yellow');
 	});
-	
+
 </script>
