@@ -5,8 +5,30 @@
 	top: 104%
 }
 
+.coachselecter > div > div > font{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.coachselecter > div > font {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
 .text{
 	position: absolute;
 	top: 18%;
 	color: silver;
+}
+
+.retireButton{
+	width: 38%;
+	position: absolute;
+	left: 10%;
+}
+
+.backButton{
+	width: 38%;
+	position: absolute;
+	right: 10%
 }

@@ -1,5 +1,5 @@
 {{-- css  --}}
-@include('common/css', ['file' => 'admin'])
+@include('common/css', ['file' => 'charaSelect'])
 
 <div Align="center">
 	<font color="silver">キャラクター一覧</font>
@@ -45,3 +45,4 @@
 	<?php $count++ ?>
 	@endforeach
 @endif
+<?php $count ?>
