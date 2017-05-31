@@ -11,7 +11,7 @@ $sql = <<< EOD
 	FROM uChara
 	LEFT outer JOIN user
 	ON userId = user.id
-	WHERE userId = $userId
+	WHERE userId = $userId AND delFlag != 0
 	ORDER BY uChara.hp DESC LIMIT 1
 EOD;
     return parent::select($sql, 'first');
