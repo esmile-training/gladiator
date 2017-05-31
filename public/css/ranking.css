@@ -23,7 +23,7 @@ a:visited { color : white; }
     position: absolute;
 }
 
-.weekly_panel{
+.ranking_weekly_panel{
     position: absolute;
     left: 0;
     top: 1%;
@@ -43,6 +43,15 @@ a:visited { color : white; }
     padding-right: 5%;
 }
 
+.ranking_none{
+    position: absolute;
+    top: 45%;
+    left: 30%;
+    color: white;
+    font-family: serif;
+    font-size: 6vw;
+}
+
 .ranking_table{
     width: 97%;
 }
@@ -56,7 +65,7 @@ a:visited { color : white; }
     text-align: center;
 }
 
-.top_3{
+.ranking_top_3{
     width: 50%;
 }
 
@@ -66,7 +75,7 @@ a:visited { color : white; }
     width: 15%;
 }
 
-.text_height_center{
+.ranking_height_center{
     vertical-align: middle;
     font-size: 5vw;
 }
@@ -76,18 +85,18 @@ a:visited { color : white; }
 }
 
 
-.pager_margin{
+.ranking_pager_margin{
     margin-top: 10%;
 }
 
-.back_pager_list{
+.ranking_back_pager{
     width: 25%;
     float: left;
     position: absolute;
     left: 5%;
 }
 
-.pager_list{
+.ranking_pager_list{
     width: 40%;
     float: left;
     position: absolute;
@@ -96,25 +105,25 @@ a:visited { color : white; }
     margin-top: 1%;
 }
 
-.next_pager_list{
+.ranking_next_pager{
     width: 25%;
     position: absolute;
     right: 5%;
 }
 
 
-.skip_button{
+.ranking_skip_button{
     width: 55%;
 }
 
-.week_page{
+.ranking_week_page{
     padding: 0% 0% 10% 47%;
     position: absolute;
     top: 85%;
     right: 2%;
 }
 
-.total_page{
+.ranking_total_page{
     padding: 0% 0% 10% 47%;
     position: absolute;
     top: 85%;

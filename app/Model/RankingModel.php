@@ -48,7 +48,7 @@ SELECT userId ,weeklyAward, user.name,
 	AS `rank` FROM `uRanking` af 
 	LEFT outer JOIN user
 	ON userId = user.id
-	WHERE weekRange = '{$range}'
+	WHERE weekRange = '{$range}' AND weeklyAward != 0
 	ORDER BY weeklyAward DESC LIMIT 10 OFFSET $page;
 EOD;
 return parent::select($sql, 'all');
@@ -67,7 +67,7 @@ return parent::select($sql, 'all');
 $sql = <<< EOD
 	SELECT id, name, `totalCharaStatus`,
 	(SELECT COUNT(*) + 1 FROM `user` b WHERE b.totalCharaStatus > a.totalCharaStatus) 
-	AS `rank` FROM `user` a  
+	AS `rank` FROM `user` a WHERE totalCharaStatus != 0 
 	ORDER BY totalCharaStatus DESC LIMIT 10 OFFSET $page
 EOD;
 return parent::select($sql);
@@ -93,7 +93,7 @@ EOD;
     {
 $sql = <<< EOD
 	SELECT COUNT(weekRange) AS count
-	FROM uRanking WHERE weekRange = '{$range}';
+	FROM uRanking WHERE weekRange = '{$range}' AND weeklyAward != 0;
 EOD;
 	return parent::select($sql);
     }
@@ -129,7 +129,8 @@ EOD;
     {
 $sql = <<< EOD
 	SELECT COUNT(id) AS count
-	FROM user;
+	FROM user
+	WHERE totalCharaStatus != 0;
 EOD;
 	return parent::select($sql);
     }
