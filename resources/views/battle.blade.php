@@ -151,9 +151,11 @@
 				</a>
 			</div>
 		@else
-			<a href="{{APP_URL}}battle/makeResultData" class="battle_playerhand_button_bg" >
-				<img src={{IMG_URL}}chara/status/hand1.png class="battle_playerhand_button_icon" >
-			</a>
+			<div>
+				<a href="{{APP_URL}}battle/makeResultData" class="battle_toBatteleresult_button" >
+					<img class="battle_batteleresult_button_img image_change" src={{IMG_URL}}chara/status/toBattleResult.png >
+				</a>
+			</div>
 		@endif
 
 		{{-- 自キャラステータスの表示領域 --}}
