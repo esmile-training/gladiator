@@ -1,5 +1,8 @@
 @include('common/css', ['file' => 'battleCharaSelect'])
-<br>
+@include('common/css', ['file' => 'confirmChangeCoach'])
+<div>
+	<img src='{{IMG_URL}}status/selectCoachSign.ong' alt='コーチ選択'>
+</div>
 <div>
 	<font color="silver">
 	<center>
@@ -37,7 +40,15 @@
 					<img src="{{IMG_URL}}chara/icon/icon_{{$coach['imgId']}}.png"
 					alt="キャラアイコン">
 				</div>
-
+				{{--HP--}}
+				<div>
+				<div class="hp_icon">
+					<img src="{{IMG_URL}}chara/status/hp.png" alt="HPアイコン">
+				</div>
+				</div>	
+				<div class="hp_value">
+					<font>{{$coach['hp']}}</font>
+				</div>
 				{{--グー--}}
 				<div class="goo_icon">
 					<img src="{{IMG_URL}}chara/status/hand1.png" alt="グーアイコン">
