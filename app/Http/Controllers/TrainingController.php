@@ -6,9 +6,14 @@ class TrainingController extends BaseGameController
 {
 	public function index()
 	{
-		//訓練が終了しているキャラがいるか確認し、いたらフラグを戻す
-		$trainingResult = $this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'], $this->user['id'], true));
-		$this->viewData['trainingResult'] = $trainingResult;
+		//訓練が終了しているキャラがいるか確認し、いたらその訓練の情報を取得する
+		$result = $this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'], $this->user['id'], true));
+		foreach($result as $val)
+		{
+			$endTrainingChara[] = $this->Model->exec('Chara','getById',$val['uCharaId']);
+		}
+		//訓練が終了したキャラのIDからそのキャラクターの情報を取得する。
+		$this->viewData['endTrainingChara'] = $endTrainingChara;
 		
 		//所持しているキャラのデータを持ってくる
 		$uCharaData = $this->Model->exec('Chara', 'getUserChara', false, $this->user['id']);
@@ -20,7 +25,7 @@ class TrainingController extends BaseGameController
 		}
 		return viewWrap('training',$this->viewData);
 	}
-
+	
 	public function coachSelect()
 	{
 		//uCharaIdをGETしviewDataに保持
@@ -41,7 +46,6 @@ class TrainingController extends BaseGameController
 		$coachCnt = 0;
 		foreach($uCoachData as $coachInfo)
 		{
-			
 			$coachInfo['gooUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
 														array($coachInfo['gooAtk'],$uCharaAtkInfo['gooAtk'],$uCharaAtkInfo['gooUpCnt']));
 			$coachInfo['choUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
@@ -54,11 +58,10 @@ class TrainingController extends BaseGameController
 			$uCoachData[$coachCnt]['paaUpProbability'] = $coachInfo['paaUpProbability'];
 			$coachCnt++;
 		}
-		
 		$this->viewData['coachList'] = $uCoachData;
 		return viewWrap('coachSelect',$this->viewData);
 	}
-
+	
 	/*
 	 * 訓練情報をデータベースにSET
 	 */

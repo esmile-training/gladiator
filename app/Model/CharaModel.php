@@ -49,9 +49,9 @@ EOD;
 	public function charaDelFlag($uCharaId)
 	{
 $sql = <<< EOD
-	UPDATE  uChara
-	SET		delFlag = 1
-	WHERE   id = {$uCharaId};
+		UPDATE  uChara
+		SET		delFlag = 1
+		WHERE   id = {$uCharaId};
 EOD;
 		$this->update($sql);
 	}
@@ -70,4 +70,24 @@ $sql = <<< EOD
 EOD;
 			return $this->select($sql);
 		}
+		
+		/*
+		 * キャラクターの攻撃力を更新する
+		 */
+		public function updateStatus($statusInfo,$uCharaId)
+		{
+$sql =  <<< EOD
+			UPDATE uChara
+			SET		hp		 = {$statusInfo['hp']},
+					gooAtk	 = {$statusInfo['gooAtk']},
+					choAtk	 = {$statusInfo['choAtk']},
+					paaAtk	 = {$statusInfo['paaAtk']},
+					gooUpCnt = {$statusInfo['gooUpCnt']},
+					choUpCnt = {$statusInfo['choUpCnt']},
+					paaUpCnt = {$statusInfo['paaUpCnt']}
+			WHERE	id = {$uCharaId};
+EOD;
+		   $this->update($sql);
+	   }
+
 }

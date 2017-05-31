@@ -1,37 +1,20 @@
 {{--CSS--}}
 @include('common/css', ['file' => 'training'])
-
+<div>
+	<?php var_dump($viewData); ?>
+</div>
 <script>
-	 var popup = <?php echo $viewData['trainingResult']['hp']; ?>;
+	 var popup = <?php var_export($viewData['endTrainingChara']); ?>;
 	 $(function (){
 		 if(popup !== null)
 		 {
-			$('.trainingResult').css('display','block'); 
+			//$('.trainingResult').css('display','block'); 
 		 }
 		 else
 		 {
-			 $('.trainingResult').css('display','none'); 
+			 //$('.trainingResult').css('display','none'); 
 		 }
 	 });
 </script>
 
-<div>
-	<h3>訓練するキャラクターを選んでください。</h3>
-</div>
 
-@if(isset($viewData['trainingResult']))
-	<div class="modal trainingResult">
-		{{--ポップアップウィンドウ--}}
-		@include('popup/wrap', [
-			'class'		=> "trainingResult",
-			'template'	=> 'training',
-		])
-	</div>
-@endif
-
-{{--uChara(DB)から持ってきたデータの表示--}}
-@foreach( $viewData['charaList'] as $key => $val)
-	<form action="{{APP_URL}}training/coachSelect" method="get" >
-		<input type ="submit" name='uCharaId' value="{{$val['id']}}"/>
-	</form>
-@endforeach
