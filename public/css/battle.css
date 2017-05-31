@@ -106,24 +106,30 @@ body{}
 }
 
 /* 全体画面に対する、ダメージログの領域 */
-.damage_log {
+.battle_log {
     position: absolute;
     top: 40%;
     left: 5%;
     width: 90%;
 }
 /* ダメージログの背景(枠) */
-.damage_log_Bg {
+.battle_log_Bg {
     width: 100%;
 }
 /* ダメージログのログ部分(文字) */
-.damage_log_message{
+.battle_log_message{
     position: absolute;
     top: 10%;
     left: 5%;
     width: 90%;
     color: #ffffff;
     font-size: 13px;
+}
+.battle_log_message_win{
+    color: #ff4444;   
+}
+.battle_log_message_lose{
+    color: #005FFF;   
 }
 
 /* 全体画面に対する、ボタン領域(全体) */
@@ -166,7 +172,7 @@ body{}
 /* 全体画面に対する、バトルリザルトボタン領域(全体) */
 .battle_battleresult_button{
     position: absolute;
-    bottom: 15%;
+    bottom: 30%;
     left: 35%;
     width: 30%;
 }
