@@ -19,8 +19,8 @@
 				<div class="battleresult_log_message">
 					{{$viewData['charaDefaultData']['name']}}の勝ち！ <br />
 					{{$viewData['prize']}} の賞金を獲得！ <br />
-					現在の所持金{{$viewData['user']['money']}} <br />
-					現在のウィークリーポイント　{{$viewData['rankingData']['weeklyAward']}} <br />
+					所持金　{{$viewData['user']['money']}} <br />
+					週間ポイント　{{$viewData['rankingData']['weeklyAward']}} <br />
 					@if ($viewData['charaUpData']['statusUpCnt'] > 0)
 						能力上昇！<br />
 						<img src={{IMG_URL}}chara/status/hp.png class="battleresult_log_message_statusup_hp">

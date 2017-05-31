@@ -163,6 +163,18 @@ body{}
     width: 100%;
 }
 
+/* 全体画面に対する、バトルリザルトボタン領域(全体) */
+.battle_battleresult_button{
+    position: absolute;
+    bottom: 15%;
+    left: 35%;
+    width: 30%;
+}
+.battle_battleresult_button_img{
+    position: absolute;
+    width: 100%;
+}
+
 /*自キャラステータス*/
 .battle_player_status {
     position: absolute;
