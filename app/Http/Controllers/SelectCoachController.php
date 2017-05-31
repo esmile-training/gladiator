@@ -26,7 +26,7 @@ class SelectCoachController extends BaseGameController
 			// viewDataへ取得したコーチを送る
 			$this->viewData['coachList'] = $alluCoach;
 			// ビューへデータを渡す
-			return viewWrap('SelectCoach',$this->viewData);
+			return viewWrap('selectCoach',$this->viewData);
 		} else {
 			//コーチが二人以下だったらそのままコーチに追加
 			$this->insertCoach();
