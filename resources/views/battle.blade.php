@@ -78,9 +78,9 @@
 			</div>
 
 			{{-- 勝敗の表示 --}}
-			<div class="damage_log">
+			<div class="battle_log">
 				<img src="{{IMG_URL}}battle/damagelog_Bg.png" class="damage_log_Bg" >
-				<div class="damage_log_message">
+				<div class="battle_log_message">
 					{{ $viewData['charaData']['name'] }}
 					は	
 					{{ $viewData['type'][$viewData['charaData']['hand']] }}
@@ -89,8 +89,20 @@
 					は	
 					{{ $viewData['type'][$viewData['enemyData']['hand']] }}
 					を出した！<br />
-
-					結果は{{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
+					結果は
+					@if($viewData['charaData']['result'] == 1)
+						<span class="battle_log_message_win">
+							{{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
+						</span>
+					@elseif($viewData['charaData']['result'] == 2)
+						<span class="battle_log_message_lose">
+							{{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
+						</span>
+					@else
+						<span class="battle_log_message_draw">
+							{{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
+						</span>
+					@endif
 
 					{{-- ダメージログの表示 --}}
 					@if ( $viewData['charaData']['result'] == 1)
@@ -113,13 +125,6 @@
 						@endif
 					@elseif ($viewData['charaData']['result'] == 3)
 						お互いにダメージなし<br />
-					@endif
-
-					{{-- バトル終了のフラグが立っていたら --}}
-					@if ($viewData['battleData']['delFlag'] == 1)
-						<a href="{{APP_URL}}battle/makeResultData">
-							バトルリザルト画面へ
-						</a>
 					@endif
 				</div>
 			</div>
@@ -152,8 +157,8 @@
 			</div>
 		@else
 			<div>
-				<a href="{{APP_URL}}battle/makeResultData" class="battle_toBatteleresult_button" >
-					<img class="battle_batteleresult_button_img image_change" src={{IMG_URL}}chara/status/toBattleResult.png >
+				<a href="{{APP_URL}}battle/makeResultData" class="battle_battleresult_button" >
+					<img class="battle_battleresult_button_img image_change" src={{IMG_URL}}battle/toBattleResult.png >
 				</a>
 			</div>
 		@endif

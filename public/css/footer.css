@@ -44,3 +44,10 @@
     display: inline-block;
   vertical-align: bottom;
 }
+
+.footer_alert{
+    position: absolute;
+    top: 0%;
+    left: 65%;
+    width: 10%;
+}

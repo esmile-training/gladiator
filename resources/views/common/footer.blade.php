@@ -10,7 +10,15 @@
 						@else
 							<li><img class="location" src="{{FOOTER_IMG_URL}}battleIconDown.png" /></li>
 						@endif
-						<li><a class="location" href="{{APP_URL}}training/index"><img class="image_change" src="{{FOOTER_IMG_URL}}traningIcon.png" /></a></li>
+						
+						@if(0 < $viewData['endTraining']['count'])
+							<li>
+								<img class="footer_alert image_change" src="{{FOOTER_IMG_URL}}alertIcon.png" />
+								<a class="location" href="{{APP_URL}}training/index"><img class="image_change" src="{{FOOTER_IMG_URL}}traningIcon.png" /></a>
+							</li>
+						@else
+							<li><a class="location" href="{{APP_URL}}training/index"><img class="image_change" src="{{FOOTER_IMG_URL}}traningIcon.png" /></a></li>
+						@endif
 						<li><a class="location" href="{{APP_URL}}gacha/select"><img class="image_change" src="{{FOOTER_IMG_URL}}gachaIcon.png" /></a></li>
 					</ul>
 				</div>

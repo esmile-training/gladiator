@@ -14,8 +14,17 @@
 			<img src="{{IMG_URL}}title/title{{$viewData['bgNumber']}}.png" class="top_back">
 		</div>
 		@include('common/css', ['file' => 'top'])
+		<a  href="{{APP_URL}}top/login">
+			<input type="submit" 
+				class = "roadbutton">
+		</a>
 		<div class = "top_imgloginbutton">
-			<a  href="{{APP_URL}}top/login"><span class = "flashing"><img class = "top_button top_login"src="{{IMG_URL}}title/loginbutton.png"></span></a>
+			<a  href="{{APP_URL}}top/login">
+				<span class = "flashing">
+					<img class = "top_button top_login"
+						 src="{{IMG_URL}}title/titlelogo.png">
+				</span>
+			</a>
 		</div>
 	</body>
 </html>

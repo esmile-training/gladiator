@@ -151,4 +151,17 @@ $sql =  <<< EOD
 EOD;
 		$this->update($sql);
 	}
+	
+	/*
+	 * 
+	 */
+	public function endAlert($userId)
+	{
+$sql =  <<< EOD
+		SELECT COUNT(*) as count 
+		FROM uTraining 
+		WHERE userId = {$userId} AND state = 1;
+EOD;
+		return $this->select($sql, 'first');
+	}
 }
