@@ -22,8 +22,8 @@
 .gacha_signboard{
     width: 35%;
     position: absolute;
-    top: 12%;
-    left: 0px;
+    top: 13%;
+    left: 0;
     z-index: 2;
 }
 .junban0{
