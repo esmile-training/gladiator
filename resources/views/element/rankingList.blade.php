@@ -2,12 +2,7 @@
 
 	<img class="ranking_borad" src="{{IMG_URL}}ranking/rankingboard.png" />
 	{{-- 背景切り替え --}}
-	@if($viewData['ranking'] == null)
-		<img class="ranking_weekly_panel" src="{{IMG_URL}}ranking/weekrankingwindow.png"/>
-		<div class="ranking_none">
-			現在ランク圏外
-		</div>
-	@elseif(isset($viewData['ranking'][0]['weeklyAward']))
+	@if(isset($viewData['ranking'][0]['weeklyAward']))
 		<img class="ranking_weekly_panel" src="{{IMG_URL}}ranking/weekrankingwindow.png"/>
 	@else
 		<img class="ranking_weekly_panel" src="{{IMG_URL}}ranking/totalrankingwindow.png"/>
@@ -46,7 +41,7 @@
 		<div class="ranking_pager_margin">
 			<ul class="ranking_back_pager">
 			<!-- rankの1ページ戻りと最後まで戻る -->
-			@if (0 < $viewData['rankingData']['nowpage'] && $value == end($viewData['ranking']))
+			@if (1 < $viewData['rankingData']['nowpage'] && $value == end($viewData['ranking']))
 				<li class="ranking_skip_button">
 					<a href="{{APP_URL}}ranking?pageType={{$viewData['rankingData']['rankChenge']}}&first=0">
 						<img src="{{IMG_URL}}ranking/skipback.png" />
