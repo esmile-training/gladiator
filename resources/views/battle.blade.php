@@ -91,13 +91,17 @@
 					を出した！<br />
 					結果は
 					@if($viewData['charaData']['result'] == 1)
-						<div class="battle_log_message_win">
-							{{ $viewData['result'][$viewData['charaData']['result']] }}！
-						</div>
+						<span class="battle_log_message_win">
+							{{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
+						</span>
+					@elseif($viewData['charaData']['result'] == 2)
+						<span class="battle_log_message_lose">
+							{{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
+						</span>
 					@else
-						<div class="battle_log_message_lose">
-							{{ $viewData['result'][$viewData['charaData']['result']] }}！
-						</div>
+						<span class="battle_log_message_draw">
+							{{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
+						</span>
 					@endif
 
 					{{-- ダメージログの表示 --}}
