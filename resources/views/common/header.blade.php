@@ -18,6 +18,7 @@
 	'class'		=> 'menuButton', 
 	'template'	=> 'menu'
 ])
+
 	<div id="wrapper">
 		<header>
 			<div class="headerPosition">

@@ -95,7 +95,6 @@ class RankingController extends BaseGameController
 				$count	= floor($pagecount['count'] / 10) * 10;
 				$this->rankingData['nowpage']	= $count;
 				$page = $this->Model->exec('Ranking', 'rankingPager', [$range, $count]);
-				
 			}
 			else
 			{
@@ -107,6 +106,13 @@ class RankingController extends BaseGameController
 		{
 			// 所持キャラランキング
 			$page   = $this->Model->exec('Ranking', 'rankingStatus', $moldValue);
+		}
+		
+		// ユーザーデータがランク圏外の場合
+		if(is_null($page))
+		{
+			$page = $this->Model->exec('Ranking', 'rankingPager', [$range, 0]);
+			$this->rankingData['nowpage'] = 0;
 		}
 
 
