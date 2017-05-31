@@ -153,7 +153,7 @@ EOD;
 	}
 	
 	/*
-	 * 
+	 * 訓練終了したキャラ数
 	 */
 	public function endAlert($userId)
 	{

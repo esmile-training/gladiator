@@ -1,12 +1,8 @@
 @include('common/js', ['file' => 'edit'])
 
 <div align="center">
-	<br>エディット画面
-</div>
 
-<div align="center">
-
-	<p>チーム名を入力してください<br>
+	<p>チーム名を入力してください</p>
 
 	<font color="red">※全角８文字以内</font><br>
 	<form name="form1" action="{{APP_URL}}edit/addUser" method="get">

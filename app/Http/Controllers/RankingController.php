@@ -7,6 +7,7 @@ class RankingController extends BaseGameController
     private $rankingData;
     private $chengeData;
 	private $chenge;
+	private $range;
     
     public function __construct()
     {
@@ -40,10 +41,16 @@ class RankingController extends BaseGameController
 		{
 			$chengeRanking  = 0; 
 		}
+		
+		$this->range  = $this->Lib->exec('WeekRange', 'rangeState', $this->user['id']);
 
 		// 週間か総合値順位のボタンの状態判定
 		if($chengeRanking == 0)
 		{
+			// 登録者数を取得
+			$userCount = $this->Model->exec('Ranking', 'countRange', $this->range);
+			$this->rankingData['count']	= floor(($userCount[0]['count']/10 + 1));
+			
 			// 週間とステータスの切り替え
 			$this->rankingData['rankChenge'] = $chengeRanking;
 		}
@@ -78,40 +85,40 @@ class RankingController extends BaseGameController
 		$pushPage   = [$nextPage, $backPage, $lastPage, $firstPage, $rangePage];
 		$moldValue  = $this->Lib->exec('Pager', 'valueConf', $pushPage);
 		$this->rankingData['nowpage']	= $moldValue;
-
+		
+		// カウントした数に浮動小数点があるかどうか
+		if(is_float($this->range))
+		{
+			
+		}
 
 		// 週間かステータスで取得データを切替
 		if ($this->rankingData['rankChenge'] == 0)
 		{
-			$range  = $this->Lib->exec('WeekRange', 'rangeState', $this->user['id']);
-
-			// 登録者数を取得
-			$userCount = $this->Model->exec('Ranking', 'countRange', $range);
-			$this->rankingData['count']	= floor(($userCount[0]['count']/10 + 1));
-
 			if(!isset($nextPage) && !isset($backPage) && !isset($lastPage) && !isset($firstPage) && !isset($rangePage))
 			{
-				$pagecount   = $this->Model->exec('Ranking', 'overPoint', [$this->user['id'], $range]);
+				$pagecount   = $this->Model->exec('Ranking', 'overPoint', [$this->user['id'], $this->range]);
 				$count	= floor($pagecount['count'] / 10) * 10;
 				$this->rankingData['nowpage']	= $count;
-				$page = $this->Model->exec('Ranking', 'rankingPager', [$range, $count]);
+				$page = $this->Model->exec('Ranking', 'rankingPager', [$this->range, $count]);
 			}
 			else
 			{
 				// ユーザーランキング
-				$page	= $this->Model->exec('Ranking', 'rankingPager', [$range, $moldValue]);
+				$page	= $this->Model->exec('Ranking', 'rankingPager', [$this->range, $moldValue]);
 			}
 		}
 		else
 		{
 			// 所持キャラランキング
 			$page   = $this->Model->exec('Ranking', 'rankingStatus', $moldValue);
+			
 		}
 		
 		// ユーザーデータがランク圏外の場合
 		if(is_null($page))
 		{
-			$page = $this->Model->exec('Ranking', 'rankingPager', [$range, 0]);
+			$page = $this->Model->exec('Ranking', 'rankingPager', [$this->range, 0]);
 			$this->rankingData['nowpage'] = 0;
 		}
 
