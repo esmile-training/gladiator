@@ -4,15 +4,15 @@
 
 		{{-- バトルの勝敗によって背景画像変更 --}}
 		@if ($viewData['prize'] > 0)
-			<img src="{{IMG_URL}}battle/battleResult_Bg_Win.png" class="battleresult_bg">
+			<img src="{{IMG_URL}}battleResult/battleResult_Bg_Win.png" class="battleresult_bg">
 		@else
-			<img src="{{IMG_URL}}battle/battleResult_Bg_Lose.png" class="battleresult_bg">
+			<img src="{{IMG_URL}}battleResult/battleResult_Bg_Lose.png" class="battleresult_bg">
 		@endif
 
 		{{-- リザルトログ表示領域 --}}
 		<div class="battleresult_log">
 			{{-- リザルトログの枠 --}}
-			<img src="{{IMG_URL}}battle/battleResultlog_Bg.png" class="battleresult_log_bg">
+			<img src="{{IMG_URL}}battleResult/battleResultlog_Bg.png" class="battleresult_log_bg">
 			{{-- バトルの勝敗によって表示するログの変更 --}}
 			@if ($viewData['prize'] > 0)
 				{{-- プレイヤー勝利時のリザルトログ --}}
@@ -52,7 +52,7 @@
 		<div class="battleresult_backhome_linkregion">
 			{{-- ホームへ戻るボタン --}}
 			<a href="{{APP_URL}}mypage" class="battleresult_backhome_icon">
-				<img class="image_change" src={{IMG_URL}}battle/backHome.png >
+				<img class="image_change" src={{IMG_URL}}battleResult/backHome.png >
 			</a>
 		</div>
 	</div>
