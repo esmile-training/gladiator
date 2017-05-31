@@ -1,4 +1,18 @@
-.coachselecter > div > div > font{
+#main{
+	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/selectbackground.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;	
+	width: 100%;
+}
+
+.select_coach_sign{
+    width: 33%;
+    position: absolute;
+}
+
+.white{
 	color: #FFFFFF;
 	text-decoration: none;
 }
@@ -25,4 +39,8 @@
 
 .button.back{
 	right: 15%
+}
+
+.reduction{
+	transform: scale(0.8);
 }

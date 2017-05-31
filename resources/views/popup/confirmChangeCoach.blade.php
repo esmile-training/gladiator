@@ -7,13 +7,19 @@
 	<center>コーチに配属しますか？</center>
 </div>
 <div class='chara_button'>
-	<div class="chara_frame">
+	<div class="chara_frame reduction">
 		<img class="chara_frame_img" src="{{IMG_URL}}training/coachButton.png" alt="ボタンの枠">
 		{{--キャラアイコン--}}
 		<div class="chara_icon">
 			<img src="{{IMG_URL}}chara/icon/icon_{{$coach['imgId']}}.png" alt="キャラアイコン">
 		</div>
-
+		{{--HP--}}
+		<div class="hp_icon">
+			<img src="{{IMG_URL}}chara/status/hp.png" alt="HPアイコン">
+		</div>
+		<div class="hp_value">
+			<font>{{$coach['hp']}}</font>
+		</div>
 		{{--グー--}}
 		<div class="goo_icon">
 			<img src="{{IMG_URL}}chara/status/hand1.png" alt="グーアイコン">
@@ -44,7 +50,7 @@
 	<div>
 	↓
 	</div>
-	<div class="chara_frame">
+	<div class="chara_frame reduction">
 		<img class="chara_frame_img" src="{{IMG_URL}}battle/chara_button_frame.png" alt="ボタンの枠">
 
 		{{--キャラアイコン--}}
@@ -52,7 +58,14 @@
 			<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['selectCharaState']['imgId']}}.png"
 			alt="キャラアイコン">
 		</div>
-
+		{{--HP--}}
+		<div class="hp_icon">
+			<img src="{{IMG_URL}}chara/status/hp.png"
+			alt="HPアイコン">
+		</div>
+		<div class="hp_value">
+			<font>{{$viewData['selectCharaState']['hp']}}</font>
+		</div>
 		{{--グー--}}
 		<div class="goo_icon">
 			<img src="{{IMG_URL}}chara/status/hand1.png" alt="グーアイコン">

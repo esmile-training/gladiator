@@ -1,7 +1,7 @@
 @include('common/css', ['file' => 'battleCharaSelect'])
 @include('common/css', ['file' => 'confirmChangeCoach'])
 <div>
-	<img src='{{IMG_URL}}status/selectCoachSign.ong' alt='コーチ選択'>
+	<img class='select_coach_sign' src='{{IMG_URL}}status/selectCoachSign.ong' alt='コーチ選択'>
 </div>
 <div>
 	<font color="silver">
@@ -24,7 +24,7 @@
 				<div class="chara_icon">
 					<img src="{{IMG_URL}}chara/icon/icon_{{$coach['imgId']}}.png"	alt="キャラアイコン">
 				</div>
-				<div class="status_value goo_pos">
+				<div class="white status_value goo_pos">
 					<font><i>訓練中</i></font>
 				</div>
 				{{--キャラ名--}}
@@ -41,11 +41,9 @@
 					alt="キャラアイコン">
 				</div>
 				{{--HP--}}
-				<div>
 				<div class="hp_icon">
 					<img src="{{IMG_URL}}chara/status/hp.png" alt="HPアイコン">
 				</div>
-				</div>	
 				<div class="hp_value">
 					<font>{{$coach['hp']}}</font>
 				</div>
@@ -53,7 +51,7 @@
 				<div class="goo_icon">
 					<img src="{{IMG_URL}}chara/status/hand1.png" alt="グーアイコン">
 				</div>
-				<div class="status_value goo_pos">
+				<div class="white status_value goo_pos">
 					<font>{{$coach['gooAtk']}}</font>
 				</div>
 
@@ -61,7 +59,7 @@
 				<div class="cho_icon">
 					<img src="{{IMG_URL}}chara/status/hand2.png" alt="チョキアイコン">
 				</div>
-				<div class="status_value cho_pos">
+				<div class="white status_value cho_pos">
 					<font>{{$coach['choAtk']}}</font>
 				</div>
 
@@ -69,7 +67,7 @@
 				<div class="paa_icon">
 					<img src="{{IMG_URL}}chara/status/hand3.png" alt="チョキアイコン">
 				</div>
-				<div class="status_value paa_pos">
+				<div class="white status_value paa_pos">
 					<font>{{$coach['paaAtk']}}</font>
 				</div>
 

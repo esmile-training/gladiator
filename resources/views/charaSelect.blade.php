@@ -1,9 +1,9 @@
 {{-- css  --}}
 @include('common/css', ['file' => 'charaSelect'])
+@include('common/css', ['file' => 'battleCharaSelect'])
 
-<div>
-	<img src='{{IMG_URL}}status/statusSign.png' alt='ステータス'>
-</div>
+<img class='status_sign' src='{{IMG_URL}}status/statusSign.png' alt='ステータス'>
+<br>
 <div Align="right">
 	<form  action="{{APP_URL}}charaSelect/index" method="get">
 		<select name="type">
@@ -24,17 +24,51 @@
 </div>
 {{--所持キャラクターをすべて表示する--}}
 @if(is_null($viewData['charaList']))
-	<div>キャラクターがいません。<div>
+	<div>キャラクターがいません。</div>
 @else
-	<?php $count = 1 ?>
+	<?php $count = 0; ?>
 	@foreach($viewData['charaList'] as $chara)
 		{{-- popupボタン --}}
-		<div class="modal_container">
-		<br>
-		@if($chara['trainingState'] == 1)
-			訓練中
-		@endif
-		<input type='image' class="modal_btn charastatus{{ $count }}" src="{{IMG_URL_CHARA}}/icon/icon_{{$chara['imgId']}}.png" width="100">{{$chara['name']}}
+		{{--ボタンの枠--}}
+		<div class="modal_btn charastatus{{ $count }} chara_frame" style='left: 2%'>
+			<input type='image' class="chara_frame_img" src='{{IMG_URL}}battle/chara_button_frame.png'>
+			{{--キャラアイコン--}}
+			<div class="chara_icon">
+				<img src="{{IMG_URL}}chara/icon/icon_{{$chara['imgId']}}.png" alt="キャラアイコン">
+			</div>
+			{{--HP--}}
+			<div class="hp_icon">
+				<img src="{{IMG_URL}}chara/status/hp.png" alt="HPアイコン">
+			</div>
+			<div class="hp_value">
+				<font>{{$chara['hp']}}</font>
+			</div>
+			{{--グー--}}
+			<div class="goo_icon">
+				<img src="{{IMG_URL}}chara/status/hand1.png" alt="グーアイコン">
+			</div>
+			<div class="white status_value goo_pos">
+				<font>{{$chara['gooAtk']}}</font>
+			</div>
+
+			{{--チョキ--}}
+			<div class="cho_icon">
+				<img src="{{IMG_URL}}chara/status/hand2.png" alt="チョキアイコン">
+			</div>
+			<div class="white status_value cho_pos">
+				<font>{{$chara['choAtk']}}</font>
+			</div>
+
+			{{--パー--}}
+			<div class="paa_icon">
+				<img src="{{IMG_URL}}chara/status/hand3.png" alt="チョキアイコン">
+			</div>
+			<div class="white status_value paa_pos">
+				<font>{{$chara['paaAtk']}}</font>
+			</div>
+
+			{{--キャラ名--}}
+			<font class="chara_name">{{$chara['name']}}</font>
 		</div>
 		{{-- popupウインドウ --}}
 		@include('popup/wrap', [
