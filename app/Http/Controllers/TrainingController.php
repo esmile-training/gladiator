@@ -8,10 +8,17 @@ class TrainingController extends BaseGameController
 	{
 		//訓練が終了しているキャラがいるか確認し、いたらその訓練の情報を取得する
 		$result = $this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'], $this->user['id'], true));
-		foreach($result as $val)
+		if(isset($result))
 		{
-			$endTrainingChara[] = $this->Model->exec('Chara','getById',$val['uCharaId']);
+			foreach($result as $val)
+			{
+				$endTrainingChara[] = $this->Model->exec('Chara','getById',$val['uCharaId']);
+				$this->viewData['isTrainingEndFlag'] = true;
+			}
+		}else{
+			$this->viewData['isTrainingEndFlag'] = false;
 		}
+		
 		//訓練が終了したキャラのIDからそのキャラクターの情報を取得する。
 		$this->viewData['endTrainingChara'] = $endTrainingChara;
 		

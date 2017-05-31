@@ -17,10 +17,9 @@
 
 .training_kanban{
     width: 35%;
-    position: absolute;
-    top: 12%;
+    position: relative;
+    top: 0%;
     left: 0px;
-    z-index: 2;
 }
 
 .training_coach_name{
@@ -62,10 +61,8 @@
 }
 
 .training_coach_window0{
-    position: absolute;
-    top     : 20%;
-    border-top: solid 5px transparent;
-    border-bottom: solid 5px transparent;
+    position: relative;
+    top     : 1%
 }
 
 .training_coach_icon1{
@@ -76,8 +73,8 @@
 }
 
 .training_coach_window1{
-     position: absolute;
-     top     : 40%;
+    position: relative;
+    top     : 2%;
 }
 
 .training_coach_icon2{
@@ -88,8 +85,8 @@
 }
 
 .training_coach_window2{
-     position: absolute;
-     top     : 60%;
+    position: relative;
+    top     : 3%;
 }
 
 .training_goo_icon{
@@ -117,19 +114,25 @@
     position: absolute;
     top     : 70%;
     left    : 150%;
-    color   :#FF4444;
+    color   :#ff4444;
 }
 
 .training_cho_probability{
     position: absolute;
     top     : 70%;
     left    : 275%;
-    color   :#FFFF00; 
+    color   :#ffff00; 
 }
 
 .training_paa_probability{
     position: absolute;
     top     : 70%;
     left    : 400%;
-    color   :#DDDDFF; 
+    color   :#ddddff; 
+}
+.training_submit{
+    position: absolute;
+    top     : 550%;
+    left    : 40%;
+    width   : 20%;
 }
