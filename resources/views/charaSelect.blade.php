@@ -3,7 +3,7 @@
 @include('common/css', ['file' => 'battleCharaSelect'])
 
 <img class='status_sign' src='{{IMG_URL}}status/statusSign.png' alt='ステータス'>
-<br>
+<br><br>
 <div Align="right">
 	<form  action="{{APP_URL}}charaSelect/index" method="get">
 		<select name="type">

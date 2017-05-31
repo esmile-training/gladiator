@@ -1,8 +1,9 @@
 @include('common/css', ['file' => 'battleCharaSelect'])
 @include('common/css', ['file' => 'confirmChangeCoach'])
 <div>
-	<img class='select_coach_sign' src='{{IMG_URL}}status/selectCoachSign.ong' alt='コーチ選択'>
+	<img class='select_coach_sign' src='{{IMG_URL}}status/selectCoachSign.png' alt='コーチ選択'>
 </div>
+<br><br>
 <div>
 	<font color="silver">
 	<center>
