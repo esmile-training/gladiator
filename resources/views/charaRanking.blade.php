@@ -4,3 +4,4 @@
 
 {{-- ユーザランキングのページャー --}}
 @include('element/rankingList')
+

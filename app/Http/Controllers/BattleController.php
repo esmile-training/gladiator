@@ -191,12 +191,12 @@ class battleController extends BaseGameController
 		$surrenderCost = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));
 
 		// 全てのデータを viewData に渡す
-		$this->viewData['BattleData']	= $this->BattleData;
-		$this->viewData['CharaData']	= $this->CharaData;
-		$this->viewData['EnemyData']	= $this->EnemyData;
-		$this->viewData['Type']			= $this->TypeData;
-		$this->viewData['Result']		= $this->ResultData;
-		$this->viewData['SurrenderCost']= $surrenderCost;
+		$this->viewData['battleData']	= $this->BattleData;
+		$this->viewData['charaData']	= $this->CharaData;
+		$this->viewData['enemyData']	= $this->EnemyData;
+		$this->viewData['type']			= $this->TypeData;
+		$this->viewData['result']		= $this->ResultData;
+		$this->viewData['surrenderCost']= $surrenderCost;
 
 		return view('battle', ['viewData' => $this->viewData]);
 	}
@@ -208,8 +208,9 @@ class battleController extends BaseGameController
 		//リダイレクト元からデータをゲットする
 		$prize = filter_input(INPUT_GET, "prize");
 
+		$charaData['name']			= filter_input(INPUT_GET, "name");
 		if($prize > 0)
-		{
+		{	
 			$charaData['hp']			= filter_input(INPUT_GET, "deaultHp");
 			$charaData['gooAtk']		= filter_input(INPUT_GET, "deaultGooAtk");
 			$charaData['choAtk']		= filter_input(INPUT_GET, "deaultChoAtk");
@@ -219,16 +220,16 @@ class battleController extends BaseGameController
 			$charaUpData['choUpCnt']	= filter_input(INPUT_GET, "choAtkUpCnt");
 			$charaUpData['paaUpCnt']	= filter_input(INPUT_GET, "paaAtkUpCnt");
 
-			$this->viewData['CharaDefaultData']	= $charaData;
-			$this->viewData['CharaUpData']	= $charaUpData;
+			$this->viewData['charaUpData']	= $charaUpData;
 		}
+		$this->viewData['charaDefaultData']	= $charaData;
 
 		// getRankingData ファンクションを呼び出し、ランキングデータを取得
 		$this->getRankingData();
 
 		// リザルト画面に必要なデータを viewData に渡す
-		$this->viewData['Prize']		= $prize;
-		$this->viewData['RankingData']	= $this->RankingData;
+		$this->viewData['prize']		= $prize;
+		$this->viewData['rankingData']	= $this->RankingData;
 
 		return view('battleResult', ['viewData' => $this->viewData]);
 	}
@@ -397,6 +398,7 @@ class battleController extends BaseGameController
 			//リダイレクト引数受け渡し
 			$param = [
 				'prize'			=> $prize,
+				'name'			=> $this->CharaData['name'],
 				'deaultHp'		=> $this->CharaData['hp'],
 				'deaultGooAtk'	=> $this->CharaData['gooAtk'],
 				'deaultChoAtk'	=> $this->CharaData['choAtk'],
@@ -411,6 +413,7 @@ class battleController extends BaseGameController
 		else if($this->CharaData['battleHp'] <= 0)
 		{
 			$param = [
+				'name'	=> $this->CharaData['name'],
 				'prize' => 0,
 			];
 
@@ -428,6 +431,7 @@ class battleController extends BaseGameController
 			$prize *= -1;
 
 			$param = [
+				'name'	=> $this->CharaData['name'],
 				'prize' => $prize,
 			];
 		}
