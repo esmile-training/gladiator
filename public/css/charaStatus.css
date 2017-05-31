@@ -37,7 +37,7 @@ body{}
 
 .name{
 	position: absolute;
-	left: 35%;
+	left: 31%;
 	font-family: serif;
 }
 
@@ -76,8 +76,8 @@ body{}
 
 .test_div{
 	position: absolute;
-	top: 130px;
-	left: 10%;
+	top: 100px;
+	left: 9%;
 	text-align: left;
 	
 }

@@ -1,12 +1,28 @@
-.buttonImg{
-	width: 30%;
-	position: absolute;
-	left: 35%;
-	top: 104%
+.coachselecter > div > div > font{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.coachselecter > div > font {
+	color: #FFFFFF;
+	text-decoration: none;
 }
 
 .text{
 	position: absolute;
 	top: 18%;
 	color: silver;
+}
+
+.button{
+	width: 32%;
+	position: absolute;
+}
+
+.button.retire{
+	left: 15%;
+}
+
+.button.back{
+	right: 15%
 }

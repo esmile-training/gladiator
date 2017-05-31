@@ -106,7 +106,6 @@
 			@endif
 			<!-- end -->
 			</ul>
-
 			<ul class="ranking_next_pager">
 			<!-- 次のrankを表示 -->
 			@if (count($viewData['ranking']) == 10 && $value == end($viewData['ranking']))

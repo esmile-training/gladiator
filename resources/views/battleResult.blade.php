@@ -3,45 +3,47 @@
 		@include('common/css', ['file' => 'battleResult'])
 
 		{{-- バトルの勝敗によって背景画像変更 --}}
-		@if ($viewData['Prize'] > 0)
-			<img src="{{IMG_URL}}battle/battleResult_Bg_Win.png" class="battleresult_bg">
+		@if ($viewData['prize'] > 0)
+			<img src="{{IMG_URL}}battleResult/battleResult_Bg_Win.png" class="battleresult_bg">
 		@else
-			<img src="{{IMG_URL}}battle/battleResult_Bg_Lose.png" class="battleresult_bg">
+			<img src="{{IMG_URL}}battleResult/battleResult_Bg_Lose.png" class="battleresult_bg">
 		@endif
 
 		{{-- リザルトログ表示領域 --}}
 		<div class="battleresult_log">
 			{{-- リザルトログの枠 --}}
-			<img src="{{IMG_URL}}battle/battleResultlog_Bg.png" class="battleresult_log_bg">
+			<img src="{{IMG_URL}}battleResult/battleResultlog_Bg.png" class="battleresult_log_bg">
 			{{-- バトルの勝敗によって表示するログの変更 --}}
-			@if ($viewData['Prize'] > 0)
+			@if ($viewData['prize'] > 0)
 				{{-- プレイヤー勝利時のリザルトログ --}}
 				<div class="battleresult_log_message">
-					{{$viewData['Prize']}} の賞金を獲得！ <br />
+					{{$viewData['charaDefaultData']['name']}}の勝ち！ <br />
+					{{$viewData['prize']}} の賞金を獲得！ <br />
 					現在の所持金{{$viewData['user']['money']}} <br />
-					現在のウィークリーポイント　{{$viewData['RankingData']['weeklyAward']}} <br />
-					@if ($viewData['CharaUpData']['statusUpCnt'] > 0)
+					現在のウィークリーポイント　{{$viewData['rankingData']['weeklyAward']}} <br />
+					@if ($viewData['charaUpData']['statusUpCnt'] > 0)
 						能力上昇！<br />
 						<img src={{IMG_URL}}chara/status/hp.png class="battleresult_log_message_statusup_hp">
-							{{$viewData['CharaDefaultData']['hp']}}　⇒　{{$viewData['CharaDefaultData']['hp'] + $viewData['CharaUpData']['statusUpCnt']}}<br />							
+							{{$viewData['charaDefaultData']['hp']}}　⇒　{{$viewData['charaDefaultData']['hp'] + $viewData['charaUpData']['statusUpCnt']}}<br />							
 						<img src={{IMG_URL}}chara/status/hand1.png class="battleresult_log_message_statusup_goo">
-							{{$viewData['CharaDefaultData']['gooAtk']}}　⇒　{{$viewData['CharaDefaultData']['gooAtk'] + $viewData['CharaUpData']['gooUpCnt']}}<br />
+							{{$viewData['charaDefaultData']['gooAtk']}}　⇒　{{$viewData['charaDefaultData']['gooAtk'] + $viewData['charaUpData']['gooUpCnt']}}<br />
 						<img src={{IMG_URL}}chara/status/hand2.png class="battleresult_log_message_statusup_cho">
-							{{$viewData['CharaDefaultData']['choAtk']}}　⇒　{{$viewData['CharaDefaultData']['choAtk'] + $viewData['CharaUpData']['choUpCnt']}}<br />
+							{{$viewData['charaDefaultData']['choAtk']}}　⇒　{{$viewData['charaDefaultData']['choAtk'] + $viewData['charaUpData']['choUpCnt']}}<br />
 						<img src={{IMG_URL}}chara/status/hand3.png class="battleresult_log_message_statusup_paa">
-							{{$viewData['CharaDefaultData']['paaAtk']}}　⇒　{{$viewData['CharaDefaultData']['paaAtk'] + $viewData['CharaUpData']['paaUpCnt']}}<br />
+							{{$viewData['charaDefaultData']['paaAtk']}}　⇒　{{$viewData['charaDefaultData']['paaAtk'] + $viewData['charaUpData']['paaUpCnt']}}<br />
 					@endif
 				</div>
-			@elseif ($viewData['Prize'] < 0)
+			@elseif ($viewData['prize'] < 0)
 				{{-- プレイヤー降参時のリザルトログ --}}
 				<div class="battleresult_log_message">
-					降参費用として {{$viewData['Prize']}} 失った。<br />
+					{{$viewData['charaDefaultData']['name']}} の負け… <br />
+					降参費用として {{$viewData['prize']}} 失った。<br />
 					現在の所持金 {{$viewData['user']['money']}} <br />
 				</div>
 			@else
 				{{-- プレイヤー敗北時のリザルトログ --}}
 				<div class="battleresult_log_message">
-					死んだ
+					{{$viewData['charaDefaultData']['name']}} は死んだ <br />
 				</div>
 			@endif
 		</div>
@@ -50,7 +52,7 @@
 		<div class="battleresult_backhome_linkregion">
 			{{-- ホームへ戻るボタン --}}
 			<a href="{{APP_URL}}mypage" class="battleresult_backhome_icon">
-				<img class="image_change" src={{IMG_URL}}battle/backHome.png >
+				<img class="image_change" src={{IMG_URL}}battleResult/backHome.png >
 			</a>
 		</div>
 	</div>

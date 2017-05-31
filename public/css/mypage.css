@@ -67,6 +67,10 @@ body {
      position: fixed;
  }
 
+ .mypage_borad{
+    width: 33%;
+    position: absolute;
+}
 
 
 

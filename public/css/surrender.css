@@ -6,7 +6,7 @@ body{}
 /* ボタン部分の領域 */
 .surrender_button{
     position: absolute;
-    top: 80%;
+    top: 200%;
     width: 100%;
 }
 /* はいボタン画像領域 */
