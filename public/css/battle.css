@@ -44,7 +44,7 @@ body{}
 /* 敵キャラのHPバー領域 */
 .battle_enemy_status_hp_bar_ragion{
     position: absolute;
-    top: 15%;
+    top: 10%;
     right: 1%;
     width: 80%;
     height: 15%;
@@ -126,10 +126,13 @@ body{}
     font-size: 13px;
 }
 .battle_log_message_win{
-    color: #ff4444;   
+    color: #ff4444;
 }
 .battle_log_message_lose{
-    color: #005FFF;   
+    color: #005FFF;
+}
+.battle_log_message_draw{
+    color: #FFA500;
 }
 
 /* 全体画面に対する、ボタン領域(全体) */
