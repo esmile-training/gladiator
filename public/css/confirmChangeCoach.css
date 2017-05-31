@@ -21,14 +21,15 @@
 	color: silver;
 }
 
-.retireButton{
-	width: 38%;
+.button{
+	width: 32%;
 	position: absolute;
+}
+
+.button.retire{
 	left: 10%;
 }
 
-.backButton{
-	width: 38%;
-	position: absolute;
+.button.back{
 	right: 10%
 }

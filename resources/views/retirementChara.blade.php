@@ -1,9 +1,12 @@
-<div>
-	<font color="silver "<?php print_r($viewData['comment']); ?><font>
+@include('common/css', ['file' => 'retirementChara'])
+
+<br>
+<div class="text">
+	{{$viewData['comment']}}
 </div>
 <br>
 <div>
 	<a href="{{APP_URL}}selectChara">
-		<img class="image_change" src="{{IMG_URL}}popup/back_Button.png" alt="戻る" style="width: 50%">
+		<img class="backButton image_change" src="{{IMG_URL}}popup/back_Button.png" alt="戻る">
 	</a>
 </div>

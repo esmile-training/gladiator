@@ -1,10 +1,10 @@
 @include('common/css', ['file' => 'battleCharaSelect'])
-@include('common/css', ['file' => 'confirmChangeCoach'])
+<br>
 <div>
 	<font color="silver">
 	<center>
 	コーチ枠がいっぱいです。<br>
-	交代するコーチを選ぶか,
+	交代させるコーチか、
 	引退を選んでください。<br>
 	</font>
 	<font color="red">※選択したコーチは引退となります。</font>
@@ -74,11 +74,12 @@
 		@endif
 	@endforeach
 </div>
+<br>
 <div>
-	<a class='backButton' onclick="history.back()">
+	<a class='button back' onclick="history.back()">
 		<img class="image_change" src="{{SERVER_URL}}img/popup/back_Button.png" alt="戻る">
 	</a>
-	<a class='retireButton' href="{{APP_URL}}selectCoach/deleteChara?id={{$_GET['id']}}">
+	<a class='button retire' href="{{APP_URL}}selectCoach/deleteChara?id={{$_GET['id']}}">
 		<img class="image_change" src="{{SERVER_URL}}img/popup/retire_Button.png" alt="引退">
 	</a>
 </div>

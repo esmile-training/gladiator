@@ -1,0 +1,20 @@
+#main{
+	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/battle/chara_select_bg.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	width: 100%;
+}
+
+div.text{
+	text-align: center;
+	color: silver;
+}
+
+.backButton{
+	position: absolute;
+	right: 35%;
+	width: 30%;
+}
+
