@@ -19,10 +19,12 @@
 				class = "roadbutton">
 		</a>
 		<div class = "top_imgloginbutton">
-			<span class = "flashing">
-				<img class = "top_button top_login"
-					 src="{{IMG_URL}}title/titlelogo.png">
-			</span>
+			<a  href="{{APP_URL}}top/login">
+				<span class = "flashing">
+					<img class = "top_button top_login"
+						 src="{{IMG_URL}}title/titlelogo.png">
+				</span>
+			</a>
 		</div>
 	</body>
 </html>

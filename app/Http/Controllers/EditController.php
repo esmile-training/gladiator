@@ -17,8 +17,7 @@ class EditController extends BaseGameController
 		//チーム名をバイトと文字数で判定
 		if(strlen($teamName) <= 16 || mb_strlen($teamName) <= 8)
 		{   
-			//チーム名の確認ポップアップの生成
-
+			
 			//DBにチーム名を追加してidを取得
 			$userId = $this->Model->exec('User', 'createUser', [$teamName]);
 			
