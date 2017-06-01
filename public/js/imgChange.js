@@ -33,4 +33,10 @@ $(function(){
 	    $(getClass).attr('src', changeL);
 	}, 500);
     });
+	
+	$('a').click(function() {
+    $('a').click(function () {
+        return false;
+    });
+});
 });
