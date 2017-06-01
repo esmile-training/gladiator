@@ -72,6 +72,7 @@
 }
 .modal .modal_framebottom{
 	width:100%;
+	vertical-align: top; 
 }
 .modal .modal_window{
     width: 100%;
