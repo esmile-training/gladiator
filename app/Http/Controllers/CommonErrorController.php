@@ -11,6 +11,7 @@ class CommonErrorController extends BaseGameController
 {
 	public function index()
 	{
-		return viewWrap('CommonError');
+		//return viewWrap('Error');
+		return view('Error');
 	}
 }

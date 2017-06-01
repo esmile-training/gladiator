@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 // クラス定義
-class SelectCharaController extends BaseGameController
+class CharaSelectController extends BaseGameController
 {
 	public function index()
 	{
@@ -30,13 +30,13 @@ class SelectCharaController extends BaseGameController
 			// viewDataへ取得したキャラクターを送る
 			$this->viewData['charaList'] = $alluChara;
 			// ビューへデータを渡す
-			return viewWrap('selectChara',$this->viewData);
+			return viewWrap('charaSelect',$this->viewData);
 		}
 		else
 		{
 			//キャラクターがいない場合リストを空にして渡す
 			$this->viewData['charaList'] = null;
-			return viewWrap('selectChara',$this->viewData);
+			return viewWrap('charaSelect',$this->viewData);
 		}
 	}
 }

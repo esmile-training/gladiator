@@ -70,25 +70,27 @@ class EditController extends BaseGameController
 			$this->Lib->exec('WeekRange','rangeState',$userId);
 
 			//初期コーチの作成
-			$this->addCoach($userId, 'グー', 'goo', 0);
-			$this->addCoach($userId, 'チョキ', 'choki', 1);
-			$this->addCoach($userId, 'パー', 'paa', 2);
+			$this->addCoach($userId, 'goo', 0);
+			$this->addCoach($userId, 'choki', 1);
+			$this->addCoach($userId, 'paa', 2);
 			
 			//マイページヘリダイレクト
 			return $this->Lib->redirect('mypage', 'index');
 		} else {
 			//文字数がオーバーした場合のポップアップで警告表示予定
-			return $this->Lib->redirect(APP_URL.'commonError');
+			return $this->Lib->redirect('commonError');
 		}
 	}
 	
-	public function  addCoach($userId,$name, $att, $Atk)
+	public function  addCoach($userId, $att, $Atk)
 	{
 		$atkArray = array('50', '50', '50');
 		$atkArray[$Atk] = 200;
+		$imgdata = $this->Lib->exec('RandamChara', 'getCharaImgId');
+		$namedata = $this->Lib->exec('RandamChara', 'randamCharaName', [$imgdata['sex']]);
 		$newCoachState = array( 'userId' => $userId,
-								'imgId' => 1,
-								'name' => 'テストコーチ・'.$name,
+								'imgId' => $imgdata['charaId'],
+								'name' => $namedata['firstname']['name'].'・'.$namedata['lastname']['familyname'],
 								'rare' => 1,
 								'attribute' => $att,
 								'hp' => 300,
