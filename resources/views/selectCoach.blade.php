@@ -1,5 +1,6 @@
 @include('common/css', ['file' => 'battleCharaSelect'])
 @include('common/css', ['file' => 'confirmChangeCoach'])
+<div id='main'>
 <div>
 	<img class='select_coach_sign' src='{{IMG_URL}}status/selectCoachSign.png' alt='コーチ選択'>
 </div>
@@ -92,4 +93,5 @@
 	<a class='button retire' href="{{APP_URL}}selectCoach/deleteChara?id={{$_GET['id']}}">
 		<img class="image_change" src="{{SERVER_URL}}img/popup/retire_Button.png" alt="引退">
 	</a>
+</div>
 </div>
