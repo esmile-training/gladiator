@@ -99,6 +99,9 @@ a{
     margin: 0;
     padding: 0;
 }
+a::selection{
+	background: transparent;
+}
 
 
 input[type="image"]:focus {

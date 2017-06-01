@@ -3,8 +3,10 @@
 @include('common/css', ['file' => 'battleCharaSelect'])
 
 <?php
-	$sel = isset($_GET['type']) ? $_GET['type'] : '';
+	$type = isset($_GET['type']) ? $_GET['type'] : '';
+	$order = isset($_GET['order']) ? $_GET['order'] : '';
 ?>
+<div id='main'>
 <img class='status_sign' src='{{IMG_URL}}status/statusSign.png' alt='ステータス'>
 <br>
 <div Align="right">
@@ -12,14 +14,14 @@
 		<input type="radio" name="order" value="DESC" checked="checked"><font color='silver' style="font-family: serif">降順<font>
 		<input type="radio" name="order" value="ASC"><font color='silver' style="font-family: serif">昇順<font>
 		<select name="type" onchange="submit(this.form)">
-		  <option value="id"<?php $sel == 'id' ? print 'selected' : ''; ?>>入手</option>
-		  <option value="hp"<?php $sel == 'hp' ? print 'selected' : ''; ?>>体力</option>
-		  <option value="name"<?php $sel == 'name' ? print 'selected' : ''; ?>>名前</option>
-		  <option value="rare"<?php $sel == 'rare' ? print 'selected' : ''; ?>>レア度</option>
-		  <option value="attribute"<?php $sel == 'attribute' ? print 'selected' : ''; ?>>属性</option>
-		  <option value="gooAtk"<?php $sel == 'gooAtk' ? print 'selected' : ''; ?>>グー攻撃力</option>
-		  <option value="choAtk"<?php $sel == 'choAtk' ? print 'selected' : ''; ?>>チョキ攻撃力</option>
-		  <option value="paaAtk"<?php $sel == 'paaAtk' ? print 'selected' : ''; ?>>パー攻撃力</option>
+		  <option value="id"<?php $type == 'id' ? print 'selected' : ''; ?>>入手</option>
+		  <option value="hp"<?php $type == 'hp' ? print 'selected' : ''; ?>>体力</option>
+		  <option value="name"<?php $type == 'name' ? print 'selected' : ''; ?>>名前</option>
+		  <option value="rare"<?php $type == 'rare' ? print 'selected' : ''; ?>>レア度</option>
+		  <option value="attribute"<?php $type == 'attribute' ? print 'selected' : ''; ?>>属性</option>
+		  <option value="gooAtk"<?php $type == 'gooAtk' ? print 'selected' : ''; ?>>グー攻撃力</option>
+		  <option value="choAtk"<?php $type == 'choAtk' ? print 'selected' : ''; ?>>チョキ攻撃力</option>
+		  <option value="paaAtk"<?php $type == 'paaAtk' ? print 'selected' : ''; ?>>パー攻撃力</option>
 		</select>
 	</form>
 </div>
@@ -80,3 +82,4 @@
 	@endforeach
 @endif
 <?php $count ?>
+</div>
