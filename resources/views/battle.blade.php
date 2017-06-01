@@ -13,6 +13,7 @@
 <body>
 	<div id="wrapper">
 
+		{{-- 降参用のデータ統合 --}}
 		<?php
 		$surrenderData['cost']	= $viewData['surrenderCost'];
 		$surrenderData['money']	= $viewData['userData']['money'];
@@ -163,13 +164,13 @@
 			<div class="battle_playerhand_button">
 				<img src="{{IMG_URL}}battle/button_Bg.png" class="battle_playerhand_button_bg" >
 				<a href="{{APP_URL}}battle/updateBattleData?hand=1" class="battle_playerhand_button_goo_linkregion" >
-					<img src={{IMG_URL}}chara/status/hand1.png class="battle_playerhand_button_icon" >
+					<img src={{IMG_URL}}chara/status/hand1.png class="battle_playerhand_button_icon image_change" >
 				</a>
 				<a href="{{APP_URL}}battle/updateBattleData?hand=2" class="battle_playerhand_button_cho_linkregion" >
-					<img src={{IMG_URL}}chara/status/hand2.png class="battle_playerhand_button_icon" >
+					<img src={{IMG_URL}}chara/status/hand2.png class="battle_playerhand_button_icon image_change" >
 				</a>
 				<a href="{{APP_URL}}battle/updateBattleData?hand=3" class="battle_playerhand_button_paa_linkregion" >
-					<img src={{IMG_URL}}chara/status/hand3.png class="battle_playerhand_button_icon" >
+					<img src={{IMG_URL}}chara/status/hand3.png class="battle_playerhand_button_icon image_change" >
 				</a>
 			</div>
 		@else
@@ -213,4 +214,5 @@
 	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>
+	<script type="text/javascript" src="{{APP_URL}}js/oneClick.js"></script>
 </body>
