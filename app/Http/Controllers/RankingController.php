@@ -49,7 +49,7 @@ class RankingController extends BaseGameController
 		{
 			// 登録者数を取得
 			$userCount = $this->Model->exec('Ranking', 'countRange', $this->range);
-			$this->rankingData['count']	= floor(($userCount[0]['count']/10 + 1));
+			$this->rankingData['count']	= $userCount[0]['count']/10;
 			
 			// 週間とステータスの切り替え
 			$this->rankingData['rankChenge'] = $chengeRanking;
@@ -64,7 +64,7 @@ class RankingController extends BaseGameController
 
 			// 登録者数を取得
 			$charaCount = $this->Model->exec('Ranking', 'countUser');
-			$this->rankingData['count'] = floor(($charaCount[0]['count']/10 + 1));
+			$this->rankingData['count'] = $charaCount[0]['count']/10;
 
 			// 週間とステータスの切り替え
 			$this->rankingData['rankChenge'] = $chengeRanking; 
@@ -87,9 +87,9 @@ class RankingController extends BaseGameController
 		$this->rankingData['nowpage']	= $moldValue;
 		
 		// カウントした数に浮動小数点があるかどうか
-		if(is_float($this->range))
+		if(is_float($this->rankingData['count']))
 		{
-			
+			$this->rankingData['count'] = floor($this->rankingData['count'] + 1);
 		}
 
 		// 週間かステータスで取得データを切替
