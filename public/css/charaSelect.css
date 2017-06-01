@@ -8,3 +8,7 @@
 	overflow: scroll;
 }
 
+.status_sign{
+    width: 33%;
+    position: absolute;
+}

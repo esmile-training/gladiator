@@ -1,19 +1,34 @@
-		{{-- cssの宣言 --}}
-		@include('common/battle')
-		@include('common/css', ['file' => 'battle'])
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Gladiator</title>
+	<link href="{{APP_URL}}css/reset.css?var={{time()}}" rel="stylesheet" type="text/css">
+	<link href="{{APP_URL}}css/style.css?var={{time()}}" rel="stylesheet" type="text/css">
+	<link href="{{APP_URL}}css/modal.css?var={{time()}}" rel="stylesheet" type="text/css">
+	<link href="{{APP_URL}}css/battle.css?var={{time()}}" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div id="wrapper">
 
-		{{-- ポップアップの宣言--}}
+		<?php
+		$surrenderData['cost']	= $viewData['surrenderCost'];
+		$surrenderData['money']	= $viewData['userData']['money'];
+		?>
+		{{-- ポップアップの宣言 --}}
 		@include('popup/wrap', [
-			'class'		=> 'surrenderButton',
+			'class'		=> 'surrenderButton', 
 			'template'	=> 'surrender',
-			'data'		=> ['cost' => $viewData['surrenderCost']],
+			'data'		=>	['surrenderData' => $surrenderData]
 		])
 		@include('popup/wrap', [
 			'class'		=> 'helpButton',
 			'template'	=> 'help',
 			'data'		=> ['log' => $viewData['enemyData']['difficulty']]
 		])
-
+		
 		<img src="{{IMG_URL}}battle/battle_Bg{{$viewData['enemyData']['difficulty']}}.png" class="battle_bg">
 
 		{{-- バトル終了フラグが立っていなければヘッダー部分表示 --}}
@@ -60,7 +75,7 @@
 			</div>
 			{{-- 敵キャラのHPログ --}}
 			<div class="battle_enemy_status_hp">
-				{{ $viewData['enemyData']['name'] }} のHP {{ $viewData['enemyData']['battleHp'] }} / {{ $viewData['enemyData']['hp'] }}
+				{{ $viewData['enemyData']['name'] }} HP: {{ $viewData['enemyData']['battleHp'] }} / {{ $viewData['enemyData']['hp'] }}
 			</div>
 			{{-- 敵キャラの攻撃力ログ --}}
 			<div class="battle_enemy_status_atk">
@@ -89,6 +104,7 @@
 					は	
 					{{ $viewData['type'][$viewData['enemyData']['hand']] }}
 					を出した！<br />
+					<br />
 					結果は
 					@if($viewData['charaData']['result'] == 1)
 						<span class="battle_log_message_win">
@@ -103,6 +119,7 @@
 							{{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
 						</span>
 					@endif
+					<br />
 
 					{{-- ダメージログの表示 --}}
 					@if ( $viewData['charaData']['result'] == 1)
@@ -135,7 +152,7 @@
 			</div>
 
 			{{-- メッセージログの枠 --}}
-			<div class="damage_log">
+			<div class="battle_log">
 				<img src="{{IMG_URL}}battle/damagelog_Bg.png" class="damage_log_Bg" >
 			</div>
 		@endif
@@ -181,7 +198,7 @@
 			</div>
 			{{-- 自キャラのHPログ --}}
 			<div class="battle_player_status_hp">
-				{{ $viewData['charaData']['name'] }} のHP {{ $viewData['charaData']['battleHp'] }} / {{ $viewData['charaData']['hp'] }}
+				{{ $viewData['charaData']['name'] }} HP： {{ $viewData['charaData']['battleHp'] }} / {{ $viewData['charaData']['hp'] }}
 			</div>
 			{{-- 自キャラの攻撃力ログ --}}
 			<div class="battle_player_status_atk">
@@ -190,9 +207,8 @@
 				{{ $viewData['type'][3] }} : {{ $viewData['charaData']['paaAtk']}}			
 			</div>
 		</div>
-
 	</div>
-
+	
 	{{-- jsの宣言 --}}
 	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>
