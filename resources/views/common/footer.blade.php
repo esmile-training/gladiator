@@ -13,7 +13,7 @@
 						
 						@if(0 < $viewData['endTraining']['count'])
 							<li>
-								<img class="footer_alert image_change" src="{{FOOTER_IMG_URL}}alertIcon.png" />
+								<img class="footer_alert image_change" src="{{FOOTER_IMG_URL}}AlertIcon.png" />
 								<a class="location" href="{{APP_URL}}training/index"><img class="image_change" src="{{FOOTER_IMG_URL}}traningIcon.png" /></a>
 							</li>
 						@else
