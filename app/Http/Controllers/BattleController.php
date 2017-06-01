@@ -191,6 +191,7 @@ class battleController extends BaseGameController
 		$surrenderCost = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));
 
 		// 全てのデータを viewData に渡す
+		$this->viewData['userData']		= $this->user;
 		$this->viewData['battleData']	= $this->BattleData;
 		$this->viewData['charaData']	= $this->CharaData;
 		$this->viewData['enemyData']	= $this->EnemyData;
