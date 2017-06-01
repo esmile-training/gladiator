@@ -27,12 +27,11 @@
 	margin: 0 auto;
 	text-align: center;
 	position: relative;
-	top: 25vw;
+	top: 11vw;
 	width: 75%;
 }
 .album img{
 	animation: album 2s infinite;
-	/*animation-iteration-count:3;*/
 	width: 100%;
 	opacity: 0;
 }
