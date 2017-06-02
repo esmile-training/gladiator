@@ -163,7 +163,7 @@
 			<div class="battle_playerhand_button">
 				<img src="{{IMG_URL}}battle/button_Bg.png" class="battle_playerhand_button_bg">
 				<a href="{{APP_URL}}battle/updateBattleData?hand=1" class="battle_playerhand_button_goo_linkregion clickfalse">
-					<img src={{IMG_URL}}chara/status/hand1.png class="battle_playerhand_button_icon">
+					<img src={{IMG_URL}}chara/status/hand1.png class="battle_playerhand_button_icon image_change">
 				</a>
 				<a href="{{APP_URL}}battle/updateBattleData?hand=2" class="battle_playerhand_button_cho_linkregion clickfalse" >
 					<img src={{IMG_URL}}chara/status/hand2.png class="battle_playerhand_button_icon image_change" >
