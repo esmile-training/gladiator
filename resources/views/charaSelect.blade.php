@@ -32,7 +32,7 @@
 	@foreach($viewData['charaList'] as $chara)
 		{{-- popupボタン --}}
 		{{--ボタンの枠--}}
-		<div class="modal_btn charastatus{{ $count }} chara_frame" style='left: 2%'>
+		<div class="modal_btn charaStatus{{ $count }} chara_frame" style='left: 2%'>
 			<input type='image' class="chara_frame_img" src='{{IMG_URL}}battle/chara_button_frame.png'>
 			{{--キャラアイコン--}}
 			<div class="chara_icon">
@@ -74,8 +74,8 @@
 		</div>
 		{{-- popupウインドウ --}}
 		@include('popup/wrap', [
-		'class'	=> "charastatus{$count}",
-		'template' => 'charastatus'
+		'class'	=> "charaStatus{$count}",
+		'template' => 'charaStatus'
 		])
 	<?php $count++ ?>
 	@endforeach
