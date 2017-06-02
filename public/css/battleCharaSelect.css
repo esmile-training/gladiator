@@ -36,6 +36,14 @@ a:active{
 	margin-left: 2%;
 	margin-right: 2%;
 }
+/*看板の設定*/
+.signboard_img{
+	width: 35%;
+	position: fixed;
+	top: 13%;
+	left: 0;
+	z-index: 2;
+}
 /*キャラボタン同士の間隔を設定する*/
 .button_margin{
 	margin-bottom: 5%;
@@ -106,23 +114,23 @@ a:active{
 /*キャラの名前*/
 .chara_name{
 	position: absolute;
-	font-size: 5vw;
-	top: 5%;
-	left: 2%;
+    font-size: 5vw;
+    top: 7%;
+    left: 4%;
 }
 /*HPアイコンの幅*/
 .hp_icon{
-	margin-top: 11.9%;
-	position: absolute;
-	width: 10%;
-	left: 6.5%;
+	margin-top: 12.9%;
+    position: absolute;
+    width: 9%;
+    left: 6.5%;
 }
 /*HPの値の設定*/
 .hp_value{
 	position: absolute;
-	font-size: 5.5vw;
-	top: 26%;
-	left: 17%;
+    font-size: 5vw;
+    top: 29%;
+    left: 17%;
 }
 /*手のアイコンの幅*/
 .goo_icon{
