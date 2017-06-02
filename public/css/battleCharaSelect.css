@@ -5,7 +5,7 @@
  * 最終更新日:2017/05/29
  */
  /*背景の設定をする*/
- body{
+body{
 	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/battle/chara_select_bg.png);
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -30,133 +30,154 @@ a:active{
 	color: #FFFFFF;
 	text-decoration: none;
 }
+/*キャラの表示位置の設定*/
+.chara_list{
+	margin-top: 21vh;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+/*看板の設定*/
+.signboard_img{
+	width: 35%;
+	position: fixed;
+	top: 13%;
+	left: 0;
+	z-index: 2;
+}
+/*キャラボタン同士の間隔を設定する*/
+.button_margin{
+	margin-bottom: 5%;
+}
 /*キャラボタンの設定*/
 .chara_button{
-	position:relative;
-	width: 100%;
-	height: auto;
-	border-top: solid 5px transparent;
-	border-bottom: solid 5px transparent;
-}
-/*キャラボタンの枠を設定する*/
-.chara_frame{
 	position: relative;
-    width: 96%;
-    height: auto;
-    top: 10%;
-    left: 2%;
+	width: 93%;
 }
-/*キャラアイコンの枠の設定をする*/
-.icon_frame{
-	position: absolute;
-    width: 10vh;
-    height: auto;
-    top: 4%;
-    left: 6.5%;
+/*キャラボタンの下地の設定*/
+.chara_button_frame_img{
+	width: 104%;
+	height: auto;
 }
-/*キャラボタンの枠のイメージのサイズを設定する*/
-.chara_frame_img{
-	width: 99%;
-    height: 13vh;
-}
-/*キャラのアイコンを設定する*/
+/*キャラアイコンの設定*/
 .chara_icon{
 	position: absolute;
-    top: -8%;
-    left: 6.5%;
-    width: 9.4vh;
-    height: auto;
+	margin-top: -4.6%;
+	margin-left: 9%;
+	width: 28%;
+	height: 74%;
+	top: 0%;
+	left: 0%;
 }
-/*レアリティの表示をする*/
+/*アイコンの外枠の設定*/
+.icon_frame{
+	position: relative;
+	width: 93%;
+	top: 0%;
+	left: 0%;
+}
+.icon_frame_margin{
+	margin-top: 16%;
+}
+/*キャライメージ*/
+.chara_image{
+	position: absolute;
+	width: 88%;
+	top: 0%;
+	left: 0%;
+}
+/*レアリティの表示*/
+.rarity_bg{
+	margin-top: 66%;
+	position: absolute;
+	width: 56%;
+	height: auto;
+	top: 0%;
+	left: -11%;
+}
 .rarity{
 	position: absolute;
-    width: 5%;
-    height: auto;
-    top: 5%;
-    left: 4.2%;
+	width: 20%;
+	height: auto;
+	top: 0%;
+	left: 7%;
+	margin-top: 85%;
 }
-/*レアリティの後ろの光を設定する*/
-.flash{
+/*キャラクターのステータスの表示*/
+.chara_status{
 	position: absolute;
-    width: 13%;
-    height: auto;
-    top: -9%;
-    left: 0.2%;
+	width: 77%;
+	height: 107%;
+	margin-left: 35%;
+	top: 0%;
+	left: 0%;
 }
-/*キャラ名の表示設定をする*/
+/*キャラの名前*/
 .chara_name{
 	position: absolute;
-    font-size: 2.9vh;
-    top: 12%;
-    left: 30%;
-    font-family: serif;
+    font-size: 5vw;
+    top: 7%;
+    left: 4%;
 }
-/*キャラクターの手のアイコンを設定する*/
-.strongest_hand{
-	position: absolute;
-	width: 15%;
-	top: 11%;
-	left: 67%;
-}
-/*HP表示の設定をする*/
+/*HPアイコンの幅*/
 .hp_icon{
-	position: absolute;
-    width: 8%;
-    height: auto;
-    top: 39%;
-    left: 24%;
+	margin-top: 12.9%;
+    position: absolute;
+    width: 9%;
+    left: 6.5%;
 }
+/*HPの値の設定*/
 .hp_value{
 	position: absolute;
-    width: 10%;
-    height: auto;
-    top: 36%;
-    left: 32.2%;
-    font-family: Century;
-    font-size: 3.2vh;
-	color: #7FFF7E;
+    font-size: 5vw;
+    top: 29%;
+    left: 17%;
 }
-/*グーの攻撃力表示の設定をする*/
+/*手のアイコンの幅*/
 .goo_icon{
+	margin-top: 24%;
 	position: absolute;
-    width: 7.5%;
-    top: 42%;
-    left: 46%;
+	width: 9%;
+	left: 0%;
 }
-.goo_pos
-{
-	position: absolute;
-    top: 44%;
-    left: 54%;
-}
-/*チョキの攻撃力表示の設定をする*/
 .cho_icon{
+	margin-top: 24%;
 	position: absolute;
-    width: 7.5%;
-    top: 42%;
-    left: 63%;
+	width: 9%;
+	left: 27%;
 }
-.cho_pos
-{
-	position: absolute;
-    top: 44%;
-    left: 70.8%;
-}
-/*パーの攻撃力表示の設定をする*/
 .paa_icon{
+	margin-top: 24%;
 	position: absolute;
-    width: 7.5%;
-    top: 42%;
-    left: 79.7%;
+	width: 9%;
+	left: 56%;
 }
-.paa_pos
-{
+/*手の値の設定*/
+.goo_value{
 	position: absolute;
-    top: 44%;
-    left: 87.5%;
+	font-size: 5vw;
+	top: 54%;
+	left: 10%;
 }
-/*数値のフォントを設定する*/
-.status_value{
+.cho_value{
+	position: absolute;
+	font-size: 5vw;
+	top: 54%;
+	left: 37%;
+}
+.paa_value{
+	position: absolute;
+	font-size: 5vw;
+	top: 54%;
+	left: 66%;
+}
+/*fontをCenturyに変更する*/
+.font_sentury{
 	font-family: Century;
-    font-size: 2.5vh;
+}
+/*fontをserifに変更する*/
+.font_serif{
+	font-family: serif;
+}
+.font_color_green{
+	color: #7FFF7E;
 }

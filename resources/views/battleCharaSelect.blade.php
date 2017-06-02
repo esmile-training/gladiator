@@ -9,73 +9,51 @@
 
 {{--所持キャラクターをすべて表示する--}}
 
-@foreach($viewData['charaList'] as $chara)
+<div class="chara_list">
+	@foreach($viewData['charaList'] as $chara)
+	{{--ボタンの表示間隔--}}
+		<div class="button_margin">
+			<a href="{{APP_URL}}battle/selectArena?uCharaId={{$chara['id']}}">
 
-	<a href="{{APP_URL}}battle/selectArena?uCharaId={{$chara['id']}}">
-		<div class = "chara_button">
-			{{--ボタンの枠--}}
-			<div class="chara_frame">
-				<img class="chara_frame_img" src="{{IMG_URL}}battle/chara_button_frame.png" alt="ボタンの枠">
+				{{--キャラボタン--}}
+				<div class="chara_button">
+					<img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame.png" alt="ボタンの下地">
 
-				{{--キャラアイコンのフレーム--}}
-				<div class="icon_frame">
-					<img src="{{IMG_URL}}battle/icon_frame{{$chara['iconFrame']}}.png" alt="キャラアイコンの枠">
-				</div>
+					{{--キャラアイコン--}}
+					<div class="chara_icon">
 
-				{{--キャラアイコン--}}
-				<div class="chara_icon">
-					<img src="{{IMG_URL}}chara/icon/icon_{{$chara['imgId']}}.png"
-					alt="キャラアイコン">
-				</div>
+						{{--アイコンの外枠--}}
+						<div class="icon_frame_margin">
+							<img class="icon_frame" src="{{IMG_URL}}battle/icon_frame{{$chara['iconFrame']}}.png" alt="キャラアイコンの枠">
+						</div>
 
-				{{--レアリティの後ろの光--}}
-				<div class="flash">
-					<img src="{{IMG_URL}}gacha/logoflash.png"
-					alt="レアリティの背景">
-				</div>
+						{{--キャライメージ--}}
+						<img class="chara_image" src="{{IMG_URL}}chara/icon/icon_{{$chara['imgId']}}.png" alt="キャラアイコン">
 
-				{{--レアリティ--}}
-				<div class="rarity">
-					<img src="{{IMG_URL}}gacha/{{$chara['rare']}}.png"
-					alt="レアリティ">
-				</div>
+						{{--レアリティの表示--}}
+						<img class="rarity_bg" src="{{IMG_URL}}gacha/logoflash.png" alt="レアリティの背景">
+						<img class="rarity" src="{{IMG_URL}}gacha/{{$chara['rare']}}.png" alt="レアリティ">
+					</div>
 
-				{{--HP--}}
-				<div class="hp_icon">
-					<img src="{{IMG_URL}}chara/status/hp.png"
-					alt="HPアイコン">
-				</div>
-				<div class="hp_value">
-					<font>{{$chara['hp']}}</font>
-				</div>
+					{{--ステータスの表示--}}
+					<div class="chara_status">
+						{{--名前の表示--}}
+						<font class="chara_name font_serif">{{$chara['name']}}</font>
+						{{--hpの表示--}}
+						<img class="hp_icon" src="{{IMG_URL}}chara/status/hp.png" alt="HPアイコン">
+						<font class="hp_value font_color_green font_sentury">{{$chara['hp']}}</font>
+						{{--手の表示--}}
+						<img class="goo_icon" src="{{IMG_URL}}chara/status/hand1.png" alt="グーアイコン">
+						<font class="goo_value font_sentury">{{$chara['gooAtk']}}</font>
+						<img class="cho_icon" src="{{IMG_URL}}chara/status/hand2.png" alt="チョキアイコン">
+						<font class="cho_value font_sentury">{{$chara['choAtk']}}</font>
+						<img class="paa_icon" src="{{IMG_URL}}chara/status/hand3.png" alt="パーアイコン">
+						<font class="paa_value font_sentury">{{$chara['paaAtk']}}</font>
+					</div>
 
-				{{--グー--}}
-				<div class="goo_icon">
-					<img src="{{IMG_URL}}chara/status/hand1.png" alt="グーアイコン">
 				</div>
-				<div class="status_value goo_pos">
-					<font>{{$chara['gooAtk']}}</font>
-				</div>
-
-				{{--チョキ--}}
-				<div class="cho_icon">
-					<img src="{{IMG_URL}}chara/status/hand2.png" alt="チョキアイコン">
-				</div>
-				<div class="status_value cho_pos">
-					<font>{{$chara['choAtk']}}</font>
-				</div>
-
-				{{--パー--}}
-				<div class="paa_icon">
-					<img src="{{IMG_URL}}chara/status/hand3.png" alt="パーアイコン">
-				</div>
-				<div class="status_value paa_pos">
-					<font>{{$chara['paaAtk']}}</font>
-				</div>
-
-					{{--キャラ名--}}
-				<font class="chara_name">{{$chara['name']}}</font>
-			</div>
+			</a>
 		</div>
-	</a>
-@endforeach
+	@endforeach
+</div>
+<img class="signboard_img" src="{{IMG_URL}}battle/signboard.png" alt="看板">
