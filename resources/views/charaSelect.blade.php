@@ -1,6 +1,7 @@
 {{-- css  --}}
 @include('common/css', ['file' => 'charaSelect'])
 @include('common/css', ['file' => 'battleCharaSelect'])
+@include('common/js',['file' => 'sort'])
 
 <?php
 	$type = isset($_GET['type']) ? $_GET['type'] : '';
@@ -10,9 +11,10 @@
 <img class='status_sign' src='{{IMG_URL}}status/statusSign.png' alt='ステータス'>
 <br>
 <div Align="right">
-	<form  action="{{APP_URL}}charaSelect/index" method="get">
+	<form action="{{APP_URL}}charaSelect/index" method="get">
 		<input type="radio" name="order" value="DESC" checked="checked">降順
 		<input type="radio" name="order" value="ASC">昇順
+		<a href="JavaScript:changeImage()"><img src='{{IMG_URL}}status/arrow0.png' name="img"></a>
 		<select name="type" onchange="submit(this.form)">
 		  <option value="id"<?php $type == 'id' ? print 'selected' : ''; ?>>入手</option>
 		  <option value="hp"<?php $type == 'hp' ? print 'selected' : ''; ?>>体力</option>
@@ -87,10 +89,26 @@
 			<font class="chara_name white">{{$chara['name']}}</font>
 		</div>
 		{{-- popupウインドウ --}}
-		@include('popup/wrap', [
-		'class'	=> "charaStatus{$count}",
-		'template' => 'charaStatus'
-		])
+<div class="modal charaStatus{{$count}}">
+		<div>
+		<div>
+		<img class="modal_frametop"src="{{SERVER_URL}}img/popup/popuptop.png">
+		<div>
+			@include('popup/charaStatus')
+		</div>
+		<div class="close">
+			<img src="{{SERVER_URL}}img/popup/closebutton.png">
+			<span>close</span>
+		</div>
+		</div>
+		<div>
+		<img class="modal_framemiddle"src="{{SERVER_URL}}img/popup/popupmiddle.png">
+		</div>
+		<div>
+		<img class="modal_framebottom"src="{{SERVER_URL}}img/popup/popupbottom.png">
+		</div>
+		</div>
+</div>
 	<?php $count++ ?>
 	@endforeach
 @endif
