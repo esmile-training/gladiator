@@ -20,6 +20,18 @@ class CharaSelectController extends BaseGameController
 		$userId = $this->user['id'];
 		// DBのキャラクターデータを取得する
 		$alluChara = $this->Model->exec('Chara','getAllUserChara',$userId);
+		// 金枠か銀枠かを判定する
+		foreach ($alluChara as $key => $chara)
+		{
+			if($chara['rare'] >= 4)
+			{
+				$alluChara[$key]['iconFrame'] = 2;
+			}
+			else
+			{
+				$alluChara[$key]['iconFrame'] = 1;
+			}
+		}
 		// DBからキャラクターを取得できたかを確認する
 		if(isset($alluChara))
 		{	
