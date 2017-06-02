@@ -14,7 +14,7 @@
 	{{-- popoupボタン --}}
 	<div class = "junban1">
 		<div class="modal_container">
-			<?php $w = date("w",strtotime($viewData['nowTime'])); (int)$w +=5; ?>
+			<?php $w = date("w",strtotime($viewData['nowTime'])); (int)$w +=4; ?>
 			@if(date('Y-m-d',strtotime($viewData['createTime'])) < date('Y-m-d',strtotime($viewData['nowTime'])))
 			<div class = "gacha_button1">
 				<input type="image" 
@@ -27,7 +27,7 @@
 			@else
 			<input type="image" 
 				   class = "gacha_button1" 
-				   src="{{IMG_URL}}gacha/banner13.png" 
+				   src="{{IMG_URL}}gacha/banner12.png" 
 				   width= 100% 
 				   height= 100%>
 			@endif
@@ -41,7 +41,7 @@
 			</div>
 			<div class = "gacha_button3">
 				<input type="image" 
-					   src="{{IMG_URL}}gacha/banner5.png" 
+					   src="{{IMG_URL}}gacha/banner13.png" 
 					   width= 100% 
 					   height= 100%>
 			</div>

@@ -16,6 +16,7 @@ class MoneyLib extends BaseGameLib
 	// 減算処理
 	public function Subtraction($user, $sub)
 	{
+
 		$user['money'] = $user['money'] - $sub;
 
 		$this->Model->exec('user', 'updateMoney', array($user));
