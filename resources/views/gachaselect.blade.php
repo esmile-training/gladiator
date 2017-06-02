@@ -44,6 +44,7 @@
 		</div>
 	</div>
 </div>
+
 {{-- popupウインドウ --}}
 <?php $count = [0=>1,2,3]; ?>
 @foreach($count as $val)

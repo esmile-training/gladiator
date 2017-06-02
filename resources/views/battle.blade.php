@@ -15,8 +15,8 @@
 
 		{{-- 降参用のデータ統合 --}}
 		<?php
-		$surrenderData['cost']	= $viewData['surrenderCost'];
-		$surrenderData['money']	= $viewData['userData']['money'];
+			$surrenderData['cost']	= $viewData['surrenderCost'];
+			$surrenderData['money']	= $viewData['userData']['money'];
 		?>
 		{{-- ポップアップの宣言 --}}
 		@include('popup/wrap', [
