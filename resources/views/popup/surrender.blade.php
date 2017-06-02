@@ -14,7 +14,7 @@
 							<img class="image_change" src="{{IMG_URL}}popup/yes_ButtonDown.png">
 						</div>
 					@else
-						<div class="surrender_button_yes">
+						<div class="surrender_button_yes clickfalse">
 							<a href="{{APP_URL}}battle/makeResultData">
 								<img class="image_change" src="{{IMG_URL}}popup/yes_Button.png">
 							</a>
