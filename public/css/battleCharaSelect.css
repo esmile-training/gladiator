@@ -154,20 +154,20 @@ a:active{
 /*手の値の設定*/
 .goo_value{
 	position: absolute;
-	font-size: 4vw;
-	top: 57%;
+	font-size: 5vw;
+	top: 54%;
 	left: 10%;
 }
 .cho_value{
 	position: absolute;
-	font-size: 4vw;
-	top: 57%;
+	font-size: 5vw;
+	top: 54%;
 	left: 37%;
 }
 .paa_value{
 	position: absolute;
-	font-size: 4vw;
-	top: 57%;
+	font-size: 5vw;
+	top: 54%;
 	left: 66%;
 }
 /*fontをCenturyに変更する*/

@@ -56,4 +56,4 @@
 		</div>
 	@endforeach
 </div>
-<img class="signboard_img" src="{{IMG_URL}}battle/signboard.png" alt="ボタンの下地">
+<img class="signboard_img" src="{{IMG_URL}}battle/signboard.png" alt="看板">
