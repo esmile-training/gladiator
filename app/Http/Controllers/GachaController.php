@@ -7,6 +7,8 @@ class GachaController extends BaseGameController
     
 	public function select()
 	{
+
+		
 		return viewWrap('gachaselect', $this->viewData);
 	}
 	public function eventsSelect()
@@ -55,6 +57,11 @@ class GachaController extends BaseGameController
 		$gachaConfig = \Config::get('gacha.eRate');
 		
 		$gachaVal = (int)filter_input(INPUT_GET,"gachavalue");
+		
+		if($this->user['money']  <= 0)
+		{
+			return view('error');
+		}
 		
 		$this->Lib->exec('Money', 'Subtraction', array($this->user, $gachaConfig[$gachaVal]['money']));
 		

@@ -14,7 +14,6 @@
 	</div>
 	{{-- popupボタン --}}
 	<div class = "junban1">
-
 			<div class = "gacha_button1">
 				<input type="image" 
 					   class="modal_btn gacha1" 
@@ -45,6 +44,7 @@
 		</div>
 	</div>
 </div>
+
 {{-- popupウインドウ --}}
 <?php $count = [0=>1,2,3]; ?>
 @foreach($count as $val)

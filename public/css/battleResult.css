@@ -49,6 +49,10 @@ body{}
 .battleresult_log_message_statusup_paa{
     width: 9%;
 }
+.battleresult_log_death{
+    position: absolute;
+    bottom: 1%;
+}
 
 
 /* 全体に対する、バックホームボタンの領域 */
