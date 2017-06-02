@@ -6,9 +6,20 @@ class TrainingController extends BaseGameController
 {
 	public function index()
 	{
-		//訓練が終了しているキャラがいるか確認し、いたらフラグを戻す
-		$trainingResult = $this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'], $this->user['id'], true));
-		$this->viewData['trainingResult'] = $trainingResult;
+		//訓練が終了しているキャラがいるか確認し、いたらその訓練の情報を取得する
+		$result = $this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'], $this->user['id'], true));
+		if(isset($result))
+		{
+			foreach($result as $val)
+			{
+				$endTrainingChara[] = $this->Model->exec('Chara','getById',$val['uCharaId']);
+			}
+			//訓練が終了したキャラのIDからそのキャラクターの情報を取得する。
+			$this->viewData['endTrainingChara'] = $endTrainingChara;
+			$this->viewData['isTrainingEndFlag'] = true;
+		}else{
+			$this->viewData['isTrainingEndFlag'] = false;
+		}
 		
 		//所持しているキャラのデータを持ってくる
 		$uCharaData = $this->Model->exec('Chara', 'getUserChara', false, $this->user['id']);
@@ -20,7 +31,7 @@ class TrainingController extends BaseGameController
 		}
 		return viewWrap('training',$this->viewData);
 	}
-
+	
 	public function coachSelect()
 	{
 		//uCharaIdをGETしviewDataに保持
@@ -37,28 +48,23 @@ class TrainingController extends BaseGameController
 			return viewWrap('Error',$this->viewData);
 		}
 		
-		//コーチごとに各攻撃力の成長確率を算出し格納する
-		$coachCnt = 0;
-		foreach($uCoachData as $coachInfo)
-		{
-			
-			$coachInfo['gooUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
-														array($coachInfo['gooAtk'],$uCharaAtkInfo['gooAtk'],$uCharaAtkInfo['gooUpCnt']));
-			$coachInfo['choUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
-														array($coachInfo['choAtk'],$uCharaAtkInfo['choAtk'],$uCharaAtkInfo['choUpCnt']));
-			$coachInfo['paaUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
-														array($coachInfo['paaAtk'],$uCharaAtkInfo['paaAtk'],$uCharaAtkInfo['paaUpCnt']));
-			
-			$uCoachData[$coachCnt]['gooUpProbability'] = $coachInfo['gooUpProbability'];
-			$uCoachData[$coachCnt]['choUpProbability'] = $coachInfo['choUpProbability'];
-			$uCoachData[$coachCnt]['paaUpProbability'] = $coachInfo['paaUpProbability'];
-			$coachCnt++;
-		}
-		
 		$this->viewData['coachList'] = $uCoachData;
+		
+		$uCharaInfo = [
+			'baseProbability'	=> $baseProbability = \Config::get('training.baseProbability'),
+			'uCharaGooAtk'		=> $uCharaAtkInfo['gooAtk'],
+			'uCharaChoAtk'		=> $uCharaAtkInfo['choAtk'],
+			'uCharaPaaAtk'		=> $uCharaAtkInfo['paaAtk'],
+			'gooUpCnt'			=> $uCharaAtkInfo['gooUpCnt'],
+			'choUpCnt'			=> $uCharaAtkInfo['choUpCnt'],
+			'paaUpCnt'			=> $uCharaAtkInfo['paaUpCnt']
+		];
+	
+		$this->viewData['uCharaInfo'] = $uCharaInfo;
+	
 		return viewWrap('coachSelect',$this->viewData);
 	}
-
+	
 	/*
 	 * 訓練情報をデータベースにSET
 	 */

@@ -16,13 +16,12 @@ class TrainingLib extends BaseGameLib
 			foreach($endTraining as $val)
 			{
 				$trainingState = 2;
-				$test = TrainingLib::uCharaAtkUp($val['id']);
+				TrainingLib::uCharaAtkUp($val['id']);
 				$this->Model->exec('Training', 'uCharaStateChange', array($val['uCharaId'],0));
 				$this->Model->exec('Training', 'uCoachStateChange', array($val['uCoachId'],0));
 				$this->Model->exec('Training', 'stateChange', array($val['id'], $trainingState), $this->user['id']);
 			}
-			return $test;
-			
+			return $endTraining;
 		}else if(isset($endTraining) && $isTrainingPage == false){
 			foreach($endTraining as $val)
 			{
@@ -63,7 +62,7 @@ class TrainingLib extends BaseGameLib
 			'paaUpCnt'	 => $uCharaStatus['paaUpCnt']	 + $statusResult['paaUpCnt']
 		];
 		
-		$this->Model->exec('Training', 'updateStatus', array($upDateStatus, $trainingInfo['uCharaId']));
+		$this->Model->exec('Chara', 'updateStatus', array($upDateStatus, $trainingInfo['uCharaId']));
 		return $upDateStatus;
 	}
 	
