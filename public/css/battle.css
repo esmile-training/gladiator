@@ -15,6 +15,8 @@ body{}
 	background-size: cover;
     
     width: 100%;
+    
+    height: 100vh;
 }
 
 /* ヘッダーの領域 */
@@ -90,7 +92,7 @@ body{}
 .battle_enemy_hand {
     position: absolute;
     left: 35%;
-    top: 21%;
+    top: 18%;
     width: 30%;
 }
 /* 敵キャラの手部分の背景 */
@@ -108,7 +110,7 @@ body{}
 /* 全体画面に対する、ダメージログの領域 */
 .battle_log {
     position: absolute;
-    top: 40%;
+    top: 37%;
     left: 5%;
     width: 90%;
 }
