@@ -106,18 +106,17 @@
 					{{ $viewData['type'][$viewData['enemyData']['hand']] }}
 					を出した！<br />
 					<br />
-					結果は
 					@if($viewData['charaData']['result'] == 1)
 						<span class="battle_log_message_win">
-							{{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
+							結果は {{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
 						</span>
 					@elseif($viewData['charaData']['result'] == 2)
 						<span class="battle_log_message_lose">
-							{{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
+							結果は {{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
 						</span>
 					@else
 						<span class="battle_log_message_draw">
-							{{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
+							結果は {{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
 						</span>
 					@endif
 					<br />
@@ -214,5 +213,4 @@
 	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>
-	<script type="text/javascript" src="{{APP_URL}}js/oneClick.js"></script>
 </body>
