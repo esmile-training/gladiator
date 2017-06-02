@@ -12,8 +12,8 @@
 			uCoachHp	= <?php echo $viewData['coachList'][$uCoach]['hp']; ?>;
 			trainingFee = uCoachHp * 10;
 			
-			trainingFee{{$cnt}} = document.getElementById("trainingFee{{$cnt}}");
-			trainingFee{{$cnt}}.innerHTML = trainingFee;
+			trainingFee{{$cnt}}				= document.getElementById("trainingFee{{$cnt}}");
+			trainingFee{{$cnt}}.innerHTML	= trainingFee;
 		});
 
 		function feeCalcuration{{$cnt}}(select)
@@ -22,7 +22,7 @@
 			uCoachHp	= <?php echo $viewData['coachList'][$uCoach]['hp']; ?>;
 			trainingFee = uCoachHp * 10 * time * (100 - (time - 1) * 3) / 100;
 			
-			trainingFee{{$cnt}}			= document.getElementById("trainingFee{{$cnt}}");
+			trainingFee{{$cnt}}				= document.getElementById("trainingFee{{$cnt}}");
 			trainingFee{{$cnt}}.innerHTML	= trainingFee;
 		}
 	</script>
@@ -43,7 +43,7 @@
 <div class="training_popup_goo_icon">
 	<img src="{{IMG_URL}}/chara/status/hand1.png">
 </div>
-		
+
 <div class="training_popup_cho_icon">
 	<img src="{{IMG_URL}}/chara/status/hand2.png">
 </div>
@@ -65,7 +65,6 @@
 		<option>9</option>
 		<option>10</option>
 	</select>
-	
 	
 	<input class="training_submit" type="image" src="{{IMG_URL}}/popup/ok_Button.png">
 	

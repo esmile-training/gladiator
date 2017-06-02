@@ -1,29 +1,17 @@
 {{--CSS--}}
 @include('common/css', ['file' => 'training'])
 
-<div class="training_signboard">
-	 <img src="{{IMG_URL}}/training/signboard.png">
-</div>
-
 <?php $cnt = 0; ?>
 {{--uCoach(DB)から持ってきたデータの表示--}}
 @foreach($viewData['coachList'] as $val)
 	<div class="training_coach_window{{$cnt}}">
 		<div class ="modal_btn trainingPopup{{$cnt}}">
 			<img src="{{IMG_URL}}/training/coachButton.png" value="{{$val['id']}}">
+			
 			<div class="training_text training_coach_name">
 				<font>{{$val['name']}}</font>
 			</div>
-			<div class="training_gooprobability_text">
-				{{'グー攻撃力'}}
-			</div>
-			<div class="training_choprobability_text">
-				{{'チョキ攻撃力'}}
-			</div>
-			<div class="training_paaprobability_text">
-				{{'パー攻撃力'}}
-			</div>
-
+			
 			<div class="training_coach_icon{{$cnt}}">
 				<img src="{{IMG_URL}}/chara/icon/icon_{{$val['imgId']}}.png">
 				<div class="training_goo_icon">
@@ -45,6 +33,7 @@
 					{{$val['paaAtk']}}
 				</div>
 			</div>
+			
 		</div>
 	</div>
 @include('popup/wrap', [
@@ -52,7 +41,18 @@
 	'template'	=> 'coachSelect',
 	'data'		=> ['uCoach' => $cnt]
 ])
+
+<div class ="modal_btn atkUpProbabilityPopup{{$cnt}}">
+	<img src="{{IMG_URL}}/training/probabilityButton.png">
+</div>
+@include('popup/wrap', [
+	'class'		=> "atkUpProbabilityPopup{$cnt}", 
+	'template'	=> 'atkUpProbability',
+])
+
 <?php $cnt++; ?>
 @endforeach
 
-
+<div class="training_signboard">
+	 <img src="{{IMG_URL}}/training/signboard.png">
+</div>
