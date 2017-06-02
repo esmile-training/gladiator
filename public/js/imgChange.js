@@ -35,8 +35,8 @@ $(function(){
     });
 	
 	$('.clickfalse').click(function() {
-		$('a').click(function () {
-			return false;s
+		$('.clickfalse').click(function () {
+			return false;
 		});
 	});
 });
