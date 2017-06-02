@@ -22,6 +22,7 @@ $(function(){
 	main.style.marginBottom = footerHeight+'px';
     }else{
 	main.style.marginTop = headerHeight+'px';
+	main.style.height = (mainHeight+screen.height)+'px';
 	main.style.marginBottom = footerHeight+'px';
     }
 
