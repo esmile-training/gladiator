@@ -377,14 +377,14 @@ class battleController extends BaseGameController
 			// ユーザーのウィークリーポイント 'weeklyAward' に賞金額を加算しデータベースに格納
 			$this->Lib->exec('Ranking', 'weeklyAdd', array($this->RankingData, $prize));
 
-			/* 自キャラ、敵キャラのステータスを元にステータスの強化処理(訓練と同じシステムを使用) */
+			// 自キャラ、敵キャラのステータスを元にステータスの強化処理(訓練と同じシステムを使用)
 			$gooResult = $this->Lib->exec('Training', 'atkUpProbability', array($this->EnemyData['gooAtk'],$this->CharaData['gooAtk'],$this->CharaData['gooUpCnt']));
 			$choResult = $this->Lib->exec('Training', 'atkUpProbability', array($this->EnemyData['choAtk'],$this->CharaData['choAtk'],$this->CharaData['choUpCnt']));
 			$paaResult = $this->Lib->exec('Training','atkUpProbability', array($this->EnemyData['paaAtk'],$this->CharaData['paaAtk'],$this->CharaData['paaUpCnt']));
 			$time=1;
 			$charaUpData = $this->Lib->exec('Training','atkUpJudge',array($gooResult,$choResult,$paaResult,$time));
 
-			/* キャラの強化後の値をデータベースに格納 */
+			// キャラの強化後の値をデータベースに格納
 			$upDateStatus = [
 				'hp'		 => $this->CharaData['hp']			 + $charaUpData['statusUpCnt'],
 				'gooAtk'	 => $this->CharaData['gooAtk']		 + $charaUpData['gooUpCnt'],
@@ -396,7 +396,7 @@ class battleController extends BaseGameController
 			];
 			$this->Model->exec('Chara', 'updateStatus', array($upDateStatus, $this->CharaData['uCharaId']));
 
-			//リダイレクト引数受け渡し
+			//リダイレクト引数受け渡し(賞金、キャラのステータス、アップした数値)
 			$param = [
 				'prize'			=> $prize,
 				'name'			=> $this->CharaData['name'],
@@ -413,6 +413,7 @@ class battleController extends BaseGameController
 		// 自キャラのHPが0以下の場合(降参せずにプレイヤーが負けた場合)
 		else if($this->CharaData['battleHp'] <= 0)
 		{
+			//リダイレクト引数受け渡し(賞金は0)
 			$param = [
 				'name'	=> $this->CharaData['name'],
 				'prize' => 0,
@@ -426,11 +427,13 @@ class battleController extends BaseGameController
 			// 降参費用額計算
 			$prize = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));
 
+			// 降参費用をマイナスに
+			$prize *= -1;
+			
 			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
 			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$prize));
 
-			$prize *= -1;
-
+			//リダイレクト引数受け渡し(賞金は引退費用として)
 			$param = [
 				'name'	=> $this->CharaData['name'],
 				'prize' => $prize,

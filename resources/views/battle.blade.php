@@ -30,6 +30,7 @@
 			'data'		=> ['log' => $viewData['enemyData']['difficulty']]
 		])
 		
+		{{-- 背景画像 --}}
 		<img src="{{IMG_URL}}battle/battle_Bg{{$viewData['enemyData']['difficulty']}}.png" class="battle_bg">
 
 		{{-- バトル終了フラグが立っていなければヘッダー部分表示 --}}
