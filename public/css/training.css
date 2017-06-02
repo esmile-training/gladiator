@@ -140,7 +140,7 @@
 
 .training_fee_img{
     position: absolute;
-    top     : 90%;
+    top     : 95%;
     left    : 32%;
     width   : 30%;
     z-index : 1;
@@ -186,19 +186,19 @@
     position: absolute;
     top	    : 200%;
     left    : 18%;
-    width   : 7%;
+    width   : 8%;
 }
 
 .training_popup_cho_icon{
     position: absolute;
     top	    : 200%;
     left    : 38%;
-    width   : 7%;
+    width   : 8%;
 }
 
 .training_popup_paa_icon{
     position: absolute;
     top	    : 200%;
     left    : 58%;
-    width   : 7%;
+    width   : 8%;
 }

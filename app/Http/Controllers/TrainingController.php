@@ -16,9 +16,9 @@ class TrainingController extends BaseGameController
 			}
 			//訓練が終了したキャラのIDからそのキャラクターの情報を取得する。
 			$this->viewData['endTrainingChara'] = $endTrainingChara;
-			$this->viewData['isTrainingEndFlag'] = true;
+			$this->viewData['isTrainingEndFlag'] = TRUE;
 		}else{
-			$this->viewData['isTrainingEndFlag'] = false;
+			$this->viewData['isTrainingEndFlag'] = FALSE;
 		}
 		
 		//所持しているキャラのデータを持ってくる
