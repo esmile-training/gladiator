@@ -44,8 +44,8 @@
 				{{-- プレイヤー敗北時のリザルトログ --}}
 				<div class="battleresult_log_message">
 					{{$viewData['charaDefaultData']['name']}} は死んだ <br />
-					<img src={{IMG_URL}}battleResult/chara_Death class="battleresult_log_message_death">
 				</div>
+				<img src={{IMG_URL}}battleResult/chara_Death class="battleresult_log_death">
 			@endif
 		</div>
 
