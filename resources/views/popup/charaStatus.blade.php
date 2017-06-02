@@ -1,10 +1,12 @@
-{{-- CSS --}}
+ {{-- CSS --}}
 @include('common/css', ['file' => 'charaStatus'])
 
 <div class="rareImg">
 	<img src="{{IMG_URL_GACHA}}{{$chara['rare']}}.png">
 </div>
-
+<div class="light">
+	<img src="{{IMG_URL}}gacha/logoflash.png" alt="レアリティの背景">
+</div>
 <div class="name">
 	{{ $chara['name'] }}
 </div>

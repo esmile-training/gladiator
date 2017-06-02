@@ -20,6 +20,18 @@ class SelectCoachController extends BaseGameController
 		$this->viewData['selectCharaState'] = $selectCharaState;
 		//コーチの人数を調べる
 		$alluCoach = $this->Model->exec('Training', 'getUserCoach',$_COOKIE['userId']);
+		// 金枠か銀枠かを判定する
+		foreach ($alluCoach as $key => $coach)
+		{
+			if($coach['rare'] >= 4)
+			{
+				$alluCoach[$key]['iconFrame'] = 2;
+			}
+			else
+			{
+				$alluCoach[$key]['iconFrame'] = 1;
+			}
+		}
 		if(count($alluCoach) >= 3)
 		{
 			//コーチが３人いたら

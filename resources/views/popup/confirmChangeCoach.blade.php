@@ -7,11 +7,25 @@
 	<center>コーチに配属しますか？</center>
 </div>
 <div class='chara_button'>
-	<div class="chara_frame reduction">
+	<div class="chara_frame">
 		<img class="chara_frame_img" src="{{IMG_URL}}training/coachButton.png" alt="ボタンの枠">
+		{{--キャラアイコンのフレーム--}}
+		<div class="icon_frame">
+			<img src="{{IMG_URL}}battle/icon_frame{{$coach['iconFrame']}}.png" alt="キャラアイコンの枠">
+		</div>
 		{{--キャラアイコン--}}
 		<div class="chara_icon">
 			<img src="{{IMG_URL}}chara/icon/icon_{{$coach['imgId']}}.png" alt="キャラアイコン">
+		</div>
+		{{--レアリティの後ろの光--}}
+		<div class="flash">
+			<img src="{{IMG_URL}}gacha/logoflash.png"
+			alt="レアリティの背景">
+		</div>
+		{{--レアリティ--}}
+		<div class="rarity">
+			<img src="{{IMG_URL}}gacha/{{$coach['rare']}}.png"
+			alt="レアリティ">
 		</div>
 		{{--HP--}}
 		<div class="hp_icon">
@@ -50,7 +64,7 @@
 	<div>
 	↓
 	</div>
-	<div class="chara_frame reduction">
+	<div class="chara_frame">
 		<img class="chara_frame_img" src="{{IMG_URL}}battle/chara_button_frame.png" alt="ボタンの枠">
 
 		{{--キャラアイコン--}}

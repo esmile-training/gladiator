@@ -34,9 +34,23 @@
 		{{--ボタンの枠--}}
 		<div class="modal_btn charaStatus{{ $count }} chara_frame" style='left: 2%'>
 			<input type='image' class="chara_frame_img" src='{{IMG_URL}}battle/chara_button_frame.png'>
+			{{--キャラアイコンのフレーム--}}
+			<div class="icon_frame">
+				<img src="{{IMG_URL}}battle/icon_frame{{$chara['iconFrame']}}.png" alt="キャラアイコンの枠">
+			</div>
 			{{--キャラアイコン--}}
 			<div class="chara_icon">
 				<img src="{{IMG_URL}}chara/icon/icon_{{$chara['imgId']}}.png" alt="キャラアイコン">
+			</div>
+			{{--レアリティの後ろの光--}}
+			<div class="flash">
+				<img src="{{IMG_URL}}gacha/logoflash.png"
+				alt="レアリティの背景">
+			</div>
+			{{--レアリティ--}}
+			<div class="rarity">
+				<img src="{{IMG_URL}}gacha/{{$chara['rare']}}.png"
+				alt="レアリティ">
 			</div>
 			{{--HP--}}
 			<div class="hp_icon">
