@@ -13,6 +13,8 @@
 	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
 	background-size: cover;
 	
+	position: fixed;
+	
 	width: 100%;
 }
 .gacha_roadbutton{

@@ -14,7 +14,6 @@
 	</div>
 	{{-- popupボタン --}}
 	<div class = "junban1">
-
 			<div class = "gacha_button1">
 				<input type="image" 
 					   class="modal_btn gacha1" 
