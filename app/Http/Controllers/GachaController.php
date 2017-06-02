@@ -58,7 +58,7 @@ class GachaController extends BaseGameController
 		
 		$gachaVal = (int)filter_input(INPUT_GET,"gachavalue");
 		
-		if($this->user['money'] < $gachaConfig[$gachaVal]['money'])
+		if($this->user['money']  <= 0)
 		{
 			return view('error');
 		}
