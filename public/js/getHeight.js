@@ -17,7 +17,7 @@ $(function(){
 
     if(mainHeight < bodyHeight && screen.height < 1024){
 	bodyHeight = bodyHeight+(footerHeight/4);
-	main.style.marginTop = headerHeight+'px';
+	main.style.marginTop = (mainHeight+screen.height)+'px';
 	main.style.height = bodyHeight+'px';
 	main.style.marginBottom = footerHeight+'px';
     }else{
