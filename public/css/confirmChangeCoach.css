@@ -22,12 +22,6 @@
 	text-decoration: none;
 }
 
-.text{
-	position: absolute;
-	top: 18%;
-	color: silver;
-}
-
 .button{
 	width: 32%;
 	position: absolute;
@@ -41,6 +35,7 @@
 	right: 15%
 }
 
+/* キャラとコーチのボックス縮小 */
 .reduction{
 	transform: scale(0.8);
 }

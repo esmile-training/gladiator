@@ -1,7 +1,7 @@
 @include('common/css', ['file' => 'retirementChara'])
 <div id='main'>
 <br>
-<div class="text">
+<div class="textfont">
 	{{$viewData['comment']}}
 </div>
 <br>

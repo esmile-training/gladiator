@@ -18,10 +18,9 @@
 		  <option value="hp"<?php $type == 'hp' ? print 'selected' : ''; ?>>体力</option>
 		  <option value="name"<?php $type == 'name' ? print 'selected' : ''; ?>>名前</option>
 		  <option value="rare"<?php $type == 'rare' ? print 'selected' : ''; ?>>レア度</option>
-		  <option value="attribute"<?php $type == 'attribute' ? print 'selected' : ''; ?>>属性</option>
-		  <option value="gooAtk"<?php $type == 'gooAtk' ? print 'selected' : ''; ?>>グー攻撃力</option>
-		  <option value="choAtk"<?php $type == 'choAtk' ? print 'selected' : ''; ?>>チョキ攻撃力</option>
-		  <option value="paaAtk"<?php $type == 'paaAtk' ? print 'selected' : ''; ?>>パー攻撃力</option>
+		  <option value="gooAtk"<?php $type == 'gooAtk' ? print 'selected' : ''; ?>>グー 攻撃力</option>
+		  <option value="choAtk"<?php $type == 'choAtk' ? print 'selected' : ''; ?>>チョキ 攻撃力</option>
+		  <option value="paaAtk"<?php $type == 'paaAtk' ? print 'selected' : ''; ?>>パー 攻撃力</option>
 		</select>
 	</form>
 </div>
@@ -33,7 +32,7 @@
 	@foreach($viewData['charaList'] as $chara)
 		{{-- popupボタン --}}
 		{{--ボタンの枠--}}
-		<div class="modal_btn charastatus{{ $count }} chara_frame" style='left: 2%'>
+		<div class="modal_btn charaStatus{{ $count }} chara_frame" style='left: 2%'>
 			<input type='image' class="chara_frame_img" src='{{IMG_URL}}battle/chara_button_frame.png'>
 			{{--キャラアイコン--}}
 			<div class="chara_icon">
@@ -75,8 +74,8 @@
 		</div>
 		{{-- popupウインドウ --}}
 		@include('popup/wrap', [
-		'class'	=> "charastatus{$count}",
-		'template' => 'charastatus'
+		'class'	=> "charaStatus{$count}",
+		'template' => 'charaStatus'
 		])
 	<?php $count++ ?>
 	@endforeach
