@@ -13,14 +13,13 @@ class TrainingController extends BaseGameController
 			foreach($result as $val)
 			{
 				$endTrainingChara[] = $this->Model->exec('Chara','getById',$val['uCharaId']);
-				$this->viewData['isTrainingEndFlag'] = true;
 			}
+			//訓練が終了したキャラのIDからそのキャラクターの情報を取得する。
+			$this->viewData['endTrainingChara'] = $endTrainingChara;
+			$this->viewData['isTrainingEndFlag'] = true;
 		}else{
 			$this->viewData['isTrainingEndFlag'] = false;
 		}
-		
-		//訓練が終了したキャラのIDからそのキャラクターの情報を取得する。
-		$this->viewData['endTrainingChara'] = $endTrainingChara;
 		
 		//所持しているキャラのデータを持ってくる
 		$uCharaData = $this->Model->exec('Chara', 'getUserChara', false, $this->user['id']);
@@ -49,23 +48,20 @@ class TrainingController extends BaseGameController
 			return viewWrap('Error',$this->viewData);
 		}
 		
-		//コーチごとに各攻撃力の成長確率を算出し格納する
-		$coachCnt = 0;
-		foreach($uCoachData as $coachInfo)
-		{
-			$coachInfo['gooUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
-														array($coachInfo['gooAtk'],$uCharaAtkInfo['gooAtk'],$uCharaAtkInfo['gooUpCnt']));
-			$coachInfo['choUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
-														array($coachInfo['choAtk'],$uCharaAtkInfo['choAtk'],$uCharaAtkInfo['choUpCnt']));
-			$coachInfo['paaUpProbability'] = $this->Lib->exec('Training','atkUpProbability',
-														array($coachInfo['paaAtk'],$uCharaAtkInfo['paaAtk'],$uCharaAtkInfo['paaUpCnt']));
-			
-			$uCoachData[$coachCnt]['gooUpProbability'] = $coachInfo['gooUpProbability'];
-			$uCoachData[$coachCnt]['choUpProbability'] = $coachInfo['choUpProbability'];
-			$uCoachData[$coachCnt]['paaUpProbability'] = $coachInfo['paaUpProbability'];
-			$coachCnt++;
-		}
 		$this->viewData['coachList'] = $uCoachData;
+		
+		$uCharaInfo = [
+			'baseProbability'	=> $baseProbability = \Config::get('training.baseProbability'),
+			'uCharaGooAtk'		=> $uCharaAtkInfo['gooAtk'],
+			'uCharaChoAtk'		=> $uCharaAtkInfo['choAtk'],
+			'uCharaPaaAtk'		=> $uCharaAtkInfo['paaAtk'],
+			'gooUpCnt'			=> $uCharaAtkInfo['gooUpCnt'],
+			'choUpCnt'			=> $uCharaAtkInfo['choUpCnt'],
+			'paaUpCnt'			=> $uCharaAtkInfo['paaUpCnt']
+		];
+	
+		$this->viewData['uCharaInfo'] = $uCharaInfo;
+	
 		return viewWrap('coachSelect',$this->viewData);
 	}
 	

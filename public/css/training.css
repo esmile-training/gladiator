@@ -15,7 +15,7 @@
 	height:78vh;
 }
 
-.training_kanban{
+.training_signboard{
     width: 35%;
     position: relative;
     top: 0%;
@@ -110,29 +110,95 @@
     width   : 40%;
 }
 
-.training_goo_probability{
+.training_coach_goo_atk{
     position: absolute;
     top     : 70%;
     left    : 150%;
     color   :#ff4444;
 }
 
-.training_cho_probability{
+.training_coach_cho_atk{
     position: absolute;
     top     : 70%;
     left    : 275%;
     color   :#ffff00; 
 }
 
-.training_paa_probability{
+.training_coach_paa_atk{
     position: absolute;
     top     : 70%;
     left    : 400%;
     color   :#ddddff; 
 }
+
 .training_submit{
     position: absolute;
     top     : 550%;
     left    : 40%;
     width   : 20%;
+}
+
+.training_fee_img{
+    position: absolute;
+    top     : 90%;
+    left    : 32%;
+    width   : 30%;
+    z-index : 1;
+}
+.training_fee_text{
+    position: absolute;
+    top     : 100%;
+    left    : 36%;
+    width   : 30%;
+    z-index :2;
+}
+
+.training_text{
+    font-family:'Century';
+    font-size: 2.6vh;
+}
+
+.training_first_probability_text{
+    position: absolute;
+    top	    : 150%;
+    left    : 32%
+}
+
+.training_goo_up_probability{
+    position: absolute;
+    top	    : 200%;
+    left    : 25%
+}
+
+.training_cho_up_probability{
+    position: absolute;
+    top	    : 200%;
+    left    : 45%
+}
+
+.training_paa_up_probability{
+    position: absolute;
+    top	    : 200%;
+    left    : 65%
+}
+
+.training_popup_goo_icon{
+    position: absolute;
+    top	    : 200%;
+    left    : 18%;
+    width   : 7%;
+}
+
+.training_popup_cho_icon{
+    position: absolute;
+    top	    : 200%;
+    left    : 38%;
+    width   : 7%;
+}
+
+.training_popup_paa_icon{
+    position: absolute;
+    top	    : 200%;
+    left    : 58%;
+    width   : 7%;
 }
