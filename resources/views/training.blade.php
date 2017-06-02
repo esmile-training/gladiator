@@ -2,8 +2,8 @@
 @include('common/css', ['file' => 'training'])
 @include('common/css', ['file' => 'battleCharaSelect'])
 
-<div class="training_kanban">
-	 <img src="{{IMG_URL}}/training/trainingKanban.png">
+<div class="training_signboard">
+	 <img src="{{IMG_URL}}/training/signboard.png">
 </div>
 
 <script>
@@ -19,10 +19,6 @@
 		 }
 	 });
 </script>
-
-<div>
-	<h3>訓練するキャラクターを選んでください。</h3>
-</div>
 
 @if($viewData['isTrainingEndFlag'])
 	<div class="modal trainingResult">
