@@ -14,7 +14,7 @@ $(function(){
     console.log(bodyHeight);
     console.log(screen.height);
      
-
+/*
     if(mainHeight < bodyHeight && screen.height < 1024){
 	bodyHeight = bodyHeight+(footerHeight/4);
 	main.style.marginTop = bodyHeight+'px';
@@ -24,6 +24,6 @@ $(function(){
 	main.style.marginTop = headerHeight+'px';
 	main.style.height = mainHeight+'px';
 	main.style.marginBottom = footerHeight+'px';
-    }
+    }*/
 
 });
