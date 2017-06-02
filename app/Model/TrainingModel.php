@@ -94,25 +94,6 @@ EOD;
 	}
 	
 	/*
-	 * キャラクターの攻撃力を更新する
-	 */
-	public function updateStatus($statusInfo,$uCharaId)
-	{
-$sql =  <<< EOD
-		UPDATE uChara
-		SET		hp		 = {$statusInfo['hp']},
-				gooAtk	 = {$statusInfo['gooAtk']},
-				choAtk	 = {$statusInfo['choAtk']},
-				paaAtk	 = {$statusInfo['paaAtk']},
-				gooUpCnt = {$statusInfo['gooUpCnt']},
-				choUpCnt = {$statusInfo['choUpCnt']},
-				paaUpCnt = {$statusInfo['paaUpCnt']}
-		WHERE	id = {$uCharaId};
-EOD;
-		$this->update($sql);
-	}
-	
-	/*
 	 * キャラクターの訓練状態を変更する
 	 */
 	public function uCharaStateChange($uCharaId,$trainingState)
