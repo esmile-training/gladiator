@@ -1,3 +1,4 @@
+<a  href="{{APP_URL}}top/login">
 <!DOCTYPE html>
 <html lang="jp">
 	<head>
@@ -10,21 +11,21 @@
 		<link href="{{APP_URL}}css/modal.css?var={{time()}}" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		<div>
-			<img src="{{IMG_URL}}title/title{{$viewData['bgNumber']}}.png" class="top_back">
+		<div>				
+			<img class = "top_back2"src = "{{IMG_URL}}title/titlelogoDown.png">
 		</div>
-		@include('common/css', ['file' => 'top'])
-		<a  href="{{APP_URL}}top/login">
-			<input type="submit" 
-				class = "roadbutton">
-		</a>
+		<div>
+			<img src="{{IMG_URL}}title/title{{$viewData['bgNumber']}}.png" class="top_back load">
+		</div> 	
+			@include('common/css', ['file' => 'top'])
+			<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
+			<script type="text/javascript" src="{{APP_URL}}js/load.js"></script>
 		<div class = "top_imgloginbutton">
-			<a  href="{{APP_URL}}top/login">
-				<span class = "flashing">
-					<img class = "top_button top_login"
+			<span class = "flashing">
+					<img class = "top_login load"
 						 src="{{IMG_URL}}title/titlelogo.png">
-				</span>
-			</a>
+			</span>
 		</div>
 	</body>
 </html>
+</a>
