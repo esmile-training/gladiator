@@ -66,9 +66,9 @@
 		<option>10</option>
 	</select>
 	
-	<div class="training_submit">
-		<img src="{{IMG_URL}}/popup/ok_Button.png">
-	</div>
+	
+	<input class="training_submit" type="image" src="{{IMG_URL}}/popup/ok_Button.png">
+	
 	<input type = "hidden" name = "uCoachId" value = "{{$viewData['coachList'][$uCoach]['id']}}">
 	<input type = "hidden" name = "uCharaId" value = "{{$viewData['uCharaId']}}">
 	<input type = "hidden" name = "uCoachHp" value = "{{$viewData['coachList'][$uCoach]['hp']}}">

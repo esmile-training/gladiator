@@ -7,15 +7,15 @@
 </div>
 
 <script>
-	 var popup = <?php echo $viewData['isTrainingEndFlag'] ?>;
+	 var popup = Boolean(<?php echo $viewData['isTrainingEndFlag'] ?>);
 	 $(function (){
 		 if(popup)
 		 {
-			$('.trainingResult').css('display','block'); 
+			$('.trainingResult').css('display','block');
 		 }
 		 else
 		 {
-			 $('.trainingResult').css('display','none'); 
+			 $('.trainingResult').css('display','none');
 		 }
 	 });
 </script>
