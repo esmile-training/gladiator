@@ -106,18 +106,17 @@
 					{{ $viewData['type'][$viewData['enemyData']['hand']] }}
 					を出した！<br />
 					<br />
-					結果は
 					@if($viewData['charaData']['result'] == 1)
 						<span class="battle_log_message_win">
-							{{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
+							結果は {{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
 						</span>
 					@elseif($viewData['charaData']['result'] == 2)
 						<span class="battle_log_message_lose">
-							{{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
+							結果は {{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
 						</span>
 					@else
 						<span class="battle_log_message_draw">
-							{{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
+							結果は {{ $viewData['result'][$viewData['charaData']['result']] }}！<br />
 						</span>
 					@endif
 					<br />
@@ -162,14 +161,14 @@
 		@if ($viewData['battleData']['delFlag'] != 1)
 			{{-- それぞれのボタン表示 --}}
 			<div class="battle_playerhand_button">
-				<img src="{{IMG_URL}}battle/button_Bg.png" class="battle_playerhand_button_bg" >
-				<a href="{{APP_URL}}battle/updateBattleData?hand=1" class="battle_playerhand_button_goo_linkregion" >
-					<img src={{IMG_URL}}chara/status/hand1.png class="battle_playerhand_button_icon image_change" >
+				<img src="{{IMG_URL}}battle/button_Bg.png" class="battle_playerhand_button_bg">
+				<a href="{{APP_URL}}battle/updateBattleData?hand=1" class="battle_playerhand_button_goo_linkregion clickfalse">
+					<img src={{IMG_URL}}chara/status/hand1.png class="battle_playerhand_button_icon">
 				</a>
-				<a href="{{APP_URL}}battle/updateBattleData?hand=2" class="battle_playerhand_button_cho_linkregion" >
+				<a href="{{APP_URL}}battle/updateBattleData?hand=2" class="battle_playerhand_button_cho_linkregion clickfalse" >
 					<img src={{IMG_URL}}chara/status/hand2.png class="battle_playerhand_button_icon image_change" >
 				</a>
-				<a href="{{APP_URL}}battle/updateBattleData?hand=3" class="battle_playerhand_button_paa_linkregion" >
+				<a href="{{APP_URL}}battle/updateBattleData?hand=3" class="battle_playerhand_button_paa_linkregion clickfalse">
 					<img src={{IMG_URL}}chara/status/hand3.png class="battle_playerhand_button_icon image_change" >
 				</a>
 			</div>
