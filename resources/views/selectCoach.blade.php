@@ -6,7 +6,7 @@
 </div>
 <br><br>
 <div>
-	<font color="silver">
+	<font color="white">
 	<center>
 	コーチ枠がいっぱいです。<br>
 	交代させるコーチか、

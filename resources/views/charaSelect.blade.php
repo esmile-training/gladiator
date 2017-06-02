@@ -11,8 +11,8 @@
 <br>
 <div Align="right">
 	<form  action="{{APP_URL}}charaSelect/index" method="get">
-		<input type="radio" name="order" value="DESC" checked="checked"><font color='silver' style="font-family: serif">降順<font>
-		<input type="radio" name="order" value="ASC"><font color='silver' style="font-family: serif">昇順<font>
+		<input type="radio" name="order" value="DESC" checked="checked">降順
+		<input type="radio" name="order" value="ASC">昇順
 		<select name="type" onchange="submit(this.form)">
 		  <option value="id"<?php $type == 'id' ? print 'selected' : ''; ?>>入手</option>
 		  <option value="hp"<?php $type == 'hp' ? print 'selected' : ''; ?>>体力</option>
@@ -84,7 +84,7 @@
 			</div>
 
 			{{--キャラ名--}}
-			<font class="chara_name">{{$chara['name']}}</font>
+			<font class="chara_name white">{{$chara['name']}}</font>
 		</div>
 		{{-- popupウインドウ --}}
 		@include('popup/wrap', [

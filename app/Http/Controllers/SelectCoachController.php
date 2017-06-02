@@ -9,6 +9,7 @@ class SelectCoachController extends BaseGameController
 		//引退するキャラクターのステータス持ち越し
 		$selectCharaState = array('id' => $_GET['id'],
 								'imgId' => $_GET['imgId'],
+								'iconFrame' => $_GET['iconFrame'],
 								'name' => $_GET['name'],
 								'rare' => $_GET['rare'],
 								'attribute' => $_GET['attribute'],
