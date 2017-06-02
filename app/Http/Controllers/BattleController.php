@@ -238,7 +238,6 @@ class battleController extends BaseGameController
 	// データベースからデータをそれぞれの変数に格納するファンクション
 	public function getBattleData()
 	{
-
 		// config/battle で指定した三すくみの名前を読み込み
 		// 1 = 'グー' 2 = 'チョキ' 3 = 'パー' で指定中
 		$this->TypeData	= \Config::get('battle.typeStr');
@@ -269,7 +268,6 @@ class battleController extends BaseGameController
 			// EnemyData に敵キャラデータを格納
 			$this->EnemyData = $this->Model->exec('BattleEnemy', 'getBattleEnemyData', $this->BattleData['uBattleEnemyId']);
 		}
-
 	}
 
 	// データベースからランキングデータを RankingData に格納するファンクション

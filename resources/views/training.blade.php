@@ -35,7 +35,12 @@
 	<div class = "chara_button">
 		{{--ボタンの枠--}}
 		<div class="chara_frame">
-			<a href="{{APP_URL}}training/coachSelect?uCharaId={{$val['id']}}">
+			@if($val['trainingState'] == 1)
+				<a class="training_a_none" href="{{APP_URL}}training/coachSelect?uCharaId={{$val['id']}}">
+				<div class="scale_img"><img class="chara_frame_img" src="{{IMG_URL}}battle/chara_button_frame.png" alt="ボタンの枠"></div>
+			@else
+				<a href="{{APP_URL}}training/coachSelect?uCharaId={{$val['id']}}">
+			@endif
 				<img class="chara_frame_img" src="{{IMG_URL}}battle/chara_button_frame.png" alt="ボタンの枠">
 
 				{{--キャラアイコン--}}

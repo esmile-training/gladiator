@@ -173,10 +173,12 @@
 					<img src={{IMG_URL}}chara/status/hand3.png class="battle_playerhand_button_icon image_change" >
 				</a>
 			</div>
+		{{-- バトル終了のフラグが立っていたら攻撃の受け付けをしない --}}
 		@else
+			{{-- リザルト画面へ行くボタン表示 --}}
 			<div>
-				<a href="{{APP_URL}}battle/makeResultData" class="battle_battleresult_button" >
-					<img class="battle_battleresult_button_img image_change" src={{IMG_URL}}battle/toBattleResult.png >
+				<a href="{{APP_URL}}battle/makeResultData" class="battle_battleresult_button clickfalse" >
+					<img class="battle_battleresult_button_img image_change " src={{IMG_URL}}battle/toBattleResult.png >
 				</a>
 			</div>
 		@endif

@@ -51,7 +51,7 @@
 		{{-- ホームへ戻るボタンの表示領域 --}}
 		<div class="battleresult_backhome_linkregion">
 			{{-- ホームへ戻るボタン --}}
-			<a href="{{APP_URL}}mypage" class="battleresult_backhome_icon">
+			<a href="{{APP_URL}}mypage" class="battleresult_backhome_icon clickfalse">
 				<img class="image_change" src={{IMG_URL}}battleResult/backHome.png >
 			</a>
 		</div>
