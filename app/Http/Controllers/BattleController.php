@@ -394,7 +394,7 @@ class battleController extends BaseGameController
 				'choUpCnt'	 => $this->CharaData['choUpCnt']	 + $charaUpData['choUpCnt'],
 				'paaUpCnt'	 => $this->CharaData['paaUpCnt']	 + $charaUpData['paaUpCnt']
 			];
-			$this->Model->exec('Training', 'updateStatus', array($upDateStatus, $this->CharaData['uCharaId']));
+			$this->Model->exec('Chara', 'updateStatus', array($upDateStatus, $this->CharaData['uCharaId']));
 
 			//リダイレクト引数受け渡し
 			$param = [

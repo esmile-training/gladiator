@@ -34,9 +34,9 @@ $(function(){
 	}, 500);
     });
 	
-	$('a').click(function() {
-    $('a').click(function () {
-        return false;
-    });
-});
+	$('.clickfalse').click(function() {
+		$('a').click(function () {
+			return false;s
+		});
+	});
 });
