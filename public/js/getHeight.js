@@ -1,13 +1,13 @@
-$(function(){    
+$(function(){
     var headerHeight = $('.headerPosition > .headerImg').height();
     var footerHeight = $('.footerPosition > .footerImg').height();
-    
+
     var main = document.getElementById( "main" );
     var mainHeight =  $('#main').height();
-    
+
     headerHeight = headerHeight-(headerHeight/6);
-    footerHeight = footerHeight-(footerHeight/40);
-    
+    footerHeight = footerHeight-(footerHeight/60);
+
      var bodyHeight = screen.height - (headerHeight + footerHeight);
 
     console.log(mainHeight);

@@ -1,6 +1,5 @@
  {{-- CSS --}}
 @include('common/css', ['file' => 'charaStatus'])
-
 <div class="rareImg">
 	<img src="{{IMG_URL_GACHA}}{{$chara['rare']}}.png">
 </div>
@@ -16,14 +15,16 @@
 </div>
 
 <div class="param_box">
-	<div class="icon_img icon_hp"><img src="{{IMG_URL}}chara/status/hp.png"></div>
-	<div class="param_text text_hp">{{$chara['hp']}}</div>
-	<div class="icon_img icon_goo"><img src="{{IMG_URL}}chara/status/hand1.png"></div>
-	<div class="param_text text_goo">{{$chara['gooAtk']}}</div>
-	<div class="icon_img icon_cho"><img src="{{IMG_URL}}chara/status/hand2.png"></div>
-	<div class="param_text text_cho">{{$chara['choAtk']}}</div>
-	<div class="icon_img icon_paa"><img src="{{IMG_URL}}chara/status/hand3.png"></div>
-	<div class="param_text text_paa">{{$chara['paaAtk']}}</div>
+	<div>
+		<div class="icon_img icon_hp"><img src="{{IMG_URL}}chara/status/hp.png"></div>
+		<div class="param_text text_hp">{{$chara['hp']}}</div>
+		<div class="icon_img icon_goo"><img src="{{IMG_URL}}chara/status/hand1.png"></div>
+		<div class="param_text text_goo">{{$chara['gooAtk']}}</div>
+		<div class="icon_img icon_cho"><img src="{{IMG_URL}}chara/status/hand2.png"></div>
+		<div class="param_text text_cho">{{$chara['choAtk']}}</div>
+		<div class="icon_img icon_paa"><img src="{{IMG_URL}}chara/status/hand3.png"></div>
+		<div class="param_text text_paa">{{$chara['paaAtk']}}</div>
+	</div>
 </div>
 
 <div class="retire">
