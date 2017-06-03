@@ -24,6 +24,16 @@
 					   width= 100% 
 					   height= 100%>
 			</div>
+			<?php 
+				$data['gachaId'] = 4;
+				$data['money'] = $viewData['user']['money'];
+			?>
+			{{-- popupウインドウ --}}
+			@include('popup/wrap', [
+				'class'		=> 'gacha4', 
+				'template'	=> 'gacha',
+				'data'		=> ['data' => $data]
+			])
 			@else
 			<input type="image" 
 				   class = "gacha_button1" 
@@ -31,6 +41,7 @@
 				   width= 100% 
 				   height= 100%>
 			@endif
+			{{-- popupウインドウ --}}
 			<div class = "gacha_button2">
 				<input type="image" 
 					   class="modal_btn gacha{{$w}}" 
@@ -39,6 +50,15 @@
 					   width= 100% 
 					   height= 100%>
 			</div>
+			<?php 
+				$data['gachaId'] = $w;
+				$data['money'] = $viewData['user']['money'];
+			?>
+			@include('popup/wrap', [
+				'class'		=> "gacha{$w}",
+				'template'	=> 'gacha',
+				'data'		=> ['data' => $data]
+			])
 			<div class = "gacha_button3">
 				<input type="image" 
 					   src="{{IMG_URL}}gacha/banner13.png" 
@@ -48,14 +68,3 @@
 		</div>
 	</div>
 </div>
-{{-- popupウインドウ --}}
-@include('popup/wrap', [
-	'class'		=> 'gacha4', 
-	'template'	=> 'gacha',
-	'data'		=> ['gachaId' => 4]
-])
-@include('popup/wrap', [
-	'class'		=> "gacha{$w}",
-	'template'	=> 'gacha',
-	'data'		=> ['gachaId' => $w]
-])
