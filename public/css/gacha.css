@@ -36,6 +36,25 @@
 .gacha_charapos{
 	position: absolute;
 	top: 0px;
+	-webkit-animation: scaleout 1.0s;
+	animation: scaleout 1.0s;
+}
+@-webkit-keyframes scaleout {
+  0% { 
+	  -webkit-transform: scale(0.0) 
+  }
+  100% {
+    -webkit-transform: scale(1.0);
+  }
+}
+@keyframes scaleout {
+  0% {
+    transition: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 100% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
 }
 .gacha_chara{
 	width: 80%;

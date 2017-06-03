@@ -44,13 +44,16 @@
 		</div>
 	</div>
 </div>
-
 {{-- popupウインドウ --}}
 <?php $count = [0=>1,2,3]; ?>
 @foreach($count as $val)
+<?php 
+	$data['gachaId'] = $val;
+	$data['money'] = $viewData['user']['money'];
+?>
 @include('popup/wrap', [
 	'class'		=> "gacha{$val}", 
 	'template'	=> 'gacha',
-	'data'		=> ['gachaId' => $val]
+	'data'		=> ['data' => $data]
 	])
 @endforeach
