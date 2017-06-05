@@ -10,7 +10,7 @@
 
 <div id="roadCover" class="offCover">
 	<div>
-		<p>「<?php $order == 'DESC' ? print '降順' : print '昇順'; ?>」<br><div class="getType(<?php $type ?>)"><br>に並べかえています。</p>
+		<p>「<?php $order == 'DESC' ? print '降順' : print '昇順'; ?>」<br><br>に並べかえています。</p>
 	</div>
 </div>
 	
