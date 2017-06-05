@@ -153,3 +153,13 @@ a:active{
 .font_serif{
 	font-family: serif;
 }
+.no_chara{
+    font-size: 150%;
+    color: white;
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+}
