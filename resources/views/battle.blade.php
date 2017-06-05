@@ -284,5 +284,5 @@
 	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>
-	<script type="text/javascript" src="{{APP_URL}}js/battleButton2.js"></script>
+	<script type="text/javascript" src="{{APP_URL}}js/battleButton.js"></script>
 </body>
