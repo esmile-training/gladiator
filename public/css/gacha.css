@@ -144,3 +144,7 @@
 #check1:checked ~ #entryBtn{
 	opacity: 0;
 }
+.top{
+	 position: relative;
+}
+

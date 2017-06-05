@@ -5,7 +5,7 @@
  * 最終更新日:2017/05/29
  */
  /*背景の設定をする*/
-body{
+#main{
 	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/battle/chara_select_bg.jpg);
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -32,8 +32,8 @@ a:active{
 }
 /*キャラの表示位置の設定*/
 .chara_list{
-	margin-top: 21vh;
-	margin-left: 2%;
+	margin-top: 23vh;
+	margin-left: 4%;
 	margin-right: 2%;
 }
 /*看板の設定*/
@@ -46,7 +46,8 @@ a:active{
 }
 /*キャラボタン同士の間隔を設定する*/
 .button_margin{
-	margin-bottom: 5%;
+	margin-bottom: 4%;
+	width: 52vh;
 }
 /*キャラボタンの設定*/
 .chara_button{
@@ -61,12 +62,12 @@ a:active{
 /*キャラアイコンの設定*/
 .chara_icon{
 	position: absolute;
-	margin-top: -4.6%;
-	margin-left: 9%;
-	width: 28%;
-	height: 74%;
-	top: 0%;
-	left: 0%;
+    margin-top: -6.6%;
+    margin-left: 2%;
+    width: 23%;
+    height: 74%;
+    top: 0%;
+    left: 0%;
 }
 /*アイコンの外枠の設定*/
 .icon_frame{
@@ -81,26 +82,26 @@ a:active{
 /*キャライメージ*/
 .chara_image{
 	position: absolute;
-	width: 88%;
-	top: 0%;
-	left: 0%;
+    width: 116%;
+    top: 0%;
+    left: 0%;
 }
 /*レアリティの表示*/
 .rarity_bg{
-	margin-top: 66%;
-	position: absolute;
-	width: 56%;
-	height: auto;
-	top: 0%;
-	left: -11%;
+	margin-top: 106%;
+    position: absolute;
+    width: 38%;
+    height: auto;
+    top: 0%;
+    left: -4%;
 }
 .rarity{
 	position: absolute;
-	width: 20%;
-	height: auto;
-	top: 0%;
-	left: 7%;
-	margin-top: 85%;
+    width: 28%;
+    height: auto;
+    top: 0%;
+    left: 1%;
+    margin-top: 112%;
 }
 /*キャラクターのステータスの表示*/
 .chara_status{
@@ -114,61 +115,35 @@ a:active{
 /*キャラの名前*/
 .chara_name{
 	position: absolute;
-    font-size: 5vw;
-    top: 7%;
-    left: 4%;
-}
-/*HPアイコンの幅*/
-.hp_icon{
-	margin-top: 12.9%;
-    position: absolute;
-    width: 9%;
-    left: 6.5%;
+	font-size: 5vw;
+	top: 7%;
+	left: -2%;
 }
 /*HPの値の設定*/
 .hp_value{
 	position: absolute;
-    font-size: 5vw;
-    top: 29%;
-    left: 17%;
-}
-/*手のアイコンの幅*/
-.goo_icon{
-	margin-top: 24%;
-	position: absolute;
-	width: 9%;
-	left: 0%;
-}
-.cho_icon{
-	margin-top: 24%;
-	position: absolute;
-	width: 9%;
-	left: 27%;
-}
-.paa_icon{
-	margin-top: 24%;
-	position: absolute;
-	width: 9%;
-	left: 56%;
+    font-size: 4.7vw;
+    top: 52%;
+    left: -4%;
 }
 /*手の値の設定*/
 .goo_value{
 	position: absolute;
-	font-size: 5vw;
-	top: 54%;
-	left: 10%;
+    font-size: 4.7vw;
+    top: 52%;
+    left: 21%;
 }
 .cho_value{
 	position: absolute;
-	font-size: 5vw;
-	top: 54%;
-	left: 37%;
+    font-size: 4.7vw;
+    top: 52%;
+    left: 45%;
 }
 .paa_value{
 	position: absolute;
-	font-size: 5vw;
-	top: 54%;
-	left: 66%;
+    font-size: 4.7vw;
+    top: 52%;
+    left: 69%;
 }
 /*fontをCenturyに変更する*/
 .font_sentury{
@@ -177,7 +152,4 @@ a:active{
 /*fontをserifに変更する*/
 .font_serif{
 	font-family: serif;
-}
-.font_color_green{
-	color: #7FFF7E;
 }
