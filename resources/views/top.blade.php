@@ -12,10 +12,10 @@
 	</head>
 	<body>
 		<div>				
-			<img class = "top_back2 backload"src = "{{IMG_URL}}title/titlelogoDown.gif">
+			<img class = "top_back2 backload"src = "{{IMG_URL}}title/titlelodoDown.gif">
 		</div>
 		<div>
-			<img src="{{IMG_URL}}title/title{{$viewData['bgNumber']}}.png" class="top_back load">
+			<img src="{{IMG_URL}}title/title{{$viewData['bgNumber']}}.jpg" class="top_back load">
 		</div> 	
 			@include('common/css', ['file' => 'top'])
 			<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
