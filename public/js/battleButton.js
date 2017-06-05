@@ -1,5 +1,5 @@
 $(function(){
-    $('img.buttleButton').click(function(){
+    $('img.battle_Button').click(function(){
 	// クラス名の取得
 	var getClass = $(this);
 	
@@ -31,10 +31,28 @@ $(function(){
 	setTimeout(function(){
 	    var changeL = getSrc.replace(afterImage , beforeImage);
 	    $(getClass).attr('src', changeL);
-	}, 500);
+	}, 100000);
     });
     $('.visibil').click(function() {       
-        document.getElementById("visi").style.visibility="hidden";
+        document.getElementById("enemyHand").style.visibility="hidden";
+        
+        var getId = document.getElementById;
+        
+        if(getId === "playerHand1")
+        {
+            document.getElementById("playerHand2").style.visibility="hidden";
+            document.getElementById("playerHand3").style.visibility="hidden";
+        }
+        else if(getId === "playerHand2")
+        {
+            document.getElementById("playerHand1").style.visibility="hidden";
+            document.getElementById("playerHand3").style.visibility="hidden";            
+        }
+        else if(getId === "playerHand3")
+        {
+            document.getElementById("playerHand1").style.visibility="hidden";
+            document.getElementById("playerHand2").style.visibility="hidden";            
+        }
     });
     
     $('.clickfalse').click(function() {   
