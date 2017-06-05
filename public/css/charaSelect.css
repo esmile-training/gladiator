@@ -10,6 +10,85 @@
 	text-decoration: none;
 }
 input:checked {
-	background-color: red;
+	/*background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/status/asc.png)*/
 }
-
+.sort_Box form input + label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: rgba(0,0,0,0);
+	background-repeat: no-repeat;
+    background-size: contain;
+	z-index: -1;
+}
+.sort_Box form ul li:first-child input + label {
+	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/status/asc.png);
+}
+.sort_Box form ul li:first-child input.act + label {
+	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/status/asc_down.png);
+}
+.sort_Box form ul li + li input + label {
+	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/status/desc.png);
+}
+.sort_Box form ul li + li input.act + label {
+	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/status/desc_down.png);
+}
+.sort_Box ul {
+    float: left;
+    width: auto;
+}
+.sort_Box ul select {
+	float: right;
+}
+.sort_Box ul li {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    margin-right: 7px;
+    display: inline-block;
+}
+input[type="radio"] {
+	-webkit-appearance: none;
+	opacity: 0;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+}
+#roadCover {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100000;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+	text-align: center;
+	color: #fff;
+	vertical-align: middle;
+}
+#roadCover div {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+#roadCover p {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	text-align: center;
+	display: block;
+	font-weight: 600;
+	font-size: 16px;
+	animation: blink 2s linear infinite;
+}
+.offCover {
+	display: none;
+}
+@keyframes blink {
+	0% {opacity: 1;}
+	50% {opacity: 0.3;}
+	100% {opacity: 1;}
+}

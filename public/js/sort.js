@@ -1,13 +1,28 @@
-function onRadioButtonChange() {
-      check1 = document.form1.Radio1.checked;
-      check2 = document.form1.Radio2.checked;
+function onSortChange() {
+	$("#roadCover").removeClass("offCover");
+}
 
-      target = document.getElementById("output");
-
-      if (check1 == true) {
-        target.innerHTML = "要素1がチェックされています。<br/>";
-      }
-      else if (check2 == true) {
-        target.innerHTML = "要素2がチェックされています。<br/>";
-      }
-    }
+function getType(type){
+	var mes;
+	switch (type){
+		case 'id':
+			mes = '入手';
+			break;
+		case 'name':
+			mes = '名前';
+			break;
+		case 'rare':
+			mes = 'レア度';
+			break;
+		case 'gooAtk':
+			mes = 'グー 攻撃力'
+			break;
+		case 'choAtk':
+			mes = 'チョキ 攻撃力'
+			break;
+		case 'paaAtk':
+			mes = 'パー 攻撃力'
+			break;
+	}
+	return mes;
+}
