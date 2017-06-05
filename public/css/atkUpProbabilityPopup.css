@@ -1,0 +1,52 @@
+.atkUpProbability_all{
+    position: relative;
+    top     : 5%;
+    left    : 0%;
+    width   : 100%;
+}
+
+.goo_icon{
+    position: relative;
+    top     : 30%;
+    left    : 7%; 
+    width   : 7%;
+}
+
+.cho_icon{
+    position: relative;
+    top     : 30%;
+    left    : 14%; 
+    width   : 7%;
+}
+
+.paa_icon{
+    position: relative;
+    top     : 30%;
+    left    : 21%; 
+    width   : 7%;
+}
+
+.title_text{
+    position: relative;
+    text-align: center;
+}
+
+.cntProbability_text{
+    position: relative;
+    border-bottom: solid 10px transparent;
+}
+
+.upProbability_text{
+    position: relative;
+}
+
+.img_list{
+    position: relative;
+    width: 100%;
+}
+
+.table_list{
+    position: relative;
+    width: 100%;
+    font-size:70%
+}
