@@ -70,7 +70,7 @@
 	opacity: 0;
 }
 .top_back2{
-	position:absolute;
+	position:fixed;
 	top:0;
 	opacity:0;
 }
