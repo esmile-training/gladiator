@@ -197,13 +197,13 @@
 			{{-- それぞれのボタン表示 --}}
 			<div class="battle_playerhand_button">
 				<img src="{{IMG_URL}}battle/button_Bg.png" class="battle_playerhand_button_bg">
-				<a href="{{APP_URL}}battle/updateBattleData?hand=1" class="battle_playerhand_button_goo_linkregion clickfalse visibil">
+				<a id="playerHand1" href="{{APP_URL}}battle/updateBattleData?hand=1" class="battle_playerhand_button_goo_linkregion clickfalse visibil">
 					<img src={{IMG_URL}}chara/status/hand1.png class="battle_playerhand_button_img battle_Button">
 				</a>
-				<a href="{{APP_URL}}battle/updateBattleData?hand=2" class="battle_playerhand_button_cho_linkregion clickfalse visibil" >
+				<a id="playerHand2" href="{{APP_URL}}battle/updateBattleData?hand=2" class="battle_playerhand_button_cho_linkregion clickfalse visibil" >
 					<img src={{IMG_URL}}chara/status/hand2.png class="battle_playerhand_button_img battle_Button">
 				</a>
-				<a href="{{APP_URL}}battle/updateBattleData?hand=3" class="battle_playerhand_button_paa_linkregion clickfalse visibil">
+				<a id="playerHand3" href="{{APP_URL}}battle/updateBattleData?hand=3" class="battle_playerhand_button_paa_linkregion clickfalse visibil">
 					<img src={{IMG_URL}}chara/status/hand3.png class="battle_playerhand_button_img battle_Button">
 				</a>
 			</div>
