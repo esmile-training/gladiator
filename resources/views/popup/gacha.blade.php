@@ -5,8 +5,15 @@
 		$cost = number_format($gachaCost[$data['gachaId']]['money']);
 		$money = number_format($data['money']);
 	?>
-	スカウト費用：{{$cost}}</br>
-	所持ゴールド：{{$money}}</br>
+	所持:
+	{{$money}}
+	<img  class = "gold2" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/gold.png">
+	</br>
+	スカウト:
+	{{$cost}}
+	<img  class = "gold1" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/gold.png">
+	</br>
+	
 	@if($data['money'] < $gachaCost[$data['gachaId']]['money'])
 		<div style="color:#F00">
 			残高が足りません
