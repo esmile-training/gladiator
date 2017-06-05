@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<div>				
-			<img class = "top_back2 backload"src = "{{IMG_URL}}title/titlelogoDown.png">
+			<img class = "top_back2 backload"src = "{{IMG_URL}}title/titlelogoDown.gif">
 		</div>
 		<div>
 			<img src="{{IMG_URL}}title/title{{$viewData['bgNumber']}}.png" class="top_back load">
