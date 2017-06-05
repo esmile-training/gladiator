@@ -3,9 +3,12 @@
 	<img class="ranking_borad" src="{{IMG_URL}}ranking/rankingboard.png" />
 	{{-- 背景切り替え --}}
 	@if(isset($viewData['ranking'][0]['weeklyAward']))
-		<img class="ranking_weekly_panel" src="{{IMG_URL}}ranking/weekrankingwindow.png"/>
+		<img class="ranking_panel" src="{{IMG_URL}}ranking/weekrankingwindow.png"/>
+	@elseif(is_null($viewData['ranking'][0]['weeklyAward']))
+		<img class="ranking_panel" src="{{IMG_URL}}ranking/weekrankingwindow.png"/>
+		<div class="ranking_null_user">週間ランキングの順位はありません</div>
 	@else
-		<img class="ranking_weekly_panel" src="{{IMG_URL}}ranking/totalrankingwindow.png"/>
+		<img class="ranking_panel" src="{{IMG_URL}}ranking/totalrankingwindow.png"/>
 	@endif
 	
 	<!-- ランキング表示 -->

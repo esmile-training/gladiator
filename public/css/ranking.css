@@ -23,10 +23,22 @@ a:visited { color : white; }
     position: absolute;
 }
 
-.ranking_weekly_panel{
+.ranking_panel{
     position: absolute;
     left: 0;
     top: 1%;
+}
+
+.ranking_null_user{
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 130%;
+    font-family: serif;
+    text-align: center;
 }
 
 
