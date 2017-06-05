@@ -52,10 +52,4 @@ $(function(){
             document.getElementById("playerHand2").style.visibility="hidden"; 
         }
     });
-    
-    $('.clickfalse').click(function() {   
-        $('.clickfalse').click(function () {
-            return false;
-        });
-    });
 });

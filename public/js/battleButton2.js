@@ -1,8 +1,5 @@
 $(function(){
     $('img.battle_Button2').click(function(){
-        // クラス名の取得
-        var getClass = $(this);
-
         // srcの取得
         var getSrc = $(this).attr('src');
 
@@ -12,7 +9,7 @@ $(function(){
         beforeImage = beforeImage[beforeImage.length - 1];
 
         // すでに画像名に処理後の画像名が入っていれば何もなし
-        if(beforeImage.match('Down'))
+        if(beforeImage.match('Up'))
         {
             return false;
         }
@@ -21,44 +18,49 @@ $(function(){
         var afterImage = beforeImage.split(".");
 
         // 画像名に押された後の画像名を連結
-        afterImage = afterImage[0] + 'Down.' + afterImage[1];
+        afterImage = afterImage[0] + 'Up.' + afterImage[1];
 
         // もともとの画像と変更
         var changeL = getSrc.replace(beforeImage , afterImage);
         $(this).attr('src', changeL);
 
-        // 指定秒数間だけ押されている画像を実行
-        setTimeout(function(){
-            var changeL = getSrc.replace(afterImage , beforeImage);
-            $(getClass).attr('src', changeL);
-        }, 100000);
-
         var idname = $(this).attr("id");
-
+        
+        var gooid = $('#playerHand1');
+        var choid = $('#playerHand2');
+        var paaid = $('#playerHand3');
+        
+        var gooSrc = gooid.attr('src');
+        var choSrc = choid.attr('src');
+        var paaSrc = paaid.attr('src');
+        
         if(idname === "playerHand1")
         {
-            document.getElementById("playerHand2").style.visibility="hidden";
-            document.getElementById("playerHand3").style.visibility="hidden";
+            // もともとの画像と変更
+            var changeC = choSrc.replace("{{IMG_URL}}chara/status/hand2.png" , "{{IMG_URL}}chara/status/hand2Down.png");
+            choid.attr('src', changeC);
+            var changeP = paaSrc.replace("{{IMG_URL}}chara/status/hand3.png" , "{{IMG_URL}}chara/status/hand3Down.png");
+            paaid.attr('src', changeP);
         }
         else if(idname === "playerHand2")
         {
-            document.getElementById("playerHand1").style.visibility="hidden";
-            document.getElementById("playerHand3").style.visibility="hidden";
+            // もともとの画像と変更
+            var changeG = gooSrc.replace("{{IMG_URL}}chara/status/hand1.png" , "{{IMG_URL}}chara/status/hand1Down.png");
+            gooid.attr('src', changeG);
+            var changeP = paaSrc.replace("{{IMG_URL}}chara/status/hand3.png" , "{{IMG_URL}}chara/status/hand3Down.png");
+            paaid.attr('src', changeP);
         }
         else if(idname === "playerHand3")
         {
-            document.getElementById("playerHand1").style.visibility="hidden";
-            document.getElementById("playerHand2").style.visibility="hidden"; 
+            // もともとの画像と変更
+            var changeG = gooSrc.replace("{{IMG_URL}}chara/status/hand1.png" , "{{IMG_URL}}chara/status/hand1Down.png");
+            gooid.attr('src', changeG);
+            var changeC = choSrc.replace("{{IMG_URL}}chara/status/hand2.png" , "{{IMG_URL}}chara/status/hand2Down.png");
+            choid.attr('src', changeC);
         }
     });
     
     $('.visibil').click(function() {
         document.getElementById("enemyHand").style.visibility="hidden";
-    });
-    
-    $('.clickfalse').click(function() {   
-        $('.clickfalse').click(function () {
-            return false;
-        });
     });
 });
