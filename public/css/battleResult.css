@@ -37,18 +37,23 @@ body{}
     color: #ffffff;
     font-size: 15px;
 }
+/* HP */
 .battleresult_log_message_statusup_hp{
     width: 9%;
 }
+/* グー */
 .battleresult_log_message_statusup_goo{
     width: 9%;
 }
+/* チョキ */
 .battleresult_log_message_statusup_cho{
     width: 9%;
 }
+/* パー */
 .battleresult_log_message_statusup_paa{
     width: 9%;
 }
+/* キャラの死亡画像 */
 .battleresult_log_death{
     position: absolute;
     bottom: 1%;
