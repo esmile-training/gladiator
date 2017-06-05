@@ -29,6 +29,13 @@ class battleController extends BaseGameController
 		// DBのキャラクターデータを取得する
 		$alluChara = $this->Model->exec('Chara', 'getUserChara', $userId);
 
+		// DBからキャラクターを取得できたかを確認する
+		if(!isset($alluChara))
+		{
+			// 例外ページへ移動する
+			return viewWrap('Error',$this->viewData);
+		}
+
 		// 金枠か銀枠かを判定する
 		foreach ($alluChara as $key => $chara)
 		{
@@ -42,12 +49,6 @@ class battleController extends BaseGameController
 			}
 		}
 
-		// DBからキャラクターを取得できたかを確認する
-		if(!isset($alluChara))
-		{
-			// マイページへリダイレクトする
-			$this->Lib->redirect('mypage', 'index');
-		}
 		// viewDataへ取得したキャラクターを送る
 		$this->viewData['charaList'] = $alluChara;
 
@@ -211,7 +212,7 @@ class battleController extends BaseGameController
 
 		$charaData['name']			= filter_input(INPUT_GET, "name");
 		if($prize > 0)
-		{	
+		{
 			$charaData['hp']			= filter_input(INPUT_GET, "deaultHp");
 			$charaData['gooAtk']		= filter_input(INPUT_GET, "deaultGooAtk");
 			$charaData['choAtk']		= filter_input(INPUT_GET, "deaultChoAtk");
@@ -427,7 +428,7 @@ class battleController extends BaseGameController
 
 			// 降参費用をマイナスに
 			$prize *= -1;
-			
+
 			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
 			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$prize));
 

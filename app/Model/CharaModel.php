@@ -1,8 +1,7 @@
 <?php
 /*
  * uChara用モデル
- * 作成者：松井 勇樹
- * 最終更新日：2017/04/26
+ * 最終更新日：2017/05/05
  */
 
 // 名前空間
@@ -22,7 +21,6 @@ class CharaModel extends \App\Model\BaseGameModel
 			FROM uChara
 			WHERE userID = {$userId}
 			AND delFlag = 0
-			LIMIT 10
 EOD;
 		return $this->select($sql);
 	}
@@ -69,7 +67,7 @@ $sql = <<< EOD
 EOD;
 			return $this->select($sql);
 		}
-		
+
 		/*
 		 * キャラクターの攻撃力を更新する
 		 */
