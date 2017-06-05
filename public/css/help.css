@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/*CSS Document*/
+/*training*/
+body{}
+
+/* いいえボタン画像領域 */
+.help_log {
+    width: 100%;
+}
+.help_log_turorial_img{
+    width: 100%;
+}
