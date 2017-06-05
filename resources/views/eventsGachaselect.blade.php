@@ -18,19 +18,20 @@
 			@if(date('Y-m-d',strtotime($viewData['createTime'])) < date('Y-m-d',strtotime($viewData['nowTime'])))
 			<div class = "gacha_button1">
 				<input type="image" 
-					   class="modal_btn gacha4" 
-					   src="{{IMG_URL}}gacha/banner4.png" name = 'gachavalue' 
-					   value = "4" 
+					   class="modal_btn gacha11" 
+					   src="{{IMG_URL}}gacha/banner11.png" 
+					   name = 'gachavalue' 
+					   value = "11" 
 					   width= 100% 
 					   height= 100%>
 			</div>
 			<?php 
-				$data['gachaId'] = 4;
+				$data['gachaId'] = 11;
 				$data['money'] = $viewData['user']['money'];
 			?>
 			{{-- popupウインドウ --}}
 			@include('popup/wrap', [
-				'class'		=> 'gacha4', 
+				'class'		=> 'gacha11', 
 				'template'	=> 'gacha',
 				'data'		=> ['data' => $data]
 			])
