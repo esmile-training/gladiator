@@ -4,30 +4,30 @@
 	{{-- 背景切り替え --}}
 	@if(isset($viewData['ranking'][0]['weeklyAward']))
 		<img class="ranking_panel" src="{{IMG_URL}}ranking/weekrankingwindow.png"/>
-	@elseif(is_null($viewData['ranking'][0]['weeklyAward']))
+	@elseif(isset($viewData['ranking'][0]['totalCharaStatus']))
+		<img class="ranking_panel" src="{{IMG_URL}}ranking/totalrankingwindow.png"/>
+	@elseif($viewData['ranking'][0]['weeklyAward'])
 		<img class="ranking_panel" src="{{IMG_URL}}ranking/weekrankingwindow.png"/>
 		<div class="ranking_null_user">週間ランキングの順位はありません</div>
-	@else
-		<img class="ranking_panel" src="{{IMG_URL}}ranking/totalrankingwindow.png"/>
 	@endif
 	
 	<!-- ランキング表示 -->
 	@if(isset($viewData['ranking']))
 	<div class="ranking">
 		<table class="ranking_table">
-		{{-- ランキングの種類に応じて切り替え --}}
-		@foreach($viewData['ranking'] as $key => $value)
-			@if(isset($value['weeklyAward']))
-			<tr class="ranking_tr">
-				@if($value['rank'] <= 3)
-					<td class="ranking_img_td"><img class="ranking_top_3" src="{{IMG_URL}}ranking/ranking{{$value['rank']}}.png" /></td>
+			<tr>
+				<th>ランク</th>
+				<th>ユーザー名</th>
+				@if(isset($value['weeklyAward']))
+					<th>獲得賞金</th>
 				@else
-					<td class="ranking_td">{{$value['rank']}}</td>
+					<th>総合力</th>
 				@endif
-				<td class="ranking_height_center">{{$value['name']}}</td>
-				<td class="ranking_height_center point_align">{{$value['weeklyAward']}}Pt</td>
 			</tr>
-			@else
+
+			{{-- ランキングの種類に応じて切り替え --}}
+			@foreach($viewData['ranking'] as $key => $value)
+				@if(isset($value['weeklyAward']))
 				<tr class="ranking_tr">
 					@if($value['rank'] <= 3)
 						<td class="ranking_img_td"><img class="ranking_top_3" src="{{IMG_URL}}ranking/ranking{{$value['rank']}}.png" /></td>
@@ -35,11 +35,21 @@
 						<td class="ranking_td">{{$value['rank']}}</td>
 					@endif
 					<td class="ranking_height_center">{{$value['name']}}</td>
-					<td class="ranking_height_center point_align">{{$value['totalCharaStatus']}}Pt</td>
+					<td class="ranking_get_point">{{$value['weeklyAward']}}</td>
 				</tr>
-			@endif
-		@endforeach
-		</table>
+				@else
+					<tr class="ranking_tr">
+						@if($value['rank'] <= 3)
+							<td class="ranking_img_td"><img class="ranking_top_3" src="{{IMG_URL}}ranking/ranking{{$value['rank']}}.png" /></td>
+						@else
+							<td class="ranking_td">{{$value['rank']}}</td>
+						@endif
+						<td class="ranking_height_center">{{$value['name']}}</td>
+						<td class="ranking_height_center point_align">{{$value['totalCharaStatus']}}</td>
+					</tr>
+				@endif
+			@endforeach
+			</table>
 		
 		<div class="ranking_pager_margin">
 			<ul class="ranking_back_pager">
