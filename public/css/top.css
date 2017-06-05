@@ -40,7 +40,7 @@
 /*top-login-button*/
 .top_login{
     width:90%;
-    position: absolute;
+    position: fixed;
     top: 47%;
 	left: 0;
 	right: 0;
