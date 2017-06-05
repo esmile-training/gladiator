@@ -18,10 +18,10 @@
 		<div style="color:#F00">
 			残高が足りません
 		</div>
-		<img class="gacha_popup image_change" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/popup/yes_ButtonDown.png">
+		<img class="gacha_popup image_change" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/popup/scoutDown.png">
 	@else
 		<a class="clickfalse" href="{{APP_URL}}gacha/viewDataSet?gachavalue={{$data['gachaId']}}">
-			<img class="gacha_popup image_change" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/popup/yes_Button.png">
+			<img class="gacha_popup image_change" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/popup/scout.png">
 		</a>
 	@endif
 </div>
