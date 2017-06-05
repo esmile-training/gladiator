@@ -1,8 +1,5 @@
 $(function(){
-    $('img.buttleButton').click(function(){
-	// クラス名の取得
-	var getClass = $(this);
-	
+    $('img.battle_Button').click(function(){	
 	// srcの取得
 	var getSrc = $(this).attr('src');
 	
@@ -26,15 +23,34 @@ $(function(){
 	// もともとの画像と変更
 	var changeL = getSrc.replace(beforeImage , afterImage);
 	$(this).attr('src', changeL);
-
-	// 指定秒数間だけ押されている画像を実行
-	setTimeout(function(){
-	    var changeL = getSrc.replace(afterImage , beforeImage);
-	    $(getClass).attr('src', changeL);
-	}, 500);
     });
-    $('.visibil').click(function() {       
-        document.getElementById("visi").style.visibility="hidden";
+    
+    // ボタンが押されたら、押されたボタン以外の手のボタンを消す
+    $('.visibil').click(function() {
+        // 敵の手
+        document.getElementById("enemyHand").style.visibility="hidden";
+
+        // idを取得して、そのid以外の攻撃ボタンを消す
+        var idname = $(this).attr("id");
+        
+        // グーが押されたら
+        if(idname === "playerHand1")
+        {
+            document.getElementById("playerHand2").style.visibility="hidden";
+            document.getElementById("playerHand3").style.visibility="hidden";
+        }
+        // チョキが押されたら
+        else if(idname === "playerHand2")
+        {
+            document.getElementById("playerHand1").style.visibility="hidden";
+            document.getElementById("playerHand3").style.visibility="hidden";
+        }
+        // パーが押されたら
+        else if(idname === "playerHand3")
+        {
+            document.getElementById("playerHand1").style.visibility="hidden";
+            document.getElementById("playerHand2").style.visibility="hidden"; 
+        }
     });
     
     $('.clickfalse').click(function() {   

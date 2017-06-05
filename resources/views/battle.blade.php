@@ -122,9 +122,10 @@
 
 		{{-- 攻撃の結果が入っていたら --}}
 		@if ($viewData['charaData']['result'] != 0)
+			{{-- 敵の出した手 --}}
 			<div class="battle_enemy_hand">
 				<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
-				<img id="visi" src="{{IMG_URL}}chara/status/hand{{$viewData['enemyData']['hand']}}.png" class="battle_enemy_hand_img" >
+				<img id="enemyHand" src="{{IMG_URL}}chara/status/hand{{$viewData['enemyData']['hand']}}.png" class="battle_enemy_hand_img" >
 			</div>
 
 			{{-- 勝敗の表示 --}}
@@ -196,13 +197,13 @@
 			{{-- それぞれのボタン表示 --}}
 			<div class="battle_playerhand_button">
 				<img src="{{IMG_URL}}battle/button_Bg.png" class="battle_playerhand_button_bg">
-				<a href="{{APP_URL}}battle/updateBattleData?hand=1" class="battle_playerhand_button_goo_linkregion clickfalse visibil">
+				<a id="playerHand1" href="{{APP_URL}}battle/updateBattleData?hand=1" class="battle_playerhand_button_goo_linkregion clickfalse visibil">
 					<img src={{IMG_URL}}chara/status/hand1.png class="battle_playerhand_button_img battle_Button">
 				</a>
-				<a href="{{APP_URL}}battle/updateBattleData?hand=2" class="battle_playerhand_button_cho_linkregion clickfalse visibil" >
+				<a id="playerHand2" href="{{APP_URL}}battle/updateBattleData?hand=2" class="battle_playerhand_button_cho_linkregion clickfalse visibil" >
 					<img src={{IMG_URL}}chara/status/hand2.png class="battle_playerhand_button_img battle_Button">
 				</a>
-				<a href="{{APP_URL}}battle/updateBattleData?hand=3" class="battle_playerhand_button_paa_linkregion clickfalse visibil">
+				<a id="playerHand3"  href="{{APP_URL}}battle/updateBattleData?hand=3" class="battle_playerhand_button_paa_linkregion clickfalse visibil">
 					<img src={{IMG_URL}}chara/status/hand3.png class="battle_playerhand_button_img battle_Button">
 				</a>
 			</div>

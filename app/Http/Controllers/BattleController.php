@@ -32,8 +32,11 @@ class battleController extends BaseGameController
 		// DBからキャラクターを取得できたかを確認する
 		if(!isset($alluChara))
 		{
-			// 例外ページへ移動する
-			return viewWrap('Error',$this->viewData);
+			// viewDataへ取得したキャラクターを送る
+			$this->viewData['charaList'] = $alluChara;
+
+			// ビューへデータを渡す
+			return viewWrap('battleCharaSelect', $this->viewData);
 		}
 
 		// 金枠か銀枠かを判定する
