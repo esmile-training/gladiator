@@ -8,7 +8,7 @@
 @include('common/css', ['file' => 'battleCharaSelect'])
 
 {{--所持キャラクターをすべて表示する--}}
-
+@if(!is_null($viewData['charaList']))
 <div class="chara_list">
 	@foreach($viewData['charaList'] as $chara)
 	{{--ボタンの表示間隔--}}
@@ -47,4 +47,7 @@
 		</div>
 	@endforeach
 </div>
+@else
+キャラがいません
+@endif
 <img class="signboard_img" src="{{IMG_URL}}battle/signboard.png" alt="看板">
