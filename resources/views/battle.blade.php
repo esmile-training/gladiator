@@ -12,7 +12,6 @@
 </head>
 <body>
 	<div id="wrapper">
-
 		{{-- 降参用のデータ統合 --}}
 		<?php
 		$surrenderData['cost']	= $viewData['surrenderCost'];
@@ -77,13 +76,47 @@
 			</div>
 			{{-- 敵キャラのHPログ --}}
 			<div class="battle_enemy_status_hp">
-				{{ $viewData['enemyData']['name'] }} HP: {{ $viewData['enemyData']['battleHp'] }} / {{ $viewData['enemyData']['hp'] }}
+				<table border="0">
+					<tr valign="middle">
+						<td width="60%" align="left">
+							{{ $viewData['enemyData']['name'] }}
+						</td>
+						<td width="5%">
+							<img src={{IMG_URL}}chara/status/hp.png class="battle_enemy_status_hp_img">
+						</td>						
+						<td width="25%" align="left">
+							{{ $viewData['enemyData']['battleHp'] }} / {{ $viewData['enemyData']['hp'] }}
+						</td>
+						<td width="10%"></td>						
+					</tr>
+				</table>
 			</div>
 			{{-- 敵キャラの攻撃力ログ --}}
 			<div class="battle_enemy_status_atk">
-				{{ $viewData['type'][1] }} : {{ $viewData['enemyData']['gooAtk']}}
-				{{ $viewData['type'][2] }} : {{ $viewData['enemyData']['choAtk']}}
-				{{ $viewData['type'][3] }} : {{ $viewData['enemyData']['paaAtk']}}
+				<table border="0">
+					<tr valign="middle">
+						<td width="15%"></td>
+						<td width="5%">
+							<img src={{IMG_URL}}chara/status/hand1.png class="battle_enemy_status_atk_goo_img">
+						</td>
+						<td width="20%" align="left">
+							{{ $viewData['enemyData']['gooAtk']}}
+						</td>
+						<td width="5%">
+							<img src={{IMG_URL}}chara/status/hand2.png class="battle_enemy_status_atk_cho_img">
+						</td>	
+						<td width="20%" align="left">
+							{{ $viewData['enemyData']['choAtk']}}
+						</td>
+						<td width="5%">
+							<img src={{IMG_URL}}chara/status/hand3.png class="battle_enemy_status_atk_paa_img">
+						</td>
+						<td width="20%" align="left">
+							{{ $viewData['enemyData']['paaAtk']}}
+						</td>
+						<td width="10%"></td>
+					</tr>
+				</table>
 			</div>
 		</div>
 
@@ -91,7 +124,7 @@
 		@if ($viewData['charaData']['result'] != 0)
 			<div class="battle_enemy_hand">
 				<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
-				<img src="{{IMG_URL}}chara/status/hand{{$viewData['enemyData']['hand']}}.png" class="battle_enemy_hand_icon" >
+				<img id="visi" src="{{IMG_URL}}chara/status/hand{{$viewData['enemyData']['hand']}}.png" class="battle_enemy_hand_img" >
 			</div>
 
 			{{-- 勝敗の表示 --}}
@@ -163,14 +196,14 @@
 			{{-- それぞれのボタン表示 --}}
 			<div class="battle_playerhand_button">
 				<img src="{{IMG_URL}}battle/button_Bg.png" class="battle_playerhand_button_bg">
-				<a href="{{APP_URL}}battle/updateBattleData?hand=1" class="battle_playerhand_button_goo_linkregion clickfalse">
-					<img src={{IMG_URL}}chara/status/hand1.png class="battle_playerhand_button_icon image_change">
+				<a href="{{APP_URL}}battle/updateBattleData?hand=1" class="battle_playerhand_button_goo_linkregion clickfalse visibil">
+					<img src={{IMG_URL}}chara/status/hand1.png class="battle_playerhand_button_img battle_Button">
 				</a>
-				<a href="{{APP_URL}}battle/updateBattleData?hand=2" class="battle_playerhand_button_cho_linkregion clickfalse" >
-					<img src={{IMG_URL}}chara/status/hand2.png class="battle_playerhand_button_icon image_change" >
+				<a href="{{APP_URL}}battle/updateBattleData?hand=2" class="battle_playerhand_button_cho_linkregion clickfalse visibil" >
+					<img src={{IMG_URL}}chara/status/hand2.png class="battle_playerhand_button_img battle_Button">
 				</a>
-				<a href="{{APP_URL}}battle/updateBattleData?hand=3" class="battle_playerhand_button_paa_linkregion clickfalse">
-					<img src={{IMG_URL}}chara/status/hand3.png class="battle_playerhand_button_icon image_change" >
+				<a href="{{APP_URL}}battle/updateBattleData?hand=3" class="battle_playerhand_button_paa_linkregion clickfalse visibil">
+					<img src={{IMG_URL}}chara/status/hand3.png class="battle_playerhand_button_img battle_Button">
 				</a>
 			</div>
 		{{-- バトル終了のフラグが立っていたら攻撃の受け付けをしない --}}
@@ -201,13 +234,47 @@
 			</div>
 			{{-- 自キャラのHPログ --}}
 			<div class="battle_player_status_hp">
-				{{ $viewData['charaData']['name'] }} HP： {{ $viewData['charaData']['battleHp'] }} / {{ $viewData['charaData']['hp'] }}
+				<table border="0">
+					<tr>
+						<td width="10%"></td>
+						<td width="60%" align="left">
+							{{ $viewData['charaData']['name'] }}
+						</td>
+						<td width="5%">
+							<img src={{IMG_URL}}chara/status/hp.png class="battle_player_status_hp_img">
+						</td>	
+						<td width="25%" align="left">
+							{{ $viewData['charaData']['battleHp'] }} / {{ $viewData['charaData']['hp'] }}
+						</td>
+					</tr>
+				</table>
 			</div>
 			{{-- 自キャラの攻撃力ログ --}}
 			<div class="battle_player_status_atk">
-				{{ $viewData['type'][1] }} : {{ $viewData['charaData']['gooAtk']}}
-				{{ $viewData['type'][2] }} : {{ $viewData['charaData']['choAtk']}}
-				{{ $viewData['type'][3] }} : {{ $viewData['charaData']['paaAtk']}}			
+				<table border="0">
+					<tr valign="middle">
+						<td width="15%"></td>
+						<td width="5%">
+							<img src={{IMG_URL}}chara/status/hand1.png class="battle_player_status_atk_goo_img">
+						</td>
+						<td width="20%" align="left">
+							{{ $viewData['charaData']['gooAtk']}}
+						</td>
+						<td width="5%">
+							<img src={{IMG_URL}}chara/status/hand2.png class="battle_player_status_atk_cho_img">
+						</td>	
+						<td width="20%" align="left">
+							{{ $viewData['charaData']['choAtk']}}
+						</td>
+						<td width="5%">
+							<img src={{IMG_URL}}chara/status/hand3.png class="battle_player_status_atk_paa_img">
+						</td>
+						<td width="20%" align="left">
+							{{ $viewData['charaData']['paaAtk']}}
+						</td>
+						<td width="10%"></td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>
@@ -216,4 +283,5 @@
 	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>
+	<script type="text/javascript" src="{{APP_URL}}js/battleButton.js"></script>
 </body>
