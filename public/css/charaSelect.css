@@ -8,3 +8,7 @@
 	color: #FFFFFF;
 	text-decoration: none;
 }
+input:checked {
+	background-color: red;
+}
+

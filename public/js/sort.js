@@ -1,10 +1,13 @@
-num = 2; // 入れ替える画像の枚数(最初の画像も含める)
-nme = "http://esmile-sys.sakura.ne.jp/gladiator/img/status/arrow" // 画像のディレクトリとファイル名の数字と拡張子より前の部分
-exp = "png" // 拡張子
-cnt = 0;
-function changeImage() {
-  cnt++;
-  cnt %= num;
-  document.img.src = nme + cnt + "." + exp;
-}
+function onRadioButtonChange() {
+      check1 = document.form1.Radio1.checked;
+      check2 = document.form1.Radio2.checked;
 
+      target = document.getElementById("output");
+
+      if (check1 == true) {
+        target.innerHTML = "要素1がチェックされています。<br/>";
+      }
+      else if (check2 == true) {
+        target.innerHTML = "要素2がチェックされています。<br/>";
+      }
+    }
