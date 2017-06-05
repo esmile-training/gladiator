@@ -1,0 +1,173 @@
+#main{
+	
+    background-image:
+	    url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/selectbackground.jpg);
+    /* 画像を常に天地左右の中央に配置 */
+    background-position: center center;
+
+    /* 画像をタイル状に繰り返し表示しない */
+    background-repeat: no-repeat;
+
+    /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+    background-size: cover;
+
+    width: 100%;
+
+}
+
+.coachSelect_display{
+    position: relative;
+    width:100%;
+}
+
+.coachSelect_signboard{
+    position : fixed;
+    width    : 35%;
+    top	     : 13%;
+    left     : 0;
+    z-index  : 2;
+}
+
+.coachSelect_all{
+    position: relative;
+    top : 10%;
+    left : 0%;
+    width: 100%
+}
+
+.coachSelect_text{
+    position	: relative;
+    font-family :'Century';
+    color	: #FFFFFF;
+    z-index: 2;
+}
+
+.training_coach_name{
+    position: absolute;
+    top	    : 15%;
+    left    : 20%;
+    color   : #FFFFFF;
+}
+
+.training_coach_icon0{
+    position: absolute;
+    top	    : 5%;
+    left    : 0%;
+    width   : 20%;
+}
+
+.training_coach_icon1{
+    position: absolute;
+    top	    : 5%;
+    left    : 0%;
+    width   : 20%;
+}
+
+.training_coach_icon2{
+    position: absolute;
+    top	    : 5%;
+    left    : 0%;
+    width   : 20%;
+}
+
+.training_coach_window{
+    position: relative;
+    top     : 50%
+}
+
+.training_goo_icon{
+    position: absolute;
+    top     : 55%;
+    left    : 20%;
+    width   : 10%;
+}
+
+.training_cho_icon{
+    position: absolute;
+    top     : 55%;
+    left    : 45%;
+    width   : 10%;
+}
+
+.training_paa_icon{
+    position: absolute;
+    top     : 55%;
+    left    : 70%;
+    width   : 10%;
+}
+
+.training_coach_goo_atk{
+    position: absolute;
+    top     : 60%;
+    left    : 30%;
+    color   :#ffffff;
+}
+
+.training_coach_cho_atk{
+    position: absolute;
+   top     : 60%;
+   left    : 55%;
+    color   :#ffffff; 
+}
+
+.training_coach_paa_atk{
+    position: absolute;
+    top     : 60%;
+    left    : 80%;
+    color   :#ffffff; 
+}
+
+.training_submit{
+    position: absolute;
+    top     : 550%;
+    left    : 40%;
+    width   : 20%;
+}
+
+.training_fee_img{
+    position: absolute;
+    top     : 95%;
+    left    : 32%;
+    width   : 30%;
+    z-index : 1;
+}
+
+.training_fee_text{
+    position: absolute;
+    top     : 100%;
+    left    : 36%;
+    width   : 30%;
+    z-index :2;
+}
+
+.training_first_probability_text{
+    position: absolute;
+    top	    : 150%;
+    left    : 32%
+}
+
+.training_goo_up_probability{
+    position: absolute;
+    top	    : 200%;
+    left    : 25%
+}
+
+.training_cho_up_probability{
+    position: absolute;
+    top	    : 200%;
+    left    : 45%
+}
+
+.training_paa_up_probability{
+    position: absolute;
+    top	    : 200%;
+    left    : 65%
+}
+
+.atkUpProbabilityPopup{
+    position: absolute;
+    top	    : 15%;
+    left    : 70%;
+    width   : 20%;
+    z-index : 2;
+}

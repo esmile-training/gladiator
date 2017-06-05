@@ -40,7 +40,7 @@ a:active{
 }
 /*キャラボタンの枠を設定する*/
 .chara_frame{
-	position: relative;
+    position: relative;
     width: 96%;
     height: auto;
     top: 10%;

@@ -32,25 +32,10 @@
 	<div class ="training_fee_img">
 		<img src="{{IMG_URL}}/header/money.png">
 	</div>
-	<div class="training_first_probability_text">
-		{{'初回強化成功率'}}
-	</div>
-	<div class="training_text">
+	<div class="coachSelect_text">
 		<p id="trainingFee{{$cnt}}" class="training_fee_text"><p>
 	</div>
 </body>
-
-<div class="training_popup_goo_icon">
-	<img src="{{IMG_URL}}/chara/status/hand1.png">
-</div>
-
-<div class="training_popup_cho_icon">
-	<img src="{{IMG_URL}}/chara/status/hand2.png">
-</div>
-
-<div class="training_popup_paa_icon">
-	<img src="{{IMG_URL}}/chara/status/hand3.png">
-</div>
 
 <form name="trainingInfo" action="{{APP_URL}}training/infoSet" method="get">
 	<select name="trainingTime" onchange="feeCalcuration{{$cnt}}(this)">

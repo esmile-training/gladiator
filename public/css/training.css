@@ -1,177 +1,49 @@
 #main{
+    
+    background-image:
+	    url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/gachabackground.jpg);
+    /* 画像を常に天地左右の中央に配置 */
+    background-position: center center;
 
-	background-image:
-		url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/selectbackground.png);
-	/* 画像を常に天地左右の中央に配置 */
-	background-position: center center;
+    /* 画像をタイル状に繰り返し表示しない */
+    background-repeat: no-repeat;
 
-	/* 画像をタイル状に繰り返し表示しない */
-	background-repeat: no-repeat;
+    /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+    background-size: cover;
 
-	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
-	background-size: cover;
-
-	width: 100%;
+    width: 100%;
 }
 
-.training_signboard{
-    width: 35%;
-    position: fixed;
-    top: 12%;
-}
-
-.training_coach_name{
-    position: absolute;
-    top	    : 15%;
-    left    : 20%;
-    color   : #FFFFFF;
-}
-
-.training_coach_icon0{
-    position: absolute;
-    top	    : 5%;
-    left    : 0%;
-    width   : 20%;
-}
-
-.training_coach_window0{
-    position: relative;
-    top     : 8%
-}
-
-.training_coach_icon1{
-    position: absolute;
-    top	    : 5%;
-    left    : 0%;
-    width   : 20%;
-}
-
-.training_coach_window1{
-    position: relative;
-    top     : 8%;
-}
-
-.training_coach_icon2{
-    position: absolute;
-    top	    : 5%;
-    left    : 0%;
-    width   : 20%;
-}
-
-.training_coach_window2{
-    position: relative;
-    top     : 8%;
-}
-
-.training_goo_icon{
-    position: absolute;
-    top     : 65%;
-    left    : 100%;
-    width   : 40%;
-}
-
-.training_cho_icon{
-    position: absolute;
-    top     : 65%;
-    left    : 225%;
-    width   : 40%;
-}
-
-.training_paa_icon{
-    position: absolute;
-    top     : 65%;
-    left    : 350%;
-    width   : 40%;
-}
-
-.training_coach_goo_atk{
-    position: absolute;
-    top     : 70%;
-    left    : 150%;
-    color   :#ffffff;
-}
-
-.training_coach_cho_atk{
-    position: absolute;
-    top     : 70%;
-    left    : 275%;
-    color   :#ffffff; 
-}
-
-.training_coach_paa_atk{
-    position: absolute;
-    top     : 70%;
-    left    : 400%;
-    color   :#ffffff; 
-}
-
-.training_submit{
-    position: absolute;
-    top     : 550%;
-    left    : 40%;
-    width   : 20%;
-}
-
-.training_fee_img{
-    position: absolute;
-    top     : 95%;
-    left    : 32%;
-    width   : 30%;
-    z-index : 1;
-}
-.training_fee_text{
-    position: absolute;
-    top     : 100%;
-    left    : 36%;
-    width   : 30%;
-    z-index :2;
+.training_display{
+    position : relative;
+    width    :100%
 }
 
 .training_text{
-    font-family:'Century';
+    position	: relative;
+    font-family :'Century';
+    color	: #FFFFFF;
+    z-index	: 2;
 }
 
-.training_first_probability_text{
-    position: absolute;
-    top	    : 150%;
-    left    : 32%
+.training_signboard{
+    position : fixed;
+    width    : 35%;
+    top	     : 13%;
+    left     : 0;
+    z-index  : 2;
 }
 
-.training_goo_up_probability{
-    position: absolute;
-    top	    : 200%;
-    left    : 25%
+.training_all{
+    top		   : 20%;
+    width	   : 100%;
+    position	   : absolute;
+    padding-bottom : 60px;
 }
 
-.training_cho_up_probability{
-    position: absolute;
-    top	    : 200%;
-    left    : 45%
-}
-
-.training_paa_up_probability{
-    position: absolute;
-    top	    : 200%;
-    left    : 65%
-}
-
-.training_popup_goo_icon{
-    position: absolute;
-    top	    : 200%;
-    left    : 18%;
-    width   : 8%;
-}
-
-.training_popup_cho_icon{
-    position: absolute;
-    top	    : 200%;
-    left    : 38%;
-    width   : 8%;
-}
-
-.training_popup_paa_icon{
-    position: absolute;
-    top	    : 200%;
-    left    : 58%;
-    width   : 8%;
+.training_chara_button{
+    position	    : relative;
+    width	    : 100%;
+    border-top	    : solid 5px transparent;
+    border-bottom   : solid 5px transparent;
 }

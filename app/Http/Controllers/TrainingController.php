@@ -48,26 +48,23 @@ class TrainingController extends BaseGameController
 			return viewWrap('Error',$this->viewData);
 		}
 		
+		$this->viewData['coachList'] = $uCoachData;
+		
+		
 		$cnt = 0;
 		foreach($uCoachData as $val)
 		{
 			for($i = 0; $i < 10; $i++)
 			{
-				$gooUpProbability[] = $this->Lib->exec('Training','atkUpProbability',
+				$this->viewData['gooUpProbability'][$cnt][] = $this->Lib->exec('Training','atkUpProbability',
 											array($val['gooAtk'],$uCharaAtkInfo['gooAtk'],$uCharaAtkInfo['gooUpCnt']+$i));
-				$choUpProbability[] = $this->Lib->exec('Training','atkUpProbability',
+				$this->viewData['choUpProbability'][$cnt][] = $this->Lib->exec('Training','atkUpProbability',
 											array($val['choAtk'],$uCharaAtkInfo['choAtk'],$uCharaAtkInfo['choUpCnt']+$i));
-				$paaUpProbability[] = $this->Lib->exec('Training','atkUpProbability',
+				$this->viewData['paaUpProbability'][$cnt][] = $this->Lib->exec('Training','atkUpProbability',
 											array($val['paaAtk'],$uCharaAtkInfo['paaAtk'],$uCharaAtkInfo['paaUpCnt']+$i));
 			}
-			$atkUpProbability[$cnt]['gooUpProbability'] = $gooUpProbability;
-			$atkUpProbability[$cnt]['choUpProbability'] = $choUpProbability;
-			$atkUpProbability[$cnt]['paaUpProbability'] = $paaUpProbability;
 			$cnt++;
 		}
-		
-		$this->viewData['coachList'] = $uCoachData;
-		$this->viewData['atkUpProbabililty'] = $atkUpProbability;
 		
 		return viewWrap('coachSelect',$this->viewData);
 	}
