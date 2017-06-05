@@ -26,12 +26,6 @@ $(function(){
 	// もともとの画像と変更
 	var changeL = getSrc.replace(beforeImage , afterImage);
 	$(this).attr('src', changeL);
-
-	// 指定秒数間だけ押されている画像を実行
-	setTimeout(function(){
-	    var changeL = getSrc.replace(afterImage , beforeImage);
-	    $(getClass).attr('src', changeL);
-	}, 100000);
     });
     
     $('.visibil').click(function() {
