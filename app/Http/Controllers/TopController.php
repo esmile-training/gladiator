@@ -9,7 +9,7 @@ class TopController extends BaseGameController
      */
     public function index()
     {
-		$bgNumber = rand(1, 3);
+		$bgNumber = rand(1, 2);
 		$this->viewData['bgNumber'] = $bgNumber;
 		return view('top',['viewData' => $this->viewData]);
 	}
