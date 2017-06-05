@@ -14,33 +14,42 @@ body{}
 .rareImg{
     width: 10%;
     position: absolute;
-    top: 45px;
-    left: 46px;
+    top: 9%;
+    left: 14%;
     z-index: 100;
 }
 
 .light{
 	width: 16%;
     position: absolute;
-    left: 35px;
-    top: 30px;
+    left: 11%;
+    top: 6%;
     opacity: 0.8;
 }
-
+.modal .close {
+	position: absolute;
+    top: -1%;
+    right: -1%;
+    width: 15%;
+    height: auto;
+    cursor: pointer;
+    z-index: 10000;
+}
 .name{
 	position: absolute;
-    left: 90px;
-    top: 44px;
+    left: 27%;
+    top: 10%;
     font-family: serif;
 	text-align: left;
+	font-size: 5vw;
 }
 
 /* キャラクター画像のサイズ指定 */
 .character{
-    width: 60%;
+    width: 45vw;
     position: absolute;
-    top: 40px;
-    left: 20px;
+    top: 15%;
+    left: 6%;
 }
 
 .button{
@@ -53,16 +62,12 @@ body{}
 .modal > div {
 	position: relative;
 	width: 100%;
-	height: 75%;
 }
-.modal_top,
-.modal .modal_window {
-	position: static;
-}
+
 .param_box {
-	position: absolute;
-	top: 20%;
-	right: 20px;
+    position: absolute;
+    top: 29%;
+    right: 3%;
 }
 
 .param_box > div {
@@ -70,14 +75,12 @@ body{}
 }
 
 .param_box .icon_img{
-	width: 45px;
-	height: 45px;
-}
-
-.param_box .icon_img {
-	position: absolute;
-	display: grid;
-	right: 80px;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    display: grid;
+    right: 75px;
+    margin-top: 7px;
 }
 
 .icon_hp {

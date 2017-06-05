@@ -1,16 +1,7 @@
-#main{
-	background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/selectbackground.png);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;	
-	width: 100%;
-	overflow: scroll;
-}
-
-.status_sign{
-    width: 33%;
-    position: absolute;
+.sort_Box{
+	position: absolute;
+    right: 4%;
+    top: 15%;
 }
 
 .white{

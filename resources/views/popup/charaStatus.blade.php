@@ -10,7 +10,7 @@
 	{{ $chara['name'] }}
 </div>
 
-<div class="character">
+<div>
 	<img class="character" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png">
 </div>
 
@@ -27,7 +27,7 @@
 	</div>
 </div>
 
-<div class="retire">
+<div>
 	@if($chara['trainingState'] == 0)
 	<div class="button">
 		<a href="{{APP_URL}}selectCoach/index?id={{$chara['id']}}&rare={{$chara['rare']}}&imgId={{$chara['imgId']}}&iconFrame={{$chara['iconFrame']}}&name={{$chara['name']}}&attribute={{$chara['attribute']}}&hp={{$chara['hp']}}&gooAtk={{$chara['gooAtk']}}&choAtk={{$chara['choAtk']}}&paaAtk={{$chara['paaAtk']}}">
