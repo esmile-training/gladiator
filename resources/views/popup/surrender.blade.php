@@ -2,8 +2,16 @@
 
 <div>
 	降参しますか？<br />
-	降参費用：{{$surrenderData['cost']}}<br />
-	現在の所持金：{{$surrenderData['money']}}<br />
+	@if ($surrenderData['money'] < $surrenderData['cost'])
+			降参費用：{{$surrenderData['cost']}}<br />
+			現在の所持金：
+		<span class="surrender_costOver">{{$surrenderData['money']}}<br />
+			降参費用が足りません<br />
+		</span>
+	@else
+		降参費用：{{$surrenderData['cost']}}<br />
+		現在の所持金：{{$surrenderData['money']}}<br />
+	@endif
 	<div class="surrender_button">
 		<table border="0">
 			<tr>
@@ -13,6 +21,7 @@
 						<div class="surrender_button_yes">
 							<img class="image_change" src="{{IMG_URL}}popup/yes_ButtonDown.png">
 						</div>
+						
 					@else
 						<div class="surrender_button_yes clickfalse">
 							<a href="{{APP_URL}}battle/makeResultData">
