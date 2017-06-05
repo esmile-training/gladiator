@@ -122,9 +122,10 @@
 
 		{{-- 攻撃の結果が入っていたら --}}
 		@if ($viewData['charaData']['result'] != 0)
+			{{-- 敵の出した手 --}}
 			<div class="battle_enemy_hand">
 				<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
-				<img id="visi" src="{{IMG_URL}}chara/status/hand{{$viewData['enemyData']['hand']}}.png" class="battle_enemy_hand_img" >
+				<img id="enemyHand" src="{{IMG_URL}}chara/status/hand{{$viewData['enemyData']['hand']}}.png" class="battle_enemy_hand_img" >
 			</div>
 
 			{{-- 勝敗の表示 --}}

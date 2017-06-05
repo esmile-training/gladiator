@@ -4,9 +4,9 @@
 
 		{{-- バトルの勝敗によって背景画像変更 --}}
 		@if ($viewData['prize'] > 0)
-			<img src="{{IMG_URL}}battleResult/battleResult_Bg_Win.png" class="battleresult_bg">
+			<img src="{{IMG_URL}}battleResult/battleResult_Bg_Win.jpg" class="battleresult_bg">
 		@else
-			<img src="{{IMG_URL}}battleResult/battleResult_Bg_Lose.png" class="battleresult_bg">
+			<img src="{{IMG_URL}}battleResult/battleResult_Bg_Lose.jpg" class="battleresult_bg">
 		@endif
 
 		{{-- リザルトログ表示領域 --}}
