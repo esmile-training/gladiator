@@ -71,10 +71,10 @@
 	<br>
 	<div>
 		<a class="button retire" href="{{APP_URL}}SelectCoach/changeCoach?coachId={{$coach['id']}}&id={{$viewData['selectCharaState']['id']}}&imgId={{$viewData['selectCharaState']['imgId']}}&name={{$viewData['selectCharaState']['name']}}&rare={{$viewData['selectCharaState']['rare']}}&attribute={{$viewData['selectCharaState']['attribute']}}&hp={{$viewData['selectCharaState']['hp']}}&gooAtk={{$viewData['selectCharaState']['gooAtk']}}&choAtk={{$viewData['selectCharaState']['choAtk']}}&paaAtk={{$viewData['selectCharaState']['paaAtk']}}">
-			<img class="image_change" src="{{SERVER_URL}}img/popup/yes_Button.png" alt="はい"/>
+			<img class="image_change" src="{{IMG_URL}}popup/yes_Button.png" alt="はい"/>
 		</a>
 		<a class="button back">
-			<img class="image_change no" src="{{SERVER_URL}}img/popup/no_Button.png" alt="いいえ"/>
+			<img class="image_change no" src="{{IMG_URL}}popup/no_Button.png" alt="いいえ"/>
 		</a>
 	</div>
 </div>

@@ -59,19 +59,19 @@ body{}
 }
 /* HP */
 .battleresult_log_message_statusup_hp{
-    width: 9%;
+    width: 100%;
 }
 /* グー */
 .battleresult_log_message_statusup_goo{
-    width: 9%;
+    width: 100%;
 }
 /* チョキ */
 .battleresult_log_message_statusup_cho{
-    width: 9%;
+    width: 100%;
 }
 /* パー */
 .battleresult_log_message_statusup_paa{
-    width: 9%;
+    width: 100%;
 }
 /* キャラの死亡画像 */
 .battleresult_log_death{
