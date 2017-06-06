@@ -1,3 +1,4 @@
+<div><img class="gacha_roadback" src="{{IMG_URL}}gacha/gacharoadbackground.jpg" /></div>
 @include('common/css', ['file' => 'gachaRoad'])
 @foreach($viewData['gacha'] as $key => $value)
 	<?php $dataList[] = $key.'='.$value; ?>
