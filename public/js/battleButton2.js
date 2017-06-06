@@ -3,23 +3,6 @@ $(function(){
         // srcの取得
         var getSrc = $(this).attr('src');
 
-        // 押された画像の取得
-        var idname = $(this).attr('id');
-        
-        console.log(idname);
-
-        var goo = $('#playerHand1');
-        var cho = $('#playerHand2');
-        var paa = $('#playerHand3');
-        
-        var gooId = goo.attr('id');
-        var choId = cho.attr('id');
-        var paaId = paa.attr('id');
-
-        var gooSrc = goo.attr('src');
-        var choSrc = cho.attr('src');
-        var paaSrc = paa.attr('src');
-
         // "/"ごとにURL分割
         var beforeImage = getSrc.split("/");
         // 画像名だけを抽出
@@ -41,34 +24,33 @@ $(function(){
         var changeL = getSrc.replace(beforeImage , afterImage);
         $(this).attr('src', changeL);
 
-        // 押されてない画像の変更
-
-        if(idname === gooId)
+        var afterImageG = "http://esmile-sys.sakura.ne.jp/gladiator/img/chara/status/hand1Down.png";
+        var afterImageC = "http://esmile-sys.sakura.ne.jp/gladiator/img/chara/status/hand2Down.png";
+        var afterImageP = "http://esmile-sys.sakura.ne.jp/gladiator/img/chara/status/hand3Down.png";
+        
+        // idを取得して、そのid以外の攻撃ボタンを消す
+        var idname = $(this).attr("id");
+        
+        // グーが押されたら
+        if(idname === "playerHand1")
         {
-            // もともとの画像と変更
-            var changeC = choSrc.replace("{{IMG_URL}}chara/status/hand2.png" , "{{IMG_URL}}chara/status/hand2Down.png");
-            cho.attr('src', changeC);
-            var changeP = paaSrc.replace("{{IMG_URL}}chara/status/hand3.png" , "{{IMG_URL}}chara/status/hand3Down.png");
-            paa.attr('src', changeP);
+            document.getElementById("playerHand2").src = afterImageC;
+            document.getElementById("playerHand3").src = afterImageP;
         }
-        else if(idname === choId)
+        // チョキが押されたら
+        else if(idname === "playerHand2")
         {
-            // もともとの画像と変更
-            var changeG = gooSrc.replace("{{IMG_URL}}chara/status/hand1.png" , "{{IMG_URL}}chara/status/hand1Down.png");
-            $(goo).attr('src', changeG);
-            var changeP = paaSrc.replace("{{IMG_URL}}chara/status/hand3.png" , "{{IMG_URL}}chara/status/hand3Down.png");
-            $(paa).attr('src', changeP);
+            document.getElementById("playerHand1").src = afterImageG;
+            document.getElementById("playerHand3").src = afterImageP; 
         }
-        else if(idname === paaId)
+        // パーが押されたら
+        else if(idname === "playerHand3")
         {
-            // もともとの画像と変更
-            var changeG = gooSrc.replace("{{IMG_URL}}chara/status/hand1.png" , "{{IMG_URL}}chara/status/hand1Down.png");
-            $(goo).attr('src', changeG);
-            var changeC = choSrc.replace("{{IMG_URL}}chara/status/hand2.png" , "{{IMG_URL}}chara/status/hand2Down.png");
-            $(cho).attr('src', changeC);
+            document.getElementById("playerHand1").src = afterImageG;
+            document.getElementById("playerHand2").src = afterImageC; 
         }
     });
-
+    
     $('.visibil').click(function() {
         document.getElementById("enemyHand").style.visibility="hidden";
     });
