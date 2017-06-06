@@ -9,7 +9,7 @@ $(function(){
 	beforeImage = beforeImage[beforeImage.length - 1];
 
 	// すでに画像名に処理後の画像名が入っていれば何もなし
-	if(beforeImage.match('Down'))
+	if(beforeImage.match('Up'))
 	{
 	    return false;
 	}
@@ -18,7 +18,7 @@ $(function(){
 	var afterImage = beforeImage.split(".");
 	
 	// 画像名に押された後の画像名を連結
-	afterImage = afterImage[0] + 'Down.' + afterImage[1];
+	afterImage = afterImage[0] + 'Up.' + afterImage[1];
 	
 	// もともとの画像と変更
 	var changeL = getSrc.replace(beforeImage , afterImage);

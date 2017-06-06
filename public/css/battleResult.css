@@ -37,6 +37,9 @@ body{}
     color: #ffffff;
     font-size: 15px;
 }
+.battleresult_log_message_money_img{
+    width: 6%;
+}
 /* お金が増えた時の文字色 */
 .battleresult_log_message_upcolor{
     color: #00FA9A;
