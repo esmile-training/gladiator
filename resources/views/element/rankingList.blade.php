@@ -1,4 +1,4 @@
-<div><img class="ranking_back_image" src="{{IMG_URL}}ranking/rankingbackimage.png" /></div>
+<div><img class="ranking_back_image" src="{{IMG_URL}}ranking/rankingbackimage.jpg" /></div>
 
 	<img class="ranking_borad" src="{{IMG_URL}}ranking/rankingboard.png" />
 	{{-- 背景切り替え --}}
@@ -16,9 +16,9 @@
 	<div class="ranking">
 		<table class="ranking_table">
 			<tr>
-				<th>ランク</th>
+				<th></th>
 				<th>ユーザー名</th>
-				@if(isset($value['weeklyAward']))
+				@if(isset($viewData['ranking'][0]['weeklyAward']))
 					<th>獲得賞金</th>
 				@else
 					<th>総合力</th>
