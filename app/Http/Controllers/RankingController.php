@@ -100,7 +100,6 @@ class RankingController extends BaseGameController
 			if(is_float($count))
 			{
 				$count = floor($count)*10;
-				echo $count;
 			}
 			else
 			{
