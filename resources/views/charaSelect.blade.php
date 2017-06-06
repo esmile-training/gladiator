@@ -10,12 +10,16 @@
 
 <div id="roadCover" class="offCover">
 	<div>
-		<p>「<?php $order == 'DESC' ? print '降順' : print '昇順'; ?>」<br><br>に並べかえています。</p>
+		<p>「<?php $order == 'DESC' ? print '降順' : print '昇順'; ?>」<br>「<div class="getType(<?php $type ?>)">aaa</div>」<br>の条件で並べかえています。</p>
 	</div>
 </div>
 	
 <div class="chara_list">
 	<img class='signboard_img' src='{{IMG_URL}}status/statusSign.png' alt='ステータス'>
+	{{--所持キャラクターをすべて表示する--}}
+@if(is_null($viewData['charaList']))
+	<div><p style="color: white">キャラクターがいません。</p></div>
+@else
 	<div class="sort_Box">
 		<form action="{{APP_URL}}charaSelect/index" method="get">
 			<ul>
@@ -39,10 +43,6 @@
 			</select>
 		</form>
 	</div>
-{{--所持キャラクターをすべて表示する--}}
-@if(is_null($viewData['charaList']))
-	<div>キャラクターがいません。</div>
-@else
 	<?php $count = 0; ?>
 	@foreach($viewData['charaList'] as $chara)
 		{{-- popupボタン --}}

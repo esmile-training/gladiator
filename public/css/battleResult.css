@@ -37,6 +37,14 @@ body{}
     color: #ffffff;
     font-size: 15px;
 }
+/* お金が増えた時の文字色 */
+.battleresult_log_message_upcolor{
+    color: #00FA9A;
+}
+/* お金が減った時の文字色 */
+.battleresult_log_message_downcolor{
+    color: #ff4444;
+}
 /* HP */
 .battleresult_log_message_statusup_hp{
     width: 9%;

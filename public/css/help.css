@@ -3,9 +3,9 @@
 /*training*/
 body{}
 
-/* いいえボタン画像領域 */
 .help_log {
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
 }
 .help_log_turorial_img{
     width: 100%;
