@@ -9,7 +9,7 @@ $(function(){
         beforeImage = beforeImage[beforeImage.length - 1];
 
         // すでに画像名に処理後の画像名が入っていれば何もなし
-        if(beforeImage.match('Up'))
+        if(beforeImage.match('Up') || beforeImage.match('Down'))
         {
             return false;
         }

@@ -1,9 +1,17 @@
 {{--CSS--}}
 @include('common/css', ['file' => 'coachSelect'])
+@include('common/css', ['file' => 'training'])
 
+<div class="training_signboard_info">
+	<img src="{{IMG_URL}}/training/signboard_info.png">
+	<div class ="training_signboard_text">
+		<font  class="training_text">{{'コーチを選んでください'}}</font>
+	</div>
+</div>
 <div class="coachSelect_signboard">
 	 <img src="{{IMG_URL}}/training/signboard.png">
 </div>
+
 <?php $cnt = 0; ?>
 {{--uCoach(DB)から持ってきたデータの表示--}}
 <div class="coachSelect_all">
@@ -21,6 +29,9 @@
 				</div>
 				<div class="training_coach_icon">
 					<img src="{{IMG_URL}}/chara/icon/icon_{{$val['imgId']}}.png">
+					{{--レアリティの表示--}}
+					<img class="coachSelect_reritybg" src="{{IMG_URL}}battle/rarity_bg.png" alt="レアリティの背景">
+					<img class="coachSelect_rerity" src="{{IMG_URL}}gacha/{{$val['rare']}}.png" alt="レアリティ">
 				</div>
 				<div class="coachSelect_text training_coach_goo_atk">
 					{{$val['gooAtk']}}
@@ -31,7 +42,6 @@
 				<div class="coachSelect_text training_coach_paa_atk">
 					{{$val['paaAtk']}}
 				</div>
-
 			</div>
 			@include('popup/wrap', [
 				'class'		=> "trainingPopup{$cnt}", 
