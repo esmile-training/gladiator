@@ -68,10 +68,10 @@ body {
      position: fixed;
  }
 
- .mypage_borad{
+ .mypage_board{
     width: 33%;
     position: fixed;
-    margin-top: 2%;
+    margin-top: 1%;
 }
 
 .user_chara{

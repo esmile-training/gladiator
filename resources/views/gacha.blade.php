@@ -1,3 +1,4 @@
+<div><img class="gacha_back" src="{{IMG_URL}}gacha/selectbackground.jpg" /></div>
 @include('common/css', ['file' => 'gacha'])
 <div class = "gacha_all">
 	<input type="checkbox" 

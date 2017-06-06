@@ -12,17 +12,17 @@ th{ text-align: center; }
 }
 
 .ranking_back_image{
-    background: url(/img/ranking/rankingbackimage.jpg) no-repeat center center;
+    background: no-repeat center center;
     background-size: 100% auto;
     width: 100%;
     margin-top: -20%;
     position: fixed;
 }
 
-.ranking_borad{
+.ranking_board{
     width: 33%;
     position: fixed;
-    margin-top: 2%;
+    margin-top: 1%;
     z-index: 999;
 }
 

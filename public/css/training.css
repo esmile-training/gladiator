@@ -108,19 +108,19 @@
     position: absolute;
     top: 0;
     left: 38%;
-    font-size: 4vw;;
-    margin-top: 6%
+    font-size: 4vw;
+    margin-top: 6%;
 }
 
 .training_status{
     font-size: 4vw;
     position: absolute;
     top: 0;
-    left: 28%;
+    left: 32%;
     margin-top: 18%;
+    width: 55%;
 }
 
 .training_list{
-    float: left;
-    margin-left: 10%;
+   text-align: right;
 }
