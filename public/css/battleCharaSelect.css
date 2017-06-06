@@ -6,7 +6,7 @@
  */
  /*背景の設定をする*/
 #main{
-    background-image: url(http://esmile-sys.sakura.ne.jp/gladiator/img/battle/chara_select_bg.jpg);
+    background-image: url(/img/battle/chara_select_bg.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;

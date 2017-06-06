@@ -8,21 +8,21 @@
 	<div class = "gacha_popupbox">
 		所持:
 		{{$money}}
-		<img  class = "gold2" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/user/gold.png">
+		<img  class = "gold2" src = "{{IMG_URL}}user/gold.png">
 		</br>
 		スカウト:
 		{{$cost}}
-		<img  class = "gold1" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/user/gold.png">
+		<img  class = "gold1" src = "{{IMG_URL}}user/gold.png">
 		</br>
 	
 	@if($data['money'] < $gachaCost[$data['gachaId']]['money'])
 		<div style="color:#F00">
 			残高が足りません
 		</div>
-		<img class="gacha_popup image_change" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/popup/scoutDown.png">
+		<img class="gacha_popup image_change" src = "{{IMG_URL}}popup/scoutDown.png">
 	@else
 		<a class="clickfalse" href="{{APP_URL}}gacha/viewDataSet?gachavalue={{$data['gachaId']}}">
-			<img class="gacha_popup image_change" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/popup/scout.png">
+			<img class="gacha_popup image_change" src = "{{IMG_URL}}popup/scout.png">
 		</a>
 	@endif
 	</div>

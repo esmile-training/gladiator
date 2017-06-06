@@ -3,6 +3,6 @@
 <img class="mypage_board" src="{{IMG_URL}}mypage/mypageboard.png" />
 @if(!is_null($viewData['delFlag']['imgId']))
 <div class="user_chara">
-	<img src="{{IMG_URL_CHARA}}{{$viewData['delFlag']['imgId']}}.png">
+	<img src="{{IMG_URL}}chara/{{$viewData['delFlag']['imgId']}}.png">
 </div>
 @endif
