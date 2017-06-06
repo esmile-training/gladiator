@@ -1,8 +1,8 @@
 @include('common/css', ['file' => 'battleCharaSelect'])
 @include('common/css', ['file' => 'confirmChangeCoach'])
-<div id='main'>
+<div class="chara_list">
 <div>
-	<img class='select_coach_sign' src='{{IMG_URL}}status/selectCoachSign.png' alt='コーチ選択'>
+	<img class='signboard_img' src='{{IMG_URL}}status/selectCoachSign.png' alt='コーチ選択'>
 </div>
 <br><br>
 <div>
@@ -34,62 +34,32 @@
 			</div>
 		@else
 			{{-- popupボタン --}}
+			{{--ボタンの表示間隔--}}
+		<div class="button_margin">
 			{{--ボタンの枠--}}
-			<div class="modal_btn confirmChangeCoach{{ $count }} chara_frame" style='left: 2%'>
-				<input type='image' class="chara_frame_img" src='{{IMG_URL}}training/coachButton.png'>
-				{{--キャラアイコンのフレーム--}}
-				<div class="icon_frame">
-					<img src="{{IMG_URL}}battle/icon_frame{{$coach['iconFrame']}}.png" alt="キャラアイコンの枠">
-				</div>
-				{{--キャラアイコン--}}
-				<div class="chara_icon">
-					<img src="{{IMG_URL}}chara/icon/icon_{{$coach['imgId']}}.png"
-					alt="キャラアイコン">
-				</div>
-				{{--レアリティの後ろの光--}}
-				<div class="flash">
-					<img src="{{IMG_URL}}gacha/logoflash.png"
-					alt="レアリティの背景">
-				</div>
-				{{--レアリティ--}}
-				<div class="rarity">
-					<img src="{{IMG_URL}}gacha/{{$coach['rare']}}.png"
-					alt="レアリティ">
-				</div>
-				{{--HP--}}
-				<div class="hp_icon">
-					<img src="{{IMG_URL}}chara/status/hp.png" alt="HPアイコン">
-				</div>
-				<div class="hp_value">
-					<font>{{$coach['hp']}}</font>
-				</div>
-				{{--グー--}}
-				<div class="goo_icon">
-					<img src="{{IMG_URL}}chara/status/hand1.png" alt="グーアイコン">
-				</div>
-				<div class="white status_value goo_pos">
-					<font>{{$coach['gooAtk']}}</font>
-				</div>
-
-				{{--チョキ--}}
-				<div class="cho_icon">
-					<img src="{{IMG_URL}}chara/status/hand2.png" alt="チョキアイコン">
-				</div>
-				<div class="white status_value cho_pos">
-					<font>{{$coach['choAtk']}}</font>
-				</div>
-
-				{{--パー--}}
-				<div class="paa_icon">
-					<img src="{{IMG_URL}}chara/status/hand3.png" alt="チョキアイコン">
-				</div>
-				<div class="white status_value paa_pos">
-					<font>{{$coach['paaAtk']}}</font>
-				</div>
-
-				{{--キャラ名--}}
-				<font class="chara_name">{{$coach['name']}}</font>
+			<div class="modal_btn confirmChangeCoach{{ $count }} chara_button" style='left: 2%'>
+				<input type='image' class="chara_button_frame_img" src='{{IMG_URL}}training/coachButton.png'>
+			{{--キャラアイコン--}}
+			<div class="chara_icon">
+				{{--キャライメージ--}}
+				<img class="chara_image" src="{{IMG_URL}}chara/icon/icon_{{$coach['imgId']}}.png" alt="キャラアイコン">
+				{{--レアリティの表示--}}
+				<img class="rarity_bg" src="{{IMG_URL}}battle/rarity_bg.png" alt="レアリティの背景">
+				<img class="rarity" src="{{IMG_URL}}gacha/{{$coach['rare']}}.png" alt="レアリティ">
 			</div>
+			{{--ステータスの表示--}}
+				<div class="chara_status">
+					{{--名前の表示--}}
+					<font class="chara_name font_serif">{{$coach['name']}}</font>
+					{{--hpの表示--}}
+					<font class="hp_value font_sentury">{{$coach['hp']}}</font>
+					{{--手の表示--}}
+					<font class="goo_value font_sentury">{{$coach['gooAtk']}}</font>
+					<font class="cho_value font_sentury">{{$coach['choAtk']}}</font>
+					<font class="paa_value font_sentury">{{$coach['paaAtk']}}</font>
+				</div>
+			</div>
+		</div>
 			{{-- popupウインドウ --}}
 			@include('popup/wrap', [
 			'class' => "confirmChangeCoach{$count}",
