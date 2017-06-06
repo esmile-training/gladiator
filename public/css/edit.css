@@ -3,7 +3,7 @@ body{
 }
 
 #main{
-    background-image: url(/img/gacha/gacharoadbackground.jpg);
+    background-image: url(./../img/gacha/gacharoadbackground.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -75,4 +75,5 @@ body{
     
     width: 100%;
 	position: fixed;
+	opacity: 0;
 }
