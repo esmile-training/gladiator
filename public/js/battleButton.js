@@ -27,8 +27,6 @@ $(function(){
     
     // ボタンが押されたら、押されたボタン以外の手のボタンを消す
     $('.visibil').click(function() {
-        // 敵の手
-        document.getElementById("enemyHand").style.visibility="hidden";
 
         // idを取得して、そのid以外の攻撃ボタンを消す
         var idname = $(this).attr("id");
@@ -49,7 +47,10 @@ $(function(){
         else if(idname === "playerHand3")
         {
             document.getElementById("playerHand1").style.visibility="hidden";
-            document.getElementById("playerHand2").style.visibility="hidden"; 
+            document.getElementById("playerHand2").style.visibility="hidden";
         }
+        
+        // 敵の手
+        document.getElementById("enemyHand").style.visibility="hidden";
     });
 });
