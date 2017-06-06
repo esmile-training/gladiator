@@ -2,6 +2,11 @@
 @include('common/css', ['file' => 'training'])
 @include('common/css', ['file' => 'battleCharaSelect'])
 
+<div class="training_signboard">
+	 <img src="{{IMG_URL}}/training/signboard.png">
+</div>
+
+{{--訓練が終了しているキャラがいたらポップアップ表示--}}
 <script>
 	 var popup = Boolean(<?php echo $viewData['isTrainingEndFlag'] ?>);
 	 $(function (){
@@ -27,43 +32,39 @@
 @endif
 
 {{--uChara(DB)から持ってきたデータの表示--}}
-@foreach( $viewData['charaList'] as $key => $val)
-<div class = "chara_button">
-	{{--ボタンの枠--}}
-	<div class="icon_frame">
-		@if($val['trainingState'] == 1)
+<div class="training_charalist">
+	<div class="button_margin ">
+	@foreach( $viewData['charaList'] as $key => $val)
+		{{--ボタンの枠--}}
+		<div class="chara_button icon_frame">
+			{{--訓練中ならグレースケール貼る--}}
+			@if($val['trainingState'] == 1)
 			<a class="training_a_none" href="{{APP_URL}}training/coachSelect?uCharaId={{$val['id']}}">
-			<div class="scale_img"><img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame{{$val['rare']}}.png" alt="ボタンの枠"></div>
-		@else
+				<div class="scale_img"><img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame{{$val['rare']}}.png" alt="ボタンの枠"></div>
+			@else
 			<a href="{{APP_URL}}training/coachSelect?uCharaId={{$val['id']}}">
-		@endif
-			<img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame{{$val['rare']}}.png" alt="ボタンの枠">
+			@endif
+				<img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame{{$val['rare']}}.png" alt="ボタンの枠">
 
-			{{--キャラアイコン--}}
-			<div class="chara_icon">
-				<img src="{{IMG_URL}}chara/icon/icon_{{$val['imgId']}}.png"
-				alt="キャラアイコン">
-			</div>
-			<div class="chara_status">
-				{{--グー--}}
-				<div class="font_serif goo_value">
-					<font>{{$val['gooAtk']}}</font>
+				{{--キャラアイコン--}}
+				<div class="chara_icon">
+					<img class="chara_image" src="{{IMG_URL}}chara/icon/icon_{{$val['imgId']}}.png" alt="キャラアイコン">
 				</div>
-
-				{{--チョキ--}}
-				<div class="font_serif cho_value">
-					<font>{{$val['choAtk']}}</font>
+				{{--キャラクターのステータス表示--}}
+				<div class="chara_status">
+					{{--HP--}}
+					<font class="hp_value font_sentury">{{$val['hp']}}</font>
+					{{--グー--}}
+					<font class="goo_value font_sentury">{{$val['gooAtk']}}</font>
+					{{--チョキ--}}
+					<font class="cho_value font_sentury">{{$val['choAtk']}}</font>
+					{{--パー--}}
+					<font class="paa_value font_sentury">{{$val['paaAtk']}}</font>
+					{{--キャラ名--}}
+					<font class="chara_name font_sentury">{{$val['name']}}</font>
 				</div>
-
-				{{--パー--}}
-				<div class="font_serif paa_value">
-					<font>{{$val['paaAtk']}}</font>
-				</div>
-
-				{{--キャラ名--}}
-				<font class="font_sentury chara_name">{{$val['name']}}</font>
-			</div>
-		</a>
+			</a>
+		</div>
+	@endforeach
 	</div>
-@endforeach
 </div>
