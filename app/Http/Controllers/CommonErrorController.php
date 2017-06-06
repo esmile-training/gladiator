@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
  * ポップアップ表示の代わりです。
  */
 
-class CommonErrorController extends BaseGameController
+class CommonErrorController
 {
 	public function index()
 	{

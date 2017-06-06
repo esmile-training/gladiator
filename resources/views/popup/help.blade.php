@@ -1,5 +1,5 @@
-<div>
-	説明<br />
-	敵の攻撃力が一番低い手に<br />
-	負ける手を出し続ければ…？<br />
+@include('common/css', ['file' => 'help'])
+
+<div class="help_log">
+	<img src="{{IMG_URL}}battle/tutorial.png" class="help_log_turorial_img" >
 </div>

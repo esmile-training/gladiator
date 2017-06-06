@@ -6,119 +6,68 @@
 <div>
 	<center>コーチに配属しますか？</center>
 </div>
-<div class='chara_button'>
-	<div class="chara_frame">
-		<img class="chara_frame_img" src="{{IMG_URL}}training/coachButton.png" alt="ボタンの枠">
-		{{--キャラアイコンのフレーム--}}
-		<div class="icon_frame">
-			<img src="{{IMG_URL}}battle/icon_frame{{$coach['iconFrame']}}.png" alt="キャラアイコンの枠">
-		</div>
-		{{--キャラアイコン--}}
-		<div class="chara_icon">
-			<img src="{{IMG_URL}}chara/icon/icon_{{$coach['imgId']}}.png" alt="キャラアイコン">
-		</div>
-		{{--レアリティの後ろの光--}}
-		<div class="flash">
-			<img src="{{IMG_URL}}gacha/logoflash.png"
-			alt="レアリティの背景">
-		</div>
-		{{--レアリティ--}}
-		<div class="rarity">
-			<img src="{{IMG_URL}}gacha/{{$coach['rare']}}.png"
-			alt="レアリティ">
-		</div>
-		{{--HP--}}
-		<div class="hp_icon">
-			<img src="{{IMG_URL}}chara/status/hp.png" alt="HPアイコン">
-		</div>
-		<div class="hp_value">
-			<font>{{$coach['hp']}}</font>
-		</div>
-		{{--グー--}}
-		<div class="goo_icon">
-			<img src="{{IMG_URL}}chara/status/hand1.png" alt="グーアイコン">
-		</div>
-		<div class="status_value goo_pos">
-			<font>{{$coach['gooAtk']}}</font>
-		</div>
-
-		{{--チョキ--}}
-		<div class="cho_icon">
-			<img src="{{IMG_URL}}chara/status/hand2.png" alt="チョキアイコン">
-		</div>
-		<div class="status_value cho_pos">
-			<font>{{$coach['choAtk']}}</font>
-		</div>
-
-		{{--パー--}}
-		<div class="paa_icon">
-			<img src="{{IMG_URL}}chara/status/hand3.png" alt="チョキアイコン">
-		</div>
-		<div class="status_value paa_pos">
-			<font>{{$coach['paaAtk']}}</font>
-		</div>
-
-		{{--キャラ名--}}
-		<font class="chara_name">{{$coach['name']}}</font>
+<div class='chara_list'>
+<div class="chara_frame" style='left: 2%'>
+			{{-- popupボタン --}}
+			{{--ボタンの表示間隔--}}
+		<div class="button_margin">
+			{{--ボタンの枠--}}
+			<div class="modal_btn confirmChangeCoach{{ $count }} chara_button" style='left: 2%'>
+				<image class="chara_button_frame_img" src='{{IMG_URL}}training/coachButton.png'>
+			{{--キャラアイコン--}}
+			<div class="chara_icon">
+				{{--キャライメージ--}}
+				<img class="chara_image" src="{{IMG_URL}}chara/icon/icon_{{$coach['imgId']}}.png" alt="キャラアイコン">
+				{{--レアリティの表示--}}
+				<img class="rarity_bg" src="{{IMG_URL}}battle/rarity_bg.png" alt="レアリティの背景">
+				<img class="rarity" src="{{IMG_URL}}gacha/{{$coach['rare']}}.png" alt="レアリティ">
+			</div>
+			{{--ステータスの表示--}}
+				<div class="chara_status">
+					{{--名前の表示--}}
+					<font class="chara_name font_serif">{{$coach['name']}}</font>
+					{{--hpの表示--}}
+					<font class="hp_value font_sentury">{{$coach['hp']}}</font>
+					{{--手の表示--}}
+					<font class="goo_value font_sentury">{{$coach['gooAtk']}}</font>
+					<font class="cho_value font_sentury">{{$coach['choAtk']}}</font>
+					<font class="paa_value font_sentury">{{$coach['paaAtk']}}</font>
+				</div>
+			</div>
 	</div>
+</div>
 	<div>
 	↓
 	</div>
-	<div class="chara_frame">
-		<img class="chara_frame_img" src="{{IMG_URL}}battle/chara_button_frame.png" alt="ボタンの枠">
-		{{--キャラアイコンのフレーム--}}
-		<div class="icon_frame">
-			<img src="{{IMG_URL}}battle/icon_frame{{$viewData['selectCharaState']['iconFrame']}}.png" alt="キャラアイコンの枠">
-		</div>
-		{{--キャラアイコン--}}
-		<div class="chara_icon">
-			<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['selectCharaState']['imgId']}}.png"
-			alt="キャラアイコン">
-		</div>
-		{{--レアリティの後ろの光--}}
-		<div class="flash">
-			<img src="{{IMG_URL}}gacha/logoflash.png"
-			alt="レアリティの背景">
-		</div>
-		{{--レアリティ--}}
-		<div class="rarity">
-			<img src="{{IMG_URL}}gacha/{{$viewData['selectCharaState']['rare']}}.png"
-			alt="レアリティ">
-		</div>
-		{{--HP--}}
-		<div class="hp_icon">
-			<img src="{{IMG_URL}}chara/status/hp.png"
-			alt="HPアイコン">
-		</div>
-		<div class="hp_value">
-			<font>{{$viewData['selectCharaState']['hp']}}</font>
-		</div>
-		{{--グー--}}
-		<div class="goo_icon">
-			<img src="{{IMG_URL}}chara/status/hand1.png" alt="グーアイコン">
-		</div>
-		<div class="status_value goo_pos">
-			<font>{{$viewData['selectCharaState']['gooAtk']}}</font>
-		</div>
-		{{--チョキ--}}
-		<div class="cho_icon">
-			<img src="{{IMG_URL}}chara/status/hand2.png" alt="チョキアイコン">
-		</div>
-		<div class="status_value cho_pos">
-			<font>{{$viewData['selectCharaState']['choAtk']}}</font>
-		</div>
+<div class="button_margin">
+			{{--キャラボタン--}}
+			<div class="chara_button">
+				<img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame{{$viewData['selectCharaState']['rare']}}.png" alt="ボタンの下地">
 
-		{{--パー--}}
-		<div class="paa_icon">
-			<img src="{{IMG_URL}}chara/status/hand3.png" alt="チョキアイコン">
-		</div>
-		<div class="status_value paa_pos">
-			<font>{{$viewData['selectCharaState']['paaAtk']}}</font>
-		</div>
+				{{--キャラアイコン--}}
+				<div class="chara_icon">
 
-		{{--キャラ名--}}
-		<font class="chara_name">{{$viewData['selectCharaState']['name']}}</font>
-	</div>
+					{{--キャライメージ--}}
+					<img class="chara_image" src="{{IMG_URL}}chara/icon/icon_{{$viewData['selectCharaState']['imgId']}}.png" alt="キャラアイコン">
+
+					{{--レアリティの表示--}}
+					<img class="rarity_bg" src="{{IMG_URL}}battle/rarity_bg.png" alt="レアリティの背景">
+					<img class="rarity" src="{{IMG_URL}}gacha/{{$viewData['selectCharaState']['rare']}}.png" alt="レアリティ">
+				</div>
+
+				{{--ステータスの表示--}}
+				<div class="chara_status">
+					{{--名前の表示--}}
+					<font class="chara_name font_serif">{{$viewData['selectCharaState']['name']}}</font>
+					{{--hpの表示--}}
+					<font class="hp_value font_sentury">{{$viewData['selectCharaState']['hp']}}</font>
+					{{--手の表示--}}
+					<font class="goo_value font_sentury">{{$viewData['selectCharaState']['gooAtk']}}</font>
+					<font class="cho_value font_sentury">{{$viewData['selectCharaState']['choAtk']}}</font>
+					<font class="paa_value font_sentury">{{$viewData['selectCharaState']['paaAtk']}}</font>
+				</div>
+			</div>
+		</div>
 	<br>
 	<div>
 		<a class="button retire" href="{{APP_URL}}SelectCoach/changeCoach?coachId={{$coach['id']}}&id={{$viewData['selectCharaState']['id']}}&imgId={{$viewData['selectCharaState']['imgId']}}&name={{$viewData['selectCharaState']['name']}}&rare={{$viewData['selectCharaState']['rare']}}&attribute={{$viewData['selectCharaState']['attribute']}}&hp={{$viewData['selectCharaState']['hp']}}&gooAtk={{$viewData['selectCharaState']['gooAtk']}}&choAtk={{$viewData['selectCharaState']['choAtk']}}&paaAtk={{$viewData['selectCharaState']['paaAtk']}}">

@@ -22,24 +22,26 @@
 	<div id="wrapper">
 		<header>
 			<div class="headerPosition">
-				<img class="headerImg" src="{{HEADER_IMG_URL}}header.png" />
+				<img class="headerImg" src="{{IMG_URL}}header/header.png" />
 				<p class="possession_ornament user_name">{{$viewData['user']['name']}}</p>
 				<div class="fadetopButton">
 					<a class="location" href="{{APP_URL}}">
-						<img class="image_change" src="{{HEADER_IMG_URL}}top.png"/>
+						<img class="image_change" src="{{IMG_URL}}header/top.png"/>
 					</a>
 				</div>
 				<div class="fademenuButton">
 					<a class="location">
-						<img class="modal_btn menuButton image_change" src="{{HEADER_IMG_URL}}menu.png"/>
+						<img class="modal_btn menuButton image_change" src="{{IMG_URL}}header/menu.png"/>
 					</a>
 				</div>
 				<div>
-					<img class="headerGaugeIcon money" src="{{HEADER_IMG_URL}}money.png" />	
+					<img class="headerGaugeIcon money" src="{{IMG_URL}}header/bar.png" />	
+					<img class="headerGaugeIcon moneyIcon" src="{{IMG_URL}}user/gold.png" />
 					<p class="possession_ornament possession_money">{{$viewData['user']['money']}}</p>
 				</div>
 				<div>
-					<img class="headerGaugeIcon battleTicket" src="{{HEADER_IMG_URL}}battleTicket.png" />
+					<img class="headerGaugeIcon battleTicket" src="{{IMG_URL}}header/bar.png" />
+					<img class="headerGaugeIcon battleTicketIcon" src="{{IMG_URL}}header/battleTicket.png" />
 					<p class="possession_ornament possession_battleTicket">{{$viewData['user']['battleTicket']}}/5 {{$viewData['recoveryTime']}}</p>
 				</div>
 			</div>

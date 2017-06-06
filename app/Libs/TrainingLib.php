@@ -73,8 +73,10 @@ class TrainingLib extends BaseGameLib
 	{
 		//基本確率をconfigから取得
 		$baseProbability = \Config::get('training.baseProbability');
-		$result = $uCoachAtk / $uCharaAtk * $baseProbability * (100 - $atkUpCnt);
 		
+		
+		$result = $uCoachAtk / $uCharaAtk * $baseProbability * (100 - $atkUpCnt);
+
 		//$result(確率の計算結果)が101(％)以上だったら$resultに100を入れる
 		if($result >= 101)
 		{

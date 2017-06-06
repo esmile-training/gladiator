@@ -108,7 +108,7 @@
 }
 .gacha_charahp{
 	position: relative;
-	left: -21%;
+	left: -17.5%;
 	color: #FFFFFF;
 }
 .gacha_charastatus{
@@ -144,3 +144,7 @@
 #check1:checked ~ #entryBtn{
 	opacity: 0;
 }
+.top{
+	 position: relative;
+}
+

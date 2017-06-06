@@ -82,7 +82,7 @@ class EditController extends BaseGameController
 		}
 	}
 	
-	public function  addCoach($userId, $att, $Atk)
+	public function addCoach($userId, $att, $Atk)
 	{
 		$atkArray = array('50', '50', '50');
 		$atkArray[$Atk] = 200;

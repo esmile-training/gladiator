@@ -32,6 +32,7 @@ $(function(){
 	    var changeL = getSrc.replace(afterImage , beforeImage);
 	    $(getClass).attr('src', changeL);
 	}, 500);
+
     });
 	
 	$('.clickfalse').click(function() {

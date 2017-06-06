@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/*CSS Document*/
+/*training*/
+body{}
+
+.help_log {
+    width: 80%;
+    margin: 0 auto;
+}
+.help_log_turorial_img{
+    width: 100%;
+}

@@ -6,6 +6,7 @@
 	 <img src="{{IMG_URL}}/training/signboard.png">
 </div>
 
+{{--訓練が終了しているキャラがいたらポップアップ表示--}}
 <script>
 	 var popup = Boolean(<?php echo $viewData['isTrainingEndFlag'] ?>);
 	 $(function (){
@@ -31,52 +32,43 @@
 @endif
 
 {{--uChara(DB)から持ってきたデータの表示--}}
-@foreach( $viewData['charaList'] as $key => $val)
-	<div class = "chara_button">
+<div class="training_charalist">
+	@foreach( $viewData['charaList'] as $key => $val)
+	<div class="button_margin ">
 		{{--ボタンの枠--}}
-		<div class="icon_frame">
+		<div class="chara_button icon_frame">
+			{{--訓練中ならグレースケール貼る--}}
 			@if($val['trainingState'] == 1)
-				<a class="training_a_none" href="{{APP_URL}}training/coachSelect?uCharaId={{$val['id']}}">
-				<div class="scale_img"><img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame.png" alt="ボタンの枠"></div>
+			<a class="training_a_none" href="{{APP_URL}}training/coachSelect?uCharaId={{$val['id']}}">
+				<div class="scale_img"><img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame{{$val['rare']}}.png" alt="ボタンの枠"></div>
 			@else
-				<a href="{{APP_URL}}training/coachSelect?uCharaId={{$val['id']}}">
+			<a href="{{APP_URL}}training/coachSelect?uCharaId={{$val['id']}}">
 			@endif
-				<img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame.png" alt="ボタンの枠">
+				<img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame{{$val['rare']}}.png" alt="ボタンの枠">
 
 				{{--キャラアイコン--}}
 				<div class="chara_icon">
-					<img src="{{IMG_URL}}chara/icon/icon_{{$val['imgId']}}.png"
-					alt="キャラアイコン">
+					<img class="chara_image" src="{{IMG_URL}}chara/icon/icon_{{$val['imgId']}}.png" alt="キャラアイコン">
+					{{--レアリティの表示--}}
+					<img class="rarity_bg" src="{{IMG_URL}}battle/rarity_bg.png" alt="レアリティの背景">
+					<img class="rarity" src="{{IMG_URL}}gacha/{{$val['rare']}}.png" alt="レアリティ">
 				</div>
+				
+				{{--キャラクターのステータス表示--}}
 				<div class="chara_status">
+					{{--HP--}}
+					<font class="hp_value font_sentury">{{$val['hp']}}</font>
 					{{--グー--}}
-					<div class="goo_icon">
-						<img src="{{IMG_URL}}/chara/status/hand1.png" alt="グーアイコン">
-					</div>
-					<div class="font_serif goo_value">
-						<font>{{$val['gooAtk']}}</font>
-					</div>
-
+					<font class="goo_value font_sentury">{{$val['gooAtk']}}</font>
 					{{--チョキ--}}
-					<div class="cho_icon">
-						<img src="{{IMG_URL}}/chara/status/hand2.png" alt="チョキアイコン">
-					</div>
-					<div class="font_serif cho_value">
-						<font>{{$val['choAtk']}}</font>
-					</div>
-
+					<font class="cho_value font_sentury">{{$val['choAtk']}}</font>
 					{{--パー--}}
-					<div class="paa_icon">
-						<img src="{{IMG_URL}}/chara/status/hand3.png" alt="チョキアイコン">
-					</div>
-					<div class="font_serif paa_value">
-						<font>{{$val['paaAtk']}}</font>
-					</div>
-
+					<font class="paa_value font_sentury">{{$val['paaAtk']}}</font>
 					{{--キャラ名--}}
-					<font class="font_sentury chara_name">{{$val['name']}}</font>
+					<font class="chara_name font_sentury">{{$val['name']}}</font>
 				</div>
 			</a>
 		</div>
 	</div>
-@endforeach
+	@endforeach
+</div>

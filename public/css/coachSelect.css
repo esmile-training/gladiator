@@ -1,0 +1,142 @@
+#main{
+	
+    background-image:
+	    url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/selectbackground.jpg);
+    /* 画像を常に天地左右の中央に配置 */
+    background-position: center center;
+
+    /* 画像をタイル状に繰り返し表示しない */
+    background-repeat: no-repeat;
+
+    /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+    background-size: cover;
+
+    width: 100%;
+
+}
+
+.coachSelect_display{
+    position: relative;
+    width:100%;
+}
+
+.coachSelect_signboard{
+    position : fixed;
+    width    : 35%;
+    top	     : 13%;
+    left     : 0;
+    z-index  : 2;
+}
+
+.coachSelect_all{
+    position: relative;
+    top : 15%;
+    left : 0%;
+    width: 100%
+}
+
+.coachSelect_text{
+    position	: relative;
+    font-family :'Century';
+    color	: #FFFFFF;
+    z-index: 2;
+}
+
+.training_coach_name{
+    position: absolute;
+    top	    : 10%;
+    left    : 32%;
+    color   : #FFFFFF;
+}
+
+.training_coach_icon{
+    position: absolute;
+    top	    : -10%;
+    left    : 3%;
+    width   : 23%;
+}
+
+.training_coach_window{
+    position	    : relative;
+    margin-top	    : 5%;
+    margin-left	    : 4%;
+    margin-right    : 4%;
+}
+
+.training_coach_goo_atk{
+    position: absolute;
+    top     : 60%;
+    left    : 34%;
+    color   :#ffffff;
+}
+
+.training_coach_cho_atk{
+    position: absolute;
+    top     : 60%;
+    left    : 58%;
+    color   :#ffffff; 
+}
+
+.training_coach_paa_atk{
+    position: absolute;
+    top     : 60%;
+    left    : 82%;
+    color   :#ffffff; 
+}
+
+.training_submit{
+    position: absolute;
+    top     : 550%;
+    left    : 40%;
+    width   : 20%;
+}
+
+.training_fee_img{
+    position: absolute;
+    top     : 95%;
+    left    : 32%;
+    width   : 10%;
+}
+
+.training_fee_text{
+    position: absolute;
+    top     : 95%;
+    left    : 36%;
+    width   : 30%;
+}
+
+.training_goo_up_probability{
+    position: absolute;
+    top	    : 200%;
+    left    : 25%
+}
+
+.training_cho_up_probability{
+    position: absolute;
+    top	    : 200%;
+    left    : 45%
+}
+
+.training_paa_up_probability{
+    position: absolute;
+    top	    : 200%;
+    left    : 65%
+}
+
+.atkUpProbabilityPopup{
+    position: absolute;
+    top	    : 10%;
+    left    : 83%;
+    width   : 15%;
+    z-index : 2;
+}
+
+.training_a_none{
+    pointer-events: none;
+}
+
+.scale_img{
+    position: absolute;
+    opacity: 0.7;
+    z-index: 1;
+}

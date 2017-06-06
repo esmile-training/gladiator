@@ -29,12 +29,18 @@
 	</label><br>
 	<div id="entryBtn">
 		<div class="gacha_charaframe">
-			<img class="gacha_charatopframe"
-				 src="{{IMG_URL}}gacha/wakuUp.png">
-			<img class="gacha_characenterframe"
-				 src="{{IMG_URL}}gacha/wakuNaka.png">
-			<img class="gacha_charabottomframe"
-				 src="{{IMG_URL}}gacha/wakuuUnder.png">
+			<div class = "top">
+				<img class="gacha_charatopframe"
+					 src="{{IMG_URL}}gacha/wakuUp.png">
+			</div>
+			<div class = "center">
+				<img class="gacha_characenterframe"
+					 src="{{IMG_URL}}gacha/wakuNaka.png">
+			</div>
+			<div class = "bottom">
+				<img class="gacha_charabottomframe"
+					 src="{{IMG_URL}}gacha/wakuuUnder.png">
+			</div>
 		</div>
 		<div class = "gacha_charatextbox">
 			<div class="gacha_charaname">
