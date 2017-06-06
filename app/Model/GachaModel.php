@@ -8,7 +8,7 @@ class GachaModel extends BaseGameModel
 $sql =  <<< EOD
 	SELECT *
 	FROM uGachaLog
-	WHERE gachaId = '4'
+	WHERE gachaId = '11'
 	AND userId = {$userId}
 	ORDER BY createTime DESC LIMIT 1;
 EOD;

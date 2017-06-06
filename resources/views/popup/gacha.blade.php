@@ -8,11 +8,11 @@
 	<div class = "gacha_popupbox">
 		所持:
 		{{$money}}
-		<img  class = "gold2" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/gold.png">
+		<img  class = "gold2" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/user/gold.png">
 		</br>
 		スカウト:
 		{{$cost}}
-		<img  class = "gold1" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/gold.png">
+		<img  class = "gold1" src = "http://esmile-sys.sakura.ne.jp/gladiator/img/user/gold.png">
 		</br>
 	
 	@if($data['money'] < $gachaCost[$data['gachaId']]['money'])
