@@ -5,7 +5,7 @@ $(function(){
     var main = document.getElementById( "main" );
     var mainHeight =  $('#main').height();
 
-    headerHeight = headerHeight-(headerHeight/6);
+    headerHeight = headerHeight-(headerHeight/60);
     footerHeight = footerHeight-(footerHeight/60);
 
      var bodyHeight = screen.height - (headerHeight + footerHeight);
