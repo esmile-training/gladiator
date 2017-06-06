@@ -76,16 +76,16 @@
 
 .training_chara_rare{
     position: absolute;
-    top: 60%;
-    left: 10%;
+    top: 70%;
+    left: 0%;
     width: 45%;
     z-index: 2;
 }
 
 .training_chara_rare_bg{
     position: absolute;
-    top: 50%;
-    left: 0%;
+    top: 60%;
+    left: -10%;
     width: 65%;
 }
 

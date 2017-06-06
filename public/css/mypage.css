@@ -70,7 +70,7 @@ body {
 
  .mypage_borad{
     width: 33%;
-    position: absolute;
+    position: fixed;
 }
 
 .user_chara{
