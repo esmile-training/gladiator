@@ -30,7 +30,7 @@
 
 <body>
 	<div class ="training_fee_img">
-		<img src="{{IMG_URL}}/header/money.png">
+		<img src="{{IMG_URL}}/user/gold.png">
 	</div>
 	<div class="coachSelect_text">
 		<p id="trainingFee{{$cnt}}" class="training_fee_text"><p>
