@@ -7,27 +7,23 @@
 {{-- css  --}}
 @include('common/css', ['file' => 'battleSelect'])
 {{--大会の一覧を表示する--}}
-<div class="battle_select">
-	<div class = "battle_selectfont">
-		闘技場を選択して下さい
-	</div>
+<div class="arena_list">
+	<font class="caption_font"> 闘技場を選択して下さい </font>
 	@foreach($viewData['difficultyList'] as $arena)
-			<div class = "battle_select{{$arena['id']}}">	
+			<div class = "arena_banner{{$arena['id']}}">
 				<img class ="modal_btn arena{{$arena['id']}}" src="{{IMG_URL}}battle/difficulty{{$arena['id']}}.png">
 			</div>
-			<?php 
+			<?php
 				$arenaData['selectedCharaId'] = $viewData['selectedCharaId'];
 				$arenaData['id'] = $arena['id'];
 			?>
 			{{-- popupウインドウ --}}
 			@include('popup/wrap', [
-				'class'		=> "arena{$arena['id']}", 
+				'class'		=> "arena{$arena['id']}",
 				'template'	=> 'arenaSelect',
 				'data'	=>	['arenaData' => $arenaData]
 			])
 	@endforeach
 </div>
-
-
-
-
+{{--看板の表示--}}
+<img class="signboard_img" src="{{IMG_URL}}battle/signboard.png" alt="看板">
