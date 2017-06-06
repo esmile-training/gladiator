@@ -15,7 +15,7 @@ class TrainingLib extends BaseGameLib
 		{
 			foreach($endTraining as $val)
 			{
-				$trainingState = 2;
+				$trainingState = 1;
 				TrainingLib::uCharaAtkUp($val['id']);
 				$this->Model->exec('Training', 'uCharaStateChange', array($val['uCharaId'],0));
 				$this->Model->exec('Training', 'uCoachStateChange', array($val['uCoachId'],0));
