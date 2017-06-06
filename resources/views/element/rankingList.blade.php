@@ -1,6 +1,6 @@
 <div><img class="ranking_back_image" src="{{IMG_URL}}ranking/rankingbackimage.jpg" /></div>
 
-	<img class="ranking_borad" src="{{IMG_URL}}ranking/rankingboard.png" />
+	<img class="ranking_board" src="{{IMG_URL}}ranking/rankingboard.png" />
 	{{-- 背景切り替え --}}
 	@if(isset($viewData['ranking'][0]['weeklyAward']))
 		<img class="ranking_panel" src="{{IMG_URL}}ranking/weekrankingwindow.png"/>
