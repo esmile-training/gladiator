@@ -19,10 +19,10 @@ th{ text-align: center; }
     position: fixed;
 }
 
-.ranking_borad{
+.ranking_board{
     width: 33%;
     position: fixed;
-    margin-top: 2%;
+    margin-top: 1%;
     z-index: 999;
 }
 
