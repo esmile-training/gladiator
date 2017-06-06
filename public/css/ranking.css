@@ -12,7 +12,7 @@ th{ text-align: center; }
 }
 
 .ranking_back_image{
-    background: url(http://esmile-sys.sakura.ne.jp/gladiator/img/ranking/rankingbackimage.jpg) no-repeat center center;
+    background: url(/img/ranking/rankingbackimage.jpg) no-repeat center center;
     background-size: 100% auto;
     width: 100%;
     margin-top: -20%;

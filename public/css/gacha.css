@@ -1,7 +1,7 @@
 #main{
 	
 	background-image:
-		url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/selectbackground.jpg);
+		url(/img/gacha/selectbackground.jpg);
 	/* 画像を常に天地左右の中央に配置 */
 	background-position: center center;
    
