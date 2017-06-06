@@ -49,7 +49,7 @@
 </div>
 @else
 <div class = "no_chara">
-	所属している剣闘士０人です！
+	所属している剣闘士が０人です！
 </div>
 @endif
 <img class="signboard_img" src="{{IMG_URL}}battle/signboard.png" alt="看板">
