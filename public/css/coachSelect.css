@@ -30,7 +30,7 @@
 
 .coachSelect_all{
     position: relative;
-    top : 10%;
+    top : 15%;
     left : 0%;
     width: 100%
 }
@@ -44,21 +44,23 @@
 
 .training_coach_name{
     position: absolute;
-    top	    : 15%;
-    left    : 35%;
+    top	    : 10%;
+    left    : 32%;
     color   : #FFFFFF;
 }
 
 .training_coach_icon{
     position: absolute;
-    top	    : 5%;
-    left    : 5%;
-    width   : 20%;
+    top	    : -10%;
+    left    : 3%;
+    width   : 23%;
 }
 
 .training_coach_window{
-    position: relative;
-    top     : 50%
+    position	    : relative;
+    margin-top	    : 5%;
+    margin-left	    : 4%;
+    margin-right    : 4%;
 }
 
 .training_coach_goo_atk{
@@ -103,12 +105,6 @@
     width   : 30%;
 }
 
-.training_first_probability_text{
-    position: absolute;
-    top	    : 150%;
-    left    : 32%
-}
-
 .training_goo_up_probability{
     position: absolute;
     top	    : 200%;
@@ -130,7 +126,17 @@
 .atkUpProbabilityPopup{
     position: absolute;
     top	    : 10%;
-    left    : 80%;
-    width   : 20%;
+    left    : 83%;
+    width   : 15%;
     z-index : 2;
+}
+
+.training_a_none{
+    pointer-events: none;
+}
+
+.scale_img{
+    position: absolute;
+    opacity: 0.7;
+    z-index: 1;
 }

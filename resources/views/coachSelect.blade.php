@@ -11,7 +11,7 @@
 		<div class="training_coach_window">
 			@if($val['state'] == 1)
 			<div class ="modal_btn trainingPopup{{$cnt}} training_a_none">
-				<div class="scale_img"><img src="{{IMG_URL}}/training/coachButton.png"></div>
+				<div class="scale_img"><img src="{{IMG_URL}}/training/coachButton{{$val['rare']}}.png"></div>
 			@else
 			<div class ="modal_btn trainingPopup{{$cnt}}">
 			@endif

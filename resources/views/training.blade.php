@@ -33,8 +33,8 @@
 
 {{--uChara(DB)から持ってきたデータの表示--}}
 <div class="training_charalist">
-	<div class="button_margin ">
 	@foreach( $viewData['charaList'] as $key => $val)
+	<div class="button_margin ">
 		{{--ボタンの枠--}}
 		<div class="chara_button icon_frame">
 			{{--訓練中ならグレースケール貼る--}}
@@ -49,7 +49,11 @@
 				{{--キャラアイコン--}}
 				<div class="chara_icon">
 					<img class="chara_image" src="{{IMG_URL}}chara/icon/icon_{{$val['imgId']}}.png" alt="キャラアイコン">
+					{{--レアリティの表示--}}
+					<img class="rarity_bg" src="{{IMG_URL}}battle/rarity_bg.png" alt="レアリティの背景">
+					<img class="rarity" src="{{IMG_URL}}gacha/{{$val['rare']}}.png" alt="レアリティ">
 				</div>
+				
 				{{--キャラクターのステータス表示--}}
 				<div class="chara_status">
 					{{--HP--}}
@@ -65,6 +69,6 @@
 				</div>
 			</a>
 		</div>
-	@endforeach
 	</div>
+	@endforeach
 </div>
