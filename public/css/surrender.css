@@ -1,6 +1,5 @@
 @charset "UTF-8";
 /*CSS Document*/
-/*training*/
 body{}
 
 /* ボタン部分の領域 */
@@ -17,7 +16,7 @@ body{}
 .surrender_button_no {
     width: 100%;
 }
-/* いいえボタン画像領域 */
+/* お金が足りない場合の文字色 */
 .surrender_costOver {
     color: #ff4444;
 }
