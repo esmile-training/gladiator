@@ -1,19 +1,28 @@
-@charset "UTF-8";
-/*CSS Document*/
-/*training*/
+a:link { color : white; }
+a:visited { color : white; }
+th{ text-align: center; }
+
+#main{
+    position: relative;
+}
+
+.image_top_position{
+    position: absolute;
+    top: 17%;
+}
 body{}
 
 /* 背景画像 */
-.battleresult_bg {
-	/* 画像をタイル状に繰り返し表示しない */
+.battleresult_bg_win {
+    background-size: 100% auto;
 	background-repeat: no-repeat;
-   
-	/* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
 	background-attachment: fixed;
-   
-	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
-	background-size: cover;
-    
+    width: 100%;
+}
+.battleresult_bg_lose {
+    background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
     width: 100%;
 }
 
