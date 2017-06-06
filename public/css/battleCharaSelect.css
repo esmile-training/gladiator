@@ -52,7 +52,7 @@ a:active{
 /*キャラボタンの設定*/
 .chara_button{
 	position: relative;
-	width: 93%;
+	width: 82vw;
 }
 /*キャラボタンの下地の設定*/
 .chara_button_frame_img{
@@ -140,7 +140,7 @@ a:active{
     left: 45%;
 }
 .paa_value{
-	position: absolute;
+    position: absolute;
     font-size: 4.7vw;
     top: 52%;
     left: 69%;

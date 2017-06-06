@@ -49,21 +49,7 @@
     color   : #FFFFFF;
 }
 
-.training_coach_icon0{
-    position: absolute;
-    top	    : 5%;
-    left    : 0%;
-    width   : 20%;
-}
-
-.training_coach_icon1{
-    position: absolute;
-    top	    : 5%;
-    left    : 0%;
-    width   : 20%;
-}
-
-.training_coach_icon2{
+.training_coach_icon{
     position: absolute;
     top	    : 5%;
     left    : 0%;
