@@ -21,7 +21,7 @@
 						{{$viewData['charaDefaultData']['name']}}の勝ち！
 					</div>
 					<div>
-						{{$viewData['prize']}}<img src="{{IMG_URL}}user/gold.png" class="battleresult_log_message_money_img">の賞金を獲得！
+						{{$viewData['prize']}}<img src="{{IMG_URL}}user/gold.png" class="battleresult_log_message_money_img"> の賞金を獲得！
 					</div>
 					<div>
 						現在の所持金　
@@ -42,44 +42,104 @@
 							能力上昇！
 						</div>
 						<div>
-							<img src={{IMG_URL}}chara/status/hp.png class="battleresult_log_message_statusup_hp">
-								{{$viewData['charaDefaultData']['hp']}}　⇒　
-							<span class="battleresult_log_message_upcolor">
-								{{$viewData['charaDefaultData']['hp'] + $viewData['charaUpData']['statusUpCnt']}}	
-							</span>
+							<table border="0">
+								<tr valign="middle">
+									<td width="6%">
+										<img src={{IMG_URL}}chara/status/hp.png class="battleresult_log_message_statusup_hp">
+									</td>
+									<td width="4%"></td>
+									<td width="20%" align="left">
+										{{$viewData['charaDefaultData']['hp']}}
+									</td>
+									<td width="10%">
+										⇒
+									</td>	
+									<td width="20%" align="left">
+										<span class="battleresult_log_message_upcolor">
+											{{$viewData['charaDefaultData']['hp'] + $viewData['charaUpData']['statusUpCnt']}}	
+										</span>
+									</td>
+									<td width="40%"></td>
+								</tr>
+							</table>
 						</div>
 						<div>
-							<img src={{IMG_URL}}chara/status/hand1.png class="battleresult_log_message_statusup_goo">
-								{{$viewData['charaDefaultData']['gooAtk']}}　⇒　
-							@if ($viewData['charaUpData']['gooUpCnt'] > 0)
-							<span class="battleresult_log_message_upcolor">
-								{{$viewData['charaDefaultData']['gooAtk'] + $viewData['charaUpData']['gooUpCnt']}}
-							</span>
-							@else
-								{{$viewData['charaDefaultData']['gooAtk'] + $viewData['charaUpData']['gooUpCnt']}}
-							@endif
+							<table border="0">
+								<tr valign="middle">
+									<td width="6%">
+										<img src={{IMG_URL}}chara/status/hand1.png class="battleresult_log_message_statusup_goo">
+									</td>
+									<td width="4%"></td>
+									<td width="20%" align="left">
+										{{$viewData['charaDefaultData']['gooAtk']}}
+									</td>
+									<td width="10%">
+										⇒
+									</td>	
+									<td width="20%" align="left">
+										@if ($viewData['charaUpData']['gooUpCnt'] > 0)
+										<span class="battleresult_log_message_upcolor">
+											{{$viewData['charaDefaultData']['gooAtk'] + $viewData['charaUpData']['gooUpCnt']}}
+										</span>
+										@else
+											{{$viewData['charaDefaultData']['gooAtk'] + $viewData['charaUpData']['gooUpCnt']}}
+										@endif
+									</td>
+									<td width="40%"></td>
+								</tr>
+							</table>							
 						</div>
 						<div>
-							<img src={{IMG_URL}}chara/status/hand2.png class="battleresult_log_message_statusup_cho">
-								{{$viewData['charaDefaultData']['choAtk']}}　⇒　
-							@if ($viewData['charaUpData']['choUpCnt'] > 0)
-							<span class="battleresult_log_message_upcolor">
-								{{$viewData['charaDefaultData']['choAtk'] + $viewData['charaUpData']['choUpCnt']}}
-							</span>
-							@else
-								{{$viewData['charaDefaultData']['choAtk'] + $viewData['charaUpData']['choUpCnt']}}
-							@endif
+							<table border="0">
+								<tr valign="middle">
+									<td width="6%">
+										<img src={{IMG_URL}}chara/status/hand2.png class="battleresult_log_message_statusup_cho">
+									</td>
+									<td width="4%"></td>
+									<td width="20%" align="left">
+										{{$viewData['charaDefaultData']['choAtk']}}
+									</td>
+									<td width="10%">
+										⇒
+									</td>	
+									<td width="20%" align="left">
+										@if ($viewData['charaUpData']['choUpCnt'] > 0)
+										<span class="battleresult_log_message_upcolor">
+											{{$viewData['charaDefaultData']['choAtk'] + $viewData['charaUpData']['choUpCnt']}}
+										</span>
+										@else
+											{{$viewData['charaDefaultData']['choAtk'] + $viewData['charaUpData']['choUpCnt']}}
+										@endif
+									</td>
+									<td width="40%"></td>
+								</tr>
+							</table>
 						</div>
 						<div>
-							<img src={{IMG_URL}}chara/status/hand3.png class="battleresult_log_message_statusup_paa">
-								{{$viewData['charaDefaultData']['paaAtk']}}　⇒　
-							@if ($viewData['charaUpData']['paaUpCnt'] > 0)
-							<span class="battleresult_log_message_upcolor">
-								{{$viewData['charaDefaultData']['paaAtk'] + $viewData['charaUpData']['paaUpCnt']}}
-							</span>
-							@else
-								{{$viewData['charaDefaultData']['paaAtk'] + $viewData['charaUpData']['paaUpCnt']}}
-							@endif
+							<table border="0">
+								<tr valign="middle">
+									<td width="6%">
+										<img src={{IMG_URL}}chara/status/hand3.png class="battleresult_log_message_statusup_paa">
+									</td>
+									<td width="4%"></td>									
+									<td width="20%" align="left">
+										{{$viewData['charaDefaultData']['paaAtk']}}
+									</td>
+									<td width="10%">
+										⇒
+									</td>	
+									<td width="20%" align="left">
+										@if ($viewData['charaUpData']['paaUpCnt'] > 0)
+										<span class="battleresult_log_message_upcolor">
+											{{$viewData['charaDefaultData']['paaAtk'] + $viewData['charaUpData']['paaUpCnt']}}
+										</span>
+										@else
+											{{$viewData['charaDefaultData']['paaAtk'] + $viewData['charaUpData']['paaUpCnt']}}
+										@endif
+									</td>
+									<td width="40%"></td>
+								</tr>
+							</table>
 						</div>
 					@endif
 				</div>

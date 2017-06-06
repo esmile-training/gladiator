@@ -18,9 +18,9 @@
 <?php $count = 0; ?>
 <div class="coachselecter">
 	@foreach($viewData['coachList'] as $coach)
-		@if($coach['state'] == 1)	
+		@if($coach['state'] == 1)
 			<div class="chara_frame" style='left: 2%'>
-				<image src='{{IMG_URL}}training/coachButton.png'>
+				<img src="{{IMG_URL}}training/coachButton{{$coach['rare']}}.png">
 
 				{{--キャラアイコン--}}
 				<div class="chara_icon">
@@ -38,7 +38,7 @@
 		<div class="button_margin">
 			{{--ボタンの枠--}}
 			<div class="modal_btn confirmChangeCoach{{ $count }} chara_button" style='left: 2%'>
-				<input type='image' class="chara_button_frame_img" src='{{IMG_URL}}training/coachButton.png'>
+				<input type='image' class="chara_button_frame_img" src='{{IMG_URL}}training/coachButton{{$coach['rare']}}.png'>
 			{{--キャラアイコン--}}
 			<div class="chara_icon">
 				{{--キャライメージ--}}
