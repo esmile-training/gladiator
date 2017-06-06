@@ -21,19 +21,21 @@
 						{{$viewData['charaDefaultData']['name']}}の勝ち！
 					</div>
 					<div>
-						<img src="{{IMG_URL}}user/gold.png" class="battleresult_log_message_money_img"> {{$viewData['prize']}} の賞金を獲得！
+						{{$viewData['prize']}}<img src="{{IMG_URL}}user/gold.png" class="battleresult_log_message_money_img">の賞金を獲得！
 					</div>
 					<div>
-						現在の所持金　<img src="{{IMG_URL}}user/gold.png" class="battleresult_log_message_money_img">
+						現在の所持金　
 						<span class="battleresult_log_message_upcolor">
 							{{$viewData['user']['money']}}
 						</span>
+						<img src="{{IMG_URL}}user/gold.png" class="battleresult_log_message_money_img">
 					</div>
 					<div>
-						週間獲得賞金　<img src="{{IMG_URL}}user/gold.png" class="battleresult_log_message_money_img">
+						週間獲得賞金　
 						<span class="battleresult_log_message_upcolor">
 							{{$viewData['rankingData']['weeklyAward']}}
 						</span>
+						<img src="{{IMG_URL}}user/gold.png" class="battleresult_log_message_money_img">
 					</div>
 					@if ($viewData['charaUpData']['statusUpCnt'] > 0)
 						<div>
