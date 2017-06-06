@@ -12,9 +12,9 @@
 	<div class="edit_frame">
 		<h1 class="edit_title">名前入力</h1>
 		<h4 class="edit_subtitle">※全角８文字以内</h4>
-		<img class="edit_frame_img" src="{{SERVER_URL}}img/popup/popuptop.png" />
-		<img class="edit_frame_img" style="height: 20%;" src="{{SERVER_URL}}img/popup/popupmiddle.png" />
-		<img class="edit_frame_img" src="{{SERVER_URL}}img/popup/popupbottom.png" />
+		<img class="edit_frame_img" src="{{IMG_URL}}popup/popuptop.png" />
+		<img class="edit_frame_img" style="height: 20%;" src="{{IMG_URL}}popup/popupmiddle.png" />
+		<img class="edit_frame_img" src="{{IMG_URL}}popup/popupbottom.png" />
 	</div>
 
 	

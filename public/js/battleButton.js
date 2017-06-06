@@ -24,9 +24,12 @@ $(function(){
         var changeL = getSrc.replace(beforeImage , afterImage);
         $(this).attr('src', changeL);
 
-        var afterImageG = "http://esmile-sys.sakura.ne.jp/gladiator/img/chara/status/hand1Down.png";
-        var afterImageC = "http://esmile-sys.sakura.ne.jp/gladiator/img/chara/status/hand2Down.png";
-        var afterImageP = "http://esmile-sys.sakura.ne.jp/gladiator/img/chara/status/hand3Down.png";
+        var afterImageE = "http://esmile-sys.sakura.ne.jp/gladiator/public/img/battle/enemy_Hand_None.png";
+        document.getElementById("enemyHand").src = afterImageE;
+        
+        var afterImageG = "http://esmile-sys.sakura.ne.jp/gladiator/public/img/chara/status/hand1Down.png";
+        var afterImageC = "http://esmile-sys.sakura.ne.jp/gladiator/public/img/chara/status/hand2Down.png";
+        var afterImageP = "http://esmile-sys.sakura.ne.jp/gladiator/public/img/chara/status/hand3Down.png";
         
         // idを取得して、そのid以外の攻撃ボタンを消す
         var idname = $(this).attr("id");
@@ -52,7 +55,6 @@ $(function(){
     });
     
     $('.visibil').click(function() {
-        document.getElementById("enemyHand").style.visibility="hidden";
         document.getElementById("battleLog").style.visibility="hidden";
     });
 });
