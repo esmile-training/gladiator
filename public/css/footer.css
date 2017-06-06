@@ -11,7 +11,7 @@
 }
 
 .fadefooterButton {
-    background: url(/img/footer/battleIconDown.png) no-repeat;
+    background: url(/./../img/footer/battleIconDown.png) no-repeat;
     position: absolute;
     top: 4%;
     left: 1%;

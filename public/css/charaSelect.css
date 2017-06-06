@@ -10,7 +10,7 @@
 	text-decoration: none;
 }
 input:checked {
-	/*background-image: url(/img/status/asc.png)*/
+	/*background-image: url(/./../img/status/asc.png)*/
 }
 .sort_Box form input + label {
 	position: absolute;
@@ -24,16 +24,16 @@ input:checked {
 	z-index: -1;
 }
 .sort_Box form ul li:first-child input + label {
-	background-image: url(/img/status/asc.png);
+	background-image: url(/./../img/status/asc.png);
 }
 .sort_Box form ul li:first-child input.act + label {
-	background-image: url(/img/status/asc_down.png);
+	background-image: url(/./../img/status/asc_down.png);
 }
 .sort_Box form ul li + li input + label {
-	background-image: url(/img/status/desc.png);
+	background-image: url(/./../img/status/desc.png);
 }
 .sort_Box form ul li + li input.act + label {
-	background-image: url(/img/status/desc_down.png);
+	background-image: url(/./../img/status/desc_down.png);
 }
 .sort_Box ul {
     float: left;
