@@ -78,7 +78,7 @@
     position: absolute;
     top: 70%;
     left: 0%;
-    width: 45%;
+    width: 30%;
     z-index: 2;
 }
 
@@ -86,7 +86,7 @@
     position: absolute;
     top: 60%;
     left: -10%;
-    width: 65%;
+    width: 50%;
 }
 
 .training_chara_name{
