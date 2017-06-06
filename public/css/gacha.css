@@ -19,19 +19,24 @@
 	
 }
 .gacha_all{
-	width:100%;
-	position: absolute;
+	width: 100%;
+    height: 100%;
+    position: relative;
 }
 .gacha_charabox{
 	text-align: center;
-	position: absolute;
+	position: relative;
 	top: 9%;
 	z-index: 0;
 }
 .gacha_charaflash{
-	width: 80%;
-	position: relative;
-	top: 12vw;
+    width: 80%;
+    position: absolute;
+    top: 12%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+	animation: spin 50.0s linear infinite;
 }
 .gacha_charapos{
 	position: absolute;
@@ -56,23 +61,33 @@
     -webkit-transform: scale(1.0);
   }
 }
+@keyframes spin{
+  0% {
+    transition: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    transition: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
 .gacha_chara{
 	width: 80%;
 	text-align: center;
 	position: relative;
-	top: 6vw;
+	top: -14vw;
 }
 .gacha_chararate{ 
-	width: 20%;
-	position: absolute;
-    top: 10%;
-	left: 1%;
-	z-index: 2;
+    width: 20%;
+    position: absolute;
+    top: -3vw;
+    left: 2%;
+    z-index: 2;
 }
 .gacha_charalogoflash{
 	width: 50%;
 	position: absolute;
-	top: -8%;
+	top: -17vw;
 	left: -14%;
 	z-index: 1;
 }
@@ -88,7 +103,8 @@
 }
 .gacha_characenterframe{
 	width:100%;
-	vertical-align: bottom;
+	height: 22vw;
+	vertical-align: top;
 }
 .gacha_charabottomframe{
 	width:100%;
@@ -102,13 +118,17 @@
 .gacha_charaname{
 	font-size: 108%;
 	color: #FFFFFF;
+	border-top: solid 5px transparent;
+	border-bottom: solid 7px transparent;
 }
 .gacha_hpicon{
 	width: 10%;
 }
 .gacha_charahp{
 	position: relative;
-	left: -17.5%;
+	left: 0%;
+	right: 0%;
+	border-bottom: solid 12px transparent;
 	color: #FFFFFF;
 }
 .gacha_charastatus{

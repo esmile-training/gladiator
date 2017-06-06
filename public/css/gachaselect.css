@@ -21,7 +21,7 @@
 }
 .gacha_signboard{
     width: 35%;
-    position: absolute;
+    position: fixed;
     top: 13%;
     left: 0;
     z-index: 2;
