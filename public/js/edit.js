@@ -51,21 +51,17 @@ function disbtn(b)
 function checkChara(){
 	var charCheckNum = 8;   					//許容全角文字数
 	var str = document.form1.teamName.value;
-		for (var i = 0; i < str.length; i++) { 
-        var c = str.charCodeAt(i); //最後に入力された文字の取得
-			if ( (c >= 0x0 && c < 0x81) || (c == 0xf8f0) || (c >= 0xff61 && c < 0xffa0) || (c >= 0xf8f1 && c < 0xf8f4)) { 
-				//入力禁止処理
-			} else { 
-				console.log(c);
-			}
-			if(str.length > charCheckNum)
-			{
-				str = str.substring(0, 8);
-				document.form1.teamName.value = str;
-			}
+	for (var i = 0; i < str.length; i++) { 
+	var c = str.charCodeAt(i); //最後に入力された文字の取得
+		if ( (c >= 0x0 && c < 0x81) || (c == 0xf8f0) || (c >= 0xff61 && c < 0xffa0) || (c >= 0xf8f1 && c < 0xf8f4)) { 
+			//入力禁止処理
+		} else { 
+			console.log(c);
+		}
+		if(str.length > charCheckNum)
+		{
+			str = str.substring(0, 8);
+			document.form1.teamName.value = str;
 		}
 	}
-function chkZenkaku(zenkaku) {
-	console.log(zenkaku);
-    this.$scope.zenkaku = zenkaku.replace(/[A-Za-z0-9-!"#$%&'()=<>,.?_\[\]{}@^~\\`\*\+\|;:\/ｱ-ﾝﾞﾟ]+/g, '');
 }

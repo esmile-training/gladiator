@@ -78,7 +78,7 @@ class EditController extends BaseGameController
 			return $this->Lib->redirect('mypage', 'index');
 		} else {
 			//文字数がオーバーした場合のポップアップで警告表示予定
-			return $this->Lib->redirect('edit');
+			return $this->Lib->redirect('');
 		}
 	}
 	

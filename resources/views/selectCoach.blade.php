@@ -72,10 +72,10 @@
 <br>
 <div>
 	<a class='button back' onclick="history.back()">
-		<img class="image_change" src="{{SERVER_URL}}img/popup/back_Button.png" alt="戻る">
+		<img class="image_change" src="{{IMG_URL}}popup/back_Button.png" alt="戻る">
 	</a>
 	<a class='button retire' href="{{APP_URL}}selectCoach/deleteChara?id={{$_GET['id']}}">
-		<img class="image_change" src="{{SERVER_URL}}img/popup/retire_Button.png" alt="引退">
+		<img class="image_change" src="{{IMG_URL}}popup/retire_Button.png" alt="引退">
 	</a>
 </div>
 </div>

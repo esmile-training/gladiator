@@ -76,20 +76,20 @@
 	<div class="modal charaStatus{{$count}}">
 		<div>
 			<div>
-				<img class="modal_frametop"src="{{SERVER_URL}}img/popup/popuptop.png">
+				<img class="modal_frametop"src="{{IMG_URL}}popup/popuptop.png">
 				<div>
 					@include('popup/charaStatus')
 				</div>
 				<div class="close">
-					<img src="{{SERVER_URL}}img/popup/closebutton.png">
+					<img src="{{IMG_URL}}popup/closebutton.png">
 					<span>close</span>
 				</div>
 			</div>
 			<div>
-				<img class="modal_framemiddle"src="{{SERVER_URL}}img/popup/popupmiddle.png">
+				<img class="modal_framemiddle"src="{{IMG_URL}}popup/popupmiddle.png">
 			</div>
 			<div>
-				<img class="modal_framebottom"src="{{SERVER_URL}}img/popup/popupbottom.png">
+				<img class="modal_framebottom"src="{{IMG_URL}}popup/popupbottom.png">
 			</div>
 		</div>
 	</div>
