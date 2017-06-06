@@ -47,4 +47,5 @@
 		</div>
 	@endforeach
 </div>
+{{--看板の表示--}}
 <img class="signboard_img" src="{{IMG_URL}}battle/signboard.png" alt="看板">

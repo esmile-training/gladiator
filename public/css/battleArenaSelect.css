@@ -6,30 +6,41 @@
 	background-size: cover;
 	width: 100%;
 }
-.battle_select{
-	width: 90%;
-	position: absolute;
-	top: 15%;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: 0 auto;
-	text-align: center;
+/*闘技場のリスト*/
+.arena_list{
+	margin-top: 5vh;
+    margin-left: 5vw;
+    width: 90%;
+    position: absolute;
+    top: 15%;
+    left: 0;
+    text-align: center;
 }
-.battle_select1{
+/*難易度のバナー*/
+.arena_banner1{
 	border-bottom: solid 10px transparent;
 }
-.battle_select2{
+.arena_banner2{
 	border-bottom: solid 10px transparent;
 }
-.battle_select3{
+.arena_banner3{
 	border-bottom: solid 10px transparent;
 }
-.battle_selectfont{
+/*見出しの設定*/
+.caption_font{
+	font-family: serif;
 	font-size: 150%;
 	color: #FFFFFF;
-	border-bottom: solid 20px transparent;
 }
-.battle_popupYesButton{
+/**/
+.popup_decision_button{
 	width: 30%;
+}
+/*看板の設定*/
+.signboard_img{
+	width: 35%;
+	position: fixed;
+	top: 13%;
+	left: 0;
+	z-index: 2;
 }
