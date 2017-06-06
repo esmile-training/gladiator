@@ -212,29 +212,68 @@
     z-index: 1;
 }
 
-tr{
+
+
+.training_init{
+    font-family: serif;
+}
+
+.training_chara_frame{
     position: relative;
 }
 
-.training_status_board{
-    position: absolute;
+.training_chara_board{
     width: 80%;
-    /* margin: 0 auto; */
-    margin-top: 5%;
-    left: 0;
-    right: 0;
+    margin: 5%;
 }
 
-.training_chara_icon{
+.training_chara{
     position: absolute;
-    top: 12%;
-    left: 11%;
+    top: 0;
+    left: 10%;
     width: 20%;
 }
 
-.training_rare{
+.training_chara_icon{
+    margin-left: 8%;
+}
+
+.training_rare_frame{
+    position: initial;
+}
+
+.training_chara_rare{
     position: absolute;
-    width: 10%;
-    top: 50%;
+    top: 60%;
     left: 10%;
+    width: 45%;
+    z-index: 2;
+}
+
+.training_chara_rare_bg{
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: 65%;
+}
+
+.training_chara_name{
+    position: absolute;
+    top: 0;
+    left: 38%;
+    font-size: 4vw;;
+    margin-top: 6%
+}
+
+.training_status{
+    font-size: 4vw;
+    position: absolute;
+    top: 0;
+    left: 28%;
+    margin-top: 18%;
+}
+
+.training_list{
+    float: left;
+    margin-left: 10%;
 }

@@ -16,9 +16,9 @@
 	<div class="ranking">
 		<table class="ranking_table">
 			<tr>
-				<th>ランク</th>
+				<th></th>
 				<th>ユーザー名</th>
-				@if(isset($value['weeklyAward']))
+				@if(isset($viewData['ranking'][0]['weeklyAward']))
 					<th>獲得賞金</th>
 				@else
 					<th>総合力</th>
