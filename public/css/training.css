@@ -19,7 +19,15 @@
     width    : 35%;
     top	     : 13%;
     left     : 0;
-    z-index  : 2;
+    z-index: 1;
+}
+
+.training_signboard_info{
+    position	: fixed;
+    top		: 13%;
+    left	: 24%;
+    width	: 77%;
+    z-index: 1;
 }
 
 .training_charalist{
@@ -31,7 +39,14 @@
 
 .training_text{
     font-family	:'Century';
-    font-size	: 2.6vh;
+    font-size	: 2.0vh;
+    color: #ffffff;
+}
+
+.training_signboard_text{
+    position: absolute;
+    top: 15%;
+    left:20%;
 }
 
 .training_a_none{
