@@ -34,10 +34,20 @@ class BaseGameController extends Controller
 		// 訓練終了したキャラの確認
 		$commonData['endTraining'] = $this->Model->exec('Training', 'endAlert', $userId);
 		
+		$userData = $this->Lib->exec('User', 'getUser',$userId);
+	
 		//汎用変数をセット
 		foreach( $commonData as $key => $val )
 		{
 			$this->viewData[$key] = $this->$key = $val;   
 		}
+		if($userData['money'] < 0)
+		{
+			$userData['money'] = 0; 
+			$this->Model->exec('user', 'updateMoney', array($userData));
+			
+			return $this->Lib->redirect('commonError');
+		}
+		
 	}
 }
