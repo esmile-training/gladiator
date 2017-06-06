@@ -17,3 +17,7 @@ body{}
 .surrender_button_no {
     width: 100%;
 }
+/* いいえボタン画像領域 */
+.surrender_costOver {
+    color: #ff4444;
+}

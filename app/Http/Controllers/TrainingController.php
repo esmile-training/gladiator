@@ -50,18 +50,22 @@ class TrainingController extends BaseGameController
 		
 		$this->viewData['coachList'] = $uCoachData;
 		
-		$uCharaInfo = [
-			'baseProbability'	=> $baseProbability = \Config::get('training.baseProbability'),
-			'uCharaGooAtk'		=> $uCharaAtkInfo['gooAtk'],
-			'uCharaChoAtk'		=> $uCharaAtkInfo['choAtk'],
-			'uCharaPaaAtk'		=> $uCharaAtkInfo['paaAtk'],
-			'gooUpCnt'			=> $uCharaAtkInfo['gooUpCnt'],
-			'choUpCnt'			=> $uCharaAtkInfo['choUpCnt'],
-			'paaUpCnt'			=> $uCharaAtkInfo['paaUpCnt']
-		];
-	
-		$this->viewData['uCharaInfo'] = $uCharaInfo;
-	
+		
+		$cnt = 0;
+		foreach($uCoachData as $val)
+		{
+			for($i = 0; $i < 10; $i++)
+			{
+				$this->viewData['gooUpProbability'][$cnt][] = $this->Lib->exec('Training','atkUpProbability',
+											array($val['gooAtk'],$uCharaAtkInfo['gooAtk'],$uCharaAtkInfo['gooUpCnt']+$i));
+				$this->viewData['choUpProbability'][$cnt][] = $this->Lib->exec('Training','atkUpProbability',
+											array($val['choAtk'],$uCharaAtkInfo['choAtk'],$uCharaAtkInfo['choUpCnt']+$i));
+				$this->viewData['paaUpProbability'][$cnt][] = $this->Lib->exec('Training','atkUpProbability',
+											array($val['paaAtk'],$uCharaAtkInfo['paaAtk'],$uCharaAtkInfo['paaUpCnt']+$i));
+			}
+			$cnt++;
+		}
+		
 		return viewWrap('coachSelect',$this->viewData);
 	}
 	
@@ -104,7 +108,7 @@ class TrainingController extends BaseGameController
 		
 		//マージしたらuMoneyと合わせて使う、訓練の金額を算出して格納
 		$trainingFee = $uCoachHp * 10 * $trainingTime * (100 - ($trainingTime - 1) * 3) / 100;
-		$this->Lib->exec('money','Subtraction',array($this->user,$trainingFee));
+		$this->Lib->exec('Money','Subtraction',array($this->user,$trainingFee));
 		
 		//リダイレクト
 		return $this->Lib->redirect('training', 'index');
