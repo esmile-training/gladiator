@@ -1,7 +1,7 @@
  {{-- CSS --}}
 @include('common/css', ['file' => 'charaStatus'])
 <div class="rareImg">
-	<img src="{{IMG_URL_GACHA}}{{$chara['rare']}}.png">
+	<img src="{{IMG_URL}}gacha/{{$chara['rare']}}.png">
 </div>
 <div class="light">
 	<img src="{{IMG_URL}}gacha/logoflash.png" alt="レアリティの背景">
@@ -11,7 +11,7 @@
 </div>
 
 <div>
-	<img class="character" src="{{IMG_URL_CHARA}}{{$chara['imgId']}}.png">
+	<img class="character" src="{{IMG_URL}}chara/{{$chara['imgId']}}.png">
 </div>
 
 <div class="param_box">

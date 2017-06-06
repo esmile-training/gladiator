@@ -26,7 +26,7 @@ $sql =  <<< EOD
 		WHERE weeklyAward = (SELECT weeklyAward 
 			FROM uRanking 
 			WHERE userId = $userId) 
-		AND userId < 1692 AND weekRange = '2017-05-29')) as count
+		AND userId < $userId AND weekRange = '{$range}')) as count
 	FROM uRanking 
 	WHERE weeklyAward >= (SELECT weeklyAward 
 	FROM uRanking 

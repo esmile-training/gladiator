@@ -23,7 +23,7 @@
 			trainingFee = uCoachHp * 10 * time * (100 - (time - 1) * 3) / 100;
 			
 			trainingFee{{$cnt}}				= document.getElementById("trainingFee{{$cnt}}");
-			trainingFee{{$cnt}}.innerHTML	= trainingFee;
+			trainingFee{{$cnt}}.innerHTML	= Math.floor(trainingFee);
 		}
 	</script>
 </div>
@@ -32,8 +32,8 @@
 	<div class ="training_fee_img">
 		<img src="{{IMG_URL}}/user/gold.png">
 	</div>
-	<div class="coachSelect_text">
-		<p id="trainingFee{{$cnt}}" class="training_fee_text"><p>
+	<div class="coachSelect_text training_fee_text">
+		<p id="trainingFee{{$cnt}}"><p>
 	</div>
 </body>
 

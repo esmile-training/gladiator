@@ -9,7 +9,7 @@ $(function(){
         beforeImage = beforeImage[beforeImage.length - 1];
 
         // すでに画像名に処理後の画像名が入っていれば何もなし
-        if(beforeImage.match('Up'))
+        if(beforeImage.match('Up') || beforeImage.match('Down'))
         {
             return false;
         }
@@ -24,6 +24,9 @@ $(function(){
         var changeL = getSrc.replace(beforeImage , afterImage);
         $(this).attr('src', changeL);
 
+        var afterImageE = "http://esmile-sys.sakura.ne.jp/gladiator/img/battle/enemy_Hand_None.png";
+        document.getElementById("enemyHand").src = afterImageE;
+        
         var afterImageG = "http://esmile-sys.sakura.ne.jp/gladiator/img/chara/status/hand1Down.png";
         var afterImageC = "http://esmile-sys.sakura.ne.jp/gladiator/img/chara/status/hand2Down.png";
         var afterImageP = "http://esmile-sys.sakura.ne.jp/gladiator/img/chara/status/hand3Down.png";
@@ -52,7 +55,6 @@ $(function(){
     });
     
     $('.visibil').click(function() {
-        document.getElementById("enemyHand").style.visibility="hidden";
         document.getElementById("battleLog").style.visibility="hidden";
     });
 });

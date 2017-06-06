@@ -69,21 +69,9 @@ if( IS_LOCAL ){
 //サーバURL
 define("SERVER_URL", "http://esmile-sys.sakura.ne.jp/gladiator/");
 //画像サーバ
-define("IMG_URL", SERVER_URL."img/");
+define("IMG_URL", APP_URL."img/");
 //DBサーバ
 define("DB_API_URL", SERVER_URL."dbapi/");
-//header
-define("HEADER_IMG_URL", SERVER_URL."img/header/");
-//footer
-define("FOOTER_IMG_URL", SERVER_URL."img/footer/");
-//footer
-define("MYPAGE_IMG_URL", SERVER_URL."img/mypage/");
-
-// ガチャ画像
-define("IMG_URL_GACHA", SERVER_URL."img/gacha/");
-// キャラ画像
-define("IMG_URL_CHARA", SERVER_URL."img/chara/");
-
 
 //URL解釈
 define("REDIRECT_URL", isset( $_SERVER['REDIRECT_URL'] )? str_replace("/gladiator/public", "", $_SERVER['REDIRECT_URL']) : false);

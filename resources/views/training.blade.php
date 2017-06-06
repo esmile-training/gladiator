@@ -2,8 +2,15 @@
 @include('common/css', ['file' => 'training'])
 @include('common/css', ['file' => 'battleCharaSelect'])
 
+<div class="training_signboard_info">
+	<img src="{{IMG_URL}}/training/signboard_info.png">
+	<div class ="training_signboard_text">
+		<font  class="training_text">{{'訓練する剣闘士を選んでください'}}</font>
+	</div>
+</div>
+
 <div class="training_signboard">
-	 <img src="{{IMG_URL}}/training/signboard.png">
+	<img src="{{IMG_URL}}/training/signboard.png">
 </div>
 
 {{--訓練が終了しているキャラがいたらポップアップ表示--}}

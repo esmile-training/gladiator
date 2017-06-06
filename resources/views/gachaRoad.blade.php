@@ -1,3 +1,4 @@
+<div><img class="gacha_roadback" src="{{IMG_URL}}gacha/gacharoadbackground.jpg" /></div>
 @include('common/css', ['file' => 'gachaRoad'])
 @foreach($viewData['gacha'] as $key => $value)
 	<?php $dataList[] = $key.'='.$value; ?>
@@ -16,7 +17,7 @@
 		<img class = "img4" 
 			 src="{{IMG_URL}}gacha/anim4.png">
 	</div>
-	<a href="{{APP_URL}}gacha/index?<?php echo $dataStr;?>">
+	<a class = "gacha_roadbotton" href="{{APP_URL}}gacha/index?<?php echo $dataStr;?>">
 		<input type="submit" 
 			   class = "gacha_roadbutton">
 	</a>

@@ -1,12 +1,12 @@
 		{{-- cssの宣言 --}}
 		@include('common/header')
 		@include('common/css', ['file' => 'battleResult'])
-
+		
 		{{-- バトルの勝敗によって背景画像変更 --}}
 		@if ($viewData['prize'] > 0)
-			<img src="{{IMG_URL}}battleResult/battleResult_Bg_Win.jpg" class="battleresult_bg">
+			<div><img src="{{IMG_URL}}battleResult/battleResult_Bg_Win.jpg" class="battleresult_bg_win"></div>
 		@else
-			<img src="{{IMG_URL}}battleResult/battleResult_Bg_Lose.jpg" class="battleresult_bg">
+			<div><img src="{{IMG_URL}}battleResult/battleResult_Bg_Lose.jpg" class="battleresult_bg_lose"></div>
 		@endif
 
 		{{-- リザルトログ表示領域 --}}

@@ -1,7 +1,7 @@
 #main{
 	
     background-image:
-	    url(http://esmile-sys.sakura.ne.jp/gladiator/img/gacha/selectbackground.jpg);
+	    url(/img/gacha/selectbackground.jpg);
     /* 画像を常に天地左右の中央に配置 */
     background-position: center center;
 
@@ -25,12 +25,12 @@
     width    : 35%;
     top	     : 13%;
     left     : 0;
-    z-index  : 2;
+    z-index: 1;
 }
 
 .coachSelect_all{
-    position: relative;
-    top : 15%;
+    position: fixed;
+    top : 20%;
     left : 0%;
     width: 100%
 }
@@ -93,15 +93,15 @@
 
 .training_fee_img{
     position: absolute;
-    top     : 95%;
-    left    : 32%;
+    top     : 100%;
+    left    : 62%;
     width   : 10%;
 }
 
 .training_fee_text{
     position: absolute;
-    top     : 95%;
-    left    : 36%;
+    top     : 100%;
+    left    : 35%;
     width   : 30%;
 }
 
@@ -129,6 +129,24 @@
     left    : 83%;
     width   : 15%;
     z-index : 2;
+}
+
+.coachSelect_reritybg{
+    margin-top: 106%;
+    position: absolute;
+    width: 38%;
+    height: auto;
+    top: -12%;
+    left: -10%;
+}
+
+.coachSelect_rerity{
+    position: absolute;
+    width: 28%;
+    height: auto;
+    top: 0%;
+    left: -5%;
+    margin-top: 95%;
 }
 
 .training_a_none{
