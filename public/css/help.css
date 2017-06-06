@@ -4,8 +4,9 @@
 body{}
 
 .help_log {
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
 }
 .help_log_turorial_img{
-    width: 80%;
+    width: 100%;
 }
