@@ -65,14 +65,17 @@ class battleController extends BaseGameController
 	public function selectArena()
 	{
 		// ユーザーキャラクターのIDを取得する
-		$selectedCharaId = $_GET['uCharaId'];
-
+		$selectedCharaData = $_GET;
+		//var_dump($selectedCharaData);
 		// 難易度を取得する
 		$difficulty = \Config::get('battle.difficultyStr');
-
+		//var_dump($difficulty);
 		// 対戦の難易度とキャラIDをビューへ渡す
 		$this->viewData['difficultyList'] = $difficulty;
-		$this->viewData['selectedCharaId'] = $selectedCharaId;
+		$this->viewData['selectedCharaData'] = $selectedCharaData;
+
+		//var_dump($this->viewData['difficultyList']);
+		//var_dump($this->viewData['selectedCharaData']);
 
 		// ビューへデータを渡す
 		return viewWrap('arenaSelect', $this->viewData);
@@ -429,11 +432,11 @@ class battleController extends BaseGameController
 			// 降参費用額計算
 			$prize = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));
 
-			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
-			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$prize));
-			
 			// 降参費用をマイナスに
 			$prize *= -1;
+
+			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
+			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$prize));
 
 			//リダイレクト引数受け渡し(賞金は引退費用として)
 			$param = [

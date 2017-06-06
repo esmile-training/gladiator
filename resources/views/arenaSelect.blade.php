@@ -1,11 +1,12 @@
 {{--/*
  * 闘技場選択ビュー
  * 製作者：松井 勇樹
- * 最終更新日:2017/05/25
+ * 最終更新日:2017/06/06
  */--}}
 
 {{-- css  --}}
-@include('common/css', ['file' => 'battleSelect'])
+@include('common/css', ['file' => 'battleArenaSelect'])
+@include('common/css', ['file' => 'battleCharaSelect'])
 {{--大会の一覧を表示する--}}
 <div class="arena_list">
 	<font class="caption_font"> 闘技場を選択して下さい </font>
@@ -14,8 +15,16 @@
 				<img class ="modal_btn arena{{$arena['id']}}" src="{{IMG_URL}}battle/difficulty{{$arena['id']}}.png">
 			</div>
 			<?php
-				$arenaData['selectedCharaId'] = $viewData['selectedCharaId'];
-				$arenaData['id'] = $arena['id'];
+				$arenaData['selectedCharaData']		= $viewData['selectedCharaData']['uCharaId'];
+				$arenaData['rarity']				= $viewData['selectedCharaData']['rarity'];
+				$arenaData['imageId']				= $viewData['selectedCharaData']['imageId'];
+				$arenaData['charaName']				= $viewData['selectedCharaData']['name'];
+				$arenaData['hp'] 					= $viewData['selectedCharaData']['hp'];
+				$arenaData['gooAtk']				= $viewData['selectedCharaData']['gooAtk'];
+				$arenaData['choAtk']				= $viewData['selectedCharaData']['choAtk'];
+				$arenaData['paaAtk']				= $viewData['selectedCharaData']['paaAtk'];
+				$arenaData['id']					= $arena['id'];
+				$arenaData['arenaName']				= $arena['name'];
 			?>
 			{{-- popupウインドウ --}}
 			@include('popup/wrap', [

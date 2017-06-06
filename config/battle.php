@@ -33,19 +33,19 @@ return [
 	'difficultyStr' =>[
 		1	=> [
 		'id' => 1,
-		'name' => '下級',
+		'name' => '地底舞台',
 		'prizeRatio' => 70,
 		'enemyRatio' => 0.7
 		],
 		2	=> [
 		'id' => 2,
-		'name' => '中級',
+		'name' => '大闘技場',
 		'prizeRatio' => 100,
 		'enemyRatio' => 1
 		],
 		3	=> [
 		'id' => 3,
-		'name' => '上級',
+		'name' => '天空決戦場',
 		'prizeRatio' => 140,
 		'enemyRatio' => 1.3
 		],
