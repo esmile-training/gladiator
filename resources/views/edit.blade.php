@@ -8,14 +8,16 @@
 <div class = "editload">
 <div id="main">
 <div align="center">
-	<div class="edit_frame_img">
-		<h1 class="edit_title">チーム名を入力してください</h1>
-		<img class="edit_frame_width" src="{{IMG_URL}}edit/overFrame" />
-		<img class="edit_frame_width" style="height: 50%;" src="{{IMG_URL}}edit/centerFrame" />
-		<img class="edit_frame_width" src="{{IMG_URL}}edit/underFrame" />
+
+	<div class="edit_frame">
+		<h1 class="edit_title">名前入力</h1>
+		<h4 class="edit_subtitle">※全角８文字以内</h4>
+		<img class="edit_frame_img" src="{{SERVER_URL}}img/popup/popuptop.png" />
+		<img class="edit_frame_img" style="height: 20%;" src="{{SERVER_URL}}img/popup/popupmiddle.png" />
+		<img class="edit_frame_img" src="{{SERVER_URL}}img/popup/popupbottom.png" />
 	</div>
 
-	<font color="red">※全角８文字以内</font>
+	
 	<form class="edit_from" name="form1" action="{{APP_URL}}edit/addUser" method="get">
 <!--		<input class="edit_input" type="text" name="teamName" onkeydown="charCheck()" onkeyup="charCheck()" onchange="wupBtn()">-->
 		<input class="edit_input" type="text" ng-model="zenkaku" ng-change="chkZenkaku(zenkaku)"/>

@@ -21,7 +21,9 @@ th{ text-align: center; }
 
 .ranking_borad{
     width: 33%;
-    position: absolute;
+    position: fixed;
+    margin-top: 2%;
+    z-index: 999;
 }
 
 .ranking_panel{
@@ -107,7 +109,7 @@ th{ text-align: center; }
 
 
 .ranking_pager_margin{
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .ranking_back_pager{
