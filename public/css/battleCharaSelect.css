@@ -2,7 +2,7 @@
 /*
  * 戦闘のキャラ選択ビュー
  * 製作者：松井 勇樹
- * 最終更新日:2017/05/29
+ * 最終更新日:2017/06/06
  */
  /*背景の設定をする*/
 #main{
@@ -62,12 +62,12 @@ a:active{
 /*キャラアイコンの設定*/
 .chara_icon{
 	position: absolute;
-    margin-top: -6.6%;
-    margin-left: 2%;
-    width: 23%;
-    height: 74%;
-    top: 0%;
-    left: 0%;
+	margin-top: -6.6%;
+	margin-left: 2%;
+	width: 23%;
+	height: 74%;
+	top: 0%;
+	left: 0%;
 }
 /*アイコンの外枠の設定*/
 .icon_frame{
@@ -82,26 +82,26 @@ a:active{
 /*キャライメージ*/
 .chara_image{
 	position: absolute;
-    width: 116%;
-    top: 0%;
-    left: 0%;
+	width: 116%;
+	top: 0%;
+	left: 0%;
 }
 /*レアリティの表示*/
 .rarity_bg{
 	margin-top: 106%;
-    position: absolute;
-    width: 38%;
-    height: auto;
-    top: 0%;
-    left: -4%;
+	position: absolute;
+	width: 38%;
+	height: auto;
+	top: 0%;
+	left: -4%;
 }
 .rarity{
 	position: absolute;
-    width: 28%;
-    height: auto;
-    top: 0%;
-    left: 1%;
-    margin-top: 112%;
+	width: 28%;
+	height: auto;
+	top: 0%;
+	left: 1%;
+	margin-top: 112%;
 }
 /*キャラクターのステータスの表示*/
 .chara_status{
@@ -122,28 +122,28 @@ a:active{
 /*HPの値の設定*/
 .hp_value{
 	position: absolute;
-    font-size: 4.7vw;
-    top: 52%;
-    left: -4%;
+	font-size: 4.7vw;
+	top: 52%;
+	left: -4%;
 }
 /*手の値の設定*/
 .goo_value{
 	position: absolute;
-    font-size: 4.7vw;
-    top: 52%;
-    left: 21%;
+	font-size: 4.7vw;
+	top: 52%;
+	left: 21%;
 }
 .cho_value{
 	position: absolute;
-    font-size: 4.7vw;
-    top: 52%;
-    left: 45%;
+	font-size: 4.7vw;
+	top: 52%;
+	left: 45%;
 }
 .paa_value{
 	position: absolute;
-    font-size: 4.7vw;
-    top: 52%;
-    left: 69%;
+	font-size: 4.7vw;
+	top: 52%;
+	left: 69%;
 }
 /*fontをCenturyに変更する*/
 .font_sentury{

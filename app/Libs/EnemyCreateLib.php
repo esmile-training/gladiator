@@ -77,6 +77,7 @@ class EnemyCreateLib extends BaseGameLib
 		} else if ($ratio1 * 100 > 100){
 			$maxRatio -= abs($ratio1 * 100 - 100);
 		}
+
 		$ratio2 = mt_rand($minRatio, $maxRatio) * 0.01;
 		$choAtk = $enemyStandardValue * $ratio2;
 
