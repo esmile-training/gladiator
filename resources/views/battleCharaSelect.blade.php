@@ -13,7 +13,9 @@
 	@foreach($viewData['charaList'] as $chara)
 	{{--ボタンの表示間隔--}}
 		<div class="button_margin">
-			<a href="{{APP_URL}}battle/selectArena?uCharaId={{$chara['id']}}">
+			<a href="{{APP_URL}}battle/selectArena?uCharaId={{$chara['id']}}&imageId={{$chara['imgId']}}
+				&rarity={{$chara['rare']}}&name={{$chara['name']}}&hp={{$chara['hp']}}
+				&gooAtk={{$chara['gooAtk']}}&choAtk={{$chara['choAtk']}}&paaAtk={{$chara['paaAtk']}}">
 
 				{{--キャラボタン--}}
 				<div class="chara_button">
