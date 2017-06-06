@@ -13,6 +13,10 @@ $(function(){
         {
             return false;
         }
+        if(beforeImage.match('Down'))
+        {
+            return false;
+        }
 
         // 抽出した画像名から名前と拡張子を分割
         var afterImage = beforeImage.split(".");
