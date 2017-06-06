@@ -17,7 +17,8 @@
 
 	<font color="red">※全角８文字以内</font>
 	<form class="edit_from" name="form1" action="{{APP_URL}}edit/addUser" method="get">
-		<input class="edit_input" type="text" name="teamName" onkeydown="charCheck()" onkeyup="charCheck()" onchange="wupBtn()"></p>
+<!--		<input class="edit_input" type="text" name="teamName" onkeydown="charCheck()" onkeyup="charCheck()" onchange="wupBtn()">-->
+		<input class="edit_input" type="text" ng-model="zenkaku" ng-change="chkZenkaku(zenkaku)"/>
 		<input class="edit_submit load" type="button" value="登録" onclick="disbtn(this)" disabled>
 		<input type="hidden" name="gachavalue" value="12">
 	</form>

@@ -10,7 +10,7 @@
 
 <div id="roadCover" class="offCover">
 	<div>
-		<p>「<?php $order == 'DESC' ? print '降順' : print '昇順'; ?>」<br>「<div class="getType(<?php $type ?>)">aaa</div>」<br>の条件で並べかえています。</p>
+		<p>「<?php $order == 'DESC' ? print '降順' : print '昇順'; ?>」<br>「<?php echo 'ソート条件' ?>」<br>の条件で並べかえています。</p>
 	</div>
 </div>
 	
@@ -24,15 +24,15 @@
 		<form action="{{APP_URL}}charaSelect/index" method="get">
 			<ul>
 				<li>
-					<input type="radio" name="order" value="DESC" <?php $order == 'DESC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange()">
+					<input type="radio" name="order" value="DESC" <?php $order == 'DESC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange(),getType()">
 					<label>昇順</label>
 				</li>
 				<li>
-					<input type="radio" name="order" value="ASC" <?php $order == 'ASC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange()">
+					<input type="radio" name="order" value="ASC" <?php $order == 'ASC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange(),getType()">
 					<label>降順</label>
 				</li>
 			</ul>
-			<select name="type" onchange="submit(this.form),onSortChange()">
+			<select name="type" onchange="submit(this.form),onSortChange(),getType()">
 				<option value="id"<?php $type == 'id' ? print 'selected' : ''; ?>>入手</option>
 				<option value="hp"<?php $type == 'hp' ? print 'selected' : ''; ?>>体力</option>
 				<option value="name"<?php $type == 'name' ? print 'selected' : ''; ?>>名前</option>

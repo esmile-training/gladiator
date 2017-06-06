@@ -74,7 +74,7 @@ input[type="radio"] {
 	width: 100%;
 	height: 100%;
 }
-#roadCover p {
+#roadCover div > p {
 	position: absolute;
 	width: 100%;
 	top: 50%;
