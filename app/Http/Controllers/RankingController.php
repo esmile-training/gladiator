@@ -92,21 +92,29 @@ class RankingController extends BaseGameController
 			$this->rankingData['count'] = floor($this->rankingData['count'] + 1);
 		}
 
-		// 週間かステータスで取得データを切替
-		if ($this->rankingData['rankChenge'] == 0)
+		if(!isset($nextPage) && !isset($backPage) && !isset($lastPage) && !isset($firstPage) && !isset($rangePage))
 		{
-			if(!isset($nextPage) && !isset($backPage) && !isset($lastPage) && !isset($firstPage) && !isset($rangePage))
+			$pagecount   = $this->Model->exec('Ranking', 'overPoint', [$this->user['id'], $this->range]);
+			$count = $pagecount['count'] / 10;
+			// カウントした数が小数点だった場合
+			if(is_float($count))
 			{
-				$pagecount   = $this->Model->exec('Ranking', 'overPoint', [$this->user['id'], $this->range]);
-				$count	= floor($pagecount['count'] / 10) * 10;
-				$this->rankingData['nowpage']	= $count;
-				$page = $this->Model->exec('Ranking', 'rankingPager', [$this->range, $count]);
+				$count = floor($count)*10;
+				echo $count;
 			}
 			else
 			{
-				// ユーザーランキング
-				$page	= $this->Model->exec('Ranking', 'rankingPager', [$this->range, $moldValue]);
+				$count = $count - 1;
 			}
+			
+			$this->rankingData['nowpage']	= $count;
+			$page = $this->Model->exec('Ranking', 'rankingPager', [$this->range, $count]);
+		}
+		// 週間かステータスで取得データを切替
+		elseif ($this->rankingData['rankChenge'] == 0)
+		{
+			// ユーザーランキング
+			$page	= $this->Model->exec('Ranking', 'rankingPager', [$this->range, $moldValue]);
 		}
 		else
 		{
