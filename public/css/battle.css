@@ -1,6 +1,4 @@
 @charset "UTF-8";
-/*CSS Document*/
-/*training*/
 body{}
 
 /* 各級の背景画像 */
@@ -74,7 +72,7 @@ body{}
     right: 5%;
     width: 70%;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 13px;
     text-align: right;
 }
 /* 敵キャラのHPのステータスアイコン */
@@ -88,7 +86,7 @@ body{}
     right: 5%;
     width: 70%;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 13px;
     text-align: right;
 }
 /* 敵キャラのグーのステータスアイコン */
@@ -252,7 +250,7 @@ body{}
     left: 5%;
     width: 70%;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 13px;
     text-align: left;
 }
 /* 自キャラのHP画像 */
@@ -266,7 +264,7 @@ body{}
     left: 5%;
     width: 70%;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 13px;
     text-align: left;
 }
 /* 自キャラのグーのステータスアイコン */

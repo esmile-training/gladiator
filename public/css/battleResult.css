@@ -1,29 +1,23 @@
+@charset "UTF-8";
 a:link { color : white; }
 a:visited { color : white; }
 th{ text-align: center; }
 
 #main{
-    position: relative;
 }
-
-.image_top_position{
-    position: absolute;
-    top: 17%;
-}
-body{}
 
 /* 背景画像 */
 .battleresult_bg_win {
+    background: no-repeat center center;
     background-size: 100% auto;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
     width: 100%;
+    position: fixed;
 }
 .battleresult_bg_lose {
+    background: no-repeat center center;
     background-size: 100% auto;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
     width: 100%;
+    position: fixed;
 }
 
 /* バトルリザルトのログ部分 */
