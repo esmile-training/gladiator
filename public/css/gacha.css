@@ -1,32 +1,28 @@
-/*@IDƒƒCƒ“@*/
+/*ã€€IDãƒ¡ã‚¤ãƒ³ã€€*/
 #main{
 	position: relative;
 }
-/*@”wŒi@*/
+/*ã€€èƒŒæ™¯ã€€*/
 .gacha_back{
     background: no-repeat center center;
 	background-size: 100% auto;
 	width: 100%;
 	position: fixed;
 }
-/*@ƒLƒƒƒ‰ƒƒS‘å‚«‚³@*/
-.gacha_charalogo{
-	width: 100%;
-}
-/*@ƒKƒ`ƒƒ‘S‘Ì@*/
+/*ã€€å…¨ä½“ã€€*/
 .gacha_all{
 	width: 100%;
 	height: 100%;
 	position: absolute;
 }
-/*@ƒLƒƒƒ‰ƒNƒ^[@*/
+/*ã€€ã‚­ãƒ£ãƒ©å…¨ä½“ã€€*/
 .gacha_charabox{
 	text-align: center;
 	position: relative;
 	top: 9%;
 	z-index: 0;
 }
-/*@ƒLƒƒƒ‰‚ÌŒõ@*/
+/*ã€€ã‚­ãƒ£ãƒ©ã®å…‰ã€€*/
 .gacha_charaflash{
 	width: 80%;
 	position: absolute;
@@ -36,14 +32,14 @@
 	bottom: 0%;
 	animation: spin 50.0s linear infinite;
 }
-/*@ƒLƒƒƒ‰‚ÌˆÊ’u@*/
+/*ã€€ã‚­ãƒ£ãƒ©ã®ä½ç½®ã€€*/
 .gacha_charapos{
 	position: absolute;
 	top: 0px;
 	-webkit-animation: scaleout 1.0s;
 	animation: scaleout 1.0s;
 }
-/*@Šg‘åƒAƒjƒ[ƒVƒ‡ƒ“@*/
+/*ã€€æ‹¡å¤§ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã€€*/
 @-webkit-keyframes scaleout {
 	0% {
 		-webkit-transform: scale(0.0) 
@@ -52,7 +48,6 @@
 		-webkit-transform: scale(1.0);
 	}
 }
-/*@Šg‘åƒAƒjƒ[ƒVƒ‡ƒ“@*/
 @keyframes scaleout {
 	0% {
 		transition: scale(0.0);
@@ -63,7 +58,7 @@
 		-webkit-transform: scale(1.0);
 	}
 }
-/*@Œõ‰ñ“]ƒAƒjƒ[ƒVƒ‡ƒ“@*/
+/*ã€€å…‰ã®å›è»¢ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã€€*/
 @keyframes spin{
 	0% {
 		transition: rotate(0deg);
@@ -74,14 +69,14 @@
 		-webkit-transform: rotate(360deg);
 	}
 }
-/*@ƒLƒƒƒ‰ƒNƒ^[ˆÊ’u@*/
+/*ã€€ã‚­ãƒ£ãƒ©ã€€*/
 .gacha_chara{
 	width: 80%;
 	text-align: center;
 	position: relative;
 	top: -14vw;
 }
-/*@ƒŒƒA“xƒƒS@*/
+/*ã€€ã‚­ãƒ£ãƒ©ãƒ¬ã‚¢åº¦ã€€*/
 .gacha_chararate{ 
 	width: 20%;
 	position: absolute;
@@ -89,7 +84,7 @@
 	left: 2%;
 	z-index: 2;
 }
-/*@ƒŒƒA“xƒƒSŒõ@*/
+/*ã€€ãƒ¬ã‚¢åº¦ãƒ­ã‚´ã®å…‰ã€€*/
 .gacha_charalogoflash{
 	width: 50%;
 	position: absolute;
@@ -98,30 +93,30 @@
 	z-index: 1;
 	opacity: 0.6;
 }
-/*@ƒXƒe[ƒ^ƒXƒtƒŒ[ƒ€@*/
+/*ã€€ã‚­ãƒ£ãƒ©ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æ ã€€*/
 .gacha_charaframe{
 	width: 85%;
 	position: absolute;
 	top: 65%;
 	left: 7%;
 }
-/*@ƒtƒŒ[ƒ€ã@*/
+/*ã€€æ ä¸Šã€€*/
 .gacha_charatopframe{
 	width:100%;
 	vertical-align: bottom; 
 }
-/*@ƒtƒŒ[ƒ€’†@*/
+/*ã€€æ ä¸­ã€€*/
 .gacha_characenterframe{
 	width:100%;
 	height: 22vw;
 	vertical-align: top;
 }
-/*@ƒtƒŒ[ƒ€‰º@*/
+/*ã€€æ ä¸‹ã€€*/
 .gacha_charabottomframe{
 	width:100%;
 	vertical-align: top;
 }
-/*@ƒeƒLƒXƒg@*/
+/* ãƒ†ã‚­ã‚¹ãƒˆå…¨ä½“ */
 .gacha_charatextbox{
 	text-align: center;
 	font-size: 140%;
@@ -129,18 +124,18 @@
 	top: 65%;
 	font-family: serif;
  }
- /*@ƒLƒƒƒ‰ƒNƒ^[ƒl[ƒ€@*/
+ /*ã€€ã‚­ãƒ£ãƒ©åå‰ã€€*/
 .gacha_charaname{
 	font-size: 108%;
 	color: #FFFFFF;
 	border-top: solid 5px transparent;
 	border-bottom: solid 7px transparent;
 }
-/*@ƒLƒƒƒ‰ƒNƒ^[HPƒAƒCƒRƒ“@*/
+/*ã€€HPã‚¢ã‚¤ã‚³ãƒ³ã€€*/
 .gacha_hpicon{
 	width: 10%;
 }
-/*@ƒLƒƒƒ‰ƒNƒ^[HP@*/
+/*ã€€ã‚­ãƒ£ãƒ©HPã€€*/
 .gacha_charahp{
 	position: relative;
 	left: 0%;
@@ -148,45 +143,45 @@
 	border-bottom: solid 12px transparent;
 	color: #FFFFFF;
 }
-/*@ƒLƒƒƒ‰ƒNƒ^[ƒXƒe[ƒ^ƒX@*/
+/*ã€€ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å…¨ä½“ã€€*/
 .gacha_charastatus{
 	float: left;
 	color: #FFFFFF;
 	position: relative;
 	top: -2vw;
 }
-/*@ƒO[ƒAƒCƒRƒ“@*/
+/*ã€€ã‚°ãƒ¼ã‚¢ã‚¤ã‚³ãƒ³ã€€*/
 .gacha_guicon{
 	width: 10%;
 }
-/*@ƒLƒƒƒ‰ƒNƒ^[ƒO[ƒeƒLƒXƒg@*/
+/*ã€€ã‚­ãƒ£ãƒ©ã‚°ãƒ¼æ”»æ’ƒåŠ›ã€€*/
 .gacha_fontgoo{
 	position: relative;
 	bottom: 3vw;
 }
-/*@ƒ`ƒ‡ƒLƒAƒCƒRƒ“@*/
+/*ã€€ãƒãƒ§ã‚­ã‚¢ã‚¤ã‚³ãƒ³ã€€*/
 .gacha_chokiicon{
 	width: 10%;
 }
-/*@ƒLƒƒƒ‰ƒNƒ^[ƒ`ƒ‡ƒLƒeƒLƒXƒg@*/
+/*ã€€ã‚­ãƒ£ãƒ©ãƒãƒ§ã‚­æ”»æ’ƒåŠ›ã€€*/
 .gacha_fontchoki{
 	position: relative;
 	bottom: 3vw;
 }
-/*@ƒp[ƒAƒCƒRƒ“@*/
+/*ã€€ãƒ‘ãƒ¼ã‚¢ã‚¤ã‚³ãƒ³ã€€*/
 .gacha_paaicon{
 	width: 10%;
 }
-/*@ƒLƒƒƒ‰ƒNƒ^[ƒp[ƒeƒLƒXƒg@*/
+/*ã€€ã‚­ãƒ£ãƒ©ãƒ‘ãƒ¼æ”»æ’ƒåŠ›ã€€*/
 .gacha_fontpaa{
 	position: relative;
 	bottom: 3vw;
 }
-/*@Œ©‚¹‚é@*/
+/*ã€€è¦‹ã›ã‚‹ã€€*/
 #entryBtn{
 	opacity: 1;
 }
-/*@Á‚·@*/
+/*ã€€æ¶ˆã™ã€€*/
 #check1:checked ~ #entryBtn{
 	opacity: 0;
 }
