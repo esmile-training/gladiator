@@ -3,7 +3,7 @@
  * 製作者：松井 勇樹
  * 最終更新日:2017/06/06
  */--}}
-
+<div><img class="battle_charaselectback" src="{{IMG_URL}}battle/chara_select_bg.jpg" /></div>
 {{-- css  --}}
 @include('common/css', ['file' => 'battleCharaSelect'])
 

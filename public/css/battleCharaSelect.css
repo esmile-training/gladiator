@@ -6,12 +6,14 @@
  */
  /*背景の設定をする*/
 #main{
-	background-image: url(./../img/battle/chara_select_bg.jpg);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-	width: 100%;
+    position: relative;
+}
+.battle_charaselectback{
+    background: no-repeat center center;
+    background-size: 100% auto;
+    width: 100%;
+    margin-top: -33%;
+    position: fixed;
 }
 /*リンクの文字色の設定をする*/
 a:link{

@@ -7,6 +7,7 @@
 {{-- css  --}}
 @include('common/css', ['file' => 'battleArenaSelect'])
 @include('common/css', ['file' => 'battleCharaSelect'])
+<div><img class="battle_arena_selectback" src="{{IMG_URL}}battle/chara_select_bg.jpg" /></div>
 {{--大会の一覧を表示する--}}
 <div class="arena_list">
 	<font class="caption_font"> 闘技場を選択して下さい </font>

@@ -24,9 +24,11 @@ $(function(){
         var changeL = getSrc.replace(beforeImage , afterImage);
         $(this).attr('src', changeL);
 
+        // 敵の手画像をはてなの画像に変更
         var afterImageE = "http://esmile-sys.sakura.ne.jp/gladiator/public/img/battle/enemy_Hand_None.png";
         document.getElementById("enemyHand").src = afterImageE;
         
+        // グー、チョキ、パーのDown画像定義
         var afterImageG = "http://esmile-sys.sakura.ne.jp/gladiator/public/img/chara/status/hand1Down.png";
         var afterImageC = "http://esmile-sys.sakura.ne.jp/gladiator/public/img/chara/status/hand2Down.png";
         var afterImageP = "http://esmile-sys.sakura.ne.jp/gladiator/public/img/chara/status/hand3Down.png";
@@ -37,24 +39,29 @@ $(function(){
         // グーが押されたら
         if(idname === "playerHand1")
         {
+            // チョキとパーの画像を変更            
             document.getElementById("playerHand2").src = afterImageC;
             document.getElementById("playerHand3").src = afterImageP;
         }
         // チョキが押されたら
         else if(idname === "playerHand2")
         {
+            // グーとパーの画像を変更 
             document.getElementById("playerHand1").src = afterImageG;
             document.getElementById("playerHand3").src = afterImageP; 
         }
         // パーが押されたら
         else if(idname === "playerHand3")
         {
+            // グーとチョキの画像を変更
             document.getElementById("playerHand1").src = afterImageG;
             document.getElementById("playerHand2").src = afterImageC; 
         }
     });
     
+    // 表示を消す処理
     $('.visibil').click(function() {
+        // ログの表示を消す
         document.getElementById("battleLog").style.visibility="hidden";
     });
 });
