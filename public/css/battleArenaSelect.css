@@ -4,9 +4,16 @@
 	margin-left: 5vw;
 	width: 90%;
 	position: absolute;
-	top: 15%;
+	top: 10%;
 	left: 0;
 	text-align: center;
+}
+.battle_arena_selectback{
+    background: no-repeat center center;
+    background-size: 100% auto;
+    width: 100%;
+    margin-top: -33%;
+    position: fixed;
 }
 /*難易度のバナー*/
 .arena_banner1{
