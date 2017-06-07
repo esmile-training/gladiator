@@ -21,6 +21,7 @@ class CharaModel extends \App\Model\BaseGameModel
 			FROM uChara
 			WHERE userID = {$userId}
 			AND delFlag = 0
+			AND trainingState = 0
 EOD;
 		return $this->select($sql);
 	}

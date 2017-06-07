@@ -13,16 +13,19 @@
 		<link href="{{APP_URL}}css/modal.css?var={{time()}}" rel="stylesheet" type="text/css">
 	</head>
 	<body>
+		{{-- ローディング --}}
 		<div>				
 			<img class = "top_back2 backload"src = "{{IMG_URL}}title/titlelodoDown.gif">
 		</div>
+		{{-- タイトル変更 --}}
 		<div>
 			<img src="{{IMG_URL}}title/title{{$viewData['bgNumber']}}.jpg" class="top_back load">
 		</div> 	
 			@include('common/css', ['file' => 'top'])
 			<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 			<script type="text/javascript" src="{{APP_URL}}js/load.js"></script>
-		<div class = "top_imgloginbutton">
+			{{-- タイトルのロゴ --}}
+			<div class = "top_imgloginbutton">
 			<span class = "flashing">
 					<img class = "top_login load"
 						 src="{{IMG_URL}}title/titlelogo.png">

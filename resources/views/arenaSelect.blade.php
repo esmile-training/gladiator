@@ -10,7 +10,6 @@
 <div><img class="battle_arena_selectback" src="{{IMG_URL}}battle/chara_select_bg.jpg" /></div>
 {{--大会の一覧を表示する--}}
 <div class="arena_list">
-	<font class="caption_font"> 闘技場を選択して下さい </font>
 	@foreach($viewData['difficultyList'] as $arena)
 			<div class = "arena_banner{{$arena['id']}}">
 				<img class ="modal_btn arena{{$arena['id']}}" src="{{IMG_URL}}battle/difficulty{{$arena['id']}}.png">
@@ -34,6 +33,14 @@
 				'data'	=>	['arenaData' => $arenaData]
 			])
 	@endforeach
+
+	{{--インフォ--}}
+	<div class="arena_select_signboard_info">
+		<img src="{{IMG_URL}}/training/signboard_info.png">
+		<div class ="arena_select_signboard_text">
+			<font  class="arena_select_text font_serif">闘技場を選択してください</font>
+		</div>
+	</div>
+	{{--看板の表示--}}
+	<img class="signboard_img" src="{{IMG_URL}}battle/signboard.png" alt="看板">
 </div>
-{{--看板の表示--}}
-<img class="signboard_img" src="{{IMG_URL}}battle/signboard.png" alt="看板">

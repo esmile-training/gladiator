@@ -1,12 +1,15 @@
+/*　IDメイン　*/
 #main{
 	position: relative;
 }
+/*　背景　*/
 .gacha_roadback{
 	background: no-repeat center center;
-    background-size: 100% auto;
-    width: 100%;
-    position: fixed;
+	background-size: 100% auto;
+	width: 100%;
+	position: fixed;
 }
+/*　画面遷移ボタン　*/
 .gacha_roadbutton{
 	opacity: 0.0;
 	position: absolute;
@@ -15,47 +18,55 @@
 	height: 136%;
 	left: 0;
 }
+/*　アニメーションキャラ全体　*/
 .album{
-    margin: 0 auto;
-    position: fixed;
-    top: 22%;
-    left: 0%;
-    right: 0%;
-    width: 75%;
+	margin: 0 auto;
+	position: fixed;
+	top: 22%;
+	left: 0%;
+	right: 0%;
+	width: 75%;
 }
+/*　イメージのアニメーション　*/
 .album img{
 	animation: album 2s infinite;
 	width: 100%;
 	opacity: 0;
 }
+/*　アニメーションキーフレーム　*/
 @keyframes album {
 	10% {opacity:0}
 	20% {opacity:1}
 	40% {opacity:1}
 	50% {opacity:0}
 }
+/*　1コマ　*/
 .album .img1{
 	animation-delay: 0.5s;
 }
+/*　2コマ　*/
 .album .img2{
 	animation-delay:1s;
 	position: absolute;
 	top: 0;
 	left: 0%;
 }
+/*　3コマ　*/
 .album .img3{
 	animation-delay:1.5s;
 	position: absolute;
 	top: 0;
 	left: 0%;
 }
+/*　4コマ　*/
 .album .img4{
 	animation-delay:2s;
 	position: absolute;
 	top: 0;
 	left: 0%;
 }
+/**/
 .gacha_roadbotton{
 	width: 100vw;
-    height: 83vh;
+	height: 83vh;
 }

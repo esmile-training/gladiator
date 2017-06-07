@@ -1,10 +1,10 @@
 /*闘技場のリスト*/
 .arena_list{
-	margin-top: 5vh;
+	margin-top: 23vh;
 	margin-left: 5vw;
-	width: 90%;
-	position: absolute;
-	top: 10%;
+	width: 90vw;
+	position: fixed;
+	top: 0%;
 	left: 0;
 	text-align: center;
 }
@@ -51,29 +51,29 @@
 /*大会名の表示*/
 .arena_name{
 	position: absolute;
-    left: 33%;
-    top: 4vh;
-    text-align: left;
-    font-size: 7vw;
+    width: 64vw;
+    left: 13%;
+    top: 6vh;
+
 }
 .arena_name_caption{
 	position: absolute;
     left: 12%;
     top: 1vh;
     text-align: left;
-    font-size: 4vw;
+    font-size: 4.5vw;
 }
 /*出場するキャラのキャプション*/
 .select_chara_caption{
 	position: absolute;
-    left: 12%;
-    top: 15vh;
-    text-align: left;
-    font-size: 4vw;
+left: 12%;
+top: 23vh;
+text-align: left;
+font-size: 4.5vw;
 }
 /*キャラクターの位置*/
 .popup_cahra_position{
-	top: 21vh;
+	top: 29vh;
     left: 8%;
     position: absolute;
 }
@@ -85,7 +85,7 @@
 /*決定ボタンの位置*/
 .submit_button{
 	position: absolute;
-    top: 41vh;
+    top: 45vh;
     left: 29%;
     width: 44%;
     height: auto;
@@ -122,4 +122,21 @@
 	font-size: 3.7vw;
 	top: 52%;
 	left: 69%;
+}
+/*サインボード横の領域の設定*/
+.arena_select_signboard_info{
+	position	: fixed;
+	top		: 13%;
+	left	: 24%;
+	width	: 77%;
+	z-index: 1;
+}
+.arena_select_signboard_text{
+	position: absolute;
+	top: 16%;
+	left: 25%;
+}
+.arena_select_text{
+	font-size: 3.5vw;
+	color: #ffffff;
 }
