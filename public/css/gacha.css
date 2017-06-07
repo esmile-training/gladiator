@@ -1,121 +1,146 @@
+/*　IDメイン　*/
 #main{
-   position: relative;
+	position: relative;
 }
+/*　背景　*/
 .gacha_back{
 	background: no-repeat center center;
-    background-size: 100% auto;
-    width: 100%;
-    position: fixed;
+	background-size: 100% auto;
+	width: 100%;
+	position: fixed;
 }
+/*　キャラロゴ大きさ　*/
 .gacha_charalogo{
 	width: 100%;
 }
+/*　ガチャ全体　*/
 .gacha_all{
 	width: 100%;
-    height: 100%;
-    position: absolute;
+	height: 100%;
+	position: absolute;
 }
+/*　キャラクター　*/
 .gacha_charabox{
 	text-align: center;
 	position: relative;
 	top: 9%;
 	z-index: 0;
 }
+/*　キャラの光　*/
 .gacha_charaflash{
-    width: 80%;
-    position: absolute;
-    top: 12%;
-    left: 0%;
-    right: 0%;
-    bottom: 0%;
+	width: 80%;
+	position: absolute;
+	top: 12%;
+	left: 0%;
+	right: 0%;
+	bottom: 0%;
 	animation: spin 50.0s linear infinite;
 }
+/*　キャラの位置　*/
 .gacha_charapos{
 	position: absolute;
 	top: 0px;
 	-webkit-animation: scaleout 1.0s;
 	animation: scaleout 1.0s;
 }
+/*　拡大アニメーション　*/
 @-webkit-keyframes scaleout {
-  0% { 
-	  -webkit-transform: scale(0.0) 
-  }
-  100% {
-    -webkit-transform: scale(1.0);
-  }
+	0% {
+		-webkit-transform: scale(0.0) 
+	}
+	100% {
+		-webkit-transform: scale(1.0);
+	}
 }
+/*　拡大アニメーション　*/
 @keyframes scaleout {
-  0% {
-    transition: scale(0.0);
-    -webkit-transform: scale(0.0);
-  } 100% {
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
-  }
+	0% {
+		transition: scale(0.0);
+		-webkit-transform: scale(0.0);
+	}
+	100% {
+		transform: scale(1.0);
+		-webkit-transform: scale(1.0);
+	}
 }
+/*　光回転アニメーション　*/
 @keyframes spin{
-  0% {
-    transition: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    transition: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-  }
+	0% {
+		transition: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		transition: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+	}
 }
+/*　キャラクター位置　*/
 .gacha_chara{
 	width: 80%;
 	text-align: center;
 	position: relative;
 	top: -14vw;
 }
+/*　レア度ロゴ　*/
 .gacha_chararate{ 
-    width: 20%;
-    position: absolute;
-    top: -3vw;
-    left: 2%;
-    z-index: 2;
+	width: 20%;
+	position: absolute;
+	top: -3vw;
+	left: 2%;
+	z-index: 2;
 }
+/*　レア度ロゴ光　*/
 .gacha_charalogoflash{
 	width: 50%;
 	position: absolute;
 	top: -17vw;
 	left: -14%;
 	z-index: 1;
+	opacity: 0.6;
 }
+/*　ステータスフレーム　*/
 .gacha_charaframe{
 	width: 85%;
 	position: absolute;
 	top: 65%;
 	left: 7%;
 }
+/*　フレーム上　*/
 .gacha_charatopframe{
 	width:100%;
 	vertical-align: bottom; 
 }
+/*　フレーム中　*/
 .gacha_characenterframe{
 	width:100%;
 	height: 22vw;
 	vertical-align: top;
 }
+/*　フレーム下　*/
 .gacha_charabottomframe{
 	width:100%;
+	vertical-align: top;
 }
+/*　テキスト　*/
 .gacha_charatextbox{
 	text-align: center;
 	font-size: 140%;
 	position: absolute;
 	top: 65%;
+	font-family: serif;
  }
+ /*　キャラクターネーム　*/
 .gacha_charaname{
 	font-size: 108%;
 	color: #FFFFFF;
 	border-top: solid 5px transparent;
 	border-bottom: solid 7px transparent;
 }
+/*　キャラクターHPアイコン　*/
 .gacha_hpicon{
 	width: 10%;
 }
+/*　キャラクターHP　*/
 .gacha_charahp{
 	position: relative;
 	left: 0%;
@@ -123,39 +148,49 @@
 	border-bottom: solid 12px transparent;
 	color: #FFFFFF;
 }
+/*　キャラクターステータス　*/
 .gacha_charastatus{
 	float: left;
 	color: #FFFFFF;
 	position: relative;
 	top: -2vw;
 }
+/*　グーアイコン　*/
 .gacha_guicon{
 	width: 10%;
 }
+/*　キャラクターグーテキスト　*/
 .gacha_fontgoo{
 	position: relative;
 	bottom: 3vw;
 }
+/*　チョキアイコン　*/
 .gacha_chokiicon{
 	width: 10%;
 }
+/*　キャラクターチョキテキスト　*/
 .gacha_fontchoki{
 	position: relative;
 	bottom: 3vw;
 }
+/*　パーアイコン　*/
 .gacha_paaicon{
 	width: 10%;
 }
+/*　キャラクターパーテキスト　*/
 .gacha_fontpaa{
 	position: relative;
 	bottom: 3vw;
 }
+/*　見せる　*/
 #entryBtn{
 	opacity: 1;
 }
+/*　消す　*/
 #check1:checked ~ #entryBtn{
 	opacity: 0;
 }
+/**/
 .top{
 	 position: relative;
 }
