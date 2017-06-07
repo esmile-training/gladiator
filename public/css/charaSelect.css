@@ -1,10 +1,8 @@
-
 .sort_Box{
-	position: absolute;
-    right: 4%;
-    top: -1.5%;
+    position: fixed;
+    right: 2%;
+    top: 20%;
 }
-
 .white{
 	color: #FFFFFF;
 	text-decoration: none;

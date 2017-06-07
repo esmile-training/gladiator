@@ -3,6 +3,7 @@
 @include('common/css', ['file' => 'modal'])
 <script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="{{APP_URL}}js/load.js"></script>
+<div><img src = "{{IMG_URL}}edit/editLogo.png"></div>
 <div>				
 	<img class = "edit_load backload"src = "{{IMG_URL}}title/titlelodoDown.gif">
 </div>
@@ -49,7 +50,7 @@
 
 	<form class="edit_from" name="form1" action="{{APP_URL}}edit/addUser" method="get">
 		<p class="cap" style="color: red; font-size: 5vw; margin: 0px 0px 0px 0px;">※不正な入力です。</p>
-		<input class="edit_input" type="text" name="teamName" onkeydown="copy_text()" onkeyup="copy_text()" onchange="copy_text()">
+		<input class="edit_input" type="text" name="teamName" onkeydown="copy_text()" onkeyup="copy_text()" onchange="copy_text()"></br>
 		<input class="edit_submit load" type="button" name="btn" value="登録" onclick="disbtn(this)" disabled>
 		<input type="hidden" name="gachavalue" value="12">
 	</form>
