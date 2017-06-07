@@ -54,4 +54,10 @@
 	所属している剣闘士が０人です！
 </div>
 @endif
-<img class="signboard_img" src="{{IMG_URL}}battle/signboard.png" alt="看板">
+<div class="chara_select_signboard_info">
+	<img src="{{IMG_URL}}/training/signboard_info.png">
+	<div class ="chara_select_signboard_text">
+		<font  class="chara_select_text font_serif">出場させる剣闘士を選んでください</font>
+	</div>
+</div>
+<img class="chara_select_signboard_img" src="{{IMG_URL}}battle/signboard.png" alt="看板">

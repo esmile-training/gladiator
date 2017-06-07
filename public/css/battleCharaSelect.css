@@ -39,7 +39,7 @@ a:active{
 	margin-right: 2%;
 }
 /*看板の設定*/
-.signboard_img{
+.chara_select_signboard_img{
 	width: 35%;
 	position: fixed;
 	top: 13%;
@@ -164,4 +164,21 @@ a:active{
 	right: 0;
 	bottom: 0;
 	text-align: center;
+}
+/*サインボード横の領域の設定*/
+.chara_select_signboard_info{
+	position	: fixed;
+	top		: 13%;
+	left	: 24%;
+	width	: 77%;
+	z-index: 1;
+}
+.chara_select_signboard_text{
+	position: absolute;
+	top: 16%;
+	left:16%;
+}
+.chara_select_text{
+	font-size: 3.5vw;
+	color: #ffffff;
 }
