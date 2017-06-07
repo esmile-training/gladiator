@@ -38,7 +38,7 @@ th{ text-align: center; }
     left: 5%;
     width: 90%;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 5vw;
 }
 .battleresult_log_message_money_img{
     width: 6%;
@@ -72,7 +72,6 @@ th{ text-align: center; }
     position: absolute;
     bottom: 1%;
 }
-
 
 /* 全体に対する、バックホームボタンの領域 */
 .battleresult_backhome_linkregion{

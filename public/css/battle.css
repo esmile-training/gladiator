@@ -72,7 +72,7 @@ body{}
     right: 5%;
     width: 70%;
     color: #ffffff;
-    font-size: 13px;
+    font-size: 4vw;
     text-align: right;
 }
 /* 敵キャラのHPのステータスアイコン */
@@ -86,7 +86,7 @@ body{}
     right: 5%;
     width: 70%;
     color: #ffffff;
-    font-size: 13px;
+    font-size: 5vw;
     text-align: right;
 }
 /* 敵キャラのグーのステータスアイコン */
@@ -139,7 +139,7 @@ body{}
     left: 5%;
     width: 90%;
     color: #ffffff;
-    font-size: 12px;
+    font-size: 4vw;
 }
 /* 勝った時の文字色(赤) */
 .battle_log_message_win{
@@ -250,7 +250,7 @@ body{}
     left: 5%;
     width: 70%;
     color: #ffffff;
-    font-size: 13px;
+    font-size: 4vw;
     text-align: left;
 }
 /* 自キャラのHP画像 */
@@ -264,7 +264,7 @@ body{}
     left: 5%;
     width: 70%;
     color: #ffffff;
-    font-size: 13px;
+    font-size: 5vw;
     text-align: left;
 }
 /* 自キャラのグーのステータスアイコン */
