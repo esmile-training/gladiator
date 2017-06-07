@@ -1,75 +1,65 @@
+/*　IDメイン　*/
 #main{
 	position: relative;
-
 }
+/*　背景　*/
 .gacha_selectback{
 	background: no-repeat center center;
-    background-size: 100% auto;
-    width: 100%;
+	background-size: 100% auto;
+	width: 100%;
 	margin-top: -20%;
-    position: fixed;
+	position: fixed;
 }
+/*　全体　*/
 .gacha_all{
 	width: 100%;
-    height: 100%;
-    position: absolute;
+	height: 100%;
+	position: absolute;
 }
+/*　看板　*/
 .gacha_signboard{
-    width: 35%;
-    position: fixed;
-    top: 13%;
-    left: 0;
-    z-index: 2;
+	width: 35%;
+	position: fixed;
+	top: 13%;
+	left: 0;
+	z-index: 2;
 }
+/*　枠全体　*/
 .junban0{
-    z-index:0;
-    text-align: center; 
-    position: absolute;
-    top: 3%;
-    left: 0px;
+	z-index:0;
+	text-align: center; 
+	position: absolute;
+	top: 3%;
+	left: 0px;
 }
+/*　枠　*/
 .gacha_frame{
 	width:100%;
 	vertical-align: bottom;
 }
+/*　バナー全体　*/
 .junban1{
-    width: 94%;
-height: 59%;
-    position: absolute;
-    top: 13%;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin: 0 auto;
+	width: 94%;
+	height: 59%;
+	position: absolute;
+	top: 13%;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: 0 auto;
 }
+/*　バナー1　*/
 .gacha_button1{
 	border-bottom: solid 10px transparent;
 }
-.gacha_normalgachamoney{
-	width: 20%;
-	position: absolute;
-	top: 25%;
-	left: 6%;
-}
+/*　バナー2　*/
 .gacha_button2{
 	border-bottom: solid 10px transparent;
 }
-.gacha_raregachamoney{
-	width: 20%;
-	position: absolute;
-	top: 58%;
-	left: 6%;
-}
+/*　バナー3　*/
 .gacha_button3{
 }
-.gacha_superraregachamoney{
-	
-	width: 20%;
-	position: absolute;
-	top: 93%;
-	left: 6%;
-	
-}
+/*　イベントガチャへの遷移ボタン　*/
 .eventebutton{
 	opacity: 0.0;
 	position: absolute;
@@ -78,6 +68,7 @@ height: 59%;
 	width: 48%;
 	height: 5%;
 }
+/*　ノーマルガチャへの遷移ボタン　*/
 .normalbutton{
 	opacity: 0.0;
 	position: absolute;
@@ -86,27 +77,31 @@ height: 59%;
 	height: 5%;
 	left: 0;
 }
+/*　ポップアップ　*/
 .gacha_popup{
 	width: 33%;
-    position: absolute;
-    top: 123%;
-    bottom: 0;
-    left: 0;
-    right: 0;
+	position: absolute;
+	top: 123%;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
+/*　お金アイコン　*/
 .gold1{
-    width:7%;
-    position: relative;
-    top: 1vw;
+	width:7%;
+	position: relative;
+	top: 1vw;
 }
+/*　お金アイコン　*/
 .gold2{
-    width:7%;
-    position: relative;
-    top: 1vw;
+	width:7%;
+	position: relative;
+	top: 1vw;
 }
+/*　ポップアップ全体　*/
 .gacha_popupbox{
 	font-size: 120%;
-    width: 100%;
-    position: relative;
-    top: 7vw;
+	width: 100%;
+	position: relative;
+	top: 7vw;
 }

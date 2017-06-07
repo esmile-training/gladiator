@@ -6,25 +6,20 @@
     max-width: 480px;
     margin: 80px 0px;
 }
-
-.title_logo{
-    width: 85%;
-    position: absolute;
-    top: 20%;
-    left: 8%;
-}
+/*　遷移ボタン　*/
 .top_button{
     width: 100%;
     max-width: 240px;
     height: auto;
     text-align: center;
 }
-/* 点滅 */
+/*　点滅　*/
 .flashing{
 	-webkit-animation:flash 0.7s ease-in-out infinite alternate;
     -moz-animation:flash 0.7s ease-in-out infinite alternate;
     animation:flash 0.7s ease-in-out infinite alternate;
 }
+/*　点滅アニメーション　*/
 @-webkit-keyframes flash{
     0% {opacity:0;}
     100% {opacity:1;}
@@ -37,7 +32,7 @@
     0% {opacity:0;}
     100% {opacity:1;}
 }
-/*top-login-button*/
+/*　ログイン　*/
 .top_login{
     width:90%;
     position: fixed;
@@ -46,7 +41,7 @@
 	right: 0;
 	bottom: 0;
 	margin: auto;
-}
+}/*　背景　*/
 .top_back{
 	/* 画像をタイル状に繰り返し表示しない */
 	background-repeat: no-repeat;
@@ -60,15 +55,18 @@
     width: 100%;
 	position: fixed;
 }
+/*　ログインボタン　*/
 .top_imgloginbutton{
 	margin: 0 auto;
     text-align: center;
 }
+/*　ロード遷移ボタン　*/
 .roadbutton{
     width: 100vw;
     height: 100vh;
 	opacity: 0;
 }
+/*　ロード背景　*/
 .top_back2{
 	position:fixed;
 	top:0;
