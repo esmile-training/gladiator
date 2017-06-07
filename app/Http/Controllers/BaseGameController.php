@@ -31,6 +31,8 @@ class BaseGameController extends Controller
 		// チケットの回復処理
 		$commonData['recoveryTime'] = $this->Lib->exec('Ticket', 'confirmation', $ticketData);
 		
+		$commonData['Ticket'] = $this->Model->exec('User', 'getTicket', $userId);
+		
 		// 訓練終了したキャラの確認
 		$commonData['endTraining'] = $this->Model->exec('Training', 'endAlert', $userId);
 		
