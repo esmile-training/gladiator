@@ -432,11 +432,11 @@ class battleController extends BaseGameController
 			// 降参費用額計算
 			$prize = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));
 
-			// 降参費用をマイナスに
-			$prize *= -1;
-
 			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
 			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$prize));
+			
+			// 降参費用をマイナスに
+			$prize *= -1;
 
 			//リダイレクト引数受け渡し(賞金は引退費用として)
 			$param = [
