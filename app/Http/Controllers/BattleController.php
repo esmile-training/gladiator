@@ -7,9 +7,19 @@ use App\Libs\BattleLib;
 class battleController extends BaseGameController
 {
 	/*
+	* ソート用のデフォルト処理
+	*/
+	public function index()
+	{
+		//デフォルト処理
+		$type = (!isset($_GET['type']))? 'id' : $_GET['type'];
+		$order = (!isset($_GET['order']))? 'ASC' : $_GET['order'];
+		return $this->selectBattleChara($type, $order);
+	}
+	/*
 	 *  戦うキャラの選択をする
 	 */
-	public function selectBattleChara()
+	public function selectBattleChara($type, $order)
 	{
 		// ユーザーIDを取得する
 		$userId = $this->user['id'];
@@ -39,19 +49,13 @@ class battleController extends BaseGameController
 			return viewWrap('battleCharaSelect', $this->viewData);
 		}
 
-		// 金枠か銀枠かを判定する
-		foreach ($alluChara as $key => $chara)
-		{
-			if($chara['rare'] >= 4)
-			{
-				$alluChara[$key]['iconFrame'] = 2;
-			}
-			else
-			{
-				$alluChara[$key]['iconFrame'] = 1;
-			}
-		}
+		// viewDataへ取得したキャラクターを送る
+		$this->viewData['charaList'] = $alluChara;
 
+		//ソート関数の代に引数への変換
+		$order = ($order == 'ASC')? false : true;
+		//並べ替え処理
+		$alluChara = $this->Lib->exec('Sort','sortArray',[$alluChara, $type, $order]);
 		// viewDataへ取得したキャラクターを送る
 		$this->viewData['charaList'] = $alluChara;
 
@@ -66,16 +70,12 @@ class battleController extends BaseGameController
 	{
 		// ユーザーキャラクターのIDを取得する
 		$selectedCharaData = $_GET;
-		//var_dump($selectedCharaData);
 		// 難易度を取得する
 		$difficulty = \Config::get('battle.difficultyStr');
-		//var_dump($difficulty);
+
 		// 対戦の難易度とキャラIDをビューへ渡す
 		$this->viewData['difficultyList'] = $difficulty;
 		$this->viewData['selectedCharaData'] = $selectedCharaData;
-
-		//var_dump($this->viewData['difficultyList']);
-		//var_dump($this->viewData['selectedCharaData']);
 
 		// ビューへデータを渡す
 		return viewWrap('arenaSelect', $this->viewData);
