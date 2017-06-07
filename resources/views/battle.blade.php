@@ -184,7 +184,7 @@
 			{{-- 何も出してない敵の手の枠 --}}
 			<div class="battle_enemy_hand">
 				<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
-				<img id="enemyHand" src="{{IMG_URL}}chara/status/hand0.png class="battle_enemy_hand_img" >
+				<img id="enemyHand" src="{{IMG_URL}}chara/status/hand0.png" class="battle_enemy_hand_img" >
 			</div>
 
 			{{-- メッセージログの枠 --}}
