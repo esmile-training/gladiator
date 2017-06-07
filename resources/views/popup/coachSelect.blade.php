@@ -1,4 +1,4 @@
-<div class="training_text">
+<div class="training_font_serif">
 	{{'訓練時間を選択してください'}}
 </div>
 <div>

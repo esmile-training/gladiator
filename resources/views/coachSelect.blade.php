@@ -6,7 +6,7 @@
 	<div class="training_signboard_info">
 		<img src="{{IMG_URL}}/training/signboard_info.png">
 		<div class ="training_signboard_text">
-			<font  class="training_text">{{'コーチを選んでください'}}</font>
+			<font  class="training_font_serif">{{'コーチを選んでください'}}</font>
 		</div>
 	</div>
 	<div class="coachSelect_signboard">
@@ -24,7 +24,7 @@
 		<div class ="modal_btn trainingPopup{{$cnt}}">
 		@endif
 			<img src="{{IMG_URL}}/training/coachButton{{$val['rare']}}.png">
-			<div class="coachName_text coach_name">
+			<div class="training_font_serif coach_name">
 				<font>{{$val['name']}}</font>
 			</div>
 			<div class="coach_icon">
