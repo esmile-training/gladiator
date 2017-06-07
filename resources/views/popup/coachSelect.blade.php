@@ -26,7 +26,8 @@
 				test{{$cnt}}.innerHTML = '<input class="training_submit" type="image" src="{{IMG_URL}}popup/ok_Button.png">';
 			}else
 			{
-				test{{$cnt}}.innerHTML = '<input class="training_submit" type="hidden" src="{{IMG_URL}}popup/ok_Button.png">';
+				test{{$cnt}}.innerHTML = '<input class="training_submit" type="hidden" src="{{IMG_URL}}popup/ok_Button.png">\n\
+											<div class="fee_shortage_text">{{"所持金が足りません"}}</div>';
 			}
 			
 		});
@@ -51,7 +52,8 @@
 				test{{$cnt}}.innerHTML = '<input class="training_submit" type="image" src="{{IMG_URL}}popup/ok_Button.png">';
 			}else
 			{
-				test{{$cnt}}.innerHTML = '<input class="training_submit" type="hidden" src="{{IMG_URL}}popup/ok_Button.png">';
+				test{{$cnt}}.innerHTML = '<input class="training_submit" type="hidden" src="{{IMG_URL}}popup/ok_Button.png">\n\
+											<div class="fee_shortage_text">{{"所持金が足りません"}}</div>';
 			}
 			
 		}
