@@ -25,7 +25,7 @@ $(function(){
 		$(this).attr('src', changeL);
 
 		// 敵の手画像をはてなの画像に変更
-		var afterImageE = "http://esmile-sys.sakura.ne.jp/gladiator/public/img/battle/enemy_Hand_None.png";
+		var afterImageE = "http://esmile-sys.sakura.ne.jp/gladiator/public/img/chara/status/hand0.png";
 		document.getElementById("enemyHand").src = afterImageE;
 
 		// グー、チョキ、パーのDown画像定義

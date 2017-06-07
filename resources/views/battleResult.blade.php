@@ -67,7 +67,7 @@
 							<table border="0">
 								<tr valign="middle">
 									<td width="6%">
-										<img src={{IMG_URL}}chara/status/hand1.png class="battleresult_log_message_statusup_goo">
+										<img src="{{IMG_URL}}chara/status/hand1.png" class="battleresult_log_message_statusup_goo">
 									</td>
 									<td width="4%"></td>
 									<td width="20%" align="left">
@@ -93,7 +93,7 @@
 							<table border="0">
 								<tr valign="middle">
 									<td width="6%">
-										<img src={{IMG_URL}}chara/status/hand2.png class="battleresult_log_message_statusup_cho">
+										<img src="{{IMG_URL}}chara/status/hand2.png" class="battleresult_log_message_statusup_cho">
 									</td>
 									<td width="4%"></td>
 									<td width="20%" align="left">
@@ -119,7 +119,7 @@
 							<table border="0">
 								<tr valign="middle">
 									<td width="6%">
-										<img src={{IMG_URL}}chara/status/hand3.png class="battleresult_log_message_statusup_paa">
+										<img src="{{IMG_URL}}chara/status/hand3.png" class="battleresult_log_message_statusup_paa">
 									</td>
 									<td width="4%"></td>
 									<td width="20%" align="left">
@@ -173,7 +173,7 @@
 		<div class="battleresult_backhome_linkregion">
 			{{-- ホームへ戻るボタン --}}
 			<a href="{{APP_URL}}mypage" class="battleresult_backhome_icon clickfalse">
-				<img class="image_change" src={{IMG_URL}}battleResult/backHome.png >
+				<img class="image_change" src="{{IMG_URL}}battleResult/backHome.png" >
 			</a>
 		</div>
 	</div>
