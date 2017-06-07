@@ -78,16 +78,16 @@
 			<div class="battle_enemy_status_hp">
 				<table border="0">
 					<tr valign="middle">
-						<td width="60%" align="left">
+						<td width="65%" align="left">
 							{{ $viewData['enemyData']['name'] }}
 						</td>
 						<td width="5%">
 							<img src={{IMG_URL}}chara/status/hp.png class="battle_enemy_status_hp_img">
-						</td>						
+						</td>
 						<td width="25%" align="left">
 							{{ $viewData['enemyData']['battleHp'] }} / {{ $viewData['enemyData']['hp'] }}
 						</td>
-						<td width="10%"></td>						
+						<td width="5%"></td>
 					</tr>
 				</table>
 			</div>
@@ -184,7 +184,7 @@
 			{{-- 何も出してない敵の手の枠 --}}
 			<div class="battle_enemy_hand">
 				<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
-				<img id="enemyHand" src="{{IMG_URL}}battle/enemy_Hand_None.png" class="battle_enemy_hand_img" >
+				<img id="enemyHand" src="{{IMG_URL}}chara/status/hand0.png" class="battle_enemy_hand_img" >
 			</div>
 
 			{{-- メッセージログの枠 --}}
@@ -199,13 +199,13 @@
 			<div class="battle_playerhand_button">
 				<img src="{{IMG_URL}}battle/button_Bg.png" class="battle_playerhand_button_bg">
 				<a href="{{APP_URL}}battle/updateBattleData?hand=1" class="battle_playerhand_button_goo_linkregion clickfalse visibil">
-					<img id="playerHand1" src={{IMG_URL}}chara/status/hand1.png class="battle_playerhand_button_img battle_Button">
+					<img id="playerHand1" src="{{IMG_URL}}chara/status/hand1.png" class="battle_playerhand_button_img battle_Button">
 				</a>
 				<a href="{{APP_URL}}battle/updateBattleData?hand=2" class="battle_playerhand_button_cho_linkregion clickfalse visibil">
-					<img id="playerHand2" src={{IMG_URL}}chara/status/hand2.png class="battle_playerhand_button_img battle_Button">
+					<img id="playerHand2" src="{{IMG_URL}}chara/status/hand2.png" class="battle_playerhand_button_img battle_Button">
 				</a>
 				<a href="{{APP_URL}}battle/updateBattleData?hand=3" class="battle_playerhand_button_paa_linkregion clickfalse visibil">
-					<img id="playerHand3" src={{IMG_URL}}chara/status/hand3.png class="battle_playerhand_button_img battle_Button">
+					<img id="playerHand3" src="{{IMG_URL}}chara/status/hand3.png" class="battle_playerhand_button_img battle_Button">
 				</a>
 			</div>
 		{{-- バトル終了のフラグが立っていたら攻撃の受け付けをしない --}}
@@ -213,7 +213,7 @@
 			{{-- リザルト画面へ行くボタン表示 --}}
 			<div>
 				<a href="{{APP_URL}}battle/makeResultData" class="battle_battleresult_button clickfalse" >
-					<img class="battle_battleresult_button_img image_change " src={{IMG_URL}}battle/toBattleResult.png >
+					<img class="battle_battleresult_button_img image_change" src="{{IMG_URL}}battle/toBattleResult.png" >
 				</a>
 			</div>
 		@endif
@@ -238,12 +238,12 @@
 			<div class="battle_player_status_hp">
 				<table border="0">
 					<tr>
-						<td width="10%"></td>
-						<td width="60%" align="left">
+						<td width="5%"></td>
+						<td width="65%" align="left">
 							{{ $viewData['charaData']['name'] }}
 						</td>
 						<td width="5%">
-							<img src={{IMG_URL}}chara/status/hp.png class="battle_player_status_hp_img">
+							<img src="{{IMG_URL}}chara/status/hp.png" class="battle_player_status_hp_img">
 						</td>	
 						<td width="25%" align="left">
 							{{ $viewData['charaData']['battleHp'] }} / {{ $viewData['charaData']['hp'] }}
@@ -257,19 +257,19 @@
 					<tr valign="middle">
 						<td width="15%"></td>
 						<td width="5%">
-							<img src={{IMG_URL}}chara/status/hand1.png class="battle_player_status_atk_goo_img">
+							<img src="{{IMG_URL}}chara/status/hand1.png" class="battle_player_status_atk_goo_img">
 						</td>
 						<td width="20%" align="left">
 							{{ $viewData['charaData']['gooAtk']}}
 						</td>
 						<td width="5%">
-							<img src={{IMG_URL}}chara/status/hand2.png class="battle_player_status_atk_cho_img">
+							<img src="{{IMG_URL}}chara/status/hand2.png" class="battle_player_status_atk_cho_img">
 						</td>	
 						<td width="20%" align="left">
 							{{ $viewData['charaData']['choAtk']}}
 						</td>
 						<td width="5%">
-							<img src={{IMG_URL}}chara/status/hand3.png class="battle_player_status_atk_paa_img">
+							<img src="{{IMG_URL}}chara/status/hand3.png" class="battle_player_status_atk_paa_img">
 						</td>
 						<td width="20%" align="left">
 							{{ $viewData['charaData']['paaAtk']}}
@@ -280,7 +280,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	{{-- jsの宣言 --}}
 	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>

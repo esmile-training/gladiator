@@ -62,19 +62,21 @@ body {
 
 
  #main{
-	background: url(/img/mypage/homeImage.jpg) no-repeat center center;
-	background-size: 100% auto;
-	width: 100%;
-	position: fixed;
+     background: url(./../img/mypage/homeImage.jpg) no-repeat center center;
+     background-size: 100% auto;
+     width: 100%;
+     position: fixed;
  }
 
  .mypage_board{
+
 	width: 33%;
 	position: fixed;
 	margin-top: 1%;
 }
 
 .user_chara{
+
 	position: absolute;
 	top: 5%;
 	left: 0;

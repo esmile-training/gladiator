@@ -1,28 +1,13 @@
+//メッセージの表示
 function onSortChange() {
 	$("#roadCover").removeClass("offCover");
 }
 
-function getType(type){
-	var mes;
-	switch (type){
-		case "id":
-			mes = "入手";
-			break;
-		case "name":
-			mes = "名前";
-			break;
-		case "rare":
-			mes = "レア度";
-			break;
-		case "gooAtk":
-			mes = "グー 攻撃力";
-			break;
-		case "choAtk":
-			mes = "チョキ 攻撃力";
-			break;
-		case "paaAtk":
-			mes = "パー 攻撃力";
-			break;
-	}
-	return mes;
+//select内容の取得
+function getType(){
+	$('[name=type]').change(function() {
+		var txt = $('[name=type] option:selected').text();
+		$("#roadCover p span").append(txt);
+//		return txt;.append
+	});
 }

@@ -1,5 +1,5 @@
 #main{
-	background-image: url(/img/gacha/selectbackground.jpg);
+	background-image: url(./../img/gacha/selectbackground.jpg);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -38,4 +38,11 @@
 /* キャラとコーチのボックス縮小 */
 .reduction{
 	transform: scale(0.9);
+}
+
+.button_box{
+	display: inline-block;
+	position: absolute;
+    bottom: -3%;
+	width: 100%;
 }

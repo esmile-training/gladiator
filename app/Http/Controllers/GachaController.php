@@ -71,10 +71,10 @@ class GachaController extends BaseGameController
 		$ratio = $this->viewData['ratio']['hit'];
 		
 		//キャラの画像ID取得
-		if($gachaVal == 8)
+		if($gachaVal == 7)
 		{
 			$sex = 1;
-		}else if($gachaVal == 6){
+		}else if($gachaVal == 5){
 			$sex = 0;
 		}else{
 			$sex = false;

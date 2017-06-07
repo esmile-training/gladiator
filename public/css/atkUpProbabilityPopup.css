@@ -1,62 +1,53 @@
 .atkUpProbability_all{
-    position: relative;
-    top     : 5%;
-    left    : 0%;
-    width   : 100%;
+    position	: relative;
+    top		: 5%;
+    left	: 0%;
+    width	: 100%;
+    text-align	: center;
 }
 
 .goo_icon{
     position: relative;
     top     : 30%;
-    left    : 7%; 
+    left    : 6%;
     width   : 7%;
 }
 
 .cho_icon{
     position: relative;
     top     : 30%;
-    left    : 14%; 
+    left    : 12%;
     width   : 7%;
 }
 
 .paa_icon{
     position: relative;
     top     : 30%;
-    left    : 21%; 
+    left    :19%;
     width   : 7%;
 }
 
 .title_text{
-    position: relative;
-    text-align: center;
+    position : relative;
 }
 
 .cntProbability_text{
-    position: relative;
+    position	 : relative;
     border-bottom: solid 10px transparent;
 }
 
 .upProbability_text{
-    position: relative;
+    position : relative;
 }
 
 .img_list{
     position: relative;
-    width: 100%;
+    width   : 100%;
 }
 
 .table_list{
-    position: relative;
-    width: 100%;
-    font-size:70%
-}
-
-.hoge{
-    width: 82%;
-    position: relative;
-    top: 0;
-    left:0;
-    right:0;
-    bottom:0;
-    text-align: center;
+    position : absolute;
+    left     : 10%;
+    width    : 100%;
+    font-size: 70%
 }

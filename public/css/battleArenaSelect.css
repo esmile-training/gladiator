@@ -1,40 +1,35 @@
-#main{
-	background-image:
-		url(/img/gacha/selectbackground.jpg);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	width: 100%;
-}
 /*闘技場のリスト*/
 .arena_list{
-	margin-top: 5vh;
-    margin-left: 5vw;
-    width: 90%;
-    position: absolute;
-    top: 15%;
+	margin-top: 23vh;
+    margin-left: 10vw;
+    width: 79vw;
+    position: fixed;
+    top: 0%;
     left: 0;
     text-align: center;
 }
+.battle_arena_selectback{
+    background: no-repeat center center;
+    background-size: 100% auto;
+    width: 100%;
+    margin-top: -33%;
+    position: fixed;
+}
 /*難易度のバナー*/
 .arena_banner1{
-	border-bottom: solid 10px transparent;
+	border-bottom: solid 5px transparent;
 }
 .arena_banner2{
-	border-bottom: solid 10px transparent;
+	border-bottom: solid 5px transparent;
 }
 .arena_banner3{
-	border-bottom: solid 10px transparent;
+	border-bottom: solid 5px transparent;
 }
 /*見出しの設定*/
 .caption_font{
 	font-family: serif;
 	font-size: 150%;
 	color: #FFFFFF;
-}
-/**/
-.popup_decision_button{
-	width: 30%;
 }
 /*看板の設定*/
 .signboard_img{
@@ -43,4 +38,105 @@
 	top: 13%;
 	left: 0;
 	z-index: 2;
+}
+/*ポップアップ画面内の領域を設定する*/
+.match_data{
+	margin-top: 10%;
+	margin-left: 10%;
+}
+/*ポップアップの決定ボタン*/
+.popup_decision_button{
+	width: 100%;
+}
+/*大会名の表示*/
+.arena_name{
+	position: absolute;
+    width: 64vw;
+    left: 13%;
+    top: 6vh;
+
+}
+.arena_name_caption{
+	position: absolute;
+    left: 12%;
+    top: 1vh;
+    text-align: left;
+    font-size: 4.5vw;
+}
+/*出場するキャラのキャプション*/
+.select_chara_caption{
+	position: absolute;
+left: 12%;
+top: 23vh;
+text-align: left;
+font-size: 4.5vw;
+}
+/*キャラクターの位置*/
+.popup_cahra_position{
+	top: 29vh;
+    left: 8%;
+    position: absolute;
+}
+/*サイズ*/
+.popup_chara_size{
+	position: relative;
+    width: 88%;
+}
+/*決定ボタンの位置*/
+.submit_button{
+	position: absolute;
+    top: 45vh;
+    left: 29%;
+    width: 44%;
+    height: auto;
+}
+/*キャラの名前*/
+.popup_chara_name{
+	position: absolute;
+	font-size: 4vw;
+	top: 7%;
+	left: -2%;
+}
+/*HPの値の設定*/
+.popup_hp_value{
+	position: absolute;
+	font-size: 3.7vw;
+	top: 52%;
+	left: -4%;
+}
+/*手の値の設定*/
+.popup_goo_value{
+	position: absolute;
+	font-size: 3.7vw;
+	top: 52%;
+	left: 21%;
+}
+.popup_cho_value{
+	position: absolute;
+	font-size: 3.7vw;
+	top: 52%;
+	left: 45%;
+}
+.popup_paa_value{
+	position: absolute;
+	font-size: 3.7vw;
+	top: 52%;
+	left: 69%;
+}
+/*サインボード横の領域の設定*/
+.arena_select_signboard_info{
+	position	: fixed;
+	top		: 13%;
+	left	: 24%;
+	width	: 77%;
+	z-index: 1;
+}
+.arena_select_signboard_text{
+	position: absolute;
+	top: 16%;
+	left: 25%;
+}
+.arena_select_text{
+	font-size: 3.5vw;
+	color: #ffffff;
 }

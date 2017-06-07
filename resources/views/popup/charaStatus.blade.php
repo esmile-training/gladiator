@@ -28,13 +28,13 @@
 </div>
 
 <div>
-	@if($chara['trainingState'] == 0)
 	<div class="button">
+		@if($chara['trainingState'] == 0)
 		<a href="{{APP_URL}}selectCoach/index?id={{$chara['id']}}&rare={{$chara['rare']}}&imgId={{$chara['imgId']}}&iconFrame={{$chara['iconFrame']}}&name={{$chara['name']}}&attribute={{$chara['attribute']}}&hp={{$chara['hp']}}&gooAtk={{$chara['gooAtk']}}&choAtk={{$chara['choAtk']}}&paaAtk={{$chara['paaAtk']}}">
-			<img class="image_change" src="{{SERVER_URL}}img/popup/retire_Button.png" alt="引退"/>
+			<img class="image_change" src="{{IMG_URL}}popup/retire_Button.png" alt="引退"/>
 		</a>
-	</div>
-	@else
+		@else
 		<p>訓練中です</p>
-	@endif
+		@endif
+	</div>
 </div>

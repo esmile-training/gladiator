@@ -1,20 +1,3 @@
-#main{
-	
-    background-image:
-	    url(/img/gacha/selectbackground.jpg);
-    /* 画像を常に天地左右の中央に配置 */
-    background-position: center center;
-
-    /* 画像をタイル状に繰り返し表示しない */
-    background-repeat: no-repeat;
-
-    /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
-    background-size: cover;
-
-    width: 100%;
-
-}
-
 .coachSelect_display{
     position: relative;
     width:100%;
@@ -25,12 +8,12 @@
     width    : 35%;
     top	     : 13%;
     left     : 0;
-    z-index: 1;
+    z-index: 4;
 }
 
 .coachSelect_all{
-    position: fixed;
-    top : 20%;
+    position :absolute;
+    top : 10%;
     left : 0%;
     width: 100%
 }
@@ -39,45 +22,53 @@
     position	: relative;
     font-family :'Century';
     color	: #FFFFFF;
-    z-index: 2;
+    z-index: 1;
 }
 
-.training_coach_name{
+.coachName_text{
+    position	: relative;
+    font-family :'Century';
+    color	: #FFFFFF;
+    font-size	: 75%; 
+    z-index	: 1;
+}
+
+.coach_name{
     position: absolute;
     top	    : 10%;
     left    : 32%;
     color   : #FFFFFF;
 }
 
-.training_coach_icon{
+.coach_icon{
     position: absolute;
     top	    : -10%;
     left    : 3%;
     width   : 23%;
 }
 
-.training_coach_window{
+.coach_window{
     position	    : relative;
     margin-top	    : 5%;
     margin-left	    : 4%;
     margin-right    : 4%;
 }
 
-.training_coach_goo_atk{
+.coach_goo_atk{
     position: absolute;
     top     : 60%;
     left    : 34%;
     color   :#ffffff;
 }
 
-.training_coach_cho_atk{
+.coach_cho_atk{
     position: absolute;
     top     : 60%;
     left    : 58%;
     color   :#ffffff; 
 }
 
-.training_coach_paa_atk{
+.coach_paa_atk{
     position: absolute;
     top     : 60%;
     left    : 82%;
@@ -128,7 +119,6 @@
     top	    : 10%;
     left    : 83%;
     width   : 15%;
-    z-index : 2;
 }
 
 .coachSelect_reritybg{
@@ -149,12 +139,6 @@
     margin-top: 95%;
 }
 
-.training_a_none{
-    pointer-events: none;
-}
-
-.scale_img{
-    position: absolute;
-    opacity: 0.7;
-    z-index: 1;
+.fee_shortage_text{
+    color:#FF0000;
 }

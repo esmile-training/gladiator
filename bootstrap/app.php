@@ -65,11 +65,12 @@ if( IS_LOCAL ){
 } else {
     define("APP_URL", "http://esmile-sys.sakura.ne.jp/gladiator/public/");
 }
-
 //サーバURL
 define("SERVER_URL", "http://esmile-sys.sakura.ne.jp/gladiator/");
+
 //画像サーバ
 define("IMG_URL", APP_URL."img/");
+
 //DBサーバ
 define("DB_API_URL", SERVER_URL."dbapi/");
 
