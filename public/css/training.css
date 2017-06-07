@@ -1,12 +1,15 @@
 #main{
     position: relative;
 }
+
 .training_back{
-    background: no-repeat center center;
+    position: fixed;
+    background: no-repeat center;
     background-size: 100% auto;
     width: 100%;
-    position: fixed;
+    margin-top: -30%;
 }
+
 .training_signboard{
     position : fixed;
     width    : 35%;
@@ -24,6 +27,7 @@
 }
 
 .training_charalist{
+    position	    : relative;
     margin-top	    : 25vh;
     margin-left	    : 4%;
     margin-right    : 2%;
@@ -114,4 +118,15 @@
 
 .training_list{
    text-align: right;
+}
+
+.training_all{
+    position	 :relative;
+    width	 :100%;
+}
+
+.training_font_serif{
+    font-family: serif;
+    font-size	: 2.0vh;
+    color: #ffffff;
 }

@@ -2,7 +2,7 @@
 @include('common/css', ['file' => 'atkUpProbabilityPopup'])
 
 <div class="atkUpProbability_all">
-	<div class="title_text">
+	<div class="atkUpProbability_font_serif">
 		{{"強化成功率"}}
 	</div>
 	<div class="img_list">
@@ -13,21 +13,21 @@
 	
 	<div class="table_list">
 	@for($i = 0; $i < 10; $i++)
-		<table border="0">
+		<table border="0" width="100%">
 			<tr>
-				<td width="10%"></td>
-				<td class="cntProbability_text" width="30%">
+				<td width="5%"></td>
+				<td class="cntProbability_text" width="35%">
 					@if($i < 10)
-					{{$i}}{{"回成功時："}}
+						{{$i}}{{"回成功時："}}
 					@endif
 				</td>
-				<td class="upProbability_text" width="20%">
+				<td width="20%">
 					{{ $viewData['gooUpProbability'][$cnt][$i]}}{{"%"}}
 				</td>
-				<td class="upProbability_text" width="20%">
+				<td width="20%">
 					{{ $viewData['choUpProbability'][$cnt][$i]}}{{"%"}}
 				</td>
-				<td class="upProbability_text" width="20%">
+				<td width="20%">
 					{{ $viewData['paaUpProbability'][$cnt][$i]}}{{"%"}}
 				</td>
 			<tr>

@@ -7,13 +7,13 @@ class RankingModel extends BaseGameModel
 	/*
 	 * データベースに登録
 	 */
-    public function insertRankingData( $userId )
-    {
+	public function insertRankingData( $userId )
+	{
 $sql = <<< EOD
 	INSERT INTO uRanking(userId) values($userId);
 EOD;
-    return parent::insert($sql);
-    }
+	return parent::insert($sql);
+	}
 	
 	/*
 	 * 自分から上位までの順位をカウント
@@ -35,13 +35,13 @@ EOD;
 	return parent::select($sql, 'first');
 		
 	}
-    
-    /*
-     * ランキングのページャー
-     */
-    
-    public function rankingPager($range, $page)
-    {
+
+	/*
+	 * ランキングのページャー
+	 */
+
+	public function rankingPager($range, $page)
+	{
 $sql = <<< EOD
 SELECT userId ,weeklyAward, user.name,
 	(SELECT COUNT(*) + 1 FROM `uRanking` bf WHERE bf.weeklyAward > af.weeklyAward AND weekRange = '{$range}') 
@@ -52,14 +52,14 @@ SELECT userId ,weeklyAward, user.name,
 	ORDER BY weeklyAward DESC LIMIT 10 OFFSET $page;
 EOD;
 return parent::select($sql, 'all');
-    }
-    
-    /*
-     * キャラランキング
-     */
-    
-    public function rankingStatus($page)
-    {
+	}
+
+	/*
+	 * キャラランキング
+	 */
+
+	public function rankingStatus($page)
+	{
 	if($page == null)
 	{
 	    $page = 0;
@@ -71,32 +71,32 @@ $sql = <<< EOD
 	ORDER BY totalCharaStatus DESC LIMIT 10 OFFSET $page
 EOD;
 return parent::select($sql);
-    }
-    
-    
-    /*
-     * charaの最下位を取得
-     */
-    public function bottomStatus() {
+	}
+
+
+	/*
+	 * charaの最下位を取得
+	 */
+	public function bottomStatus() {
 $sql = <<< EOD
 	SELECT totalCharaStatus
 	FROM user
 	ORDER BY hp ASC LIMIT 1;
 EOD;
 	return parent::select($sql);
-    }
-    
-    /*
-     * idの登録数を取得
-     */
-    public function countRange($range)
-    {
+	}
+
+	/*
+	 * idの登録数を取得
+	 */
+	public function countRange($range)
+	{
 $sql = <<< EOD
 	SELECT COUNT(weekRange) AS count
 	FROM uRanking WHERE weekRange = '{$range}' AND weeklyAward != 0;
 EOD;
 	return parent::select($sql);
-    }
+	}
 	
 	
 	// ユーザーIDを元にウィークリーランキングの情報を取得
@@ -112,35 +112,35 @@ EOD;
 	
 	// ランキングデータのIDを元にウィークリーランキングのポイントを更新
 	public function updateWeeklyPoint($rankingData)
-    {
+	{
 $sql = <<< EOD
 	UPDATE  uRanking
 	SET		weeklyAward = {$rankingData['weeklyAward']}
 	WHERE  id		= {$rankingData['id']};
 EOD;
 		$this->update($sql);
-    }
-    
-    /*
-     * userの登録数を取得
-     */
-    
-    public function countUser()
-    {
+	}
+
+	/*
+	 * userの登録数を取得
+	 */
+
+	public function countUser()
+	{
 $sql = <<< EOD
 	SELECT COUNT(id) AS count
 	FROM user
 	WHERE totalCharaStatus != 0;
 EOD;
 	return parent::select($sql);
-    }
-    
-    /*
-     * rangeのアップデート
-     */
+	}
 
-    public function updateRange($userId, $monday)
-    {
+	/*
+	 * rangeのアップデート
+	 */
+
+	public function updateRange($userId, $monday)
+	{
 $sql = <<< EOD
 	UPDATE uRanking 
 	SET weekRange	= '{$monday}',
@@ -148,21 +148,21 @@ $sql = <<< EOD
 	WHERE userId = $userId;
 EOD;
 	return parent::update($sql);
-    }
-    
-    /*
-     * 現在の登録の週を取得
-     */
-    
-    public function getRange($userId)
-    {
+	}
+
+	/*
+	 * 現在の登録の週を取得
+	 */
+
+	public function getRange($userId)
+	{
 $sql = <<< EOD
 	SELECT weekRange
 	FROM uRanking
 	WHERE userId = $userId;
 EOD;
 	return parent::select($sql);
-    }
+	}
 
 }
 

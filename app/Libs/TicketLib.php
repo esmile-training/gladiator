@@ -42,7 +42,7 @@ class TicketLib extends BaseGameLib
 				$battleTicket = $data + 1;
 			}
 			
-			if($recoveryTime <= $nowTime){			
+			if($recoveryTime <= $nowTime){
 				// チケット回復
 				$this->Model->exec('User', 'ticketRecovery', [$userId, $battleTicket, $recoveryTime]);
 				
@@ -61,6 +61,5 @@ class TicketLib extends BaseGameLib
 			$nextrecovery = date("i:s",(strtotime(0)));
 		}
 		return $nextrecovery;
-		//echo $ticketLossTime;
     }
 }
