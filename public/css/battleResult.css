@@ -1,93 +1,86 @@
+@charset "UTF-8";
 a:link { color : white; }
 a:visited { color : white; }
 th{ text-align: center; }
 
 #main{
-    position: relative;
 }
-
-.image_top_position{
-    position: absolute;
-    top: 17%;
-}
-body{}
 
 /* 背景画像 */
 .battleresult_bg_win {
-    background-size: 100% auto;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-    width: 100%;
+	background: no-repeat center center;
+	background-size: 100% auto;
+	width: 100%;
+	position: fixed;
 }
 .battleresult_bg_lose {
-    background-size: 100% auto;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-    width: 100%;
+	background: no-repeat center center;
+	background-size: 100% auto;
+	width: 100%;
+	position: fixed;
 }
 
 /* バトルリザルトのログ部分 */
 .battleresult_log {
-    position: absolute;
-    top: 40%;
-    left: 5%;
-    width: 90%;
+	position: fixed;
+	top: 40%;
+	left: 5%;
+	width: 90%;
 }
 /* 背景画像 */
 .battleresult_log_bg {
-    width: 100%;
+	width: 100%;
 }
 /* ログ */
 .battleresult_log_message{
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    width: 90%;
-    color: #ffffff;
-    font-size: 15px;
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	width: 90%;
+	color: #ffffff;
+	font-size: 5vw;
 }
 .battleresult_log_message_money_img{
-    width: 6%;
+	width: 6%;
 }
 /* お金が増えた時の文字色 */
 .battleresult_log_message_upcolor{
-    color: #00FA9A;
+	color: #00FA9A;
 }
 /* お金が減った時の文字色 */
 .battleresult_log_message_downcolor{
-    color: #ff4444;
+	color: #ff4444;
 }
 /* HP */
 .battleresult_log_message_statusup_hp{
-    width: 100%;
+	width: 100%;
 }
 /* グー */
 .battleresult_log_message_statusup_goo{
-    width: 100%;
+	width: 100%;
 }
 /* チョキ */
 .battleresult_log_message_statusup_cho{
-    width: 100%;
+	width: 100%;
 }
 /* パー */
 .battleresult_log_message_statusup_paa{
-    width: 100%;
+	width: 100%;
 }
 /* キャラの死亡画像 */
 .battleresult_log_death{
-    position: absolute;
-    bottom: 1%;
+	position: absolute;
+	bottom: 1%;
 }
-
 
 /* 全体に対する、バックホームボタンの領域 */
 .battleresult_backhome_linkregion{
-    position: absolute;
-    left: 35%;
-    bottom: 2%;
-    width: 30%;
+	position: fixed;
+	left: 35%;
+	bottom: 2%;
+	width: 30%;
 }
 /* バックホームボタン領域に対する、画像 */
 .battleresult_backhome_icon{
-    width: 100%;
+	width: 100%;
 }

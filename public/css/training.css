@@ -1,25 +1,18 @@
 #main{
-    
-    background-image:
-	url(./../img/gacha/gachabackground.jpg);
-    /* 画像を常に天地左右の中央に配置 */
-    background-position: center center;
-    
-    /* 画像をタイル状に繰り返し表示しない */
-    background-repeat: no-repeat;
-    
-    /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
-    background-size: cover;
-    
-    width: 100%;
+    position: relative;
 }
-
+.training_back{
+    background: no-repeat center center;
+    background-size: 100% auto;
+    width: 100%;
+    position: fixed;
+}
 .training_signboard{
     position : fixed;
     width    : 35%;
     top	     : 13%;
     left     : 0;
-    z-index: 1;
+    z-index: 4;
 }
 
 .training_signboard_info{
@@ -27,7 +20,7 @@
     top		: 13%;
     left	: 24%;
     width	: 77%;
-    z-index: 1;
+    z-index: 3;
 }
 
 .training_charalist{
@@ -56,10 +49,8 @@
 .scale_img{
     position: absolute;
     opacity: 0.7;
-    z-index: 1;
+    z-index:2;
 }
-
-
 
 .training_init{
     font-family: serif;

@@ -4,7 +4,9 @@
 <div class="match_data">
 	{{--大会名の表示--}}
 	<div class="arena_name_caption font_serif">選択した闘技場</div>
-	<div class="arena_name font_serif">{{$arenaData['arenaName']}}</div>
+	<div class="arena_name">
+		<img src="{{IMG_URL}}battle/difficulty{{$arenaData['id']}}.png" alt="闘技場名">
+	</div>
 	<div class="select_chara_caption font_serif">出場する剣闘士</div>
 
 	{{--キャラの表示--}}

@@ -18,19 +18,42 @@
 		<img class="edit_frame_img" src="{{IMG_URL}}popup/popupbottom.png" />
 	</div>
 	
+	<script>
+	$(function(){
+        $("input"). keydown(function(e) {
+            if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
+                return false;
+            } else {
+                return true;
+            }
+        });
+    });
+	function copy_text()
+	{
+		 if((document.form1.teamName.value.match(/^[^ -~｡-ﾟ]*$/) || document.form1.teamName.value.match(/\"\'/)) && document.form1.teamName.value.length < 9)
+		 {		
+			$(".cap").removeClass("act");
+			document.form1.btn.disabled = "";
+		 } else {
+			$(".cap").addClass("act");
+			document.form1.btn.disabled = "true";
+		 }
+	}
+	</script>
+
+	<style>
+	.cap:not(.act) {
+		display:none;
+	}
+	</style>
+
 	<form class="edit_from" name="form1" action="{{APP_URL}}edit/addUser" method="get">
-		<input class="edit_input" type="text" name="teamName" onkeydown="charCheck()" onkeyup="charCheck()" onchange="wupBtn()">
-		<input class="edit_submit load" type="button" value="登録" onclick="disbtn(this)" disabled>
+		<p class="cap" style="color: red; font-size: 5vw; margin: 0px 0px 0px 0px;">※不正な入力です。</p>
+		<input class="edit_input" type="text" name="teamName" onkeydown="copy_text()" onkeyup="copy_text()" onchange="copy_text()">
+		<input class="edit_submit load" type="button" name="btn" value="登録" onclick="disbtn(this)" disabled>
 		<input type="hidden" name="gachavalue" value="12">
 	</form>
-		@include('popup/wrap', [
-			'class'		=> 'helpButton',
-			'template'	=> 'a'
-	])
-	<a>
-		<input type="image" class="modal_btn helpButton" src="{{IMG_URL}}battle/help.png">
-	</a>
-
+	
 </div>
 </div>
 </div>
