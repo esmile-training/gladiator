@@ -83,11 +83,11 @@
 						</td>
 						<td width="5%">
 							<img src={{IMG_URL}}chara/status/hp.png class="battle_enemy_status_hp_img">
-						</td>						
+						</td>
 						<td width="25%" align="left">
 							{{ $viewData['enemyData']['battleHp'] }} / {{ $viewData['enemyData']['hp'] }}
 						</td>
-						<td width="5%"></td>						
+						<td width="5%"></td>
 					</tr>
 				</table>
 			</div>
@@ -280,7 +280,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	{{-- jsの宣言 --}}
 	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>

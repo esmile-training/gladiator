@@ -1,7 +1,7 @@
 		{{-- cssの宣言 --}}
 		@include('common/header')
 		@include('common/css', ['file' => 'battleResult'])
-		
+
 		{{-- バトルの勝敗によって背景画像変更 --}}
 		@if ($viewData['prize'] > 0)
 			<div><img src="{{IMG_URL}}battleResult/battleResult_Bg_Win.jpg" class="battleresult_bg_win"></div>
@@ -87,7 +87,7 @@
 									</td>
 									<td width="40%"></td>
 								</tr>
-							</table>							
+							</table>
 						</div>
 						<div>
 							<table border="0">
@@ -121,7 +121,7 @@
 									<td width="6%">
 										<img src={{IMG_URL}}chara/status/hand3.png class="battleresult_log_message_statusup_paa">
 									</td>
-									<td width="4%"></td>									
+									<td width="4%"></td>
 									<td width="20%" align="left">
 										{{$viewData['charaDefaultData']['paaAtk']}}
 									</td>
