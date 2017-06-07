@@ -3,40 +3,40 @@
 /*TopPage*/
 
 .top_content{
-    max-width: 480px;
-    margin: 80px 0px;
+	max-width: 480px;
+	margin: 80px 0px;
 }
 /*　遷移ボタン　*/
 .top_button{
-    width: 100%;
-    max-width: 240px;
-    height: auto;
-    text-align: center;
+width: 100%;
+	max-width: 240px;
+	height: auto;
+	text-align: center;
 }
 /*　点滅　*/
 .flashing{
 	-webkit-animation:flash 0.7s ease-in-out infinite alternate;
-    -moz-animation:flash 0.7s ease-in-out infinite alternate;
-    animation:flash 0.7s ease-in-out infinite alternate;
+	-moz-animation:flash 0.7s ease-in-out infinite alternate;
+	animation:flash 0.7s ease-in-out infinite alternate;
 }
 /*　点滅アニメーション　*/
 @-webkit-keyframes flash{
-    0% {opacity:0;}
-    100% {opacity:1;}
+	0% {opacity:0;}
+	100% {opacity:1;}
 }
 @-moz-keyframes flash{
-    0% {opacity:0;}
-    100% {opacity:1;}
+	0% {opacity:0;}
+	100% {opacity:1;}
 }
 @keyframes flash{
-    0% {opacity:0;}
-    100% {opacity:1;}
+	0% {opacity:0;}
+	100% {opacity:1;}
 }
 /*　ログイン　*/
 .top_login{
-    width:90%;
-    position: fixed;
-    top: 47%;
+	width:90%;
+	position: fixed;
+	top: 47%;
 	left: 0;
 	right: 0;
 	bottom: 0;
@@ -45,25 +45,25 @@
 .top_back{
 	/* 画像をタイル状に繰り返し表示しない */
 	background-repeat: no-repeat;
-   
+	
 	/* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
 	background-attachment: fixed;
-   
+	
 	/* 表示するコンテナの大きさに基づいて、背景画像を調整 */
 	background-size: cover;
-    
-    width: 100%;
+	
+	width: 100%;
 	position: fixed;
 }
 /*　ログインボタン　*/
 .top_imgloginbutton{
 	margin: 0 auto;
-    text-align: center;
+	text-align: center;
 }
 /*　ロード遷移ボタン　*/
 .roadbutton{
-    width: 100vw;
-    height: 100vh;
+	width: 100vw;
+	height: 100vh;
 	opacity: 0;
 }
 /*　ロード背景　*/
