@@ -1,12 +1,12 @@
 /*闘技場のリスト*/
 .arena_list{
 	margin-top: 23vh;
-	margin-left: 5vw;
-	width: 90vw;
-	position: fixed;
-	top: 0%;
-	left: 0;
-	text-align: center;
+    margin-left: 10vw;
+    width: 79vw;
+    position: fixed;
+    top: 0%;
+    left: 0;
+    text-align: center;
 }
 .battle_arena_selectback{
     background: no-repeat center center;
@@ -17,13 +17,13 @@
 }
 /*難易度のバナー*/
 .arena_banner1{
-	border-bottom: solid 10px transparent;
+	border-bottom: solid 5px transparent;
 }
 .arena_banner2{
-	border-bottom: solid 10px transparent;
+	border-bottom: solid 5px transparent;
 }
 .arena_banner3{
-	border-bottom: solid 10px transparent;
+	border-bottom: solid 5px transparent;
 }
 /*見出しの設定*/
 .caption_font{
