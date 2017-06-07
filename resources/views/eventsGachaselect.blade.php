@@ -1,3 +1,4 @@
+<div><img class="gacha_selectback" src="{{IMG_URL}}gacha/selectbackground.jpg" /></div>
 @include('common/css', ['file' => 'gachaselect'])
 <div class = "gacha_all">
 	<div>
