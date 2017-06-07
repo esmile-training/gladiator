@@ -12,7 +12,7 @@ $sql = <<< EOD
 	WHERE userId = $userId AND delFlag = 0
 	ORDER BY hp DESC LIMIT 1;
 EOD;
-    return parent::select($sql, 'first');
+	return parent::select($sql, 'first');
 	}
 }
 

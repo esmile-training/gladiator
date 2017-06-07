@@ -51,9 +51,9 @@ EOD;
 
 	public function setUserName($userId, $newName) {
 $sql = <<< EOD
-    UPDATE  user
-    SET	    name = "{$newName}"
-    WHERE   id = {$userId};
+	UPDATE  user
+	SET	    name = "{$newName}"
+	WHERE   id = {$userId};
 EOD;
 		$this->update($sql);
 	}
@@ -104,6 +104,20 @@ $sql = <<< EOD
 	WHERE   id		= {$user['id']};
 EOD;
 		$this->update($sql);
+	}
+	
+	/*
+	 * チケット数を取得
+	 */
+	
+	public function getTicket($userId)
+	{
+$sql = <<< EOD
+	SELECT battleTicket
+	FROM user
+	WHERE id = {$userId}
+EOD;
+		return $this->select($sql, 'first');
 	}
 
 	/*
