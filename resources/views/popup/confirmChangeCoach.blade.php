@@ -32,10 +32,10 @@
 	<div>
 	↓
 	</div>
-<div class="button_margin">
+<div>
 			{{--キャラボタン--}}
-			<div class="chara_button">
-				<img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame{{$viewData['selectCharaState']['rare']}}.png" alt="ボタンの下地">
+			<div class="chara_button" style="transform: scale(0.9); width: none;">
+				<img src="{{IMG_URL}}battle/chara_button_frame{{$viewData['selectCharaState']['rare']}}.png" alt="ボタンの下地">
 
 				{{--キャラアイコン--}}
 				<div class="chara_icon">
@@ -60,7 +60,7 @@
 					<font class="paa_value font_sentury">{{$viewData['selectCharaState']['paaAtk']}}</font>
 				</div>
 			</div>
-		</div>
+</div>
 	<br>
 	<div>
 		<a class="button retire" href="{{APP_URL}}SelectCoach/changeCoach?coachId={{$coach['id']}}&id={{$viewData['selectCharaState']['id']}}&imgId={{$viewData['selectCharaState']['imgId']}}&name={{$viewData['selectCharaState']['name']}}&rare={{$viewData['selectCharaState']['rare']}}&attribute={{$viewData['selectCharaState']['attribute']}}&hp={{$viewData['selectCharaState']['hp']}}&gooAtk={{$viewData['selectCharaState']['gooAtk']}}&choAtk={{$viewData['selectCharaState']['choAtk']}}&paaAtk={{$viewData['selectCharaState']['paaAtk']}}">

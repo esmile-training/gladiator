@@ -41,7 +41,8 @@
 }
 
 .button_box{
+	display: inline-block;
 	position: absolute;
-	bottom: 21%;
+    bottom: -3%;
 	width: 100%;
 }
