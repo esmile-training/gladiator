@@ -22,7 +22,7 @@ class TrainingController extends BaseGameController
 		}
 		
 		//所持しているキャラのデータを持ってくる
-		$uCharaData = $this->Model->exec('Chara', 'getUserChara', false, $this->user['id']);
+		$uCharaData = $this->Model->exec('Chara', 'getAllUserChara', false, $this->user['id']);
 		if(!isset($uCharaData))
 		{
 			return viewWrap('Error',$this->viewData);

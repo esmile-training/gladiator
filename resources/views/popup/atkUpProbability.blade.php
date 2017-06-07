@@ -2,7 +2,7 @@
 @include('common/css', ['file' => 'atkUpProbabilityPopup'])
 
 <div class="atkUpProbability_all">
-	<div class="title_text">
+	<div class="atkUpProbability_font_serif">
 		{{"強化成功率"}}
 	</div>
 	<div class="img_list">
