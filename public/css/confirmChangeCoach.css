@@ -39,3 +39,9 @@
 .reduction{
 	transform: scale(0.9);
 }
+
+.button_box{
+	position: absolute;
+	bottom: 21%;
+	width: 100%;
+}

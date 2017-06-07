@@ -41,7 +41,6 @@ function disbtn(b)
 	{
 		alert("全角８文字以内にしてください");
 	} else {	
-		//alert(document.write('でよろしいですか'));
 		 b.disabled = true;
 		 b.value = '登録中';
 		 b.form.submit();
