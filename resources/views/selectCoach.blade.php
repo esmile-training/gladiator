@@ -1,12 +1,17 @@
 @include('common/css', ['file' => 'confirmChangeCoach'])
 @include('common/css', ['file' => 'coachSelect'])
 @include('common/css', ['file' => 'training'])
-<div class="coachSelect_signboard">
-	<img src='{{IMG_URL}}status/selectCoachSign.png' alt='コーチ選択'>
-</div>
 <?php $count = 0; ?>
 <div class="coachSelect_all">
-	
+	<div class="training_signboard_info">
+		<img src="{{IMG_URL}}/status/selectCoachSign.png">
+		<div class ="training_signboard_text">
+			<font  class="training_text">{{'コーチを選んでください。'}}</font>
+		</div>
+	</div>
+	<div class="coachSelect_signboard">
+		 <img src="{{IMG_URL}}/training/signboard.png">
+	</div>
 		<center>
 		<font color="white">
 		コーチ枠がいっぱいです。<br>
