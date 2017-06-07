@@ -1,0 +1,152 @@
+#main{
+    position: relative;
+}
+
+/* 背景 */
+.shop_back{
+    position: fixed;
+    background: no-repeat center;
+    background-size: 100% auto;
+    width: 100%;
+    margin-top: -30%;
+}
+
+/* 看板画像 */
+.shop_signboard{
+    position : fixed;
+    width    : 35%;
+    top	     : 13%;
+    left     : 0;
+    z-index: 4;
+}
+/* 看板説明枠 */
+.shop_signboard_info{
+    position	: fixed;
+    top		: 13%;
+    left	: 24%;
+    width	: 77%;
+    z-index: 3;
+}
+/* 看板説明領域 */
+.shop_signboard_text{
+    position: absolute;
+    top: 15%;
+    left:20%;
+}
+/* 看板説明テイスト */
+.shop_font_serif{
+    font-family: serif;
+    font-size	: 2.0vh;
+    color: #ffffff;
+}
+
+/* アイテム一覧全体 */
+.item_list{
+	margin-top: 23vh;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+/* アイテムボタンの間隔 */
+.item_list_button_margin{
+	margin-bottom: 4%;
+	width: 52vh;
+}
+/* アイテムボタン */
+.item_list_button{
+	position: relative;
+	width: 96vw;
+}
+/* アイテムボタンの画像 */
+.item_list_button_img{
+	width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.training_text{
+    font-family	:'Century';
+    font-size	: 2.0vh;
+    color: #ffffff;
+}
+
+.training_a_none{
+    pointer-events: none;
+}
+
+.scale_img{
+    position: absolute;
+    opacity: 0.7;
+    z-index:2;
+}
+
+.training_init{
+    font-family: serif;
+}
+
+.training_chara_frame{
+    position: relative;
+}
+
+.training_chara_board{
+    width: 80%;
+    margin: 5%;
+}
+
+.training_chara{
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 20%;
+}
+
+.training_chara_icon{
+    margin-left: 8%;
+}
+
+.training_rare_frame{
+    position: initial;
+}
+
+.training_chara_rare{
+    position: absolute;
+    top: 70%;
+    left: 0%;
+    width: 30%;
+    z-index: 2;
+}
+
+.training_chara_rare_bg{
+    position: absolute;
+    top: 60%;
+    left: -10%;
+    width: 50%;
+}
+
+.training_chara_name{
+    position: absolute;
+    top: 0;
+    left: 38%;
+    font-size: 4vw;
+    margin-top: 6%;
+}
+
+.training_status{
+    font-size: 4vw;
+    position: absolute;
+    top: 0;
+    left: 32%;
+    margin-top: 18%;
+    width: 55%;
+}
