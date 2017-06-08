@@ -8,7 +8,7 @@
 				@include('popup/'.$template)
 			@endif
 		</div>
-		<div class="close">
+		<div class="close load">
 			<img src="{{IMG_URL}}popup/closebutton.png">
 			<span>close</span>
 		</div>

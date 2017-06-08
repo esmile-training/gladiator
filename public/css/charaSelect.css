@@ -1,10 +1,18 @@
-
-.sort_Box{
-	position: absolute;
-    right: 4%;
-    top: -1.5%;
+#main{
+	position: relative;
 }
-
+.charaselect_back{
+    background: no-repeat center center;
+    background-size: 100% auto;
+    width: 100%;
+    margin-top: -33%;
+    position: fixed;
+}
+.sort_Box{
+    position: fixed;
+    right: 2%;
+    top: 20%;
+}
 .white{
 	color: #FFFFFF;
 	text-decoration: none;
