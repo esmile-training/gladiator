@@ -12,7 +12,9 @@ class ShopController extends BaseGameController
 	public function index()
 	{
 		// 全てのデータを viewData に渡す
-		$this->viewData['userData']	= $this->user;
+		$this->viewData['itemData']		= \Config::get('item.itemStr');
+		$this->viewData['productData']	= \Config::get('shop.productStr');
+		$this->viewData['userData']		= $this->user;
 
 		return viewWrap('shop', $this->viewData);
 	}

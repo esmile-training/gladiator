@@ -2,7 +2,9 @@
 @include('common/css', ['file' => 'shop'])
 
 {{-- 背景 --}}
-<div><img class="shop_back" src="{{IMG_URL}}gacha/gachabackground.jpg" /></div>
+<div>
+	<img class="shop_back" src="{{IMG_URL}}gacha/gachabackground.jpg" />
+</div>
 
 {{-- 看板 --}}
 <div class="shop_signboard_info">
@@ -13,37 +15,36 @@
 </div>
 {{-- 看板説明 --}}
 <div class="shop_signboard">
-	<img src="{{IMG_URL}}/shop/signboard.png">
+	<img src="{{IMG_URL}}shop/signboard.png">
 </div>
 
 {{-- アイテム一覧 --}}
 <div class="item_list">
-	{{-- ボタン間隔を空けて表示 --}}
-	<div class="item_list_button_margin">
-		{{-- チケットのボタン --}}
-		<div class="item_list_button">
-			<img class="item_list_button_img" src="{{IMG_URL}}/shop/ticket.png">
+	@foreach( $viewData['productData'] as $key => $val)
+		{{-- ボタン間隔を空けて表示 --}}
+		<div class="item_list_button_margin">
+			{{-- チケットのボタン --}}
+			<div class="item_list_button">
+				<a>
+					<img class="modal_btn purchaseButton{{$val['id']}} item_list_button_img" src="{{IMG_URL}}shop/productButton{{$val['id']}}.png">
+					<div class="item_list_button_name">
+						{{$viewData['itemData'][$val['id']]['name']}}
+						{{$viewData['productData'][$val['id']]['price']}}
+					</div>
+				</a>
+			</div>
 		</div>
-	</div>
-	{{-- ボタン間隔を空けて表示 --}}
-	<div class="item_list_button_margin">
-		{{-- 回復アイテムのボタン --}}
-		<div class="item_list_button">
-			<img class="item_list_button_img" src="{{IMG_URL}}/shop/hpRecovery.png">
-		</div>
-	</div>
-	{{-- ボタン間隔を空けて表示 --}}
-	<div class="item_list_button_margin">
-		{{-- 攻撃力アップアイテムのボタン --}}
-		<div class="item_list_button">
-			<img class="item_list_button_img" src="{{IMG_URL}}/shop/atkUpper.png">
-		</div>
-	</div>
-	{{-- ボタン間隔を空けて表示 --}}
-	<div class="item_list_button_margin">
-		{{-- 攻撃力アップアイテムのボタン --}}
-		<div class="item_list_button">
-			<img class="item_list_button_img" src="{{IMG_URL}}/shop/trainigShorter.png">
-		</div>
-	</div>
+		{{-- 購入アイテムのデータ統合 --}}
+		<?php
+			$purchaseData['itemData']		= $viewData['itemData'][$val['id']];
+			$purchaseData['productData']	= $viewData['productData'][$val['id']];
+			$purchaseData['money']			= $viewData['userData']['money'];
+		?>
+		{{-- ポップアップの宣言 --}}
+		@include('popup/wrap', [
+			'class'		=> "purchaseButton{$val['id']}", 
+			'template'	=> 'purchase',
+			'data'		=>	['purchaseData' => $purchaseData]
+		])
+	@endforeach
 </div>

@@ -56,6 +56,18 @@
 	position: relative;
 	width: 96vw;
 }
+/* アイテム名前 */
+.item_list_button_name{
+	position: absolute;
+	top: 10%;
+	right: 5%;
+}
+/* アイテム名前 */
+.item_list_button_price{
+	position: absolute;
+	top: 35%;
+	right: 5%;
+}
 /* アイテムボタンの画像 */
 .item_list_button_img{
 	width: 100%;
