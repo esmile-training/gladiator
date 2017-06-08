@@ -1,0 +1,191 @@
+.coach_all{
+	position: fixed;
+	width: 100%;
+	margin-top: 15%;
+}
+.coach_signboardinfo{
+	width: 100%;
+	position: fixed;
+	top: 12%;
+}
+.coach_signboard_text{
+	width: 100%;
+    position: fixed;
+	top: 14%;
+    left: 36%;
+}
+.coach_font{
+	font-size: 5vw;
+	font-family :'Century';
+	color: #FFF
+}
+.coach_signboard{
+	position : fixed;
+    width    : 35%;
+    top	     : 13%;
+    left     : 0;
+    z-index: 4;
+}
+.coach_maxfont{
+	position: relative;
+    top: 3vw;
+}
+.coach_allwindow{
+	width: 90%;
+	position: relative;
+    top: 5vw;
+	margin: auto;
+}
+.coach_name{
+    position: absolute;
+    top: 10%;
+    left: 33%;
+    color: #FFFFFF;
+}
+.coach_reritybg{
+    margin-top: 104%;
+    position: absolute;
+    width: 38%;
+    height: auto;
+    top: -12%;
+    left: -10%;
+}
+.coach_rerity{
+    position: absolute;
+    width: 28%;
+    height: auto;
+    top: 0%;
+    left: -5%;
+    margin-top: 98%;
+}
+.icon_coach{
+	position: absolute;
+    top	    : -10%;
+    left    : 3%;
+    width   : 23%;
+}
+.coach_goo{
+	position: absolute;
+    top: 55%;
+    left: 37%;
+	color: #FFFFFF;
+}
+.coach_cho{
+	position: absolute;
+    top: 55%;
+    left: 61%;
+	color: #FFFFFF;
+}
+.coach_paa{
+	position: absolute;
+    top: 55%;
+    left: 84%;
+	color: #FFFFFF;
+}
+.coach_button_box{
+    display: inline-block;
+    position: absolute;
+    bottom: -21%;
+    left: 17%;
+    width: 100%;
+}
+.coach_button_back{
+	width: 30%;
+    position: absolute;
+    right: 35%;
+    top: -60%;
+}
+.coach_button_retire{
+    width: 30%;
+    position: absolute;
+    top: -60%;
+    left: 0%;
+}
+.popup_all{
+	width: 100%;
+    position: relative;
+}
+.popup_charaframe{
+	width: 85%;
+	position: relative;
+    top: 2vw;
+}
+.popup_name{
+	font-size: 4vw;
+    position: absolute;
+    top: 13%;
+    left: 36%;
+}
+.popup_framein{
+	width: 100%;
+    position: relative;
+}
+.popup_chara{
+    width: 21%;
+    position: absolute;
+    top: -23vw;
+    left: 9%;
+}
+.popup_rarityback{
+	width: 10%;
+    position: absolute;
+    top: -8vw;
+    left: 8%;
+}
+.popup_rarity{
+	width: 8%;
+    position: absolute;
+    left: 9%;
+	top: -7vw;
+}
+.popup_goo{
+	position: absolute;
+    top: 53%;
+    left: 37%;
+}
+.popup_cho{
+	position: absolute;
+    top: 53%;
+    left: 57%;
+}
+.popup_paa{
+	position: absolute;
+    top: 53%;
+    left: 78%;
+}
+.popup_charagoo{
+	position: absolute;
+    top: 56%;
+    left: 50%;
+}
+.popup_characho{
+	position: absolute;
+    top: 56%;
+    left: 65%;
+}
+.popup_charapaa{
+    position: absolute;
+    top: 56%;
+    left: 80%;
+}
+.popup_charaname{
+	position: absolute;
+    top: 12%;
+    left: 36%;
+    font-size: 4vw;
+}
+.popup_charahp{
+	position: absolute;
+    top: 55%;
+    left: 34%;
+}
+.popup_yesbutton{
+	width: 30%;
+	position: absolute;
+	left: 15%;
+}
+.popup_nobutton{
+	width: 30%;
+	position: absolute;
+	right: 15%;
+}

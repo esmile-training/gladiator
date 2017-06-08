@@ -4,6 +4,7 @@
 @include('common/css', ['file' => 'charaSelect'])
 @include('common/css', ['file' => 'battleCharaSelect'])
 @include('common/js',['file' => 'sort'])
+<div><img class="charaselect_back" src="{{IMG_URL}}battle/chara_select_bg.jpg" /></div>
 <?php
 	$type = isset($_GET['type']) ? $_GET['type'] : '';
 	$order = isset($_GET['order']) ? $_GET['order'] : '';

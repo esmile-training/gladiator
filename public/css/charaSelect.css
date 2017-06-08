@@ -1,3 +1,13 @@
+#main{
+	position: relative;
+}
+.charaselect_back{
+    background: no-repeat center center;
+    background-size: 100% auto;
+    width: 100%;
+    margin-top: -33%;
+    position: fixed;
+}
 .sort_Box{
     position: fixed;
     right: 2%;
