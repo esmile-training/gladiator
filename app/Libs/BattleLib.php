@@ -156,9 +156,18 @@ class BattleLib extends BaseGameLib
 	{
 		// 賞金額計算
 		$result = ($EnemyData['hp'] * $Commission['Commission']) * ( $DifficulutyData[$EnemyData['difficulty']]['prizeRatio'] * 0.01);
-
+				
+		//フィーバータイム計算
+		//現在時刻取得
+		$nowtime = date("G:i");
+		
+		//時間比較
+		if((strtotime($nowtime) > strtotime('11:59') && strtotime($nowtime) < strtotime('13:00')) || (strtotime($nowtime) > strtotime('18:59') && strtotime($nowtime) < strtotime('20:00'))){
+			$result = $result * 2;
+		}
+		
 		return $result;
-
+		
 	}
 
 	// 降参費用計算

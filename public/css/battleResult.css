@@ -84,3 +84,8 @@ th{ text-align: center; }
 .battleresult_backhome_icon{
 	width: 100%;
 }
+
+/* フィーバタイム時のメッセージ表示、非表示 */
+.cap:not(.act) {
+	display:none;
+}
