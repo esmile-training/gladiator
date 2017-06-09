@@ -1,0 +1,290 @@
+@charset "UTF-8";
+/*
+キャラをリスト表示するためのcss
+製作者：松井勇樹
+最終更新日：2017/06/09
+*/
+/*メインの位置設定*/
+#main{
+	position: relative;
+}
+
+/*リンクの文字色設定*/
+a:link{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a:visited{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a:hover{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a:active{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+/*キャラの表示位置の設定*/
+.chara_list{
+	margin-top: 26vh;
+	margin-left: 6vw;
+	margin-right: 6vw;
+}
+
+/*背景イメージの位置とサイズの設定*/
+.chara_list_background{
+	background: no-repeat center center;
+	background-size: 100% auto;
+	width: 100%;
+	margin-top: -33%;
+	position: fixed;
+}
+
+/*看板の位置とサイズの設定*/
+.signboard{
+	width: 35%;
+	position: fixed;
+	top: 13%;
+	left: 0;
+	z-index: 2;
+}
+
+/*看板横の領域の設定*/
+.signboard_info{
+	position	: fixed;
+	top		: 13%;
+	left	: 24%;
+	width	: 77%;
+	z-index: 1;
+}
+.signboard_text{
+	position: absolute;
+	top: 24%;
+	left:16%;
+	font-size: 3.5vw;
+}
+
+/*キャラボタン同士の間隔を設定*/
+.chara_button_margin{
+	margin-bottom: 4%;
+}
+
+/*キャラボタンの設定*/
+.chara_button{
+	position: relative;
+	width: 100%;
+}
+
+/*キャラボタンの下地の設定*/
+.chara_button_frame{
+	width: 100%;
+	height: auto;
+}
+
+/*キャラアイコンの設定*/
+.chara_icon{
+	position: absolute;
+	margin-top: -6.6%;
+	margin-left: 2%;
+	width: 23%;
+	height: 74%;
+	top: 0%;
+	left: 0%;
+}
+
+/*キャライメージの設定*/
+.chara_image{
+	position: absolute;
+	width: 116%;
+	top: 0%;
+	left: 0%;
+}
+
+/*レアリティ文字の下地の位置、サイズの設定*/
+.rarity_bg{
+	margin-top: 106%;
+	position: absolute;
+	width: 38%;
+	height: auto;
+	top: 0%;
+	left: -4%;
+}
+
+/*レアリティの文字の位置、サイズの設定*/
+.rarity{
+	position: absolute;
+	width: 28%;
+	height: auto;
+	top: 0%;
+	left: 1%;
+	margin-top: 112%;
+}
+
+/*キャラクターのステータスの表示設定*/
+.chara_status{
+	position: absolute;
+	width: 77%;
+	height: 107%;
+	margin-left: 35%;
+	top: 0%;
+	left: 0%;
+}
+
+/*キャラの名前のフォントサイズと位置の設定*/
+.chara_name{
+	position: absolute;
+	font-size: 5vw;
+	top: 7%;
+	left: -2%;
+}
+
+/*HPのフォントサイズと位置の設定*/
+.hp_value{
+	position: absolute;
+	font-size: 4.7vw;
+	top: 52%;
+	left: -4%;
+}
+
+/*攻撃力のフォントサイズと位置の設定*/
+.goo_value{
+	position: absolute;
+	font-size: 4.7vw;
+	top: 52%;
+	left: 21%;
+}
+.cho_value{
+	position: absolute;
+	font-size: 4.7vw;
+	top: 52%;
+	left: 45%;
+}
+.paa_value{
+	position: absolute;
+	font-size: 4.7vw;
+	top: 52%;
+	left: 69%;
+}
+
+/*fontをCenturyに変更する*/
+.font_sentury{
+	font-family: Century;
+}
+
+/*fontをserifに変更する*/
+.font_serif{
+	font-family: serif;
+}
+
+/*フォントカラーの設定*/
+.font_color{
+	color: #ffffff;
+}
+
+/*キャラが居ない時の画面の設定*/
+.no_chara{
+	font-size: 150%;
+	position: absolute;
+	top: 30%;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+}
+
+/*ソートボックスの設定*/
+.sort_Box{
+	position: fixed;
+	right: 2%;
+	top: 20%;
+}
+.sort_Box form input + label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: rgba(0,0,0,0);
+	background-repeat: no-repeat;
+	background-size: contain;
+	z-index: -1;
+}
+.sort_Box form ul li:first-child input + label {
+	background-image: url(./../img/status/asc.png);
+}
+.sort_Box form ul li:first-child input.act + label {
+	background-image: url(./../img/status/asc_down.png);
+}
+.sort_Box form ul li + li input + label {
+	background-image: url(./../img/status/desc.png);
+}
+.sort_Box form ul li + li input.act + label {
+	background-image: url(./../img/status/desc_down.png);
+}
+.sort_Box ul {
+	float: left;
+	width: auto;
+}
+.sort_Box ul select {
+	float: right;
+}
+.sort_Box ul li {
+	position: relative;
+	width: 25px;
+	height: 25px;
+	margin-right: 7px;
+	display: inline-block;
+}
+
+input[type="radio"] {
+	-webkit-appearance: none;
+	opacity: 0;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+}
+
+/*ソート条件のロード中の画面カバー*/
+#loadCover {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100000;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+	text-align: center;
+	color: #ffff;
+	vertical-align: middle;
+}
+#loadCover div {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+#loadCover div > p {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	text-align: center;
+	display: block;
+	font-weight: 600;
+	font-size: 16px;
+	animation: blink 2s linear infinite;
+}
+
+/*ロード中のカバーを外す*/
+.offCover {
+	display: none;
+}
+
+/*文字の点滅処理の設定*/
+@keyframes blink {
+	0% {opacity: 1;}
+	50% {opacity: 0.3;}
+	100% {opacity: 1;}
+}
