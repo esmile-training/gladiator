@@ -97,7 +97,7 @@
 .gacha_charaframe{
 	width: 85%;
 	position: absolute;
-	top: 65%;
+	top: 61%;
 	left: 7%;
 }
 /*　枠上　*/
@@ -121,7 +121,7 @@
 	text-align: center;
 	font-size: 140%;
 	position: absolute;
-	top: 65%;
+	top: 61%;
 	font-family: serif;
  }
  /*　キャラ名前　*/
@@ -148,7 +148,7 @@
 	float: left;
 	color: #FFFFFF;
 	position: relative;
-	top: -2vw;
+	top: -3vw;
 }
 /*　グーアイコン　*/
 .gacha_guicon{
