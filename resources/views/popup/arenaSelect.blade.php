@@ -1,7 +1,12 @@
 @include('common/css', ['file' => 'battleArenaSelect'])
 @include('common/css', ['file' => 'battleCharaSelect'])
+<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="{{APP_URL}}js/load.js"></script>
 {{--対戦データの表示--}}
-<div class="match_data">
+<div>				
+	<img class = "battle_load backload"src = "{{IMG_URL}}title/titlelodoDown.gif">
+</div>
+<div class="match_data load">
 	{{--大会名の表示--}}
 	<div class="arena_name_caption font_serif">選択した闘技場</div>
 	<div class="arena_name">
@@ -36,7 +41,7 @@
 	</div>
 
 	{{--決定ボタン--}}
-	<div class="submit_button">
+	<div class="submit_button load">
 		<a href="{{APP_URL}}battle/preparationBattle?arenaDifficulty={{$arenaData['id']}}
 			&selectedCharaId={{$arenaData['selectedCharaData']}}">
 			<img class= "popup_decision_button image_change"

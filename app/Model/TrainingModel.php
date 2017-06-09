@@ -37,7 +37,7 @@ $sql =  <<< EOD
 		);
 EOD;
 	return $this->insert($sql);
-    }
+	}
 	
 	public function getInfo($id)
 	{
@@ -49,7 +49,7 @@ EOD;
 		$result = $this->select($sql, 'first');
 		return $result;
 	}
-    
+
 	/*
 	 * 訓練終了時刻を過ぎている訓練のデータを取得
 	 */

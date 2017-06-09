@@ -1,8 +1,10 @@
 {{-- css  --}}
+@include('common/css', ['file' => 'coachSelect'])
+@include('common/css', ['file' => 'training'])
 @include('common/css', ['file' => 'charaSelect'])
 @include('common/css', ['file' => 'battleCharaSelect'])
 @include('common/js',['file' => 'sort'])
-
+<div><img class="charaselect_back" src="{{IMG_URL}}battle/chara_select_bg.jpg" /></div>
 <?php
 	$type = isset($_GET['type']) ? $_GET['type'] : '';
 	$order = isset($_GET['order']) ? $_GET['order'] : '';
@@ -13,36 +15,45 @@
 		<p>「<?php $order == 'DESC' ? print '降順' : print '昇順'; ?>」<br>「<?php echo 'ソート条件' ?>」<br>の条件で並べかえています。</p>
 	</div>
 </div>
-	
+	<div class="sort_Box">
+	<form action="{{APP_URL}}charaSelect/index" method="get">
+		<ul>
+			<li>
+				<input type="radio" name="order" value="DESC" <?php $order == 'DESC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange(),getType()">
+				<label>昇順</label>
+			</li>
+			<li>
+				<input type="radio" name="order" value="ASC" <?php $order == 'ASC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange(),getType()">
+				<label>降順</label>
+			</li>
+		</ul>
+		<select name="type" onchange="submit(this.form),onSortChange(),getType()">
+			<option value="id"<?php $type == 'id' ? print 'selected' : ''; ?>>入手</option>
+			<option value="hp"<?php $type == 'hp' ? print 'selected' : ''; ?>>体力</option>
+			<option value="name"<?php $type == 'name' ? print 'selected' : ''; ?>>名前</option>
+			<option value="rare"<?php $type == 'rare' ? print 'selected' : ''; ?>>レア度</option>
+			<option value="gooAtk"<?php $type == 'gooAtk' ? print 'selected' : ''; ?>>グー 攻撃力</option>
+			<option value="choAtk"<?php $type == 'choAtk' ? print 'selected' : ''; ?>>チョキ 攻撃力</option>
+			<option value="paaAtk"<?php $type == 'paaAtk' ? print 'selected' : ''; ?>>パー 攻撃力</option>
+		</select>
+	</form>
+	</div>
 <div class="chara_list">
-	<img class='signboard_img' src='{{IMG_URL}}status/statusSign.png' alt='ステータス'>
+	<div class="training_signboard_info">
+		<img src="{{IMG_URL}}/training/signboard_info.png">
+		<div class ="training_signboard_text">
+			<font  class="training_text">{{'剣闘士の詳細が見れます。'}}</font>
+		</div>
+	</div>
+	<div class="coachSelect_signboard">
+		 <img src="{{IMG_URL}}/status/statusSign.png">
+	</div>
+	
 	{{--所持キャラクターをすべて表示する--}}
 @if(is_null($viewData['charaList']))
 	<div><p style="color: white">キャラクターがいません。</p></div>
 @else
-	<div class="sort_Box">
-		<form action="{{APP_URL}}charaSelect/index" method="get">
-			<ul>
-				<li>
-					<input type="radio" name="order" value="DESC" <?php $order == 'DESC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange(),getType()">
-					<label>昇順</label>
-				</li>
-				<li>
-					<input type="radio" name="order" value="ASC" <?php $order == 'ASC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange(),getType()">
-					<label>降順</label>
-				</li>
-			</ul>
-			<select name="type" onchange="submit(this.form),onSortChange(),getType()">
-				<option value="id"<?php $type == 'id' ? print 'selected' : ''; ?>>入手</option>
-				<option value="hp"<?php $type == 'hp' ? print 'selected' : ''; ?>>体力</option>
-				<option value="name"<?php $type == 'name' ? print 'selected' : ''; ?>>名前</option>
-				<option value="rare"<?php $type == 'rare' ? print 'selected' : ''; ?>>レア度</option>
-				<option value="gooAtk"<?php $type == 'gooAtk' ? print 'selected' : ''; ?>>グー 攻撃力</option>
-				<option value="choAtk"<?php $type == 'choAtk' ? print 'selected' : ''; ?>>チョキ 攻撃力</option>
-				<option value="paaAtk"<?php $type == 'paaAtk' ? print 'selected' : ''; ?>>パー 攻撃力</option>
-			</select>
-		</form>
-	</div>
+
 	<?php $count = 0; ?>
 	@foreach($viewData['charaList'] as $chara)
 		{{-- popupボタン --}}

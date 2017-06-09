@@ -26,14 +26,13 @@
 				$arenaData['id']					= $arena['id'];
 				$arenaData['arenaName']				= $arena['name'];
 			?>
-			{{-- popupウインドウ --}}
-			@include('popup/wrap', [
-				'class'		=> "arena{$arena['id']}",
-				'template'	=> 'arenaSelect',
-				'data'	=>	['arenaData' => $arenaData]
-			])
+	{{-- popupウインドウ --}}
+@include('popup/wrap', [
+	'class'		=> "arena{$arena['id']}",
+	'template'	=> 'arenaSelect',
+	'data'	=>	['arenaData' => $arenaData]
+])
 	@endforeach
-
 	{{--インフォ--}}
 	<div class="arena_select_signboard_info">
 		<img src="{{IMG_URL}}/training/signboard_info.png">

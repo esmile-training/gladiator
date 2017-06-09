@@ -1,16 +1,17 @@
 .footerPosition{
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    margin-bottom: -2.5%;
-    z-index: 9999;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	margin-bottom: -2.5%;
+	z-index: 9999;
 }
 
 .footerImg{
-    width: 100%;
+	width: 100%;
 }
 
 .fadefooterButton {
+
     background: url(./../img/footer/battleIconDown.png) no-repeat;
     position: absolute;
     top: 4%;
@@ -20,38 +21,45 @@
 }
 
 .fadefooterButton a {
-    display: inline-block;
+
+	display: inline-block;
 }
 
 .fadefooterButton a img{
-    width: 100%;
+
+	width: 100%;
 }
 
 .fadefooterButton a:active {
-    background-color: transparent; /* IE6対応 */
+
+	background-color: transparent; /* IE6対応 */
 }
 
 .fadefooterButton a:hover img {
-    visibility: hidden;
-    width: 99%;
+
+	visibility: hidden;
+	width: 99%;
 }
 
 .iconPosition{
-    position: absolute;
-    bottom: 0;
+
+	position: absolute;
+	bottom: 0;
 }
 
 .iconPosition ul li img{
-    display: inline-block;
-  vertical-align: bottom;
+
+	display: inline-block;
+	vertical-align: bottom;
 }
 
 .footer_alert{
-    position: absolute;
-    top: 0%;
-    left: 65%;
-    width: 10%;
+
+	position: absolute;
+	top: 0%;
+	left: 65%;
+	width: 10%;
 }
 .iconsize{
-	width: 90%;
+	width: 85%;
 }
