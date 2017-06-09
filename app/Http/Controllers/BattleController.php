@@ -42,6 +42,10 @@ class battleController extends BaseGameController
 		// DBからキャラクターを取得できたかを確認する
 		if(!isset($alluChara))
 		{
+			//ソート関数の代に引数への変換
+			$order = ($order == 'ASC')? false : true;
+			//並べ替え処理
+			$alluChara = $this->Lib->exec('Sort','sortArray',[$alluChara, $type, $order]);
 			// viewDataへ取得したキャラクターを送る
 			$this->viewData['charaList'] = $alluChara;
 
@@ -50,7 +54,7 @@ class battleController extends BaseGameController
 		}
 
 		// viewDataへ取得したキャラクターを送る
-		$this->viewData['charaList'] = $alluChara;
+		//$this->viewData['charaList'] = $alluChara;
 
 		//ソート関数の代に引数への変換
 		$order = ($order == 'ASC')? false : true;
@@ -444,7 +448,7 @@ class battleController extends BaseGameController
 
 			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
 			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$prize));
-			
+
 			// 降参費用をマイナスに
 			$prize *= -1;
 
