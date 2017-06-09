@@ -16,7 +16,7 @@
 }
 .coach_font{
 	font-size: 5vw;
-	font-family :'Century';
+    font-family: serif;
 	color: #FFF
 }
 .coach_signboard{
@@ -90,16 +90,16 @@
     width: 100%;
 }
 .coach_button_back{
-	width: 30%;
-    position: absolute;
-    right: 35%;
-    top: -60%;
+    width: 30%;
+    position: fixed;
+    right: 16%;
+    top: 79%;
 }
 .coach_button_retire{
     width: 30%;
-    position: absolute;
-    top: -60%;
-    left: 0%;
+    position: fixed;
+    top: 79%;
+    left: 14%;
 }
 .popup_all{
 	width: 100%;
