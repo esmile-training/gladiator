@@ -1,6 +1,5 @@
 //メッセージの表示
 function onSortChange() {
-	value ="ESC";
 	$("#roadCover").removeClass("offCover");
 }
 //select内容の取得
