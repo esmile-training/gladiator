@@ -90,16 +90,16 @@
     width: 100%;
 }
 .coach_button_back{
-    width: 30%;
-    position: fixed;
-    right: 16%;
-    top: 79%;
+	width: 30%;
+    position: relative;
+    right: -48%;
+    top: 11vw;
 }
 .coach_button_retire{
     width: 30%;
     position: fixed;
     top: 79%;
-    left: 14%;
+    left: 0%;
 }
 .popup_all{
 	width: 100%;
