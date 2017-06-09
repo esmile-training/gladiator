@@ -1,0 +1,32 @@
+@charset "UTF-8";
+/*CSS Document*/
+body{}
+
+.purchase {
+    width: 80%;
+    margin: 0 auto;
+}
+.purchase_bg{
+    width: 100%;
+}
+
+/* ボタン部分の領域 */
+.purchase_button_ok{
+    position: absolute;
+	left: 35%;
+    bottom: 20%;
+    width: 30%;
+}
+/* 決定ボタン画像領域 */
+.purchase_button_ok_img {
+    width: 100%;
+}
+
+/* プラスボタン画像領域 */
+.purchase_select_number_plus_img {
+    width: 100%;
+}
+/* マイナスボタン画像領域 */
+.purchase_select_number_minus_img {
+    width: 100%;
+}

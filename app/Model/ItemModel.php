@@ -15,5 +15,18 @@ $sql = <<< EOD
 EOD;
 	return parent::insert($sql);
 	}
+
+	/*
+	 * DBから所持アイテムデータを取得する
+	 */
+	public function getItemData($userId = false)
+	{
+$sql = <<< EOD
+	SELECT *
+	FROM uItem
+	WHERE userId = {$userId}
+EOD;
+	return $this->select($sql, 'first');
+	}
 }
 

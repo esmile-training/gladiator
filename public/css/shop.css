@@ -27,55 +27,91 @@
     width	: 77%;
     z-index: 3;
 }
-/* 看板説明領域 */
+/* 看板説明領域とテイスト */
 .shop_signboard_text{
     position: absolute;
-    top: 15%;
+    top: 20%;
     left:20%;
-}
-/* 看板説明テイスト */
-.shop_font_serif{
     font-family: serif;
-    font-size	: 2.0vh;
+    font-size	: 2.5vh;
     color: #ffffff;
 }
 
 /* アイテム一覧全体 */
-.item_list{
+.itemlist{
 	margin-top: 23vh;
 	margin-left: 2%;
 	margin-right: 2%;
 }
-/* アイテムボタンの間隔 */
-.item_list_button_margin{
+/* アイテム枠の間隔 */
+.itemlist_margin{
 	margin-bottom: 4%;
 	width: 52vh;
 }
-/* アイテムボタン */
-.item_list_button{
+/* アイテム枠領域 */
+.itemlist_flame{
 	position: relative;
 	width: 96vw;
 }
-/* アイテム名前 */
-.item_list_button_name{
-	position: absolute;
-	top: 10%;
-	right: 5%;
-}
-/* アイテム名前 */
-.item_list_button_price{
-	position: absolute;
-	top: 35%;
-	right: 5%;
-}
-/* アイテムボタンの画像 */
-.item_list_button_img{
+/* アイテム枠画像 */
+.itemlist_flame_img{
 	width: 100%;
 }
-
-
-
-
+/* 購入ボタン領域 */
+.itemlist_flame_item{
+	position: absolute;
+	top: 15%;
+	left: 4%;
+	width: 15%;
+}
+/* 購入ボタン画像 */
+.itemlist_flame_item_img{
+	width: 100%;
+}
+/* アイテム名前 */
+.itemlist_flame_name{
+	position: absolute;
+	top: 5%;
+	left: 25%;
+	width: 45%;
+    font-family: serif;
+    font-size: 4.0vh;
+    color: #240404;
+	margin: 0 auto;
+}
+/* 購入ボタン領域 */
+.itemlist_flame_button{
+	position: absolute;
+	top: 5%;
+	right: 1%;
+	width: 26%;
+}
+/* 購入ボタン画像 */
+.itemlist_flame_button_img{
+	width: 100%;
+}
+/* 金額領域とテイスト */
+.itemlist_flame_price{
+	position: absolute;
+	bottom: 16%;
+	right: 5%;
+	width: 25%;
+	font-family: serif;
+    font-size	: 2.8vh;
+    color: #ffffff;
+	text-align: right
+}
+/* 所持数領域とテイスト */
+.itemlist_flame_belongings{
+	position: absolute;
+	bottom: 16%;
+	right: 44%;
+	width: 25%;
+	font-family: serif;
+    font-size	: 2.8vh;
+    color: #ffffff;
+	text-align: right
+}
 
 
 

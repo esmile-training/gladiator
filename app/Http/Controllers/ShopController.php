@@ -11,13 +11,31 @@ class ShopController extends BaseGameController
 	 */
 	public function index()
 	{
+		// setData関数を呼び出し、データをセット
+		$this->getItemData();
+
 		// 全てのデータを viewData に渡す
-		$this->viewData['itemData']		= \Config::get('item.itemStr');
-		$this->viewData['productData']	= \Config::get('shop.productStr');
-		$this->viewData['userData']		= $this->user;
+		$this->viewData['userData']			= $this->user;
+		$this->viewData['ticketData']		= $this->Ticket;
+		$this->viewData['belongingsData']	= $this->belongingsData;
+		$this->viewData['itemData']			= $this->itemData;
+		$this->viewData['productData']		= $this->productData;
 
 		return viewWrap('shop', $this->viewData);
 	}
+
+	public function getItemData()
+	{
+		// 所持アイテムデータ取得
+		$this->belongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
+
+		// アイテムデータ取得
+		$this->itemData			= \Config::get('item.itemStr');
+
+		// 商品データ取得
+		$this->productData		= \Config::get('shop.productStr');
+	}
+
 
 //	// バトルデータを更新するファンクション
 //	public function updateBattleData()
