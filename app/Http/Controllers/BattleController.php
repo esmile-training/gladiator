@@ -227,6 +227,7 @@ class battleController extends BaseGameController
 			$charaUpData['gooUpCnt']	= filter_input(INPUT_GET, "gooAtkUpCnt");
 			$charaUpData['choUpCnt']	= filter_input(INPUT_GET, "choAtkUpCnt");
 			$charaUpData['paaUpCnt']	= filter_input(INPUT_GET, "paaAtkUpCnt");
+			$charaData['feverTimeFlug'] = filter_input(INPUT_GET, "feverTimeFlug");	//追記：フィーバータイム判定用フラグ
 
 			$this->viewData['charaUpData']	= $charaUpData;
 		}
@@ -376,7 +377,14 @@ class battleController extends BaseGameController
 		{
 			// 賞金額計算
 			$prize =  BattleLib::prizeCalc($this->EnemyData, $this->Commission, $this->DifficultyData);
-
+			
+			//フィーバータイムか判定
+			$flug = BattleLib::checkFeverTime();
+			if($flug == 1)
+			{
+				$prize = $prize * 2;
+			}
+			
 			// ユーザーの所持金 'money' に賞金額を加算しデータベースに格納
 			$this->Lib->exec('Money', 'addition', array($this->user, $prize));
 			// ユーザーのウィークリーポイント 'weeklyAward' に賞金額を加算しデータベースに格納
@@ -401,7 +409,8 @@ class battleController extends BaseGameController
 			];
 			$this->Model->exec('Chara', 'updateStatus', array($upDateStatus, $this->CharaData['uCharaId']));
 
-			//リダイレクト引数受け渡し(賞金、キャラのステータス、アップした数値)
+			//リダイレクト引数受け渡し(賞金、キャラのステータス、アップした数値)+
+			//追加：フィーバータイム判定用のフラグ
 			$param = [
 				'prize'			=> $prize,
 				'name'			=> $this->CharaData['name'],
@@ -413,6 +422,7 @@ class battleController extends BaseGameController
 				'gooAtkUpCnt'	=> $charaUpData['gooUpCnt'],
 				'choAtkUpCnt'	=> $charaUpData['choUpCnt'],
 				'paaAtkUpCnt'	=> $charaUpData['paaUpCnt'],
+				'feverTimeFlug' => $flug
 			];
 		}
 		// 自キャラのHPが0以下の場合(降参せずにプレイヤーが負けた場合)

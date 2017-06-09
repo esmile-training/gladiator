@@ -1,7 +1,6 @@
 		{{-- cssの宣言 --}}
 		@include('common/header')
 		@include('common/css', ['file' => 'battleResult'])
-		@include('common/js', ['file' => 'battleResult'])
 
 		{{-- バトルの勝敗によって背景画像変更 --}}
 		@if ($viewData['prize'] > 0)
@@ -21,8 +20,9 @@
 					<div>
 						{{$viewData['charaDefaultData']['name']}}の勝ち！
 					</div>
-					<div class="cap">
-						フィーバータイム！　賞金2倍！
+					<?php $act = $viewData['charaDefaultData']['feverTimeFlug'] == 1 ? 'act' : '' ?>
+					<div class="cap {{$act}}">
+						フィーバータイム中で賞金2倍！
 					</div>
 					<div>
 						{{$viewData['prize']}}<img src="{{IMG_URL}}user/gold.png" class="battleresult_log_message_money_img"> の賞金を獲得！

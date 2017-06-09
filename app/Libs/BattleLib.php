@@ -157,15 +157,6 @@ class BattleLib extends BaseGameLib
 		// 賞金額計算
 		$result = ($EnemyData['hp'] * $Commission['Commission']) * ( $DifficulutyData[$EnemyData['difficulty']]['prizeRatio'] * 0.01);
 				
-		//フィーバータイム計算
-		//現在時刻取得
-		$nowtime = date("G:i");
-		
-		//時間比較
-		if((strtotime($nowtime) > strtotime('11:59') && strtotime($nowtime) < strtotime('13:00')) || (strtotime($nowtime) > strtotime('18:59') && strtotime($nowtime) < strtotime('20:00'))){
-			$result = $result * 2;
-		}
-		
 		return $result;
 		
 	}
@@ -223,6 +214,26 @@ class BattleLib extends BaseGameLib
 				$power = $value;
 				$result = $key;
 			}
+		}
+		return $result;
+	}
+	
+	/* フィーバータイム中か調べる */
+	public static function checkFeverTime()
+	{
+		//結果を格納する変数(初期値は0)
+		//0 = フィーバ中ではない
+		//1 = フィーバー中である
+		$result = 0;
+		
+		//現在時刻取得
+		$nowtime = date("G:i");
+		
+		//時間比較
+		$feverTime = (\Config::get('battle.feverTime'));
+		if((strtotime($nowtime) >= strtotime($feverTime['noon']['start']) && strtotime($nowtime) < strtotime($feverTime['noon']['end'])) || 
+			(strtotime($nowtime) >= strtotime($feverTime['night']['start']) && strtotime($nowtime) < strtotime($feverTime['night']['end']))){
+			$result = 1;
 		}
 		return $result;
 	}
