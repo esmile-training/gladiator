@@ -1,20 +1,21 @@
 {{--/*
  * 戦闘のキャラ選択ビュー
  * 製作者：松井 勇樹
- * 最終更新日:2017/06/06
+ * 最終更新日:2017/06/09
  */--}}
-<div><img class="battle_charaselectback" src="{{IMG_URL}}battle/chara_select_bg.jpg" /></div>
+
 {{-- css  --}}
-@include('common/css', ['file' => 'battleCharaSelect'])
-@include('common/css', ['file' => 'charaSelect'])
+@include('common/css', ['file' => 'charaList'])
 @include('common/js',['file' => 'sort'])
+
+<div><img class="chara_list_background" src="{{IMG_URL}}battle/chara_select_bg.jpg" /></div>
 
 <?php
 	$type = isset($_GET['type']) ? $_GET['type'] : '';
 	$order = isset($_GET['order']) ? $_GET['order'] : '';
 ?>
 
-<div id="roadCover" class="offCover">
+<div id="loadCover" class="offCover">
 	<div>
 		<p>「<?php $order == 'DESC' ? print '降順' : print '昇順'; ?>」<br>「<?php echo 'ソート条件' ?>」<br>の条件で並べかえています。</p>
 	</div>
@@ -25,7 +26,7 @@
 <div class="chara_list">
 	@foreach($viewData['charaList'] as $chara)
 	{{--ボタンの表示間隔--}}
-		<div class="button_margin">
+		<div class="chara_button_margin">
 			<a href="{{APP_URL}}battle/selectArena?uCharaId={{$chara['id']}}&imageId={{$chara['imgId']}}
 				&rarity={{$chara['rare']}}&name={{$chara['name']}}&hp={{$chara['hp']}}
 				&gooAtk={{$chara['gooAtk']}}&choAtk={{$chara['choAtk']}}&paaAtk={{$chara['paaAtk']}}">
@@ -86,14 +87,12 @@
 	</div>
 </div>
 @else
-<div class = "no_chara">
+<div class = "no_chara font_color">
 	所属している剣闘士が０人です！
 </div>
 @endif
-<div class="chara_select_signboard_info">
+<div class="signboard_info">
 	<img src="{{IMG_URL}}/training/signboard_info.png">
-	<div class ="chara_select_signboard_text">
-		<font  class="chara_select_text font_serif">出場させる剣闘士を選んでください</font>
-	</div>
+	<font class="signboard_text font_color font_serif">出場させる剣闘士を選んでください</font>
 </div>
-<img class="chara_select_signboard_img" src="{{IMG_URL}}battle/signboard.png" alt="看板">
+<img class="signboard" src="{{IMG_URL}}battle/signboard.png" alt="看板">
