@@ -12,7 +12,7 @@
 
 <div id="roadCover" class="offCover">
 	<div>
-		<p>「<?php $order == 'DESC' ? print '降順' : print '昇順'; ?>」<br>「<?php echo 'ソート条件' ?>」<br>の条件で並べかえています。</p>
+		<p>並べ変え中</p>
 	</div>
 </div>
 	<div class="sort_Box">
