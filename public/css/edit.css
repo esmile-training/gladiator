@@ -18,7 +18,7 @@ body{
 .edit_title{
 
 	color: white;
-	position: absolute;
+	position: fixed;
 	top: 30%;
 	left: 0;
 	right: 0;
@@ -27,7 +27,7 @@ body{
 
 .edit_subtitle{
 
-	position: absolute;
+	position: fixed;
 	top: 35%;
 	left: 0;
 	right: 0;
