@@ -74,8 +74,9 @@ class ShopController extends BaseGameController
 			// DBの更新
 			$this->Model->exec('Item', 'updateItemData', array($updateItemData));
 		}else{
-			// チケットを回復させる処理
-			
+			// チケットの回復
+			$this->Lib->exec('Ticket', 'recoveryTicket', array($this->user));
+
 			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
 			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$totalPrice));
 
