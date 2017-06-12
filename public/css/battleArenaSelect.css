@@ -140,6 +140,80 @@ font-size: 4.5vw;
 	font-size: 3.5vw;
 	color: #ffffff;
 }
+
+/*キャラボタンの下地の設定*/
+.chara_button_frame{
+	width: 100%;
+	height: auto;
+}
+
+/*キャラアイコンの設定*/
+.chara_icon{
+	position: absolute;
+	margin-top: -6.6%;
+	margin-left: 2%;
+	width: 23%;
+	height: 74%;
+	top: 0%;
+	left: 0%;
+}
+
+/*キャライメージの設定*/
+.chara_image{
+	position: absolute;
+	width: 112%;
+	top: 0%;
+	left: 0%;
+}
+
+/*レアリティ文字の下地の位置、サイズの設定*/
+.rarity_bg{
+	margin-top: 106%;
+	position: absolute;
+	width: 38%;
+	height: auto;
+	top: 0%;
+	left: -4%;
+}
+
+/*レアリティの文字の位置、サイズの設定*/
+.rarity{
+	position: absolute;
+	width: 28%;
+	height: auto;
+	top: 0%;
+	left: 1%;
+	margin-top: 112%;
+}
+
+/*キャラクターのステータスの表示設定*/
+.chara_status{
+	position: absolute;
+	width: 77%;
+	height: 107%;
+	margin-left: 35%;
+	top: 0%;
+	left: 0%;
+}
+
+/*キャラの名前のフォントサイズと位置の設定*/
+.chara_name{
+	position: absolute;
+	font-size: 5vw;
+	top: 7%;
+	left: -2%;
+}
+
+/*fontをCenturyに変更する*/
+.font_sentury{
+	font-family: Century;
+}
+
+/*fontをserifに変更する*/
+.font_serif{
+	font-family: serif;
+}
+
 .battle_load{
 	/* 画像をタイル状に繰り返し表示しない */
 	background-repeat: no-repeat;
