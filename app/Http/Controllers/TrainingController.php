@@ -6,6 +6,12 @@ class TrainingController extends BaseGameController
 {
 	public function index()
 	{
+		$type = 1;
+		$objId = 1192;
+		$imgId = 7;
+		
+		$this->Model->exec('PresentBox','insertPresentData', array($this->user['id'],$type,$objId,$imgId,$this->viewData['nowTime']));
+		
 		//訓練が終了しているキャラがいるか確認し、いたらその訓練の情報を取得する
 		$result = $this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'], $this->user['id'], true));
 		if(isset($result))
