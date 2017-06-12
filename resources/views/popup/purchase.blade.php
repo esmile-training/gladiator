@@ -1,84 +1,62 @@
 @include('common/css', ['file' => 'purchase'])
 
 <?php
-	$number[$purchaseData['productData']['id']] = 0;
+	$number[$purchaseData['productData']['id']] = 1;
 ?>
+
 <div class="purchase">
 	{{-- 背景画像 --}}
 	<img src="{{IMG_URL}}shop/popup_Bg.png" class="purchase_bg">
 
-	<div id="purchase_name">
-	{{$purchaseData['itemData']['name']}}
-	</div>
-	<div id="purchase_price">
-		{{$purchaseData['productData']['price']}}　ゴールド
+	{{-- アイテムの画像 --}}
+		@if( $purchaseData['productData']['id'] == 1)
+		<div class="purchase_ticket_img">
+			<img class="itemlist_flame_item_img" src="{{IMG_URL}}user/battleTicket.png" />
+		</div>		
+		@else
+		<div class="purchase_item_img">
+			<img class="itemlist_flame_item_img" src="{{IMG_URL}}item/item{{$purchaseData['productData']['id']}}.png" />
+		</div>
+		@endif
+
+	{{-- アイテムの名前 --}}
+	<div class="purchase_name">
+		{{$purchaseData['productData']['name']}}
 	</div>
 
-	<div class="purchase_select_number">
-		<table border="0">
-			<tr>
-				<td width="5%"></td>
-				<td width="40%">
-					個数選択
-				</td>
-				<td width="10%" align="left">
-					<img src="{{IMG_URL}}popup/minus_Button.png" class="image_change purchase_select_number_minus_img" onclick="cntDown{{$purchaseData['productData']['id']}}()">
-				</td>
-				<td width="30%">
-					<div id="number{{$purchaseData['productData']['id']}}">
-						{{$number[$purchaseData['productData']['id']]}}
-					</div>
-				</td>
-				<td width="10%">
-					<img src="{{IMG_URL}}popup/plus_Button.png" class="image_change purchase_select_number_plus_img" onclick="cntUp{{$purchaseData['productData']['id']}}()">
-				</td>
-				<td width="5%"></td>
-			</tr>
-		</table>
-	</div>
-	<div>
-		<table border="0">
-			<tr>
-				<td width="5%"></td>				
-				<td width="40%">
-					合計金額
-				</td>
-				<td width="5%"></td>
-				<td width="45%">
-					<div id="totalPrice">
-						{{$purchaseData['productData']['price']}}
-					</div>
-				</td>
-				<td width="5%"></td>
-			</tr>
-		</table>
+	{{-- アイテムの個数 --}}
+	<div class="purchase_totalNumber">
+		{{$number[$purchaseData['productData']['id']]}}
 	</div>
 	
-	<div class="purchase_button_ok clickfalse">
-		<a href="{{APP_URL}}shop/updateBelongings?itemId={{$purchaseData['itemData']['id']}}">
-			<img src="{{IMG_URL}}popup/purchase_Button.png" class="image_change purchase_button_ok_img">
+	{{-- アイテムの合計金額--}}
+	<div class="purchase_totalPrice">
+		{{$purchaseData['productData']['price']}}
+	</div>
+	
+	{{-- 購入ボタン --}}
+	<div class="purchase_button_purchase">
+		<a href="{{APP_URL}}shop/updateBelongings?purchaseItemId={{$purchaseData['itemData']['id']}}&totalPrice={{$purchaseData['productData']['price']}}" class="clickfalse">
+			<img src="{{IMG_URL}}popup/purchase_Button.png" class="image_change purchase_button_purchase_img">
 		</a>
 	</div>
 </div>
 
-<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>
+<!--<script type="text/javascript">
 
-<script type="text/javascript">
-	
 	var $cnt = 0;
-	
+
 	function cntUp{{$purchaseData['productData']['id']}}() {
 		if(document.getElementById( "number{{$purchaseData['productData']['id']}}" ).innerHTML >= 10){
 			return false;
 		}
 		document.getElementById( "number{{$purchaseData['productData']['id']}}" ).innerHTML = ++$cnt;
 	}
-	
+
 	function cntDown{{$purchaseData['productData']['id']}}() {
 		if(document.getElementById( "number{{$purchaseData['productData']['id']}}" ).innerHTML <= 0){
 			return false;
 		}
 		document.getElementById( "number{{$purchaseData['productData']['id']}}" ).innerHTML = --$cnt;
 	}
-</script>
+</script>-->

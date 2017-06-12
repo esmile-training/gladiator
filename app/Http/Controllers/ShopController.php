@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 // Lib
-use App\Libs\BattleLib;
+use App\Libs\MoneyLib;
 
 class ShopController extends BaseGameController
 {
@@ -28,7 +28,12 @@ class ShopController extends BaseGameController
 	{
 		// 所持アイテムデータ取得
 		$this->belongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
-
+		// 所持アイテムデータがなければ作成
+		if(!isset($this->belongingsData)){
+			// uItemにデータを追加
+			$this->Model->exec('Item','insertItemData',$this->user['id']);
+		}
+		
 		// アイテムデータ取得
 		$this->itemData			= \Config::get('item.itemStr');
 
@@ -36,66 +41,45 @@ class ShopController extends BaseGameController
 		$this->productData		= \Config::get('shop.productStr');
 	}
 
+	public function updateBelongings()
+	{
+		// setData関数を呼び出し、データをセット
+		$this->getItemData();
 
-//	// バトルデータを更新するファンクション
-//	public function updateBattleData()
-//	{
-//		// setData関数を呼び出し、データをセット
-//		$this->getBattleData();
-//
-//		// どちらかのHPが既に0の状態なら、ダメージ処理を行わずリザルト画面へ飛ばす
-//		if($this->CharaData['battleHp'] <= 0 || $this->EnemyData['battleHp'] <= 0)
-//		{
-//			return $this->Lib->redirect('Battle', 'makeResultData');
-//		}
-//
-//		// 押されたボタンのデータを Chara の 'hand' に格納
-//		// 1(グー) / 2(チョキ) / 3(パー) のどれかが入る
-//		$this->CharaData['hand'] = $_GET["hand"];
-//
-//		// 敵キャラデータを元に、Enemy の 'hand' を格納
-//		// 1(グー) / 2(チョキ) / 3(パー) のどれかが入る
-//		$this->EnemyData['hand'] = BattleLib::setEnmHand($this->EnemyData);
-//
-//		// 勝敗処理
-//		// 'win' / 'lose' / 'draw' のどれかが入る
-//		$this->CharaData['result'] = BattleLib::AtackResult($this->CharaData['hand'], $this->EnemyData['hand']);
-//
-//		// ダメージ処理
-//		// CharaData の 'result' によって処理を行う
-//		switch ($this->CharaData['result'])
-//		{
-//			// 1(勝ち) の場合
-//			case 1:
-//				// 自キャラデータを元にダメージ量を計算
-//				$this->CharaData = BattleLib::damageCalc($this->CharaData);
-//				// 変動したダメージ量を元にダメージ処理後の敵キャラHPを計算
-//				$this->EnemyData['battleHp'] = BattleLib::hpCalc($this->CharaData, $this->EnemyData);
-//				break;
-//
-//			// 2(負け) の場合
-//			case 2:
-//				// 敵キャラデータを元にダメージ量を計算
-//				$this->EnemyData = BattleLib::damageCalc($this->EnemyData);
-//				// 変動したダメージ量を元にダメージ処理後の自キャラHPを計算
-//				$this->CharaData['battleHp'] = BattleLib::hpCalc($this->EnemyData, $this->CharaData);
-//				break;
-//
-//			// 3(あいこ) の場合
-//			case 3:
-//				// ダメージ処理を行わず抜ける
-//				break;
-//
-//			default;
-//				exit;
-//		}
-//
-//		// バトルキャラデータの更新処理
-//		// 自キャラデータの更新処理
-//		$this->Model->exec('BattleChara', 'UpdateBattleCharaData', array($this->CharaData));
-//		// 敵キャラデータの更新処理
-//		$this->Model->exec('BattleEnemy', 'UpdateBattleEnemyData', array($this->EnemyData));
-//
-//		return $this->Lib->redirect('Battle', 'battleLog');
-//	}
+		// bladeから購入したアイテムのidを読み込み
+		$purchaseItemId = $_GET["purchaseItemId"];
+		
+		// bladeから購入したアイテムの合計金額を読み込み
+		$totalPrice		= $_GET["totalPrice"];
+
+		// purchaseItemID = 1(チケット)ではない場合
+		if($purchaseItemId != 1){
+			// name に商品のDBで使っている名前を代入
+			$itemName			= $this->itemData[$purchaseItemId]['name'];
+
+			// アイテムの個数を $belongingsData に代入
+			$belongingsData = $this->belongingsData[$itemName];
+
+			// $belongingsData を加算
+			$belongingsData++;
+			
+			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
+			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$totalPrice));
+
+			// DB更新用のデータ統合
+			$updateItemData['userId'] = $this->user['id'];
+			$updateItemData['itemName'] = $itemName;
+			$updateItemData['belongingsData'] = $belongingsData;
+
+			// DBの更新
+			$this->Model->exec('Item', 'updateItemData', array($updateItemData));
+		}else{
+			// チケットを回復させる処理
+			
+			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
+			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$totalPrice));
+
+		}
+		return $this->Lib->redirect('shop', 'index');
+	}
 }

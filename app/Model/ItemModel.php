@@ -28,5 +28,18 @@ $sql = <<< EOD
 EOD;
 	return $this->select($sql, 'first');
 	}
+	
+	/*
+	 * DBの更新をする
+	 */
+	public function updateItemData($updateItemData)
+	{
+$sql = <<< EOD
+	UPDATE  uItem
+	SET		{$updateItemData['itemName']} = {$updateItemData['belongingsData']}
+	WHERE   userId		= {$updateItemData['userId']};
+EOD;
+	return	$this->update($sql);
+	}
 }
 

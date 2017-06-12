@@ -2,31 +2,77 @@
 /*CSS Document*/
 body{}
 
+/* 確認画面の領域 */
 .purchase {
+	position: relative;
     width: 80%;
     margin: 0 auto;
 }
+/* 確認画面の背景画像領域 */
 .purchase_bg{
     width: 100%;
 }
 
-/* ボタン部分の領域 */
-.purchase_button_ok{
+/* チケットの画像 */
+.purchase_ticket_img{
     position: absolute;
-	left: 35%;
-    bottom: 20%;
-    width: 30%;
+	top: 8%;
+	left: 8%;
+	width: 20%;	
 }
-/* 決定ボタン画像領域 */
-.purchase_button_ok_img {
-    width: 100%;
+/* アイテムの画像 */
+.purchase_item_img{
+    position: absolute;
+	top: 5%;
+	left: 8%;
+	width: 20%;	
 }
 
-/* プラスボタン画像領域 */
-.purchase_select_number_plus_img {
-    width: 100%;
+/* アイテムの名前 */
+.purchase_name{
+    position: absolute;
+	top: 1%;
+	left: 35%;
+	width: 60%;
+    font-family: serif;
+    font-size: 4.0vh;
+    color: #f3821e;
+	text-align: left;
 }
-/* マイナスボタン画像領域 */
-.purchase_select_number_minus_img {
+
+/* アイテムの購入数 */
+.purchase_totalNumber{
+    position: absolute;
+	bottom: 35%;
+	right: 20%;
+	width: 60%;
+    font-family: serif;
+    font-size: 3.0vh;
+	color: #000000;	
+}
+
+/* アイテムの合計金額 */
+.purchase_totalPrice{
+    position: absolute;
+	bottom: 24%;
+	right: 10%;
+	width: 35%;
+    font-family: serif;
+    font-size: 3.0vh;
+	text-align: right;	
+}
+
+/* 購入ボタンの領域 */
+.purchase_button_purchase{
+    position: absolute;
+    bottom: 5%;
+	left: 35%;
+    width: 30%;
+}
+.purchase_button_purchase_linkregion{
+	width: 100%;
+}
+/* 購入ボタン画像領域 */
+.purchase_button_purchase_img {
     width: 100%;
 }
