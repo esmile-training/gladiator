@@ -41,7 +41,7 @@
 				</div>
 				<div>
 					<img class="headerGaugeIcon battleTicket" src="{{IMG_URL}}header/bar.png" />
-					<img class="headerGaugeIcon battleTicketIcon" src="{{IMG_URL}}header/battleTicket.png" />
+					<img class="headerGaugeIcon battleTicketIcon" src="{{IMG_URL}}user/battleTicket.png" />
 					<p class="possession_ornament possession_battleTicket">{{$viewData['Ticket']['battleTicket']}}/5 {{$viewData['recoveryTime']}}</p>
 				</div>
 			</div>

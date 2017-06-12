@@ -24,6 +24,9 @@ class EditController extends BaseGameController
 			// rankingにデータを追加
 			$this->Model->exec('Ranking','insertRankingData',$userId);
 			
+			// uItemにデータを追加
+			$this->Model->exec('Item','insertItemData',$userId);
+			
 			//Cookieの値をuserIDに書き換え
 			setcookie('userId', $userId, time() + 60*60*24*365*20, '/');
 

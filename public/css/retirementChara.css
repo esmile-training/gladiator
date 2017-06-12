@@ -1,12 +1,14 @@
 #main{
-	background-image: url(./../img/battle/chara_select_bg.jpg);
+
+	position: relative;
+}
+.back{
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-attachment: fixed;
+	position: fixed;
 	background-size: cover;
 	width: 100%;
 }
-
 div.text{
 	text-align: center;
 }
@@ -19,6 +21,7 @@ div.text{
 }
 
 .textfont{
+	position: relative;
 	font-family: serif;
 	font-size: 26px;
 	color: #FFFFFF;

@@ -13,7 +13,7 @@
 	</div>
 	<div class = "coach_maxfont">
 		<center>
-		<font color="white">
+			<font color="white" style="font-family: serif;">
 		コーチ枠がいっぱいです。<br>
 		交代させるコーチか、
 		引退を選んでください。<br>
