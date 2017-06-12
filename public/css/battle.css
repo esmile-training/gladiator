@@ -186,6 +186,31 @@ body{}
 	bottom: 9%;
 	width: 23%;
 }
+/* ボタン領域に対する、キャラボタンの領域 */
+.battle_playerhand_button_chara_linkregion{
+    position: absolute;
+    right: -1%;
+    bottom: 118%;
+    width: 100%;
+}
+/* スキル枠 */
+.battle_player_skill_frame{
+	position: absolute;
+    top: 50%;
+    right: 1%;
+    width: 11%;
+    z-index: 1;
+}
+/* スキルターンフォント */
+.battle_player_skill_turn{
+    font-size: 8vw;
+    position: absolute;
+    top: 48%;
+    right: 4%;
+    z-index: 2;
+    font-family: fantasy;
+    color: white;
+}
 /* 各ボタン領域に対する、ボタンイメージ*/
 .battle_playerhand_button_img{
 	width: 100%;
@@ -236,11 +261,18 @@ body{}
 	width: 97.5%;
 	height: 75%;
 }
-/* 自キャラのアイコン領域 */
-.battle_player_status_icon {
+/* 自キャラのアイコン領域on */
+.battle_player_status_icon_on {
 	position: absolute;
 	top: -18%;
 	right: 3%;
+	width: 20%;
+}
+/* 自キャラのアイコン領域off */
+.battle_player_status_icon_off {
+	position: absolute;
+	top: -18%;
+	right: 2%;
 	width: 20%;
 }
 /* 自キャラのHP */

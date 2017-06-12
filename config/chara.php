@@ -2,39 +2,57 @@
 return  [
     'imgId' => [
         1 => [
-            'sex' => 0 //０のとき男、　１のとき女
+            'sex' => 0,//０のとき男、　１のとき女
+			'skill' => 1
         ],
         2 => [
-            'sex' => 0  
+            'sex' => 0,
+			'skill' => 1
         ],
         3 => [
-            'sex' => 1 
+            'sex' => 1,
+			'skill' => 2
         ],
         4 => [
-            'sex' => 1  
+            'sex' => 1,
+			'skill' => 2
         ],
         5 => [
-            'sex' => 1  
+            'sex' => 1,
+			'skill' => 2
         ],
         6 => [
-            'sex' => 0  
+            'sex' => 0,
+			'skill' => 1
         ],
         7 => [
-            'sex' => 1  
+            'sex' => 1,
+			'skill' => 2
         ],
 		8 => [
-            'sex' => 0  
+            'sex' => 0,
+			'skill' => 1
         ],
 		9 => [
-			'sex' => 0
+			'sex' => 0,
+			'skill' => 1
 		],
 		10 => [
-			'sex' => 1
+			'sex' => 1,
+			'skill' => 2
 		],
 		11 => [
-			'sex' => 0
+			'sex' => 0,
+			'skill' => 1
 		]
-    ],	'allname' => [
+    ],
+	'skill' => [
+		1 => ['damage' => 50,
+				'turn'	=> 5],
+		2 => ['recovery' => 50,
+				'turn'	=> 5]
+	],
+	'allname' => [
 			'firstname' => [
 				0 => [//０のとき男、　１のとき女
 					['name' =>'アブラーモ'],
