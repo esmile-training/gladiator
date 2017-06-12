@@ -10,6 +10,7 @@ class TrainingLib extends BaseGameLib
 	{
 		//訓練終了時刻を過ぎているデータを取得
 		$endTraining = $this->Model->exec('Training', 'getEndDate', array($nowTime, $userId));
+		
 		//訓練終了時刻を過ぎているものがあり、かつ訓練所ページから参照された場合は強化結果を反映する
 		if(isset($endTraining) && $isTrainingPage == true)
 		{
@@ -73,7 +74,6 @@ class TrainingLib extends BaseGameLib
 	{
 		//基本確率をconfigから取得
 		$baseProbability = \Config::get('training.baseProbability');
-		
 		
 		$result = $uCoachAtk / $uCharaAtk * $baseProbability * (100 - $atkUpCnt);
 
