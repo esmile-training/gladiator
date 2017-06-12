@@ -102,7 +102,7 @@ class battleController extends BaseGameController
 
 		// IDと一致するキャラクターをDBから取得する
 		$selectedChara = $this->Model->exec('Chara', 'getById', $arenaData["selectedCharaId"]);
-
+		
 		// 正常に取得したかを確認する
 		if(!isset($selectedChara))
 		{
@@ -145,13 +145,19 @@ class battleController extends BaseGameController
 
 		// 対戦データの取得をする
 		$matchData = $argMatchData;
-
+		
+		$charaData = \Config::get('chara.imgId');
+		
+		$skill = \Config::get('chara.skill');
+		
+		$matchData['drawCount'] = $skill[$charaData[$matchData['imgId']]['skill']]['turn'];
+		
 		// デリートフラグが立っていない、同じIDのデータが登録されていなければインサートを行う
 		if(!isset($battleInfo))
 		{
 			// プレイヤーキャラのデータをインサートする
 			$uBattleCharaId = $this->Model->exec('BattleChara','insertBattleCharaData',array($matchData['uCharaId'],$matchData['uHp']
-					,$matchData['uGooAtk'],$matchData['uChoAtk'],$matchData['uPaaAtk']));
+					,$matchData['uGooAtk'],$matchData['uChoAtk'],$matchData['uPaaAtk'],$matchData['drawCount']));
 
 			// エネミーのデータをインサートする
 			$uBattleEnemyId = $this->Model->exec('BattleEnemy','insertEnemyData',array($matchData['eImgId'],$matchData['difficulty']
@@ -199,9 +205,10 @@ class battleController extends BaseGameController
 		}
 
 		// 降参費用額計算
-		$surrenderCost = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));
-
+		$surrenderCost = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));	
+		
 		// 全てのデータを viewData に渡す
+		$this->viewData['drawCount']	= $this->CharaData['drawCount'];
 		$this->viewData['userData']		= $this->user;
 		$this->viewData['battleData']	= $this->BattleData;
 		$this->viewData['charaData']	= $this->CharaData;
@@ -209,6 +216,7 @@ class battleController extends BaseGameController
 		$this->viewData['type']			= $this->TypeData;
 		$this->viewData['result']		= $this->ResultData;
 		$this->viewData['surrenderCost']= $surrenderCost;
+	
 
 		return view('battle', ['viewData' => $this->viewData]);
 	}
@@ -318,7 +326,7 @@ class battleController extends BaseGameController
 		// 勝敗処理
 		// 'win' / 'lose' / 'draw' のどれかが入る
 		$this->CharaData['result'] = BattleLib::AtackResult($this->CharaData['hand'], $this->EnemyData['hand']);
-
+		
 		// ダメージ処理
 		// CharaData の 'result' によって処理を行う
 		switch ($this->CharaData['result'])
@@ -341,11 +349,48 @@ class battleController extends BaseGameController
 
 			// 3(あいこ) の場合
 			case 3:
+				if($this->CharaData['drawCount'] > 0)
+				{
+					$this->CharaData['drawCount'] = $this->CharaData['drawCount'] - 1;
+				}else{
+					exit;
+					$this->CharaData['drawCount'] = 0;
+				}
 				// ダメージ処理を行わず抜ける
 				break;
 
+			// 4(スキル) の場合
+			case 4:
+				$charaSkill = \Config::get('chara.imgId');
+				$skill = \Config::get('chara.skill');
+				
+				if($this->CharaData['drawCount'] == 0)
+				{
+					switch ($charaSkill[$this->CharaData['imgId']]['skill'])
+					{	
+						case 1:
+							//敵にダメージ
+							$this->CharaData = BattleLib::damageCalc($this->CharaData);
+							$this->EnemyData['battleHp'] = BattleLib::hpCalc($this->CharaData, $this->EnemyData);
+						break;
+					
+						case 2:
+							//自分の回復
+							$this->CharaData = BattleLib::damageCalc($this->CharaData);
+
+							$this->CharaData['battleHp'] = BattleLib::hpCalc($this->CharaData, $this->CharaData);	
+							if($this->CharaData['battleHp'] > $this->CharaData['hp'])
+							{
+								$this->CharaData['battleHp'] = $this->CharaData['hp'];
+							}
+						break;
+					}
+				}
+				$this->CharaData['drawCount'] = $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'];
+				break;
 			default;
 				exit;
+				
 		}
 
 		// バトルキャラデータの更新処理

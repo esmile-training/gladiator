@@ -23,6 +23,7 @@ $sql = <<< EOD
 		battlePaaAtk,
 		hand,
 		result,
+		drawCount,
 		uChara.id as uCharaId,
 		userId,
 		imgId,
@@ -47,7 +48,7 @@ EOD;
 	/*
 	 * DBにデータをインサートする
 	 */
-	public function insertBattleCharaData($uCharaId,$hp,$gooAtk,$choAtk,$paaAtk)
+	public function insertBattleCharaData($uCharaId,$hp,$gooAtk,$choAtk,$paaAtk,$drawCount)
 	{
 		$time = date('Y-m-d H:i:s', time());
 $sql = <<< EOD
@@ -61,6 +62,7 @@ $sql = <<< EOD
 			'{$paaAtk}',
 			0,
 			0,
+			'{$drawCount}',
 			'{$time}',
 			'{$time}'
 		);
@@ -83,7 +85,8 @@ $sql = <<< EOD
 			battleChoAtk = {$battleChara['battleChoAtk']},
 			battlePaaAtk = {$battleChara['battlePaaAtk']},
 			hand	= '{$battleChara['hand']}',
-			result	= '{$battleChara['result']}'
+			result	= '{$battleChara['result']}',
+			drawCount = '{$battleChara['drawCount']}'
 	WHERE   id		= {$battleChara['uBattleCharaId']};
 EOD;
 		$this->update($sql);
