@@ -328,7 +328,7 @@ body{}
 	top: 18%;
 	animation: UpDown 0.8s linear infinite;
 }
-/*　光の回転アニメーション　*/
+/*　上下の回転アニメーション　*/
 @keyframes UpDown{
 	0% {
 		transform: translateY(0px);

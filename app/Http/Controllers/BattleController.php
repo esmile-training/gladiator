@@ -384,9 +384,19 @@ class battleController extends BaseGameController
 							}
 						break;
 						case 3:
-							//グーの攻撃力アップ
-							$this->CharaData = BattleLib::damageCalc($this->CharaData);
-							$this->CharaData['battleGooAtk'] = BattleLib::atkUp($this->CharaData['battleGooAtk'], $this->CharaData['skill']);
+							if($charaSkill[$this->CharaData['imgId']] == 3){
+								//グーの攻撃力アップ
+								$this->CharaData = BattleLib::damageCalc($this->CharaData);
+								$this->CharaData['battleGooAtk'] = BattleLib::atkUp($this->CharaData['battleGooAtk'], $this->CharaData['skill']);
+							}else if($charaSkill[$this->CharaData['imgId']] == 4){
+								//チョキの攻撃力アップ
+								$this->CharaData = BattleLib::damageCalc($this->CharaData);
+								$this->CharaData['battleChoAtk'] = BattleLib::atkUp($this->CharaData['battleChoAtk'], $this->CharaData['skill']);
+							}else if($charaSkill[$this->CharaData['imgId']] == 5){
+								//パーの攻撃力アップ
+								$this->CharaData = BattleLib::damageCalc($this->CharaData);
+								$this->CharaData['battlePaaAtk'] = BattleLib::atkUp($this->CharaData['battlePaaAtk'], $this->CharaData['skill']);
+							}
 						break;
 					}
 				}
