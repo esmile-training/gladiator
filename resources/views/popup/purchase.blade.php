@@ -39,13 +39,15 @@
 		<tr>
 			<td width=22%></td>
 			<td width=15%>
-				<img src="{{IMG_URL}}popup/minus_Button.png" class="image_change">
+				<img src="{{IMG_URL}}popup/minus_Button.png" class="image_change purchase_totalNumber_cntButton_img">
 			</td>
 			<td width=26%>
-				{{$number[$purchaseData['productData']['id']]}}
+				<div id="number{{$purchaseData['productData']['id']}}">
+					{{$number[$purchaseData['productData']['id']]}}
+				</div>
 			</td>
 			<td width=15%>
-				<img src="{{IMG_URL}}popup/plus_Button.png" class="image_change">
+				<img src="{{IMG_URL}}popup/plus_Button.png" class="image_change purchase_totalNumber_cntButton_img">
 			</td>
 			<td width=22%></td>
 		</tr>
@@ -63,23 +65,3 @@
 		</a>
 	</div>
 </div>
-
-<!--<script type="text/javascript">
-
-	var $cnt = 0;
-
-	function cntUp{{$purchaseData['productData']['id']}}() {
-		if(document.getElementById( "number{{$purchaseData['productData']['id']}}" ).innerHTML >= 10){
-			return false;
-		}
-		document.getElementById( "number{{$purchaseData['productData']['id']}}" ).innerHTML = ++$cnt;
-	}
-
-	function cntDown{{$purchaseData['productData']['id']}}() {
-		if(document.getElementById( "number{{$purchaseData['productData']['id']}}" ).innerHTML <= 0){
-			return false;
-		}
-		document.getElementById( "number{{$purchaseData['productData']['id']}}" ).innerHTML = --$cnt;
-	}
-
-</script>-->

@@ -39,7 +39,7 @@ body{}
     color: #f3821e;
 	text-align: left;
 }
-/* アイテムの名前 */
+/* アイテムの使用場所 */
 .purchase_itemWhere{
     position: absolute;
 	top: 13%;
@@ -70,6 +70,11 @@ body{}
     font-family: serif;
     font-size: 3.0vh;
 	color: #000000;	
+}
+/* アイテムの購入数を変動させる画像*/
+.purchase_totalNumber_cntButton_img{
+	width: 100%;
+	vertical-align: bottom;
 }
 /* アイテムの合計金額 */
 .purchase_totalPrice{
