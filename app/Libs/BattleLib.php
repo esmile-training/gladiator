@@ -88,7 +88,6 @@ class BattleLib extends BaseGameLib
 		// ダメージ割合を格納
 		$damagePer = mt_rand($randData['min'], $randData['max']) * 0.01;
 		
-		
 		// 勝った方の 'hand' によって処理を行う
 		// ダメージ量計算式
 		// ダメージ量 = 勝った方の攻撃力 * ダメージ割合
@@ -97,25 +96,26 @@ class BattleLib extends BaseGameLib
 			// 1(グー) の場合
 			case 1:
 				// 'battleGooAtk' に 元データ 'cGooAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
-				$winner['battleGooAtk'] = (int) ($winner['gooAtk'] * $damagePer);
+				$winner['damage'] = (int) ($winner['battleGooAtk'] * $damagePer);
 				break;
 
 			// 2(チョキ) の場合
 			case 2:
 				// 'battleChoAtk' に 元データ 'cChoAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
-				$winner['battleChoAtk'] = (int) ($winner['choAtk'] * $damagePer);
+				$winner['damage'] = (int) ($winner['battleChoAtk'] * $damagePer);
 				break;
 
 			// 3(パー) の場合
 			case 3:
 				// 'battlePaaAtk' に 元データ 'cPaaAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
-				$winner['battlePaaAtk'] = (int) ($winner['paaAtk'] * $damagePer);
+				$winner['damage'] = (int) ($winner['battlePaaAtk'] * $damagePer);
 				break;
 			//4(スキル) の場合
 			case 4:
 				//スキルの判定
 				$charaSkill = \Config::get('chara.imgId');
 				$skill = \Config::get('chara.skill');
+				
 				switch ($charaSkill[$winner['imgId']]['skill'])
 				{
 					case 1:
@@ -129,6 +129,14 @@ class BattleLib extends BaseGameLib
 					case 3:
 						//攻撃力アップの場合
 						$winner['skill'] = $skill[$charaSkill[$winner['imgId']]['skill']]['gooUpAtk'];
+					break;
+					case 4:
+						//攻撃力アップの場合
+						$winner['skill'] = $skill[$charaSkill[$winner['imgId']]['skill']]['choUpAtk'];
+					break;
+					case 5:
+						//攻撃力アップの場合
+						$winner['skill'] = $skill[$charaSkill[$winner['imgId']]['skill']]['paaUpAtk'];
 					break;
 				}
 			break;
@@ -149,19 +157,19 @@ class BattleLib extends BaseGameLib
 			// 1(グー) の場合
 			case 1:
 				// 負けた方の 'hp' を勝った方の 'gooAtk' 分減らす
-				$loser['battleHp'] = $loser['battleHp'] - $winner['battleGooAtk'];
+				$loser['battleHp'] = $loser['battleHp'] - $winner['damage'];
 				break;
 
 			// 2(チョキ) の場合
 			case 2:
 				// 負けた方の 'hp' を勝った方の 'choAtk' 分減らす
-				$loser['battleHp'] = $loser['battleHp'] - $winner['battleChoAtk'];
+				$loser['battleHp'] = $loser['battleHp'] - $winner['damage'];
 				break;
 
 			// 3(パー) の場合
 			case 3:
 				// 負けた方の 'hp' を勝った方の 'paaAtk' 分減らす
-				$loser['battleHp'] = $loser['battleHp'] - $winner['battlePaaAtk'];
+				$loser['battleHp'] = $loser['battleHp'] - $winner['damage'];
 				break;
 			//4(スキル) の場合
 			case 4:

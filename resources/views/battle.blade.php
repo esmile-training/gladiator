@@ -136,6 +136,7 @@
 			<div class="battle_log">
 				<img src="{{IMG_URL}}battle/damagelog_Bg.png" class="damage_log_Bg" >
 				<div id="battleLog" class="battle_log_message">
+				@if($viewData['charaData']['result'] != 4)
 					{{ $viewData['charaData']['name'] }}
 					は	
 					{{ $viewData['type'][$viewData['charaData']['hand']] }}
@@ -164,24 +165,30 @@
 					@if ( $viewData['charaData']['result'] == 1)
 							{{$viewData['enemyData']['name']}} に
 						@if ( $viewData['charaData']['hand'] == 1)
-							{{$viewData['charaData']['battleGooAtk']}} のダメージ <br />
+							{{$viewData['charaData']['damage']}} のダメージ <br />
 						@elseif ( $viewData['charaData']['hand'] == 2)
-							{{ $viewData['charaData']['battleChoAtk'] }} のダメージ <br />
+							{{ $viewData['charaData']['damage'] }} のダメージ <br />
 						@elseif ( $viewData['charaData']['hand'] == 3)
-							{{ $viewData['charaData']['battlePaaAtk'] }} のダメージ <br />
+							{{ $viewData['charaData']['damage'] }} のダメージ <br />
 						@endif
 					@elseif ($viewData['charaData']['result'] == 2)
 							{{$viewData['charaData']['name']}} に
 						@if ($viewData['enemyData']['hand'] == 1)
-							{{$viewData['enemyData']['battleGooAtk']}} のダメージ <br />
+							{{$viewData['enemyData']['damage']}} のダメージ <br />
 						@elseif ($viewData['enemyData']['hand'] == 2)
-							{{ $viewData['enemyData']['battleChoAtk'] }} のダメージ <br />
+							{{ $viewData['enemyData']['damage'] }} のダメージ <br />
 						@elseif ($viewData['enemyData']['hand'] == 3)
-							{{ $viewData['enemyData']['battlePaaAtk'] }} のダメージ <br />
+							{{ $viewData['enemyData']['damage'] }} のダメージ <br />
 						@endif
 					@elseif ($viewData['charaData']['result'] == 3)
 						お互いにダメージなし<br />
 					@endif
+				@else
+					{{ $viewData['charaData']['name'] }}
+					は	
+					{{ $viewData['type'][$viewData['charaData']['hand']] }}
+					を発動した！<br>
+				@endif
 				</div>
 			</div>
 		@else
@@ -274,35 +281,45 @@
 							<img src="{{IMG_URL}}chara/status/hand1.png" class="battle_player_status_atk_goo_img">
 						</td>
 						<td width="20%" align="left">
-							@if($viewData['charaData']['battleGooAtk'] == $viewData['charaData']['gooAtk'])
-							{{ $viewData['charaData']['gooAtk']}}
-							@else
+							@if($viewData['charaData']['battleGooAtk'] > $viewData['charaData']['gooAtk'])
 							<font class = "battle_gooAtkUpFont">
 							{{ $viewData['charaData']['battleGooAtk']}}
 							</font>
 							<tb>
 								<img src="{{IMG_URL}}battle/upYajirushi.png" class="battle_gooAtkUpArrow">
 							</tb>
+							@else
+							{{ $viewData['charaData']['gooAtk']}}
 							@endif
 						</td>
 						<td width="5%">
 							<img src="{{IMG_URL}}chara/status/hand2.png" class="battle_player_status_atk_cho_img">
 						</td>	
 						<td width="20%" align="left">
-							@if($viewData['charaData']['battleChoAtk'] == $viewData['charaData']['choAtk'])
-							{{ $viewData['charaData']['choAtk']}}
-							@else
+							@if($viewData['charaData']['battleChoAtk'] > $viewData['charaData']['choAtk'])
+							<font class = "battle_choAtkUpFont">
 							{{ $viewData['charaData']['battleChoAtk']}}
+							</font>
+							<tb>
+								<img src="{{IMG_URL}}battle/upYajirushi.png" class="battle_choAtkUpArrow">
+							</tb>
+							@else	
+							{{ $viewData['charaData']['choAtk']}}
 							@endif
 						</td>
 						<td width="5%">
 							<img src="{{IMG_URL}}chara/status/hand3.png" class="battle_player_status_atk_paa_img">
 						</td>
 						<td width="20%" align="left">
-							@if($viewData['charaData']['battlePaaAtk'] == $viewData['charaData']['paaAtk'])
-							{{ $viewData['charaData']['paaAtk']}}
-							@else
+							@if($viewData['charaData']['battlePaaAtk'] > $viewData['charaData']['paaAtk'])
+							<font class = "battle_paaAtkUpFont">
 							{{ $viewData['charaData']['battlePaaAtk']}}
+							</font>
+							<tb>
+								<img src="{{IMG_URL}}battle/upYajirushi.png" class="battle_paaAtkUpArrow">
+							</tb>
+							@else
+							{{ $viewData['charaData']['paaAtk']}}
 							@endif
 						</td>
 						<td width="10%"></td>
