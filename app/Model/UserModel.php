@@ -164,9 +164,10 @@ EOD;
 	*/
 	public function UpdatePossessionChara($argUser)
 	{
+
 $sql = <<< EOD
 	UPDATE  user
-	SET		possessionChara = {$argUser['possessionChara']};
+	SET		possessionChara = {$argUser['possessionChara']}
 	WHERE   id		= {$argUser['id']};
 EOD;
 		$this->update($sql);
@@ -179,7 +180,7 @@ EOD;
 	{
 $sql = <<< EOD
 	UPDATE  user
-	SET		upperLimitChara = {$argUser['upperLimitChara']};
+	SET		upperLimitChara = {$argUser['upperLimitChara']}
 	WHERE   id		= {$argUser['id']};
 EOD;
 		$this->update($sql);

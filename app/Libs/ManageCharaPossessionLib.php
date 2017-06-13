@@ -8,7 +8,7 @@
 namespace App\Libs;
 
 // クラスの定義
-class ManagePossessionLib extends BaseGameLib
+class ManageCharaPossessionLib extends BaseGameLib
 {
 	/*
 		ユーザーの所持キャラの上限数を取得する
@@ -16,7 +16,7 @@ class ManagePossessionLib extends BaseGameLib
 	public function getUpperLimitChara($argUserId)
 	{
 		// DBからキャラ所持数の上限を取得する
-		$upperLimit = $this->Model->exec('user', 'getupperLimitChara', $argUserId);
+		$upperLimit = $this->Model->exec('User', 'getupperLimitChara', $argUserId);
 		return $upperLimit;
 	}
 
@@ -26,7 +26,7 @@ class ManagePossessionLib extends BaseGameLib
 	public function getPossessionChara($argUserId)
 	{
 		// DBからキャラ所持数を取得する
-		$PossessionChara = $this->Model->exec('user', 'getPossessionChara', $argUserId);
+		$PossessionChara = $this->Model->exec('User', 'getPossessionChara', $argUserId);
 		return $PossessionChara;
 	}
 
@@ -38,7 +38,7 @@ class ManagePossessionLib extends BaseGameLib
 		// 所持キャラ数に1を加算する
 		$argUser['possessionChara'] += 1;
 		// データベースの更新をする
-		$this->Model->exec('user','UpdatePossessionChara',array($argUser));
+		$this->Model->exec('User','UpdatePossessionChara',array($argUser));
 	}
 
 	/*
@@ -49,7 +49,7 @@ class ManagePossessionLib extends BaseGameLib
 		// 所持キャラ数に1を加算する
 		$argUser['possessionChara'] -= 1;
 		// データベースの更新をする
-		$this->Model->exec('user','UpdatePossessionChara',array($argUser));
+		$this->Model->exec('User','UpdatePossessionChara',array($argUser));
 	}
 
 	/*
@@ -60,7 +60,7 @@ class ManagePossessionLib extends BaseGameLib
 		// 所持キャラ数の上限に10(仮)を加算する
 		$argUser['upperLimitChara'] += 10;
 		// データベースを更新する
-		$this->Model->exec('user','UpdateUpperLimitChara',array($argUser));
+		$this->Model->exec('User','UpdateUpperLimitChara',array($argUser));
 	}
 
 	/*

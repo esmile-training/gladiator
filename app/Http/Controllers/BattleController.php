@@ -429,6 +429,8 @@ class battleController extends BaseGameController
 			];
 
 			$this->Model->exec('Chara', 'charaDelFlag', $this->CharaData['uCharaId']);
+			// 所持キャラ数の減算を行う
+			$this->Lib->exec('ManageCharaPossession','subPossessionChara',array($this->user));
 		}
 		// どちらのHPも0以上の場合(降参として処理が呼ばれた場合)
 		else
