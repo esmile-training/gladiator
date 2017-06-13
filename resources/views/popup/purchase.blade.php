@@ -39,13 +39,15 @@
 		<tr>
 			<td width=22%></td>
 			<td width=15%>
-				<img src="{{IMG_URL}}popup/minus_Button.png" class="image_change">
+				<img src="{{IMG_URL}}popup/minus_Button.png" class="image_change purchase_totalNumber_cntButton_img">
 			</td>
-			<td width=26%>
-				{{$number[$purchaseData['productData']['id']]}}
+			<td width=26% valign="top">
+				<div>
+					{{$number[$purchaseData['productData']['id']]}}
+				</div>
 			</td>
 			<td width=15%>
-				<img src="{{IMG_URL}}popup/plus_Button.png" class="image_change">
+				<img src="{{IMG_URL}}popup/plus_Button.png" class="image_change purchase_totalNumber_cntButton_img">
 			</td>
 			<td width=22%></td>
 		</tr>
@@ -64,7 +66,7 @@
 	</div>
 </div>
 
-<!--<script type="text/javascript">
+<script type="text/javascript">
 
 	var $cnt = 0;
 
@@ -82,4 +84,4 @@
 		document.getElementById( "number{{$purchaseData['productData']['id']}}" ).innerHTML = --$cnt;
 	}
 
-</script>-->
+</script>
