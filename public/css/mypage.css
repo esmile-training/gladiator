@@ -76,11 +76,18 @@ body {
 }
 
 .user_chara{
-
 	position: absolute;
 	top: 5%;
 	left: 0;
 	right: 0;
 	width: 80%;
 	margin: 0 auto;
+}
+
+.test{
+    position: fixed;
+    top: 20%;
+    left: 5%;
+    right: 0;
+    width: 10%;
 }

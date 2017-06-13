@@ -64,6 +64,12 @@ class BattleLib extends BaseGameLib
 			// result に 3(あいこ) を格納
 			$result = 3;
 		}
+		//スキル仕様の条件の場合
+		else if($pcHand == 4)
+		{
+			// result に 4(スキル) を格納
+			$result = 4;
+		}
 		else
 		{
 			echo 'エラー';
@@ -81,7 +87,8 @@ class BattleLib extends BaseGameLib
 
 		// ダメージ割合を格納
 		$damagePer = mt_rand($randData['min'], $randData['max']) * 0.01;
-
+		
+		
 		// 勝った方の 'hand' によって処理を行う
 		// ダメージ量計算式
 		// ダメージ量 = 勝った方の攻撃力 * ダメージ割合
@@ -104,7 +111,23 @@ class BattleLib extends BaseGameLib
 				// 'battlePaaAtk' に 元データ 'cPaaAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
 				$winner['battlePaaAtk'] = (int) ($winner['paaAtk'] * $damagePer);
 				break;
-
+			//4(スキル) の場合
+			case 4:
+				//スキルの判定
+				$charaSkill = \Config::get('chara.imgId');
+				$skill = \Config::get('chara.skill');
+				switch ($charaSkill[$winner['imgId']]['skill'])
+				{
+					case 1:
+						//ダメージの場合
+						$winner['skill'] = $skill[$charaSkill[$winner['imgId']]['skill']]['damage'];	
+					break;
+					case 2:
+						//回復の場合
+						$winner['skill'] = $skill[$charaSkill[$winner['imgId']]['skill']]['recovery'];
+					break;
+				}
+			break;
 			default;
 				echo 'エラー';
 				exit;
@@ -136,7 +159,23 @@ class BattleLib extends BaseGameLib
 				// 負けた方の 'hp' を勝った方の 'paaAtk' 分減らす
 				$loser['battleHp'] = $loser['battleHp'] - $winner['battlePaaAtk'];
 				break;
+			//4(スキル) の場合
+			case 4:
+				//スキルの判定
+				$charaSkill = \Config::get('chara.imgId');
 
+				switch ($charaSkill[$winner['imgId']]['skill'])
+				{
+					case 1:
+						//敵にダメージ
+						$loser['battleHp'] = $loser['battleHp'] - $winner['skill'];
+					break;
+					case 2:
+						//自分回復
+						$loser['battleHp'] = $winner['battleHp'] + $winner['skill'];
+					break;
+				}
+				break;
 			default;
 				echo 'エラー';
 				exit;
@@ -147,7 +186,7 @@ class BattleLib extends BaseGameLib
 		{
 			$loser['battleHp'] = 0;
 		}
-
+		
 		return $loser['battleHp'];
 	}
 
@@ -180,6 +219,7 @@ class BattleLib extends BaseGameLib
 		$matchData['difficulty']	= $arenaData["arenaDifficulty"];
 		// ユーザーキャラクターのデータを格納する
 		$matchData['uCharaId']		= $uCharaData['id'];
+		$matchData['imgId']			= $uCharaData['imgId'];
 		$matchData['uHp']			= $uCharaData['hp'];
 		$matchData['uGooAtk']		= $uCharaData['gooAtk'];
 		$matchData['uChoAtk']		= $uCharaData['choAtk'];

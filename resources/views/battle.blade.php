@@ -217,13 +217,23 @@
 				</a>
 			</div>
 		@endif
-
 		{{-- 自キャラステータスの表示領域 --}}
 		<div class="battle_player_status">
 			{{-- 自キャラのステータス枠 --}}
 			<img src="{{IMG_URL}}battle/player_Status_Bar.png" class="battle_player_status_bar">
 			{{-- 自キャラのアイコン --}}
-			<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" class="battle_player_status_icon" >
+			@if($viewData['drawCount'] == 0)
+			<a href="{{APP_URL}}battle/updateBattleData?hand=4" class="battle_playerhand_button_chara_linkregion clickfalse">
+				<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" class="battle_player_status_icon_on">
+			</a>
+			@else
+				{{-- スキルターン表示枠 --}}
+				<img src="{{IMG_URL}}battle/rarity_bg.png" class="battle_player_skill_frame">
+				{{-- スキルターン --}}
+				<?php $count = $viewData['drawCount']; ?>
+				<font class = "battle_player_skill_turn">{{$count}}</font>
+				<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" class="battle_player_status_icon_off">
+			@endif
 			{{-- 自キャラのHP部分の領域 --}}
 			<div class="battle_player_status_hp_bar_ragion">
 				{{-- 自キャラのHPバー枠 --}}
@@ -286,4 +296,5 @@
 	<script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/battleButton.js"></script>
+	<script type="text/javascript" src="{{APP_URL}}js/skill.js"></script>
 </body>

@@ -1,5 +1,5 @@
 @include('common/css', ['file' => 'battleArenaSelect'])
-@include('common/css', ['file' => 'battleCharaSelect'])
+
 <script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="{{APP_URL}}js/load.js"></script>
 {{--対戦データの表示--}}
@@ -17,7 +17,7 @@
 	{{--キャラの表示--}}
 	<div class="popup_cahra_position">
 		<div class="popup_chara_size">
-			<img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame{{$arenaData['rarity']}}.png" alt="ボタンの下地">
+			<img class="chara_button_frame" src="{{IMG_URL}}battle/chara_button_frame{{$arenaData['rarity']}}.png" alt="ボタンの下地">
 			{{--キャラアイコン--}}
 			<div class="chara_icon">
 				{{--キャライメージ--}}

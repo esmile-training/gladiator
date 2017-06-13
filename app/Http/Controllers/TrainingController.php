@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 class TrainingController extends BaseGameController
 {
 	public function index()
-	{
+	{	
 		//訓練が終了しているキャラがいるか確認し、いたらその訓練の情報を取得する
 		$result = $this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'], $this->user['id'], true));
 		if(isset($result))
