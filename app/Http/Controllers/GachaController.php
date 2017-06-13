@@ -133,9 +133,15 @@ class GachaController extends BaseGameController
 	
 	public function boxGachaData()
 	{
-		$rare = rand(1, 5);
-		$calam = $rare + 2;
-		//ここにdbのパラメータと今出てきたレア度の最大値を比較すればいい￥
+		$gachaData = $this->Model->exec('Gacha','getEventGachaRecord',$this->user['id']);
+		if(is_null($gachaData)){
+			$this->Model->exec('Gacha','createEventGachaRecord',$this->user['id']);
+		}
+		$num = rand(1, 300 - $gachaData['count']);
+		var_dump($gachaData);
+		var_dump($num);exit;
+		//ここにdbのパラメータと今出てきたレア度の最大値を比較すればいい
+		
 	}
 }
 		

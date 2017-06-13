@@ -91,3 +91,30 @@ body {
     right: 0;
     width: 10%;
 }
+
+.cap:not(.act) {
+	display:none;
+}
+
+.fever{
+	position: fixed;
+    top: 19%;
+    right: 1%;
+    width: 22%;
+}
+
+.fever_img{
+	display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.fever_text{
+	position: fixed;
+    top: 25%;
+    left: 88%;
+    color: white;
+    font-size: 3vw;
+	font-family: serif;
+}

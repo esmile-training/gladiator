@@ -80,14 +80,39 @@ EOD;
  	return $result;
 	}
 	
+	public function createEventGachaRecord($userId){
+	$time = date('Y-m-d H:i:s', time());
+$sql = <<< EOD
+	INSERT INTO uEventGachaLog
+	VALUES (
+		{$userId},
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		'{$time}',
+		'{$time}'
+	);
+EOD;
+	$hoge = $this->insert($sql);
+	}
+	
 	public function getEventGachaRecord($userId)
 	{
 $sql = <<< EOD
-	SELECT count
+	SELECT count, LR, SSR, SR, R, N
 	FROM uEventGachaLog
 	WHERE userId = '$userId'
 EOD;
 	$result = $this->select($sql,'first');
 	return $result;
+	}
+	
+	public function updateEventGachaRecord($userId, $rare){
+$sql = <<< EOD
+	UPDATE uEventGachaLog SET count = +1
+EOD;
 	}
 }

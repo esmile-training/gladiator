@@ -5,20 +5,27 @@
 					<img class="footerImg" src="{{IMG_URL}}footer/footer.png" />
 					<ul class="iconPosition">
 						<li><a class="location" href="{{APP_URL}}mypage/index"><img class="iconsize image_change clickfalse" src="{{IMG_URL}}footer/homeIcon.png" /></a></li>
-						@if($viewData['user']['battleTicket'] > 0)
-							<li><a class="location" href="{{APP_URL}}battle/index"><img class="iconsize image_change clickfalse" src="{{IMG_URL}}footer/battleIcon.png" /></a></li>
+						@if($viewData['feverTimeFlug'] == 0)
+							@if($viewData['user']['battleTicket'] > 0)
+								<li><a class="location" href="{{APP_URL}}battle/index"><img class="iconsize image_change clickfalse" src="{{IMG_URL}}footer/battleIcon.png" /></a></li>
+							@else
+								<li><img class="location" src="{{IMG_URL}}footer/battleIconDown.png" /></li>
+							@endif
 						@else
-							<li><img class="location" src="{{IMG_URL}}footer/battleIconDown.png" /></li>
+							@if($viewData['user']['battleTicket'] > 0)
+								<li><a class="location" href="{{APP_URL}}battle/index"><img class="iconsize image_change clickfalse" src="{{IMG_URL}}footer/feverIcon.png" /></a></li>
+							@else
+								<li><img class="location" src="{{IMG_URL}}footer/feverIconDown.png" /></li>
+							@endif
 						@endif
-
-						@if(0 < $viewData['endTraining']['count'])
-							<li>
-								<img class="footer_alert image_change clickfalse" src="{{IMG_URL}}footer/AlertIcon.png" />
-								<a class="location" href="{{APP_URL}}training/index"><img class="iconsize image_change clickfalse" src="{{IMG_URL}}footer/traningIcon.png" /></a>
-							</li>
-						@else
-							<li><a class="location" href="{{APP_URL}}training/index"><img class="iconsize image_change clickfalse" src="{{IMG_URL}}footer/traningIcon.png" /></a></li>
-						@endif
+							@if(0 < $viewData['endTraining']['count'])
+								<li>
+									<img class="footer_alert image_change clickfalse" src="{{IMG_URL}}footer/AlertIcon.png" />
+									<a class="location" href="{{APP_URL}}training/index"><img class="iconsize image_change clickfalse" src="{{IMG_URL}}footer/traningIcon.png" /></a>
+								</li>
+							@else
+								<li><a class="location" href="{{APP_URL}}training/index"><img class="iconsize image_change clickfalse" src="{{IMG_URL}}footer/traningIcon.png" /></a></li>
+							@endif
 						<li><a class="location" href="{{APP_URL}}gacha/select"><img class="iconsize image_change clickfalse" src="{{IMG_URL}}footer/gachaIcon.png" /></a></li>
 					</ul>
 				</div>

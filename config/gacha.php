@@ -229,7 +229,7 @@ return [
 			'Status' => null
 		],
 		14 => [
-			'money' => 50000,
+			'money' => 0,
 			'max' => 300,
 			'deck' => [
 				1 => 150,
