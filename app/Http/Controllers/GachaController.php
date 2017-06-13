@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-class GachaController extends BaseGameController 
+class GachaController extends BaseGameController
 {
-    
+
 	public function select()
 	{
 
-		
+
 		return viewWrap('gachaselect', $this->viewData);
 	}
 	public function eventsSelect()
@@ -36,7 +36,7 @@ class GachaController extends BaseGameController
 
 		return viewWrap('gachaRoad', $this->viewData);
 	}
-	public function index() 
+	public function index()
 	{
 		//リダイレクトのゲットしてビューデーターに格納
 		(int)$this->viewData['gachavalue'] = filter_input(INPUT_GET, "gachavalue");
@@ -55,25 +55,25 @@ class GachaController extends BaseGameController
 	{
 		//ガチャのレア度ごとの割合
 		$gachaConfig = \Config::get('gacha.eRate');
-		
+
 		//ガチャの種類取得
 		$gachaVal = (int)filter_input(INPUT_GET,"gachavalue");
-		
+
 		//プレイヤーの所持金が1以上か
 		if($this->user['money']  < 0)
 		{
 			return view('error');
 		}
-		
+
 		//所持金の減算処理
 		$this->Lib->exec('Money', 'Subtraction', array($this->user, $gachaConfig[$gachaVal]['money']));
-		
+
 		//ガチャの選択して割合算出
 		$this->viewData['ratio'] = $this->Lib->exec('RandamChara', 'getGachaRatio');
 
 		//
 		$ratio = $this->viewData['ratio']['hit'];
-		
+
 		//キャラの画像ID取得
 		if($gachaVal == 7)
 		{
@@ -83,18 +83,18 @@ class GachaController extends BaseGameController
 		}else{
 			$sex = false;
 		}
-	
+
 		$this->viewData['chara'] = $this->Lib->exec('RandamChara', 'getCharaImgId', [$sex]);
-	
+
 		//キャラのステータス
 		$this->viewData['valueList'] = $this->Lib->exec('RandamChara', 'getValueConf',$ratio);
 
 		//性別データの格納
 		$sexData = $this->viewData['chara']['sex'];
-		
-		//キャラネーム 
+
+		//キャラネーム
 		$this->viewData['name'] = $this->Lib->exec('RandamChara', 'randamCharaName', [$sexData]);
-		
+
 		//DBへの受け渡し
 		$charaData = [
 			'userId' => $this->viewData['user']['id'],
@@ -109,7 +109,7 @@ class GachaController extends BaseGameController
 			'narrow' => $this->viewData['valueList']['narrow'],
 			'GachaVal' => $gachaVal,
 		];
-		
+
 		//リダイレクト引数受け渡し
 		$param = [
 			'gachavalue' => $gachaVal,
@@ -123,12 +123,17 @@ class GachaController extends BaseGameController
 			'hp' => $charaData['hp'],
 		];
 
+		// 所持キャラが最大かどうかのフラグ
+		$maxPossessionFlag = $this->Lib->exec('ManageCharaPossession','checkUpperLimit',array($this->user));
+
 		$this->Model->exec('Gacha', 'createChara', array($charaData));
-		
+
 		$this->Model->exec('Gacha', 'createLog', array($charaData));
-	
+		// 所持キャラ数の加算を行う
+		$this->Lib->exec('ManageCharaPossession','addPossessionChara',array($this->user));
+
 		return $this->Lib->redirect('gacha','roadScreen', $param);
-		
+
 	}
 	
 	public function boxGachaData()
@@ -144,4 +149,3 @@ class GachaController extends BaseGameController
 		
 	}
 }
-		
