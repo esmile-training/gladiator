@@ -55,18 +55,23 @@ class Handler extends ExceptionHandler
 //			}
 //		}
 //	}
-	
-	public function render($request, Exception $e)
+//	
+//	public function render($request, Exception $e)
+//    {
+//        if (app()->isLocal() || app()->runningUnitTests()) {
+//            return parent::render($request, $e);
+//        }
+//
+//        if ($this->isHttpException($e)) {
+//            return $this->renderHttpException($e);
+//        } else {
+//            return $this->renderHttpException(new HttpException(500, $e->getMessage(), $e));
+//        }
+//    }
+	public function render($request, Exception $exception)
     {
-        if (app()->isLocal() || app()->runningUnitTests()) {
-            return parent::render($request, $e);
-        }
+        return parent::render($request,$exception);
 
-        if ($this->isHttpException($e)) {
-            return $this->renderHttpException($e);
-        } else {
-            return $this->renderHttpException(new HttpException(500, $e->getMessage(), $e));
-        }
     }
 
     /**
