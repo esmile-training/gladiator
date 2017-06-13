@@ -6,6 +6,6 @@ class PresentBoxController extends BaseGameController
 	public function index()
 	{
 		$this->viewData['presentData'] = $this->Model->exec('PresentBox','confirmation', $this->user['id']);
-		return viewWrap('PresentBox',$this->viewData);
+		return viewWrap('Presentbox',$this->viewData);
 	}
 }

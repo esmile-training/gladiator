@@ -1,12 +1,12 @@
-<div><img class="training_back" src="{{IMG_URL}}gacha/gachabackground.jpg" /></div>
+<div><img class="coachSelect_back" src="{{IMG_URL}}gacha/gachabackground.jpg" /></div>
 {{--CSS--}}
 @include('common/css', ['file' => 'coachSelect'])
-@include('common/css', ['file' => 'training'])
+
 <div class="coachSelect_all">
-	<div class="training_signboard_info">
+	<div class="coachSelect_signboard_info">
 		<img src="{{IMG_URL}}/training/signboard_info.png">
-		<div class ="training_signboard_text">
-			<font  class="training_font_serif">{{'コーチを選んでください'}}</font>
+		<div class ="coachSelect_signboard_text">
+			<font  class="coachSelect_font_serif">{{'コーチを選んでください'}}</font>
 		</div>
 	</div>
 	<div class="coachSelect_signboard">
@@ -24,7 +24,7 @@
 		<div class ="modal_btn trainingPopup{{$cnt}}">
 		@endif
 			<img src="{{IMG_URL}}/training/coachButton{{$val['rare']}}.png">
-			<div class="training_font_serif coach_name">
+			<div class="coachSelect_font_serif coach_name">
 				<font>{{$val['name']}}</font>
 			</div>
 			<div class="coach_icon">

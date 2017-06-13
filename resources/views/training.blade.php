@@ -1,8 +1,6 @@
 <div><img class="training_back" src="{{IMG_URL}}gacha/gachabackground.jpg" /></div>
 {{--CSS--}}
 @include('common/css', ['file' => 'training'])
-@include('common/css', ['file' => 'coachSelect'])
-@include('common/css', ['file' => 'training'])
 @include('common/css', ['file' => 'charaList'])
 @include('common/js',['file' => 'sort'])
 
