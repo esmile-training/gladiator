@@ -27,7 +27,7 @@ return  [
         ],
         7 => [
             'sex' => 1,
-			'skill' => 2
+			'skill' => 3
         ],
 		8 => [
             'sex' => 0,
@@ -50,7 +50,13 @@ return  [
 		1 => ['damage' => 50,
 				'turn'	=> 5],
 		2 => ['recovery' => 50,
-				'turn'	=> 5]
+				'turn'	=> 5],
+		3 => ['gooUpAtk' => 1.5,
+				'turn'	=> 5],
+		4 => ['choUpAtk' => 50,
+				'turn'	=> 5],
+		5 => ['paaUpAtk' => 50,
+				'turn'	=> 5],
 	],
 	'allname' => [
 			'firstname' => [

@@ -353,7 +353,6 @@ class battleController extends BaseGameController
 				{
 					$this->CharaData['drawCount'] = $this->CharaData['drawCount'] - 1;
 				}else{
-					exit;
 					$this->CharaData['drawCount'] = 0;
 				}
 				// ダメージ処理を行わず抜ける
@@ -383,6 +382,11 @@ class battleController extends BaseGameController
 							{
 								$this->CharaData['battleHp'] = $this->CharaData['hp'];
 							}
+						break;
+						case 3:
+							//グーの攻撃力アップ
+							$this->CharaData = BattleLib::damageCalc($this->CharaData);
+							$this->CharaData['battleGooAtk'] = BattleLib::atkUp($this->CharaData['battleGooAtk'], $this->CharaData['skill']);
 						break;
 					}
 				}

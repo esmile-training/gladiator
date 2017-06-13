@@ -311,3 +311,14 @@ body{}
 .battle_player_status_atk_paa_img{
 	width: 100%;
 }
+/* スキル確認ポップアップ */
+.skill_button{
+	width: 36%;
+    margin: 0 auto;
+    position: relative;
+    top: 14vw;
+}
+/* 攻撃力の上がった場合 */
+.battle_gooAtkUpFont{
+	color: red;
+}
