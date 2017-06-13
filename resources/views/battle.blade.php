@@ -28,6 +28,10 @@
 			'template'	=> 'help',
 			'data'		=> ['log' => $viewData['enemyData']['difficulty']]
 		])
+		@include('popup/wrap', [
+			'class'		=> 'button',
+			'template'	=> 'battleSkill',
+		])
 		
 		{{-- 背景画像 --}}
 		<img src="{{IMG_URL}}battle/battle_Bg{{$viewData['enemyData']['difficulty']}}.jpg" class="battle_bg">
@@ -223,8 +227,8 @@
 			<img src="{{IMG_URL}}battle/player_Status_Bar.png" class="battle_player_status_bar">
 			{{-- 自キャラのアイコン --}}
 			@if($viewData['drawCount'] == 0)
-			<a href="{{APP_URL}}battle/updateBattleData?hand=4" class="battle_playerhand_button_chara_linkregion clickfalse">
-				<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" class="battle_player_status_icon_on">
+			<a class="battle_playerhand_button_chara_linkregion clickfalse">
+				<img class="modal_btn button battle_player_status_icon_on" src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" >
 			</a>
 			@else
 				{{-- スキルターン表示枠 --}}
@@ -270,19 +274,33 @@
 							<img src="{{IMG_URL}}chara/status/hand1.png" class="battle_player_status_atk_goo_img">
 						</td>
 						<td width="20%" align="left">
+							@if($viewData['charaData']['battleGooAtk'] == $viewData['charaData']['gooAtk'])
 							{{ $viewData['charaData']['gooAtk']}}
+							@else
+							<font class = "battle_gooAtkUpFont">
+							{{ $viewData['charaData']['battleGooAtk']}}
+							</font>
+							@endif
 						</td>
 						<td width="5%">
 							<img src="{{IMG_URL}}chara/status/hand2.png" class="battle_player_status_atk_cho_img">
 						</td>	
 						<td width="20%" align="left">
+							@if($viewData['charaData']['battleChoAtk'] == $viewData['charaData']['choAtk'])
 							{{ $viewData['charaData']['choAtk']}}
+							@else
+							{{ $viewData['charaData']['battleChoAtk']}}
+							@endif
 						</td>
 						<td width="5%">
 							<img src="{{IMG_URL}}chara/status/hand3.png" class="battle_player_status_atk_paa_img">
 						</td>
 						<td width="20%" align="left">
+							@if($viewData['charaData']['battlePaaAtk'] == $viewData['charaData']['paaAtk'])
 							{{ $viewData['charaData']['paaAtk']}}
+							@else
+							{{ $viewData['charaData']['battlePaaAtk']}}
+							@endif
 						</td>
 						<td width="10%"></td>
 					</tr>

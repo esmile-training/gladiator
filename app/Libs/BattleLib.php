@@ -126,6 +126,10 @@ class BattleLib extends BaseGameLib
 						//回復の場合
 						$winner['skill'] = $skill[$charaSkill[$winner['imgId']]['skill']]['recovery'];
 					break;
+					case 3:
+						//攻撃力アップの場合
+						$winner['skill'] = $skill[$charaSkill[$winner['imgId']]['skill']]['gooUpAtk'];
+					break;
 				}
 			break;
 			default;
@@ -256,5 +260,11 @@ class BattleLib extends BaseGameLib
 			}
 		}
 		return $result;
+	}
+	public static function atkUP($atk,$magnification){
+		
+		$statusUp = $atk * $magnification;
+		
+		return $statusUp;
 	}
 }
