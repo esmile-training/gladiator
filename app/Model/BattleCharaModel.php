@@ -21,6 +21,7 @@ $sql = <<< EOD
 		battleGooAtk,
 		battleChoAtk,
 		battlePaaAtk,
+		damage,
 		hand,
 		result,
 		drawCount,
@@ -62,6 +63,7 @@ $sql = <<< EOD
 			'{$paaAtk}',
 			0,
 			0,
+			0,
 			'{$drawCount}',
 			'{$time}',
 			'{$time}'
@@ -84,6 +86,7 @@ $sql = <<< EOD
 			battleGooAtk = {$battleChara['battleGooAtk']},
 			battleChoAtk = {$battleChara['battleChoAtk']},
 			battlePaaAtk = {$battleChara['battlePaaAtk']},
+			damage  = {$battleChara['damage']},
 			hand	= '{$battleChara['hand']}',
 			result	= '{$battleChara['result']}',
 			drawCount = '{$battleChara['drawCount']}'

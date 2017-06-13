@@ -208,6 +208,8 @@ class battleController extends BaseGameController
 		$surrenderCost = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));	
 		
 		// 全てのデータを viewData に渡す
+		$this->viewData['charaDamage']	= $this->CharaData['damage'];
+		$this->viewData['enemyDamage']	= $this->EnemyData['damage'];
 		$this->viewData['drawCount']	= $this->CharaData['drawCount'];
 		$this->viewData['userData']		= $this->user;
 		$this->viewData['battleData']	= $this->BattleData;
@@ -385,19 +387,19 @@ class battleController extends BaseGameController
 							}
 						break;
 						case 3:
-							if($charaSkill[$this->CharaData['imgId']] == 3){
-								//グーの攻撃力アップ
-								$this->CharaData = BattleLib::damageCalc($this->CharaData);
-								$this->CharaData['battleGooAtk'] = BattleLib::atkUp($this->CharaData['battleGooAtk'], $this->CharaData['skill']);
-							}else if($charaSkill[$this->CharaData['imgId']] == 4){
-								//チョキの攻撃力アップ
-								$this->CharaData = BattleLib::damageCalc($this->CharaData);
-								$this->CharaData['battleChoAtk'] = BattleLib::atkUp($this->CharaData['battleChoAtk'], $this->CharaData['skill']);
-							}else if($charaSkill[$this->CharaData['imgId']] == 5){
-								//パーの攻撃力アップ
-								$this->CharaData = BattleLib::damageCalc($this->CharaData);
-								$this->CharaData['battlePaaAtk'] = BattleLib::atkUp($this->CharaData['battlePaaAtk'], $this->CharaData['skill']);
-							}
+							//グーの攻撃力アップ
+							$this->CharaData = BattleLib::damageCalc($this->CharaData);
+							$this->CharaData['battleGooAtk'] = BattleLib::atkUp($this->CharaData['battleGooAtk'], $this->CharaData['skill']);
+						break;
+						case 4:
+							//チョキの攻撃力アップ
+							$this->CharaData = BattleLib::damageCalc($this->CharaData);
+							$this->CharaData['battleChoAtk'] = BattleLib::atkUp($this->CharaData['battleChoAtk'], $this->CharaData['skill']);
+						break;
+						case 5:
+							//パーの攻撃力アップ
+							$this->CharaData = BattleLib::damageCalc($this->CharaData);
+							$this->CharaData['battlePaaAtk'] = BattleLib::atkUp($this->CharaData['battlePaaAtk'], $this->CharaData['skill']);
 						break;
 					}
 				}
@@ -407,7 +409,7 @@ class battleController extends BaseGameController
 				exit;
 				
 		}
-
+		
 		// バトルキャラデータの更新処理
 		// 自キャラデータの更新処理
 		$this->Model->exec('BattleChara', 'UpdateBattleCharaData', array($this->CharaData));

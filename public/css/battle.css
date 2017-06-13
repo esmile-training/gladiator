@@ -328,6 +328,26 @@ body{}
 	top: 18%;
 	animation: UpDown 0.8s linear infinite;
 }
+/* 攻撃力の上がった場合 */
+.battle_choAtkUpFont{
+	color: yellow;
+}
+.battle_choAtkUpArrow{
+	position: absolute;
+    width: 8%;
+	top: 18%;
+	animation: UpDown 0.8s linear infinite;
+}
+/* 攻撃力の上がった場合 */
+.battle_paaAtkUpFont{
+	color: skyblue;
+}
+.battle_paaAtkUpArrow{
+	position: absolute;
+    width: 8%;
+	top: 18%;
+	animation: UpDown 0.8s linear infinite;
+}
 /*　上下の回転アニメーション　*/
 @keyframes UpDown{
 	0% {
