@@ -9,7 +9,7 @@
 	@elseif($viewData['ranking'][0]['weeklyAward'])
 		<img class="ranking_panel" src="{{IMG_URL}}ranking/weekrankingwindow.png"/>
 		<div class="ranking_null_user">週間ランキングの順位はありません</div>
-	
+	@endif
 	
 	<!-- ランキング表示 -->
 	@if(isset($viewData['ranking']))
