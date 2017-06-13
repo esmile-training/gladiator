@@ -1,13 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
-// Lib
-use App\Libs\MoneyLib;
-
 class ShopController extends BaseGameController
 {
 	/*
-	 * ショップを表示するファンクション
+	 * 商品を表示するファンクション
 	 */
 	public function index()
 	{
@@ -23,13 +20,17 @@ class ShopController extends BaseGameController
 
 		return viewWrap('shop', $this->viewData);
 	}
-
+	
+	/*
+	 * 所持アイテムや商品データを読み込むファンクション
+	 */
 	public function getItemData()
 	{
 		// 所持アイテムデータ取得
 		$this->belongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
 		// 所持アイテムデータがなければ作成
-		if(!isset($this->belongingsData)){
+		if(!isset($this->belongingsData))
+		{
 			// uItemにデータを追加
 			$this->Model->exec('Item','insertItemData',$this->user['id']);
 		}
@@ -41,6 +42,9 @@ class ShopController extends BaseGameController
 		$this->productData		= \Config::get('shop.productStr');
 	}
 
+	/*
+	 * 所持アイテムを更新するファンクション
+	 */
 	public function updateBelongings()
 	{
 		// setData関数を呼び出し、データをセット
@@ -53,33 +57,23 @@ class ShopController extends BaseGameController
 		$totalPrice		= $_GET["totalPrice"];
 
 		// purchaseItemID = 1(チケット)ではない場合
-		if($purchaseItemId != 1){
-			// name に商品のDBで使っている名前を代入
-			$itemName			= $this->itemData[$purchaseItemId]['name'];
-
-			// アイテムの個数を $belongingsData に代入
-			$belongingsData = $this->belongingsData[$itemName];
-
-			// $belongingsData を加算
-			$belongingsData++;
+		if($purchaseItemId != 1)
+		{	
+			// DB更新用のデータ生成
+			$updateItemData = $this->Lib->exec('Shop', 'updateItem', array($purchaseItemId, $this->itemData, $this->belongingsData, $this->user));
 			
-			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
-			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$totalPrice));
-
-			// DB更新用のデータ統合
-			$updateItemData['userId'] = $this->user['id'];
-			$updateItemData['itemName'] = $itemName;
-			$updateItemData['belongingsData'] = $belongingsData;
-
 			// DBの更新
 			$this->Model->exec('Item', 'updateItemData', array($updateItemData));
-		}else{
-			// チケットを回復させる処理
-			
-			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
-			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$totalPrice));
-
 		}
+		else
+		{
+			// チケットの回復
+			$this->Lib->exec('Ticket', 'recoveryTicket', array($this->user));
+		}
+		
+		// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
+		$this->Lib->exec('Money', 'Subtraction', array($this->user,	$totalPrice));
+		
 		return $this->Lib->redirect('shop', 'index');
 	}
 }

@@ -311,3 +311,31 @@ body{}
 .battle_player_status_atk_paa_img{
 	width: 100%;
 }
+/* スキル確認ポップアップ */
+.skill_button{
+	width: 36%;
+    margin: 0 auto;
+    position: relative;
+    top: 14vw;
+}
+/* 攻撃力の上がった場合 */
+.battle_gooAtkUpFont{
+	color: red;
+}
+.battle_gooAtkUpArrow{
+	position: absolute;
+    width: 8%;
+	top: 18%;
+	animation: UpDown 0.8s linear infinite;
+}
+/*　上下の回転アニメーション　*/
+@keyframes UpDown{
+	0% {
+		transform: translateY(0px);
+		-webkit-transform: translateY(0px);
+	}
+	100% {
+		transform: translateY(-4px);
+		-webkit-transform: translateY(-4px);
+	}
+}

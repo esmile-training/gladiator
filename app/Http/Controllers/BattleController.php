@@ -354,7 +354,6 @@ class battleController extends BaseGameController
 				{
 					$this->CharaData['drawCount'] = $this->CharaData['drawCount'] - 1;
 				}else{
-					exit;
 					$this->CharaData['drawCount'] = 0;
 				}
 				// ダメージ処理を行わず抜ける
@@ -383,6 +382,21 @@ class battleController extends BaseGameController
 							if($this->CharaData['battleHp'] > $this->CharaData['hp'])
 							{
 								$this->CharaData['battleHp'] = $this->CharaData['hp'];
+							}
+						break;
+						case 3:
+							if($charaSkill[$this->CharaData['imgId']] == 3){
+								//グーの攻撃力アップ
+								$this->CharaData = BattleLib::damageCalc($this->CharaData);
+								$this->CharaData['battleGooAtk'] = BattleLib::atkUp($this->CharaData['battleGooAtk'], $this->CharaData['skill']);
+							}else if($charaSkill[$this->CharaData['imgId']] == 4){
+								//チョキの攻撃力アップ
+								$this->CharaData = BattleLib::damageCalc($this->CharaData);
+								$this->CharaData['battleChoAtk'] = BattleLib::atkUp($this->CharaData['battleChoAtk'], $this->CharaData['skill']);
+							}else if($charaSkill[$this->CharaData['imgId']] == 5){
+								//パーの攻撃力アップ
+								$this->CharaData = BattleLib::damageCalc($this->CharaData);
+								$this->CharaData['battlePaaAtk'] = BattleLib::atkUp($this->CharaData['battlePaaAtk'], $this->CharaData['skill']);
 							}
 						break;
 					}
