@@ -33,6 +33,9 @@ class ShopController extends BaseGameController
 		{
 			// uItemにデータを追加
 			$this->Model->exec('Item','insertItemData',$this->user['id']);
+			
+			// 所持アイテムデータ取得
+			$this->belongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
 		}
 		
 		// アイテムデータ取得
