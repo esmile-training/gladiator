@@ -119,6 +119,9 @@ class GachaController extends BaseGameController
 			'hp' => $charaData['hp'],
 		];
 
+		// 所持キャラが最大かどうかのフラグ
+		$maxPossessionFlag = $this->Lib->exec('ManageCharaPossession','checkUpperLimit',array($this->user));
+
 		$this->Model->exec('Gacha', 'createChara', array($charaData));
 
 		$this->Model->exec('Gacha', 'createLog', array($charaData));

@@ -16,7 +16,7 @@ class ManageCharaPossessionLib extends BaseGameLib
 	public function getUpperLimitChara($argUserId)
 	{
 		// DBからキャラ所持数の上限を取得する
-		$upperLimit = $this->Model->exec('User', 'getupperLimitChara', $argUserId);
+		$upperLimit = $this->Model->exec('User', 'getUpperLimitChara', $argUserId);
 		return $upperLimit;
 	}
 
@@ -44,12 +44,15 @@ class ManageCharaPossessionLib extends BaseGameLib
 	/*
 		キャラの所持数を減算する
 	*/
-	public function subPossession($argUser)
+	public function subPossessionChara($argUser)
 	{
-		// 所持キャラ数に1を加算する
-		$argUser['possessionChara'] -= 1;
-		// データベースの更新をする
-		$this->Model->exec('User','UpdatePossessionChara',array($argUser));
+		if($argUser['possessionChara'] > 0)
+		{
+			// 所持キャラ数に1を加算する
+			$argUser['possessionChara'] -= 1;
+			// データベースの更新をする
+			$this->Model->exec('User','UpdatePossessionChara',array($argUser));
+		}
 	}
 
 	/*
@@ -70,12 +73,12 @@ class ManageCharaPossessionLib extends BaseGameLib
 	public function checkUpperLimit($argUser)
 	{
 		// キャラの所持数を取得する
-		$possession = getPossessionChara($argUserId);
+		$possession = $this->Model->exec('User','getPossessionChara' , $argUser['id']);
 		// キャラ所持数の上限を取得する
-		$upperLimit = getUpperLimitChara($argUserId);
+		$upperLimit = $this->Model->exec('User', 'getUpperLimitChara', $argUser['id']);
 
-		// 現在の所持数+1が、所持上限を超えていないか
-		if($possession + 1 >= $upperLimit)
+		// 現在の所持数が、所持上限を超えていないか確認する
+		if($possession['possessionChara'] >= $upperLimit['upperLimitChara'])
 		{
 			return true;
 		}

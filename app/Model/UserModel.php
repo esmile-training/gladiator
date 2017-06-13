@@ -149,7 +149,7 @@ EOD;
 	/*
 		ユーザーの所持キャラ数の上限を取得する
 	*/
-	public function getupperLimitChara($argUserId)
+	public function getUpperLimitChara($argUserId)
 	{
 $sql = <<< EOD
 	SELECT upperLimitChara
