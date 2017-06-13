@@ -12,7 +12,7 @@
 		@if( $purchaseData['productData']['id'] == 1)
 		<div class="purchase_ticket_img">
 			<img class="itemlist_flame_item_img" src="{{IMG_URL}}user/battleTicket.png" />
-		</div>		
+		</div>
 		@else
 		<div class="purchase_item_img">
 			<img class="itemlist_flame_item_img" src="{{IMG_URL}}item/item{{$purchaseData['productData']['id']}}.png" />
@@ -35,9 +35,21 @@
 	</div>
 
 	{{-- アイテムの個数 --}}
-	<div class="purchase_totalNumber">
-		{{$number[$purchaseData['productData']['id']]}}
-	</div>
+	<table border="0" class="purchase_totalNumber">
+		<tr>
+			<td width=22%></td>
+			<td width=15%>
+				<img src="{{IMG_URL}}popup/minus_Button.png" class="image_change">
+			</td>
+			<td width=26%>
+				{{$number[$purchaseData['productData']['id']]}}
+			</td>
+			<td width=15%>
+				<img src="{{IMG_URL}}popup/plus_Button.png" class="image_change">
+			</td>
+			<td width=22%></td>
+		</tr>
+	</table>
 	
 	{{-- アイテムの合計金額--}}
 	<div class="purchase_totalPrice">
@@ -52,7 +64,7 @@
 	</div>
 </div>
 
-<!--<script type="text/javascript">
+<script type="text/javascript">
 
 	var $cnt = 0;
 
@@ -69,4 +81,4 @@
 		}
 		document.getElementById( "number{{$purchaseData['productData']['id']}}" ).innerHTML = --$cnt;
 	}
-</script>-->
+</script>
