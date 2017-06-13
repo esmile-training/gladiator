@@ -9,15 +9,15 @@
 	<img src="{{IMG_URL}}shop/popup_Bg.png" class="purchase_bg">
 
 	{{-- アイテムの画像 --}}
-		@if( $purchaseData['productData']['id'] == 1)
+	@if( $purchaseData['productData']['id'] == 1)
 		<div class="purchase_ticket_img">
 			<img class="itemlist_flame_item_img" src="{{IMG_URL}}user/battleTicket.png" />
 		</div>
-		@else
+	@else
 		<div class="purchase_item_img">
 			<img class="itemlist_flame_item_img" src="{{IMG_URL}}item/item{{$purchaseData['productData']['id']}}.png" />
 		</div>
-		@endif
+	@endif
 
 	{{-- アイテムの名前 --}}
 	<div class="purchase_name">
@@ -64,7 +64,7 @@
 	</div>
 </div>
 
-<script type="text/javascript">
+<!--<script type="text/javascript">
 
 	var $cnt = 0;
 
@@ -81,4 +81,5 @@
 		}
 		document.getElementById( "number{{$purchaseData['productData']['id']}}" ).innerHTML = --$cnt;
 	}
-</script>
+
+</script>-->
