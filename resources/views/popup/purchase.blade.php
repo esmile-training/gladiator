@@ -24,6 +24,16 @@
 		{{$purchaseData['productData']['name']}}
 	</div>
 
+	{{-- アイテムの使う場所 --}}
+	<div class="purchase_itemWhere">
+		{{$purchaseData['itemData']['where']}}
+	</div>
+	
+	{{-- アイテムの説明 --}}
+	<div class="purchase_itemInfo">
+		{{$purchaseData['itemData']['abilityInfo']}}
+	</div>
+
 	{{-- アイテムの個数 --}}
 	<div class="purchase_totalNumber">
 		{{$number[$purchaseData['productData']['id']]}}

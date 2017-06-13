@@ -51,8 +51,6 @@ class TicketLib extends BaseGameLib
 			}else{
 				break;
 			}
-			
-			
 		}
 
 		$nextrecovery = date("i:s",(strtotime($recoveryTime) - strtotime($nowTime)));
@@ -62,4 +60,12 @@ class TicketLib extends BaseGameLib
 		}
 		return $nextrecovery;
     }
+	
+    public function recoveryTicket($user){
+		
+		// ユーザーのチケットを加算
+		$user['battleTicket']++;
+		
+		$this->Model->exec('User', 'updateTicket', array($user));
+	}
 }
