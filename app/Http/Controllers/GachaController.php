@@ -56,18 +56,22 @@ class GachaController extends BaseGameController
 		//ガチャのレア度ごとの割合
 		$gachaConfig = \Config::get('gacha.eRate');
 		
+		//ガチャの種類取得
 		$gachaVal = (int)filter_input(INPUT_GET,"gachavalue");
 		
+		//プレイヤーの所持金が1以上か
 		if($this->user['money']  < 0)
 		{
 			return view('error');
 		}
 		
+		//所持金の減算処理
 		$this->Lib->exec('Money', 'Subtraction', array($this->user, $gachaConfig[$gachaVal]['money']));
 		
 		//ガチャの選択して割合算出
 		$this->viewData['ratio'] = $this->Lib->exec('RandamChara', 'getGachaRatio');
 
+		//
 		$ratio = $this->viewData['ratio']['hit'];
 		
 		//キャラの画像ID取得
@@ -126,5 +130,12 @@ class GachaController extends BaseGameController
 		return $this->Lib->redirect('gacha','roadScreen', $param);
 		
 	}
+	
+	public function boxGachaData()
+	{
+		$rare = rand(1, 5);
+		$calam = $rare + 2;
+		//ここにdbのパラメータと今出てきたレア度の最大値を比較すればいい￥
+	}
 }
-
+		

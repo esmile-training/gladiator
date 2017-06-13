@@ -5,4 +5,8 @@
 <div class="user_chara">
 	<img src="{{IMG_URL}}chara/{{$viewData['delFlag']['imgId']}}.png">
 </div>
+<div>
+	{{$viewData['feverTimeFlug']}}
+	<!-- <img src="{{IMG_URL}}battle/feverTest.png"> -->
+</div>
 @endif

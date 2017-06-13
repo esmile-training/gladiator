@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class SelectCoachController extends BaseGameController
+class ChangeCoachSelectController extends BaseGameController
 {
 	public function index()
 	{
@@ -27,7 +27,7 @@ class SelectCoachController extends BaseGameController
 			// viewDataへ取得したコーチを送る
 			$this->viewData['coachList'] = $alluCoach;
 			// ビューへデータを渡す
-			return viewWrap('selectCoach',$this->viewData);
+			return viewWrap('changeCoachSelect',$this->viewData);
 		} else {
 			//コーチが二人以下だったらそのままコーチに追加
 			$this->insertCoach();

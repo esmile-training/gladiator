@@ -1,6 +1,4 @@
 {{-- css  --}}
-@include('common/css', ['file' => 'coachSelect'])
-@include('common/css', ['file' => 'training'])
 @include('common/css', ['file' => 'charaList'])
 @include('common/js',['file' => 'sort'])
 <div><img class="chara_list_background" src="{{IMG_URL}}battle/chara_select_bg.jpg" /></div>

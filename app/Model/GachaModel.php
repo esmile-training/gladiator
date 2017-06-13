@@ -79,4 +79,15 @@ EOD;
 	$result = $this->select($sql,'first');
  	return $result;
 	}
+	
+	public function getEventGachaRecord($userId)
+	{
+$sql = <<< EOD
+	SELECT count
+	FROM uEventGachaLog
+	WHERE userId = '$userId'
+EOD;
+	$result = $this->select($sql,'first');
+	return $result;
+	}
 }

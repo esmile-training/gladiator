@@ -1,5 +1,4 @@
 @include('common/css', ['file' => 'confirmChangeCoach'])
-@include('common/css', ['file' => 'coachRetirement'])
 <?php $count = 0; ?>
 <div class="coach_all">
 	<div class="coach_signboardinfo">
