@@ -39,6 +39,28 @@ body{}
     color: #f3821e;
 	text-align: left;
 }
+/* アイテムの名前 */
+.purchase_itemWhere{
+    position: absolute;
+	top: 13%;
+	left: 35%;
+	width: 60%;
+    font-family: serif;
+    font-size: 2.0vh;
+    color: #ffffff;
+	text-align: left;
+}
+/* アイテムの名前 */
+.purchase_itemInfo{
+    position: absolute;
+	top: 18%;
+	left: 35%;
+	width: 60%;
+    font-family: serif;
+    font-size: 2.0vh;
+    color: #ffffff;
+	text-align: left;
+}
 
 /* アイテムの購入数 */
 .purchase_totalNumber{
