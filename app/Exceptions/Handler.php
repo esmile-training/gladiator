@@ -42,9 +42,31 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
+//	public function render($request, Exception $e)
+//	{
+//		if ( app()->isLocal() || app()->runningUnitTests() ) {
+//			return parent::render($request, $e);
+//		}
+//		else {
+//			if ($this->isHttpException($e)) {
+//				return $this->renderHttpException($e);
+//			} else {
+//				return response()->view("errors.500");
+//			}
+//		}
+//	}
+	
+	public function render($request, Exception $e)
     {
-        return parent::render($request, $exception);
+        if (app()->isLocal() || app()->runningUnitTests()) {
+            return parent::render($request, $e);
+        }
+
+        if ($this->isHttpException($e)) {
+            return $this->renderHttpException($e);
+        } else {
+            return $this->renderHttpException(new HttpException(500, $e->getMessage(), $e));
+        }
     }
 
     /**
