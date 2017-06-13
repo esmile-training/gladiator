@@ -3,6 +3,14 @@
     width:100%;
 }
 
+.coachSelect_back{
+    position: fixed;
+    background: no-repeat center;
+    background-size: 100% auto;
+    width: 100%;
+    margin-top: -30%;
+}
+
 .coachSelect_signboard{
     position : fixed;
     width    : 35%;
@@ -11,9 +19,23 @@
     z-index: 4;
 }
 
+.coachSelect_signboard_info{
+    position	: fixed;
+    top		: 13%;
+    left	: 24%;
+    width	: 77%;
+    z-index: 3;
+}
+
+.coachSelect_signboard_text{
+    position: absolute;
+    top: 15%;
+    left:20%;
+}
+
 .coachSelect_all{
     position :absolute;
-    top : 10%;
+    top : 20%;
     left : 0%;
     width: 100%
 }
@@ -141,4 +163,20 @@
 
 .fee_shortage_text{
     color:#FF0000;
+}
+
+.coachSelect_font_serif{
+    font-family: serif;
+    font-size	: 2.0vh;
+    color: #ffffff;
+}
+
+.training_a_none{
+    pointer-events: none;
+}
+
+.scale_img{
+    position: absolute;
+    opacity: 0.7;
+    z-index:2;
 }
