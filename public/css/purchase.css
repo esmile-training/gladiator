@@ -50,7 +50,7 @@ body{}
     color: #ffffff;
 	text-align: left;
 }
-/* アイテムの名前 */
+/* アイテムの説明 */
 .purchase_itemInfo{
     position: absolute;
 	top: 18%;
@@ -61,18 +61,16 @@ body{}
     color: #ffffff;
 	text-align: left;
 }
-
 /* アイテムの購入数 */
 .purchase_totalNumber{
     position: absolute;
 	bottom: 35%;
-	right: 20%;
-	width: 60%;
+	width: 100%;
+	height: 20%;
     font-family: serif;
     font-size: 3.0vh;
 	color: #000000;	
 }
-
 /* アイテムの合計金額 */
 .purchase_totalPrice{
     position: absolute;
@@ -88,8 +86,8 @@ body{}
 .purchase_button_purchase{
     position: absolute;
     bottom: 5%;
-	left: 35%;
-    width: 30%;
+	left: 30%;
+    width: 40%;
 }
 .purchase_button_purchase_linkregion{
 	width: 100%;
