@@ -7,7 +7,7 @@ return  [
         ],
         2 => [
             'sex' => 0,
-			'skill' => 4
+			'skill' => 3
         ],
         3 => [
             'sex' => 1,
@@ -47,13 +47,13 @@ return  [
 		]
     ],
 	'skill' => [
-		1 => ['damage' => 50,
+		1 => ['damage' => 1.5,
 				'turn'	=> 5,
-				'effect' => '敵に50のダメージを与える'
+				'effect' => '敵に150%のダメージを与える'
 			],
-		2 => ['recovery' => 50,
+		2 => ['recovery' => 0.3,
 				'turn'	=> 5,
-				'effect' => '自分のHP50回復'
+				'effect' => '自分のHP30%回復'
 			],
 		3 => ['gooUpAtk' => 1.5,
 				'turn'	=> 5,
@@ -66,6 +66,11 @@ return  [
 		5 => ['paaUpAtk' => 2,
 				'turn'	=> 2,
 				'effect' => 'パーの攻撃力2倍'
+			],
+		6 => [
+				'ratio' => 2,
+				'turn'	=> 2,
+				'effect' => '次の攻撃が二回攻撃'
 			],
 	],
 	'allname' => [

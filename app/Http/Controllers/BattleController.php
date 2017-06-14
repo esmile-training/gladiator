@@ -328,6 +328,9 @@ class battleController extends BaseGameController
 		// 'win' / 'lose' / 'draw' のどれかが入る
 		$this->CharaData['result'] = BattleLib::AtackResult($this->CharaData['hand'], $this->EnemyData['hand']);
 		
+		//コンフィグからキャラ情報持ってくる
+		$charaSkill = \Config::get('chara.imgId');
+		$skill = \Config::get('chara.skill');
 		// ダメージ処理
 		// CharaData の 'result' によって処理を行う
 		switch ($this->CharaData['result'])
@@ -337,6 +340,13 @@ class battleController extends BaseGameController
 				// 自キャラデータを元にダメージ量を計算
 				$this->CharaData = BattleLib::damageCalc($this->CharaData);
 				// 変動したダメージ量を元にダメージ処理後の敵キャラHPを計算
+				if(isset($this->CharaData['skill'])){
+					
+					if($this->CharaData['skill'] == 6)
+					{
+						$this->CharaData['damage'] = BattleLib::charaDoubleAttack($this->CharaData['damage'],$skill[$charaSkill[$this->CharaData['imgId']]['skill']]['ratio']);
+					}
+				}
 				$this->EnemyData['battleHp'] = BattleLib::hpCalc($this->CharaData, $this->EnemyData);
 				break;
 
@@ -361,9 +371,7 @@ class battleController extends BaseGameController
 
 			// 4(スキル) の場合
 			case 4:
-				$charaSkill = \Config::get('chara.imgId');
-				$skill = \Config::get('chara.skill');
-				
+
 				if($this->CharaData['drawCount'] == 0)
 				{
 					switch ($charaSkill[$this->CharaData['imgId']]['skill'])
@@ -371,14 +379,13 @@ class battleController extends BaseGameController
 						case 1:
 							//敵にダメージ
 							$this->CharaData = BattleLib::damageCalc($this->CharaData);
-							$this->EnemyData['battleHp'] = BattleLib::hpCalc($this->CharaData, $this->EnemyData);
+							$this->EnemyData['battleHp'] = BattleLib::enemyGooDamage($this->EnemyData['battleHp'],$this->CharaData);
 						break;
 					
 						case 2:
 							//自分の回復
 							$this->CharaData = BattleLib::damageCalc($this->CharaData);
-
-							$this->CharaData['battleHp'] = BattleLib::hpCalc($this->CharaData, $this->CharaData);	
+							$this->CharaData['battleHp'] = BattleLib::charaHeal($this->CharaData['battleHp'],$this->CharaData);	
 							if($this->CharaData['battleHp'] > $this->CharaData['hp'])
 							{
 								$this->CharaData['battleHp'] = $this->CharaData['hp'];
@@ -398,6 +405,11 @@ class battleController extends BaseGameController
 							//パーの攻撃力アップ
 							$this->CharaData = BattleLib::damageCalc($this->CharaData);
 							$this->CharaData['battlePaaAtk'] = BattleLib::atkUp($this->CharaData['battlePaaAtk'], $this->CharaData['skill']);
+						break;
+						case 6:
+							//二回攻撃の場合
+							$this->CharaData = BattleLib::damageCalc($this->CharaData);
+							
 						break;
 					}
 				}
