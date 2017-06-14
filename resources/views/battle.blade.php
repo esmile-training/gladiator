@@ -288,9 +288,7 @@
 							<font class = "battle_gooAtkUpFont">
 							{{ $viewData['charaData']['battleGooAtk']}}
 							</font>
-							<tb>
-								<img src="{{IMG_URL}}battle/gooUpYajirushi.png" class="battle_gooAtkUpArrow">
-							</tb>
+							<img src="{{IMG_URL}}battle/gooUpYajirushi.png" class="battle_gooAtkUpArrow">
 							@else
 							{{ $viewData['charaData']['gooAtk']}}
 							@endif
