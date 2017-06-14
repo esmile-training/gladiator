@@ -287,7 +287,7 @@
 							{{ $viewData['charaData']['battleGooAtk']}}
 							</font>
 							<tb>
-								<img src="{{IMG_URL}}battle/upYajirushi.png" class="battle_gooAtkUpArrow">
+								<img src="{{IMG_URL}}battle/gooUpYajirushi.png" class="battle_gooAtkUpArrow">
 							</tb>
 							@else
 							{{ $viewData['charaData']['gooAtk']}}
@@ -302,7 +302,7 @@
 							{{ $viewData['charaData']['battleChoAtk']}}
 							</font>
 							<tb>
-								<img src="{{IMG_URL}}battle/upYajirushi.png" class="battle_choAtkUpArrow">
+								<img src="{{IMG_URL}}battle/choUpYajirushi.png" class="battle_choAtkUpArrow">
 							</tb>
 							@else	
 							{{ $viewData['charaData']['choAtk']}}
@@ -317,7 +317,7 @@
 							{{ $viewData['charaData']['battlePaaAtk']}}
 							</font>
 							<tb>
-								<img src="{{IMG_URL}}battle/upYajirushi.png" class="battle_paaAtkUpArrow">
+								<img src="{{IMG_URL}}battle/paaUpYajirushi.png" class="battle_paaAtkUpArrow">
 							</tb>
 							@else
 							{{ $viewData['charaData']['paaAtk']}}
