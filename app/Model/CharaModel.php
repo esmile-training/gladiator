@@ -62,7 +62,7 @@ EOD;
 	{
 $sql = <<< EOD
 		UPDATE  uChara
-		SET		acceptFlag = 0
+		SET		acceptFlag = 1
 		WHERE   id = {$uCharaId};
 EOD;
 		$this->update($sql);
