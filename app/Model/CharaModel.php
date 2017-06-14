@@ -22,6 +22,7 @@ class CharaModel extends \App\Model\BaseGameModel
 			WHERE userID = {$userId}
 			AND delFlag = 0
 			AND trainingState = 0
+			AND acceptFlag = 1
 EOD;
 		return $this->select($sql);
 	}
@@ -55,6 +56,19 @@ EOD;
 	}
 
 	/*
+	 * キャラクターのAcceptFlagを立てる
+	 */
+	public function charaAcceptFlag($uCharaId)
+	{
+$sql = <<< EOD
+		UPDATE  uChara
+		SET		acceptFlag = 0
+		WHERE   id = {$uCharaId};
+EOD;
+		$this->update($sql);
+	}
+
+	/*
 	 * 所持キャラクター一覧表示用sql(追加者:吉田)
 	 */
 	public function getAllUserChara($userId)
@@ -65,6 +79,7 @@ $sql = <<< EOD
 				FROM uChara
 				WHERE userID = {$userId}
 				AND delFlag = 0
+				AND acceptFlag = 1
 EOD;
 			return $this->select($sql);
 		}

@@ -20,9 +20,9 @@ EOD;
      */
 	public function createChara($charaData)
 	{
-	
+
 	$sql = <<< EOD
-	INSERT INTO  uChara 
+	INSERT INTO  uChara
 	VALUES (
 		NULL,
 		'0',
@@ -36,7 +36,7 @@ EOD;
 		'{$charaData['choki']}',
 		'{$charaData['paa']}',
 		'0',
-		'0',  
+		'0',
 		'0',
 		'1',
 		'0',
@@ -46,16 +46,49 @@ EOD;
 EOD;
 	$this->insert($sql);
 	}
+
+	/*
+		未取得キャラの作成
+	*/
+	public function createUnacquiredChara($charaData)
+	{
+
+	$sql = <<< EOD
+	INSERT INTO  uChara
+	VALUES (
+		NULL,
+		'0',
+		'{$charaData['userId']}',
+		'{$charaData['uCharaId']}',
+		'{$charaData['uCharaFirstName']}・{$charaData['uCharaLastName']}',
+		'{$charaData['ratio']}',
+		'{$charaData['narrow']}',
+		'{$charaData['hp']}',
+		'{$charaData['gu']}',
+		'{$charaData['choki']}',
+		'{$charaData['paa']}',
+		'0',
+		'0',
+		'0',
+		'0',
+		'0',
+		NULL,
+		NULL
+	);
+EOD;
+	$this->insert($sql);
+	}
+
 	/*
     * ガチャの記録
     */
 	public function createLog($charaData)
 	{
-	
+
 	$time = date('Y-m-d H:i:s', time());
 	$result = $this->getCharaId();
 $sql = <<< EOD
-	INSERT INTO uGachaLog 
+	INSERT INTO uGachaLog
 	VALUES (
 		'{$charaData['GachaVal']}',
 		'{$charaData['userId']}',
@@ -79,7 +112,7 @@ EOD;
 	$result = $this->select($sql,'first');
  	return $result;
 	}
-	
+
 	public function createEventGachaRecord($userId){
 	$time = date('Y-m-d H:i:s', time());
 $sql = <<< EOD
@@ -98,7 +131,7 @@ $sql = <<< EOD
 EOD;
 	$hoge = $this->insert($sql);
 	}
-	
+
 	public function getEventGachaRecord($userId)
 	{
 $sql = <<< EOD
@@ -109,7 +142,7 @@ EOD;
 	$result = $this->select($sql,'first');
 	return $result;
 	}
-	
+
 	public function updateEventGachaRecord($userId, $rare){
 $sql = <<< EOD
 	UPDATE uEventGachaLog SET count = +1

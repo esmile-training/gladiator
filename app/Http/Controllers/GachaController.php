@@ -126,16 +126,29 @@ class GachaController extends BaseGameController
 		// 所持キャラが最大かどうかのフラグ
 		$maxPossessionFlag = $this->Lib->exec('ManageCharaPossession','checkUpperLimit',array($this->user));
 
-		$this->Model->exec('Gacha', 'createChara', array($charaData));
+		// 所持キャラ枠に空きがあるか
+		if($maxPossessionFlag != true)
+		{
+			// 所持キャラ枠に空きがあれば通常のcreateCharaを実行する
+			$this->Model->exec('Gacha', 'createChara', array($charaData));
+			// 所持キャラ数の加算を行う
+			$this->Lib->exec('ManageCharaPossession','addPossessionChara',array($this->user));
+		}
+		else
+		{
+			// 空きが無ければ未取得状態のキャラを生成する
+			$this->Model->exec('Gacha', 'createUnacquiredChara', array($charaData));
+			// 取得済みフラグを0にする
+			$this->Model->exec('Chara','charaAcceptFlag',$this->user['id']);
+		}
 
+		// ログの作成を実行する
 		$this->Model->exec('Gacha', 'createLog', array($charaData));
-		// 所持キャラ数の加算を行う
-		$this->Lib->exec('ManageCharaPossession','addPossessionChara',array($this->user));
 
 		return $this->Lib->redirect('gacha','roadScreen', $param);
 
 	}
-	
+
 	public function boxGachaData()
 	{
 		$gachaData = $this->Model->exec('Gacha','getEventGachaRecord',$this->user['id']);
@@ -146,6 +159,6 @@ class GachaController extends BaseGameController
 		var_dump($gachaData);
 		var_dump($num);exit;
 		//ここにdbのパラメータと今出てきたレア度の最大値を比較すればいい
-		
+
 	}
 }
