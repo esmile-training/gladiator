@@ -31,6 +31,7 @@
 		@include('popup/wrap', [
 			'class'		=> 'button',
 			'template'	=> 'battleSkill',
+			'data'		=> ['charaData' => $viewData['charaData']]
 		])
 		
 		{{-- 背景画像 --}}
@@ -233,7 +234,7 @@
 			{{-- 自キャラのステータス枠 --}}
 			<img src="{{IMG_URL}}battle/player_Status_Bar.png" class="battle_player_status_bar">
 			{{-- 自キャラのアイコン --}}
-			@if($viewData['drawCount'] == 0)
+			@if($viewData['charaData']['drawCount'] == 0)
 			<a class="battle_playerhand_button_chara_linkregion clickfalse">
 				<img class="modal_btn button battle_player_status_icon_on" src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" >
 			</a>
@@ -241,7 +242,7 @@
 				{{-- スキルターン表示枠 --}}
 				<img src="{{IMG_URL}}battle/rarity_bg.png" class="battle_player_skill_frame">
 				{{-- スキルターン --}}
-				<?php $count = $viewData['drawCount']; ?>
+				<?php $count = $viewData['charaData']['drawCount']; ?>
 				<font class = "battle_player_skill_turn">{{$count}}</font>
 				<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" class="battle_player_status_icon_off">
 			@endif
