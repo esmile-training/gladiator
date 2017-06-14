@@ -80,6 +80,7 @@ EOD;
  	return $result;
 	}
 	
+	//イベントガチャ用のレコード作成
 	public function createEventGachaRecord($userId){
 	$time = date('Y-m-d H:i:s', time());
 $sql = <<< EOD
@@ -99,6 +100,7 @@ EOD;
 	$hoge = $this->insert($sql);
 	}
 	
+	//現在までに引いたガチャの状態を取得
 	public function getEventGachaRecord($userId)
 	{
 $sql = <<< EOD
@@ -110,6 +112,7 @@ EOD;
 	return $result;
 	}
 	
+	//	引いたレア度を記録
 	public function updateEventGachaRecord($userId, $rare){
 $sql = <<< EOD
 	UPDATE uEventGachaLog SET count = count + 1, {$rare} = {$rare} + 1
