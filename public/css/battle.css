@@ -196,9 +196,9 @@ body{}
 /* スキル枠 */
 .battle_player_skill_frame{
 	position: absolute;
-    top: 50%;
-    right: 1%;
-    width: 11%;
+    top: 30%;
+    right: 0%;
+    width: 21%;
     z-index: 1;
 }
 /* スキルターンフォント */

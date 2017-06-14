@@ -240,7 +240,7 @@
 			</a>
 			@else
 				{{-- スキルターン表示枠 --}}
-				<img src="{{IMG_URL}}battle/rarity_bg.png" class="battle_player_skill_frame">
+				<img src="{{IMG_URL}}battle/gage.png" class="battle_player_skill_frame">
 				{{-- スキルターン --}}
 				<?php $count = $viewData['charaData']['drawCount']; ?>
 				<font class = "battle_player_skill_turn">{{$count}}</font>
