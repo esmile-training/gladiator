@@ -53,6 +53,7 @@ class GachaController extends BaseGameController
 
 	public function viewDataSet()
 	{
+		
 		//ガチャのレア度ごとの割合
 		$gachaConfig = \Config::get('gacha.eRate');
 		
@@ -73,6 +74,12 @@ class GachaController extends BaseGameController
 
 		//
 		$ratio = $this->viewData['ratio']['hit'];
+		
+		//ボックスガチャの場合レア度を上書きする
+		if($gachaVal == 14)
+		{
+			$ratio = $this->Lib->exec('RandamChara', 'boxGachaData', array($gachaConfig[$gachaVal]));
+		}
 		
 		//キャラの画像ID取得
 		if($gachaVal == 7)
@@ -128,19 +135,6 @@ class GachaController extends BaseGameController
 		$this->Model->exec('Gacha', 'createLog', array($charaData));
 	
 		return $this->Lib->redirect('gacha','roadScreen', $param);
-		
-	}
-	
-	public function boxGachaData()
-	{
-		$gachaData = $this->Model->exec('Gacha','getEventGachaRecord',$this->user['id']);
-		if(is_null($gachaData)){
-			$this->Model->exec('Gacha','createEventGachaRecord',$this->user['id']);
-		}
-		$num = rand(1, 300 - $gachaData['count']);
-		var_dump($gachaData);
-		var_dump($num);exit;
-		//ここにdbのパラメータと今出てきたレア度の最大値を比較すればいい
 		
 	}
 }

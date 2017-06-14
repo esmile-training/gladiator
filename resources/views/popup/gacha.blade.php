@@ -14,11 +14,7 @@
 		{{$cost}}
 		<img  class = "gold1" src = "{{IMG_URL}}user/gold.png">
 		</br>
-	@if($data['gachaId'] == 14)
-		<a class="clickfalse" href="{{APP_URL}}gacha/boxGachaData">
-			<img class="gacha_popup image_change" src = "{{IMG_URL}}popup/scout.png">
-		</a>	
-	@elseif($data['money'] < $gachaCost[$data['gachaId']]['money'])
+	@if($data['money'] < $gachaCost[$data['gachaId']]['money'])
 		<div style="color:#F00">
 			残高が足りません
 		</div>

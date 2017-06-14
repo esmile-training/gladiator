@@ -102,7 +102,7 @@ EOD;
 	public function getEventGachaRecord($userId)
 	{
 $sql = <<< EOD
-	SELECT count, LR, SSR, SR, R, N
+	SELECT count, N, R, SR, SSR, LR
 	FROM uEventGachaLog
 	WHERE userId = '$userId'
 EOD;
@@ -112,7 +112,9 @@ EOD;
 	
 	public function updateEventGachaRecord($userId, $rare){
 $sql = <<< EOD
-	UPDATE uEventGachaLog SET count = +1
+	UPDATE uEventGachaLog SET count = count + 1, {$rare} = {$rare} + 1
+	WHERE userId = {$userId};
 EOD;
+	$this->update($sql);
 	}
 }
