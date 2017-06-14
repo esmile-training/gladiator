@@ -233,17 +233,18 @@
 		<div class="battle_player_status">
 			{{-- 自キャラのステータス枠 --}}
 			<img src="{{IMG_URL}}battle/player_Status_Bar.png" class="battle_player_status_bar">
+			{{-- スキルターン --}}
+			<?php $count = (int)$viewData['charaData']['drawCount']; ?>
 			{{-- 自キャラのアイコン --}}
 			@if($viewData['charaData']['drawCount'] == 0)
 			<a class="battle_playerhand_button_chara_linkregion clickfalse">
 				<img class="modal_btn button battle_player_status_icon_on" src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" >
 			</a>
-			@else
+			{{-- スキルターン表示枠 --}}
+				<img src="{{IMG_URL}}battle/gage0.png" class="battle_player_skill_frame">
+			@else	
 				{{-- スキルターン表示枠 --}}
-				<img src="{{IMG_URL}}battle/gage.png" class="battle_player_skill_frame">
-				{{-- スキルターン --}}
-				<?php $count = $viewData['charaData']['drawCount']; ?>
-				<font class = "battle_player_skill_turn">{{$count}}</font>
+				<img src="{{IMG_URL}}battle/gage{{$count}}.png" class="battle_player_skill_frame">
 				<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" class="battle_player_status_icon_off">
 			@endif
 			{{-- 自キャラのHP部分の領域 --}}
