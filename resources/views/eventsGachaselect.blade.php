@@ -71,24 +71,12 @@
 			])
 			{{-- 次回イベント追加 --}}
 			<div class = "gacha_button3">
-				<input type="image" 
-						class="modal_btn gacha14" 
+				<image  
 						src="{{IMG_URL}}gacha/banner13.png" 
 						name = 'gachavalue' 
-						value = "14" 
 						width= 100% 
 						height= 100%>
 			</div>
-						<?php 
-				$data['gachaId'] = 14;
-				$data['money'] = $viewData['user']['money'];
-			?>
-			{{-- popupウインドウ --}}
-			@include('popup/wrap', [
-				'class'		=> 'gacha14', 
-				'template'	=> 'gacha',
-				'data'		=> ['data' => $data]
-			])
 		</div>
 	</div>
 </div>
