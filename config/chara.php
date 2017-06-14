@@ -7,7 +7,7 @@ return  [
         ],
         2 => [
             'sex' => 0,
-			'skill' => 3
+			'skill' => 5
         ],
         3 => [
             'sex' => 1,

@@ -238,7 +238,7 @@
 			{{-- 自キャラのアイコン --}}
 			@if($viewData['charaData']['drawCount'] == 0)
 			<a class="battle_playerhand_button_chara_linkregion clickfalse">
-				<img class="modal_btn button battle_player_status_icon_on" src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" >
+				<img class="modal_btn button battle_player_status_icon_on" src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" >	
 			</a>
 			{{-- スキルターン表示枠 --}}
 				<img src="{{IMG_URL}}battle/gage0.png" class="battle_player_skill_frame">
