@@ -428,6 +428,7 @@ class battleController extends BaseGameController
 							//グーの攻撃力アップ
 							$this->CharaData = BattleLib::damageCalc($this->CharaData);
 							$this->CharaData['battleGooAtk'] = BattleLib::atkUp($this->CharaData['battleGooAtk'], $this->CharaData['skill']);
+							
 						break;
 						case 4:
 							//チョキの攻撃力アップ
@@ -457,13 +458,17 @@ class battleController extends BaseGameController
 				exit;
 
 		}
-		if($this->CharaData['skillFlag'] == 1 && $this->BattleData['battleSkillTurn'] <= $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
+			
+		if($this->CharaData['skillFlag'] == 1 && $this->BattleData['battleSkillTurn'] > $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
 		{
+					
+			
 			 $this->CharaData['battleGooAtk'] = $this->CharaData['gooAtk'];
 			 $this->CharaData['battleChoAtk'] = $this->CharaData['choAtk'];
 			 $this->CharaData['battlePaaAtk'] = $this->CharaData['paaAtk'];
 			 $this->CharaData['skillFlag'] = 0;
 		}
+		
 		
 		// バトルキャラデータの更新処理
 		// 自キャラデータの更新処理
