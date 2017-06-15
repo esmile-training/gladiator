@@ -491,10 +491,7 @@ class battleController extends BaseGameController
 
 		// getRankingData ファンクションを呼び出し、ランキングデータをセット
 		$this->getRankingData();
-		
-		var_dump($this->CharaData);
-		var_dump($this->EnemyData);
-		var_dump($this->BattleData);exit;
+	
 		// バトルデータがなかった場合、エラー画面を表示しホームへ戻す
 		// リザルト画面から戻るボタンで戻り、再度ページをリザルト画面を開かれたときの対策
 		if(is_null($this->BattleData))
