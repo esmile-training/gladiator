@@ -3,16 +3,18 @@ namespace App\Model;
 
 class PresentBoxModel extends BaseGameModel
 {
+	// プレゼントの取得
 	public function confirmation($userId)
 	{
 $sql =  <<< EOD
 		SELECT *
-		FROM uPresent 
+		FROM uPresent
 		WHERE userId = {$userId};
 EOD;
 		return $this->select($sql, 'all');
 	}
-	
+
+	// プレゼントのテーブルへデータを挿入する
 	public function insertPresentData($userId,$type,$objId,$imgId,$time,$cnt = 1)
 	{
 $sql =  <<< EOD
@@ -32,4 +34,3 @@ EOD;
 	return $this->insert($sql);
 	}
 }
-
