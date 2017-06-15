@@ -7,31 +7,31 @@ return  [
         ],
         2 => [
             'sex' => 0,
-			'skill' => 5
+			'skill' => 2
         ],
         3 => [
             'sex' => 1,
-			'skill' => 2
+			'skill' => 6
         ],
         4 => [
             'sex' => 1,
-			'skill' => 2
+			'skill' => 7
         ],
         5 => [
             'sex' => 1,
-			'skill' => 2
+			'skill' => 3
         ],
         6 => [
             'sex' => 0,
-			'skill' => 1
+			'skill' => 8
         ],
         7 => [
             'sex' => 1,
-			'skill' => 5
+			'skill' => 1
         ],
 		8 => [
             'sex' => 0,
-			'skill' => 1
+			'skill' => 2
         ],
 		9 => [
 			'sex' => 0,
@@ -39,7 +39,7 @@ return  [
 		],
 		10 => [
 			'sex' => 1,
-			'skill' => 3
+			'skill' => 9
 		],
 		11 => [
 			'sex' => 0,
@@ -77,6 +77,25 @@ return  [
 				'drawCount'	=> 3,
 				'effect' => '次の攻撃が二回攻撃'
 			],
+		7 => [	'turn' => false,
+				'drawCount'	=> 3,
+				'effect' => 'ダメージを返す'
+		],
+		8 => [	'turn' => 3,
+				'drawCount'	=> 3,
+				'effect' => 'ダメージを0'
+		],
+		9 => [	
+				'turn' => false,
+				'drawCount'	=> 3,
+				'effect' => '10%で即死'
+		],
+		10 => [
+			'turn' => false,
+			'drawCount'	=> 3,
+				'effect' => '50%の確立で試合強制終了'
+		]
+		
 	],
 	'allname' => [
 			'firstname' => [
