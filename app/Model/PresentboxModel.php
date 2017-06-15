@@ -15,7 +15,7 @@ EOD;
 	}
 
 	// プレゼントのテーブルへデータを挿入する
-	public function insertPresentData($userId,$type,$objId,$imgId,$time,$cnt = 1)
+	public function insertPresentData($userId,$type,$objId,$imgId,$cnt = 1)
 	{
 		$time = date('Y-m-d H:i:s', time());
 $sql =  <<< EOD
