@@ -445,7 +445,6 @@ class battleController extends BaseGameController
 			 $this->CharaData['battleChoAtk'] = $this->CharaData['choAtk'];
 			 $this->CharaData['battlePaaAtk'] = $this->CharaData['paaAtk'];
 		}
-		
 		// バトルキャラデータの更新処理
 		// 自キャラデータの更新処理
 		$this->Model->exec('BattleChara', 'UpdateBattleCharaData', array($this->CharaData));

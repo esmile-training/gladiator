@@ -76,7 +76,6 @@ EOD;
 		// インサートしたレコードのIDを返す
 		return $id;
 	}
-
 	/*
 	 * DBの更新をする
 	 */
@@ -85,18 +84,17 @@ EOD;
 
 $sql = <<< EOD
 	UPDATE  uBattleChara
-	SET		battleHp		= {$battleChara['battleHp']},
-			battleGooAtk = {$battleChara['battleGooAtk']},
-			battleChoAtk = {$battleChara['battleChoAtk']},
-			battlePaaAtk = {$battleChara['battlePaaAtk']},
-			damage  = {$battleChara['damage']},
+	SET		battleHp		= '{$battleChara['battleHp']}',
+			battleGooAtk = '{$battleChara['battleGooAtk']}',
+			battleChoAtk = '{$battleChara['battleChoAtk']}',
+			battlePaaAtk = '{$battleChara['battlePaaAtk']}',
+			damage  = '{$battleChara['damage']}',
 			hand	= '{$battleChara['hand']}',
 			result	= '{$battleChara['result']}',
 			drawCount = '{$battleChara['drawCount']}',
-			skillFlag = '{$battleChara['skillFlag']}',
-	WHERE   id		= {$battleChara['uBattleCharaId']};
+			skillFlag = '{$battleChara['skillFlag']}'
+	WHERE	id		=  '{$battleChara['uBattleCharaId']}'
 EOD;
-		var_dump($sql);exit;
 		$this->update($sql);
 	}
 }
