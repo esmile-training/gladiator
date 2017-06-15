@@ -41,9 +41,32 @@
 {{--キャラクターの所持数を表示する--}}
 <div class="chara_inventory">
 	<img src="{{IMG_URL}}/battle/inventory_bord.png">
-	<font class="inventory_text font_color font_serif">所属人数</font>
 	<font class="inventory_value font_color font_sentury">{{$viewData['charaInventory']['possession']}}/{{$viewData['charaInventory']['upperLimit']}}</font>
 
+	{{--ソート--}}
+	<div class="sort_Box">
+		<form action="{{APP_URL}}training/index" method="get">
+			<ul>
+				<li>
+					<input type="radio" name="order" value="DESC" <?php $order == 'DESC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange(),getType()">
+					<label>昇順</label>
+				</li>
+				<li>
+					<input type="radio" name="order" value="ASC" <?php $order == 'ASC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange(),getType()">
+					<label>降順</label>
+				</li>
+			</ul>
+			<select name="type" onchange="submit(this.form),onSortChange(),getType()">
+				<option value="id"<?php $type == 'id' ? print 'selected' : ''; ?>>入手</option>
+				<option value="hp"<?php $type == 'hp' ? print 'selected' : ''; ?>>体力</option>
+				<option value="name"<?php $type == 'name' ? print 'selected' : ''; ?>>名前</option>
+				<option value="rare"<?php $type == 'rare' ? print 'selected' : ''; ?>>レア度</option>
+				<option value="gooAtk"<?php $type == 'gooAtk' ? print 'selected' : ''; ?>>グー 攻撃力</option>
+				<option value="choAtk"<?php $type == 'choAtk' ? print 'selected' : ''; ?>>チョキ 攻撃力</option>
+				<option value="paaAtk"<?php $type == 'paaAtk' ? print 'selected' : ''; ?>>パー 攻撃力</option>
+			</select>
+		</form>
+	</div>
 </div>
 <div class="signboard">
 	<img src="{{IMG_URL}}/training/signboard.png">
@@ -93,28 +116,5 @@
 		<div>
 			<p>「<?php $order == 'DESC' ? print '降順' : print '昇順'; ?>」<br>「<?php echo 'ソート条件' ?>」<br>の条件で並べかえています。</p>
 		</div>
-	</div>
-	<div class="sort_Box">
-		<form action="{{APP_URL}}training/index" method="get">
-			<ul>
-				<li>
-					<input type="radio" name="order" value="DESC" <?php $order == 'DESC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange(),getType()">
-					<label>昇順</label>
-				</li>
-				<li>
-					<input type="radio" name="order" value="ASC" <?php $order == 'ASC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange(),getType()">
-					<label>降順</label>
-				</li>
-			</ul>
-			<select name="type" onchange="submit(this.form),onSortChange(),getType()">
-				<option value="id"<?php $type == 'id' ? print 'selected' : ''; ?>>入手</option>
-				<option value="hp"<?php $type == 'hp' ? print 'selected' : ''; ?>>体力</option>
-				<option value="name"<?php $type == 'name' ? print 'selected' : ''; ?>>名前</option>
-				<option value="rare"<?php $type == 'rare' ? print 'selected' : ''; ?>>レア度</option>
-				<option value="gooAtk"<?php $type == 'gooAtk' ? print 'selected' : ''; ?>>グー 攻撃力</option>
-				<option value="choAtk"<?php $type == 'choAtk' ? print 'selected' : ''; ?>>チョキ 攻撃力</option>
-				<option value="paaAtk"<?php $type == 'paaAtk' ? print 'selected' : ''; ?>>パー 攻撃力</option>
-			</select>
-		</form>
 	</div>
 </div>
