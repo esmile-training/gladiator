@@ -20,6 +20,8 @@ $(function(){
 	
 	// 所持金を money に格納
 	var money = <?php echo $purchaseData['money']; ?>;
+	
+	var totalPrice = price * number;
 
 	// countUp ボタンが押された時
 	$('img.countUp{{$purchaseData['productData']['id']}}').click(function(){
