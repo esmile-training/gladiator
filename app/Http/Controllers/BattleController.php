@@ -340,7 +340,7 @@ class battleController extends BaseGameController
 		// CharaData の 'result' によって処理を行う
 		switch ($this->CharaData['result'])
 		{
-					// 1(勝ち) の場合
+			// 1(勝ち) の場合
 			case 1:
 				// 自キャラデータを元にダメージ量を計算
 				$this->CharaData = BattleLib::damageCalc($this->CharaData);
