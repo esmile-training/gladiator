@@ -17,6 +17,7 @@ class GachaController extends BaseGameController
 		$createTime = $time[0]['createTime'];
 		$this->viewData['createTime'] = $createTime;
 		$this->viewData['nowTime'];
+		$this->viewData['deck'] = $this->Model->exec('Gacha','getEventGachaRecord', $this->user['id']);
 
 		return viewWrap('eventsGachaselect', $this->viewData);
 	}
@@ -78,7 +79,7 @@ class GachaController extends BaseGameController
 		//ボックスガチャの場合レア度を上書きする
 		if($gachaVal == 14)
 		{
-			$ratio = $this->Lib->exec('RandamChara', 'boxGachaData', array($gachaConfig[$gachaVal]));
+			$ratio = $this->Lib->exec('RandamChara', 'boxGachaData', [$this->user['id'],$gachaConfig[$gachaVal]]);
 		}
 
 		//キャラの画像ID取得
