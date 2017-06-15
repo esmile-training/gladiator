@@ -82,6 +82,7 @@ EOD;
 	 */
 	public function UpdateBattleCharaData($battleChara)
 	{
+
 $sql = <<< EOD
 	UPDATE  uBattleChara
 	SET		battleHp		= {$battleChara['battleHp']},
@@ -95,6 +96,7 @@ $sql = <<< EOD
 			skillFlag = '{$battleChara['skillFlag']}',
 	WHERE   id		= {$battleChara['uBattleCharaId']};
 EOD;
+		var_dump($sql);exit;
 		$this->update($sql);
 	}
 }
