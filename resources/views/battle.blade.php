@@ -31,6 +31,7 @@
 		@include('popup/wrap', [
 			'class'		=> 'button',
 			'template'	=> 'battleSkill',
+			'data'		=> ['charaData' => $viewData['charaData']]
 		])
 		
 		{{-- 背景画像 --}}
@@ -232,17 +233,19 @@
 		<div class="battle_player_status">
 			{{-- 自キャラのステータス枠 --}}
 			<img src="{{IMG_URL}}battle/player_Status_Bar.png" class="battle_player_status_bar">
+			{{-- スキルターン --}}
+			<?php $count = (int)$viewData['charaData']['drawCount']; ?>
 			{{-- 自キャラのアイコン --}}
-			@if($viewData['drawCount'] == 0)
+			@if($viewData['charaData']['drawCount'] == 0)
 			<a class="battle_playerhand_button_chara_linkregion clickfalse">
-				<img class="modal_btn button battle_player_status_icon_on" src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" >
+				<img class="modal_btn button battle_player_status_icon_on" src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" >	
+				<img class="modal_btn button battle_player_icon_tap" src="{{IMG_URL}}battle/Tap.png" >	
 			</a>
-			@else
+			{{-- スキルターン表示枠 --}}
+				<img src="{{IMG_URL}}battle/gage0.png" class="battle_player_skill_frame">
+			@else	
 				{{-- スキルターン表示枠 --}}
-				<img src="{{IMG_URL}}battle/rarity_bg.png" class="battle_player_skill_frame">
-				{{-- スキルターン --}}
-				<?php $count = $viewData['drawCount']; ?>
-				<font class = "battle_player_skill_turn">{{$count}}</font>
+				<img src="{{IMG_URL}}battle/gage{{$count}}.png" class="battle_player_skill_frame">
 				<img src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" class="battle_player_status_icon_off">
 			@endif
 			{{-- 自キャラのHP部分の領域 --}}
@@ -285,9 +288,7 @@
 							<font class = "battle_gooAtkUpFont">
 							{{ $viewData['charaData']['battleGooAtk']}}
 							</font>
-							<tb>
-								<img src="{{IMG_URL}}battle/upYajirushi.png" class="battle_gooAtkUpArrow">
-							</tb>
+							<img src="{{IMG_URL}}battle/gooUpYajirushi.png" class="battle_gooAtkUpArrow">
 							@else
 							{{ $viewData['charaData']['gooAtk']}}
 							@endif
@@ -301,7 +302,7 @@
 							{{ $viewData['charaData']['battleChoAtk']}}
 							</font>
 							<tb>
-								<img src="{{IMG_URL}}battle/upYajirushi.png" class="battle_choAtkUpArrow">
+								<img src="{{IMG_URL}}battle/choUpYajirushi.png" class="battle_choAtkUpArrow">
 							</tb>
 							@else	
 							{{ $viewData['charaData']['choAtk']}}
@@ -316,7 +317,7 @@
 							{{ $viewData['charaData']['battlePaaAtk']}}
 							</font>
 							<tb>
-								<img src="{{IMG_URL}}battle/upYajirushi.png" class="battle_paaAtkUpArrow">
+								<img src="{{IMG_URL}}battle/paaUpYajirushi.png" class="battle_paaAtkUpArrow">
 							</tb>
 							@else
 							{{ $viewData['charaData']['paaAtk']}}

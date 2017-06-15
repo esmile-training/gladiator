@@ -216,4 +216,66 @@ class RandamCharaLib extends BaseGameLib
 		
 		return $characonf;
 	}
+	
+	//ボックスガチャ用処理
+	public function boxGachaData(array $gachaConfig )
+	{
+		//ボックスガチャ用デッキ取得
+		$config = $gachaConfig['deck'];
+		
+		//DBから現在のボックスガチャの情報を検索
+		$gachaData = $this->Model->exec('Gacha','getEventGachaRecord',$this->user['id']);
+		
+		//DBになければ作成
+		if(is_null($gachaData))
+		{
+			$this->Model->exec('Gacha','createEventGachaRecord',$this->user['id']);
+		} else {
+			//各レア度の残り枚数の設定
+			$cnt = 0;
+			foreach ($gachaData as $data)
+			{
+				$test = $config[$cnt];
+				$config[$cnt] = $test - (int)$data;
+				++$cnt;
+			}
+		}
+		
+		//1から現在の最大枚数のデッキから1枚引く
+		$num = rand(1, $config[0]);
+		
+		//引いた数が0以下になるまで残り枚数を引く
+		for($i = 1; $num > 0; $i++)
+		{
+			 $num = $num - $config[$i];
+		}
+		
+		//配列の添え字がそのままレア度になる
+		$ratio = $i - 1;
+		
+		switch ($ratio){
+			case 1:
+				$rare = 'N';
+				break;
+			
+			case 2:
+				$rare = 'R';
+				break;
+			
+			case 3:
+				$rare = 'SR';
+				break;
+			
+			case 4:
+				$rare = 'SSR';
+				break;
+			
+			case 5:
+				$rare = 'LR';
+				break;
+		}
+		
+		$this->Model->exec('gacha','updateEventGachaRecord',[$this->user['id'], $rare]);
+		return $ratio;
+	}
 }

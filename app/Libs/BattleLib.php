@@ -138,6 +138,11 @@ class BattleLib extends BaseGameLib
 						//攻撃力アップの場合
 						$winner['skill'] = $skill[$charaSkill[$winner['imgId']]['skill']]['paaUpAtk'];
 					break;
+					case 6:
+						//二回攻撃の場合
+						$winner['skill'] = $skill[$charaSkill[$winner['imgId']]['skill']]['ratio'];
+						
+					break;
 				}
 			break;
 			default;
@@ -269,13 +274,6 @@ class BattleLib extends BaseGameLib
 		}
 		return $result;
 	}
-	public static function atkUP($atk,$magnification){
-		
-		$statusUp = $atk * $magnification;
-		
-		return $statusUp;
-	}
-	
 	/* フィーバータイム中か調べる */
 	public static function checkFeverTime()
 	{
@@ -295,4 +293,53 @@ class BattleLib extends BaseGameLib
 		}
 		return $result;
 	}
+	/* 攻撃力アップ */
+	public static function atkUP($atk,$magnification){
+		
+		$statusUp = $atk * $magnification;
+		
+		return $statusUp;
+	}
+	/* 敵にグーダメージ */
+	public static function enemyGooDamage($enemyLife,$charaData){
+
+		$life = $enemyLife - $charaData['battleGooAtk'] * $charaData['skill'];
+		
+		return $life; 
+	}
+	/* 敵にチョキダメージ */
+	public static function enemyChoDamage($enemyLife,$charaData){
+		
+		$life = $enemyLife - $charaData['battleChoAtk'] * $charaData['skill'];
+		
+		return $life; 
+	}
+	/* 敵にパーダメージ */
+	public static function enemyPaaDamage($enemyLife,$charaData){
+
+		$life = $enemyLife - $charaData['battlePaaAtk'] * $charaData['skill'];
+		
+		return $life; 
+	}
+	/* ＨＰ回復 */
+	public static function charaHeal($charaLife,$charaData){
+
+		$life = $charaLife + $charaData['hp'] * $charaData['skill'];
+		
+		return $life; 
+	}
+	/* 二回攻撃 */
+	public static function charaDoubleAttack($damage,$charaData){
+
+		$enemyDamage = $damage * $charaData;
+		
+		return $enemyDamage; 
+	}
+	/* 敵のダメージを返す */
+	
+	/* ダメージ無効 */
+	
+	/* 即死効果 */
+	
+	
 }

@@ -38,6 +38,13 @@
 	<img src="{{IMG_URL}}/training/signboard_info.png">
 	<font  class="signboard_text font_serif font_color">{{'訓練する剣闘士を選んでください'}}</font>
 </div>
+{{--キャラクターの所持数を表示する--}}
+<div class="chara_inventory">
+	<img src="{{IMG_URL}}/battle/inventory_bord.png">
+	<font class="inventory_text font_color font_serif">所属人数</font>
+	<font class="inventory_value font_color font_sentury">{{$viewData['charaInventory']['possession']}}/{{$viewData['charaInventory']['upperLimit']}}</font>
+
+</div>
 <div class="signboard">
 	<img src="{{IMG_URL}}/training/signboard.png">
 </div>

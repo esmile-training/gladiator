@@ -33,23 +33,25 @@ class ChangeCoachSelectController extends BaseGameController
 			$this->insertCoach();
 		}
 	}
-	
+
 	public function setCoach()
-	{	
+	{
 		//引退ボタンが押されたキャラと選択されたコーチの情報を配列に格納
 		$para = array('coachId' => $_GET['uCoachId'], 'charaId' => $_GET['charaId']);
 		//確認画面へリダイレクト
 		return ($this->Lib->redirect('changeCoach',"", $para));
 	}
-	
+
 	public function deleteChara()
 	{
 		//キャラの削除処理
 		$this->Model->exec('Chara','charaDelFlag',"",$_GET['id']);
+		// 所持キャラ数の減算を行う
+		$this->Lib->exec('ManageCharaPossession','subPossessionChara',array($this->user));
 		//「引退しました」へ遷移
 		return $this->Lib->redirect('retirementChara','retireCharaView');
 	}
-	
+
 	public function changeCoach()
 	{
 		//コーチの削除処理
@@ -57,7 +59,7 @@ class ChangeCoachSelectController extends BaseGameController
 		//キャラの削除とコーチの追加処理
 		$this->insertCoach();
 	}
-	
+
 	public function insertCoach()
 	{
 		//キャラの削除処理
@@ -74,6 +76,8 @@ class ChangeCoachSelectController extends BaseGameController
 								'paaAtk' => $_GET['paaAtk']
 		);
 		$this->Model->exec('Coach', 'insertCoach', array($newCoachState));
+		// 所持キャラ数の減算を行う
+		$this->Lib->exec('ManageCharaPossession','subPossessionChara',array($this->user));
 		//「コーチに配属しました！」に移動
 		return $this->Lib->redirect('retirementChara','addCoachView');
 	}

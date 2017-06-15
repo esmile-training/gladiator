@@ -13,16 +13,24 @@ class CharaSelectController extends BaseGameController
 		$order = (!isset($_GET['order']))? 'ASC' : $_GET['order'];
 		return $this->listSort($type, $order);
 	}
-	
+
 	public function listSort($type, $order)
 	{
 		// ユーザーIDを取得する
 		$userId = $this->user['id'];
 		// DBのキャラクターデータを取得する
 		$alluChara = $this->Model->exec('Chara','getAllUserChara',$userId);
+
+		// キャラ所持数の最大値と現在値を取得する
+		$charaInventory = array();
+		$charaInventory['upperLimit'] = $this->Lib->exec('ManageCharaPossession','getUpperLimitChara',$userId);
+		$charaInventory['possession'] = $this->Lib->exec('ManageCharaPossession','getPossessionChara',$userId);
+		// viewDataへ格納する
+		$this->viewData['charaInventory'] = $charaInventory;
+
 		// DBからキャラクターを取得できたかを確認する
 		if(isset($alluChara))
-		{	
+		{
 					// 金枠か銀枠かを判定する
 			foreach ($alluChara as $key => $chara)
 			{
@@ -48,7 +56,7 @@ class CharaSelectController extends BaseGameController
 		{
 			//キャラクターがいない場合リストを空にして渡す
 			$this->viewData['charaList'] = null;
-		
+
 			return viewWrap('charaSelect',$this->viewData);
 		}
 	}

@@ -7,7 +7,7 @@ return  [
         ],
         2 => [
             'sex' => 0,
-			'skill' => 4
+			'skill' => 5
         ],
         3 => [
             'sex' => 1,
@@ -47,16 +47,31 @@ return  [
 		]
     ],
 	'skill' => [
-		1 => ['damage' => 50,
-				'turn'	=> 5],
-		2 => ['recovery' => 50,
-				'turn'	=> 5],
+		1 => ['damage' => 1.5,
+				'turn'	=> 3,
+				'effect' => '敵に150%のダメージを与える'
+			],
+		2 => ['recovery' => 0.3,
+				'turn'	=> 3,
+				'effect' => '自分のHP30%回復'
+			],
 		3 => ['gooUpAtk' => 1.5,
-				'turn'	=> 5],
+				'turn'	=> 3,
+				'effect' => 'グーの攻撃力1.5倍'
+			],
 		4 => ['choUpAtk' => 2.5,
-				'turn'	=> 1],
+				'turn'	=> 3,
+				'effect' => 'チョキの攻撃力2.5倍'
+			],
 		5 => ['paaUpAtk' => 2,
-				'turn'	=> 2],
+				'turn'	=> 3,
+				'effect' => 'パーの攻撃力2倍'
+			],
+		6 => [
+				'ratio' => 2,
+				'turn'	=> 3,
+				'effect' => '次の攻撃が二回攻撃'
+			],
 	],
 	'allname' => [
 			'firstname' => [
