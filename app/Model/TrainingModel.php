@@ -103,7 +103,7 @@ $sql =  <<< EOD
 		SET		trainingState = {$trainingState}
 		WHERE	id = {$uCharaId}
 EOD;
-	$this->update($sql);
+		$this->update($sql);
 	}
 	
 	/*
@@ -116,7 +116,7 @@ $sql =  <<< EOD
 		SET		state = {$trainingState}
 		WHERE	id = {$uCoachId}
 EOD;
-	$this->update($sql);
+		$this->update($sql);
 	}
 	
 	 /*
@@ -124,7 +124,7 @@ EOD;
 	 * 0なら訓練中、1なら訓練終了かつ訓練結果未確認、2なら訓練終了かつ結果確認済み
 	 */
 	public function stateChange($id,$trainingState)
-	{	
+	{
 $sql =  <<< EOD
 		UPDATE uTraining
 		SET    state = {$trainingState}

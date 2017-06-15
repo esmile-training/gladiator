@@ -74,6 +74,7 @@ class TrainingController extends BaseGameController
 	 */
 	public function infoSet()
 	{
+		var_dump($this->viewData);exit;
 		//訓練時刻をGETする
 		$trainingTime	= (int)filter_input(INPUT_GET,"trainingTime");
 
