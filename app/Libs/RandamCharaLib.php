@@ -218,18 +218,18 @@ class RandamCharaLib extends BaseGameLib
 	}
 	
 	//ボックスガチャ用処理
-	public function boxGachaData(array $gachaConfig )
+	public function boxGachaData($userId, $gachaConfig )
 	{
 		//ボックスガチャ用デッキ取得
 		$config = $gachaConfig['deck'];
 		
 		//DBから現在のボックスガチャの情報を検索
-		$gachaData = $this->Model->exec('Gacha','getEventGachaRecord',$this->user['id']);
+		$gachaData = $this->Model->exec('Gacha','getEventGachaRecord',$userId);
 		
 		//DBになければ作成
 		if(is_null($gachaData))
 		{
-			$this->Model->exec('Gacha','createEventGachaRecord',$this->user['id']);
+			$this->Model->exec('Gacha','createEventGachaRecord',$userId);
 		} else {
 			//各レア度の残り枚数の設定
 			$cnt = 0;
@@ -275,7 +275,8 @@ class RandamCharaLib extends BaseGameLib
 				break;
 		}
 		
-		$this->Model->exec('gacha','updateEventGachaRecord',[$this->user['id'], $rare]);
+		//DBにガチャ結果を記録する。
+		$this->Model->exec('gacha','updateEventGachaRecord',[$userId, $rare]);
 		return $ratio;
 	}
 }

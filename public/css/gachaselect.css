@@ -113,3 +113,13 @@
 	position: relative;
 	top: 7vw;
 }
+
+.boxGacha_table{
+	position: absolute;
+	top: 134%;
+	left: 29%;
+}
+
+.boxGacha_table_image{
+	width: 5vh;
+}
