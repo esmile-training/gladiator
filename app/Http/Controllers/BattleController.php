@@ -446,11 +446,6 @@ class battleController extends BaseGameController
 						case 9:
 							$this->EnemyData['battleHp'] = BattleLib::enemyDead($this->EnemyData['battleHp']);
 						break;
-						case 10:
-							$this->EnemyData['battleHp'] = 0;
-							$this->CharaData['battleHp'] = 0;
-							$this->CharaData['skillFlag'] = 1;
-						break;
 					
 					}
 				}
