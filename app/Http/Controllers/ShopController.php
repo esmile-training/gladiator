@@ -66,7 +66,7 @@ class ShopController extends BaseGameController
 		if($purchaseItemId != 1)
 		{	
 			// DB更新用のデータ生成
-			$updateItemData = $this->Lib->exec('Shop', 'updateItem', array($purchaseItemId, $number, $this->itemData, $this->belongingsData, $this->user));
+			$updateItemData = $this->Lib->exec('Belongings', 'updateItem', array($purchaseItemId, $number, $this->itemData, $this->belongingsData, $this->user));
 			
 			// DBの更新
 			$this->Model->exec('Item', 'updateItemData', array($updateItemData));

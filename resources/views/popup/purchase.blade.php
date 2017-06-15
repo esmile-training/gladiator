@@ -20,7 +20,7 @@ $(function(){
 		var price = <?php echo $purchaseData['productData']['price']; ?>;
 		var totalPrice = price * number;
 		document.getElementById("totalPrice{{$purchaseData['productData']['id']}}").innerHTML = totalPrice;
-		
+
 		document.getElementById("purchase_Button").href ="{{APP_URL}}shop/updateBelongings?purchaseItemId={{$purchaseData['itemData']['id']}}&number="+number+"&totalPrice="+totalPrice;
 	});
 	
@@ -34,7 +34,7 @@ $(function(){
 		var price = <?php echo $purchaseData['productData']['price']; ?>;
 		var totalPrice = price * number;
 		document.getElementById("totalPrice{{$purchaseData['productData']['id']}}").innerHTML = totalPrice;
-		
+
 		document.getElementById("purchase_Button").href ="{{APP_URL}}shop/updateBelongings?purchaseItemId={{$purchaseData['itemData']['id']}}&number=" + number + "&totalPrice=" + totalPrice;	
 	});
 });
