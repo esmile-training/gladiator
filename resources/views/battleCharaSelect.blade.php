@@ -87,12 +87,19 @@
 	</div>
 </div>
 @else
-<div class = "no_chara font_color">
+<div class = "no_chara font_color font_serif">
 	所属している剣闘士が０人です！
 </div>
 @endif
 <div class="signboard_info">
 	<img src="{{IMG_URL}}/training/signboard_info.png">
 	<font class="signboard_text font_color font_serif">出場させる剣闘士を選んでください</font>
+</div>
+{{--キャラクターの所持数を表示する--}}
+<div class="chara_inventory">
+	<img src="{{IMG_URL}}/battle/inventory_bord.png">
+	<font class="inventory_text font_color font_serif">所属人数</font>
+	<font class="inventory_value font_color font_sentury">{{$viewData['charaInventory']['possession']}}/{{$viewData['charaInventory']['upperLimit']}}</font>
+
 </div>
 <img class="signboard" src="{{IMG_URL}}battle/signboard.png" alt="看板">

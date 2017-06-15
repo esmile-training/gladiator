@@ -29,6 +29,13 @@ class battleController extends BaseGameController
 			return viewWrap('notBattleTicket');
 		}
 
+		// キャラ所持数の最大値と現在値を取得する
+		$charaInventory = array();
+		$charaInventory['upperLimit'] = $this->Lib->exec('ManageCharaPossession','getUpperLimitChara',$userId);
+		$charaInventory['possession'] = $this->Lib->exec('ManageCharaPossession','getPossessionChara',$userId);
+		// viewDataへ格納する
+		$this->viewData['charaInventory'] = $charaInventory;
+
 		// 継続中の戦闘があったらbattleLogへリダイレクトする
 		$battleInfo = $this->Model->exec('BattleInfo', 'getBattleData', $userId);
 		if(isset($battleInfo))
@@ -102,7 +109,7 @@ class battleController extends BaseGameController
 
 		// IDと一致するキャラクターをDBから取得する
 		$selectedChara = $this->Model->exec('Chara', 'getById', $arenaData["selectedCharaId"]);
-		
+
 		// 正常に取得したかを確認する
 		if(!isset($selectedChara))
 		{
@@ -145,13 +152,13 @@ class battleController extends BaseGameController
 
 		// 対戦データの取得をする
 		$matchData = $argMatchData;
-		
+
 		$charaData = \Config::get('chara.imgId');
-		
+
 		$skill = \Config::get('chara.skill');
-		
+
 		$matchData['drawCount'] = $skill[$charaData[$matchData['imgId']]['skill']]['turn'];
-		
+
 		// デリートフラグが立っていない、同じIDのデータが登録されていなければインサートを行う
 		if(!isset($battleInfo))
 		{
@@ -205,8 +212,8 @@ class battleController extends BaseGameController
 		}
 
 		// 降参費用額計算
-		$surrenderCost = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));	
-		
+		$surrenderCost = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));
+
 		// 全てのデータを viewData に渡す
 		$this->viewData['charaDamage']	= $this->CharaData['damage'];
 		$this->viewData['enemyDamage']	= $this->EnemyData['damage'];
@@ -218,7 +225,7 @@ class battleController extends BaseGameController
 		$this->viewData['type']			= $this->TypeData;
 		$this->viewData['result']		= $this->ResultData;
 		$this->viewData['surrenderCost']= $surrenderCost;
-	
+
 
 		return view('battle', ['viewData' => $this->viewData]);
 	}
@@ -329,7 +336,7 @@ class battleController extends BaseGameController
 		// 勝敗処理
 		// 'win' / 'lose' / 'draw' のどれかが入る
 		$this->CharaData['result'] = BattleLib::AtackResult($this->CharaData['hand'], $this->EnemyData['hand']);
-		
+
 		// ダメージ処理
 		// CharaData の 'result' によって処理を行う
 		switch ($this->CharaData['result'])
@@ -365,22 +372,22 @@ class battleController extends BaseGameController
 			case 4:
 				$charaSkill = \Config::get('chara.imgId');
 				$skill = \Config::get('chara.skill');
-				
+
 				if($this->CharaData['drawCount'] == 0)
 				{
 					switch ($charaSkill[$this->CharaData['imgId']]['skill'])
-					{	
+					{
 						case 1:
 							//敵にダメージ
 							$this->CharaData = BattleLib::damageCalc($this->CharaData);
 							$this->EnemyData['battleHp'] = BattleLib::hpCalc($this->CharaData, $this->EnemyData);
 						break;
-					
+
 						case 2:
 							//自分の回復
 							$this->CharaData = BattleLib::damageCalc($this->CharaData);
 
-							$this->CharaData['battleHp'] = BattleLib::hpCalc($this->CharaData, $this->CharaData);	
+							$this->CharaData['battleHp'] = BattleLib::hpCalc($this->CharaData, $this->CharaData);
 							if($this->CharaData['battleHp'] > $this->CharaData['hp'])
 							{
 								$this->CharaData['battleHp'] = $this->CharaData['hp'];
@@ -407,9 +414,9 @@ class battleController extends BaseGameController
 				break;
 			default;
 				exit;
-				
+
 		}
-		
+
 		// バトルキャラデータの更新処理
 		// 自キャラデータの更新処理
 		$this->Model->exec('BattleChara', 'UpdateBattleCharaData', array($this->CharaData));
@@ -442,14 +449,14 @@ class battleController extends BaseGameController
 		{
 			// 賞金額計算
 			$prize =  BattleLib::prizeCalc($this->EnemyData, $this->Commission, $this->DifficultyData);
-			
+
 			//フィーバータイムか判定
 			$flug = BattleLib::checkFeverTime();
 			if($flug == 1)
 			{
 				$prize = $prize * 2;
 			}
-			
+
 			// ユーザーの所持金 'money' に賞金額を加算しデータベースに格納
 			$this->Lib->exec('Money', 'addition', array($this->user, $prize));
 			// ユーザーのウィークリーポイント 'weeklyAward' に賞金額を加算しデータベースに格納

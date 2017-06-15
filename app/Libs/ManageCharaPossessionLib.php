@@ -17,7 +17,7 @@ class ManageCharaPossessionLib extends BaseGameLib
 	{
 		// DBからキャラ所持数の上限を取得する
 		$upperLimit = $this->Model->exec('User', 'getUpperLimitChara', $argUserId);
-		return $upperLimit;
+		return $upperLimit['upperLimitChara'];
 	}
 
 	/*
@@ -27,7 +27,7 @@ class ManageCharaPossessionLib extends BaseGameLib
 	{
 		// DBからキャラ所持数を取得する
 		$PossessionChara = $this->Model->exec('User', 'getPossessionChara', $argUserId);
-		return $PossessionChara;
+		return $PossessionChara['possessionChara'];
 	}
 
 	/*

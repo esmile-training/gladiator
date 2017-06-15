@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 class TrainingController extends BaseGameController
 {
 	public function index()
-	{	
+	{
 		//訓練が終了しているキャラがいるか確認し、いたらその訓練の情報を取得する
 		$result = $this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'], $this->user['id'], true));
 		if(isset($result))
@@ -23,6 +23,13 @@ class TrainingController extends BaseGameController
 
 		//所持しているキャラのデータを持ってくる
 		$uCharaData = $this->Model->exec('Chara', 'getAllUserChara', false, $this->user['id']);
+		// キャラ所持数の最大値と現在値を取得する
+		$charaInventory = array();
+		$charaInventory['upperLimit'] = $this->Lib->exec('ManageCharaPossession','getUpperLimitChara',$this->user['id']);
+		$charaInventory['possession'] = $this->Lib->exec('ManageCharaPossession','getPossessionChara',$this->user['id']);
+		// viewDataへ格納する
+		$this->viewData['charaInventory'] = $charaInventory;
+
 		if(!isset($uCharaData))
 		{
 			return viewWrap('Error',$this->viewData);
