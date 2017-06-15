@@ -1,3 +1,4 @@
+<?php var_dump($viewData);exit;?>
 <!DOCTYPE html>
 <html lang="jp">
 <head>

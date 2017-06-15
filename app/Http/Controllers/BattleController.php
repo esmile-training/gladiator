@@ -157,7 +157,7 @@ class battleController extends BaseGameController
 
 		$skill = \Config::get('chara.skill');
 
-		$matchData['drawCount'] = $skill[$charaData[$matchData['imgId']]['skill']]['turn'];
+		$matchData['drawCount'] = $skill[$charaData[$matchData['imgId']]['skill']]['drawCount'];
 
 		// デリートフラグが立っていない、同じIDのデータが登録されていなければインサートを行う
 		if(!isset($battleInfo))
@@ -343,6 +343,11 @@ class battleController extends BaseGameController
 		//コンフィグからキャラ情報持ってくる
 		$charaSkill = \Config::get('chara.imgId');
 		$skill = \Config::get('chara.skill');
+		
+		if($this->CharaData['skillFlag'] == 1)
+		{
+			$this->BattleData['battleSkillTurn'] += 1;
+		}	
 		// ダメージ処理
 		// CharaData の 'result' によって処理を行う
 		switch ($this->CharaData['result'])
@@ -383,7 +388,8 @@ class battleController extends BaseGameController
 
 			// 4(スキル) の場合
 			case 4:
-
+				$this->BattleData['battleSkillTurn'] = 0;
+				$this->CharaData['skillFlag'] = 1;
 				if($this->CharaData['drawCount'] == 0)
 				{
 					switch ($charaSkill[$this->CharaData['imgId']]['skill'])
@@ -425,7 +431,7 @@ class battleController extends BaseGameController
 						break;
 					}
 				}
-				$this->CharaData['drawCount'] = $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'];
+				$this->CharaData['drawCount'] = $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['drawCount'];
 				break;
 			case 5:
 				break;
@@ -433,12 +439,20 @@ class battleController extends BaseGameController
 				exit;
 
 		}
-
+		if($this->CharaData['skillFlag'] == 1 && $this->BattleData['battleSkillTurn'] == $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
+		{
+			 $this->CharaData['battleGooAtk'] = $this->CharaData['gooAtk'];
+			 $this->CharaData['battleChoAtk'] = $this->CharaData['choAtk'];
+			 $this->CharaData['battlePaaAtk'] = $this->CharaData['paaAtk'];
+		}
+		
 		// バトルキャラデータの更新処理
 		// 自キャラデータの更新処理
 		$this->Model->exec('BattleChara', 'UpdateBattleCharaData', array($this->CharaData));
 		// 敵キャラデータの更新処理
 		$this->Model->exec('BattleEnemy', 'UpdateBattleEnemyData', array($this->EnemyData));
+		
+		$this->Model->exec('BattleInfo', 'UpdateBattleData', array($this->BattleData));
 
 		return $this->Lib->redirect('Battle', 'battleLog');
 	}
@@ -557,11 +571,10 @@ class battleController extends BaseGameController
 	 */
 	public function standDelFlag()
 	{
-		// ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
-		// BattleData にバトルデータを格納
+//		// ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
+//		// BattleData にバトルデータを格納
 		$this->BattleData = $this->Model->exec('BattleInfo', 'getBattleData', $this->user['id']);
-
-		// uBattleInfo(DB) の delFlag を立てる更新
-		$this->Model->exec('BattleInfo', 'UpdateInfoFlag', $this->BattleData['id']);
+//
+		$this->Model->exec('BattleInfo', 'UpdateInfoBattleFlagData', $this->BattleData['id']);
 	}
 }
