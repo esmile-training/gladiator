@@ -39,7 +39,7 @@ body{}
     color: #f3821e;
 	text-align: left;
 }
-/* アイテムの名前 */
+/* アイテムの使用場所 */
 .purchase_itemWhere{
     position: absolute;
 	top: 13%;
@@ -50,7 +50,7 @@ body{}
     color: #ffffff;
 	text-align: left;
 }
-/* アイテムの名前 */
+/* アイテムの説明 */
 .purchase_itemInfo{
     position: absolute;
 	top: 18%;
@@ -61,18 +61,21 @@ body{}
     color: #ffffff;
 	text-align: left;
 }
-
 /* アイテムの購入数 */
 .purchase_totalNumber{
     position: absolute;
 	bottom: 35%;
-	right: 20%;
-	width: 60%;
+	width: 100%;
+	height: 20%;
     font-family: serif;
     font-size: 3.0vh;
 	color: #000000;	
 }
-
+/* アイテムの購入数を変動させる画像*/
+.purchase_totalNumber_cntButton_img{
+	width: 100%;
+	vertical-align: bottom;
+}
 /* アイテムの合計金額 */
 .purchase_totalPrice{
     position: absolute;
@@ -88,8 +91,8 @@ body{}
 .purchase_button_purchase{
     position: absolute;
     bottom: 5%;
-	left: 35%;
-    width: 30%;
+	left: 30%;
+    width: 40%;
 }
 .purchase_button_purchase_linkregion{
 	width: 100%;

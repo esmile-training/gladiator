@@ -61,10 +61,10 @@ class TicketLib extends BaseGameLib
 		return $nextrecovery;
     }
 	
-    public function recoveryTicket($user){
+    public function recoveryTicket($user, $number){
 		
 		// ユーザーのチケットを加算
-		$user['battleTicket']++;
+		$user['battleTicket'] += $number;
 		
 		$this->Model->exec('User', 'updateTicket', array($user));
 	}

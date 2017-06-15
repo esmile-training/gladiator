@@ -14,7 +14,6 @@
 		{{$cost}}
 		<img  class = "gold1" src = "{{IMG_URL}}user/gold.png">
 		</br>
-	
 	@if($data['money'] < $gachaCost[$data['gachaId']]['money'])
 		<div style="color:#F00">
 			残高が足りません

@@ -12,13 +12,17 @@
 		{{-- リザルトログ表示領域 --}}
 		<div class="battleresult_log">
 			{{-- リザルトログの枠 --}}
-			<img src="{{IMG_URL}}battleResult/battleResultlog_Bg.png" class="battleresult_log_bg">
+			<img src="{{IMG_URL}}battleResult/n_battleResultlog_Bg.png" class="battleresult_log_bg">
 			{{-- バトルの勝敗によって表示するログの変更 --}}
 			@if ($viewData['prize'] > 0)
 				{{-- プレイヤー勝利時のリザルトログ --}}
 				<div class="battleresult_log_message">
 					<div>
 						{{$viewData['charaDefaultData']['name']}}の勝ち！
+					</div>
+					<?php $act = $viewData['charaDefaultData']['feverTimeFlug'] == 1 ? 'act' : '' ?>
+					<div class="cap {{$act}}">
+						フィーバータイム中で賞金2倍！
 					</div>
 					<div>
 						{{$viewData['prize']}}<img src="{{IMG_URL}}user/gold.png" class="battleresult_log_message_money_img"> の賞金を獲得！

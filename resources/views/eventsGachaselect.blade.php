@@ -71,8 +71,9 @@
 			])
 			{{-- 次回イベント追加 --}}
 			<div class = "gacha_button3">
-				<input type="image" 
+				<image  
 						src="{{IMG_URL}}gacha/banner13.png" 
+						name = 'gachavalue' 
 						width= 100% 
 						height= 100%>
 			</div>

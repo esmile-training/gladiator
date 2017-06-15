@@ -36,6 +36,9 @@ class BaseGameController extends Controller
 		// 訓練終了したキャラの確認
 		$commonData['endTraining'] = $this->Model->exec('Training', 'endAlert', $userId);
 		
+		// フィーバータイム判定処理
+		$commonData['feverTimeFlug'] = $this->Lib->exec('Battle', 'checkFeverTime');
+		
 		$userData = $this->Lib->exec('User', 'getUser',$userId);
 	
 		//汎用変数をセット

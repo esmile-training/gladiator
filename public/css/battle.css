@@ -196,9 +196,9 @@ body{}
 /* スキル枠 */
 .battle_player_skill_frame{
 	position: absolute;
-    top: 50%;
-    right: 1%;
-    width: 11%;
+    top: 30%;
+    right: 0%;
+    width: 21%;
     z-index: 1;
 }
 /* スキルターンフォント */
@@ -321,4 +321,65 @@ body{}
 /* 攻撃力の上がった場合 */
 .battle_gooAtkUpFont{
 	color: red;
+}
+.battle_gooAtkUpArrow{
+	position: absolute;
+    width: 8%;
+	top: 18%;
+	animation: UpDown 0.8s linear infinite;
+}
+/* 攻撃力の上がった場合 */
+.battle_choAtkUpFont{
+	color: yellow;
+}
+.battle_choAtkUpArrow{
+	position: absolute;
+    width: 8%;
+	top: 18%;
+	animation: UpDown 0.8s linear infinite;
+}
+/* 攻撃力の上がった場合 */
+.battle_paaAtkUpFont{
+	color: skyblue;
+}
+.battle_paaAtkUpArrow{
+	position: absolute;
+    width: 8%;
+	top: 18%;
+	animation: UpDown 0.8s linear infinite;
+}
+/*　上下の回転アニメーション　*/
+@keyframes UpDown{
+	0% {
+		transform: translateY(0px);
+		-webkit-transform: translateY(0px);
+	}
+	100% {
+		transform: translateY(-4px);
+		-webkit-transform: translateY(-4px);
+	}
+}
+/* タップアイコン */
+.battle_player_icon_tap{
+	width: 17%;
+    position: absolute;
+    right: 4%;
+    top: 10vw;
+    z-index: 2;
+	-webkit-animation:flash 0.7s ease-in-out infinite alternate;
+	-moz-animation:flash 0.7s ease-in-out infinite alternate;
+	animation:flash 0.7s ease-in-out infinite alternate;
+}
+/*　点滅アニメーション　*/
+@-webkit-keyframes flash{
+	0% {opacity:0;}
+	100% {opacity:1;}
+}
+@-moz-keyframes flash{
+	0% {opacity:0;}
+	100% {opacity:1;}
+}
+@keyframes flash{
+	0% {opacity:0;}
+	100% {opacity:1;}
 }

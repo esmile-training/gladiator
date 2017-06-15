@@ -23,7 +23,7 @@ th{ text-align: center; }
 /* バトルリザルトのログ部分 */
 .battleresult_log {
 	position: fixed;
-	top: 40%;
+	top: 38%;	/* 背景画像差し替えに伴い40%から変更 */
 	left: 5%;
 	width: 90%;
 }
@@ -35,7 +35,7 @@ th{ text-align: center; }
 .battleresult_log_message{
 	position: absolute;
 	top: 5%;
-	left: 5%;
+	left: 10%;
 	width: 90%;
 	color: #ffffff;
 	font-size: 5vw;
@@ -83,4 +83,9 @@ th{ text-align: center; }
 /* バックホームボタン領域に対する、画像 */
 .battleresult_backhome_icon{
 	width: 100%;
+}
+
+/* フィーバタイム時のメッセージ表示、非表示 */
+.cap:not(.act) {
+	display:none;
 }

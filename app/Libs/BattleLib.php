@@ -88,7 +88,6 @@ class BattleLib extends BaseGameLib
 		// ダメージ割合を格納
 		$damagePer = mt_rand($randData['min'], $randData['max']) * 0.01;
 		
-		
 		// 勝った方の 'hand' によって処理を行う
 		// ダメージ量計算式
 		// ダメージ量 = 勝った方の攻撃力 * ダメージ割合
@@ -97,25 +96,26 @@ class BattleLib extends BaseGameLib
 			// 1(グー) の場合
 			case 1:
 				// 'battleGooAtk' に 元データ 'cGooAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
-				$winner['battleGooAtk'] = (int) ($winner['gooAtk'] * $damagePer);
+				$winner['damage'] = (int) ($winner['battleGooAtk'] * $damagePer);
 				break;
 
 			// 2(チョキ) の場合
 			case 2:
 				// 'battleChoAtk' に 元データ 'cChoAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
-				$winner['battleChoAtk'] = (int) ($winner['choAtk'] * $damagePer);
+				$winner['damage'] = (int) ($winner['battleChoAtk'] * $damagePer);
 				break;
 
 			// 3(パー) の場合
 			case 3:
 				// 'battlePaaAtk' に 元データ 'cPaaAtk' と ダメージ割合 'damagePer' を掛けた結果を格納
-				$winner['battlePaaAtk'] = (int) ($winner['paaAtk'] * $damagePer);
+				$winner['damage'] = (int) ($winner['battlePaaAtk'] * $damagePer);
 				break;
 			//4(スキル) の場合
 			case 4:
 				//スキルの判定
 				$charaSkill = \Config::get('chara.imgId');
 				$skill = \Config::get('chara.skill');
+				
 				switch ($charaSkill[$winner['imgId']]['skill'])
 				{
 					case 1:
@@ -129,6 +129,19 @@ class BattleLib extends BaseGameLib
 					case 3:
 						//攻撃力アップの場合
 						$winner['skill'] = $skill[$charaSkill[$winner['imgId']]['skill']]['gooUpAtk'];
+					break;
+					case 4:
+						//攻撃力アップの場合
+						$winner['skill'] = $skill[$charaSkill[$winner['imgId']]['skill']]['choUpAtk'];
+					break;
+					case 5:
+						//攻撃力アップの場合
+						$winner['skill'] = $skill[$charaSkill[$winner['imgId']]['skill']]['paaUpAtk'];
+					break;
+					case 6:
+						//二回攻撃の場合
+						$winner['skill'] = $skill[$charaSkill[$winner['imgId']]['skill']]['ratio'];
+						
 					break;
 				}
 			break;
@@ -149,19 +162,19 @@ class BattleLib extends BaseGameLib
 			// 1(グー) の場合
 			case 1:
 				// 負けた方の 'hp' を勝った方の 'gooAtk' 分減らす
-				$loser['battleHp'] = $loser['battleHp'] - $winner['battleGooAtk'];
+				$loser['battleHp'] = $loser['battleHp'] - $winner['damage'];
 				break;
 
 			// 2(チョキ) の場合
 			case 2:
 				// 負けた方の 'hp' を勝った方の 'choAtk' 分減らす
-				$loser['battleHp'] = $loser['battleHp'] - $winner['battleChoAtk'];
+				$loser['battleHp'] = $loser['battleHp'] - $winner['damage'];
 				break;
 
 			// 3(パー) の場合
 			case 3:
 				// 負けた方の 'hp' を勝った方の 'paaAtk' 分減らす
-				$loser['battleHp'] = $loser['battleHp'] - $winner['battlePaaAtk'];
+				$loser['battleHp'] = $loser['battleHp'] - $winner['damage'];
 				break;
 			//4(スキル) の場合
 			case 4:
@@ -199,9 +212,9 @@ class BattleLib extends BaseGameLib
 	{
 		// 賞金額計算
 		$result = ($EnemyData['hp'] * $Commission['Commission']) * ( $DifficulutyData[$EnemyData['difficulty']]['prizeRatio'] * 0.01);
-
+				
 		return $result;
-
+		
 	}
 
 	// 降参費用計算
@@ -261,10 +274,72 @@ class BattleLib extends BaseGameLib
 		}
 		return $result;
 	}
+	/* フィーバータイム中か調べる */
+	public static function checkFeverTime()
+	{
+		//結果を格納する変数(初期値は0)
+		//0 = フィーバ中ではない
+		//1 = フィーバー中である
+		$result = 0;
+		
+		//現在時刻取得
+		$nowtime = date("G:i");
+		
+		//時間比較
+		$feverTime = (\Config::get('battle.feverTime'));
+		if((strtotime($nowtime) >= strtotime($feverTime['noon']['start']) && strtotime($nowtime) < strtotime($feverTime['noon']['end'])) || 
+			(strtotime($nowtime) >= strtotime($feverTime['night']['start']) && strtotime($nowtime) < strtotime($feverTime['night']['end']))){
+			$result = 1;
+		}
+		return $result;
+	}
+	/* 攻撃力アップ */
 	public static function atkUP($atk,$magnification){
 		
 		$statusUp = $atk * $magnification;
 		
 		return $statusUp;
 	}
+	/* 敵にグーダメージ */
+	public static function enemyGooDamage($enemyLife,$charaData){
+
+		$life = $enemyLife - $charaData['battleGooAtk'] * $charaData['skill'];
+		
+		return $life; 
+	}
+	/* 敵にチョキダメージ */
+	public static function enemyChoDamage($enemyLife,$charaData){
+		
+		$life = $enemyLife - $charaData['battleChoAtk'] * $charaData['skill'];
+		
+		return $life; 
+	}
+	/* 敵にパーダメージ */
+	public static function enemyPaaDamage($enemyLife,$charaData){
+
+		$life = $enemyLife - $charaData['battlePaaAtk'] * $charaData['skill'];
+		
+		return $life; 
+	}
+	/* ＨＰ回復 */
+	public static function charaHeal($charaLife,$charaData){
+
+		$life = $charaLife + $charaData['hp'] * $charaData['skill'];
+		
+		return $life; 
+	}
+	/* 二回攻撃 */
+	public static function charaDoubleAttack($damage,$charaData){
+
+		$enemyDamage = $damage * $charaData;
+		
+		return $enemyDamage; 
+	}
+	/* 敵のダメージを返す */
+	
+	/* ダメージ無効 */
+	
+	/* 即死効果 */
+	
+	
 }

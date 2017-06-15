@@ -1,12 +1,12 @@
 //メッセージの表示
 function onSortChange() {
 	$("#roadCover").removeClass("offCover");
+	console.log("a");
 }
 //select内容の取得
 function getType(){
-	$('[name=type]').change(function() {
-		var txt = $('[name=type] option:selected').text();
-		$("#roadCover p span").append(txt);
+	$('[name=type] option').change(function() {
+		var txt = $('[name=type] option:selected').value();
 		console.log(txt);
 //		return txt;.append
 	});

@@ -42,7 +42,7 @@
 						src="{{IMG_URL}}gacha/banner3.png" 
 						name = 'gachavalue'
 						value = "3"
-					width= 100% 
+						width= 100% 
 						height= 100%>
 			</div>
 		</div>

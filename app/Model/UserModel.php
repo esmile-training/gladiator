@@ -39,7 +39,7 @@ EOD;
 
 	public function deleteUser($userId) {
 $sql = <<< EOD
-    DELETE FROM user 
+    DELETE FROM user
     WHERE id = {$userId};
 EOD;
 		$this->delete($sql);
@@ -81,7 +81,7 @@ EOD;
 		return $this->charaUpdate($sql);
 	}
 
-	
+
 	public function ticketRecovery($userId, $ticket, $nextRecoveryTime)
 	{
     $sql = <<< EOD
@@ -92,7 +92,7 @@ EOD;
 EOD;
 		$this->update($sql);
 	}
-		    
+
 	/*
 	 * バトルチケットの更新処理
 	 */
@@ -105,11 +105,11 @@ $sql = <<< EOD
 EOD;
 		$this->update($sql);
 	}
-	
+
 	/*
 	 * チケット数を取得
 	 */
-	
+
 	public function getTicket($userId)
 	{
 $sql = <<< EOD
@@ -129,6 +129,59 @@ $sql = <<< EOD
 	SET		battleTicket = {$user['battleTicket']},
 			ticketLossTime = '{$time}'
 	WHERE   id		= {$user['id']};
+EOD;
+		$this->update($sql);
+	}
+
+	/*
+		所持キャラの総数を取得する
+	*/
+	public function getPossessionChara($argUserId)
+	{
+$sql = <<< EOD
+	SELECT possessionChara
+	FROM user
+	WHERE id = {$argUserId}
+EOD;
+		return $this->select($sql, 'first');
+	}
+
+	/*
+		ユーザーの所持キャラ数の上限を取得する
+	*/
+	public function getUpperLimitChara($argUserId)
+	{
+$sql = <<< EOD
+	SELECT upperLimitChara
+	FROM user
+	WHERE id = {$argUserId}
+EOD;
+		return $this->select($sql, 'first');
+	}
+
+	/*
+		所持キャラ数の更新処理
+	*/
+	public function UpdatePossessionChara($argUser)
+	{
+
+$sql = <<< EOD
+	UPDATE  user
+	SET		possessionChara = {$argUser['possessionChara']}
+	WHERE   id		= {$argUser['id']};
+EOD;
+		$this->update($sql);
+	}
+
+	/*
+		所持キャラ数上限の更新
+	*/
+	public function UpdateUpperLimitChara($argUser)
+	{
+$sql = <<< EOD
+	UPDATE  user
+	SET		upperLimitChara = {$argUser['upperLimitChara']}
+	WHERE   id		= {$argUser['id']};
 EOD;
 		$this->update($sql);
 	}

@@ -1,6 +1,4 @@
 {{-- css  --}}
-@include('common/css', ['file' => 'coachSelect'])
-@include('common/css', ['file' => 'training'])
 @include('common/css', ['file' => 'charaList'])
 @include('common/js',['file' => 'sort'])
 <div><img class="chara_list_background" src="{{IMG_URL}}battle/chara_select_bg.jpg" /></div>
@@ -19,6 +17,13 @@
 		<div class="signboard_info">
 			<img src="{{IMG_URL}}/training/signboard_info.png">
 			<font  class="signboard_text font_serif font_color">{{'剣闘士の詳細が見れます'}}</font>
+		</div>
+		{{--キャラクターの所持数を表示する--}}
+		<div class="chara_inventory">
+			<img src="{{IMG_URL}}/battle/inventory_bord.png">
+			<font class="inventory_text font_color font_serif">所属人数</font>
+			<font class="inventory_value font_color font_sentury">{{$viewData['charaInventory']['possession']}}/{{$viewData['charaInventory']['upperLimit']}}</font>
+
 		</div>
 		<div class="signboard">
 			 <img src="{{IMG_URL}}/status/statusSign.png">

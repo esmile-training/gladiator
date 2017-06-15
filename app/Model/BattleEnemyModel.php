@@ -40,6 +40,7 @@ $sql = <<< EOD
 			'{$gooAtk}',
 			'{$choAtk}',
 			'{$paaAtk}',
+			'0',
 			'99',
 			'0',
 			'0',
@@ -69,6 +70,7 @@ $sql = <<< EOD
 			battleGooAtk = {$battleEnemy['battleGooAtk']},
 			battleChoAtk = {$battleEnemy['battleChoAtk']},
 			battlePaaAtk = {$battleEnemy['battlePaaAtk']},
+			damage	= {$battleEnemy['damage']},
 			hand	= '{$battleEnemy['hand']}'
 	WHERE   id		= {$battleEnemy['id']};
 EOD;

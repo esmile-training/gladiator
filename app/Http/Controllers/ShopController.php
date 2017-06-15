@@ -33,6 +33,9 @@ class ShopController extends BaseGameController
 		{
 			// uItemにデータを追加
 			$this->Model->exec('Item','insertItemData',$this->user['id']);
+			
+			// 所持アイテムデータ取得
+			$this->belongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
 		}
 		
 		// アイテムデータ取得
@@ -53,6 +56,9 @@ class ShopController extends BaseGameController
 		// bladeから購入したアイテムのidを読み込み
 		$purchaseItemId = $_GET["purchaseItemId"];
 		
+		// bladeから購入したアイテムの個数を読み込み
+		$number			= $_GET["number"];
+		
 		// bladeから購入したアイテムの合計金額を読み込み
 		$totalPrice		= $_GET["totalPrice"];
 
@@ -60,7 +66,7 @@ class ShopController extends BaseGameController
 		if($purchaseItemId != 1)
 		{	
 			// DB更新用のデータ生成
-			$updateItemData = $this->Lib->exec('Shop', 'updateItem', array($purchaseItemId, $this->itemData, $this->belongingsData, $this->user));
+			$updateItemData = $this->Lib->exec('Belongings', 'updateItem', array($purchaseItemId, $number, $this->itemData, $this->belongingsData, $this->user));
 			
 			// DBの更新
 			$this->Model->exec('Item', 'updateItemData', array($updateItemData));
@@ -68,7 +74,7 @@ class ShopController extends BaseGameController
 		else
 		{
 			// チケットの回復
-			$this->Lib->exec('Ticket', 'recoveryTicket', array($this->user));
+			$this->Lib->exec('Ticket', 'recoveryTicket', array($this->user, $number));
 		}
 		
 		// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
