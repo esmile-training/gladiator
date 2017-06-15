@@ -144,7 +144,7 @@ $(function(){
 	
 	{{-- 購入ボタン --}}
 	<div class="purchase_button_purchase">
-		<a href="{{APP_URL}}shop/updateBelongings?purchaseItemId={{$purchaseData['itemData']['id']}}&number=beforeNumber&totalPrice=beforeTotalPrice" class="purchase_Button{{$purchaseData['productData']['id']}}">
+		<a href="{{APP_URL}}shop/updateBelongings?purchaseItemId={{$purchaseData['itemData']['id']}}&number=beforeNumber&totalPrice=beforeTotalPrice" class="purchase_Button{{$purchaseData['productData']['id']}} clickfalse">
 			<img src="{{IMG_URL}}popup/purchase_Button.png" class="image_change purchase_button_purchase_img">
 		</a>
 	</div>
