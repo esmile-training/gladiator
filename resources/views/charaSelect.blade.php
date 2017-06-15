@@ -109,6 +109,5 @@
 	</div>
 	<?php $count++ ?>
 
-	@endforeach
 @endif
 </div>

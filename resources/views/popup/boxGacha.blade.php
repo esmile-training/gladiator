@@ -24,5 +24,32 @@
 			<img class="gacha_popup image_change" src = "{{IMG_URL}}popup/scout.png">
 		</a>
 	@endif
+		<table border="1">
+				<p>ガチャ残り枚数</p>
+			<tr>
+				<th>レア度</th>
+				<th>残数</th>
+			</tr>
+			<tr>
+				<td><image src='{{IMG_URL}}gacha/1.png'></td>
+				<td>１</td>
+			</tr>
+			<tr>
+				<td>SSR</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<td>SR</td>
+				<td>30</td>
+			</tr>
+			<tr>
+				<td>R</td>
+				<td>110</td>
+			</tr>
+			<tr>
+				<td>N</td>
+				<td>150</td>
+			</tr>
+		</table>
 	</div>
 </div>
