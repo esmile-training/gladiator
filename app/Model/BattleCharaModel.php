@@ -25,6 +25,7 @@ $sql = <<< EOD
 		hand,
 		result,
 		drawCount,
+		skillFlag,
 		uChara.id as uCharaId,
 		userId,
 		imgId,
@@ -65,6 +66,7 @@ $sql = <<< EOD
 			0,
 			0,
 			'{$drawCount}',
+			0,
 			'{$time}',
 			'{$time}'
 		);
@@ -89,7 +91,8 @@ $sql = <<< EOD
 			damage  = {$battleChara['damage']},
 			hand	= '{$battleChara['hand']}',
 			result	= '{$battleChara['result']}',
-			drawCount = '{$battleChara['drawCount']}'
+			drawCount = '{$battleChara['drawCount']}',
+			skillFlag = '{$battleChara['skillFlag']}',
 	WHERE   id		= {$battleChara['uBattleCharaId']};
 EOD;
 		$this->update($sql);
