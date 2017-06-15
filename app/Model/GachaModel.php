@@ -44,7 +44,10 @@ EOD;
 		NULL
     );
 EOD;
-	$this->insert($sql);
+		// インサートしたレコードのidを取得する
+		$id = $this->insert($sql);
+		// インサートしたレコードのIDを返す
+		return $id;
 	}
 
 	/*
@@ -76,7 +79,10 @@ EOD;
 		NULL
 	);
 EOD;
-	$this->insert($sql);
+		// インサートしたレコードのidを取得する
+		$id = $this->insert($sql);
+		// インサートしたレコードのIDを返す
+		return $id;
 	}
 
 	/*

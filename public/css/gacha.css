@@ -129,7 +129,7 @@
 	font-size: 108%;
 	color: #FFFFFF;
 	border-top: solid 5px transparent;
-	border-bottom: solid 7px transparent;
+	border-bottom: solid 0px transparent
 }
 /*　HPアイコン　*/
 .gacha_hpicon{
@@ -148,7 +148,7 @@
 	float: left;
 	color: #FFFFFF;
 	position: relative;
-	top: -3vw;
+	top: -4vw;
 }
 /*　グーアイコン　*/
 .gacha_guicon{

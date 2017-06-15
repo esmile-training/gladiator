@@ -3,7 +3,7 @@
 
 {{-- 背景 --}}
 <div>
-	<img class="shop_bg" src="{{IMG_URL}}gacha/gachabackground.jpg" />
+	<img class="shop_bg" src="{{IMG_URL}}shop/shop_Bg.jpg" />
 </div>
 
 {{-- 看板 --}}
@@ -54,7 +54,7 @@
 				@if ($val['id'] != 1)
 					@if ($viewData['userData']['money'] < $val['price'])
 						<div class="itemlist_flame_button">
-							<img class="itemlist_flame_button_img" src="{{IMG_URL}}shop/purchase_ButtonDown.png">				
+							<img class="itemlist_flame_button_img" src="{{IMG_URL}}shop/purchase_ButtonNot.png">				
 						</div>
 					@else
 						<div class="itemlist_flame_button">
@@ -79,6 +79,7 @@
 			$purchaseData['itemData']		= $viewData['itemData'][$val['id']];
 			$purchaseData['productData']	= $viewData['productData'][$val['id']];
 			$purchaseData['money']			= $viewData['userData']['money'];
+			$purchaseData['ticket']			= $viewData['ticketData']['battleTicket'];
 		?>
 		{{-- ポップアップの宣言 --}}
 		@include('popup/wrap', [

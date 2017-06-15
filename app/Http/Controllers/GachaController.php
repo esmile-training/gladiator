@@ -54,7 +54,7 @@ class GachaController extends BaseGameController
 
 	public function viewDataSet()
 	{
-		
+
 		//ガチャのレア度ごとの割合
 		$gachaConfig = \Config::get('gacha.eRate');
 
@@ -81,7 +81,7 @@ class GachaController extends BaseGameController
 		{
 			$ratio = $this->Lib->exec('RandamChara', 'boxGachaData', [$this->user['id'],$gachaConfig[$gachaVal]]);
 		}
-		
+
 		//キャラの画像ID取得
 		if($gachaVal == 7)
 		{
@@ -145,9 +145,9 @@ class GachaController extends BaseGameController
 		else
 		{
 			// 空きが無ければ未取得状態のキャラを生成する
-			$this->Model->exec('Gacha', 'createUnacquiredChara', array($charaData));
-			// 取得済みフラグを0にする
-			$this->Model->exec('Chara','charaAcceptFlag',$this->user['id']);
+			$id = $this->Model->exec('Gacha', 'createUnacquiredChara', array($charaData));
+			// プレゼントボックスへデータを受け渡す
+			$this->Model->exec('PresentBox','insertPresentData',array($this->user['id'],'1',$id,$charaData['uCharaId'],'1'));
 		}
 
 		// ログの作成を実行する
