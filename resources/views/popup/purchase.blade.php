@@ -1,8 +1,44 @@
 @include('common/css', ['file' => 'purchase'])
 
-<?php
+
+<?php 
 	$number[$purchaseData['productData']['id']] = 1;
+	//$('#purchase_Button').attr('href', '{{APP_URL}}shop/updateBelongings?purchaseItemId={{$purchaseData['itemData']['id']}}&number='+number+'&totalPrice='+totalPrice);
 ?>
+
+<script type="text/javascript">
+$(function(){
+	var number = <?php echo $number[$purchaseData['productData']['id']]; ?>;
+
+	$('img.countUp').click(function(){
+		if(number >= 10){
+			return false;
+		}
+		number++;
+		document.getElementById("number{{$purchaseData['productData']['id']}}").innerHTML = number;
+
+		var price = <?php echo $purchaseData['productData']['price']; ?>;
+		var totalPrice = price * number;
+		document.getElementById("totalPrice{{$purchaseData['productData']['id']}}").innerHTML = totalPrice;
+		
+		document.getElementById("purchase_Button").href ="{{APP_URL}}shop/updateBelongings?purchaseItemId={{$purchaseData['itemData']['id']}}&number="+number+"&totalPrice="+totalPrice;
+	});
+	
+	$('img.countDown').click(function(){
+		if(number <= 1){
+			return false;
+		}
+		number--;
+		document.getElementById("number{{$purchaseData['productData']['id']}}").innerHTML = number;
+
+		var price = <?php echo $purchaseData['productData']['price']; ?>;
+		var totalPrice = price * number;
+		document.getElementById("totalPrice{{$purchaseData['productData']['id']}}").innerHTML = totalPrice;
+		
+		document.getElementById("purchase_Button").href ="{{APP_URL}}shop/updateBelongings?purchaseItemId={{$purchaseData['itemData']['id']}}&number=" + number + "&totalPrice=" + totalPrice;	
+	});
+});
+</script>
 
 <div class="purchase">
 	{{-- 背景画像 --}}
@@ -39,7 +75,7 @@
 		<tr>
 			<td width=22%></td>
 			<td width=15%>
-				<img src="{{IMG_URL}}popup/minus_Button.png" class="image_change purchase_totalNumber_cntButton_img">
+				<img id="minus_Button" src="{{IMG_URL}}popup/minus_Button.png" class="image_change purchase_totalNumber_cntButton_img countDown">
 			</td>
 			<td width=26%>
 				<div id="number{{$purchaseData['productData']['id']}}">
@@ -47,20 +83,20 @@
 				</div>
 			</td>
 			<td width=15%>
-				<img src="{{IMG_URL}}popup/plus_Button.png" class="image_change purchase_totalNumber_cntButton_img">
+				<img id="plus_Button" src="{{IMG_URL}}popup/plus_Button.png" class="image_change purchase_totalNumber_cntButton_img countUp">
 			</td>
 			<td width=22%></td>
 		</tr>
 	</table>
 	
 	{{-- アイテムの合計金額--}}
-	<div class="purchase_totalPrice">
+	<div id="totalPrice{{$purchaseData['productData']['id']}}" class="purchase_totalPrice">
 		{{$purchaseData['productData']['price']}}
 	</div>
 	
 	{{-- 購入ボタン --}}
 	<div class="purchase_button_purchase">
-		<a href="{{APP_URL}}shop/updateBelongings?purchaseItemId={{$purchaseData['itemData']['id']}}&totalPrice={{$purchaseData['productData']['price']}}" class="clickfalse">
+		<a id="purchase_Button" href="{{APP_URL}}shop/updateBelongings?purchaseItemId={{$purchaseData['itemData']['id']}}&number={{$number[$purchaseData['productData']['id']]}}&totalPrice={{$purchaseData['productData']['price']}}">
 			<img src="{{IMG_URL}}popup/purchase_Button.png" class="image_change purchase_button_purchase_img">
 		</a>
 	</div>

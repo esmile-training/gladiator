@@ -36,7 +36,7 @@ EOD;
 	{
 $sql = <<< EOD
 	UPDATE  uItem
-	SET		{$updateItemData['itemName']} = {$updateItemData['number']}
+	SET		{$updateItemData['itemName']} = {$updateItemData['totalNumber']}
 	WHERE   userId		= {$updateItemData['userId']};
 EOD;
 	return	$this->update($sql);

@@ -217,6 +217,7 @@ class battleController extends BaseGameController
 		$this->viewData['enemyData']	= $this->EnemyData;
 		$this->viewData['type']			= $this->TypeData;
 		$this->viewData['result']		= $this->ResultData;
+		$this->viewData['item']			= $this->ItemData;
 		$this->viewData['surrenderCost']= $surrenderCost;
 	
 
@@ -290,6 +291,10 @@ class battleController extends BaseGameController
 			// EnemyData に敵キャラデータを格納
 			$this->EnemyData = $this->Model->exec('BattleEnemy', 'getBattleEnemyData', $this->BattleData['uBattleEnemyId']);
 		}
+		
+		// ユーザーIDを元にuItem(DB)から所持アイテムデータを読み込み
+		// ItemData にバトルデータを格納
+		$this->ItemData = $this->Model->exec('Item', 'getItemData', $this->user['id']);
 	}
 
 	// データベースからランキングデータを RankingData に格納するファンクション
@@ -404,6 +409,8 @@ class battleController extends BaseGameController
 					}
 				}
 				$this->CharaData['drawCount'] = $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'];
+				break;
+			case 5:
 				break;
 			default;
 				exit;
