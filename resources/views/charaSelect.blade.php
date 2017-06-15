@@ -84,16 +84,17 @@
 		</div>
 	</div>
 	<?php $count++ ?>
+	@endforeach
 	<div class="sort_Box">
 		<form action="{{APP_URL}}charaSelect/index" method="get">
 			<ul>
 				<li>
-					<input type="radio" name="order" value="DESC" <?php $order == 'DESC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange(),getType()">
-					<label>昇順</label>
+			<input type="radio" name="order" value="DESC" <?php $order == 'DESC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange(),getType()">
+			<label>昇順</label>
 				</li>
 				<li>
-					<input type="radio" name="order" value="ASC" <?php $order == 'ASC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange(),getType()">
-					<label>降順</label>
+			<input type="radio" name="order" value="ASC" <?php $order == 'ASC' ? print 'class="act" checked' : ''; ?> onchange="submit(this.form),onSortChange(),getType()">
+			<label>降順</label>
 				</li>
 			</ul>
 			<select name="type" onchange="submit(this.form),onSortChange(),getType()">
@@ -107,6 +108,5 @@
 			</select>
 		</form>
 	</div>
-	@endforeach
 @endif
 </div>
