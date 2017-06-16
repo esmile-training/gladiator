@@ -75,8 +75,7 @@
 			@if($gachaCost[14]['deck'][0] - (int)$viewData['deck']['count'] > 0)
 			{{-- 次回イベント追加 --}}
 			<div class = "gacha_button3">
-				<input type="image" 
-						class="modal_btn gacha14" 
+				<image
 						src="{{IMG_URL}}gacha/banner13.png" 
 						name = 'gachavalue' 
 						value = "14" 
