@@ -192,6 +192,15 @@
 					は	
 					{{ $viewData['type'][$viewData['charaData']['hand']] }}
 					を発動した！<br>
+					@if($viewData['charaData']['imgId'] == 10 && $viewData['charaData']['skillFlag'] == 1 && $viewData['enemyData']['battleHp'] <= 0)
+					一撃必殺　死の鎌！
+					@endif
+					@if($viewData['charaData']['imgId'] == 10 && $viewData['charaData']['skillFlag'] == 1 && $viewData['enemyData']['battleHp'] >= 1)
+					しかし何もおきなかった....
+					@endif
+					@if($viewData['charaData']['imgId'] == 1 && $viewData['charaData']['skillFlag'] == 1)
+					しかし何もおきなかった....
+					@endif
 				@endif
 				</div>
 			</div>
