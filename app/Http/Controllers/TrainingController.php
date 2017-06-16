@@ -6,6 +6,14 @@ class TrainingController extends BaseGameController
 {
 	public function index()
 	{
+		//デフォルト処理
+		$type = (!isset($_GET['type']))? 'id' : $_GET['type'];
+		$order = (!isset($_GET['order']))? 'ASC' : $_GET['order'];
+		return $this->trainingCharaSelect($type, $order);
+	}
+
+	public function trainingCharaSelect($type, $order)
+	{
 		//訓練が終了しているキャラがいるか確認し、いたらその訓練の情報を取得する
 		$result = $this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'], $this->user['id'], true));
 		if(isset($result))
@@ -30,13 +38,24 @@ class TrainingController extends BaseGameController
 		// viewDataへ格納する
 		$this->viewData['charaInventory'] = $charaInventory;
 
-		if(!isset($uCharaData))
+		if(isset($uCharaData))
 		{
-			return viewWrap('Error',$this->viewData);
-		}else{
+			//ソート関数の代に引数への変換
+			$order = ($order == 'ASC')? false : true;
+			//並べ替え処理
+			$uCharaData = $this->Lib->exec('Sort','sortArray',[$uCharaData, $type, $order]);
+			// viewDataへ取得したキャラクターを送る
 			$this->viewData['charaList'] = $uCharaData;
+			// ビューへデータを渡す
+			return viewWrap('training', $this->viewData);
 		}
-		return viewWrap('training',$this->viewData);
+		else
+		{
+			//キャラクターがいない場合リストを空にして渡す
+			$this->viewData['charaList'] = null;
+			// ビューへデータを渡す
+			return viewWrap('training',$this->viewData);
+		}
 	}
 
 	public function coachSelect()

@@ -66,18 +66,6 @@ class battleController extends BaseGameController
 			// ビューへデータを渡す
 			return viewWrap('battleCharaSelect',$this->viewData);
 		}
-
-		// viewDataへ取得したキャラクターを送る
-		//$this->viewData['charaList'] = $alluChara;
-		// //ソート関数の代に引数への変換
-		// $order = ($order == 'ASC')? false : true;
-		// //並べ替え処理
-		// $alluChara = $this->Lib->exec('Sort','sortArray',[$alluChara, $type, $order]);
-		// // viewDataへ取得したキャラクターを送る
-		// $this->viewData['charaList'] = $alluChara;
-		//
-		// // ビューへデータを渡す
-		// return viewWrap('battleCharaSelect', $this->viewData);
 	}
 
 	/*
