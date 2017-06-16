@@ -8,7 +8,7 @@ class BelongingsLib extends BaseGameLib
 	public static function updateItem($itemId, $number, $itemData, $belongingsData, $user)
 	{
 		// name に商品のDBで使っている名前を代入
-		$itemName	= $itemData[$itemId]['name'];
+		$itemName	= $itemData[$itemId]['dbName'];
 
 		// アイテムの個数を $number に代入
 		$totalNumber = $belongingsData[$itemName];

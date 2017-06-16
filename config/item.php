@@ -5,8 +5,10 @@ return [
 	'itemStr' => [
 		1	=> [
 		'id' => 1,
+		// 表示名
+		'name'	=> 'チケット',
 		// DBで使っている名前
-		'name'	=> 'ticket',
+		'dbName'	=> 'ticket',
 		// 回復するチケットの数
 		'ability'	=> 1,
 		// アイテムを使う場所
@@ -16,8 +18,10 @@ return [
 		],
 		2	=> [
 		'id' => 2,
+		// 表示名
+		'name'	=> '薬草',
 		// DBで使っている名前
-		'name'	=> 'hpRecovery',
+		'dbName'	=> 'hpRecovery',
 		// 回復するHPの数値(%)
 		'ability'	=> 30,
 		// アイテムを使う場所
@@ -27,8 +31,10 @@ return [
 		],
 		3	=> [
 		'id' => 3,
+		// 表示名
+		'name'	=> '肉',
 		// DBで使っている名前
-		'name' => 'atkUpper',
+		'dbName' => 'atkUpper',
 		// 次に出す攻撃の倍率
 		'ability'	=> 2,
 		// アイテムを使う場所
@@ -38,8 +44,10 @@ return [
 		],
 		4	=> [
 		'id' => 4,
+		// 表示名
+		'name'	=> '砂時計',
 		// DBで使っている名前
-		'name' => 'trainigShorter',
+		'dbName' => 'trainigShorter',
 		// 短縮できる時間
 		'ability'	=> 2,
 		// アイテムを使う場所
