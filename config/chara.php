@@ -43,7 +43,7 @@ return  [
         ],
 		9 => [
 			'sex' => 0,
-			'skill' => 1,
+			'skill' => 4,
 			'skillName' => '光の矢'
 		],
 		10 => [
@@ -53,7 +53,7 @@ return  [
 		],
 		11 => [
 			'sex' => 0,
-			'skill' => 1,
+			'skill' => 5,
 			'skillName' => '友情の光'
 		]
     ],
