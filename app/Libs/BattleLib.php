@@ -149,7 +149,6 @@ class BattleLib extends BaseGameLib
 				echo 'エラー';
 				exit;
 		}
-
 		return $winner;
 	}
 
@@ -348,8 +347,8 @@ class BattleLib extends BaseGameLib
 	public static function enemyDead($enemyLife){
 		
 		$randam = rand(1,100);
-		
-		if($randam <= 10){
+	
+		if($randam <= 20){
 			$enemyLife = $enemyLife - $enemyLife;
 			return $enemyLife;
 		} else {

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="jp">
 <head>
@@ -44,9 +43,13 @@
 			<tr>
 				<td width="20%">
 					{{-- 難易度 --}}
-					<img src="{{IMG_URL}}battle/difficulty{{$viewData['enemyData']['difficulty']}}.png" >
+					<img src="{{IMG_URL}}battle/diff{{$viewData['enemyData']['difficulty']}}.png">
 				</td>
-				<td width="20%"></td>
+				<td width="20%">
+					<a>
+						<img src="{{IMG_URL}}battle/itemButton.png"  class = "image_change">
+					</a>
+				</td>
 				<td width="20%"></td>
 				<td width="20%">
 					{{-- 降参ボタン --}}

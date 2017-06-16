@@ -447,7 +447,6 @@ class battleController extends BaseGameController
 						case 9:
 							$this->EnemyData['battleHp'] = BattleLib::enemyDead($this->EnemyData['battleHp']);
 						break;
-					
 					}
 				}
 				$this->CharaData['drawCount'] = $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['drawCount'];
@@ -458,18 +457,22 @@ class battleController extends BaseGameController
 				exit;
 
 		}
-			
-		if($this->CharaData['skillFlag'] == 1 && $this->BattleData['battleSkillTurn'] > $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
+	
+		if($this->CharaData['skillFlag'] == 1 && $this->CharaData['imgId'] == 8 && $this->BattleData['battleSkillTurn'] < $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
 		{
-					
-			
+			//回復の場合
+			$this->CharaData['skill'] = $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['recovery'];
+			//自分の回復
+			$this->CharaData = BattleLib::damageCalc($this->CharaData);
+			$this->CharaData['battleHp'] = BattleLib::charaHeal($this->CharaData['battleHp'],$this->CharaData);	
+		}
+		if($this->CharaData['skillFlag'] == 1 && $this->BattleData['battleSkillTurn'] > $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
+		{	
 			 $this->CharaData['battleGooAtk'] = $this->CharaData['gooAtk'];
 			 $this->CharaData['battleChoAtk'] = $this->CharaData['choAtk'];
 			 $this->CharaData['battlePaaAtk'] = $this->CharaData['paaAtk'];
 			 $this->CharaData['skillFlag'] = 0;
 		}
-		
-		
 		// バトルキャラデータの更新処理
 		// 自キャラデータの更新処理
 		$this->Model->exec('BattleChara', 'UpdateBattleCharaData', array($this->CharaData));
