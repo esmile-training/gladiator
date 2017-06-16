@@ -9,7 +9,7 @@ class ShopController extends BaseGameController
 	public function index()
 	{
 		// setData関数を呼び出し、データをセット
-		$this->getItemData();
+		$this->getProductData();
 
 		// 全てのデータを viewData に渡す
 		$this->viewData['userData']			= $this->user;
@@ -24,8 +24,14 @@ class ShopController extends BaseGameController
 	/*
 	 * 所持アイテムや商品データを読み込むファンクション
 	 */
-	public function getItemData()
+	public function getProductData()
 	{
+		// 商品データ取得
+		$this->productData		= \Config::get('shop.productStr');
+		
+		// アイテムデータ取得
+		$this->itemData			= \Config::get('item.itemStr');
+		
 		// 所持アイテムデータ取得
 		$this->belongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
 		// 所持アイテムデータがなければ作成
@@ -37,12 +43,6 @@ class ShopController extends BaseGameController
 			// 所持アイテムデータ取得
 			$this->belongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
 		}
-		
-		// アイテムデータ取得
-		$this->itemData			= \Config::get('item.itemStr');
-
-		// 商品データ取得
-		$this->productData		= \Config::get('shop.productStr');
 	}
 
 	/*
