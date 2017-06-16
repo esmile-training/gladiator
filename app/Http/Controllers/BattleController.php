@@ -465,6 +465,7 @@ class battleController extends BaseGameController
 			//自分の回復
 			$this->CharaData = BattleLib::damageCalc($this->CharaData);
 			$this->CharaData['battleHp'] = BattleLib::charaHeal($this->CharaData['battleHp'],$this->CharaData);	
+			
 		}
 		if($this->CharaData['skillFlag'] == 1 && $this->BattleData['battleSkillTurn'] > $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
 		{	

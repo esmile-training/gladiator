@@ -328,7 +328,12 @@
 						</td>
 						<td width="5%">
 							@if($viewData['charaData']['imgId'] == 8 && $viewData['charaData']['skillFlag'] == 1)
-							<img src="{{IMG_URL}}battle/skillsShield.png" class = "skill_Shield">
+							<img src="{{IMG_URL}}battle/heal.png" class = "skill_healIcon">
+							<img src="{{IMG_URL}}battle/up.png" class = "skill_healUpIcon">
+							@endif
+							@if($viewData['charaData']['imgId'] == 6 && $viewData['charaData']['skillFlag'] == 1)
+							<img src="{{IMG_URL}}battle/shield.png" class = "skill_shieldIcon">
+							<img src="{{IMG_URL}}battle/up.png" class = "skill_shieldUpIcon">
 							@endif
 						</td>
 					</tr>
