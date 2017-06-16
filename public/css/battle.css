@@ -383,3 +383,10 @@ body{}
 	0% {opacity:0;}
 	100% {opacity:1;}
 }
+.skill_Shield{
+	width: 10%;
+    position: absolute;
+    top: -195%;
+    right: -35%;
+	animation: UpDown 0.8s linear infinite;
+}

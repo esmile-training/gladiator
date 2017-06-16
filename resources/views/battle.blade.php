@@ -326,7 +326,11 @@
 							{{ $viewData['charaData']['paaAtk']}}
 							@endif
 						</td>
-						<td width="10%"></td>
+						<td width="5%">
+							@if($viewData['charaData']['imgId'] == 8 && $viewData['charaData']['skillFlag'] == 1)
+							<img src="{{IMG_URL}}battle/skillsShield.png" class = "skill_Shield">
+							@endif
+						</td>
 					</tr>
 				</table>
 			</div>
