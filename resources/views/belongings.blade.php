@@ -19,14 +19,14 @@
 	</div>
 </div>
 
-{{-- 商品一覧 --}}
+{{-- アイテム一覧 --}}
 <div class="itemlist">
 	@foreach( $viewData['itemData'] as $key => $val)
 		{{-- ボタン間隔を空けて表示 --}}
 		<div class="itemlist_margin">
-			{{-- 商品の枠 --}}
+			{{-- アイテムの枠 --}}
 			<div class="itemlist_flame">
-				<img class="itemlist_flame_img" src="{{IMG_URL}}shop/product_Flame.png">
+				<img class="itemlist_flame_img" src="{{IMG_URL}}belongings/list_Flame.png">
 				
 				{{-- アイテム画像 --}}
 				<div class="itemlist_flame_item">
@@ -48,7 +48,14 @@
 						{{$viewData['belongingsData'][$val['dbName']]}}
 					@endif
 				</div>
-				{{-- アイテム説明 --}}
+				{{-- アイテムを使う場所 --}}
+				<div class="itemlist_flame_where">
+					{{$val['where']}}
+				</div>
+				{{-- アイテムの説明 --}}
+				<div class="itemlist_flame_info">
+					{{$val['abilityInfo']}}
+				</div>
 			</div>
 		</div>
 	@endforeach

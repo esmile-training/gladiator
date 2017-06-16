@@ -76,3 +76,25 @@
     color: #ffffff;
 	text-align: right
 }
+/* アイテムを使う場所の表示領域と文字のテイスト */
+.itemlist_flame_where{
+	position: absolute;
+	top: 7%;
+	right: 0%;
+	width: 37%;
+    font-family: serif;
+    font-size: 2.3vh;
+    color: #ffffff;
+	text-align: left;
+}
+/* アイテムを使う場所の表示領域と文字のテイスト */
+.itemlist_flame_info{
+	position: absolute;
+	top: 40%;
+	right: 0%;
+	width: 37%;
+    font-family: serif;
+    font-size: 2.3vh;
+    color: #ffffff;
+	text-align: left;
+}
