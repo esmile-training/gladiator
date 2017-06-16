@@ -19,7 +19,7 @@
 		<div style="color:#F00">
 			残高が足りません
 		</div>
-		<img class="gacha_popup image_change" src = "{{IMG_URL}}popup/scoutDown.png">
+		<!--<img class="gacha_popup image_change" src = "{{IMG_URL}}popup/scoutDown.png">-->
 	@else
 		<a class="clickfalse" href="{{APP_URL}}gacha/viewDataSet?gachavalue={{$data['gachaId']}}">
 			<img class="gacha_popup image_change" src = "{{IMG_URL}}popup/scout.png" style='top: 78%'>
@@ -33,23 +33,23 @@
 			</tr>
 			<tr>
 				<td><image class="boxGacha_table_image" src='{{IMG_URL}}gacha/5.png'></td>
-				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][5] - $deck['LR']}}/{{$gachaCost[$data['gachaId']]['deck'][5]}}</td>
+				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][5] - $deck['LR']}} / {{$gachaCost[$data['gachaId']]['deck'][5]}}</td>
 			</tr>
 			<tr>
 				<td><image class="boxGacha_table_image" src='{{IMG_URL}}gacha/4.png'></td>
-				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][4] - $deck['SSR']}}/{{$gachaCost[$data['gachaId']]['deck'][4]}}</td>
+				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][4] - $deck['SSR']}} / {{$gachaCost[$data['gachaId']]['deck'][4]}}</td>
 			</tr>
 			<tr>
 				<td><image class="boxGacha_table_image" src='{{IMG_URL}}gacha/3.png'></td>
-				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][3] - $deck['SR']}}/{{$gachaCost[$data['gachaId']]['deck'][3]}}</td>
+				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][3] - $deck['SR']}} / {{$gachaCost[$data['gachaId']]['deck'][3]}}</td>
 			</tr>
 			<tr>
 				<td><image class="boxGacha_table_image" src='{{IMG_URL}}gacha/2.png'></td>
-				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][2] - $deck['R']}}/{{$gachaCost[$data['gachaId']]['deck'][2]}}</td>
+				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][2] - $deck['R']}} / {{$gachaCost[$data['gachaId']]['deck'][2]}}</td>
 			</tr>
 			<tr>
 				<td><image class="boxGacha_table_image" src='{{IMG_URL}}gacha/1.png'></td>
-				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][1] - $deck['N']}}/{{$gachaCost[$data['gachaId']]['deck'][1]}}</td>
+				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][1] - $deck['N']}} / {{$gachaCost[$data['gachaId']]['deck'][1]}}</td>
 			</tr>
 		</table>
 	</div>

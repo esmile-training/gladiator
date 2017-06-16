@@ -17,7 +17,7 @@ class GachaController extends BaseGameController
 		$createTime = $time[0]['createTime'];
 		$this->viewData['createTime'] = $createTime;
 		$this->viewData['nowTime'];
-		$this->viewData['deck'] = $this->Model->exec('Gacha','getEventGachaRecord', $this->user['id']);
+		$this->viewData['deck'] = $this->Lib->exec('RandamChara', 'checkEventGachaMonth', $this->user['id']);
 
 		return viewWrap('eventsGachaselect', $this->viewData);
 	}
@@ -54,7 +54,6 @@ class GachaController extends BaseGameController
 
 	public function viewDataSet()
 	{
-
 		//ガチャのレア度ごとの割合
 		$gachaConfig = \Config::get('gacha.eRate');
 
