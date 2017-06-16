@@ -36,7 +36,7 @@
 				</div>
 				{{-- アイテム名前 --}}
 				<div class="itemlist_flame_name">
-					{{$val['name']}}
+					{{$viewData['itemData'][$val['itemId']]['name']}}
 				</div>
 				{{-- アイテム価格 --}}
 				<div class="itemlist_flame_price">
@@ -47,7 +47,7 @@
 					@if( $val['itemId'] == 1)
 						{{$viewData['ticketData']['battleTicket']}}
 					@else
-						{{$viewData['belongingsData'][$viewData['itemData'][$val['itemId']]['name']]}}
+						{{$viewData['belongingsData'][$viewData['itemData'][$val['itemId']]['dbName']]}}
 					@endif
 				</div>
 				{{-- 購入ボタン --}}

@@ -8,7 +8,7 @@ class MoneyLib extends BaseGameLib
 	public function addition($user, $add)
 	{
 		$user['money'] = $user['money'] + $add;
-
+		
 		$this->Model->exec('user', 'updateMoney', array($user));
 	}
 	
