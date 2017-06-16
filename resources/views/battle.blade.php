@@ -198,6 +198,7 @@
 					@if($viewData['charaData']['imgId'] == 10 && $viewData['charaData']['skillFlag'] == 1 && $viewData['enemyData']['battleHp'] >= 1)
 					しかし何もおきなかった....
 					@endif
+				
 					@if($viewData['charaData']['imgId'] == 1 && $viewData['charaData']['skillFlag'] == 1)
 					しかし何もおきなかった....
 					@endif

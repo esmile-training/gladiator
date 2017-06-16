@@ -409,3 +409,14 @@ body{}
     right: -36%;
     animation: UpDown 0.8s linear infinite;
 }
+.taisya{
+	width: 90%;
+    position: absolute;
+    top: 42%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 1;
+	opacity: 0;
+}
