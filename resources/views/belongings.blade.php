@@ -9,11 +9,11 @@
 
 {{-- 看板 --}}
 <div class="belongings_signboard">
-	<img src="{{IMG_URL}}shop/signboard.png">
+	<img src="{{IMG_URL}}signboard/item.png">
 </div>
 {{-- 看板説明 --}}
 <div class="belongings_signboard_info">
-	<img src="{{IMG_URL}}/shop/signboard_info.png">
+	<img src="{{IMG_URL}}signboard/info.png">
 	<div class ="belongings_signboard_text">
 		所持アイテム一覧
 	</div>
