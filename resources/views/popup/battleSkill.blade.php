@@ -5,6 +5,9 @@
 			$skill = \Config::get('chara.skill');
 			$skillNumber = $charaSkill[$charaData['imgId']]['skill'];
 	?>
+<font style ='position: relative;top: 3vw;'>
+	{{$charaSkill[$charaData['imgId']]['skillName']}}</br>
+</font>
 <font style = "position: relative; top: 6vw;">
 	{{$skill[$skillNumber]['effect']}}
 </font>

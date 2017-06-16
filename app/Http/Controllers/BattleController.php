@@ -235,8 +235,9 @@ class battleController extends BaseGameController
 
 		//リダイレクト元からデータをゲットする
 		$prize = filter_input(INPUT_GET, "prize");
-
 		$charaData['name']			= filter_input(INPUT_GET, "name");
+		$charaData['skill']			= filter_input(INPUT_GET, "skill");
+		$charaData['imgId']			= filter_input(INPUT_GET, "imgId");
 		if($prize > 0)
 		{
 			$charaData['hp']			= filter_input(INPUT_GET, "deaultHp");
@@ -327,7 +328,6 @@ class battleController extends BaseGameController
 		{
 			return $this->Lib->redirect('Battle', 'makeResultData');
 		}
-
 		// 押されたボタンのデータを Chara の 'hand' に格納
 		// 1(グー) / 2(チョキ) / 3(パー) のどれかが入る
 		$this->CharaData['hand'] = $_GET["hand"];
@@ -457,7 +457,7 @@ class battleController extends BaseGameController
 				exit;
 
 		}
-	
+		
 		if($this->CharaData['skillFlag'] == 1 && $this->CharaData['imgId'] == 8 && $this->BattleData['battleSkillTurn'] < $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
 		{
 			//回復の場合
@@ -481,7 +481,15 @@ class battleController extends BaseGameController
 		$this->Model->exec('BattleEnemy', 'UpdateBattleEnemyData', array($this->EnemyData));
 		
 		$this->Model->exec('BattleInfo', 'UpdateBattleData', array($this->BattleData));
-
+		
+		if($this->CharaData['skillFlag'] == 1 && $this->CharaData['imgId'] == 1)
+		{
+			$ran = rand(1,100);
+			if($ran <= 50){
+				return $this->Lib->redirect('Battle', 'makeResultData');
+			}
+		}
+		
 		return $this->Lib->redirect('Battle', 'battleLog');
 	}
 
@@ -492,7 +500,6 @@ class battleController extends BaseGameController
 	{
 		// getData ファンクションを呼び出し、バトルデータをセット
 		$this->getBattleData();
-
 		// getRankingData ファンクションを呼び出し、ランキングデータをセット
 		$this->getRankingData();
 	
@@ -503,6 +510,7 @@ class battleController extends BaseGameController
 			return view('error');
 		}
 
+		
 		// 敵のHPが0以下の場合(試合全体としてプレイヤーが勝った場合)
 		if($this->EnemyData['battleHp'] <= 0)
 		{
@@ -563,6 +571,8 @@ class battleController extends BaseGameController
 			$param = [
 				'name'	=> $this->CharaData['name'],
 				'prize' => 0,
+				'skill' => $this->CharaData['skillFlag'],
+				'imgId' => $this->CharaData['imgId'],
 			];
 
 			$this->Model->exec('Chara', 'charaDelFlag', $this->CharaData['uCharaId']);
@@ -575,6 +585,11 @@ class battleController extends BaseGameController
 			// 降参費用額計算
 			$prize = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));
 
+			
+			if($this->CharaData['skillFlag'] == 1 && $this->CharaData['imgId'] == 1)
+			{
+				$prize = 0;
+			}
 			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
 			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$prize));
 
@@ -585,6 +600,8 @@ class battleController extends BaseGameController
 			$param = [
 				'name'	=> $this->CharaData['name'],
 				'prize' => $prize,
+				'skill' => $this->CharaData['skillFlag'],
+				'imgId' => $this->CharaData['imgId'],
 			];
 		}
 

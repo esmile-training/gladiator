@@ -1,3 +1,4 @@
+
 		{{-- cssの宣言 --}}
 		@include('common/header')
 		@include('common/css', ['file' => 'battleResult'])
@@ -165,11 +166,17 @@
 					</div>
 				</div>
 			@else
+				@if($viewData['charaDefaultData']['skill'] == 1 && $viewData['charaDefaultData']['imgId'] == 1)
+				<font class = "teijiFont">
+					定時退社した。
+				</font>
+				@else
 				{{-- プレイヤー敗北時のリザルトログ --}}
-				<div class="battleresult_log_message">
-					{{$viewData['charaDefaultData']['name']}} は死んだ
-				</div>
-				<img src="{{IMG_URL}}battleResult/chara_Death.png" class="battleresult_log_death">
+					<div class="battleresult_log_message">
+						{{$viewData['charaDefaultData']['name']}} は死んだ
+					</div>
+					<img src="{{IMG_URL}}battleResult/chara_Death.png" class="battleresult_log_death">
+				@endif
 			@endif
 		</div>
 

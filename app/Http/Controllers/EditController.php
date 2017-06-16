@@ -16,44 +16,44 @@ class EditController extends BaseGameController
 
 		//チーム名をバイトと文字数で判定
 		if(strlen($teamName) <= 16 || mb_strlen($teamName) <= 8)
-		{   
-			
+		{
+
 			//DBにチーム名を追加してidを取得
 			$userId = $this->Model->exec('User', 'createUser', [$teamName]);
-			
+
 			// rankingにデータを追加
 			$this->Model->exec('Ranking','insertRankingData',$userId);
-			
+
 			// uItemにデータを追加
 			$this->Model->exec('Item','insertItemData',$userId);
-			
+
 			//Cookieの値をuserIDに書き換え
 			setcookie('userId', $userId, time() + 60*60*24*365*20, '/');
 
 			$gachaValueList = [0=>12,12,13];
-			
+
 			foreach($gachaValueList as $value)
 			{
 				//ガチャの選択して割合算出
 				$this->viewData['ratio'] = $this->Lib->exec('RandamChara', 'getGachaRatio',$value);
 
 				$ratio = $this->viewData['ratio']['hit'];
-			
-			
+
+
 				$sex = false;
-				
+
 				$this->viewData['chara'] = $this->Lib->exec('RandamChara', 'getCharaImgId', [$sex],$value);
-				
-				
+
+
 				//キャラのステータス
 				$this->viewData['valueList'] = $this->Lib->exec('RandamChara', 'getValueConf',$ratio,$value);
-				
+
 				//性別データの格納
 				$sexData = $this->viewData['chara']['sex'];
 
-				//キャラネーム 
+				//キャラネーム
 				$this->viewData['name'] = $this->Lib->exec('RandamChara', 'randamCharaName', [$sexData]);
-				
+
 				//DBへの受け渡し
 				$charaData = [
 				'userId' => $userId,
@@ -68,7 +68,10 @@ class EditController extends BaseGameController
 				'narrow' => $this->viewData['valueList']['narrow'],
 				];
 				$this->Model->exec('Gacha', 'createChara', array($charaData));
-				
+				// ユーザー情報の取得
+				$user = $this->Model->exec('User','getById',$userId);
+				// 所持キャラ数の加算を行う
+				$this->Lib->exec('ManageCharaPossession','addPossessionChara',array($user));
 			}
 			$this->Lib->exec('WeekRange','rangeState',$userId);
 
@@ -76,7 +79,7 @@ class EditController extends BaseGameController
 			$this->addCoach($userId, 'goo', 0);
 			$this->addCoach($userId, 'choki', 1);
 			$this->addCoach($userId, 'paa', 2);
-			
+
 			//マイページヘリダイレクト
 			return $this->Lib->redirect('mypage', 'index');
 		} else {
@@ -84,7 +87,7 @@ class EditController extends BaseGameController
 			return $this->Lib->redirect('');
 		}
 	}
-	
+
 	public function addCoach($userId, $att, $Atk)
 	{
 		$atkArray = array('50', '50', '50');

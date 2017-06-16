@@ -3,47 +3,58 @@ return  [
     'imgId' => [
         1 => [
             'sex' => 0,//０のとき男、　１のとき女
-			'skill' => 1
+			'skill' => 11,
+			'skillName' => '定時退社'
         ],
         2 => [
             'sex' => 0,
-			'skill' => 2
+			'skill' => 2,
+			'skillName' => '早食い'
         ],
         3 => [
             'sex' => 1,
-			'skill' => 6
+			'skill' => 6,
+			'skillName' => '魅惑の尾'
         ],
         4 => [
             'sex' => 1,
-			'skill' => 7
+			'skill' => 7,
+			'skillName' => '強運の体'
         ],
         5 => [
             'sex' => 1,
-			'skill' => 3
+			'skill' => 3,
+			'skillName' => '強靭な爪'
         ],
         6 => [
             'sex' => 0,
-			'skill' => 8
+			'skill' => 8,
+			'skillName' => '勇敢な精神'
         ],
         7 => [
             'sex' => 1,
-			'skill' => 1
+			'skill' => 1,
+			'skillName' => 'ビックリキック'
         ],
 		8 => [
             'sex' => 0,
-			'skill' => 10
+			'skill' => 10,
+			'skillName' => '器用な指先'
         ],
 		9 => [
 			'sex' => 0,
-			'skill' => 1
+			'skill' => 1,
+			'skillName' => '光の矢'
 		],
 		10 => [
 			'sex' => 1,
-			'skill' => 9
+			'skill' => 9,
+			'skillName' => '死の鎌'
 		],
 		11 => [
 			'sex' => 0,
-			'skill' => 1
+			'skill' => 1,
+			'skillName' => '友情の光'
 		]
     ],
 	'skill' => [
@@ -83,7 +94,7 @@ return  [
 		],
 		8 => [	'turn' => 3,
 				'drawCount'	=> 3,
-				'effect' => 'ダメージを0'
+				'effect' => '3ターンダメージを0'
 		],
 		9 => [	
 				'turn' => false,
@@ -94,6 +105,10 @@ return  [
 				'turn' => 3,
 				'drawCount'	=> 3,
 				'effect' => '自分のHP3ターン少回復'
+		],
+		11 => [	'turn' => 'false',
+				'drawCount'	=> 3,
+				'effect' => '50%の確立で強制試合終了'
 		]
 	],
 	'allname' => [

@@ -89,3 +89,10 @@ th{ text-align: center; }
 .cap:not(.act) {
 	display:none;
 }
+.teijiFont{
+	color: white;
+    font-size: 5vw;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
