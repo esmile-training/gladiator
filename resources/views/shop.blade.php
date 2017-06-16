@@ -1,5 +1,6 @@
 {{--CSS--}}
 @include('common/css', ['file' => 'shop'])
+@include('common/css', ['file' => 'itemlist'])
 
 {{-- 背景 --}}
 <div>
