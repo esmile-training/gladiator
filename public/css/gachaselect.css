@@ -86,6 +86,14 @@
 	left: 0;
 	right: 0;
 }
+.gacha_popupbox p{
+	position: absolute;
+	top: 200%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
 /*　お金アイコン　*/
 .gold1{
 	width:7%;
@@ -104,4 +112,14 @@
 	width: 100%;
 	position: relative;
 	top: 7vw;
+}
+
+.boxGacha_table{
+	position: absolute;
+	top: 134%;
+	left: 29%;
+}
+
+.boxGacha_table_image{
+	width: 5vh;
 }

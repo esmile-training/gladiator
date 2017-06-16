@@ -115,9 +115,10 @@ class BattleLib extends BaseGameLib
 				//スキルの判定
 				$charaSkill = \Config::get('chara.imgId');
 				$skill = \Config::get('chara.skill');
-				
+
 				switch ($charaSkill[$winner['imgId']]['skill'])
 				{
+					
 					case 1:
 						//ダメージの場合
 						$winner['skill'] = $skill[$charaSkill[$winner['imgId']]['skill']]['damage'];	
@@ -141,7 +142,6 @@ class BattleLib extends BaseGameLib
 					case 6:
 						//二回攻撃の場合
 						$winner['skill'] = $skill[$charaSkill[$winner['imgId']]['skill']]['ratio'];
-						
 					break;
 				}
 			break;
@@ -329,17 +329,35 @@ class BattleLib extends BaseGameLib
 		return $life; 
 	}
 	/* 二回攻撃 */
-	public static function charaDoubleAttack($damage,$charaData){
+	public static function charaDoubleAttack($damage){
 
-		$enemyDamage = $damage * $charaData;
+		$enemyDamage = $damage * 2;
 		
 		return $enemyDamage; 
 	}
 	/* 敵のダメージを返す */
-	
+	public static function charaReverseAttack($damage){
+
+		$enemyDamage = $damage;
+		
+		return $enemyDamage; 
+	}
 	/* ダメージ無効 */
 	
 	/* 即死効果 */
-	
+	public static function enemyDead($enemyLife){
+		
+		$randam = rand(1,100);
+		
+		if($randam <= 10){
+			$enemyLife = $enemyLife - $enemyLife;
+			return $enemyLife;
+		} else {
+			
+			return $enemyLife;
+			
+		}		
+		
+	}
 	
 }

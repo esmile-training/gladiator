@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="jp">
 <head>
@@ -161,7 +162,6 @@
 						</span>
 					@endif
 					<br />
-
 					{{-- ダメージログの表示 --}}
 					@if ( $viewData['charaData']['result'] == 1)
 							{{$viewData['enemyData']['name']}} に

@@ -157,7 +157,7 @@ class battleController extends BaseGameController
 
 		$skill = \Config::get('chara.skill');
 
-		$matchData['drawCount'] = $skill[$charaData[$matchData['imgId']]['skill']]['turn'];
+		$matchData['drawCount'] = $skill[$charaData[$matchData['imgId']]['skill']]['drawCount'];
 
 		// デリートフラグが立っていない、同じIDのデータが登録されていなければインサートを行う
 		if(!isset($battleInfo))
@@ -343,6 +343,11 @@ class battleController extends BaseGameController
 		//コンフィグからキャラ情報持ってくる
 		$charaSkill = \Config::get('chara.imgId');
 		$skill = \Config::get('chara.skill');
+		
+		if($this->CharaData['skillFlag'] == 1)
+		{
+			$this->BattleData['battleSkillTurn'] += 1;
+		}	
 		// ダメージ処理
 		// CharaData の 'result' によって処理を行う
 		switch ($this->CharaData['result'])
@@ -352,12 +357,10 @@ class battleController extends BaseGameController
 				// 自キャラデータを元にダメージ量を計算
 				$this->CharaData = BattleLib::damageCalc($this->CharaData);
 				// 変動したダメージ量を元にダメージ処理後の敵キャラHPを計算
-				if(isset($this->CharaData['skill'])){
-					
-					if($this->CharaData['skill'] == 6)
-					{
-						$this->CharaData['damage'] = BattleLib::charaDoubleAttack($this->CharaData['damage'],$skill[$charaSkill[$this->CharaData['imgId']]['skill']]['ratio']);
-					}
+				if($this->CharaData['skillFlag'] == 1 && $this->CharaData['imgId'] == 3)
+				{
+					$this->CharaData['damage'] = BattleLib::charaDoubleAttack($this->CharaData['damage']);
+					$this->CharaData['skillFlag'] = 0;
 				}
 				$this->EnemyData['battleHp'] = BattleLib::hpCalc($this->CharaData, $this->EnemyData);
 				break;
@@ -366,6 +369,23 @@ class battleController extends BaseGameController
 			case 2:
 				// 敵キャラデータを元にダメージ量を計算
 				$this->EnemyData = BattleLib::damageCalc($this->EnemyData);
+				if($this->CharaData['skillFlag'] == 1 && $this->CharaData['imgId'] == 4)
+				{
+					$this->CharaData['damage'] = $this->EnemyData['damage'];
+					$this->EnemyData['battleHp'] = BattleLib::hpCalc($this->CharaData, $this->EnemyData);
+					$this->CharaData['skillFlag'] = 0;
+					break;
+				}
+				if($this->CharaData['skillFlag'] == 1 && $this->CharaData['imgId'] == 6 && $this->BattleData['battleSkillTurn'] <= $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
+				{
+					$this->EnemyData['damage'] = 0;
+					if($this->BattleData['battleSkillTurn'] >= $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
+					{
+						$this->CharaData['skillFlag'] = 0;
+						break;
+					}
+						break;
+				}
 				// 変動したダメージ量を元にダメージ処理後の自キャラHPを計算
 				$this->CharaData['battleHp'] = BattleLib::hpCalc($this->EnemyData, $this->CharaData);
 				break;
@@ -383,7 +403,8 @@ class battleController extends BaseGameController
 
 			// 4(スキル) の場合
 			case 4:
-
+				$this->BattleData['battleSkillTurn'] = 0;
+				$this->CharaData['skillFlag'] = 1;
 				if($this->CharaData['drawCount'] == 0)
 				{
 					switch ($charaSkill[$this->CharaData['imgId']]['skill'])
@@ -407,6 +428,7 @@ class battleController extends BaseGameController
 							//グーの攻撃力アップ
 							$this->CharaData = BattleLib::damageCalc($this->CharaData);
 							$this->CharaData['battleGooAtk'] = BattleLib::atkUp($this->CharaData['battleGooAtk'], $this->CharaData['skill']);
+							
 						break;
 						case 4:
 							//チョキの攻撃力アップ
@@ -421,11 +443,14 @@ class battleController extends BaseGameController
 						case 6:
 							//二回攻撃の場合
 							$this->CharaData = BattleLib::damageCalc($this->CharaData);
-							
 						break;
+						case 9:
+							$this->EnemyData['battleHp'] = BattleLib::enemyDead($this->EnemyData['battleHp']);
+						break;
+					
 					}
 				}
-				$this->CharaData['drawCount'] = $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'];
+				$this->CharaData['drawCount'] = $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['drawCount'];
 				break;
 			case 5:
 				break;
@@ -433,12 +458,25 @@ class battleController extends BaseGameController
 				exit;
 
 		}
-
+			
+		if($this->CharaData['skillFlag'] == 1 && $this->BattleData['battleSkillTurn'] > $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
+		{
+					
+			
+			 $this->CharaData['battleGooAtk'] = $this->CharaData['gooAtk'];
+			 $this->CharaData['battleChoAtk'] = $this->CharaData['choAtk'];
+			 $this->CharaData['battlePaaAtk'] = $this->CharaData['paaAtk'];
+			 $this->CharaData['skillFlag'] = 0;
+		}
+		
+		
 		// バトルキャラデータの更新処理
 		// 自キャラデータの更新処理
 		$this->Model->exec('BattleChara', 'UpdateBattleCharaData', array($this->CharaData));
 		// 敵キャラデータの更新処理
 		$this->Model->exec('BattleEnemy', 'UpdateBattleEnemyData', array($this->EnemyData));
+		
+		$this->Model->exec('BattleInfo', 'UpdateBattleData', array($this->BattleData));
 
 		return $this->Lib->redirect('Battle', 'battleLog');
 	}
@@ -453,7 +491,7 @@ class battleController extends BaseGameController
 
 		// getRankingData ファンクションを呼び出し、ランキングデータをセット
 		$this->getRankingData();
-
+	
 		// バトルデータがなかった場合、エラー画面を表示しホームへ戻す
 		// リザルト画面から戻るボタンで戻り、再度ページをリザルト画面を開かれたときの対策
 		if(is_null($this->BattleData))
@@ -557,11 +595,10 @@ class battleController extends BaseGameController
 	 */
 	public function standDelFlag()
 	{
-		// ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
-		// BattleData にバトルデータを格納
+//		// ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
+//		// BattleData にバトルデータを格納
 		$this->BattleData = $this->Model->exec('BattleInfo', 'getBattleData', $this->user['id']);
-
-		// uBattleInfo(DB) の delFlag を立てる更新
-		$this->Model->exec('BattleInfo', 'UpdateInfoFlag', $this->BattleData['id']);
+//
+		$this->Model->exec('BattleInfo', 'UpdateInfoBattleFlagData', $this->BattleData['id']);
 	}
 }

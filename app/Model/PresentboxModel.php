@@ -14,12 +14,14 @@ $sql =  <<< EOD
 EOD;
 		return $this->select($sql, 'all');
 	}
-	
-	public function insertPresentData($userId,$type,$objId,$imgId,$time,$cnt = 1)
+
+	// プレゼントのテーブルへデータを挿入する
+	public function insertPresentData($userId,$type,$objId,$imgId,$cnt = 1)
 	{
+		$time = date('Y-m-d H:i:s', time());
 $sql =  <<< EOD
 		INSERT INTO uPresent
-		values(
+		VALUES (
 			NULL,
 			0,
 			{$userId},
@@ -44,4 +46,3 @@ EOD;
 		   $this->update($sql);
 	}
 }
-

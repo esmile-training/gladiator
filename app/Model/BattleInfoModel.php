@@ -37,6 +37,7 @@ $sql = <<< EOD
 			'{$userId}',
 			'{$uBattleCharaId}',
 			'{$uBattleEnemyId}',
+			0,
 			'{$time}',
 			'{$time}'
 		);
@@ -46,16 +47,27 @@ EOD;
 		// インサートしたレコードのIDを返す
 		return $id;
 	}
-
 	/*
-	 * 'delFlag'を立てる
+	 * DBの更新をする
 	 */
-	public function UpdateInfoFlag($battleId)
+	public function UpdateInfoBattleFlagData($battleId)
 	{
 $sql = <<< EOD
 	UPDATE  uBattleInfo
 	SET		delFlag = 1
-	WHERE   id = {$battleId};
+	WHERE   id		= {$battleId};
+EOD;
+		$this->update($sql);
+	}
+	/*
+	 * DBの更新をする
+	 */
+	public function UpdateBattleData($battle)
+	{
+$sql = <<< EOD
+	UPDATE  uBattleInfo
+	SET		battleSkillTurn = {$battle['battleSkillTurn']}
+	WHERE   id		= {$battle['id']};
 EOD;
 		$this->update($sql);
 	}

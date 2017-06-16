@@ -25,6 +25,7 @@ $sql = <<< EOD
 		hand,
 		result,
 		drawCount,
+		skillFlag,
 		uChara.id as uCharaId,
 		userId,
 		imgId,
@@ -65,6 +66,7 @@ $sql = <<< EOD
 			0,
 			0,
 			'{$drawCount}',
+			0,
 			'{$time}',
 			'{$time}'
 		);
@@ -74,23 +76,24 @@ EOD;
 		// インサートしたレコードのIDを返す
 		return $id;
 	}
-
 	/*
 	 * DBの更新をする
 	 */
 	public function UpdateBattleCharaData($battleChara)
 	{
+
 $sql = <<< EOD
 	UPDATE  uBattleChara
-	SET		battleHp		= {$battleChara['battleHp']},
-			battleGooAtk = {$battleChara['battleGooAtk']},
-			battleChoAtk = {$battleChara['battleChoAtk']},
-			battlePaaAtk = {$battleChara['battlePaaAtk']},
-			damage  = {$battleChara['damage']},
+	SET		battleHp		= '{$battleChara['battleHp']}',
+			battleGooAtk = '{$battleChara['battleGooAtk']}',
+			battleChoAtk = '{$battleChara['battleChoAtk']}',
+			battlePaaAtk = '{$battleChara['battlePaaAtk']}',
+			damage  = '{$battleChara['damage']}',
 			hand	= '{$battleChara['hand']}',
 			result	= '{$battleChara['result']}',
-			drawCount = '{$battleChara['drawCount']}'
-	WHERE   id		= {$battleChara['uBattleCharaId']};
+			drawCount = '{$battleChara['drawCount']}',
+			skillFlag = '{$battleChara['skillFlag']}'
+	WHERE	id		=  '{$battleChara['uBattleCharaId']}'
 EOD;
 		$this->update($sql);
 	}

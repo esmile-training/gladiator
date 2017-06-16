@@ -69,27 +69,21 @@ a:active{
 
 /*キャラ所持数の表示位置の設定*/
 .chara_inventory{
-	width: 35%;
+	width: 100%;
 	position: fixed;
 	top: 20%;
-	left: 5px;
+	left: 0px;
 	z-index: 2;
-}
-
-/*キャラ所持数の見出しの設定*/
-.inventory_text{
-	position: absolute;
-	top: 4%;
-	left: 3%;
-	font-size: 2.8vw;
 }
 
 /*キャラ所持数の数値の設定*/
 .inventory_value{
 	position: absolute;
-	top: 27%;
-	left: 28%;
-	font-size: 4.8vw;
+	margin-top: 3.25%;
+	margin-left: 30%;
+	top: 0%;
+	left: 0%;
+	font-size: 2.8vw;
 }
 
 /*キャラボタン同士の間隔を設定*/
@@ -223,8 +217,8 @@ a:active{
 /*ソートボックスの設定*/
 .sort_Box{
 	position: fixed;
-	right: 2%;
-	top: 20%;
+	right: 7%;
+	top: 20.9%;
 }
 .sort_Box form input + label {
 	position: absolute;
