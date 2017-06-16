@@ -21,6 +21,7 @@ $(function(){
 	// 所持金を money に格納
 	var money = <?php echo $purchaseData['money']; ?>;
 	
+	// 合計金額を totalPrice に格納
 	var totalPrice = price * number;
 
 	// countUp ボタンが押された時
@@ -67,7 +68,8 @@ $(function(){
 		if(number <= 1){
 			return false;
 		}
-
+		
+		// 個数を1減らす
 		number--;
 		
 		// 単品金額と個数を掛け合わせた金額を totalPrice に格納
@@ -105,7 +107,7 @@ $(function(){
 
 	{{-- アイテムの名前 --}}
 	<div class="purchase_name">
-		{{$purchaseData['productData']['name']}}
+		{{$purchaseData['itemData']['name']}}
 	</div>
 
 	{{-- アイテムの使う場所 --}}

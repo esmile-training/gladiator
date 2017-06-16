@@ -383,3 +383,29 @@ body{}
 	0% {opacity:0;}
 	100% {opacity:1;}
 }
+.skill_healIcon{
+	width: 10%;
+    position: absolute;
+    top: -195%;
+    right: -35%;
+}
+.skill_healUpIcon{
+    width: 5.5%;
+    position: absolute;
+    top: -154%;
+    right: -36%;
+    animation: UpDown 0.8s linear infinite;
+}
+.skill_shieldIcon{
+	width: 9%;
+    position: absolute;
+    top: -195%;
+    right: -35%;
+}
+.skill_shieldUpIcon{
+	width: 5.5%;
+    position: absolute;
+    top: -154%;
+    right: -36%;
+    animation: UpDown 0.8s linear infinite;
+}

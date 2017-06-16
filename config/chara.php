@@ -31,7 +31,7 @@ return  [
         ],
 		8 => [
             'sex' => 0,
-			'skill' => 2
+			'skill' => 10
         ],
 		9 => [
 			'sex' => 0,
@@ -88,14 +88,13 @@ return  [
 		9 => [	
 				'turn' => false,
 				'drawCount'	=> 3,
-				'effect' => '10%で即死'
+				'effect' => '20%で即死'
 		],
-		10 => [
-			'turn' => false,
-			'drawCount'	=> 3,
-				'effect' => '50%の確立で試合強制終了'
+		10 => ['recovery' => 0.1,
+				'turn' => 3,
+				'drawCount'	=> 3,
+				'effect' => '自分のHP3ターン少回復'
 		]
-		
 	],
 	'allname' => [
 			'firstname' => [

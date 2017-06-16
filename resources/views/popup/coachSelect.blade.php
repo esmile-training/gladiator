@@ -19,26 +19,24 @@
 			trainingFee{{$cnt}}	= document.getElementById("trainingFee{{$cnt}}");
 			trainingFee{{$cnt}}.innerHTML = Math.floor(trainingFee);
 			
-			var test{{$cnt}} = document.getElementById("test" + {{$cnt}});
+			var inputSubmitButton{{$cnt}} = document.getElementById("inputSubmitButton" + {{$cnt}});
 			
 			if(userMoney > trainingFee)
 			{
-				test{{$cnt}}.innerHTML = '<input class="training_submit" type="image" src="{{IMG_URL}}popup/ok_Button.png">';
+				inputSubmitButton{{$cnt}}.innerHTML = '<input class="training_submit" type="image" src="{{IMG_URL}}popup/ok_Button.png">';
 			}else
 			{
-				test{{$cnt}}.innerHTML = '<input class="training_submit" type="hidden" src="{{IMG_URL}}popup/ok_Button.png">\n\
-											<div class="fee_shortage_text">{{"所持金が足りません"}}</div>';
+				inputSubmitButton{{$cnt}}.innerHTML = '<input class="training_submit" type="hidden" src="{{IMG_URL}}popup/ok_Button.png"><div class="fee_shortage_text">{{"所持金が足りません"}}</div>';
 			}
 			
 		});
 
 		function feeCalcuration{{$cnt}}(select)
 		{
-			
 			// input class 取得
 			var inputClass = $('.training_submit');
-			
 			var time	= select.value;
+			
 			uCoachHp	= <?php echo $viewData['coachList'][$uCoach]['hp']; ?>;
 			trainingFee = uCoachHp * 10 * time * (100 - (time - 1) * 3) / 100;
 			
@@ -49,11 +47,10 @@
 			
 			if(userMoney > trainingFee)
 			{
-				test{{$cnt}}.innerHTML = '<input class="training_submit" type="image" src="{{IMG_URL}}popup/ok_Button.png">';
+				inputSubmitButton{{$cnt}}.innerHTML = '<input class="training_submit" type="image" src="{{IMG_URL}}popup/ok_Button.png">';
 			}else
 			{
-				test{{$cnt}}.innerHTML = '<input class="training_submit" type="hidden" src="{{IMG_URL}}popup/ok_Button.png">\n\
-											<div class="fee_shortage_text">{{"所持金が足りません"}}</div>';
+				inputSubmitButton{{$cnt}}.innerHTML = '<input class="training_submit" type="hidden" src="{{IMG_URL}}popup/ok_Button.png"><div class="fee_shortage_text">{{"所持金が足りません"}}</div>';
 			}
 			
 		}
@@ -82,7 +79,7 @@
 			<option>10</option>
 		</select>
 
-		<p id="test{{$cnt}}"></p>
+		<p id="inputSubmitButton{{$cnt}}"></p>
 		<input type = "hidden" name = "uCoachId" value = "{{$viewData['coachList'][$uCoach]['id']}}">
 		<input type = "hidden" name = "uCharaId" value = "{{$viewData['uCharaId']}}">
 		<input type = "hidden" name = "uCoachHp" value = "{{$viewData['coachList'][$uCoach]['hp']}}">

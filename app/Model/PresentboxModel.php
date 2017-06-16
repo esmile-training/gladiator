@@ -3,13 +3,14 @@ namespace App\Model;
 
 class PresentBoxModel extends BaseGameModel
 {
-	// プレゼントの取得
-	public function confirmation($userId)
+	public function getById($userId)
 	{
 $sql =  <<< EOD
 		SELECT *
-		FROM uPresent
-		WHERE userId = {$userId};
+		FROM	uPresent 
+		WHERE	userId = {$userId}
+		AND		delFlag = 0
+		ORDER BY createDate DESC;
 EOD;
 		return $this->select($sql, 'all');
 	}
@@ -33,5 +34,15 @@ $sql =  <<< EOD
 		);
 EOD;
 	return $this->insert($sql);
+	}
+	
+	public function changeDelFlag($receiveId)
+	{
+$sql =  <<< EOD
+			UPDATE	uPresent
+			SET		delFlag = 1
+			WHERE	id = {$receiveId};
+EOD;
+		   $this->update($sql);
 	}
 }

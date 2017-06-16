@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="jp">
 <head>
@@ -44,9 +43,13 @@
 			<tr>
 				<td width="20%">
 					{{-- 難易度 --}}
-					<img src="{{IMG_URL}}battle/difficulty{{$viewData['enemyData']['difficulty']}}.png" >
+					<img src="{{IMG_URL}}battle/diff{{$viewData['enemyData']['difficulty']}}.png">
 				</td>
-				<td width="20%"></td>
+				<td width="20%">
+					<a>
+						<img src="{{IMG_URL}}battle/itemButton.png"  class = "image_change">
+					</a>
+				</td>
 				<td width="20%"></td>
 				<td width="20%">
 					{{-- 降参ボタン --}}
@@ -323,7 +326,16 @@
 							{{ $viewData['charaData']['paaAtk']}}
 							@endif
 						</td>
-						<td width="10%"></td>
+						<td width="5%">
+							@if($viewData['charaData']['imgId'] == 8 && $viewData['charaData']['skillFlag'] == 1)
+							<img src="{{IMG_URL}}battle/heal.png" class = "skill_healIcon">
+							<img src="{{IMG_URL}}battle/up.png" class = "skill_healUpIcon">
+							@endif
+							@if($viewData['charaData']['imgId'] == 6 && $viewData['charaData']['skillFlag'] == 1)
+							<img src="{{IMG_URL}}battle/shield.png" class = "skill_shieldIcon">
+							<img src="{{IMG_URL}}battle/up.png" class = "skill_shieldUpIcon">
+							@endif
+						</td>
 					</tr>
 				</table>
 			</div>

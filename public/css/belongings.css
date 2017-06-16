@@ -3,7 +3,7 @@
 }
 
 /* 背景 */
-.shop_bg{
+.belongings_bg{
     position: fixed;
     background: no-repeat center;
     background-size: 100% auto;
@@ -12,7 +12,7 @@
 }
 
 /* 看板画像 */
-.shop_signboard{
+.belongings_signboard{
     position : fixed;
     width    : 35%;
     top	     : 13%;
@@ -20,7 +20,7 @@
     z-index: 4;
 }
 /* 看板説明枠 */
-.shop_signboard_info{
+.belongings_signboard_info{
     position	: fixed;
     top		: 13%;
     left	: 24%;
@@ -28,7 +28,7 @@
     z-index: 3;
 }
 /* 看板説明領域とテイスト */
-.shop_signboard_text{
+.belongings_signboard_text{
     position: absolute;
     top: 20%;
     left:20%;
