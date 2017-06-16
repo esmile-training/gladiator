@@ -61,6 +61,12 @@ class ShopController extends BaseGameController
 		
 		// bladeから購入したアイテムの合計金額を読み込み
 		$totalPrice		= $_GET["totalPrice"];
+		
+		var_dump($purchaseItemId);
+		var_dump($number);
+		var_dump($this->itemData);
+		var_dump($this->belongingsData);
+		var_dump($this->user);exit;
 
 		// purchaseItemID = 1(チケット)ではない場合
 		if($purchaseItemId != 1)

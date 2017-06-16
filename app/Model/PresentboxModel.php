@@ -9,7 +9,8 @@ $sql =  <<< EOD
 		SELECT *
 		FROM	uPresent 
 		WHERE	userId = {$userId}
-		AND		delFlag = 0;
+		AND		delFlag = 0
+		ORDER BY createDate DESC;
 EOD;
 		return $this->select($sql, 'all');
 	}
