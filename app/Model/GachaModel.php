@@ -136,15 +136,15 @@ $sql = <<< EOD
 		'{$time}'
 	);
 EOD;
-	$hoge = $this->insert($sql);
+	$result = $this->insert($sql);
+	return $result;
 	}
 
 	//現在までに引いたガチャの状態を取得
 	public function getEventGachaRecord($userId)
 	{
 $sql = <<< EOD
-
-	SELECT count, N, R, SR, SSR, LR
+	SELECT *
 	FROM uEventGachaLog
 	WHERE userId = '$userId'
 EOD;
@@ -152,7 +152,7 @@ EOD;
 	return $result;
 	}
 
-	//	引いたレア度を記録
+	//引いたレア度を記録
 	public function updateEventGachaRecord($userId, $rare){
 $sql = <<< EOD
 
@@ -160,4 +160,5 @@ $sql = <<< EOD
 	WHERE userId = {$userId};
 EOD;
 	$this->update($sql);
-	}}
+	}	
+}

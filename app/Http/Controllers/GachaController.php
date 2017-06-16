@@ -17,7 +17,7 @@ class GachaController extends BaseGameController
 		$createTime = $time[0]['createTime'];
 		$this->viewData['createTime'] = $createTime;
 		$this->viewData['nowTime'];
-		$this->viewData['deck'] = $this->Model->exec('Gacha','getEventGachaRecord', $this->user['id']);
+		$this->viewData['deck'] = $this->Lib->exec('RandamChara', 'checkEventGachaMonth', $this->user['id']);
 
 		return viewWrap('eventsGachaselect', $this->viewData);
 	}
@@ -34,6 +34,7 @@ class GachaController extends BaseGameController
 		$this->viewData['gacha']['choki'] = filter_input(INPUT_GET, "choki");
 		$this->viewData['gacha']['paa'] = filter_input(INPUT_GET, "paa");
 		$this->viewData['gacha']['hp'] = filter_input(INPUT_GET, "hp");
+		$this->viewData['gacha']['limit'] = filter_input(INPUT_GET, "limit");
 
 		return viewWrap('gachaRoad', $this->viewData);
 	}
@@ -49,12 +50,12 @@ class GachaController extends BaseGameController
 		$this->viewData['choki'] = filter_input(INPUT_GET, "choki");
 		$this->viewData['paa'] = filter_input(INPUT_GET, "paa");
 		$this->viewData['hp'] = filter_input(INPUT_GET, "hp");
+		$this->viewData['limit'] = filter_input(INPUT_GET, "limit");
 		return viewWrap('gacha', $this->viewData);
 	}
 
 	public function viewDataSet()
 	{
-
 		//ガチャのレア度ごとの割合
 		$gachaConfig = \Config::get('gacha.eRate');
 
@@ -129,6 +130,7 @@ class GachaController extends BaseGameController
 			'choki' => $charaData['choki'],
 			'paa' => $charaData['paa'],
 			'hp' => $charaData['hp'],
+			'limit' => '0',
 		];
 
 		// 所持キャラが最大かどうかのフラグ
@@ -148,6 +150,8 @@ class GachaController extends BaseGameController
 			$id = $this->Model->exec('Gacha', 'createUnacquiredChara', array($charaData));
 			// プレゼントボックスへデータを受け渡す
 			$this->Model->exec('PresentBox','insertPresentData',array($this->user['id'],'1',$id,$charaData['uCharaId'],'1'));
+			// 上限達したかをparamに持たせる
+			$param['limit'] = '1';
 		}
 
 		// ログの作成を実行する

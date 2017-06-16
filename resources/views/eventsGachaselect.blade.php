@@ -69,13 +69,17 @@
 				'template'	=> 'gacha',
 				'data'		=> ['data' => $data]
 			])
+			<?php
+				$gachaCost = \Config::get('gacha.eRate');
+			?>
+			@if($gachaCost[14]['deck'][0] - (int)$viewData['deck']['count'] > 0)
 			{{-- 次回イベント追加 --}}
 			<div class = "gacha_button3">
 				<input type="image" 
 						class="modal_btn gacha14" 
 						src="{{IMG_URL}}gacha/banner13.png" 
 						name = 'gachavalue' 
-						value = "11" 
+						value = "14" 
 						width= 100% 
 						height= 100%>
 			</div>
@@ -89,6 +93,14 @@
 				'template'	=> 'boxGacha',
 				'data'		=> ['data' => $data]
 			])
+			@else
+			{{-- ガチャ不活性 --}}
+			<image
+					class = "gacha_button3" 
+					src="{{IMG_URL}}gacha/banner13.png" 
+					width= 100% 
+					height= 100%>
+			@endif
 		</div>
 	</div>
 </div>

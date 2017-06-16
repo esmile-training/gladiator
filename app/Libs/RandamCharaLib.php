@@ -217,6 +217,27 @@ class RandamCharaLib extends BaseGameLib
 		return $characonf;
 	}
 	
+	//最初にイベントガチャを引いた月が今月か調べる
+	public function checkEventGachaMonth($userId)
+	{
+		//DBから現在のボックスガチャの情報を検索
+		$gachaData = $this->Model->exec('Gacha','getEventGachaRecord',$userId);
+		
+		//レコードの作成月を取得
+		$month = date('m',strtotime($gachaData['createDate']));
+		
+		if(is_null($gachaData) || $month != date('m'))
+		{
+			$this->Model->exec('Gacha','createEventGachaRecord',$userId);
+			$deck = $this->Model->exec('Gacha','getEventGachaRecord',$userId);
+		}
+		else 
+		{
+			$deck = $gachaData;
+		}
+		return $deck;
+	}
+	
 	//ボックスガチャ用処理
 	public function boxGachaData($userId, $gachaConfig )
 	{
@@ -226,19 +247,16 @@ class RandamCharaLib extends BaseGameLib
 		//DBから現在のボックスガチャの情報を検索
 		$gachaData = $this->Model->exec('Gacha','getEventGachaRecord',$userId);
 		
-		//DBになければ作成
-		if(is_null($gachaData))
+		//比較に必要なデータを抽出
+		$deckData = array_slice($gachaData, 1, 6);
+		
+		//各レア度の残り枚数の設定
+		$cnt = 0;
+		foreach ($deckData as $data)
 		{
-			$this->Model->exec('Gacha','createEventGachaRecord',$userId);
-		} else {
-			//各レア度の残り枚数の設定
-			$cnt = 0;
-			foreach ($gachaData as $data)
-			{
-				$test = $config[$cnt];
-				$config[$cnt] = $test - (int)$data;
-				++$cnt;
-			}
+			$test = $config[$cnt];
+			$config[$cnt] = $test - (int)$data;
+			++$cnt;
 		}
 		
 		//1から現在の最大枚数のデッキから1枚引く
