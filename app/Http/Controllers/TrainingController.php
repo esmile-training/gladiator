@@ -29,7 +29,14 @@ class TrainingController extends BaseGameController
 		$charaInventory['possession'] = $this->Lib->exec('ManageCharaPossession','getPossessionChara',$this->user['id']);
 		// viewDataへ格納する
 		$this->viewData['charaInventory'] = $charaInventory;
+		
+		// 所持している 訓練時間短縮アイテム(trainigShorter) の数を持ってくる
+		$trainigShorter = $this->Model->exec('Item', 'getTrainigShorter', false, $this->user['id']);
+		$this->viewData['shorterNumber'] = $trainigShorter;
 
+		$trainigShorterData = \Config::get('item.itemStr.4');
+		$this->viewData['shorterData'] = $trainigShorterData;
+		
 		if(!isset($uCharaData))
 		{
 			return viewWrap('Error',$this->viewData);
@@ -81,7 +88,6 @@ class TrainingController extends BaseGameController
 	 */
 	public function infoSet()
 	{
-		var_dump($this->viewData);exit;
 		//訓練時刻をGETする
 		$trainingTime	= (int)filter_input(INPUT_GET,"trainingTime");
 
