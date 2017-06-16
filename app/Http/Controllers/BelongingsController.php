@@ -13,11 +13,11 @@ class BelongingsController extends BaseGameController
 
 		// 全てのデータを viewData に渡す
 		$this->viewData['userData']			= $this->user;
+		$this->viewData['ticketData']		= $this->Ticket;
 		$this->viewData['belongingsData']	= $this->belongingsData;
 		$this->viewData['itemData']			= $this->itemData;
-		$this->viewData['productData']		= $this->productData;
 
-		return viewWrap('shop', $this->viewData);
+		return viewWrap('belongings', $this->viewData);
 	}
 	
 	/*
@@ -25,8 +25,12 @@ class BelongingsController extends BaseGameController
 	 */
 	public function getItemData()
 	{
+		// アイテムデータ取得
+		$this->itemData			= \Config::get('item.itemStr');
+		
 		// 所持アイテムデータ取得
 		$this->belongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
+		
 		// 所持アイテムデータがなければ作成
 		if(!isset($this->belongingsData))
 		{
@@ -36,11 +40,5 @@ class BelongingsController extends BaseGameController
 			// 所持アイテムデータ取得
 			$this->belongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
 		}
-		
-		// アイテムデータ取得
-		$this->itemData			= \Config::get('item.itemStr');
-
-		// 商品データ取得
-		$this->productData		= \Config::get('shop.productStr');
 	}
 }
