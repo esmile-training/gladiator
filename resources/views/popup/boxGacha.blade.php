@@ -29,27 +29,37 @@
 				<!--<p>ガチャ残り枚数</p>-->
 			<tr>
 				<th>レア度</th>
-				<th>残数</th>
+				<th colspan="3">残数</th>
 			</tr>
 			<tr>
 				<td><image class="boxGacha_table_image" src='{{IMG_URL}}gacha/5.png'></td>
-				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][5] - $deck['LR']}} / {{$gachaCost[$data['gachaId']]['deck'][5]}}</td>
+				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][5] - $deck['LR']}}</td>
+				<td>/</td>
+				<td>{{$gachaCost[$data['gachaId']]['deck'][5]}}</td>
 			</tr>
 			<tr>
 				<td><image class="boxGacha_table_image" src='{{IMG_URL}}gacha/4.png'></td>
-				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][4] - $deck['SSR']}} / {{$gachaCost[$data['gachaId']]['deck'][4]}}</td>
+				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][4] - $deck['SSR']}}</td>
+				<td>/</td>
+				<td>{{$gachaCost[$data['gachaId']]['deck'][4]}}</td>
 			</tr>
 			<tr>
 				<td><image class="boxGacha_table_image" src='{{IMG_URL}}gacha/3.png'></td>
-				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][3] - $deck['SR']}} / {{$gachaCost[$data['gachaId']]['deck'][3]}}</td>
+				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][3] - $deck['SR']}}</td>
+				<td>/</td>
+				<td>{{$gachaCost[$data['gachaId']]['deck'][3]}}</td>
 			</tr>
 			<tr>
 				<td><image class="boxGacha_table_image" src='{{IMG_URL}}gacha/2.png'></td>
-				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][2] - $deck['R']}} / {{$gachaCost[$data['gachaId']]['deck'][2]}}</td>
+				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][2] - $deck['R']}}</td>
+				<td>/</td>
+				<td>{{$gachaCost[$data['gachaId']]['deck'][2]}}</td>
 			</tr>
 			<tr>
 				<td><image class="boxGacha_table_image" src='{{IMG_URL}}gacha/1.png'></td>
-				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][1] - $deck['N']}} / {{$gachaCost[$data['gachaId']]['deck'][1]}}</td>
+				<td>{{(int)$gachaCost[$data['gachaId']]['deck'][1] - $deck['N']}}</td>
+				<td>/</td>
+				<td>{{$gachaCost[$data['gachaId']]['deck'][1]}}</td>
 			</tr>
 		</table>
 	</div>
