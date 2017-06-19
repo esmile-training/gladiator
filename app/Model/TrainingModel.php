@@ -145,4 +145,34 @@ $sql =  <<< EOD
 EOD;
 		return $this->select($sql, 'first');
 	}
+	
+	/*
+	 * キャラIDから訓練データを取得する
+	 */
+	public function getInfoFromCharaId($charaId)
+	{
+$sql =  <<< EOD
+		SELECT	*
+		FROM	uTraining
+		WHERE	uCharaId = {$charaId}
+		AND state = 0
+EOD;
+		$result = $this->select($sql, 'first');
+		return $result;
+	}
+
+	/*
+	 * DBの更新をする
+	 */
+	public function updateEndDate($infoId, $afterEndDate)
+	{
+
+$sql = <<< EOD
+	UPDATE  uTraining
+	SET		endDate		= '{$afterEndDate}'
+	WHERE	id		=  '{$infoId}'
+EOD;
+		$this->update($sql);
+	}
+
 }

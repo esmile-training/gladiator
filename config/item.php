@@ -49,7 +49,7 @@ return [
 		// DBで使っている名前
 		'dbName' => 'trainigShorter',
 		// 短縮できる時間
-		'ability'	=> 2,
+		'ability'	=> 1,
 		// アイテムを使う場所
 		'where'		=> '【訓練所】',
 		// 能力説明
