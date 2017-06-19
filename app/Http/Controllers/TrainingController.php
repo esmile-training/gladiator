@@ -37,8 +37,16 @@ class TrainingController extends BaseGameController
 		$charaInventory['possession'] = $this->Lib->exec('ManageCharaPossession','getPossessionChara',$this->user['id']);
 		// viewDataへ格納する
 		$this->viewData['charaInventory'] = $charaInventory;
+		
+		// 所持している 訓練時間短縮アイテム(trainigShorter) の数を持ってくる
+		$trainigShorter = $this->Model->exec('Item', 'getTrainigShorter', false, $this->user['id']);
+		$this->viewData['shorterNumber'] = $trainigShorter;
 
-		if(isset($uCharaData))
+		// 訓練時間短縮アイテムのデータを item config から持ってくる
+		$trainigShorterData = \Config::get('item.itemStr.4');
+		$this->viewData['shorterData'] = $trainigShorterData;
+		
+		if(!isset($uCharaData))
 		{
 			//ソート関数の代に引数への変換
 			$order = ($order == 'ASC')? false : true;
@@ -100,6 +108,7 @@ class TrainingController extends BaseGameController
 	 */
 	public function infoSet()
 	{
+
 		//訓練時刻をGETする
 		$trainingTime	= (int)filter_input(INPUT_GET,"trainingTime");
 
@@ -135,7 +144,7 @@ class TrainingController extends BaseGameController
 		//マージしたらuMoneyと合わせて使う、訓練の金額を算出して格納
 		$trainingFee = $uCoachHp * 10 * $trainingTime * (100 - ($trainingTime - 1) * 3) / 100;
 		$this->Lib->exec('Money','Subtraction',array($this->user,$trainingFee));
-
+		
 		//リダイレクト
 		return $this->Lib->redirect('training', 'index');
 	}
