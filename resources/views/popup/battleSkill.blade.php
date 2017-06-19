@@ -9,7 +9,7 @@
 <script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="{{APP_URL}}js/load.js"></script>
 <div>				
-	<img class = "taisya backload"src = "{{IMG_URL}}battle/taisya.gif">
+	<img class = "taisya backload"src = "{{IMG_URL}}battle/teijitisya.gif">
 </div>
 <font style ='position: relative;top: 3vw;'  class = "load">
 	{{$charaSkill[$charaData['imgId']]['skillName']}}</br>

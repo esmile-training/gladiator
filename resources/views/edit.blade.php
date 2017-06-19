@@ -3,7 +3,7 @@
 @include('common/css', ['file' => 'modal'])
 <script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="{{APP_URL}}js/load.js"></script>
-<div><img class = "edit_logo load" src = "{{IMG_URL}}edit/editLogo.png"></div>
+<div><img class = "edit_logo editload" src = "{{IMG_URL}}edit/editLogo.png"></div>
 <div>				
 	<img class = "edit_load backload"src = "{{IMG_URL}}title/titlelodoDown.gif">
 </div>
