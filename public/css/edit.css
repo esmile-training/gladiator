@@ -97,3 +97,6 @@ body{
     margin: 0 auto;
 
 }
+.cap:not(.act) {
+	display:none;
+}
