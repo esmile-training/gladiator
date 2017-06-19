@@ -338,10 +338,26 @@ class battleController extends BaseGameController
 		$charaSkill = \Config::get('chara.imgId');
 		$skill = \Config::get('chara.skill');
 
+		if($this->CharaData['skillFlag'] == 1 && $this->CharaData['imgId'] == 8 && $this->BattleData['battleSkillTurn'] < $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
+		{
+			//回復の場合
+			$this->CharaData['skill'] = $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['recovery'];
+			//自分の回復
+			$this->CharaData = BattleLib::damageCalc($this->CharaData);
+			$this->CharaData['battleHp'] = BattleLib::charaHeal($this->CharaData['battleHp'],$this->CharaData);
+			
+			if($this->CharaData['battleHp'] >= $this->CharaData['hp'])
+			{
+				$this->CharaData['battleHp'] = $this->CharaData['hp'];
+			}
+
+		}
+		
 		if($this->CharaData['skillFlag'] == 1)
 		{
 			$this->BattleData['battleSkillTurn'] += 1;
 		}
+
 		// ダメージ処理
 		// CharaData の 'result' によって処理を行う
 		switch ($this->CharaData['result'])
@@ -449,16 +465,6 @@ class battleController extends BaseGameController
 				break;
 			default;
 				exit;
-
-		}
-
-		if($this->CharaData['skillFlag'] == 1 && $this->CharaData['imgId'] == 8 && $this->BattleData['battleSkillTurn'] < $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
-		{
-			//回復の場合
-			$this->CharaData['skill'] = $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['recovery'];
-			//自分の回復
-			$this->CharaData = BattleLib::damageCalc($this->CharaData);
-			$this->CharaData['battleHp'] = BattleLib::charaHeal($this->CharaData['battleHp'],$this->CharaData);
 
 		}
 		if($this->CharaData['skillFlag'] == 1 && $this->BattleData['battleSkillTurn'] > $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
