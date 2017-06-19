@@ -122,7 +122,7 @@
 					{{-- ポップアップの宣言 --}}
 					@include('popup/wrap', [
 						'class'		=> "shorteningButton{$val['id']}",
-						'template'	=> 'shotrening',
+						'template'	=> 'shortening',
 						'data'		=>	['shorteningData' => $shorteningData]
 					])
 				@endif

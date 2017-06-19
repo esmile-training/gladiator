@@ -123,7 +123,7 @@ class TrainingController extends BaseGameController
 		//マージしたらuMoneyと合わせて使う、訓練の金額を算出して格納
 		$trainingFee = $uCoachHp * 10 * $trainingTime * (100 - ($trainingTime - 1) * 3) / 100;
 		$this->Lib->exec('Money','Subtraction',array($this->user,$trainingFee));
-
+		
 		//リダイレクト
 		return $this->Lib->redirect('training', 'index');
 	}

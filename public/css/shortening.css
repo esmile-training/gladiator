@@ -3,26 +3,25 @@
 body{}
 
 /* 確認画面の領域 */
-.shotrening {
+.shortening {
 	position: relative;
     width: 80%;
     margin: 0 auto;
 }
 /* 確認画面の背景画像領域 */
-.shotrening_bg{
+.shortening_bg{
     width: 100%;
 }
 
 /* アイテムの画像 */
-.shotrening_item_img{
+.shortening_item_img{
     position: absolute;
 	top: 5%;
 	left: 8%;
 	width: 20%;	
 }
-
 /* アイテムの名前 */
-.shotrening_name{
+.shortening_name{
     position: absolute;
 	top: 1%;
 	left: 35%;
@@ -32,9 +31,8 @@ body{}
     color: #f3821e;
 	text-align: left;
 }
-
 /* アイテムの説明 */
-.shotrening_itemInfo{
+.shortening_itemInfo{
     position: absolute;
 	top: 18%;
 	left: 35%;
@@ -44,9 +42,8 @@ body{}
     color: #ffffff;
 	text-align: left;
 }
-
 /* アイテムの購入数 */
-.shotrening_totalNumber{
+.shortening_totalNumber{
     position: absolute;
 	bottom: 35%;
 	width: 100%;
@@ -56,19 +53,19 @@ body{}
 	color: #000000;	
 }
 /* アイテムの購入数を変動させる画像*/
-.shotrening_totalNumber_cntButton_img{
+.shortening_totalNumber_cntButton_img{
 	width: 100%;
 	vertical-align: bottom;
 }
 
 /* 購入ボタンの領域 */
-.shotrening_button_ok{
+.shortening_button_ok{
     position: absolute;
     bottom: 5%;
 	left: 30%;
     width: 40%;
 }
 /* 購入ボタン画像領域 */
-.shotrening_button_ok_img {
+.shortening_button_ok_img {
     width: 100%;
 }

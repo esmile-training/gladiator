@@ -5,19 +5,15 @@ namespace App\Libs;
 class ItemLib extends BaseGameLib
 {
 	// 減算処理
-	public function item2($user, $sub)
+	public function item2($user)
 	{
 	}
-	
 
-	// 乗算処理
-	public function item3($user, $mul)
+	public function item3($user)
 	{	
 	}
-	
 
-	// 除算処理
-	public function item4($user, $div)
+	public function item4($user)
 	{
 	}
 
