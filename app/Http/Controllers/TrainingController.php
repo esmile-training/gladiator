@@ -46,7 +46,7 @@ class TrainingController extends BaseGameController
 		$trainigShorterData = \Config::get('item.itemStr.4');
 		$this->viewData['shorterData'] = $trainigShorterData;
 		
-		if(!isset($uCharaData))
+		if(isset($uCharaData))
 		{
 			//ソート関数の代に引数への変換
 			$order = ($order == 'ASC')? false : true;

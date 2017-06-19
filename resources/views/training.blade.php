@@ -44,55 +44,63 @@
 
 {{--キャラクターの所持数を表示する--}}
 @if(!is_null($viewData['charaList']))
-{{--uChara(DB)から持ってきたデータの表示--}}
-<div class="chara_list">
-	@foreach( $viewData['charaList'] as $key => $val)
-		<div class="chara_button_margin ">
-			{{--ボタンの枠--}}
-			<div class="chara_button">
-				{{--訓練中ならグレースケール貼る--}}
-				@if($val['trainingState'] == 1)
-					<a class="modal_btn shorteningButton{{$val['id']}}">
-						<div class="scale_img">
+	{{--uChara(DB)から持ってきたデータの表示--}}
+	<div class="chara_list">
+		@foreach( $viewData['charaList'] as $key => $val)
+			<div class="chara_button_margin ">
+				{{--ボタンの枠--}}
+				<div class="chara_button">
+					{{--訓練中ならグレースケール貼る--}}
+					@if($val['trainingState'] == 1)
+						<a class="modal_btn shorteningButton{{$val['id']}}">
+							<div class="scale_img">
+								<img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame{{$val['rare']}}.png" alt="ボタンの枠">
+							</div>
+					@else
+						<a href="{{APP_URL}}training/coachSelect?uCharaId={{$val['id']}}">
+					@endif
 							<img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame{{$val['rare']}}.png" alt="ボタンの枠">
-						</div>
-				@else
-					<a href="{{APP_URL}}training/coachSelect?uCharaId={{$val['id']}}">
-				@endif
-						<img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame{{$val['rare']}}.png" alt="ボタンの枠">
 
-						{{--キャラクターのステータス表示--}}
-						<div class="chara_status">
-							{{--HP--}}
-							<font class="hp_value font_sentury">{{$val['hp']}}</font>
-							{{--グー--}}
-							<font class="goo_value font_sentury">{{$val['gooAtk']}}</font>
-							{{--チョキ--}}
-							<font class="cho_value font_sentury">{{$val['choAtk']}}</font>
-							{{--パー--}}
-							<font class="paa_value font_sentury">{{$val['paaAtk']}}</font>
-							{{--キャラ名--}}
-							<font class="chara_name font_serif">{{$val['name']}}</font>
-						</div>
-					</a>
-				{{-- 訓練中ならポップアップ生成 --}}
-				@if($val['trainingState'] == 1)
-					{{-- データ統合 --}}
-					<?php
-						$shorteningData['charaData']		= $val;
-						$shorteningData['shorterNumber']	= $viewData['shorterNumber'];
-						$shorteningData['shorterData']		= $viewData['shorterData'];
-					?>
-					{{-- ポップアップの宣言 --}}
-					@include('popup/wrap', [
-						'class'		=> "shorteningButton{$val['id']}",
-						'template'	=> 'shortening',
-						'data'		=>	['shorteningData' => $shorteningData]
-					])
-				@endif
+							{{--キャラアイコン--}}
+							<div class="chara_icon">
+								<img class="chara_image" src="{{IMG_URL}}chara/icon/icon_{{$val['imgId']}}.png" alt="キャラアイコン">
+								{{--レアリティの表示--}}
+								<img class="rarity_bg" src="{{IMG_URL}}battle/rarity_bg.png" alt="レアリティの背景">
+								<img class="rarity" src="{{IMG_URL}}gacha/{{$val['rare']}}.png" alt="レアリティ">
+							</div>
+
+							{{--キャラクターのステータス表示--}}
+							<div class="chara_status">
+								{{--HP--}}
+								<font class="hp_value font_sentury">{{$val['hp']}}</font>
+								{{--グー--}}
+								<font class="goo_value font_sentury">{{$val['gooAtk']}}</font>
+								{{--チョキ--}}
+								<font class="cho_value font_sentury">{{$val['choAtk']}}</font>
+								{{--パー--}}
+								<font class="paa_value font_sentury">{{$val['paaAtk']}}</font>
+								{{--キャラ名--}}
+								<font class="chara_name font_serif">{{$val['name']}}</font>
+							</div>
+						</a>
+					{{-- 訓練中ならポップアップ生成 --}}
+					@if($val['trainingState'] == 1)
+						{{-- データ統合 --}}
+						<?php
+							$shorteningData['charaData']		= $val;
+							$shorteningData['shorterNumber']	= $viewData['shorterNumber'];
+							$shorteningData['shorterData']		= $viewData['shorterData'];
+						?>
+						{{-- ポップアップの宣言 --}}
+						@include('popup/wrap', [
+							'class'		=> "shorteningButton{$val['id']}",
+							'template'	=> 'shortening',
+							'data'		=>	['shorteningData' => $shorteningData]
+						])
+					@endif
+				</div>
 			</div>
-		</div>
-	@endforeach
+		@endforeach
 	@else
 	<div class = "no_chara font_color font_serif">
 		所属している剣闘士が０人です！
