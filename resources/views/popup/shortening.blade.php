@@ -3,10 +3,14 @@
 <?php 
 	$number[$shorteningData['charaData']['id']] = 1;
 ?>
+
+
 <script type="text/javascript">
 $(function(){	
 	// 個数を number に格納
-	var number = <?php echo $number[$shorteningData['charaData']['id']]; ?>;
+	var number	= <?php echo $number[$shorteningData['charaData']['id']]; ?>;
+	var ability	= <?php echo $shorteningData['shorterData']['ability'] ?>; 
+	
 
 	// countUp ボタンが押された時
 	$('img.countUp{{$shorteningData['charaData']['id']}}').click(function(){
@@ -38,7 +42,7 @@ $(function(){
 	// 購入ボタンが押された時
 	$('.shortening_ok_Button{{$shorteningData['charaData']['id']}}').click(function(){
 		// URLのGETで渡すデータ部分にデータを挿入
-		afterUrl = $(this).attr('href').replace(new RegExp('beforeNumber', 'g'),number);
+		afterUrl = $(this).attr('href').replace(new RegExp('beforeNumber', 'g'),number).replace(new RegExp('beforeAbility', 'g'),ability);
 		$(this).attr('href',afterUrl);
 	});
 });
@@ -83,9 +87,8 @@ $(function(){
 
 	{{-- 購入ボタン --}}
 	<div class="shortening_button_ok">
-		<a href="{{APP_URL}}item/item4?shorteningItemId={{$shorteningData['charaData']['id']}}&number=beforeNumber" class="shortening_ok_Button{{$shorteningData['charaData']['id']}} clickfalse">
+		<a href="{{APP_URL}}item/item4?charaId={{$shorteningData['charaData']['id']}}&number=beforeNumber&ability=beforeAbility" class="shortening_ok_Button{{$shorteningData['charaData']['id']}} clickfalse">
 			<img src="{{IMG_URL}}popup/ok_Button.png" class="image_change shortening_button_ok_img">
 		</a>
 	</div>
-
 </div>
