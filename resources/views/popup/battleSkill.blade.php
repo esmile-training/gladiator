@@ -1,4 +1,4 @@
-<font class = "load">
+<font>
 スキルを発動しますか？</br>
 </font>
 	<?php
@@ -8,17 +8,14 @@
 	?>
 <script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="{{APP_URL}}js/load.js"></script>
-<div>				
-	<img class = "taisya backload"src = "{{IMG_URL}}battle/teijitisya.gif">
-</div>
-<font style ='position: relative;top: 3vw;'  class = "load">
+<font style ='position: relative;top: 3vw;'>
 	{{$charaSkill[$charaData['imgId']]['skillName']}}</br>
 </font>
-<font style = "position: relative; top: 6vw;" class = "load">
+<font style = "position: relative; top: 6vw;">
 	{{$skill[$skillNumber]['effect']}}
 </font>
 <div class="skill_button">
-	<a href="{{APP_URL}}battle/updateBattleData?hand=4" class = "load">
-		<img class="image_change load" src="{{IMG_URL}}popup/yes_Button.png">
+	<a href="{{APP_URL}}battle/updateBattleData?hand=4">
+		<img class="image_change" src="{{IMG_URL}}popup/yes_Button.png">
 	</a>
 </div>
