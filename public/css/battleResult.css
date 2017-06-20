@@ -35,6 +35,7 @@ th{ text-align: center; }
 /* 背景画像 */
 .battleresult_log_bg {
 	width: 100%;
+	height: 43vh;
 }
 /* ログ */
 .battleresult_log_message{
