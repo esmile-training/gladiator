@@ -87,7 +87,7 @@ body{
 }
 .edit_logo{
 	width: 100%;
-    position: absolute;
+    position: fixed;
     top: 5%;
     right: 0%;
     left: 0%;
