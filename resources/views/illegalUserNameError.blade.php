@@ -13,7 +13,7 @@
 <div id="main">
 	<div align="center">
 		<div class="edit_frame">
-			<p class="error_text">ご入力頂いたお名前は<br>不適切なワードを含むため<br>ご利用いただけません</p>
+			<p class="error_text">ご入力頂いたお名前は<br>ご利用頂けません。</p>
 			<img class="edit_frame_img" src="{{IMG_URL}}popup/popuptop.png" />
 			<img class="edit_frame_img" style="height: 20%;" src="{{IMG_URL}}popup/popupmiddle.png" />
 			<img class="edit_frame_img" src="{{IMG_URL}}popup/popupbottom.png" />
