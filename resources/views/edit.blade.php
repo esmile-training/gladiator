@@ -4,7 +4,7 @@
 <script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="{{APP_URL}}js/load.js"></script>
 <div><img class = "edit_logo load" src = "{{IMG_URL}}edit/editLogo.png"></div>
-<div>				
+<div>
 	<img class = "edit_load backload"src = "{{IMG_URL}}title/titlelodoDown.gif">
 </div>
 <div class = "editload">
@@ -18,7 +18,7 @@
 		<img class="edit_frame_img" style="height: 20%;" src="{{IMG_URL}}popup/popupmiddle.png" />
 		<img class="edit_frame_img" src="{{IMG_URL}}popup/popupbottom.png" />
 	</div>
-	
+
 	<script>
 	$(function(){
         $("input"). keydown(function(e) {
@@ -32,7 +32,7 @@
 	function copy_text()
 	{
 		 if((document.form1.teamName.value.match(/^[^ -~｡-ﾟ]*$/) || document.form1.teamName.value.match(/\"\'/)) && document.form1.teamName.value.length < 9 && document.form1.teamName.value.length > 0)
-		 {		
+		 {
 			$(".cap").removeClass("act");
 			document.form1.btn.disabled = "";
 		 } else {
@@ -54,7 +54,7 @@
 		<input class="edit_submit load" type="button" name="btn" value="登録" onclick="disbtn(this)" disabled>
 		<input type="hidden" name="gachavalue" value="12">
 	</form>
-	
+
 </div>
 </div>
 </div>

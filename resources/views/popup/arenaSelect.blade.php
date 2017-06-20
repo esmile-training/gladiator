@@ -3,7 +3,7 @@
 <script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="{{APP_URL}}js/load.js"></script>
 {{--対戦データの表示--}}
-<div>				
+<div>
 	<img class = "battle_load backload"src = "{{IMG_URL}}title/titlelodoDown.gif">
 </div>
 <div class="match_data editload">
