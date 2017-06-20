@@ -90,7 +90,8 @@ return  [
 			],
 		7 => [	'turn' => false,
 				'drawCount'	=> 3,
-				'effect' => '次のターン受けるダメージを返す'
+				'effect' => '次のターン受ける 
+								ダメージを返す'
 		],
 		8 => [	'turn' => 3,
 				'drawCount'	=> 3,
