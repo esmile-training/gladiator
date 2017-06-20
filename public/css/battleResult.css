@@ -105,3 +105,10 @@ th{ text-align: center; }
     top: 10%;
     left: 10%;
 }
+.battleresult_logo_win{
+	width: 80%;
+    position: absolute;
+    top: 12%;
+    left: 0%;
+    right: 0%;
+}
