@@ -26,7 +26,7 @@ th{ text-align: center; }
 /* バトルリザルトのログ部分 */
 .battleresult_log {
     position: fixed;
-    top: 38%;
+    top: 35%;
     left: 0;
     right: 0;
     width: 90%;
@@ -81,7 +81,7 @@ th{ text-align: center; }
 /* 全体に対する、バックホームボタンの領域 */
 .battleresult_backhome_linkregion{
     position: fixed;
-    top: 91%;
+    top: 90%;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -104,10 +104,11 @@ th{ text-align: center; }
     left: 10%;
 }
 .battleresult_logo_win{
-	width: 80%;
+    display: inline-block;
+    width: 60%;
     position: fixed;
-    top: 12%;
+    top: 14%;
     left: 0%;
     right: 0%;
-	margin: 0 auto;
+    margin: 0 auto;
 }
