@@ -40,11 +40,16 @@ class TrainingController extends BaseGameController
 		
 		// 所持している 訓練時間短縮アイテム(trainigShorter) の数を持ってくる
 		$trainigShorter = $this->Model->exec('Item', 'getTrainigShorter', false, $this->user['id']);
-		$this->viewData['shorterNumber'] = $trainigShorter;
+		$this->viewData['shorterNumber'] = $trainigShorter['trainigShorter'];
 
 		// 訓練時間短縮アイテムのデータを item config から持ってくる
 		$trainigShorterData = \Config::get('item.itemStr.4');
-		$this->viewData['shorterData'] = $trainigShorterData;
+		$this->viewData['shorterData']	= $trainigShorterData;
+		
+		$trainingInfoData	= $this->Model->exec('Training','getInfoFromUserId',$this->user['id']);
+		$this->viewData['infoData']		= $trainingInfoData;
+		
+		$this->viewData['nowTime']		= $this->nowTime;
 		
 		if(isset($uCharaData))
 		{

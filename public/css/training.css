@@ -15,7 +15,7 @@
     width    : 35%;
     top	     : 13%;
     left     : 0;
-    z-index: 4;
+    z-index: 100;
 }
 
 .training_signboard_info{
@@ -23,7 +23,7 @@
     top		: 13%;
     left	: 24%;
     width	: 77%;
-    z-index: 3;
+    z-index: 100;
 }
 
 .training_charalist{
@@ -129,4 +129,16 @@
     font-family: serif;
     font-size	: 2.0vh;
     color: #ffffff;
+}
+
+.traing_time{
+    position: absolute;
+	top: 5%;
+	left: 5%;
+	width: 90%;
+    font-family: serif;
+    font-size: 8.0vh;
+    color: #ffffff;
+	text-align: center;
+    z-index: 10;
 }
