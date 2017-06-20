@@ -56,6 +56,23 @@
 							<div class="scale_img">
 								<img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame{{$val['rare']}}.png" alt="ボタンの枠">
 							</div>
+							{{-- 訓練終了までの時間を算出(できてない) --}}
+							@foreach( $viewData['infoData'] as $key => $infoval)
+								@if( $infoval['uCharaId'] == $val['id'] )
+									<?php
+										$endDate	= $infoval['endDate'];
+										$nowTime	= $viewData['nowTime'];
+										$second[$val['id']] = strtotime($endDate)-strtotime($nowTime);
+										$hour[$val['id']]	= (int)($second[$val['id']] / 3600);
+										$second[$val['id']]	-= $hour[$val['id']] * 3600;
+										$minute[$val['id']]	= (int)($second[$val['id']] / 60);
+										$second[$val['id']]	-= $minute[$val['id']] * 60;
+									?>
+								@endif
+							@endforeach
+							<div class="traing_time">
+								{{str_pad($hour[$val['id']],2,0,STR_PAD_LEFT)}}：{{str_pad($minute[$val['id']],2,0,STR_PAD_LEFT)}}：{{str_pad($second[$val['id']],2,0,STR_PAD_LEFT)}}
+							</div>
 					@else
 						<a href="{{APP_URL}}training/coachSelect?uCharaId={{$val['id']}}">
 					@endif
