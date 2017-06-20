@@ -80,8 +80,10 @@ th{ text-align: center; }
 
 /* 全体に対する、バックホームボタンの領域 */
 .battleresult_backhome_linkregion{
-    position: relative;
+    position: fixed;
     top: 91%;
+    left: 0;
+    right: 0;
     margin: 0 auto;
     width: 30%;
 }
