@@ -229,7 +229,7 @@ class RandamCharaLib extends BaseGameLib
 		if(is_null($gachaData) || $month != date('m'))
 		{
 			$this->Model->exec('Gacha','createEventGachaRecord',$userId);
-			$deck = ['N' => 0, 'R' => 0, 'SR' => 0, 'SSR' => 0, 'LR' => 0];
+			$deck = ['count' => 0, 'N' => 0, 'R' => 0, 'SR' => 0, 'SSR' => 0, 'LR' => 0];
 		}
 		else 
 		{
