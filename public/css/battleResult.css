@@ -76,9 +76,11 @@ th{ text-align: center; }
 /* 全体に対する、バックホームボタンの領域 */
 .battleresult_backhome_linkregion{
 	position: fixed;
-	left: 35%;
-	bottom: 2%;
-	width: 30%;
+    left: 0%;
+    right: 0%;
+    top: 98%;
+    margin: 0 auto;
+    width: 30%;
 }
 /* バックホームボタン領域に対する、画像 */
 .battleresult_backhome_icon{
