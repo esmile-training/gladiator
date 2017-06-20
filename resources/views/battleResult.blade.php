@@ -9,7 +9,7 @@
 			<div class="battleresult_logo_win"><img src="{{IMG_URL}}battleResult/battleLogo_Win.png"></div>
 		@else
 			<div><img src="{{IMG_URL}}battleResult/battleBack_Lose.jpg" class="battleresult_bg_lose"></div>
-			<div><img src="{{IMG_URL}}battleResult/battleLogo_Lose.png" class=""></div>
+			<div class="battleresult_logo_lose"><img src="{{IMG_URL}}battleResult/battleLogo_Lose.png"></div>
 		@endif
 
 		{{-- リザルトログ表示領域 --}}
@@ -195,4 +195,5 @@
 	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/resizefont.js"></script>
+	<script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>
 </body>
