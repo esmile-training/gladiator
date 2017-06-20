@@ -9,7 +9,7 @@
 	<img src="{{IMG_URL}}training/presentIcon.png">
 </div>
 <?php $act = $viewData['feverTimeFlug'] == 1 ? 'act' : '' ?>
-<div class="modal_btn feverHelp fever cap {{$act}}">
+<div class="modal_btn feverHelp fever cap2 {{$act}}">
 	<img class='fever_img' src="{{IMG_URL}}battle/feverIcon.png">
 	<p class="fever_text"><script>document.write(60 - new Date().getMinutes())</script>分</p>
 </div>
