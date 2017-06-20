@@ -46,9 +46,11 @@ class TrainingController extends BaseGameController
 		$trainigShorterData = \Config::get('item.itemStr.4');
 		$this->viewData['shorterData']	= $trainigShorterData;
 		
+		// 訓練データ取得
 		$trainingInfoData	= $this->Model->exec('Training','getInfoFromUserId',$this->user['id']);
 		$this->viewData['infoData']		= $trainingInfoData;
 		
+		// 現在時間をビューデータに渡す
 		$this->viewData['nowTime']		= $this->nowTime;
 		
 		if(isset($uCharaData))
@@ -81,6 +83,13 @@ class TrainingController extends BaseGameController
 		$uCharaAtkInfo = $this->Model->exec('Training','getUCharaStatus', $uCharaId);
 		//所持しているコーチのデータを持ってくる
 		$uCoachData = $this->Model->exec('Training', 'getUserCoach', false, $this->user['id']);
+		
+		// 訓練データ取得
+		$trainingInfoData	= $this->Model->exec('Training','getInfoFromUserId',$this->user['id']);
+		$this->viewData['infoData']		= $trainingInfoData;
+		
+		// 現在時間をビューデータに渡す
+		$this->viewData['nowTime']		= $this->nowTime;
 
 		if(!isset($uCoachData))
 		{

@@ -14,6 +14,9 @@ $(function(){
 	
 	// 所持数を max に格納
 	var max		= <?php echo $shorteningData['shorterNumber']; ?>;
+	
+	// 訓練時間(時間部分)を time に格納
+	var time	= <?php echo $shorteningData['tirainingTime']; ?>;
 
 	// countUp ボタンが押された時
 	$('img.countUp{{$shorteningData['charaData']['id']}}').click(function(){
@@ -21,6 +24,9 @@ $(function(){
 			return false;
 		}
 		if(number >= max){
+			return false;
+		}
+		if(number >= time+1){
 			return false;
 		}
 
