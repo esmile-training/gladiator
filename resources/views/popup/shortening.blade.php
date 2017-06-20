@@ -1,20 +1,26 @@
 @include('common/css', ['file' => 'shortening'])
 
 <?php 
-	$number[$shorteningData['charaData']['id']] = 1;
+	$number[$shorteningData['charaData']['id']] = 0;
 ?>
-
 
 <script type="text/javascript">
 $(function(){	
 	// 個数を number に格納
 	var number	= <?php echo $number[$shorteningData['charaData']['id']]; ?>;
-	var ability	= <?php echo $shorteningData['shorterData']['ability'] ?>; 
 	
+	// 1個による短縮時間を ability に格納
+	var ability	= <?php echo $shorteningData['shorterData']['ability']; ?>;
+	
+	// 所持数を max に格納
+	var max		= <?php echo $shorteningData['shorterNumber']; ?>;
 
 	// countUp ボタンが押された時
 	$('img.countUp{{$shorteningData['charaData']['id']}}').click(function(){
 		if(number >= 10){
+			return false;
+		}
+		if(number >= max){
 			return false;
 		}
 
@@ -28,7 +34,7 @@ $(function(){
 	// countDown ボタンが押された時
 	$('img.countDown{{$shorteningData['charaData']['id']}}').click(function(){
 		// 個数が1より小さい数値で入った時は false を返す
-		if(number <= 1){
+		if(number <= 0){
 			return false;
 		}
 
@@ -49,7 +55,7 @@ $(function(){
 </script>
 
 <div class="shortening">
-	<img src="{{IMG_URL}}item/popup_Bg.png" class="shortening_bg">
+	<img src="{{IMG_URL}}training/popup_Bg.png" class="shortening_bg">
 
 	{{-- アイテムの画像 --}}
 	<div class="shortening_item_img">
@@ -84,10 +90,15 @@ $(function(){
 			<td width=22%></td>
 		</tr>
 	</table>
+	
+	{{-- 所持数--}}
+	<div id="shorterNumber{{$shorteningData['charaData']['id']}}" class="shortening_shorterNumber">
+		{{$shorteningData['shorterNumber']}}
+	</div>
 
 	{{-- 購入ボタン --}}
 	<div class="shortening_button_ok">
-		<a href="{{APP_URL}}item/item4?charaId={{$shorteningData['charaData']['id']}}&number=beforeNumber&ability=beforeAbility" class="shortening_ok_Button{{$shorteningData['charaData']['id']}} clickfalse">
+		<a href="{{APP_URL}}item/item?itemId=4&charaId={{$shorteningData['charaData']['id']}}&number=beforeNumber&ability=beforeAbility" class="shortening_ok_Button{{$shorteningData['charaData']['id']}} clickfalse">
 			<img src="{{IMG_URL}}popup/ok_Button.png" class="image_change shortening_button_ok_img">
 		</a>
 	</div>

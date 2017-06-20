@@ -4,7 +4,7 @@ namespace App\Libs;
 
 class BelongingsLib extends BaseGameLib
 {
-	// 敵の各属性を出す確率ステータスに基づいた手をランダムに選択する処理
+	// アイテムの更新処理
 	public static function updateItem($itemId, $number, $itemData, $belongingsData, $user)
 	{
 		// name に商品のDBで使っている名前を代入
