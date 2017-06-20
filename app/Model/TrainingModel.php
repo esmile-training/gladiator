@@ -162,7 +162,7 @@ EOD;
 	}
 
 	/*
-	 * DBの更新をする
+	 * 訓練終了時間を更新する
 	 */
 	public function updateEndDate($infoId, $afterEndDate)
 	{
@@ -174,5 +174,16 @@ $sql = <<< EOD
 EOD;
 		$this->update($sql);
 	}
-
+	
+	public function getInfoFromUserId($userId)
+	{
+$sql =  <<< EOD
+		SELECT	*
+		FROM	uTraining
+		WHERE	userId = {$userId}
+		AND		state = 0
+EOD;
+		$result = $this->select($sql, 'all');
+		return $result;
+	}
 }

@@ -12,9 +12,14 @@ class ItemLib extends BaseGameLib
 	{	
 	}
 
-
+	/*
+	 * item4(訓練時間短縮アイテム)の処理
+	 * infoData	: 訓練データ
+	 * number	: 個数
+	 * ability	: 能力値(config管理)
+	 */
 	public function item4($infoData, $number, $ability)
-	{	
+	{
 		// 元々の訓練終了時間
 		$beforeEndDate = $infoData['endDate'];
 		
@@ -23,7 +28,8 @@ class ItemLib extends BaseGameLib
 		
 		// アイテム使用後の訓練終了時間を生成
 		$afterEndDate = date("Y-m-d H:i:s",strtotime("$beforeEndDate -$shorteningTime hours"));
-
-		return $afterEndDate;
+		
+		// uTraing の endDate を更新
+		$this->Model->exec('Training', 'updateEndDate', array($infoData['id'], $afterEndDate));
 	}
 }
