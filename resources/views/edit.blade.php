@@ -6,7 +6,7 @@
 <div class = "edit_logo"><img style = "width: 100%"class = "editload" src = "{{IMG_URL}}edit/editLogo.png"></div>
 	<img class = "edit_load backload"src = "{{IMG_URL}}title/titlelodoDown.gif">
 </div>
-<div class = "editload">
+<div class = "editload all">
 <div align="center">
 <div id="main">
 	<div class="edit_frame">

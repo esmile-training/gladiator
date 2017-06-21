@@ -1,16 +1,14 @@
 body{
 	margin: 0;
 }
-
 #main{
 
     background-image: url(./../img/gacha/gacharoadbackground.jpg);
     background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-size: cover;
     width: 100%;
-    position: fixed;
+	position: fixed;
     font-family: serif;
 }
 
@@ -121,4 +119,7 @@ body{
 .transition_button_image{
 	width: 30vw;
 	height: auto;
+}
+.all{
+	position: absolute;
 }
