@@ -21,6 +21,8 @@
 	position: absolute;
 	color: white;
 	top: 15%;
+	margin: 0 auto;
+	width: 50%;
 }
 
 .fadetopButton {

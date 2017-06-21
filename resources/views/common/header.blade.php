@@ -23,7 +23,14 @@
 		<header>
 			<div class="headerPosition">
 				<img class="headerImg" src="{{IMG_URL}}header/header.png" />
-				<p class="possession_ornament user_name">{{$viewData['user']['name']}}</p>
+				<p class="modal_btn changeTeamName possession_ornament user_name">{{$viewData['user']['name']}}</p>
+				<?php if($_SERVER['REQUEST_URI'] == "/mypage/index"){ ?>
+				{{-- popupウインドウ --}}
+				@include('popup/wrap', [
+					'class'		=> 'changeTeamName', 
+					'template'	=> 'changeTeamName'
+				])
+				<?php } ?>
 				<div class="fadetopButton">
 					<a class="location" href="{{APP_URL}}">
 						<img class="image_change" src="{{IMG_URL}}header/top.png"/>
