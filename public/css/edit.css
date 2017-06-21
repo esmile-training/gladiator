@@ -2,14 +2,14 @@ body{
 	margin: 0;
 }
 #main{
-
     background-image: url(./../img/gacha/gacharoadbackground.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100%;
-	position: fixed;
+    width: 100vw;
+    position: absolute;
     font-family: serif;
+    margin: auto;
 }
 
 .edit_title{
