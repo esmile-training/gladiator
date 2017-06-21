@@ -9,11 +9,11 @@ $(function(){
 	// 個数を number に格納
 	var number	= <?php echo $number[$shorteningData['charaData']['id']]; ?>;
 	
-	// 1個による短縮時間を ability に格納
-	var ability	= <?php echo $shorteningData['shorterData']['ability']; ?>;
-	
 	// 所持数を max に格納
 	var max		= <?php echo $shorteningData['shorterNumber']; ?>;
+	
+	// 訓練時間(時間部分)を time に格納
+	var time	= <?php echo $shorteningData['tirainingTime']; ?>;
 
 	// countUp ボタンが押された時
 	$('img.countUp{{$shorteningData['charaData']['id']}}').click(function(){
@@ -21,6 +21,9 @@ $(function(){
 			return false;
 		}
 		if(number >= max){
+			return false;
+		}
+		if(number >= time+1){
 			return false;
 		}
 
@@ -48,7 +51,7 @@ $(function(){
 	// 購入ボタンが押された時
 	$('.shortening_ok_Button{{$shorteningData['charaData']['id']}}').click(function(){
 		// URLのGETで渡すデータ部分にデータを挿入
-		afterUrl = $(this).attr('href').replace(new RegExp('beforeNumber', 'g'),number).replace(new RegExp('beforeAbility', 'g'),ability);
+		afterUrl = $(this).attr('href').replace(new RegExp('beforeNumber', 'g'),number);
 		$(this).attr('href',afterUrl);
 	});
 });
@@ -91,14 +94,14 @@ $(function(){
 		</tr>
 	</table>
 	
-	{{-- 所持数--}}
+	{{-- 所持数 --}}
 	<div id="shorterNumber{{$shorteningData['charaData']['id']}}" class="shortening_shorterNumber">
 		{{$shorteningData['shorterNumber']}}
 	</div>
 
-	{{-- 購入ボタン --}}
+	{{-- 使用ボタン --}}
 	<div class="shortening_button_ok">
-		<a href="{{APP_URL}}item/item?itemId=4&charaId={{$shorteningData['charaData']['id']}}&number=beforeNumber&ability=beforeAbility" class="shortening_ok_Button{{$shorteningData['charaData']['id']}} clickfalse">
+		<a href="{{APP_URL}}item/item?itemId=4&charaId={{$shorteningData['charaData']['id']}}&number=beforeNumber" class="shortening_ok_Button{{$shorteningData['charaData']['id']}} clickfalse">
 			<img src="{{IMG_URL}}popup/ok_Button.png" class="image_change shortening_button_ok_img">
 		</a>
 	</div>

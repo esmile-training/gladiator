@@ -13,10 +13,17 @@ class EditController extends BaseGameController
 	{
 		//bladeから入力された値を取得
 		$teamName = $_GET["teamName"];
+		// 禁止ワードが無いか、文字列を確認する
+		$ngFlag = $this->Lib->exec('NgWordChecker','check',$teamName);
 
 		//チーム名をバイトと文字数で判定
 		if(strlen($teamName) <= 16 || mb_strlen($teamName) <= 8)
 		{
+			// 禁止ワードが含まれていたら、editへリダイレクトする
+			if($ngFlag == true)
+			{
+				return view('illegalUserNameError');
+			}
 
 			//DBにチーム名を追加してidを取得
 			$userId = $this->Model->exec('User', 'createUser', [$teamName]);
