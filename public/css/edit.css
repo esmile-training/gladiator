@@ -26,7 +26,6 @@ body{
 }
 
 .edit_subtitle{
-
 	position: absolute;
 	top: 35%;
 	left: 0;
@@ -36,7 +35,6 @@ body{
 }
 
 .edit_from{
-
 	position: absolute;
 	top: 45%;
 	left: 0;
@@ -95,5 +93,4 @@ body{
     z-index: 1;
     text-align: center;
     margin: 0 auto;
-
 }

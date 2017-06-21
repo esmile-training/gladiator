@@ -29,7 +29,7 @@ th{ text-align: center; }
     top: 35%;
     left: 0;
     right: 0;
-    width: 90%;
+    width: 91%;
     margin: 0 auto;
 }
 /* 背景画像 */
@@ -46,7 +46,7 @@ th{ text-align: center; }
     width: 80%;
     color: #ffffff;
     font-size: 5vw;
-    margin: 7% auto;
+	margin: 3% auto;
 }
 .battleresult_log_message_money_img{
 	width: 6%;
