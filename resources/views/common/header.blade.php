@@ -24,7 +24,7 @@
 			<div class="headerPosition">
 				<img class="headerImg" src="{{IMG_URL}}header/header.png" />
 				<p class="modal_btn changeTeamName possession_ornament user_name">{{$viewData['user']['name']}}</p>
-				<?php if($_SERVER['REQUEST_URI'] == "/mypage/index"){ ?>
+				<?php if(strpos($_SERVER['REQUEST_URI'],"mypage")){ ?>
 				{{-- popupウインドウ --}}
 				@include('popup/wrap', [
 					'class'		=> 'changeTeamName', 

@@ -1,23 +1,23 @@
 .changeName_title{
     color: white;
-    margin-top: 5%;
-    left: 0;
-    right: 0;
-    font-size: 3vh;
-	font-family: serif;
+    margin: 21px auto;
+    font-size: 6vw;
+    font-family: serif;
 }
 
 .changeName_subtitle{
-    margin-top: 8%;
-    left: 0;
-    right: 0;
+    margin: 40px auto;
     font-size: 4vw;
-	font-family: serif;
+    font-family: serif;
     color: white;
 }
 
+.changeName_form_parent{
+    width: 100%;
+    margin: 77px auto;
+}
+
 .changeName_form{
-    margin-top: 17%;
     left: 0;
     right: 0;
 }
@@ -39,11 +39,10 @@
 }
 
 .caution{
-	color: red;
+    color: red;
     font-size: 5vw;
-	font-family: serif;
-    margin: 0px 0px 0px 0px;
-    margin-top: 10%;
+    font-family: serif;
+    margin: 0 auto;
 }
 
 .cap:not(.act) {
