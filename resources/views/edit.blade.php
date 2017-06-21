@@ -3,12 +3,12 @@
 @include('common/css', ['file' => 'modal'])
 <script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="{{APP_URL}}js/load.js"></script>
+<div class = "editload">
 <div><img class = "edit_logo editload" src = "{{IMG_URL}}edit/editLogo.png"></div>
 	<img class = "edit_load backload"src = "{{IMG_URL}}title/titlelodoDown.gif">
 </div>
-<div class = "editload">
 <div align="center">
-
+<div id="main">
 	<div class="edit_frame">
 		<h1 class="edit_title">名前入力</h1>
 		<h4 class="edit_subtitle">※全角８文字以内</h4>
@@ -24,7 +24,7 @@
 			</form>
 		</div>
 	</div>
-
+</div>
 	<script>
 	$(function(){
         $("input"). keydown(function(e) {
@@ -36,8 +36,5 @@
         });
     });
 	</script>
-
-
-	
 </div>
 </div>
