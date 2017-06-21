@@ -16,18 +16,18 @@
 		<table border="0" width="100%">
 			<tr>
 				<td width="5%"></td>
-				<td class="cntProbability_text" width="35%">
+				<td class="cntProbability_text" width="15%">
 					@if($i < 10)
 						{{$i}}{{"回成功時："}}
 					@endif
 				</td>
-				<td width="20%">
+				<td width="15%">
 					{{ $viewData['gooUpProbability'][$cnt][$i]}}{{"%"}}
 				</td>
-				<td width="20%">
+				<td width="15%">
 					{{ $viewData['choUpProbability'][$cnt][$i]}}{{"%"}}
 				</td>
-				<td width="20%">
+				<td width="15%">
 					{{ $viewData['paaUpProbability'][$cnt][$i]}}{{"%"}}
 				</td>
 			<tr>

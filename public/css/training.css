@@ -127,8 +127,9 @@
 
 .training_font_serif{
     font-family: serif;
-    font-size	: 2.0vh;
+    font-size: 5vw;
     color: #ffffff;
+    margin-top: 7%;
 }
 
 .traing_time{

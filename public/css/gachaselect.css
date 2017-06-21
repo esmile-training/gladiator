@@ -80,19 +80,7 @@
 /*　ポップアップ　*/
 .gacha_popup{
 	width: 33%;
-	position: absolute;
-	top: 123%;
-	bottom: 0;
-	left: 0;
-	right: 0;
-}
-.gacha_popupbox p{
-	position: absolute;
-	top: 200%;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	width: 100%;
+	margin-top: 10%;
 }
 /*　お金アイコン　*/
 .gold1{
@@ -108,16 +96,13 @@
 }
 /*　ポップアップ全体　*/
 .gacha_popupbox{
-	font-size: 120%;
+    font-size: 6vw;
 	width: 100%;
-	position: relative;
-	top: 7vw;
+    margin-top: 0%;
 }
 
 .boxGacha_table{
-	position: absolute;
-	top: 134%;
-	left: 29%;
+    margin: 2% auto;
 }
 
 .boxGacha_table_image{
