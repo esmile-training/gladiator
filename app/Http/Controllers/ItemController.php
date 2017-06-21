@@ -14,50 +14,27 @@ class ItemController extends BaseGameController
 	 */
 	public function item()
 	{
-		// bladeからキャラの id を読み込み
+		// bladeからアイテムの id を読み込み
 		$itemId		= $_GET["itemId"];
-
+		
 		// bladeから使用する個数を読み込み
 		$number		= $_GET["number"];
 
-		// bladeからアイテムの能力値を読み込み
-		$ability	= $_GET["ability"];
-
 		// 訓練時間短縮アイテムのデータを item config から持ってくる
-		$itemData = \Config::get('item.itemStr');
+		$itemData	= \Config::get('item.itemStr');
 
 		// 所持アイテムデータ取得
 		$belongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
 		// 所持アイテムデータがなければ作成
-		if(!isset($this->belongingsData))
+		if(!isset($belongingsData))
 		{
 			// uItemにデータを追加
 			$this->Model->exec('Item','insertItemData',$this->user['id']);
-			
+
 			// 所持アイテムデータ取得
 			$belongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
 		}
-
-		switch ($itemId)
-		{
-			case 1:
-			case 2:
-			case 3:
-			// case 4
-			case 4:
-				// bladeからキャラの id を読み込み
-				$charaId	= $_GET["charaId"];
-				
-				// キャラIDから訓練データをDBから取得
-				$infoData	= $this->Model->exec('Training', 'getInfoFromCharaId', $charaId);
-				
-				// 訓練時間短縮アイテムの処理
-				$this->Lib->exec('Item', 'item4', array($infoData, $number, $ability));
-				break;
-			default :
-				break;
-		}
-
+		
 		// 個数をマイナスに変更
 		$number *= -1;
 
@@ -66,8 +43,84 @@ class ItemController extends BaseGameController
 
 		// DBの更新
 		$this->Model->exec('Item', 'updateItemData', array($updateItemData));
+		
+		switch ($itemId)
+		{
+			// チケットが該当するので使用なし
+			case 1:
+				break;
+			// バトル中HP回復アイテム(2)の場合
+			case 2:
+				// bladeからバトルキャラのIDを読み込み
+				$battleCharaId		=  $_GET["battleCharaId"];
 
-		//リダイレクト
-		return $this->Lib->redirect('training', 'index');
+				// バトルキャラのIDを元にバトルキャラのデータを取得
+				$battleCharaData	= $this->Model->exec('BattleChara', 'getBattleCharaData', $battleCharaId);
+				
+				// result を アイテム使用時(5)に指定
+				$battleCharaData['result']	= 5;
+
+				// バトル中HP回復アイテムの処理
+				$battleCharaData['battleHp'] = $this->Lib->exec('Item', 'item2', array($battleCharaData, $itemData[$itemId]['ability']));
+				
+				// 自キャラデータの更新処理
+				$this->Model->exec('BattleChara', 'UpdateBattleCharaData', array($battleCharaData));
+				
+				//リダイレクト
+				return $this->Lib->redirect('battle', 'battleLog');
+				
+			// バトル中攻撃力上昇アイテム(3)の場合
+			case 3:
+				// bladeからバトルキャラのIDを読み込み
+				$battleCharaId		=  $_GET["battleCharaId"];
+
+				// バトルキャラのIDを元にバトルキャラのデータを取得
+				$battleCharaData	= $this->Model->exec('BattleChara', 'getBattleCharaData', $battleCharaId);
+				
+				// result を アイテム使用時(5)に指定
+				$battleCharaData['result']	= 5;
+				
+				// キャラの属性によって上昇させる攻撃を変更
+				switch($battleCharaData['attribute'])
+				{
+					case 1:
+						// 攻撃力上昇処理
+						$battleCharaData['battleGooAtk'] = $this->Lib->exec('Item', 'item3', array($battleCharaData['battleGooAtk'], $itemData[$itemId]['ability']));
+						break;
+					case 2:
+						// 攻撃力上昇処理
+						$battleCharaData['battleChoAtk'] = $this->Lib->exec('Item', 'item3', array($battleCharaData['battleChoAtk'], $itemData[$itemId]['ability']));
+						break;
+					case 3:
+						// 攻撃力上昇処理
+						$battleCharaData['battlePaaAtk'] = $this->Lib->exec('Item', 'item3', array($battleCharaData['battlePaaAtk'], $itemData[$itemId]['ability']));
+						break;
+					default;
+						exit;
+				}
+				
+				// 自キャラデータの更新処理
+				$this->Model->exec('BattleChara', 'UpdateBattleCharaData', array($battleCharaData));
+				
+				//リダイレクト
+				return $this->Lib->redirect('battle', 'battleLog');
+
+			// 訓練時間短縮アイテム(4)の場合
+			case 4:
+				// bladeからキャラの id を読み込み
+				$charaId	= $_GET["charaId"];
+				
+				// キャラIDから訓練データをDBから取得
+				$infoData	= $this->Model->exec('Training', 'getInfoFromCharaId', $charaId);
+				
+				// 訓練時間短縮アイテムの処理
+				$this->Lib->exec('Item', 'item4', array($infoData, $number, $itemData[$itemId]['ability']));
+				
+				//リダイレクト
+				return $this->Lib->redirect('training', 'index');
+				
+			default :
+				break;
+		}
 	}
 }

@@ -4,19 +4,41 @@ namespace App\Libs;
 
 class ItemLib extends BaseGameLib
 {
-	public function item2($user)
+	/* 
+	 * item2(バトル中攻撃力上昇アイテム)の処理
+	 * battleCharaData	: バトル中のキャラのデータ
+	 * ability			: 能力値(config管理)上昇倍率
+	 */
+	public function item2($battleCharaData, $ability)
 	{
+		
+		$healData['hp']		= $battleCharaData['hp'];
+		$healData['skill']	= $ability / 100;
+
+		// HP回復処理
+		$battleCharaData['battleHp'] = $this->Lib->exec('battle', 'charaHeal',array($battleCharaData['battleHp'], $healData));
+		
+		return $battleCharaData['battleHp'];
 	}
 
-	public function item3($user)
-	{	
+	/* 
+	 * item3(バトル中攻撃力上昇アイテム)の処理
+	 * battleCharaData	: バトル中のキャラのデータ
+	 * ability			: 能力値(config管理)上昇倍率
+	 */
+	public function item3($beforeAtk, $ability)
+	{
+		// 攻撃力上昇処理
+		$afterAtk = $this->Lib->exec('battle', 'atkUP',array($beforeAtk, $ability));
+
+		return $afterAtk;
 	}
 
 	/*
 	 * item4(訓練時間短縮アイテム)の処理
 	 * infoData	: 訓練データ
 	 * number	: 個数
-	 * ability	: 能力値(config管理)
+	 * ability	: 能力値(config管理)短縮時間
 	 */
 	public function item4($infoData, $number, $ability)
 	{

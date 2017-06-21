@@ -17,6 +17,11 @@
 			$surrenderData['cost']	= $viewData['surrenderCost'];
 			$surrenderData['money']	= $viewData['userData']['money'];
 		?>
+		{{-- アイテム用のデータ統合 --}}
+		<?php 
+			$itemPopupData['belongingsData'] = $viewData['belongingsData'];
+			$itemPopupData['charaData'] = $viewData['charaData'];
+		?>
 		{{-- ポップアップの宣言 --}}
 		@include('popup/wrap', [
 			'class'		=> 'surrenderButton', 
@@ -29,9 +34,14 @@
 			'data'		=> ['log' => $viewData['enemyData']['difficulty']]
 		])
 		@include('popup/wrap', [
-			'class'		=> 'button',
+			'class'		=> 'skill_button',
 			'template'	=> 'battleSkill',
 			'data'		=> ['charaData' => $viewData['charaData']]
+		])
+		@include('popup/wrap', [
+			'class'		=> 'item_button',
+			'template'	=> 'battleItem',
+			'data'		=> ['belongingsData' => $itemPopupData]
 		])
 		
 		{{-- 背景画像 --}}
@@ -46,9 +56,14 @@
 					<img src="{{IMG_URL}}battle/diff{{$viewData['enemyData']['difficulty']}}.png">
 				</td>
 				<td width="20%">
-					<a>
-						<img src="{{IMG_URL}}battle/itemButton.png"  class = "image_change">
-					</a>
+					{{-- アイテムボタン --}}
+					@if($viewData['charaData']['result'] == 5)
+						<img class="item_button" src="{{IMG_URL}}battle/itemButtonDown.png">
+					@else
+						<a>
+							<img class="modal_btn item_button image_change" src="{{IMG_URL}}battle/itemButton.png">
+						</a>
+					@endif
 				</td>
 				<td width="20%"></td>
 				<td width="20%">
@@ -141,7 +156,26 @@
 			<div class="battle_log">
 				<img src="{{IMG_URL}}battle/damagelog_Bg.png" class="damage_log_Bg" >
 				<div id="battleLog" class="battle_log_message">
-				@if($viewData['charaData']['result'] != 4)
+				@if($viewData['charaData']['result'] == 4)
+					{{ $viewData['charaData']['name'] }}
+					は	
+					{{ $viewData['type'][$viewData['charaData']['hand']] }}
+					を発動した！<br>
+
+					@if($viewData['charaData']['imgId'] == 10 && $viewData['charaData']['skillFlag'] == 1 && $viewData['enemyData']['battleHp'] <= 0)
+						一撃必殺　死の鎌！
+					@endif
+
+					@if($viewData['charaData']['imgId'] == 10 && $viewData['charaData']['skillFlag'] == 1 && $viewData['enemyData']['battleHp'] >= 1)
+						しかし何もおきなかった....
+					@endif
+
+					@if($viewData['charaData']['imgId'] == 1 && $viewData['charaData']['skillFlag'] == 1)
+						しかし何もおきなかった....
+					@endif
+				@elseif($viewData['charaData']['result'] == 5)
+					アイテムを使った
+				@else
 					{{ $viewData['charaData']['name'] }}
 					は	
 					{{ $viewData['type'][$viewData['charaData']['hand']] }}
@@ -186,21 +220,6 @@
 						@endif
 					@elseif ($viewData['charaData']['result'] == 3)
 						お互いにダメージなし<br />
-					@endif
-				@else
-					{{ $viewData['charaData']['name'] }}
-					は	
-					{{ $viewData['type'][$viewData['charaData']['hand']] }}
-					を発動した！<br>
-					@if($viewData['charaData']['imgId'] == 10 && $viewData['charaData']['skillFlag'] == 1 && $viewData['enemyData']['battleHp'] <= 0)
-					一撃必殺　死の鎌！
-					@endif
-					@if($viewData['charaData']['imgId'] == 10 && $viewData['charaData']['skillFlag'] == 1 && $viewData['enemyData']['battleHp'] >= 1)
-					しかし何もおきなかった....
-					@endif
-				
-					@if($viewData['charaData']['imgId'] == 1 && $viewData['charaData']['skillFlag'] == 1)
-					しかし何もおきなかった....
 					@endif
 				@endif
 				</div>
@@ -251,8 +270,8 @@
 			{{-- 自キャラのアイコン --}}
 			@if($viewData['charaData']['drawCount'] == 0)
 			<a class="battle_playerhand_button_chara_linkregion clickfalse">
-				<img class="modal_btn button battle_player_status_icon_on" src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" >	
-				<img class="modal_btn button battle_player_icon_tap" src="{{IMG_URL}}battle/Tap.png" >	
+				<img class="modal_btn skill_button battle_player_status_icon_on" src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" >	
+				<img class="modal_btn skill_button battle_player_icon_tap" src="{{IMG_URL}}battle/Tap.png" >	
 			</a>
 			{{-- スキルターン表示枠 --}}
 				<img src="{{IMG_URL}}battle/gage0.png" class="battle_player_skill_frame">

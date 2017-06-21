@@ -210,14 +210,15 @@ class battleController extends BaseGameController
 
 		// 全てのデータを viewData に渡す
 
-		$this->viewData['userData']		= $this->user;
-		$this->viewData['battleData']	= $this->BattleData;
-		$this->viewData['charaData']	= $this->CharaData;
-		$this->viewData['enemyData']	= $this->EnemyData;
-		$this->viewData['type']			= $this->TypeData;
-		$this->viewData['result']		= $this->ResultData;
-		$this->viewData['item']			= $this->ItemData;
-		$this->viewData['surrenderCost']= $surrenderCost;
+		$this->viewData['userData']			= $this->user;
+		$this->viewData['battleData']		= $this->BattleData;
+		$this->viewData['charaData']		= $this->CharaData;
+		$this->viewData['enemyData']		= $this->EnemyData;
+		$this->viewData['type']				= $this->TypeData;
+		$this->viewData['result']			= $this->ResultData;
+		$this->viewData['item']				= $this->ItemData;
+		$this->viewData['belongingsData']	= $this->belongingsData;
+		$this->viewData['surrenderCost']	= $surrenderCost;
 
 
 		return view('battle', ['viewData' => $this->viewData]);
@@ -276,6 +277,18 @@ class battleController extends BaseGameController
 		// config/battle で指定した難易度を読み込み
 		// 1(初級)、2(中級)、3(上級) で指定、賞金の補正値(％)、敵の補正値(割合)で設定中
 		$this->DifficultyData = \Config::get('battle.difficultyStr');
+		
+		// 所持アイテムデータ取得
+		$this->belongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
+		// 所持アイテムデータがなければ作成
+		if(!isset($this->belongingsData))
+		{
+			// uItemにデータを追加
+			$this->Model->exec('Item','insertItemData',$this->user['id']);
+			
+			// 所持アイテムデータ取得
+			$this->belongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
+		}
 
 		// ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
 		// BattleData にバトルデータを格納
@@ -461,6 +474,7 @@ class battleController extends BaseGameController
 				}
 				$this->CharaData['drawCount'] = $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['drawCount'];
 				break;
+			// アイテム(5)の場合
 			case 5:
 				break;
 			default;
@@ -616,10 +630,10 @@ class battleController extends BaseGameController
 	 */
 	public function standDelFlag()
 	{
-//		// ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
-//		// BattleData にバトルデータを格納
+		// ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
+		// BattleData にバトルデータを格納
 		$this->BattleData = $this->Model->exec('BattleInfo', 'getBattleData', $this->user['id']);
-//
+
 		$this->Model->exec('BattleInfo', 'UpdateInfoBattleFlagData', $this->BattleData['id']);
 	}
 }
