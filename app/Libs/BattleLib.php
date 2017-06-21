@@ -308,23 +308,23 @@ class BattleLib extends BaseGameLib
 	}
 	/* 敵にチョキダメージ */
 	public static function enemyChoDamage($enemyLife,$charaData){
-		
+
 		$life = $enemyLife - $charaData['battleChoAtk'] * $charaData['skill'];
-		
+
 		return $life; 
 	}
 	/* 敵にパーダメージ */
 	public static function enemyPaaDamage($enemyLife,$charaData){
 
 		$life = $enemyLife - $charaData['battlePaaAtk'] * $charaData['skill'];
-		
+
 		return $life; 
 	}
 	/* ＨＰ回復 */
 	public static function charaHeal($charaLife,$charaData){
 
-		$life = $charaLife + $charaData['hp'] * $charaData['skill'];
-		
+		$life = (int)($charaLife + $charaData['hp'] * $charaData['skill']);
+
 		return $life; 
 	}
 	/* 二回攻撃 */
@@ -355,7 +355,7 @@ class BattleLib extends BaseGameLib
 			
 			return $enemyLife;
 			
-		}		
+		}
 		
 	}
 	

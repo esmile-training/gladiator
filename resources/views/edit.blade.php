@@ -7,7 +7,6 @@
 	<img class = "edit_load backload"src = "{{IMG_URL}}title/titlelodoDown.gif">
 </div>
 <div class = "editload">
-<div id="main">
 <div align="center">
 
 	<div class="edit_frame">
@@ -40,6 +39,5 @@
 
 
 	
-</div>
 </div>
 </div>

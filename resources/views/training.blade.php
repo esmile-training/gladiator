@@ -107,6 +107,7 @@
 							$shorteningData['charaData']		= $val;
 							$shorteningData['shorterNumber']	= $viewData['shorterNumber'];
 							$shorteningData['shorterData']		= $viewData['shorterData'];
+							$shorteningData['tirainingTime']	= $hour[$val['id']];
 						?>
 						{{-- ポップアップの宣言 --}}
 						@include('popup/wrap', [

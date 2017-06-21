@@ -33,8 +33,10 @@ body{
 }
 
 .edit_from{
-    left: 0;
-    right: 0;
+	position: absolute;
+	top: 45%;
+	left: 0;
+	right: 0;
 }
 
 .edit_input{
@@ -91,7 +93,6 @@ body{
 .cap:not(.act) {
 	display:none;
 }
-
 .edit_form_parent{
 	width: 100%;
     position: absolute;
