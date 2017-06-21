@@ -18,19 +18,19 @@
 	'class'		=> 'menuButton', 
 	'template'	=> 'menu'
 ])
-
+<?php if(strpos($_SERVER['REQUEST_URI'],"mypage")){ ?>
+{{-- popupウインドウ --}}
+@include('popup/wrap', [
+	'class'		=> 'changeTeamName', 
+	'template'	=> 'changeTeamName'
+])
+<?php } ?>
 	<div id="wrapper">
 		<header>
 			<div class="headerPosition">
 				<img class="headerImg" src="{{IMG_URL}}header/header.png" />
 				<p class="modal_btn changeTeamName possession_ornament user_name">{{$viewData['user']['name']}}</p>
-				<?php if(strpos($_SERVER['REQUEST_URI'],"mypage")){ ?>
-				{{-- popupウインドウ --}}
-				@include('popup/wrap', [
-					'class'		=> 'changeTeamName', 
-					'template'	=> 'changeTeamName'
-				])
-				<?php } ?>
+
 				<div class="fadetopButton">
 					<a class="location" href="{{APP_URL}}">
 						<img class="image_change" src="{{IMG_URL}}header/top.png"/>
