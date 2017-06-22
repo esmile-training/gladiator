@@ -20,7 +20,8 @@
 		{{-- アイテム用のデータ統合 --}}
 		<?php 
 			$itemPopupData['belongingsData'] = $viewData['belongingsData'];
-			$itemPopupData['charaData'] = $viewData['charaData'];
+			$itemPopupData['charaData']		 = $viewData['charaData'];
+			$itemPopupData['itemData']		 = $viewData['itemData'];
 		?>
 		{{-- ポップアップの宣言 --}}
 		@include('popup/wrap', [
@@ -57,7 +58,7 @@
 				</td>
 				<td width="20%">
 					{{-- アイテムボタン --}}
-					@if($viewData['charaData']['result'] == 5)
+					@if($viewData['charaData']['skillFlag'] == 1 || $viewData['charaData']['result'] == 5 || $viewData['charaData']['result'] == 6)
 						<img class="item_button" src="{{IMG_URL}}battle/itemButtonDown.png">
 					@else
 						<a>
@@ -147,10 +148,17 @@
 		{{-- 攻撃の結果が入っていたら --}}
 		@if ($viewData['charaData']['result'] != 0)
 			{{-- 敵の出した手 --}}
-			<div class="battle_enemy_hand">
-				<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
-				<img id="enemyHand" src="{{IMG_URL}}chara/status/hand{{$viewData['enemyData']['hand']}}.png" class="battle_enemy_hand_img" >
-			</div>
+			@if($viewData['enemyData']['hand'] != 0)
+				<div class="battle_enemy_hand">
+					<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
+					<img id="enemyHand" src="{{IMG_URL}}chara/status/hand{{$viewData['enemyData']['hand']}}.png" class="battle_enemy_hand_img" >
+				</div>
+			@else
+				<div class="battle_enemy_hand">
+					<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
+					<img id="enemyHand" src="{{IMG_URL}}chara/status/hand0.png" class="battle_enemy_hand_img" >
+				</div>
+			@endif
 
 			{{-- 勝敗の表示 --}}
 			<div class="battle_log">
@@ -174,7 +182,11 @@
 						しかし何もおきなかった....
 					@endif
 				@elseif($viewData['charaData']['result'] == 5)
-					アイテムを使った
+					{{ $viewData['charaData']['name'] }}は{{ $viewData['itemData'][2]['name'] }}を使った！ <br />
+					HPが{{ $viewData['itemData'][2]['ability'] }}%回復した！
+				@elseif($viewData['charaData']['result'] == 6)
+					{{ $viewData['charaData']['name'] }}は{{ $viewData['itemData'][3]['name'] }}を食べた！ <br />
+					このターン{{ $viewData['type'][$viewData['charaData']['attribute']] }}の攻撃力が{{ $viewData['itemData'][3]['ability'] }}倍！
 				@else
 					{{ $viewData['charaData']['name'] }}
 					は	

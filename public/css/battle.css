@@ -420,3 +420,99 @@ body{}
     z-index: 1;
 	opacity: 0;
 }
+
+.battleItem2{
+    width: 80%;
+    margin: 0 auto;
+}
+.battleItem2_itemIcon{
+	position: absolute;
+	width: 18%;
+	left: 16%;
+	top: 5%;
+}
+.battleItem2_name{
+	position: absolute;
+	top: 4%;
+	left: 40%;
+	width: 40%;
+	color: #ffffff;
+	font-size: 4.5vw;
+	text-align: center;
+}
+.battleItem2_abilityInfo{
+	position: absolute;
+	top: 15%;
+	left: 42%;
+	width: 45%;
+	color: #ffffff;
+	font-size: 4.5vw;
+	text-align: left;
+}
+.battleItem2_number{
+	position: absolute;
+	top: 34%;
+	left: 23%;
+	width: 30%;
+	color: #ffffff;
+	font-size: 4.5vw;
+	text-align: right;
+}
+.battleItem2_useButton{
+	position: absolute;
+	top: 33%;
+	left: 60%;
+	width: 25%;
+}
+
+.battleItem3{
+    width: 80%;
+    margin: 0 auto;
+}
+.battleItem3_itemIcon{
+	position: absolute;
+	width: 18%;
+	left: 16%;
+	top: 55%;
+}
+.battleItem3_name{
+	position: absolute;
+	top: 55%;
+	left: 40%;
+	width: 40%;
+	color: #ffffff;
+	font-size: 4.5vw;
+	text-align: center;
+}
+.battleItem3_abilityInfo{
+	position: absolute;
+	top: 65%;
+	left: 42%;
+	width: 45%;
+	color: #ffffff;
+	font-size: 4.5vw;
+	text-align: left;
+}
+.battleItem3_number{
+	position: absolute;
+	top: 85%;
+	left: 23%;
+	width: 30%;
+	color: #ffffff;
+	font-size: 4.5vw;
+	text-align: right;
+}
+.battleItem3_useButton{
+	position: absolute;
+	top: 84%;
+	left: 60%;
+	width: 25%;
+}
+
+.useButton{
+	width: 100%;
+}
+
+.battleItem_flame{
+    width: 100%;
+}

@@ -76,7 +76,7 @@
 {{--キャラクターの所持数を表示する--}}
 <div class="chara_inventory">
 	<img src="{{IMG_URL}}/battle/inventory_bord.png">
-	<font class="inventory_value font_color font_sentury">{{$viewData['charaInventory']['possession']}}/{{$viewData['charaInventory']['upperLimit']}}</font>
+	<font class="inventory_value font_color font_sentury">{{$viewData['charaInventory']['possession']}} / {{$viewData['charaInventory']['upperLimit']}}</font>
 
 	{{--ソートの表示--}}
 	<div class="sort_Box">

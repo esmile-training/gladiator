@@ -56,7 +56,7 @@
 							<div class="scale_img">
 								<img class="chara_button_frame_img" src="{{IMG_URL}}battle/chara_button_frame{{$val['rare']}}.png" alt="ボタンの枠">
 							</div>
-							{{-- 訓練終了までの時間を算出(できてない) --}}
+							{{-- 訓練終了までの時間を算出 --}}
 							@foreach( $viewData['infoData'] as $key => $infoval)
 								@if( $infoval['uCharaId'] == $val['id'] )
 									<?php
@@ -131,7 +131,7 @@
 	</div>
 	<div class="chara_inventory">
 		<img src="{{IMG_URL}}/battle/inventory_bord.png">
-		<font class="inventory_value font_color font_sentury">{{$viewData['charaInventory']['possession']}}/{{$viewData['charaInventory']['upperLimit']}}</font>
+		<font class="inventory_value font_color font_sentury">{{$viewData['charaInventory']['possession']}} / {{$viewData['charaInventory']['upperLimit']}}</font>
 
 		{{--ソート--}}
 		<div class="sort_Box">

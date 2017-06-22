@@ -135,17 +135,17 @@ class RandamCharaLib extends BaseGameLib
 				$attk['gu'] = $attack[1];
 				$attk['choki'] = $attack[2];
 				$attk['paa'] = $attack[3];
-				$narrow = 'gu';
+				$narrow = 1;
 			}else if($rand == 2){
 				$attk['gu'] = $attack[2];
 				$attk['choki'] = $attack[1];
 				$attk['paa'] = $attack[3];
-				$narrow = 'choki';
+				$narrow = 2;
 			}else{
 				$attk['gu'] = $attack[2];
 				$attk['choki'] = $attack[3];
 				$attk['paa'] = $attack[1];
-				$narrow = 'paa';
+				$narrow = 3;
 			}
 			$valueListConf['gu'] = $attk['gu'];
 			$valueListConf['choki'] = $attk['choki'];
