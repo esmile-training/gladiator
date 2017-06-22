@@ -103,8 +103,8 @@ th{ text-align: center; }
 	color: white;
     font-size: 5vw;
     position: fixed;
-    top: 10%;
-    left: 10%;
+    top: 39%;
+    margin-left: 5%;
 }
 .battleresult_logo_win{
     display: inline-block;

@@ -3,7 +3,7 @@
 	@foreach($viewData['endTrainingChara'] as $val)
 	
 	<div class="training_chara_frame">
-		<img class="training_chara_board" src="http://esmile-sys.sakura.ne.jp/gladiator/public/img/battle/chara_button_frame{{$val['rare']}}.png" />
+		<img class="training_chara_board" src="{{IMG_URL}}battle/chara_button_frame{{$val['rare']}}.png" />
 		<div class="training_chara">
 <!--			<img class="training_status_board" src="{{IMG_URL}}battle/chara_button_frame{{$val['rare']}}.png" />-->
 			<img class="training_chara_icon" src="{{IMG_URL}}chara/icon/icon_{{$val['imgId']}}.png" />

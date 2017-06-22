@@ -169,9 +169,11 @@
 				</div>
 			@else
 				@if($viewData['charaDefaultData']['skill'] == 1 && $viewData['charaDefaultData']['imgId'] == 1)
-				<font class = "teijiFont">
-					定時退社した。
-				</font>
+				<div class = "teijiFont">
+					<font>
+						定時退社した。
+					</font>
+				</div>
 				@else
 				{{-- プレイヤー敗北時のリザルトログ --}}
 					<div class="battleresult_log_message">
