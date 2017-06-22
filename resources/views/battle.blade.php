@@ -21,7 +21,7 @@
 		<?php 
 			$itemPopupData['belongingsData'] = $viewData['belongingsData'];
 			$itemPopupData['charaData']		 = $viewData['charaData'];
-			$itemPopupData['itemData']		 = $viewData['item'];
+			$itemPopupData['itemData']		 = $viewData['itemData'];
 		?>
 		{{-- ポップアップの宣言 --}}
 		@include('popup/wrap', [
@@ -58,7 +58,7 @@
 				</td>
 				<td width="20%">
 					{{-- アイテムボタン --}}
-					@if($viewData['charaData']['result'] == 5)
+					@if($viewData['charaData']['skillFlag'] == 1 || $viewData['charaData']['result'] == 5 || $viewData['charaData']['result'] == 6)
 						<img class="item_button" src="{{IMG_URL}}battle/itemButtonDown.png">
 					@else
 						<a>
@@ -182,7 +182,11 @@
 						しかし何もおきなかった....
 					@endif
 				@elseif($viewData['charaData']['result'] == 5)
-					アイテムを使った
+					{{ $viewData['charaData']['name'] }}は{{ $viewData['itemData'][2]['name'] }}を使った！ <br />
+					HPが{{ $viewData['itemData'][2]['ability'] }}%回復した！
+				@elseif($viewData['charaData']['result'] == 6)
+					{{ $viewData['charaData']['name'] }}は{{ $viewData['itemData'][3]['name'] }}を食べた！ <br />
+					このターン{{ $viewData['type'][$viewData['charaData']['attribute']] }}の攻撃力が{{ $viewData['itemData'][3]['ability'] }}倍！
 				@else
 					{{ $viewData['charaData']['name'] }}
 					は	

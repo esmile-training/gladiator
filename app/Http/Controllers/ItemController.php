@@ -60,7 +60,7 @@ class ItemController extends BaseGameController
 				// バトルキャラのIDを元にバトルキャラのデータを取得
 				$battleCharaData	= $this->Model->exec('BattleChara', 'getBattleCharaData', $battleCharaId);
 
-				// result を アイテム使用時(5)に指定
+				// result を 回復アイテム使用時(5)に指定
 				$battleCharaData['result']	= 5;
 
 				// バトル中HP回復アイテムの処理
@@ -80,8 +80,8 @@ class ItemController extends BaseGameController
 				// バトルキャラのIDを元にバトルキャラのデータを取得
 				$battleCharaData	= $this->Model->exec('BattleChara', 'getBattleCharaData', $battleCharaId);
 
-				// result を アイテム使用時(5)に指定
-				$battleCharaData['result']	= 5;
+				// result を 攻撃力上昇アイテム使用時(6)に指定
+				$battleCharaData['result']	= 6;
 
 				// キャラの属性によって上昇させる攻撃を変更
 				switch($battleCharaData['attribute'])

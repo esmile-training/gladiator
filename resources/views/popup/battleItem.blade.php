@@ -11,9 +11,15 @@
 		{{$itemPopupData['belongingsData']['hpRecovery']}}
 	</div>
 
-	<a href="{{APP_URL}}item/item?itemId=2&battleCharaId={{$itemPopupData['charaData']['uBattleCharaId']}}&number=1" class="battleItem2_useButton clickfalse">
-		<img class="useButton image_change" src="{{IMG_URL}}battle/use_Button.png">
-	</a>
+	@if($itemPopupData['belongingsData']['hpRecovery'] <= 0 || $itemPopupData['charaData']['battleHp'] >= $itemPopupData['charaData']['hp'])
+		<div class="battleItem2_useButton">
+			<img class="useButton" src="{{IMG_URL}}battle/use_ButtonNot.png">
+		</div>
+	@else
+		<a href="{{APP_URL}}item/item?itemId=2&battleCharaId={{$itemPopupData['charaData']['uBattleCharaId']}}&number=1" class="battleItem2_useButton clickfalse">
+			<img class="useButton image_change" src="{{IMG_URL}}battle/use_Button.png">
+		</a>
+	@endif
 </div>
 
 <div class="battleItem3">
@@ -29,7 +35,13 @@
 		{{$itemPopupData['belongingsData']['atkUpper']}}
 	</div>
 
-	<a href="{{APP_URL}}item/item?itemId=3&battleCharaId={{$itemPopupData['charaData']['uBattleCharaId']}}&number=1" class="battleItem3_useButton clickfalse">
-		<img class="useButton image_change" src="{{IMG_URL}}battle/use_Button.png">
-	</a>
+	@if($itemPopupData['belongingsData']['atkUpper'] <= 0)
+		<div class="battleItem3_useButton">
+			<img class="useButton" src="{{IMG_URL}}battle/use_ButtonNot.png">
+		</div>
+	@else
+		<a href="{{APP_URL}}item/item?itemId=3&battleCharaId={{$itemPopupData['charaData']['uBattleCharaId']}}&number=1" class="battleItem3_useButton clickfalse">
+			<img class="useButton image_change" src="{{IMG_URL}}battle/use_Button.png">
+		</a>
+	@endif
 </div>
