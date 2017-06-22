@@ -117,7 +117,10 @@ class ItemController extends BaseGameController
 				$infoData	= $this->Model->exec('Training', 'getInfoFromCharaId', $charaId);
 
 				// 訓練時間短縮アイテムの処理
-				$this->Lib->exec('Item', 'item4', array($infoData, $number, $itemData[$itemId]['ability']));
+				$infoData['endDate'] = $this->Lib->exec('Item', 'item4', array($infoData, $number, $itemData[$itemId]['ability']));
+				
+				// uTraing の endDate を更新
+				$this->Model->exec('Training', 'updateEndDate', array($infoData['id'],$infoData['endDate']));
 
 				//リダイレクト
 				return $this->Lib->redirect('training', 'index');

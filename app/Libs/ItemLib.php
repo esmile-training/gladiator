@@ -49,9 +49,8 @@ class ItemLib extends BaseGameLib
 		$shorteningTime = $ability * $number;
 		
 		// アイテム使用後の訓練終了時間を生成
-		$afterEndDate = date("Y-m-d H:i:s",strtotime("$beforeEndDate -$shorteningTime hours"));
-		
-		// uTraing の endDate を更新
-		$this->Model->exec('Training', 'updateEndDate', array($infoData['id'], $afterEndDate));
+		$afterEndDate = date("Y-m-d H:i:s",strtotime("$beforeEndDate +$shorteningTime hours"));
+
+		return $afterEndDate;
 	}
 }
