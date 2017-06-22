@@ -18,12 +18,12 @@
 			<img class="edit_frame_img" style="height: 20%;" src="{{IMG_URL}}popup/popupmiddle.png" />
 			<img class="edit_frame_img" src="{{IMG_URL}}popup/popupbottom.png" />
 		</div>
-	</div>
 
-	{{--editへ移動するためのボタン--}}
-	<div class="transition_edit_button">
-		<a href="{{APP_URL}}edit/index">
-			<img class="transition_button_image image_change" src="{{IMG_URL}}popup/back_Button.png">
-		</a>
+		{{--editへ移動するためのボタン--}}
+		<div class="transition_edit_button">
+			<a href="{{APP_URL}}edit/index">
+				<img class="transition_button_image image_change" src="{{IMG_URL}}popup/back_Button.png">
+			</a>
+		</div>
 	</div>
 </div>

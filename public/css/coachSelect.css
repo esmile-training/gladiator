@@ -34,10 +34,8 @@
 }
 
 .coachSelect_all{
-    position :absolute;
-    top : 20%;
-    left : 0%;
-    width: 100%
+    width: 100%;
+    margin: 47% auto;
 }
 
 .coachSelect_text{
@@ -99,23 +97,28 @@
 
 .training_submit{
     position: absolute;
-    top     : 550%;
-    left    : 40%;
-    width   : 20%;
+    left: 0%;
+    right: 0;
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 73%;
 }
 
 .training_fee_img{
     position: absolute;
-    top     : 100%;
-    left    : 62%;
-    width   : 10%;
+    margin-top: -33%;
+    margin-left: 38%;
+    width: 35%;
 }
 
 .training_fee_text{
-    position: absolute;
-    top     : 100%;
-    left    : 35%;
-    width   : 30%;
+	position: absolute;
+    left: 0%;
+    right: 0%;
+    margin: 0 auto;
+    margin-top: 67%;
+    font-size: 6vw;
+    width: 30%;
 }
 
 .training_goo_up_probability{

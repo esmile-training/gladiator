@@ -102,18 +102,18 @@ body{
 /*テキスト本文の設定*/
 .error_text{
 	color: #ffffff;
-	font-size: 5.8vw;
-	text-align: center;
-	top: 36vh;
-	left: 22vw;
-	position: absolute;
+    font-size: 5.8vw;
+    text-align: center;
+    top: 9vh;
+    left: 13vw;
+    position: absolute;
 }
 /*ページ遷移用のボタンの設定*/
 .transition_edit_button{
 	width: 100%;
-	top: 60vh;
-	margin-left: 35vw;
-	position: absolute;
+    top: 63vh;
+    margin-left: 0vw;
+    position: absolute;
 }
 /*ボタンイメージの設定*/
 .transition_button_image{
