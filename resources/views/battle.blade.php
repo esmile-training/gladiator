@@ -103,16 +103,15 @@
 			<div class="battle_enemy_status_hp">
 				<table border="0">
 					<tr valign="middle">
-						<td width="65%" align="left">
+						<td width="63%" align="left">
 							{{ $viewData['enemyData']['name'] }}
 						</td>
 						<td width="5%">
 							<img src={{IMG_URL}}chara/status/hp.png class="battle_enemy_status_hp_img">
 						</td>
-						<td width="25%" align="left">
+						<td width="32%" align="left">
 							{{ $viewData['enemyData']['battleHp'] }} / {{ $viewData['enemyData']['hp'] }}
 						</td>
-						<td width="5%"></td>
 					</tr>
 				</table>
 			</div>
@@ -306,14 +305,13 @@
 			<div class="battle_player_status_hp">
 				<table border="0">
 					<tr>
-						<td width="5%"></td>
-						<td width="65%" align="left">
+						<td width="63%" align="left">
 							{{ $viewData['charaData']['name'] }}
 						</td>
 						<td width="5%">
 							<img src="{{IMG_URL}}chara/status/hp.png" class="battle_player_status_hp_img">
 						</td>	
-						<td width="25%" align="left">
+						<td width="32%" align="left">
 							{{ $viewData['charaData']['battleHp'] }} / {{ $viewData['charaData']['hp'] }}
 						</td>
 					</tr>
