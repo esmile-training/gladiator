@@ -1,7 +1,6 @@
 <div class="training_init">
 	{{'訓練が完了しました!'}}<br>
 	@foreach($viewData['endTrainingChara'] as $val)
-	
 	<div class="training_chara_frame">
 		<img class="training_chara_board" src="{{IMG_URL}}battle/chara_button_frame{{$val['rare']}}.png" />
 		<div class="training_chara">

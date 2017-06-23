@@ -90,13 +90,13 @@ class TrainingLib extends BaseGameLib
 	 */
 	public function atkUpJudge($gooResult,$choResult,$paaResult,$time = 1)
 	{
-		for($i = 0; $i <= $time; $i++)
+		//ステータスの上昇回数を格納する変数
+		$gooUpCnt	 = 0;
+		$choUpCnt	 = 0;
+		$paaUpCnt	 = 0;
+		
+		for($i = 0; $i < $time; $i++)
 		{
-			//ステータスの上昇回数を格納する変数
-			$gooUpCnt	 = 0;
-			$choUpCnt	 = 0;
-			$paaUpCnt	 = 0;
-
 			$gooJudgeValue = rand(1, 100);
 			if($gooResult >= $gooJudgeValue)
 			{
