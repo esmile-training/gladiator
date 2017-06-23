@@ -51,7 +51,7 @@ class ShopController extends BaseGameController
 	public function updateBelongings()
 	{
 		// setData関数を呼び出し、データをセット
-		$this->getItemData();
+		$this->getProductData();
 
 		// bladeから購入したアイテムのidを読み込み
 		$purchaseItemId = $_GET["purchaseItemId"];

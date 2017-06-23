@@ -20,7 +20,8 @@
 		{{-- アイテム用のデータ統合 --}}
 		<?php 
 			$itemPopupData['belongingsData'] = $viewData['belongingsData'];
-			$itemPopupData['charaData'] = $viewData['charaData'];
+			$itemPopupData['charaData']		 = $viewData['charaData'];
+			$itemPopupData['itemData']		 = $viewData['itemData'];
 		?>
 		{{-- ポップアップの宣言 --}}
 		@include('popup/wrap', [
@@ -57,7 +58,7 @@
 				</td>
 				<td width="20%">
 					{{-- アイテムボタン --}}
-					@if($viewData['charaData']['result'] == 5)
+					@if($viewData['charaData']['skillFlag'] == 1 || $viewData['charaData']['result'] == 5 || $viewData['charaData']['result'] == 6)
 						<img class="item_button" src="{{IMG_URL}}battle/itemButtonDown.png">
 					@else
 						<a>
@@ -147,10 +148,17 @@
 		{{-- 攻撃の結果が入っていたら --}}
 		@if ($viewData['charaData']['result'] != 0)
 			{{-- 敵の出した手 --}}
-			<div class="battle_enemy_hand">
-				<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
-				<img id="enemyHand" src="{{IMG_URL}}chara/status/hand{{$viewData['enemyData']['hand']}}.png" class="battle_enemy_hand_img" >
-			</div>
+			@if($viewData['enemyData']['hand'] != 0)
+				<div class="battle_enemy_hand">
+					<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
+					<img id="enemyHand" src="{{IMG_URL}}chara/status/hand{{$viewData['enemyData']['hand']}}.png" class="battle_enemy_hand_img" >
+				</div>
+			@else
+				<div class="battle_enemy_hand">
+					<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
+					<img id="enemyHand" src="{{IMG_URL}}chara/status/hand0.png" class="battle_enemy_hand_img" >
+				</div>
+			@endif
 
 			{{-- 勝敗の表示 --}}
 			<div class="battle_log">
@@ -174,7 +182,11 @@
 						しかし何もおきなかった....
 					@endif
 				@elseif($viewData['charaData']['result'] == 5)
-					アイテムを使った
+					{{ $viewData['charaData']['name'] }}は{{ $viewData['itemData'][2]['name'] }}を使った！ <br />
+					HPが{{ $viewData['itemData'][2]['ability'] }}%回復した！
+				@elseif($viewData['charaData']['result'] == 6)
+					{{ $viewData['charaData']['name'] }}は{{ $viewData['itemData'][3]['name'] }}を食べた！ <br />
+					このターン{{ $viewData['type'][$viewData['charaData']['attribute']] }}の攻撃力が{{ $viewData['itemData'][3]['ability'] }}倍！
 				@else
 					{{ $viewData['charaData']['name'] }}
 					は	
@@ -370,11 +382,80 @@
 			</div>
 		</div>
 	</div>
+<div>
+	<script type="text/javascript">
+		$(function(){
+		$('img.battle_Button').click(function(){
+			// srcの取得
+			var getSrc = $(this).attr('src');
 
+			// "/"ごとにURL分割
+			var beforeImage = getSrc.split("/");
+			// 画像名だけを抽出
+			beforeImage = beforeImage[beforeImage.length - 1];
+
+			// すでに画像名に処理後の画像名が入っていれば何もなし
+			if(beforeImage.match('Up') || beforeImage.match('Down'))
+			{
+				return false;
+			}
+
+			// 抽出した画像名から名前と拡張子を分割
+			var afterImage = beforeImage.split(".");
+
+			// 画像名に押された後の画像名を連結
+			afterImage = afterImage[0] + 'Up.' + afterImage[1];
+
+			// もともとの画像と変更
+			var changeL = getSrc.replace(beforeImage , afterImage);
+			$(this).attr('src', changeL);
+
+			// 敵の手画像をはてなの画像に変更
+			var afterImageE = "{{IMG_URL}}chara/status/hand0.png";
+			document.getElementById("enemyHand").src = afterImageE;
+
+			// グー、チョキ、パーのDown画像定義
+			var afterImageG = "{{IMG_URL}}chara/status/hand1Down.png";
+			var afterImageC = "{{IMG_URL}}chara/status/hand2Down.png";
+			var afterImageP = "{{IMG_URL}}chara/status/hand3Down.png";
+
+			// idを取得して、そのid以外の攻撃ボタンを消す
+			var idname = $(this).attr("id");
+
+			// グーが押されたら
+			if(idname === "playerHand1")
+			{
+				// チョキとパーの画像を変更            
+				document.getElementById("playerHand2").src = afterImageC;
+				document.getElementById("playerHand3").src = afterImageP;
+			}
+			// チョキが押されたら
+			else if(idname === "playerHand2")
+			{
+				// グーとパーの画像を変更 
+				document.getElementById("playerHand1").src = afterImageG;
+				document.getElementById("playerHand3").src = afterImageP; 
+			}
+			// パーが押されたら
+			else if(idname === "playerHand3")
+			{
+				// グーとチョキの画像を変更
+				document.getElementById("playerHand1").src = afterImageG;
+				document.getElementById("playerHand2").src = afterImageC; 
+			}
+		});
+
+		// 表示を消す処理
+		$('.visibil').click(function() {
+			// ログの表示を消す
+			document.getElementById("battleLog").style.visibility="hidden";
+		});
+	});
+	</script>
+</div>
 	{{-- jsの宣言 --}}
 	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>
-	<script type="text/javascript" src="{{APP_URL}}js/battleButton.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/skill.js"></script>
 </body>

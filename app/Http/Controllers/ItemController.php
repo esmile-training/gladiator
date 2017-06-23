@@ -7,8 +7,11 @@ class ItemController extends BaseGameController
 	 * item を使うファンクション
 	 * itemId	: アイテムのID(config管理)
 	 * number	: 個数
-	 * ability	: 能力値(config管理)
+	 * 
 	 * 以下itemIdによって
+	 * 2、3(バトル中アイテム)
+	 * battleCharaId : uBattleCharaDBのキャラのID
+	 * 
 	 * 4(訓練短縮アイテム)
 	 * charaId	: uCharaDBのキャラのID
 	 */
@@ -16,7 +19,7 @@ class ItemController extends BaseGameController
 	{
 		// bladeからアイテムの id を読み込み
 		$itemId		= $_GET["itemId"];
-		
+
 		// bladeから使用する個数を読み込み
 		$number		= $_GET["number"];
 
@@ -34,7 +37,7 @@ class ItemController extends BaseGameController
 			// 所持アイテムデータ取得
 			$belongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
 		}
-		
+
 		// 個数をマイナスに変更
 		$number *= -1;
 
@@ -56,19 +59,19 @@ class ItemController extends BaseGameController
 
 				// バトルキャラのIDを元にバトルキャラのデータを取得
 				$battleCharaData	= $this->Model->exec('BattleChara', 'getBattleCharaData', $battleCharaId);
-				
-				// result を アイテム使用時(5)に指定
+
+				// result を 回復アイテム使用時(5)に指定
 				$battleCharaData['result']	= 5;
 
 				// バトル中HP回復アイテムの処理
 				$battleCharaData['battleHp'] = $this->Lib->exec('Item', 'item2', array($battleCharaData, $itemData[$itemId]['ability']));
-				
+
 				// 自キャラデータの更新処理
 				$this->Model->exec('BattleChara', 'UpdateBattleCharaData', array($battleCharaData));
-				
+
 				//リダイレクト
 				return $this->Lib->redirect('battle', 'battleLog');
-				
+
 			// バトル中攻撃力上昇アイテム(3)の場合
 			case 3:
 				// bladeからバトルキャラのIDを読み込み
@@ -76,10 +79,10 @@ class ItemController extends BaseGameController
 
 				// バトルキャラのIDを元にバトルキャラのデータを取得
 				$battleCharaData	= $this->Model->exec('BattleChara', 'getBattleCharaData', $battleCharaId);
-				
-				// result を アイテム使用時(5)に指定
-				$battleCharaData['result']	= 5;
-				
+
+				// result を 攻撃力上昇アイテム使用時(6)に指定
+				$battleCharaData['result']	= 6;
+
 				// キャラの属性によって上昇させる攻撃を変更
 				switch($battleCharaData['attribute'])
 				{
@@ -98,10 +101,10 @@ class ItemController extends BaseGameController
 					default;
 						exit;
 				}
-				
+
 				// 自キャラデータの更新処理
 				$this->Model->exec('BattleChara', 'UpdateBattleCharaData', array($battleCharaData));
-				
+
 				//リダイレクト
 				return $this->Lib->redirect('battle', 'battleLog');
 
@@ -109,16 +112,19 @@ class ItemController extends BaseGameController
 			case 4:
 				// bladeからキャラの id を読み込み
 				$charaId	= $_GET["charaId"];
-				
+
 				// キャラIDから訓練データをDBから取得
 				$infoData	= $this->Model->exec('Training', 'getInfoFromCharaId', $charaId);
-				
+
 				// 訓練時間短縮アイテムの処理
-				$this->Lib->exec('Item', 'item4', array($infoData, $number, $itemData[$itemId]['ability']));
+				$infoData['endDate'] = $this->Lib->exec('Item', 'item4', array($infoData, $number, $itemData[$itemId]['ability']));
 				
+				// uTraing の endDate を更新
+				$this->Model->exec('Training', 'updateEndDate', array($infoData['id'],$infoData['endDate']));
+
 				//リダイレクト
 				return $this->Lib->redirect('training', 'index');
-				
+
 			default :
 				break;
 		}
