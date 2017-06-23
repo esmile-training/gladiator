@@ -16,7 +16,7 @@
 	<div class="chara_list">
 		<div class="signboard_info">
 			<img src="{{IMG_URL}}/training/signboard_info.png">
-			<font  class="signboard_text font_serif font_color">{{'剣闘士の詳細が見れます'}}</font>
+			<font  class="signboard_text font_serif font_color">剣闘士のステータスが確認できます。</font>
 		</div>
 		{{--キャラクターの所持数を表示する--}}
 		<div class="chara_inventory">
