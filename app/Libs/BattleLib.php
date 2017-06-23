@@ -149,7 +149,6 @@ class BattleLib extends BaseGameLib
 				echo 'エラー';
 				exit;
 		}
-
 		return $winner;
 	}
 
@@ -294,50 +293,60 @@ class BattleLib extends BaseGameLib
 		return $result;
 	}
 	/* 攻撃力アップ */
-	public static function atkUP($atk,$magnification){
-		
+	public static function atkUP($atk,$magnification)
+	{
 		$statusUp = $atk * $magnification;
 		
 		return $statusUp;
 	}
+	
 	/* 敵にグーダメージ */
-	public static function enemyGooDamage($enemyLife,$charaData){
-
+	public static function enemyGooDamage($enemyLife,$charaData)
+	{
 		$life = $enemyLife - $charaData['battleGooAtk'] * $charaData['skill'];
 		
 		return $life; 
 	}
+	
 	/* 敵にチョキダメージ */
-	public static function enemyChoDamage($enemyLife,$charaData){
-		
+	public static function enemyChoDamage($enemyLife,$charaData)
+	{
 		$life = $enemyLife - $charaData['battleChoAtk'] * $charaData['skill'];
-		
+
 		return $life; 
 	}
+	
 	/* 敵にパーダメージ */
-	public static function enemyPaaDamage($enemyLife,$charaData){
-
+	public static function enemyPaaDamage($enemyLife,$charaData)
+	{
 		$life = $enemyLife - $charaData['battlePaaAtk'] * $charaData['skill'];
-		
+
 		return $life; 
 	}
+
 	/* ＨＰ回復 */
-	public static function charaHeal($charaLife,$charaData){
+	public static function charaHeal($charaLife,$charaData)
+	{
+		$life = (int)($charaLife + $charaData['hp'] * $charaData['skill']);
 
-		$life = $charaLife + $charaData['hp'] * $charaData['skill'];
-		
-		return $life; 
+		if($life > $charaData['hp'])
+		{
+			$life = $charaData['hp'];
+		}
+		return $life;
 	}
-	/* 二回攻撃 */
-	public static function charaDoubleAttack($damage){
 
+	/* 二回攻撃 */
+	public static function charaDoubleAttack($damage)
+	{
 		$enemyDamage = $damage * 2;
 		
 		return $enemyDamage; 
 	}
+	
 	/* 敵のダメージを返す */
-	public static function charaReverseAttack($damage){
-
+	public static function charaReverseAttack($damage)
+	{
 		$enemyDamage = $damage;
 		
 		return $enemyDamage; 
@@ -345,19 +354,17 @@ class BattleLib extends BaseGameLib
 	/* ダメージ無効 */
 	
 	/* 即死効果 */
-	public static function enemyDead($enemyLife){
-		
+	public static function enemyDead($enemyLife)
+	{
 		$randam = rand(1,100);
-		
-		if($randam <= 10){
+	
+		if($randam <= 20){
 			$enemyLife = $enemyLife - $enemyLife;
 			return $enemyLife;
 		} else {
 			
 			return $enemyLife;
 			
-		}		
-		
+		}
 	}
-	
 }

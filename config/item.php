@@ -40,7 +40,7 @@ return [
 		// アイテムを使う場所
 		'where'		=> '【バトル中】',
 		// 能力説明
-		'abilityInfo' => '次の攻撃の攻撃力を2倍',
+		'abilityInfo' => '1ターン得意属性の攻撃力を2倍',
 		],
 		4	=> [
 		'id' => 4,
@@ -49,11 +49,11 @@ return [
 		// DBで使っている名前
 		'dbName' => 'trainigShorter',
 		// 短縮できる時間
-		'ability'	=> 2,
+		'ability'	=> 1,
 		// アイテムを使う場所
 		'where'		=> '【訓練所】',
 		// 能力説明
-		'abilityInfo' => '訓練時間を短縮',
+		'abilityInfo' => '訓練時間を1時間短縮',
 		],
 	],
 ];

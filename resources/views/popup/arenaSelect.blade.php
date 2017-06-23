@@ -3,10 +3,10 @@
 <script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="{{APP_URL}}js/load.js"></script>
 {{--対戦データの表示--}}
-<div>				
+<div>
 	<img class = "battle_load backload"src = "{{IMG_URL}}title/titlelodoDown.gif">
 </div>
-<div class="match_data load">
+<div class="match_data editload">
 	{{--大会名の表示--}}
 	<div class="arena_name_caption font_serif">選択した闘技場</div>
 	<div class="arena_name">

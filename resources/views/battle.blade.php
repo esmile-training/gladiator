@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="jp">
 <head>
@@ -18,6 +17,12 @@
 			$surrenderData['cost']	= $viewData['surrenderCost'];
 			$surrenderData['money']	= $viewData['userData']['money'];
 		?>
+		{{-- アイテム用のデータ統合 --}}
+		<?php 
+			$itemPopupData['belongingsData'] = $viewData['belongingsData'];
+			$itemPopupData['charaData']		 = $viewData['charaData'];
+			$itemPopupData['itemData']		 = $viewData['itemData'];
+		?>
 		{{-- ポップアップの宣言 --}}
 		@include('popup/wrap', [
 			'class'		=> 'surrenderButton', 
@@ -30,13 +35,18 @@
 			'data'		=> ['log' => $viewData['enemyData']['difficulty']]
 		])
 		@include('popup/wrap', [
-			'class'		=> 'button',
+			'class'		=> 'skill_action_button',
 			'template'	=> 'battleSkill',
 			'data'		=> ['charaData' => $viewData['charaData']]
 		])
+		@include('popup/wrap', [
+			'class'		=> 'item_button',
+			'template'	=> 'battleItem',
+			'data'		=> ['belongingsData' => $itemPopupData]
+		])
 		
 		{{-- 背景画像 --}}
-		<img src="{{IMG_URL}}battle/battle_Bg{{$viewData['enemyData']['difficulty']}}.jpg" class="battle_bg">
+		<img src="{{IMG_URL}}background/battle{{$viewData['enemyData']['difficulty']}}.jpg" class="battle_bg">
 
 		{{-- バトル終了フラグが立っていなければヘッダー部分表示 --}}
 		@if ($viewData['battleData']['delFlag'] != 1)
@@ -44,9 +54,18 @@
 			<tr>
 				<td width="20%">
 					{{-- 難易度 --}}
-					<img src="{{IMG_URL}}battle/difficulty{{$viewData['enemyData']['difficulty']}}.png" >
+					<img src="{{IMG_URL}}battle/diff{{$viewData['enemyData']['difficulty']}}.png">
 				</td>
-				<td width="20%"></td>
+				<td width="20%">
+					{{-- アイテムボタン --}}
+					@if($viewData['charaData']['skillFlag'] == 1 || $viewData['charaData']['result'] == 5 || $viewData['charaData']['result'] == 6)
+						<img class="item_button" src="{{IMG_URL}}battle/itemButtonDown.png">
+					@else
+						<a>
+							<img class="modal_btn item_button image_change" src="{{IMG_URL}}battle/itemButton.png">
+						</a>
+					@endif
+				</td>
 				<td width="20%"></td>
 				<td width="20%">
 					{{-- 降参ボタン --}}
@@ -84,16 +103,15 @@
 			<div class="battle_enemy_status_hp">
 				<table border="0">
 					<tr valign="middle">
-						<td width="65%" align="left">
+						<td width="63%" align="left">
 							{{ $viewData['enemyData']['name'] }}
 						</td>
 						<td width="5%">
 							<img src={{IMG_URL}}chara/status/hp.png class="battle_enemy_status_hp_img">
 						</td>
-						<td width="25%" align="left">
+						<td width="32%" align="left">
 							{{ $viewData['enemyData']['battleHp'] }} / {{ $viewData['enemyData']['hp'] }}
 						</td>
-						<td width="5%"></td>
 					</tr>
 				</table>
 			</div>
@@ -129,16 +147,46 @@
 		{{-- 攻撃の結果が入っていたら --}}
 		@if ($viewData['charaData']['result'] != 0)
 			{{-- 敵の出した手 --}}
-			<div class="battle_enemy_hand">
-				<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
-				<img id="enemyHand" src="{{IMG_URL}}chara/status/hand{{$viewData['enemyData']['hand']}}.png" class="battle_enemy_hand_img" >
-			</div>
+			@if($viewData['enemyData']['hand'] != 0)
+				<div class="battle_enemy_hand">
+					<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
+					<img id="enemyHand" src="{{IMG_URL}}chara/status/hand{{$viewData['enemyData']['hand']}}.png" class="battle_enemy_hand_img" >
+				</div>
+			@else
+				<div class="battle_enemy_hand">
+					<img src="{{IMG_URL}}battle/enemy_Hand_Bg.png" class="battle_enemy_hand_bg" >
+					<img id="enemyHand" src="{{IMG_URL}}chara/status/hand0.png" class="battle_enemy_hand_img" >
+				</div>
+			@endif
 
 			{{-- 勝敗の表示 --}}
 			<div class="battle_log">
 				<img src="{{IMG_URL}}battle/damagelog_Bg.png" class="damage_log_Bg" >
 				<div id="battleLog" class="battle_log_message">
-				@if($viewData['charaData']['result'] != 4)
+				@if($viewData['charaData']['result'] == 4)
+					{{ $viewData['charaData']['name'] }}
+					は	
+					{{ $viewData['type'][$viewData['charaData']['hand']] }}
+					を発動した！<br>
+
+					@if($viewData['charaData']['imgId'] == 10 && $viewData['charaData']['skillFlag'] == 1 && $viewData['enemyData']['battleHp'] <= 0)
+						一撃必殺　死の鎌！
+					@endif
+
+					@if($viewData['charaData']['imgId'] == 10 && $viewData['charaData']['skillFlag'] == 1 && $viewData['enemyData']['battleHp'] >= 1)
+						しかし何もおきなかった....
+					@endif
+
+					@if($viewData['charaData']['imgId'] == 1 && $viewData['charaData']['skillFlag'] == 1)
+						しかし何もおきなかった....
+					@endif
+				@elseif($viewData['charaData']['result'] == 5)
+					{{ $viewData['charaData']['name'] }}は{{ $viewData['itemData'][2]['name'] }}を使った！ <br />
+					HPが{{ $viewData['itemData'][2]['ability'] }}%回復した！
+				@elseif($viewData['charaData']['result'] == 6)
+					{{ $viewData['charaData']['name'] }}は{{ $viewData['itemData'][3]['name'] }}を食べた！ <br />
+					このターン{{ $viewData['type'][$viewData['charaData']['attribute']] }}の攻撃力が{{ $viewData['itemData'][3]['ability'] }}倍！
+				@else
 					{{ $viewData['charaData']['name'] }}
 					は	
 					{{ $viewData['type'][$viewData['charaData']['hand']] }}
@@ -184,11 +232,6 @@
 					@elseif ($viewData['charaData']['result'] == 3)
 						お互いにダメージなし<br />
 					@endif
-				@else
-					{{ $viewData['charaData']['name'] }}
-					は	
-					{{ $viewData['type'][$viewData['charaData']['hand']] }}
-					を発動した！<br>
 				@endif
 				</div>
 			</div>
@@ -237,9 +280,9 @@
 			<?php $count = (int)$viewData['charaData']['drawCount']; ?>
 			{{-- 自キャラのアイコン --}}
 			@if($viewData['charaData']['drawCount'] == 0)
-			<a class="battle_playerhand_button_chara_linkregion clickfalse">
-				<img class="modal_btn button battle_player_status_icon_on" src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" >	
-				<img class="modal_btn button battle_player_icon_tap" src="{{IMG_URL}}battle/Tap.png" >	
+			<a class="battle_playerhand_button_chara_linkregion">
+				<img class="modal_btn skill_action_button battle_player_status_icon_on" src="{{IMG_URL}}chara/icon/icon_{{$viewData['charaData']['imgId']}}.png" >	
+				<img class="modal_btn skill_action_button battle_player_icon_tap" src="{{IMG_URL}}battle/Tap.png" >	
 			</a>
 			{{-- スキルターン表示枠 --}}
 				<img src="{{IMG_URL}}battle/gage0.png" class="battle_player_skill_frame">
@@ -262,14 +305,13 @@
 			<div class="battle_player_status_hp">
 				<table border="0">
 					<tr>
-						<td width="5%"></td>
-						<td width="65%" align="left">
+						<td width="63%" align="left">
 							{{ $viewData['charaData']['name'] }}
 						</td>
 						<td width="5%">
 							<img src="{{IMG_URL}}chara/status/hp.png" class="battle_player_status_hp_img">
 						</td>	
-						<td width="25%" align="left">
+						<td width="32%" align="left">
 							{{ $viewData['charaData']['battleHp'] }} / {{ $viewData['charaData']['hp'] }}
 						</td>
 					</tr>
@@ -323,17 +365,95 @@
 							{{ $viewData['charaData']['paaAtk']}}
 							@endif
 						</td>
-						<td width="10%"></td>
+						<td width="5%">
+							@if($viewData['charaData']['imgId'] == 8 && $viewData['charaData']['skillFlag'] == 1)
+							<img src="{{IMG_URL}}battle/heal.png" class = "skill_healIcon">
+							<img src="{{IMG_URL}}battle/up.png" class = "skill_healUpIcon">
+							@endif
+							@if($viewData['charaData']['imgId'] == 6 && $viewData['charaData']['skillFlag'] == 1)
+							<img src="{{IMG_URL}}battle/shield.png" class = "skill_shieldIcon">
+							<img src="{{IMG_URL}}battle/up.png" class = "skill_shieldUpIcon">
+							@endif
+						</td>
 					</tr>
 				</table>
 			</div>
 		</div>
 	</div>
+<div>
+	<script type="text/javascript">
+		$(function(){
+		$('img.battle_Button').click(function(){
+			// srcの取得
+			var getSrc = $(this).attr('src');
 
+			// "/"ごとにURL分割
+			var beforeImage = getSrc.split("/");
+			// 画像名だけを抽出
+			beforeImage = beforeImage[beforeImage.length - 1];
+
+			// すでに画像名に処理後の画像名が入っていれば何もなし
+			if(beforeImage.match('Up') || beforeImage.match('Down'))
+			{
+				return false;
+			}
+
+			// 抽出した画像名から名前と拡張子を分割
+			var afterImage = beforeImage.split(".");
+
+			// 画像名に押された後の画像名を連結
+			afterImage = afterImage[0] + 'Up.' + afterImage[1];
+
+			// もともとの画像と変更
+			var changeL = getSrc.replace(beforeImage , afterImage);
+			$(this).attr('src', changeL);
+
+			// 敵の手画像をはてなの画像に変更
+			var afterImageE = "{{IMG_URL}}chara/status/hand0.png";
+			document.getElementById("enemyHand").src = afterImageE;
+
+			// グー、チョキ、パーのDown画像定義
+			var afterImageG = "{{IMG_URL}}chara/status/hand1Down.png";
+			var afterImageC = "{{IMG_URL}}chara/status/hand2Down.png";
+			var afterImageP = "{{IMG_URL}}chara/status/hand3Down.png";
+
+			// idを取得して、そのid以外の攻撃ボタンを消す
+			var idname = $(this).attr("id");
+
+			// グーが押されたら
+			if(idname === "playerHand1")
+			{
+				// チョキとパーの画像を変更            
+				document.getElementById("playerHand2").src = afterImageC;
+				document.getElementById("playerHand3").src = afterImageP;
+			}
+			// チョキが押されたら
+			else if(idname === "playerHand2")
+			{
+				// グーとパーの画像を変更 
+				document.getElementById("playerHand1").src = afterImageG;
+				document.getElementById("playerHand3").src = afterImageP; 
+			}
+			// パーが押されたら
+			else if(idname === "playerHand3")
+			{
+				// グーとチョキの画像を変更
+				document.getElementById("playerHand1").src = afterImageG;
+				document.getElementById("playerHand2").src = afterImageC; 
+			}
+		});
+
+		// 表示を消す処理
+		$('.visibil').click(function() {
+			// ログの表示を消す
+			document.getElementById("battleLog").style.visibility="hidden";
+		});
+	});
+	</script>
+</div>
 	{{-- jsの宣言 --}}
 	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>
-	<script type="text/javascript" src="{{APP_URL}}js/battleButton.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/skill.js"></script>
 </body>

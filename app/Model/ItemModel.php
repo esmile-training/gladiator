@@ -30,6 +30,19 @@ EOD;
 	}
 	
 	/*
+	 * DBから trainigShorter データを取得する
+	 */
+	public function getTrainigShorter($userId = false)
+	{
+$sql = <<< EOD
+	SELECT trainigShorter
+	FROM uItem
+	WHERE userId = {$userId}
+EOD;
+	return $this->select($sql, 'first');
+	}
+	
+	/*
 	 * DBの更新をする
 	 */
 	public function updateItemData($updateItemData)

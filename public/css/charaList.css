@@ -80,7 +80,7 @@ a:active{
 .inventory_value{
 	position: absolute;
 	margin-top: 3.25%;
-	margin-left: 30%;
+	margin-left: 29.5%;
 	top: 0%;
 	left: 0%;
 	font-size: 2.8vw;
@@ -215,11 +215,16 @@ a:active{
 }
 
 /*ソートボックスの設定*/
+/*ソートボックスのdiv*/
 .sort_Box{
-	position: fixed;
-	right: 7%;
-	top: 20.9%;
+	position: absolute;
+    right: 0%;
+    top: 0%;
+    margin-top: 1.5%;
+    margin-right: 9.25%;
 }
+
+/*ソートボックスの上下ボタン*/
 .sort_Box form input + label {
 	position: absolute;
 	top: 0;
@@ -231,33 +236,43 @@ a:active{
 	background-size: contain;
 	z-index: -1;
 }
+
+/*ボタンの画像指定(ulのliを指定)*/
 .sort_Box form ul li:first-child input + label {
-	background-image: url(./../img/status/asc.png);
-}
-.sort_Box form ul li:first-child input.act + label {
-	background-image: url(./../img/status/asc_down.png);
-}
-.sort_Box form ul li + li input + label {
 	background-image: url(./../img/status/desc.png);
 }
-.sort_Box form ul li + li input.act + label {
+.sort_Box form ul li:first-child input.act + label {
 	background-image: url(./../img/status/desc_down.png);
 }
+.sort_Box form ul li + li input + label {
+	background-image: url(./../img/status/asc.png);
+}
+.sort_Box form ul li + li input.act + label {
+	background-image: url(./../img/status/asc_down.png);
+}
+
+/*ボタンの枠*/
 .sort_Box ul {
 	float: left;
 	width: auto;
 }
-.sort_Box ul select {
-	float: right;
+
+/*ボタンとセレクトメニューの位置固定*/
+.sort_Box select {
+	width: 25vw;
+    height: 3vh;
 }
+/*ソートボックスのリストの内容の固定*/
 .sort_Box ul li {
 	position: relative;
-	width: 25px;
-	height: 25px;
+	width: 7vw;
+    height: 3vh;
 	margin-right: 7px;
 	display: inline-block;
+    z-index: 1;
 }
 
+/*ソートボックスのボタン*/
 input[type="radio"] {
 	-webkit-appearance: none;
 	opacity: 0;

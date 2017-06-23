@@ -47,7 +47,7 @@ class battleController extends BaseGameController
 		$alluChara = $this->Model->exec('Chara', 'getUserChara', $userId);
 
 		// DBからキャラクターを取得できたかを確認する
-		if(!isset($alluChara))
+		if(isset($alluChara))
 		{
 			//ソート関数の代に引数への変換
 			$order = ($order == 'ASC')? false : true;
@@ -59,19 +59,13 @@ class battleController extends BaseGameController
 			// ビューへデータを渡す
 			return viewWrap('battleCharaSelect', $this->viewData);
 		}
-
-		// viewDataへ取得したキャラクターを送る
-		//$this->viewData['charaList'] = $alluChara;
-
-		//ソート関数の代に引数への変換
-		$order = ($order == 'ASC')? false : true;
-		//並べ替え処理
-		$alluChara = $this->Lib->exec('Sort','sortArray',[$alluChara, $type, $order]);
-		// viewDataへ取得したキャラクターを送る
-		$this->viewData['charaList'] = $alluChara;
-
-		// ビューへデータを渡す
-		return viewWrap('battleCharaSelect', $this->viewData);
+		else
+		{
+			//キャラクターがいない場合リストを空にして渡す
+			$this->viewData['charaList'] = null;
+			// ビューへデータを渡す
+			return viewWrap('battleCharaSelect',$this->viewData);
+		}
 	}
 
 	/*
@@ -215,16 +209,15 @@ class battleController extends BaseGameController
 		$surrenderCost = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));
 
 		// 全てのデータを viewData に渡す
-
-		$this->viewData['userData']		= $this->user;
-		$this->viewData['battleData']	= $this->BattleData;
-		$this->viewData['charaData']	= $this->CharaData;
-		$this->viewData['enemyData']	= $this->EnemyData;
-		$this->viewData['type']			= $this->TypeData;
-		$this->viewData['result']		= $this->ResultData;
-		$this->viewData['item']			= $this->ItemData;
-		$this->viewData['surrenderCost']= $surrenderCost;
-
+		$this->viewData['userData']			= $this->user;
+		$this->viewData['battleData']		= $this->BattleData;
+		$this->viewData['charaData']		= $this->CharaData;
+		$this->viewData['enemyData']		= $this->EnemyData;
+		$this->viewData['type']				= $this->TypeData;
+		$this->viewData['result']			= $this->ResultData;
+		$this->viewData['itemData']			= $this->ItemData;
+		$this->viewData['belongingsData']	= $this->BelongingsData;
+		$this->viewData['surrenderCost']	= $surrenderCost;
 
 		return view('battle', ['viewData' => $this->viewData]);
 	}
@@ -234,9 +227,10 @@ class battleController extends BaseGameController
 	{
 
 		//リダイレクト元からデータをゲットする
-		$prize = filter_input(INPUT_GET, "prize");
-
+		$prize						= filter_input(INPUT_GET, "prize");
 		$charaData['name']			= filter_input(INPUT_GET, "name");
+		$charaData['skill']			= filter_input(INPUT_GET, "skill");
+		$charaData['imgId']			= filter_input(INPUT_GET, "imgId");
 		if($prize > 0)
 		{
 			$charaData['hp']			= filter_input(INPUT_GET, "deaultHp");
@@ -282,6 +276,21 @@ class battleController extends BaseGameController
 		// 1(初級)、2(中級)、3(上級) で指定、賞金の補正値(％)、敵の補正値(割合)で設定中
 		$this->DifficultyData = \Config::get('battle.difficultyStr');
 
+		// ItemData にアイテムデータを格納
+		$this->ItemData = \Config::get('item.itemStr');
+
+		// 所持アイテムデータ取得
+		$this->BelongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
+		// 所持アイテムデータがなければ作成
+		if(!isset($this->BelongingsData))
+		{
+			// uItemにデータを追加
+			$this->Model->exec('Item','insertItemData',$this->user['id']);
+
+			// 所持アイテムデータ取得
+			$this->BelongingsData	= $this->Model->exec('Item', 'getItemData', $this->user['id']);
+		}
+
 		// ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
 		// BattleData にバトルデータを格納
 		$this->BattleData = $this->Model->exec('BattleInfo', 'getBattleData', $this->user['id']);
@@ -296,10 +305,6 @@ class battleController extends BaseGameController
 			// EnemyData に敵キャラデータを格納
 			$this->EnemyData = $this->Model->exec('BattleEnemy', 'getBattleEnemyData', $this->BattleData['uBattleEnemyId']);
 		}
-		
-		// ユーザーIDを元にuItem(DB)から所持アイテムデータを読み込み
-		// ItemData にバトルデータを格納
-		$this->ItemData = $this->Model->exec('Item', 'getItemData', $this->user['id']);
 	}
 
 	// データベースからランキングデータを RankingData に格納するファンクション
@@ -327,7 +332,6 @@ class battleController extends BaseGameController
 		{
 			return $this->Lib->redirect('Battle', 'makeResultData');
 		}
-
 		// 押されたボタンのデータを Chara の 'hand' に格納
 		// 1(グー) / 2(チョキ) / 3(パー) のどれかが入る
 		$this->CharaData['hand'] = $_GET["hand"];
@@ -338,19 +342,34 @@ class battleController extends BaseGameController
 
 		// 勝敗処理
 		// 'win' / 'lose' / 'draw' のどれかが入る
-		$this->CharaData['result'] = BattleLib::AtackResult($this->CharaData['hand'], $this->EnemyData['hand']);
+		$result = BattleLib::AtackResult($this->CharaData['hand'], $this->EnemyData['hand']);
 
 		//コンフィグからキャラ情報持ってくる
-		$charaSkill = \Config::get('chara.imgId');
-		$skill = \Config::get('chara.skill');
-		
+		$charaSkill	= \Config::get('chara.imgId');
+		$skill		= \Config::get('chara.skill');
+
+		if($this->CharaData['skillFlag'] == 1 && $this->CharaData['imgId'] == 8 && $this->BattleData['battleSkillTurn'] < $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
+		{
+			//回復の場合
+			$this->CharaData['skill'] = $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['recovery'];
+			//自分の回復
+			$this->CharaData = BattleLib::damageCalc($this->CharaData);
+			$this->CharaData['battleHp'] = BattleLib::charaHeal($this->CharaData['battleHp'],$this->CharaData);
+
+			if($this->CharaData['battleHp'] >= $this->CharaData['hp'])
+			{
+				$this->CharaData['battleHp'] = $this->CharaData['hp'];
+			}
+		}
+
 		if($this->CharaData['skillFlag'] == 1)
 		{
 			$this->BattleData['battleSkillTurn'] += 1;
-		}	
+		}
+
 		// ダメージ処理
 		// CharaData の 'result' によって処理を行う
-		switch ($this->CharaData['result'])
+		switch ($result)
 		{
 			// 1(勝ち) の場合
 			case 1:
@@ -418,17 +437,13 @@ class battleController extends BaseGameController
 						case 2:
 							//自分の回復
 							$this->CharaData = BattleLib::damageCalc($this->CharaData);
-							$this->CharaData['battleHp'] = BattleLib::charaHeal($this->CharaData['battleHp'],$this->CharaData);	
-							if($this->CharaData['battleHp'] > $this->CharaData['hp'])
-							{
-								$this->CharaData['battleHp'] = $this->CharaData['hp'];
-							}
+							$this->CharaData['battleHp'] = BattleLib::charaHeal($this->CharaData['battleHp'],$this->CharaData);
 						break;
 						case 3:
 							//グーの攻撃力アップ
 							$this->CharaData = BattleLib::damageCalc($this->CharaData);
 							$this->CharaData['battleGooAtk'] = BattleLib::atkUp($this->CharaData['battleGooAtk'], $this->CharaData['skill']);
-							
+
 						break;
 						case 4:
 							//チョキの攻撃力アップ
@@ -447,36 +462,47 @@ class battleController extends BaseGameController
 						case 9:
 							$this->EnemyData['battleHp'] = BattleLib::enemyDead($this->EnemyData['battleHp']);
 						break;
-					
 					}
 				}
 				$this->CharaData['drawCount'] = $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['drawCount'];
 				break;
-			case 5:
-				break;
 			default;
 				exit;
-
 		}
-			
 		if($this->CharaData['skillFlag'] == 1 && $this->BattleData['battleSkillTurn'] > $skill[$charaSkill[$this->CharaData['imgId']]['skill']]['turn'])
 		{
-					
-			
 			 $this->CharaData['battleGooAtk'] = $this->CharaData['gooAtk'];
 			 $this->CharaData['battleChoAtk'] = $this->CharaData['choAtk'];
 			 $this->CharaData['battlePaaAtk'] = $this->CharaData['paaAtk'];
 			 $this->CharaData['skillFlag'] = 0;
 		}
 		
+		// 攻撃力上昇アイテムを使用した状態で入ってきていた場合
+		if( $this->CharaData['result'] == 6)
+		{
+			 $this->CharaData['battleGooAtk'] = $this->CharaData['gooAtk'];
+			 $this->CharaData['battleChoAtk'] = $this->CharaData['choAtk'];
+			 $this->CharaData['battlePaaAtk'] = $this->CharaData['paaAtk'];
+		}
+		
+		// バトルの勝敗を $this->CharaData['result'] に入れる
+		$this->CharaData['result'] = $result;
 		
 		// バトルキャラデータの更新処理
 		// 自キャラデータの更新処理
 		$this->Model->exec('BattleChara', 'UpdateBattleCharaData', array($this->CharaData));
 		// 敵キャラデータの更新処理
 		$this->Model->exec('BattleEnemy', 'UpdateBattleEnemyData', array($this->EnemyData));
-		
+
 		$this->Model->exec('BattleInfo', 'UpdateBattleData', array($this->BattleData));
+
+		if($this->CharaData['skillFlag'] == 1 && $this->CharaData['imgId'] == 1)
+		{
+			$ran = rand(1,100);
+			if($ran <= 50){
+				return $this->Lib->redirect('Battle', 'makeResultData');
+			}
+		}
 
 		return $this->Lib->redirect('Battle', 'battleLog');
 	}
@@ -488,10 +514,9 @@ class battleController extends BaseGameController
 	{
 		// getData ファンクションを呼び出し、バトルデータをセット
 		$this->getBattleData();
-
 		// getRankingData ファンクションを呼び出し、ランキングデータをセット
 		$this->getRankingData();
-	
+
 		// バトルデータがなかった場合、エラー画面を表示しホームへ戻す
 		// リザルト画面から戻るボタンで戻り、再度ページをリザルト画面を開かれたときの対策
 		if(is_null($this->BattleData))
@@ -520,7 +545,7 @@ class battleController extends BaseGameController
 			// 自キャラ、敵キャラのステータスを元にステータスの強化処理(訓練と同じシステムを使用)
 			$gooResult = $this->Lib->exec('Training', 'atkUpProbability', array($this->EnemyData['gooAtk'],$this->CharaData['gooAtk'],$this->CharaData['gooUpCnt']));
 			$choResult = $this->Lib->exec('Training', 'atkUpProbability', array($this->EnemyData['choAtk'],$this->CharaData['choAtk'],$this->CharaData['choUpCnt']));
-			$paaResult = $this->Lib->exec('Training','atkUpProbability', array($this->EnemyData['paaAtk'],$this->CharaData['paaAtk'],$this->CharaData['paaUpCnt']));
+			$paaResult = $this->Lib->exec('Training', 'atkUpProbability', array($this->EnemyData['paaAtk'],$this->CharaData['paaAtk'],$this->CharaData['paaUpCnt']));
 			$time=1;
 			$charaUpData = $this->Lib->exec('Training','atkUpJudge',array($gooResult,$choResult,$paaResult,$time));
 
@@ -536,7 +561,7 @@ class battleController extends BaseGameController
 			];
 			$this->Model->exec('Chara', 'updateStatus', array($upDateStatus, $this->CharaData['uCharaId']));
 
-			//リダイレクト引数受け渡し(賞金、キャラのステータス、アップした数値)+
+			//リダイレクト引数受け渡し(賞金、キャラのステータス、アップした数値)
 			//追加：フィーバータイム判定用のフラグ
 			$param = [
 				'prize'			=> $prize,
@@ -559,6 +584,8 @@ class battleController extends BaseGameController
 			$param = [
 				'name'	=> $this->CharaData['name'],
 				'prize' => 0,
+				'skill' => $this->CharaData['skillFlag'],
+				'imgId' => $this->CharaData['imgId'],
 			];
 
 			$this->Model->exec('Chara', 'charaDelFlag', $this->CharaData['uCharaId']);
@@ -571,6 +598,11 @@ class battleController extends BaseGameController
 			// 降参費用額計算
 			$prize = $this->Lib->exec('Battle', 'surrenderCostCalc', array($this->CharaData, $this->Commission, $this->DifficultyData, $this->EnemyData));
 
+
+			if($this->CharaData['skillFlag'] == 1 && $this->CharaData['imgId'] == 1)
+			{
+				$prize = 0;
+			}
 			// ユーザーの所持金 'money' から降参費用を減算しデータベースに格納
 			$this->Lib->exec('Money', 'Subtraction', array($this->user,	$prize));
 
@@ -581,6 +613,8 @@ class battleController extends BaseGameController
 			$param = [
 				'name'	=> $this->CharaData['name'],
 				'prize' => $prize,
+				'skill' => $this->CharaData['skillFlag'],
+				'imgId' => $this->CharaData['imgId'],
 			];
 		}
 
@@ -595,10 +629,10 @@ class battleController extends BaseGameController
 	 */
 	public function standDelFlag()
 	{
-//		// ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
-//		// BattleData にバトルデータを格納
+		// ユーザーIDを元にuBattleInfo(DB)からバトルデータを読み込み
+		// BattleData にバトルデータを格納
 		$this->BattleData = $this->Model->exec('BattleInfo', 'getBattleData', $this->user['id']);
-//
+
 		$this->Model->exec('BattleInfo', 'UpdateInfoBattleFlagData', $this->BattleData['id']);
 	}
 }

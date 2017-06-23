@@ -42,7 +42,7 @@
 /*　拡大アニメーション　*/
 @-webkit-keyframes scaleout {
 	0% {
-		-webkit-transform: scale(0.0) 
+		-webkit-transform: scale(0.0)
 	}
 	100% {
 		-webkit-transform: scale(1.0);
@@ -77,7 +77,7 @@
 	top: -14vw;
 }
 /*　キャラレア度　*/
-.gacha_chararate{ 
+.gacha_chararate{
 	width: 20%;
 	position: absolute;
 	top: -3vw;
@@ -103,7 +103,7 @@
 /*　枠上　*/
 .gacha_charatopframe{
 	width:100%;
-	vertical-align: bottom; 
+	vertical-align: bottom;
 }
 /*　枠中　*/
 .gacha_characenterframe{
@@ -189,4 +189,30 @@
 .top{
 	 position: relative;
 }
-
+/*お知らせの表示*/
+.info{
+	width: 85%;
+	position: absolute;
+	top: 1vh;
+	left: 7%;
+}
+/*上の枠の設定*/
+.top_frame_img{
+	position: relative;
+	vertical-align: bottom;
+}
+/*下の枠の設定*/
+.bottom_frame_img{
+	position: relative;
+	vertical-align: top;
+}
+/*テキストの設定*/
+.info_text{
+	text-align: center;
+	position: absolute;
+	font-size: 4vw;
+	color: #FFFFFF;
+	font-family: serif;
+	top: 13%;
+	left: 12%;
+}

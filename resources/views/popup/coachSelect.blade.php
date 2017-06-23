@@ -1,3 +1,4 @@
+@include('common/css', ['file' => 'training'])
 <div class="training_font_serif">
 	{{'訓練時間を選択してください'}}
 </div>
@@ -58,11 +59,10 @@
 </div>
 
 <body>
-	<div class ="training_fee_img">
-		<img src="{{IMG_URL}}/user/gold.png">
-	</div>
+
 	<div class="coachSelect_text training_fee_text">
 		<p id="trainingFee{{$cnt}}"></p>
+		<span  class ="training_fee_img"><img src="{{IMG_URL}}/user/gold.png"></span>
 	</div>
 	
 	<form name='trainingInfo' action='{{APP_URL}}training/infoSet' method='get'>

@@ -1,5 +1,5 @@
 {{-- 背景 --}}
-<div><img class="gacha_roadback" src="{{IMG_URL}}gacha/gacharoadbackground.jpg" /></div>
+<div><img class="gacha_roadback" src="{{IMG_URL}}background/gacha_Load.jpg" /></div>
 
 {{-- データー受け渡し --}}
 @foreach($viewData['gacha'] as $key => $value)

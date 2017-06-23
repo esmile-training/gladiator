@@ -1,18 +1,19 @@
 {{--CSS--}}
 @include('common/css', ['file' => 'shop'])
+@include('common/css', ['file' => 'itemlist'])
 
 {{-- 背景 --}}
 <div>
-	<img class="shop_bg" src="{{IMG_URL}}shop/shop_Bg.jpg" />
+	<img class="shop_bg" src="{{IMG_URL}}background/shop.jpg" />
 </div>
 
 {{-- 看板 --}}
 <div class="shop_signboard">
-	<img src="{{IMG_URL}}shop/signboard.png">
+	<img src="{{IMG_URL}}signboard/shop.png">
 </div>
 {{-- 看板説明 --}}
 <div class="shop_signboard_info">
-	<img src="{{IMG_URL}}/shop/signboard_info.png">
+	<img src="{{IMG_URL}}signboard/info.png">
 	<div class ="shop_signboard_text">
 		購入するアイテムを選択
 	</div>

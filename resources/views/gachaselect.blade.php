@@ -1,9 +1,9 @@
 {{-- 背景 --}}
-<div><img class="gacha_selectback" src="{{IMG_URL}}gacha/selectbackground.jpg" /></div>
+<div><img class="gacha_selectback" src="{{IMG_URL}}background/gacha.jpg" /></div>
 <div class = "gacha_all">
 	<div>
 		<img class="gacha_signboard" 
-			 src="{{IMG_URL}}gacha/kanban.png">
+			 src="{{IMG_URL}}signboard/gacha.png">
 	</div>
 	<div class = "junban0">
 		<img class="gacha_frame" 

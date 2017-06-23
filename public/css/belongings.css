@@ -1,0 +1,38 @@
+#main{
+    position: relative;
+}
+
+/* 背景 */
+.belongings_bg{
+    position: fixed;
+    background: no-repeat center;
+    background-size: 100% auto;
+    width: 100%;
+    margin-top: -35%;
+}
+
+/* 看板画像 */
+.belongings_signboard{
+    position : fixed;
+    width    : 35%;
+    top	     : 13%;
+    left     : 0;
+    z-index: 4;
+}
+/* 看板説明枠 */
+.belongings_signboard_info{
+    position	: fixed;
+    top		: 13%;
+    left	: 24%;
+    width	: 77%;
+    z-index: 3;
+}
+/* 看板説明領域とテイスト */
+.belongings_signboard_text{
+    position: absolute;
+    top: 20%;
+    left:20%;
+    font-family: serif;
+    font-size	: 2.5vh;
+    color: #ffffff;
+}

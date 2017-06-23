@@ -1,12 +1,15 @@
+
 		{{-- cssの宣言 --}}
 		@include('common/header')
 		@include('common/css', ['file' => 'battleResult'])
 
 		{{-- バトルの勝敗によって背景画像変更 --}}
 		@if ($viewData['prize'] > 0)
-			<div><img src="{{IMG_URL}}battleResult/battleResult_Bg_Win.jpg" class="battleresult_bg_win"></div>
+			<div><img src="{{IMG_URL}}background/battleResult_Win.jpg" class="battleresult_bg_win"></div>
+			<div class="battleresult_logo_win"><img src="{{IMG_URL}}battleResult/battleLogo_Win.png"></div>
 		@else
-			<div><img src="{{IMG_URL}}battleResult/battleResult_Bg_Lose.jpg" class="battleresult_bg_lose"></div>
+			<div><img src="{{IMG_URL}}background/battleResult_Lose.jpg" class="battleresult_bg_lose"></div>
+			<div class="battleresult_logo_lose"><img src="{{IMG_URL}}battleResult/battleLogo_Lose.png"></div>
 		@endif
 
 		{{-- リザルトログ表示領域 --}}
@@ -165,11 +168,19 @@
 					</div>
 				</div>
 			@else
-				{{-- プレイヤー敗北時のリザルトログ --}}
-				<div class="battleresult_log_message">
-					{{$viewData['charaDefaultData']['name']}} は死んだ
+				@if($viewData['charaDefaultData']['skill'] == 1 && $viewData['charaDefaultData']['imgId'] == 1)
+				<div class = "teijiFont">
+					<font>
+						定時退社した。
+					</font>
 				</div>
-				<img src="{{IMG_URL}}battleResult/chara_Death.png" class="battleresult_log_death">
+				@else
+				{{-- プレイヤー敗北時のリザルトログ --}}
+					<div class="battleresult_log_message">
+						{{$viewData['charaDefaultData']['name']}} は死んだ
+					</div>
+					<img src="{{IMG_URL}}battleResult/chara_Death.png" class="battleresult_log_death">
+				@endif
 			@endif
 		</div>
 
@@ -186,4 +197,5 @@
 	<script type="text/javascript" src="{{APP_URL}}js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/imgChange.js"></script>
 	<script type="text/javascript" src="{{APP_URL}}js/resizefont.js"></script>
+	<script type="text/javascript" src="{{APP_URL}}js/modal.js"></script>
 </body>

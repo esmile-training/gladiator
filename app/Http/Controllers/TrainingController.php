@@ -6,6 +6,14 @@ class TrainingController extends BaseGameController
 {
 	public function index()
 	{
+		//デフォルト処理
+		$type = (!isset($_GET['type']))? 'id' : $_GET['type'];
+		$order = (!isset($_GET['order']))? 'ASC' : $_GET['order'];
+		return $this->trainingCharaSelect($type, $order);
+	}
+
+	public function trainingCharaSelect($type, $order)
+	{
 		//訓練が終了しているキャラがいるか確認し、いたらその訓練の情報を取得する
 		$result = $this->Lib->exec('Training', 'endCheck', array($this->viewData['nowTime'], $this->user['id'], true));
 		if(isset($result))
@@ -29,14 +37,40 @@ class TrainingController extends BaseGameController
 		$charaInventory['possession'] = $this->Lib->exec('ManageCharaPossession','getPossessionChara',$this->user['id']);
 		// viewDataへ格納する
 		$this->viewData['charaInventory'] = $charaInventory;
+		
+		// 所持している 訓練時間短縮アイテム(trainigShorter) の数を持ってくる
+		$trainigShorter = $this->Model->exec('Item', 'getTrainigShorter', false, $this->user['id']);
+		$this->viewData['shorterNumber'] = $trainigShorter['trainigShorter'];
 
-		if(!isset($uCharaData))
+		// 訓練時間短縮アイテムのデータを item config から持ってくる
+		$trainigShorterData = \Config::get('item.itemStr.4');
+		$this->viewData['shorterData']	= $trainigShorterData;
+		
+		// 訓練データ取得
+		$trainingInfoData	= $this->Model->exec('Training','getInfoFromUserId',$this->user['id']);
+		$this->viewData['infoData']		= $trainingInfoData;
+		
+		// 現在時間をビューデータに渡す
+		$this->viewData['nowTime']		= $this->nowTime;
+		
+		if(isset($uCharaData))
 		{
-			return viewWrap('Error',$this->viewData);
-		}else{
+			//ソート関数の代に引数への変換
+			$order = ($order == 'ASC')? false : true;
+			//並べ替え処理
+			$uCharaData = $this->Lib->exec('Sort','sortArray',[$uCharaData, $type, $order]);
+			// viewDataへ取得したキャラクターを送る
 			$this->viewData['charaList'] = $uCharaData;
+			// ビューへデータを渡す
+			return viewWrap('training', $this->viewData);
 		}
-		return viewWrap('training',$this->viewData);
+		else
+		{
+			//キャラクターがいない場合リストを空にして渡す
+			$this->viewData['charaList'] = null;
+			// ビューへデータを渡す
+			return viewWrap('training',$this->viewData);
+		}
 	}
 
 	public function coachSelect()
@@ -49,6 +83,13 @@ class TrainingController extends BaseGameController
 		$uCharaAtkInfo = $this->Model->exec('Training','getUCharaStatus', $uCharaId);
 		//所持しているコーチのデータを持ってくる
 		$uCoachData = $this->Model->exec('Training', 'getUserCoach', false, $this->user['id']);
+		
+		// 訓練データ取得
+		$trainingInfoData	= $this->Model->exec('Training','getInfoFromUserId',$this->user['id']);
+		$this->viewData['infoData']		= $trainingInfoData;
+		
+		// 現在時間をビューデータに渡す
+		$this->viewData['nowTime']		= $this->nowTime;
 
 		if(!isset($uCoachData))
 		{
@@ -116,7 +157,7 @@ class TrainingController extends BaseGameController
 		//マージしたらuMoneyと合わせて使う、訓練の金額を算出して格納
 		$trainingFee = $uCoachHp * 10 * $trainingTime * (100 - ($trainingTime - 1) * 3) / 100;
 		$this->Lib->exec('Money','Subtraction',array($this->user,$trainingFee));
-
+		
 		//リダイレクト
 		return $this->Lib->redirect('training', 'index');
 	}

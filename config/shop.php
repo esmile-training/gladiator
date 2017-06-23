@@ -11,17 +11,17 @@ return [
 		2	=> [
 		'id' => 2,
 		'itemId' => 2,
-		'price' => 89,
+		'price' => 8989,
 		],
 		3	=> [
 		'id' => 3,
 		'itemId' => 3,
-		'price' => 29,
+		'price' => 2929,
 		],
 		4	=> [
 		'id' => 4,
 		'itemId' => 4,
-		'price' => 3710,
+		'price' => 9690,
 		],
 	],
 ];

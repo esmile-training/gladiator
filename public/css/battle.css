@@ -383,3 +383,136 @@ body{}
 	0% {opacity:0;}
 	100% {opacity:1;}
 }
+.skill_healIcon{
+	width: 10%;
+    position: absolute;
+    top: -195%;
+    right: -35%;
+}
+.skill_healUpIcon{
+    width: 5.5%;
+    position: absolute;
+    top: -154%;
+    right: -36%;
+    animation: UpDown 0.8s linear infinite;
+}
+.skill_shieldIcon{
+	width: 9%;
+    position: absolute;
+    top: -195%;
+    right: -35%;
+}
+.skill_shieldUpIcon{
+	width: 5.5%;
+    position: absolute;
+    top: -154%;
+    right: -36%;
+    animation: UpDown 0.8s linear infinite;
+}
+.taisya{
+	width: 90%;
+    position: absolute;
+    top: 42%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 1;
+	opacity: 0;
+}
+
+.battleItem2{
+    width: 80%;
+    margin: 0 auto;
+}
+.battleItem2_itemIcon{
+	position: absolute;
+	width: 18%;
+	left: 16%;
+	top: 5%;
+}
+.battleItem2_name{
+	position: absolute;
+	top: 4%;
+	left: 40%;
+	width: 40%;
+	color: #ffffff;
+	font-size: 4.5vw;
+	text-align: center;
+}
+.battleItem2_abilityInfo{
+	position: absolute;
+	top: 15%;
+	left: 42%;
+	width: 45%;
+	color: #ffffff;
+	font-size: 4.5vw;
+	text-align: left;
+}
+.battleItem2_number{
+	position: absolute;
+	top: 34%;
+	left: 23%;
+	width: 30%;
+	color: #ffffff;
+	font-size: 4.5vw;
+	text-align: right;
+}
+.battleItem2_useButton{
+	position: absolute;
+	top: 33%;
+	left: 60%;
+	width: 25%;
+}
+
+.battleItem3{
+    width: 80%;
+    margin: 0 auto;
+}
+.battleItem3_itemIcon{
+	position: absolute;
+	width: 18%;
+	left: 16%;
+	top: 55%;
+}
+.battleItem3_name{
+	position: absolute;
+	top: 55%;
+	left: 40%;
+	width: 40%;
+	color: #ffffff;
+	font-size: 4.5vw;
+	text-align: center;
+}
+.battleItem3_abilityInfo{
+	position: absolute;
+	top: 65%;
+	left: 42%;
+	width: 45%;
+	color: #ffffff;
+	font-size: 4.5vw;
+	text-align: left;
+}
+.battleItem3_number{
+	position: absolute;
+	top: 85%;
+	left: 23%;
+	width: 30%;
+	color: #ffffff;
+	font-size: 4.5vw;
+	text-align: right;
+}
+.battleItem3_useButton{
+	position: absolute;
+	top: 84%;
+	left: 60%;
+	width: 25%;
+}
+
+.useButton{
+	width: 100%;
+}
+
+.battleItem_flame{
+    width: 100%;
+}

@@ -1,11 +1,11 @@
-<div><img class="present_back" src="{{IMG_URL}}gacha/gachabackground.jpg" /></div>
+<div><img class="present_back" src="{{IMG_URL}}background/almighty.jpg" /></div>
 @include('common/css',['file' => 'presentbox'])
 
 <div class="present_signboard">
-	<img src="{{IMG_URL}}/presentbox/presentbox_signboard.png">
+	<img src="{{IMG_URL}}signboard/presentbox.png">
 </div>
 <div class="present_signboard_info">
-	<img src="{{IMG_URL}}/training/signboard_info.png">
+	<img src="{{IMG_URL}}signboard/info.png">
 </div>
 
 @if(isset($viewData['presentData']))

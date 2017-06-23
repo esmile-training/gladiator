@@ -1,7 +1,7 @@
 {{-- css  --}}
 @include('common/css', ['file' => 'charaList'])
 @include('common/js',['file' => 'sort'])
-<div><img class="chara_list_background" src="{{IMG_URL}}battle/chara_select_bg.jpg" /></div>
+<div><img class="chara_list_background" src="{{IMG_URL}}background/almighty.jpg" /></div>
 <?php
 	$type = isset($_GET['type']) ? $_GET['type'] : '';
 	$order = isset($_GET['order']) ? $_GET['order'] : '';
@@ -14,14 +14,17 @@
 </div>
 
 	<div class="chara_list">
+		<div class="signboard">
+			 <img src="{{IMG_URL}}signboard/status.png">
+		</div>
 		<div class="signboard_info">
-			<img src="{{IMG_URL}}/training/signboard_info.png">
-			<font  class="signboard_text font_serif font_color">{{'剣闘士の詳細が見れます'}}</font>
+			<img src="{{IMG_URL}}signboard/info.png">
+			<font  class="signboard_text font_serif font_color">剣闘士のステータスが確認できます。</font>
 		</div>
 		{{--キャラクターの所持数を表示する--}}
 		<div class="chara_inventory">
 			<img src="{{IMG_URL}}/battle/inventory_bord.png">
-			<font class="inventory_value font_color font_sentury">{{$viewData['charaInventory']['possession']}}/{{$viewData['charaInventory']['upperLimit']}}</font>
+			<font class="inventory_value font_color font_sentury">{{$viewData['charaInventory']['possession']}} / {{$viewData['charaInventory']['upperLimit']}}</font>
 
 			{{--ソート--}}
 			<div class="sort_Box">
@@ -47,10 +50,6 @@
 					</select>
 				</form>
 			</div>
-
-		</div>
-		<div class="signboard">
-			 <img src="{{IMG_URL}}/status/statusSign.png">
 		</div>
 
 	{{--所持キャラクターをすべて表示する--}}
