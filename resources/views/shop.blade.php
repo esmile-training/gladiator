@@ -4,7 +4,7 @@
 
 {{-- 背景 --}}
 <div>
-	<img class="shop_bg" src="{{IMG_URL}}shop/shop_Bg.jpg" />
+	<img class="shop_bg" src="{{IMG_URL}}background/shop.jpg" />
 </div>
 
 {{-- 看板 --}}

@@ -1,5 +1,5 @@
 {{-- 背景 --}}
-<div><img class="gacha_selectback" src="{{IMG_URL}}gacha/selectbackground.jpg" /></div>
+<div><img class="gacha_selectback" src="{{IMG_URL}}background/gacha.jpg" /></div>
 <div class = "gacha_all">
 	<div>
 		<img class="gacha_signboard" 

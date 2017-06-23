@@ -2,7 +2,7 @@ body{
 	margin: 0;
 }
 #main{
-    background-image: url(./../img/gacha/gacharoadbackground.jpg);
+    background-image: url(./../img/background/ranking.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

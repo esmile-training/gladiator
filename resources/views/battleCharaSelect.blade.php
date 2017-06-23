@@ -8,7 +8,7 @@
 @include('common/css', ['file' => 'charaList'])
 @include('common/js',['file' => 'sort'])
 
-<div><img class="chara_list_background" src="{{IMG_URL}}battle/chara_select_bg.jpg" /></div>
+<div><img class="chara_list_background" src="{{IMG_URL}}background/almighty.jpg" /></div>
 
 <?php
 	$type = isset($_GET['type']) ? $_GET['type'] : '';

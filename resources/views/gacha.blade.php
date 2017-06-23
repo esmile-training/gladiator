@@ -1,5 +1,5 @@
 {{-- 背景 --}}
-<div><img class="gacha_back" src="{{IMG_URL}}gacha/selectbackground.jpg" /></div>
+<div><img class="gacha_back" src="{{IMG_URL}}background/gacha.jpg" /></div>
 {{-- 全体 --}}
 <div class = "gacha_all">
 	<input type="checkbox"

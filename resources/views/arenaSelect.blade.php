@@ -7,7 +7,7 @@
 {{-- css  --}}
 @include('common/css', ['file' => 'battleArenaSelect'])
 @include('common/css', ['file' => 'battleCharaSelect'])
-<div><img class="battle_arena_selectback" src="{{IMG_URL}}battle/chara_select_bg.jpg" /></div>
+<div><img class="battle_arena_selectback" src="{{IMG_URL}}background/almighty.jpg" /></div>
 {{--大会の一覧を表示する--}}
 <div class="arena_list">
 	@foreach($viewData['difficultyList'] as $arena)

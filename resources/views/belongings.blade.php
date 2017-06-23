@@ -4,7 +4,7 @@
 
 {{-- 背景 --}}
 <div>
-	<img class="belongings_bg" src="{{IMG_URL}}shop/shop_Bg.jpg" />
+	<img class="belongings_bg" src="{{IMG_URL}}background/almighty.jpg" />
 </div>
 
 {{-- 看板 --}}

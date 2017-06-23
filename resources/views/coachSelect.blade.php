@@ -1,4 +1,4 @@
-<div><img class="coachSelect_back" src="{{IMG_URL}}gacha/gachabackground.jpg" /></div>
+<div><img class="coachSelect_back" src="{{IMG_URL}}background/almighty.jpg" /></div>
 {{--CSS--}}
 @include('common/css', ['file' => 'coachSelect'])
 

@@ -1,6 +1,6 @@
 @include('common/css', ['file' => 'retirementChara'])
 {{-- 背景 --}}
-<div><img class="back" src="{{IMG_URL}}battle/chara_select_bg.jpg" /></div>
+<div><img class="back" src="{{IMG_URL}}background/almighty.jpg" /></div>
 <br>
 <div class="textfont">
 	{{$viewData['comment']}}

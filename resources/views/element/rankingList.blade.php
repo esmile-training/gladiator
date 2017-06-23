@@ -1,4 +1,4 @@
-<div><img class="ranking_back_image" src="{{IMG_URL}}ranking/rankingbackimage.jpg" /></div>
+<div><img class="ranking_back_image" src="{{IMG_URL}}background/ranking.jpg" /></div>
 
 	<img class="ranking_board" src="{{IMG_URL}}signboard/ranking.png" />
 	{{-- 背景切り替え --}}

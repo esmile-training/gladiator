@@ -46,7 +46,7 @@
 		])
 		
 		{{-- 背景画像 --}}
-		<img src="{{IMG_URL}}battle/battle_Bg{{$viewData['enemyData']['difficulty']}}.jpg" class="battle_bg">
+		<img src="{{IMG_URL}}background/battle{{$viewData['enemyData']['difficulty']}}.jpg" class="battle_bg">
 
 		{{-- バトル終了フラグが立っていなければヘッダー部分表示 --}}
 		@if ($viewData['battleData']['delFlag'] != 1)
