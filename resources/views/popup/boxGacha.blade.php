@@ -28,37 +28,38 @@
 	<table border="1" class='boxGacha_table'>
 		<tr>
 			<th>レア度</th>
-			<th colspan="3">出現率</th>
+            <th colspan="3">残数</th>	
 		</tr>
 		<tr>
 			<td><image class="boxGacha_table_image" src='{{IMG_URL}}gacha/5.png'></td>
-			<td></td>
-			<td>{{round(((int)$gachaCost[$data['gachaId']]['deck'][5] - $deck['LR']) / ((int)$gachaCost[$data['gachaId']]['deck'][0] - $deck['count'])* 100, 2)}}%</td>
-			<td></td>
+            <td>{{(int)$gachaCost[$data['gachaId']]['deck'][5] - $deck['LR']}}</td>
+            <td>/</td>
+            <td>{{$gachaCost[$data['gachaId']]['deck'][5]}}</td>
 		</tr>
 		<tr>
 			<td><image class="boxGacha_table_image" src='{{IMG_URL}}gacha/4.png'></td>
-			<td></td>
-			<td>{{round(((int)$gachaCost[$data['gachaId']]['deck'][4] - $deck['SSR']) / ((int)$gachaCost[$data['gachaId']]['deck'][0] - $deck['count'])* 100, 2)}}%</td>
-			<td></td>
+            <td>{{(int)$gachaCost[$data['gachaId']]['deck'][4] - $deck['SSR']}}</td>
+            <td>/</td>
+            <td>{{$gachaCost[$data['gachaId']]['deck'][4]}}</td>
 		</tr>
 		<tr>
 			<td><image class="boxGacha_table_image" src='{{IMG_URL}}gacha/3.png'></td>
-			<td></td>
-			<td>{{round(((int)$gachaCost[$data['gachaId']]['deck'][3] - $deck['SR']) / ((int)$gachaCost[$data['gachaId']]['deck'][0] - $deck['count'])* 100, 2)}}%</td>
-			<td></td>
+            <td>{{(int)$gachaCost[$data['gachaId']]['deck'][3] - $deck['SR']}}</td>
+            <td>/</td>
+            <td>{{$gachaCost[$data['gachaId']]['deck'][3]}}</td>
 		</tr>
 		<tr>
 			<td><image class="boxGacha_table_image" src='{{IMG_URL}}gacha/2.png'></td>
-			<td></td>
-			<td>{{round(((int)$gachaCost[$data['gachaId']]['deck'][2] - $deck['R']) / ((int)$gachaCost[$data['gachaId']]['deck'][0] - $deck['count'])* 100, 2)}}%</td>
-			<td></td>
+            <td>{{(int)$gachaCost[$data['gachaId']]['deck'][2] - $deck['R']}}</td>
+            <td>/</td>
+            <td>{{$gachaCost[$data['gachaId']]['deck'][2]}}</td>
+
 		</tr>
 		<tr>
 			<td><image class="boxGacha_table_image" src='{{IMG_URL}}gacha/1.png'></td>
-			<td></td>
-			<td>{{round(((int)$gachaCost[$data['gachaId']]['deck'][1] - $deck['N']) / ((int)$gachaCost[$data['gachaId']]['deck'][0] - $deck['count'])* 100, 2)}}%</td>
-			<td></td>
+            <td>{{(int)$gachaCost[$data['gachaId']]['deck'][1] - $deck['N']}}</td>
+            <td>/</td>
+            <td>{{$gachaCost[$data['gachaId']]['deck'][1]}}</td>
 		</tr>
 	</table>
 </div>
