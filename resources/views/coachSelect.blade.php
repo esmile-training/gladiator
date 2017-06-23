@@ -4,13 +4,13 @@
 
 <div class="coachSelect_all">
 	<div class="coachSelect_signboard_info">
-		<img src="{{IMG_URL}}/training/signboard_info.png">
+		<img src="{{IMG_URL}}signboard/info.png">
 		<div class ="coachSelect_signboard_text">
 			<font  class="coachSelect_font_serif">{{'コーチを選んでください'}}</font>
 		</div>
 	</div>
 	<div class="coachSelect_signboard">
-		 <img src="{{IMG_URL}}/training/signboard.png">
+		 <img src="{{IMG_URL}}signboard/training.png">
 	</div>
 	<?php $cnt = 0; ?>
 	{{--uCoach(DB)から持ってきたデータの表示--}}

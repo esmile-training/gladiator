@@ -35,11 +35,11 @@
 	@endforeach
 	{{--インフォ--}}
 	<div class="arena_select_signboard_info">
-		<img src="{{IMG_URL}}/training/signboard_info.png">
+		<img src="{{IMG_URL}}signboard/info.png">
 		<div class ="arena_select_signboard_text">
 			<font  class="arena_select_text font_serif">闘技場を選択してください</font>
 		</div>
 	</div>
 	{{--看板の表示--}}
-	<img class="signboard_img" src="{{IMG_URL}}battle/signboard.png" alt="看板">
+	<img class="signboard_img" src="{{IMG_URL}}signboard/battle.png" alt="看板">
 </div>

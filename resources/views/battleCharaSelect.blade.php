@@ -69,13 +69,13 @@
 </div>
 @endif
 <div class="signboard_info">
-	<img src="{{IMG_URL}}/training/signboard_info.png">
+	<img src="{{IMG_URL}}signboard/info.png">
 	<font class="signboard_text font_color font_serif">出場させる剣闘士を選んでください</font>
 </div>
 
 {{--キャラクターの所持数を表示する--}}
 <div class="chara_inventory">
-	<img src="{{IMG_URL}}/battle/inventory_bord.png">
+	<img src="{{IMG_URL}}battle/inventory_bord.png">
 	<font class="inventory_value font_color font_sentury">{{$viewData['charaInventory']['possession']}} / {{$viewData['charaInventory']['upperLimit']}}</font>
 
 	{{--ソートの表示--}}
@@ -104,4 +104,4 @@
 	</div>
 </div>
 
-<img class="signboard" src="{{IMG_URL}}battle/signboard.png" alt="看板">
+<img class="signboard" src="{{IMG_URL}}signboard/battle.png" alt="看板">

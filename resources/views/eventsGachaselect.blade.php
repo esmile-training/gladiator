@@ -5,7 +5,7 @@
 	{{-- 看板 --}}
 	<div>
 		<img class="gacha_signboard" 
-			 src="{{IMG_URL}}gacha/kanban.png">
+			 src="{{IMG_URL}}signboard/gacha.png">
 	</div>
 	{{-- 枠 --}}
 	<div class = "junban0">

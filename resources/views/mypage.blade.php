@@ -1,6 +1,6 @@
 {{-- css  --}}
 @include('common/css', ['file' => 'mypage'])
-<img class="mypage_board" src="{{IMG_URL}}mypage/mypageboard.png" />
+<img class="mypage_board" src="{{IMG_URL}}signboard/myPage.png" />
 @if(!is_null($viewData['delFlag']['imgId']))
 <div class="user_chara">
 	<img src="{{IMG_URL}}chara/{{$viewData['delFlag']['imgId']}}.png">

@@ -3,7 +3,7 @@
 <div class = "gacha_all">
 	<div>
 		<img class="gacha_signboard" 
-			 src="{{IMG_URL}}gacha/kanban.png">
+			 src="{{IMG_URL}}signboard/gacha.png">
 	</div>
 	<div class = "junban0">
 		<img class="gacha_frame" 
