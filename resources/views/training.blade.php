@@ -35,11 +35,11 @@
 @endif
 
 <div class="signboard_info">
-	<img src="{{IMG_URL}}/training/signboard_info.png">
+	<img src="{{IMG_URL}}signboard/info.png">
 	<font  class="signboard_text font_serif font_color">{{'訓練する剣闘士を選んでください'}}</font>
 </div>
 <div class="signboard">
-	<img src="{{IMG_URL}}/training/signboard.png">
+	<img src="{{IMG_URL}}signboard/training.png">
 </div>
 
 {{--キャラクターの所持数を表示する--}}

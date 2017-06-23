@@ -26,8 +26,7 @@
 			</div>
 			{{-- レア度ロゴの光 --}}
 			<div>
-				<img class="gacha_charalogoflash"
-					 src="{{IMG_URL}}gacha/logoflash.png">
+				<img class="gacha_charalogoflash" src="{{IMG_URL}}gacha/logoflash.png">
 			</div>
 		</div>
 	</div>

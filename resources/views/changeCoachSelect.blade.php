@@ -2,13 +2,13 @@
 <?php $count = 0; ?>
 <div class="coach_all">
 	<div class="coach_signboardinfo">
-		<img src="{{IMG_URL}}/training/signboard_info.png">
+		<img src="{{IMG_URL}}signboard/info.png">
 		<div class ="coach_signboard_text">
 			<font class = "coach_font">{{'コーチを選んでください。'}}</font>
 		</div>
 	</div>
 	<div class="coach_signboard">
-		 <img src="{{IMG_URL}}/status/selectCoachSign.png">
+		 <img src="{{IMG_URL}}signboard/selectCoach.png">
 	</div>
 	<div class = "coach_maxfont">
 		<center>

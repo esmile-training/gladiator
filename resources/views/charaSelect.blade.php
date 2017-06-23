@@ -14,8 +14,11 @@
 </div>
 
 	<div class="chara_list">
+		<div class="signboard">
+			 <img src="{{IMG_URL}}signboard/status.png">
+		</div>
 		<div class="signboard_info">
-			<img src="{{IMG_URL}}/training/signboard_info.png">
+			<img src="{{IMG_URL}}signboard/info.png">
 			<font  class="signboard_text font_serif font_color">剣闘士のステータスが確認できます。</font>
 		</div>
 		{{--キャラクターの所持数を表示する--}}
@@ -47,9 +50,6 @@
 					</select>
 				</form>
 			</div>
-		</div>
-		<div class="signboard">
-			 <img src="{{IMG_URL}}/status/statusSign.png">
 		</div>
 
 	{{--所持キャラクターをすべて表示する--}}
