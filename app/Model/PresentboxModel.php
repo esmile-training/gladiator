@@ -39,10 +39,26 @@ EOD;
 	public function changeDelFlag($receiveId)
 	{
 $sql =  <<< EOD
-			UPDATE	uPresent
-			SET		delFlag = 1
-			WHERE	id = {$receiveId};
+		UPDATE	uPresent
+		SET		delFlag = 1
+		WHERE	id = {$receiveId};
 EOD;
 		   $this->update($sql);
+	}
+	
+	public function changeDelFlagAll($userId,$presentCharaIdMin)
+	{
+$sql =  <<< EOD
+		UPDATE	uPresent
+		SET		delFlag = 1
+		WHERE	userId = $userId
+		AND		type = 1
+		AND		id >= $presentCharaIdMin
+		OR		userId = $userId
+		AND		type = 2
+		OR		userId = $userId
+		AND		type = 3;
+EOD;
+		$this->update($sql);
 	}
 }

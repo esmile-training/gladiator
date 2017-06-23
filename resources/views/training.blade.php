@@ -11,17 +11,17 @@
 
 {{--訓練が終了しているキャラがいたらポップアップ表示--}}
 <script>
-	 var popup = Boolean(<?php echo $viewData['isTrainingEndFlag'] ?>);
-	 $(function (){
-		 if(popup)
-		 {
+	var popup = Boolean(<?php echo $viewData['isTrainingEndFlag'] ?>);
+	$(function (){
+		if(popup)
+		{
 			$('.trainingResult').css('display','block');
-		 }
-		 else
-		 {
-			 $('.trainingResult').css('display','none');
-		 }
-	 });
+		}
+		else
+		{
+			$('.trainingResult').css('display','none');
+		}
+	});
 </script>
 
 @if($viewData['isTrainingEndFlag'])

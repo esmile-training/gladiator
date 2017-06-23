@@ -14,3 +14,21 @@
 	<p class="fever_text"><script>document.write(60 - new Date().getMinutes())</script>分</p>
 </div>
 @endif
+
+@if($viewData['loginBonusFlag'])
+	{{--今日まだログインしていなければログインボーナスのポップアップ表示--}}
+	<script>
+		$(function ()
+		{
+			$('.loginBonus').css('display','block');
+		});
+	</script>
+
+	<div class="modal loginBonus">
+		{{--ポップアップウィンドウ--}}
+		@include('popup/wrap', [
+			'class'		=> 'loginBonus',
+			'template'	=> 'loginBonus',
+		])
+	</div>
+@endif

@@ -7,8 +7,6 @@ class GachaController extends BaseGameController
 
 	public function select()
 	{
-
-
 		return viewWrap('gachaselect', $this->viewData);
 	}
 	public function eventsSelect()

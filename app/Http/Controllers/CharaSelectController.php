@@ -31,7 +31,7 @@ class CharaSelectController extends BaseGameController
 		// DBからキャラクターを取得できたかを確認する
 		if(isset($alluChara))
 		{
-					// 金枠か銀枠かを判定する
+			// 金枠か銀枠かを判定する
 			foreach ($alluChara as $key => $chara)
 			{
 				if($chara['rare'] >= 4)

@@ -67,6 +67,17 @@ $sql = <<< EOD
 EOD;
 		$this->update($sql);
 	}
+	
+	public function rangeCharaAcceptFlag($userId,$charaIdMin,$charaIdMax)
+	{
+$sql = <<< EOD
+		UPDATE  uChara
+		SET		acceptFlag = 1
+		WHERE   userId = {$userId}
+		AND		id BETWEEN {$charaIdMin} AND {$charaIdMax};
+EOD;
+		$this->update($sql);
+	}
 
 	/*
 	 * 所持キャラクター一覧表示用sql(追加者:吉田)

@@ -53,6 +53,5 @@ class BaseGameController extends Controller
 			
 			return $this->Lib->redirect('commonError');
 		}
-		
 	}
 }

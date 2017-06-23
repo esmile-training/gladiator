@@ -90,11 +90,10 @@ EOD;
     */
 	public function createLog($charaData)
 	{
-
-	$time = date('Y-m-d H:i:s', time());
-	$result = $this->getCharaId();
+		$time = date('Y-m-d H:i:s', time());
+		$result = $this->getCharaId();
 $sql = <<< EOD
-
+	INSERT INTO uGachaLog
 	VALUES (
 		'{$charaData['GachaVal']}',
 		'{$charaData['userId']}',
