@@ -12,7 +12,7 @@
 		});
 	});
 </script>
-
+<div style="padding-top: 10%">
 	<h1 class="changeName_title">剣闘士団名を変更できます</h1>
 	<h4 class="changeName_subtitle">※全角８文字以内</h4>
 	<div class="changeName_form_parent">
@@ -22,3 +22,4 @@
 			<input class="changeName_submit load" type="submit" name="btn" value="変更" disabled>
 		</form>
 	</div>
+</div>
