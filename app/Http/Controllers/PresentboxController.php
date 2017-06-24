@@ -7,6 +7,7 @@ class PresentBoxController extends BaseGameController
 	{
 		//受け取りボックスのデータ取得
 		$this->viewData['presentData'] = $this->Model->exec('PresentBox','getById', $this->user['id']);
+		$this->viewData['itemData']	= \Config::get('item.itemStr');
 		//ビューに渡す
 		return viewWrap('Presentbox',$this->viewData);
 	}
@@ -36,6 +37,8 @@ class PresentBoxController extends BaseGameController
 					{
 						$this->Model->exec('Chara','charaAcceptFlag',$objId);
 						$this->Model->exec('presentbox','changeDelFlag',$receiveId);
+						// 所持キャラ数の加算を行う
+						$this->Lib->exec('ManageCharaPossession','addPossessionChara',array($this->user));
 					}
 					break;
 				

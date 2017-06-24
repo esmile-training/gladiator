@@ -69,7 +69,6 @@ body {
  }
 
  .mypage_board{
-
 	width: 33%;
 	position: fixed;
 	margin-top: 1%;
@@ -86,35 +85,56 @@ body {
 
 .presentbox{
     position: fixed;
-    top: 20%;
-    left: 5%;
+    top: 32%;
+    left: 80%;
     right: 0;
-    width: 10%;
+    width: 17%;
 }
 
 .cap2:not(.act) {
-	display:none;
+    display:none;
 }
 
 .fever{
-	position: fixed;
+    position: fixed;
     top: 19%;
     right: 1%;
     width: 22%;
 }
 
 .fever_img{
-	display: inline-block;
+    display: inline-block;
     width: 100%;
     margin: 0 auto;
     padding: 0;
 }
 
 .fever_text{
-	position: fixed;
+    position: fixed;
     top: 25%;
     left: 88%;
     color: white;
     font-size: 3vw;
-	font-family: serif;
+    font-family: serif;
+}
+
+.bonus_text{
+    color: white;
+    font-size: 5vw;
+    font-family: serif;
+}
+
+.bonus_img{
+    position:absolute;
+    width:50%;
+    left:0%;
+    right:0%;
+    margin: 0 auto;
+    margin-top: 25%;
+}
+
+.bonus_info_text{
+    color: red;
+    font-size: 4vw;
+    font-family: serif;
 }

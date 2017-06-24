@@ -18,7 +18,7 @@ class MypageController extends BaseGameController
 			$this->Model->exec('PresentBox','insertPresentData',array($this->user['id'],$loginBonus[1]['type'],$loginBonus[1]['objId'],
 																		$loginBonus[1]['objId'],$loginBonus[1]['cnt']));
 			
-			$this->viewData['loginBonus'] = $loginBonus;
+			$this->viewData['loginBonus'] = $loginBonus[1];
 			//フラグを立ててビューに返す
 			$this->viewData['loginBonusFlag'] = true;
 		}
@@ -26,24 +26,10 @@ class MypageController extends BaseGameController
 		{
 			$this->viewData['loginBonusFlag'] = false;
 			//最後のログイン後に日付を跨いでおり、かつログイン回数が7回未満の時
-			if(date('Y-m-d',strtotime($loginLog['updateDate'])) < date('Y-m-d',strtotime($this->viewData['nowTime'] && $loginLog['cnt'] < 7)))
+			if(date('Y-m-d',strtotime($loginLog['updateDate'])) < date('Y-m-d',strtotime($this->viewData['nowTime'])))
 			{
-				$this->Model->exec('loginLog', 'logUpdate', array($this->user['id'],$loginLog['cnt']+1));
-				$this->Model->exec('PresentBox','insertPresentData',array($this->user['id'],
-									$loginBonus[$loginLog['cnt']]['type'],$loginBonus[$loginLog['cnt']]['objId'],$loginBonus[$loginLog['cnt']]['objId'],$loginBonus[$loginLog['cnt']]['cnt']));
-				
-				$this->viewData['loginBonus'] = $loginBonus;
-				//フラグを立ててビューに返す
-				$this->viewData['loginBonusFlag'] = true;
-			}
-			//最後のログイン後に日付を跨いでおり、かつログイン回数が7回の時
-			else if(date('Y-m-d',strtotime($loginLog['updateDate'])) < date('Y-m-d',strtotime($this->viewData['nowTime'] && $loginLog['cnt'] == 7)))
-			{
-				$this->Model->exec('loginLog', 'logUpdate', array($this->user['id'],1));
-				$this->Model->exec('PresentBox','insertPresentData',array($this->user['id'],
-									$loginBonus[$loginLog['cnt']]['type'],$loginBonus[$loginLog['cnt']]['objId'],$loginBonus[$loginLog['cnt']]['objId'],$loginBonus[$loginLog['cnt']]['cnt']));
-				
-				$this->viewData['loginBonus'] = $loginBonus;
+				$loginCnt = $this->Lib->exec('LoginBonus','typeCheck',array($this->user['id'],$loginBonus,$loginLog));
+				$this->viewData['loginBonus'] = $loginBonus[$loginCnt];
 				//フラグを立ててビューに返す
 				$this->viewData['loginBonusFlag'] = true;
 			}
