@@ -14,9 +14,9 @@
 @endif
 
 {{-- プレゼントBOX --}}
-<div class="presentbox">
-	<img src="{{IMG_URL}}presentbox/presentIcon.png">
-</div>
+<a href="{{APP_URL}}presentbox" class="presentbox">
+	<img src="{{IMG_URL}}mypage/presentIcon.png">
+</a>
 
 {{-- フィーバータイム表示 --}}
 <div class="modal_btn feverHelp fever cap2 {{$act}}">
@@ -48,6 +48,7 @@
 		@include('popup/wrap', [
 			'class'		=> 'loginBonus',
 			'template'	=> 'loginBonus',
+			'data'		=>	['loginBonusData' => $viewData['loginBonus']]
 		])
 	</div>
 @endif

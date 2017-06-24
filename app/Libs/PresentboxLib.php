@@ -47,6 +47,8 @@ class PresentboxLib extends BaseGameLib
 						{
 							$charaIdMin = $val['objId'];
 						}
+						// 所持キャラ数の加算を行う
+						$this->Lib->exec('ManageCharaPossession','addPossessionChara',array($user));
 					}
 					break;
 				//アイテムの場合
