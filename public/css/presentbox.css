@@ -32,7 +32,6 @@
 }
 
 .present_all{
-    margin-top: 9vh;
     margin-left: 1vw;
     margin-right: 1vw;
 }
@@ -74,10 +73,12 @@
 }
 
 .present_receive_all_button{
-    position : relative;
-    top	     : 8%;
-    left     : 70%;
-    width    : 25%;
+    position: relative;
+    margin-top: 20vh;
+    margin-left: 70vw;
+    margin-right: 1vw;
+    margin-bottom: auto;
+    width: 25%;
 }
 
 .present_button_item_text{
