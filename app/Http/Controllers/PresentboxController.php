@@ -9,7 +9,7 @@ class PresentboxController extends BaseGameController
 		$this->viewData['presentData'] = $this->Model->exec('Presentbox','getById', $this->user['id']);
 		$this->viewData['itemData']	= \Config::get('item.itemStr');
 		//ビューに渡す
-		return viewWrap('Presentbox',$this->viewData);
+		return viewWrap('presentbox',$this->viewData);
 	}
 	
 	public function setPresentData()
