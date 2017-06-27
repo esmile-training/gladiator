@@ -10,8 +10,8 @@ class BaseGameModel
 	{
 		//インスタンス化する
 		$className = '\\App\\Model\\'.$className.'Model';
+	
 		$modelClass = new $className();
-
 		//ユーザ情報がある場合は登録
 		if( $userId )
 		{

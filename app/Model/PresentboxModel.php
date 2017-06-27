@@ -1,7 +1,7 @@
 <?php
 namespace App\Model;
 
-class PresentBoxModel extends BaseGameModel
+class PresentboxModel extends BaseGameModel
 {
 	public function getById($userId)
 	{

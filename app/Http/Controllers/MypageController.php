@@ -15,7 +15,7 @@ class MypageController extends BaseGameController
 		{
 			//初めてログインした時にログインデータ作成
 			$this->Model->exec('loginLog','insertData',array($this->user['id'], $this->viewData['nowTime']));
-			$this->Model->exec('PresentBox','insertPresentData',array($this->user['id'],$loginBonus[1]['type'],$loginBonus[1]['objId'],
+			$this->Model->exec('Presentbox','insertPresentData',array($this->user['id'],$loginBonus[1]['type'],$loginBonus[1]['objId'],
 																		$loginBonus[1]['objId'],$loginBonus[1]['cnt']));
 			
 			$this->viewData['loginBonus'] = $loginBonus[1];

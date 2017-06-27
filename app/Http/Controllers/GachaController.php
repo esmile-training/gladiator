@@ -147,7 +147,7 @@ class GachaController extends BaseGameController
 			// 空きが無ければ未取得状態のキャラを生成する
 			$id = $this->Model->exec('Gacha', 'createUnacquiredChara', array($charaData));
 			// プレゼントボックスへデータを受け渡す
-			$this->Model->exec('PresentBox','insertPresentData',array($this->user['id'],'1',$id,$charaData['uCharaId'],'1'));
+			$this->Model->exec('Presentbox','insertPresentData',array($this->user['id'],'1',$id,$charaData['uCharaId'],'1'));
 			// 上限達したかをparamに持たせる
 			$param['limit'] = '1';
 		}

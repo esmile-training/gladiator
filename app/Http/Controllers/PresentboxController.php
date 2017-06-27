@@ -1,12 +1,12 @@
 <?php
 namespace App\Http\Controllers;
 
-class PresentBoxController extends BaseGameController
+class PresentboxController extends BaseGameController
 {
 	public function index()
 	{
 		//受け取りボックスのデータ取得
-		$this->viewData['presentData'] = $this->Model->exec('PresentBox','getById', $this->user['id']);
+		$this->viewData['presentData'] = $this->Model->exec('Presentbox','getById', $this->user['id']);
 		$this->viewData['itemData']	= \Config::get('item.itemStr');
 		//ビューに渡す
 		return viewWrap('Presentbox',$this->viewData);
@@ -21,7 +21,7 @@ class PresentBoxController extends BaseGameController
 		$cnt	 = filter_input(INPUT_GET,"cnt");
 		
 		//受け取りボックスのデータ取得
-		$presentData = $this->Model->exec('PresentBox','getById', $this->user['id']);
+		$presentData = $this->Model->exec('Presentbox','getById', $this->user['id']);
 		// キャラ所持数の最大値と現在値を取得する
 		$charaInventory = array();
 		$charaInventory['upperLimit'] = $this->Lib->exec('ManageCharaPossession','getUpperLimitChara',$this->user['id']);
