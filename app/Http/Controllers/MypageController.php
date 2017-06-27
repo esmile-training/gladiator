@@ -8,7 +8,7 @@ class MypageController extends BaseGameController
 		$delChara = $this->Model->exec('Mypage', 'delFlagCheck', $this->user['id']);
 		$this->viewData['delFlag'] = $delChara;
 
-		$loginLog = $this->Model->exec('loginLog', 'check', $this->user['id']);
+		$loginLog = $this->Model->exec('LoginLog', 'check', $this->user['id']);
 		if(is_null($loginLog))
 		{
 			$this->Model->exec('loginLog','insertData',array($this->user['id'], $this->viewData['nowTime']));
