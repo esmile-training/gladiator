@@ -113,11 +113,11 @@ class PresentboxLib extends BaseGameLib
 		//キャラのacceptFlag更新
 		if($charaIdMin == $charaIdMax)
 		{
-			$this->Model->exec('chara','charaAcceptFlag',$charaIdMax);
+			$this->Model->exec('Chara','charaAcceptFlag',$charaIdMax);
 		}else{
-			$this->Model->exec('chara','rangeCharaAcceptFlag',array($user['id'],$charaIdMin,$charaIdMax));
+			$this->Model->exec('Chara','rangeCharaAcceptFlag',array($user['id'],$charaIdMin,$charaIdMax));
 		}
 		//受け取りボックスデータベース更新
-		$this->Model->exec('presentBox','changeDelFlagAll',array($user['id'],$presentCharaIdMin));
+		$this->Model->exec('Presentbox','changeDelFlagAll',array($user['id'],$presentCharaIdMin));
 	}
 }
