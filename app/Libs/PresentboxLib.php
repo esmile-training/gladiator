@@ -109,7 +109,7 @@ class PresentboxLib extends BaseGameLib
 		}
 		
 		//所持金更新
-		$this->Lib->exec('money','addition',array($user, $total));
+		$this->Lib->exec('Money','addition',array($user, $total));
 		//キャラのacceptFlag更新
 		if($charaIdMin == $charaIdMax)
 		{
