@@ -33,7 +33,7 @@ class PresentboxController extends BaseGameController
 			switch ($type)
 			{
 				case 1:
-					if($charaInventory['upperLimit'] >= $charaInventory['possession'])
+					if($charaInventory['upperLimit'] > $charaInventory['possession'])
 					{
 						$this->Model->exec('Chara','charaAcceptFlag',$objId);
 						$this->Model->exec('Presentbox','changeDelFlag',$receiveId);

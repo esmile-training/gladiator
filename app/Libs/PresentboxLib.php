@@ -13,6 +13,7 @@ class PresentboxLib extends BaseGameLib
 		$charaIdMax = 0;
 		
 		$presentCharaIdMin = 0;
+		
 		//キャラ受け取り可能数
 		$charaCntLimit = $charaInventory['upperLimit'] - $charaInventory['possession'];
 		//所持数を超えないようカウント
@@ -31,10 +32,11 @@ class PresentboxLib extends BaseGameLib
 			//ボックスに入ってるオブジェクトの種類によって処理を分ける
 			switch($val['type'])
 			{
+				
 				//キャラクターの場合
 				case 1:
 					//キャラ受け取り可能数と現在入ってきたキャラクターの数を比較
-					if($charaCntLimit > $charaDataCnt && $presentCharaIdMin > $val['id'] || $presentCharaIdMin == 0)
+					if($charaCntLimit > $charaDataCnt)
 					{
 						$presentCharaIdMin = $val['id'];
 						$charaDataCnt++;
@@ -111,11 +113,14 @@ class PresentboxLib extends BaseGameLib
 		//所持金更新
 		$this->Lib->exec('Money','addition',array($user, $total));
 		//キャラのacceptFlag更新
-		if($charaIdMin == $charaIdMax)
+		if($charaCntLimit > $charaDataCnt)
 		{
-			$this->Model->exec('Chara','charaAcceptFlag',$charaIdMax);
-		}else{
-			$this->Model->exec('Chara','rangeCharaAcceptFlag',array($user['id'],$charaIdMin,$charaIdMax));
+			if($charaIdMin == $charaIdMax)
+			{
+				$this->Model->exec('Chara','charaAcceptFlag',$charaIdMax);
+			}else{
+				$this->Model->exec('Chara','rangeCharaAcceptFlag',array($user['id'],$charaIdMin,$charaIdMax));
+			}
 		}
 		//受け取りボックスデータベース更新
 		$this->Model->exec('Presentbox','changeDelFlagAll',array($user['id'],$presentCharaIdMin));

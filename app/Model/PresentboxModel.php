@@ -54,6 +54,7 @@ $sql =  <<< EOD
 		WHERE	userId = $userId
 		AND		type = 1
 		AND		id >= $presentCharaIdMin
+		AND		$presentCharaIdMin != 0
 		OR		userId = $userId
 		AND		type = 2
 		OR		userId = $userId
