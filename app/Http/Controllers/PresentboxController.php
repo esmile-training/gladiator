@@ -36,7 +36,7 @@ class PresentboxController extends BaseGameController
 					if($charaInventory['upperLimit'] >= $charaInventory['possession'])
 					{
 						$this->Model->exec('Chara','charaAcceptFlag',$objId);
-						$this->Model->exec('presentbox','changeDelFlag',$receiveId);
+						$this->Model->exec('Presentbox','changeDelFlag',$receiveId);
 						// 所持キャラ数の加算を行う
 						$this->Lib->exec('ManageCharaPossession','addPossessionChara',array($this->user));
 					}
@@ -48,13 +48,13 @@ class PresentboxController extends BaseGameController
 					$updateItemData = $this->Lib->exec('Belongings','updateItem',array($objId,$cnt,$this->itemData,$this->belongingsData,$this->user));
 					// DBの更新
 					$this->Model->exec('Item', 'updateItemData', array($updateItemData));
-					$this->Model->exec('presentbox','changeDelFlag',$receiveId);
+					$this->Model->exec('Presentbox','changeDelFlag',$receiveId);
 					break;
 				
 				case 3:
 					// ユーザーの所持金 'money' に賞金額を加算しデータベースに格納
 					$this->Lib->exec('Money', 'addition', array($this->user, $cnt));
-					$this->Model->exec('presentbox','changeDelFlag',$receiveId);
+					$this->Model->exec('Presentbox','changeDelFlag',$receiveId);
 					break;
 				
 				default:
@@ -70,10 +70,10 @@ class PresentboxController extends BaseGameController
 				$receiveData[$cnt]['cnt']	= $val['cnt'];
 				$cnt++;
 			}
-			$this->Lib->exec('presentbox','receiveAll',array($this->user,$receiveData,$charaInventory));
+			$this->Lib->exec('Presentbox','receiveAll',array($this->user,$receiveData,$charaInventory));
 		}
 		
 		//リダイレクト
-		return $this->Lib->redirect('presentbox', 'index');
+		return $this->Lib->redirect('Presentbox', 'index');
 	}
 }
