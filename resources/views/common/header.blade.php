@@ -44,7 +44,11 @@
 				<div>
 					<img class="headerGaugeIcon money" src="{{IMG_URL}}header/bar.png" />	
 					<img class="headerGaugeIcon moneyIcon" src="{{IMG_URL}}user/gold.png" />
-					<p class="possession_ornament possession_money">{{$viewData['user']['money']}}</p>
+					@if($viewData['user']['money'] < 1000000)
+						<p class="possession_ornament possession_money">+999999</p>
+					@else
+						<p class="possession_ornament possession_money">{{$viewData['user']['money']}}</p>
+					@endif
 				</div>
 				<div>
 					<img class="headerGaugeIcon battleTicket" src="{{IMG_URL}}header/bar.png" />
