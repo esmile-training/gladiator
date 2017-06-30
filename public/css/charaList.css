@@ -39,7 +39,6 @@ a:active{
 	background: no-repeat center center;
 	background-size: 100% auto;
 	width: 100%;
-	margin-top: -33%;
 	position: fixed;
 }
 
@@ -213,7 +212,16 @@ a:active{
 	bottom: 0;
 	text-align: center;
 }
-
+/*キャラが居ない時の画面の設定()*/
+.no_chara_chara_status{
+	font-size: 150%;
+	position: absolute;
+	top: 30%;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+}
 /*ソートボックスの設定*/
 /*ソートボックスのdiv*/
 .sort_Box{
