@@ -92,8 +92,8 @@
 .coach_button_back{
 	width: 30%;
     position: relative;
-    right: -44%;
-    top: 11vw;
+	top: 0vw;
+    right: 1%;
 }
 .coach_button_retire{
     width: 30%;
