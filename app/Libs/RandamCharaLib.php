@@ -224,7 +224,7 @@ class RandamCharaLib extends BaseGameLib
 		$gachaData = $this->Model->exec('Gacha','getEventGachaRecord',$userId);
 		
 		//レコードの作成月を取得
-		$month = date('m',strtotime($gachaData['createDate']));
+                if($gachaData){$month = date('m',strtotime($gachaData['createDate']));}
 		
 		if(is_null($gachaData) || $month != date('m'))
 		{
